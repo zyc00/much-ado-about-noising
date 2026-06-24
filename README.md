@@ -25,9 +25,9 @@ Easiest path — one command (no scripted collection needed). The HF repo holds 
 clean source demos + eval set; segments are regenerated locally on download.
 
 ```bash
-python scripts/download_data.py --repo <user>/toolhang-mip-data            # 2k + 20k
-python scripts/download_data.py --repo <user>/toolhang-mip-data --scale 2k # 2k only
-# or set the default once:  export HF_DATA_REPO=<user>/toolhang-mip-data
+python scripts/download_data.py --repo yuchen0187/toolhang-mip-data            # 2k + 20k
+python scripts/download_data.py --repo yuchen0187/toolhang-mip-data --scale 2k # 2k only
+# or set the default once:  export HF_DATA_REPO=yuchen0187/toolhang-mip-data
 ```
 
 This downloads `tool_hang_clean_{2000,20000}.hdf5` + `warmstart_demos.hdf5` +
@@ -37,8 +37,8 @@ slicing). To skip re-slicing and pull the segment files directly: `--segments do
 
 **Publishing/updating the data** (owner only, needs `huggingface-cli login`):
 ```bash
-python scripts/upload_data.py --repo <user>/toolhang-mip-data              # clean + eval (~16 GB)
-python scripts/upload_data.py --repo <user>/toolhang-mip-data --with-segments  # also segments (~30 GB)
+python scripts/upload_data.py --repo yuchen0187/toolhang-mip-data              # clean + eval (~16 GB)
+python scripts/upload_data.py --repo yuchen0187/toolhang-mip-data --with-segments  # also segments (~30 GB)
 ```
 
 If you instead want to regenerate everything from the scripted policy, use Section 1.

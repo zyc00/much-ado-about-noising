@@ -6,9 +6,9 @@ collaborators regenerate the segments via download_data.py. Use --with-segments
 to also publish the 6 sliced segment files (then ~30 GB, no slicing needed).
 
 Examples:
-  python scripts/upload_data.py --repo <user>/toolhang-mip-data
-  python scripts/upload_data.py --repo <user>/toolhang-mip-data --scale 2k
-  python scripts/upload_data.py --repo <user>/toolhang-mip-data --with-segments --private
+  python scripts/upload_data.py --repo yuchen0187/toolhang-mip-data
+  python scripts/upload_data.py --repo yuchen0187/toolhang-mip-data --scale 2k
+  python scripts/upload_data.py --repo yuchen0187/toolhang-mip-data --with-segments --private
 """
 import argparse
 import os
@@ -23,7 +23,7 @@ SEG = {"2k": ["tool_hang_full2ins_2000.hdf5", "tool_hang_init2grasp_2000.hdf5", 
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--repo", required=True, help="HF dataset repo id, e.g. <user>/toolhang-mip-data")
+    ap.add_argument("--repo", required=True, help="HF dataset repo id, e.g. yuchen0187/toolhang-mip-data")
     ap.add_argument("--scale", choices=["2k", "20k", "both"], default="both")
     ap.add_argument("--with-segments", action="store_true", help="also upload the 6 sliced segment files")
     ap.add_argument("--private", action="store_true")

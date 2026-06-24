@@ -5,10 +5,10 @@ eval set; the task segments (full2ins / init2grasp / pick2ins) are regenerated
 locally by slicing (default), so the download stays small (~16 GB for 2k+20k).
 
 Examples:
-  python scripts/download_data.py --repo <user>/toolhang-mip-data
-  python scripts/download_data.py --repo <user>/toolhang-mip-data --scale 2k
-  python scripts/download_data.py --repo <user>/toolhang-mip-data --segments download
-  HF_DATA_REPO=<user>/toolhang-mip-data python scripts/download_data.py
+  python scripts/download_data.py --repo yuchen0187/toolhang-mip-data
+  python scripts/download_data.py --repo yuchen0187/toolhang-mip-data --scale 2k
+  python scripts/download_data.py --repo yuchen0187/toolhang-mip-data --segments download
+  HF_DATA_REPO=yuchen0187/toolhang-mip-data python scripts/download_data.py
 """
 import argparse
 import os
@@ -16,7 +16,7 @@ import subprocess
 import sys
 from huggingface_hub import hf_hub_download
 
-DEFAULT_REPO = os.environ.get("HF_DATA_REPO", "CHANGE_ME/toolhang-mip-data")
+DEFAULT_REPO = os.environ.get("HF_DATA_REPO", "yuchen0187/toolhang-mip-data")
 
 EVAL_FILES = ["warmstart_demos.hdf5", "full_eval_seeds.npy"]
 CLEAN = {"2k": "tool_hang_clean_2000.hdf5", "20k": "tool_hang_clean_20000.hdf5"}
