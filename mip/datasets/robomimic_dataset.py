@@ -35,10 +35,13 @@ register_codecs()
 
 
 def make_dataset(task_config, mode="train"):
-    # Check if we should download from HuggingFace
-    if hasattr(task_config, "dataset_repo") and hasattr(
-        task_config, "dataset_filename"
-    ):
+    # Explicit local path takes precedence over HuggingFace download
+    if getattr(task_config, "dataset_path", None) is not None:
+        dataset_path = os.path.expanduser(task_config.dataset_path)
+        logger.info(f"Using local dataset: {dataset_path}")
+    elif getattr(task_config, "dataset_repo", None) is not None and getattr(
+        task_config, "dataset_filename", None
+    ) is not None:
         # Auto-download from HuggingFace
         logger.info(
             f"Downloading dataset from {task_config.dataset_repo}/{task_config.dataset_filename}"
@@ -49,9 +52,6 @@ def make_dataset(task_config, mode="train"):
             repo_type="dataset",
         )
         logger.info(f"Downloaded dataset to: {dataset_path}")
-    elif hasattr(task_config, "dataset_path"):
-        # Use explicit path if provided
-        dataset_path = os.path.expanduser(task_config.dataset_path)
     else:
         raise ValueError(
             "Either dataset_repo/dataset_filename or dataset_path must be provided"
@@ -71,6 +71,8 @@ def make_dataset(task_config, mode="train"):
                 obs_steps=task_config.obs_steps,
                 mode=mode,
                 val_dataset_percentage=task_config.val_dataset_percentage,
+                phase_indicator=getattr(task_config, "phase_indicator", False),
+                phase_input=getattr(task_config, "phase_input", False),
             )
         elif task_config.obs_type == "image":
             return RobomimicImageDataset(
@@ -105,6 +107,8 @@ class RobomimicDataset(BaseDataset):
         val_dataset_percentage=0.0,
         mode="train",
         use_key_state_for_val: bool = False,
+        phase_indicator: bool = False,
+        phase_input: bool = False,
     ):
         super().__init__()
         self.rotation_transformer = RotationTransformer(
@@ -113,6 +117,8 @@ class RobomimicDataset(BaseDataset):
         self.val_dataset_percentage = val_dataset_percentage
         self.mode = mode
         self.action_type = action_type
+        self.phase_indicator = phase_indicator
+        self.phase_input = phase_input
         self.obs_steps = obs_steps
 
         self.replay_buffer = ReplayBuffer.create_empty_numpy()
@@ -202,6 +208,25 @@ class RobomimicDataset(BaseDataset):
                     abs_action=abs_action,
                     rotation_transformer=self.rotation_transformer,
                 )
+                if self.phase_indicator or self.phase_input:
+                    # per-timestep 3-class phase one-hot:
+                    # 0=reach (init->grasp), 1=lift+align (grasp->align_done), 2=insert
+                    a = demo["actions"][:].astype(np.float32)
+                    ez = demo["obs"]["robot0_eef_pos"][:, 2].astype(np.float32)
+                    g = a[:, 6]; T_ = len(a)
+                    cl = [t for t in range(1, T_) if g[t-1] < 0 and g[t] >= 0]
+                    op = [t for t in range(1, T_) if g[t-1] >= 0 and g[t] < 0]
+                    ph = np.zeros((T_, 3), dtype=np.float32)
+                    if cl and op:
+                        c1, o1 = cl[0], op[0]
+                        ad = c1 + int(np.argmax(ez[c1:o1]))
+                        ph[:c1, 0] = 1.0; ph[c1:ad, 1] = 1.0; ph[ad:, 2] = 1.0
+                    else:
+                        ph[:, 0] = 1.0
+                    if self.phase_indicator:  # phase as AUX OUTPUT (append to action target)
+                        episode["action"] = np.concatenate([episode["action"], ph], axis=-1)
+                    if self.phase_input:  # phase as INPUT (append to obs)
+                        episode["obs"] = np.concatenate([episode["obs"], ph], axis=-1)
                 # Store EEF state for relative action conversion
                 if action_type == "relative":
                     eef_pos = demo["obs"]["robot0_eef_pos"][:].astype(np.float32)
@@ -246,6 +271,9 @@ class RobomimicDataset(BaseDataset):
         self.normalizer = self.get_normalizer()
 
     def undo_transform_action(self, action):
+        # drop any appended phase-indicator dims (act_dim 13 -> 10); keep 20 (dual arm)
+        if action.shape[-1] > 10 and action.shape[-1] != 20:
+            action = action[..., :10]
         raw_shape = action.shape
         if raw_shape[-1] == 20:
             # dual arm

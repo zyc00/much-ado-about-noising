@@ -74,21 +74,29 @@ def make_robomimic_env(task_config: TaskConfig, idx, render=False, seed=None):
                     modality_mapping[attr.get("type", "low_dim")].append(key)
                 ObsUtils.initialize_obs_modality_mapping_from_dict(modality_mapping)
 
+            # State tasks normally don't need offscreen rendering, but enable it
+            # when save_video is requested so rollout videos can be recorded.
+            need_offscreen = enable_render if task_config.obs_type == "image" else bool(
+                getattr(task_config, "save_video", False)
+            )
             env = EnvUtils.create_env_from_metadata(
                 env_meta=env_meta,
                 render=False,
-                render_offscreen=enable_render
-                if task_config.obs_type == "image"
-                else False,
+                render_offscreen=need_offscreen,
                 use_image_obs=enable_render
                 if task_config.obs_type == "image"
                 else False,
             )
             return env
 
-        # Get dataset path (either from explicit path or HuggingFace download)
-        if hasattr(task_config, "dataset_repo") and hasattr(
-            task_config, "dataset_filename"
+        # Get dataset path. Explicit local path takes precedence over the
+        # HuggingFace download (consistent with make_dataset); only the env_meta
+        # is read from it, and any robomimic-format hdf5 carries env_args.
+        if getattr(task_config, "dataset_path", None) is not None:
+            dataset_path = os.path.expanduser(task_config.dataset_path)
+        elif (
+            getattr(task_config, "dataset_repo", None) is not None
+            and getattr(task_config, "dataset_filename", None) is not None
         ):
             from huggingface_hub import hf_hub_download
 
@@ -97,8 +105,6 @@ def make_robomimic_env(task_config: TaskConfig, idx, render=False, seed=None):
                 filename=task_config.dataset_filename,
                 repo_type="dataset",
             )
-        elif hasattr(task_config, "dataset_path"):
-            dataset_path = os.path.expanduser(task_config.dataset_path)
         else:
             raise ValueError(
                 "Either dataset_repo/dataset_filename or dataset_path must be provided"
@@ -125,11 +131,19 @@ def make_robomimic_env(task_config: TaskConfig, idx, render=False, seed=None):
                 ctrl_cfg["control_delta"] = False
 
         if task_config.obs_type == "state":
+            # Optional: force every eval episode to reset to a fixed recorded
+            # init state (path to a .npy holding a flattened mujoco state).
+            _init_state = None
+            _isp = getattr(task_config, "eval_init_state", None)
+            if _isp:
+                import numpy as _np
+
+                _init_state = _np.load(os.path.expanduser(_isp))
             env = create_robomimic_env(env_meta=env_meta, obs_keys=task_config.obs_keys)
             env = RobomimicLowdimWrapper(
                 env=env,
                 obs_keys=task_config.obs_keys,
-                init_state=None,
+                init_state=_init_state,
                 render_hw=(256, 256),
                 render_camera_name="agentview",
             )

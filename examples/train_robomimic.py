@@ -16,7 +16,7 @@ from torch.optim.lr_scheduler import CosineAnnealingLR
 
 # Set MuJoCo rendering backend before importing any robomimic/mujoco modules
 # Try OSMesa for headless rendering (software rendering, more compatible but slower)
-os.environ["MUJOCO_GL"] = "osmesa"  # noqa: E402
+os.environ.setdefault("MUJOCO_GL", "egl")  # noqa: E402
 
 # Import mip modules after setting environment variables
 from mip.action_utils import action_rel_to_abs, get_eef_state_from_obs  # noqa: E402
@@ -288,6 +288,7 @@ def eval(config: Config, envs, dataset, agent, logger, num_steps=1):
     episode_steps = []
     episode_success = []
     episode_kit_success = []
+    episode_assembled = []
 
     # Performance tracking for inference
     inference_times = {
@@ -301,6 +302,7 @@ def eval(config: Config, envs, dataset, agent, logger, num_steps=1):
 
     for i in range(config.log.eval_episodes // config.task.num_envs):
         ep_reward = [0.0] * config.task.num_envs
+        ever_assembled = np.zeros(config.task.num_envs, dtype=bool)
         obs, _ = envs.reset()
         t = 0
 
@@ -417,6 +419,11 @@ def eval(config: Config, envs, dataset, agent, logger, num_steps=1):
                 obs, reward, terminated, truncated, info = envs.step(act)
                 _ = terminated | truncated
                 ep_reward += reward
+                fa = info.get("frame_assembled") if isinstance(info, dict) else None
+                if fa is not None:
+                    arr = np.asarray(fa, dtype=bool).reshape(-1)
+                    m = min(len(arr), len(ever_assembled))
+                    ever_assembled[:m] |= arr[:m]
                 t += config.task.act_steps
         success = [1.0 if s > 0 else 0.0 for s in ep_reward]
 
@@ -436,6 +443,7 @@ def eval(config: Config, envs, dataset, agent, logger, num_steps=1):
         episode_steps.append(t)
         episode_success.append(success)
         episode_kit_success.append(kit_success)
+        episode_assembled.append(ever_assembled.astype(float).tolist())
     # Log performance metrics
     loguru.logger.info(
         f"Nstep: {num_steps} Mean step: {np.nanmean(episode_steps)} "
@@ -455,6 +463,7 @@ def eval(config: Config, envs, dataset, agent, logger, num_steps=1):
         f"mean_step_{num_steps}": np.nanmean(episode_steps),
         f"mean_reward_{num_steps}": np.nanmean(episode_rewards),
         f"mean_success_{num_steps}": np.nanmean(episode_success),
+        f"mean_assembled_{num_steps}": np.nanmean(episode_assembled),
     }
 
     # Add inference performance metrics

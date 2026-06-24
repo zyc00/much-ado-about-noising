@@ -215,3 +215,25 @@ checkpoints/
 results/
 node_modules/
 cache/
+
+# Local agent / editor state
+.claude/
+
+# Experiment result artifacts (figures, metrics dumps) — keep analysis code, drop outputs
+analysis/*.png
+analysis/*.jpg
+analysis/*.jpeg
+analysis/*.pdf
+analysis/*.json
+analysis/*.csv
+
+# Model / dataset / rollout artifacts (anywhere)
+*.hdf5
+*.h5
+*.pt
+*.pth
+*.ckpt
+*.npy
+*.npz
+*.mp4
+*.gif

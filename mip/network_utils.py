@@ -81,6 +81,8 @@ def get_network(network_config: NetworkConfig, task_config: TaskConfig):
             obs_as_global_cond=network_config.obs_as_global_cond,
             dim_mult=network_config.dim_mult,
             timestep_emb_type=network_config.timestep_emb_type,
+            skip_scale=getattr(network_config, "skip_scale", 1.0),
+            cond_dropout_rate=getattr(network_config, "cond_dropout_rate", 0.0),
         )
     elif network_config.network_type == "jannerunet":
         return network_class(

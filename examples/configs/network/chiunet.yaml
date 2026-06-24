@@ -16,3 +16,5 @@ cond_predict_scale: true
 obs_as_global_cond: true
 dim_mult: [1, 2, 2]  # Dimension multipliers for U-Net layers
 timestep_emb_type: "positional"
+skip_scale: 1.0
+cond_dropout_rate: 0.0

@@ -82,6 +82,8 @@ class ChiUNet(BaseNetwork):
         timestep_emb_type: str = "positional",
         timestep_emb_params: dict | None = None,
         disable_time_embedding: bool = False,
+        skip_scale: float = 1.0,
+        cond_dropout_rate: float = 0.0,
     ):
         # Default dim_mult if not provided
         if dim_mult is None:
@@ -177,6 +179,9 @@ class ChiUNet(BaseNetwork):
                 )
             )
 
+        self.skip_scale = skip_scale
+        self.cond_dropout = nn.Dropout(p=cond_dropout_rate)
+
         self.final_conv = nn.Sequential(
             nn.Conv1d(model_dim, model_dim, kernel_size, padding=kernel_size // 2),
             GroupNorm1d(model_dim, 8, 4),
@@ -248,6 +253,7 @@ class ChiUNet(BaseNetwork):
         if self.obs_as_global_cond:
             if condition is not None:
                 condition_emb = self.global_cond_encoder(torch.flatten(condition, 1))
+                condition_emb = self.cond_dropout(condition_emb)
                 emb = torch.cat([emb, condition_emb], dim=-1)
             else:
                 emb = torch.cat([emb, torch.zeros_like(emb[:, : self.emb_dim])], dim=-1)
@@ -284,7 +290,7 @@ class ChiUNet(BaseNetwork):
         scalar_out = self.scalar_output_head(x)
 
         for idx, (resnet1, resnet2, upsample) in enumerate(self.ups):
-            x = torch.cat((x, h.pop()), dim=1)
+            x = torch.cat((x, h.pop() * self.skip_scale), dim=1)
             x = resnet1(x, emb)
             if idx == (len(self.ups) - 1) and h_local is not None:
                 x = x + h_local[1]

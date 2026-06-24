@@ -43,7 +43,28 @@ class RobomimicLowdimWrapper(gym.Env):
     def get_observation(self):
         raw_obs = self.env.get_observation()
         obs = np.concatenate([raw_obs[key] for key in self.obs_keys], axis=0)
+        import os as _os
+        if _os.environ.get("EVAL_PHASE_INPUT", "0") == "1":
+            obs = np.concatenate([obs, self._oracle_phase()]).astype(obs.dtype)
         return obs
+
+    def _oracle_phase(self):
+        # sim-based 3-class phase for the phase_input eval (privileged oracle):
+        # 0=reach (frame not lifted), 1=lift/align (lifted, far from hole),
+        # 2=insert (lifted, frame_mount above hole xy). Mirrors the training phase.
+        import numpy as _np
+        ph = _np.zeros(3, dtype=_np.float32)
+        try:
+            sim = self.env.env.sim
+            fz = sim.data.site_xpos[sim.model.site_name2id("frame_mount_site")]
+            hc = _np.mean([sim.data.geom_xpos[sim.model.geom_name2id(f"stand_wall{i}")]
+                           for i in range(4)], axis=0)
+            lifted = fz[2] > 0.86
+            near = _np.linalg.norm((fz - hc)[:2]) < 0.05
+            ph[2 if (lifted and near) else (1 if lifted else 0)] = 1.0
+        except Exception:
+            ph[0] = 1.0
+        return ph
 
     def seed(self, seed=None):
         np.random.seed(seed=seed)
@@ -75,6 +96,15 @@ class RobomimicLowdimWrapper(gym.Env):
             # random reset
             self.env.reset()
 
+        # Reproduce the scripted demos' leading settle (frame free-falls on reset,
+        # 10x zero actions, NOT recorded -> training init is the SETTLED state).
+        # Without this the policy starts mid-fall (OOD) and brittle models score ~0.
+        import os as _os
+        n_settle = int(_os.environ.get("EVAL_SETTLE_STEPS", "0"))
+        if n_settle > 0:
+            for _ in range(n_settle):
+                self.env.step(np.zeros(self.env.action_dimension))
+
         # return obs and info (Gymnasium API requires both)
         obs = self.get_observation()
         info = {}
@@ -83,6 +113,15 @@ class RobomimicLowdimWrapper(gym.Env):
     def step(self, action):
         raw_obs, reward, done, info = self.env.step(action)
         obs = np.concatenate([raw_obs[key] for key in self.obs_keys], axis=0)
+        # expose frame-assembled (insertion success) for ToolHang so eval can
+        # report insertion SR separately from the full-task (hang) reward
+        base = getattr(self.env, "env", None)
+        if base is not None and hasattr(base, "_check_frame_assembled"):
+            try:
+                info = dict(info)
+                info["frame_assembled"] = bool(base._check_frame_assembled())
+            except Exception:
+                pass
         return obs, reward, done, info
 
     def render(self, mode="rgb_array"):

@@ -44,6 +44,8 @@ class OptimizationConfig:
     )
     use_cudagraphs: bool = False  # Whether to use CUDA graphs (requires static shapes)
     auto_resume: bool = True  # Whether to automatically resume from checkpoint
+    cauchy_c: float = 0.2
+    student_t_df: float = 2.0  # degrees of freedom for regression_student_t loss (df=1 -> Cauchy, df->inf -> Gaussian)
 
 
 @dataclass
@@ -108,6 +110,8 @@ class TaskConfig:
     )
     obs_dim: int = -1
     act_dim: int = 10
+    phase_indicator: bool = False  # if True, append 3-dim phase one-hot to action target (aux output task)
+    phase_input: bool = False  # if True, append 3-dim phase one-hot to OBS (condition policy on phase)
     obs_steps: int = 2
     act_steps: int = 8
     horizon: int = 10  # Prediction horizon (typically obs_steps + act_steps)
