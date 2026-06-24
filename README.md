@@ -19,7 +19,33 @@ All commands below assume `export MUJOCO_GL=egl`.
 
 ---
 
-## 1. Collect data
+## Get the data (download from HuggingFace)
+
+Easiest path — one command (no scripted collection needed). The HF repo holds the
+clean source demos + eval set; segments are regenerated locally on download.
+
+```bash
+python scripts/download_data.py --repo <user>/toolhang-mip-data            # 2k + 20k
+python scripts/download_data.py --repo <user>/toolhang-mip-data --scale 2k # 2k only
+# or set the default once:  export HF_DATA_REPO=<user>/toolhang-mip-data
+```
+
+This downloads `tool_hang_clean_{2000,20000}.hdf5` + `warmstart_demos.hdf5` +
+`full_eval_seeds.npy` into `data/`, then slices `full2ins` / `init2grasp` /
+`pick2ins` for each scale. Run `uv sync` first so versions match (reproducible
+slicing). To skip re-slicing and pull the segment files directly: `--segments download`.
+
+**Publishing/updating the data** (owner only, needs `huggingface-cli login`):
+```bash
+python scripts/upload_data.py --repo <user>/toolhang-mip-data              # clean + eval (~16 GB)
+python scripts/upload_data.py --repo <user>/toolhang-mip-data --with-segments  # also segments (~30 GB)
+```
+
+If you instead want to regenerate everything from the scripted policy, use Section 1.
+
+---
+
+## 1. Collect data (regenerate from scratch — optional)
 
 > ⚠️ **Use `collect_scriptB_full.py` (built on `scripted_tool_hang_v2.py`).**
 > Do **not** use `collect_tool_hang_demos.py` — it is a *different* scripted
