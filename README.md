@@ -1,147 +1,129 @@
-<div align="center">
+# ToolHang Composition Study — MSE vs MIP
 
-# Minimum Flow Policies Implementation
+Code to reproduce the ToolHang `init → insertion` experiments: behavior cloning
+with **MSE (regression)** vs **MIP (two-step flow map)**, comparing an
+**end-to-end generalist** against **two-stage grasp+insert specialists**
+(with/without DAgger handoff matching).
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Python 3.12+](https://img.shields.io/badge/python-3.12+-blue.svg)](https://www.python.org/downloads/)
-[![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-ee4c2c.svg)](https://pytorch.org/)
-[![arXiv](https://img.shields.io/badge/arXiv-2406.12345-b31b1b.svg)](https://arxiv.org/abs/2512.01809)
-
-<br />
-
-[**Project Website**](https://simchowitzlabpublic.github.io/much-ado-about-noising-project/) •
-[**Documentation**](https://simchowitzlabpublic.github.io/much-ado-about-noising/) •
-[**Dataset**](https://huggingface.co/datasets/ChaoyiPan/mip-dataset) •
-[**Checkpoints**](https://huggingface.co/ChaoyiPan/mip-checkpoints)
-
-</div>
-
-This repository contains the code for the paper **"Much Ado About Noising: Dispelling the Myths of Generative Robotic Control"**. This repository is a PyTorch-based framework for behavior cloning with flow matching and related generative models, incorporating best practices from diffusion model training.
-
-## Features
-
-- 🧩 **Clean & Modular**: Composable components for losses, samplers, networks, and encoders
-- ⚡ **Fast**: Optimized with torch.compile and CUDA graphs for maximum throughput
-- 📊 **Best Practices**: EMA, warmup scheduling, auto-resume, and proven training techniques
-- 🎯 **Diverse Algorithms**: Support for flow matching, consistency models, shortcut models, and regression
-- 🤖 **Robot-Ready**: Pre-configured for Robomimic, Kitchen, and PushT tasks
-
-## Documentation
-
-Please refer to the [documentation](https://simchowitzlabpublic.github.io/much-ado-about-noising/) for more details.
-
-## Installation
+## Install
 
 ```bash
 uv sync
-# install for development
-uv sync --extra dev
-```
-
-## Quick Start
-
-### Training
-
-```bash
-# on headless machine
+# headless / cluster:
 export MUJOCO_GL=egl
-# on ubuntu machine without mujoco installed
+# if EGL/GL is missing on Ubuntu:
 sudo apt-get install -y libglew-dev libosmesa6-dev patchelf
-# Train Robomimic (state observations)
-uv run examples/train_robomimic.py \
-    task=lift_ph_state \
-    network=chiunet \
-    optimization.loss_type=flow \
-    log.wandb_mode=online
-
-# Train Robomimic (image observations)
-uv run examples/train_robomimic.py \
-    task=lift_ph_image \
-    network=chiunet \
-    optimization.batch_size=256
-
-# Train Kitchen
-uv run examples/train_kitchen.py task=kitchen_state
-
-# Train PushT
-uv run examples/train_pusht.py task=pusht_state
 ```
 
-### Evaluation
+All commands below assume `export MUJOCO_GL=egl`.
 
-You can download checkpoints from [Hugging Face](https://huggingface.co/ChaoyiPan/mip-checkpoints).
+---
 
-> **Note:** Some released checkpoint use the legacy delta control model `delta_legacy`. Please use the correct profile as below to correctly evaluate that. In the paper, we use `abs` action space for all tasks.
+## 1. Collect data
+
+> ⚠️ **Use `collect_scriptB_full.py` (built on `scripted_tool_hang_v2.py`).**
+> Do **not** use `collect_tool_hang_demos.py` — it is a *different* scripted
+> policy whose trajectory distribution does **not** match the eval reference,
+> which silently tanks success rate.
 
 ```bash
-# Evaluate released checkpoint (delta_legacy action space)
-uv run examples/train_robomimic.py \
-    task=lift_ph_state_delta_legacy \
-    mode=eval \
-    optimization.model_path="/path/to/checkpoint.pt"
+# (a) Collect clean expert demos (scripted policy). 2000 demos:
+python scripts/collect_scriptB_full.py \
+    --n_demos 2000 --start_seed 0 --output data/tool_hang_clean_2000.hdf5
+#   For 20k: --n_demos 20000  (slow single-process; shard by --start_seed and
+#   merge with scripts/merge_hdf5.py)
 
-# Evaluate absolute action space checkpoint
-uv run examples/train_robomimic.py \
-    task=lift_ph_state_abs \
-    mode=eval \
-    optimization.model_path="/path/to/abs_checkpoint.pt"
+# (b) Slice the three task segments from the clean demos:
+python scripts/slice_segments.py --segment full \
+    --src data/tool_hang_clean_2000.hdf5 --out data/tool_hang_full2ins_2000.hdf5   --n 2000  # generalist: init->insertion
+python scripts/slice_segments.py --segment init2grasp \
+    --src data/tool_hang_clean_2000.hdf5 --out data/tool_hang_init2grasp_2000.hdf5 --n 2000  # grasp specialist
+python scripts/slice_segments.py --segment pick2ins \
+    --src data/tool_hang_clean_2000.hdf5 --out data/tool_hang_pick2ins_2000.hdf5   --n 2000  # insert specialist
 
-# Train with a different action space
-uv run examples/train_robomimic.py task=lift_ph_state_abs network=chiunet
+# (c) Held-out eval demos (seeds 21000+, disjoint from training seeds 0-19999):
+python scripts/collect_warmstart_demos.py \
+    --seeds_file data/full_eval_seeds.npy --output data/warmstart_demos.hdf5
 ```
 
-### Configuration
+DAgger handoff-matched insertion data (insert specialist trained on the grasp
+specialist's own output): `scripts/collect_handoff_demos.py`.
+
+---
+
+## 2. Train (2k / 20k, MSE / MIP)
+
+Main entry point: `examples/train_robomimic.py` (Hydra).
+**2k vs 20k = which dataset file you point at; MSE vs MIP = `optimization.loss_type`.**
 
 ```bash
-# Debug mode (quick test)
-uv run examples/train_robomimic.py -cn exps/debug.yaml
-
-# Override parameters
-uv run examples/train_robomimic.py task.horizon=16 optimization.batch_size=512
-
-# Multi-run (sweep multiple configs)
-uv run examples/train_robomimic.py task=lift_ph_state,can_ph_state --multirun
+python examples/train_robomimic.py \
+    task=tool_hang_ph_state_delta_legacy \
+    +task.dataset_path=$(pwd)/data/tool_hang_full2ins_2000.hdf5 \
+    network=chiunet task.num_envs=1 \
+    optimization.loss_type=mip \
+    optimization.auto_resume=false log.wandb_mode=disabled \
+    log.exp_name=full_mip_2000 log.log_dir=logs/full_mip_2000
 ```
 
-See the [Configuration Guide](docs/getting-started/configuration.md) for more details.
+- **MSE**: `optimization.loss_type=regression`
+- **20k**: point `+task.dataset_path` at the `..._20000.hdf5` file
+- **Specialists**: point `dataset_path` at `init2grasp_*` (grasp) or `pick2ins_*` (insert)
+- Checkpoint is written to `logs/<exp_name>/models/model_latest.pt`
 
-## Supported Training Objectives
+---
 
-This repository supports multiple training objectives:
+## 3. Eval
 
-- **Flow Matching** (`flow`): Standard continuous normalizing flow
-- **Regression** (`regression`): Direct supervised learning baseline
-- **MIP** (`mip`): Minimum Iterative Policy with two-step sampling
-- **TSD** (`tsd`): Two-Stage Denoising
-- **CTM** (`ctm`): Consistency Trajectory Model
-- **PSD** (`psd`): Progressive Self-Distillation
-- **LSD** (`lsd`): Lagrangian Self-Distillation
-- **ESD** (`esd`): Euler Self-Distillation
-- **MF** (`mf`): Mean Flow
+### Generalist full task / sub-segments — `scripts/eval_warmstart.py`
 
-## Porting MIP to Your Pipeline
-
-If you are interested in porting MIP to your own pipeline, you can refer to [examples/pi0_pytorch.diff](examples/pi0_pytorch.diff). This file demonstrates how to modify the loss function and integrator of a standard flow policy to implement MIP.
-
-> **⚠️ Note on Reproducibility** > Since we have migrated to the latest versions of dependencies (e.g., robomimic) and performed significant code cleanup, the results obtained from this repository may not *exactly* replicate the specific numbers reported in the paper. However, the overall performance trends and conclusions remain the same. Original results is obtained with [cleandiffuser](https://github.com/CleanDiffuserTeam/CleanDiffuser) robomimic environment and dataset.
-
-## Known Issues
-
-- CUDA graphs not supported for image-based tasks (requires static tensor shapes)
-- Kitchen tasks require MuJoCo 3.1.6: `uv pip install "mujoco==3.1.6"`
-
-See [Troubleshooting](docs/help/troubleshooting.md) for more issues and solutions.
-
-## Citation
-
+```bash
+# Full init->insertion success rate
+python scripts/eval_warmstart.py \
+    --ckpt logs/full_mip_2000/models/model_latest.pt \
+    --dataset data/tool_hang_full2ins_2000.hdf5 --loss mip \
+    --demos data/warmstart_demos.hdf5 \
+    --warm_to 0 --init_mode reset_settle --settle 10 --success assembled --n 100
 ```
-@article{pan2025adonoisingdispellingmyths,
-      title={Much Ado About Noising: Dispelling the Myths of Generative Robotic Control},
-      author={Chaoyi Pan and Giri Anantharaman and Nai-Chieh Huang and Claire Jin and Daniel Pfrommer and Chenyang Yuan and Frank Permenter and Guannan Qu and Nicholas Boffi and Guanya Shi and Max Simchowitz},
-      year={2025},
-      eprint={2512.01809},
-      archivePrefix={arXiv},
-      primaryClass={cs.RO},
-      url={https://arxiv.org/abs/2512.01809},
-}
+
+- **Grasp segment** (from init): `--warm_to 0  --success grasp`
+- **Insertion segment** (from expert c1): `--warm_to c1 --success assembled --init_mode state0`
+
+### Two-stage specialist stitching — `scripts/eval_twostage_faithful.py`
+
+```bash
+python scripts/eval_twostage_faithful.py \
+    --grasp_ckpt logs/grasp_mip_2000/models/model_latest.pt --grasp_ds data/tool_hang_init2grasp_2000.hdf5 \
+    --back_ckpt  logs/pick2ins_mip_2000/models/model_latest.pt --back_ds data/tool_hang_pick2ins_2000.hdf5 \
+    --loss mip --demos data/warmstart_demos.hdf5 --stage1 policy --init_mode reset_settle --n 100
 ```
+Cross-method combos: use per-stage `--grasp_loss` / `--back_loss`.
+
+### Three rules (or the numbers will be wrong)
+
+1. **Always `--init_mode reset_settle --settle 10`** — reproduces the scripted
+   demos' 10-step leading settle; without it, brittle models score ~0.
+2. **`--loss` must match training** (a MIP checkpoint needs `--loss mip`).
+3. **Eval on `warmstart_demos.hdf5`** (held-out seeds 21000+, disjoint from
+   training seeds 0-19999).
+
+---
+
+## Other useful scripts
+
+| Script | Purpose |
+|---|---|
+| `scripts/eval_val_loss.py` / `eval_train_loss.py` | Per-phase open-loop action-prediction loss (val / train) |
+| `scripts/eval_grasp_breakdown.py` | Grasp-phase loss split early/mid/late (handoff divergence) |
+| `scripts/eval_ood_perturb.py` | OOD-robustness curve under handoff perturbation |
+| `scripts/render_stitch_faithful.py` | Render two-stage stitching rollouts to mp4 |
+| `scripts/merge_hdf5.py` | Merge collection shards |
+| `analysis/plot_*.py` | Figures (composition, scaling, segment ablations) |
+
+## Reference results (2000 demos, ToolHang, settle-fixed eval, n=100)
+
+| Setting | MSE | MIP |
+|---|---|---|
+| Generalist (end-to-end) | 80 | 95 |
+| Two specialists, no dagger | 42 | 91 |
+| Two specialists, + DAgger handoff | 97 | 98 |
