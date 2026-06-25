@@ -43,6 +43,22 @@ python scripts/upload_data.py --repo yuchen0187/toolhang-mip-data --with-segment
 
 If you instead want to regenerate everything from the scripted policy, use Section 1.
 
+### Pretrained checkpoints (skip training, eval directly)
+
+```bash
+python scripts/download_ckpt.py            # all 2k + 20k canonical models
+python scripts/download_ckpt.py --scale 2k # only 2k
+```
+Downloads to `logs/<exp>/models/model_latest.pt` (generalist / grasp-spec /
+insert-spec × MSE / MIP, at 2k and 20k). Public repo `yuchen0187/toolhang-mip-checkpoints`,
+no auth. Then evaluate directly per Section 3, e.g.:
+```bash
+python scripts/eval_warmstart.py --ckpt logs/full_mip_2000/models/model_latest.pt \
+    --dataset data/tool_hang_full2ins_2000.hdf5 --loss mip --demos data/warmstart_demos.hdf5 \
+    --warm_to 0 --init_mode reset_settle --settle 10 --success assembled --n 100
+```
+(Owner publishes/updates with `python scripts/upload_ckpt.py --repo yuchen0187/toolhang-mip-checkpoints`.)
+
 ---
 
 ## 1. Collect data (regenerate from scratch — optional)
