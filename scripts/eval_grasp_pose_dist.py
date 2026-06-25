@@ -91,7 +91,7 @@ def main():
         o = env._get_observations(force_update=True); hist = [ov(o), ov(o)]; steps = 0; got = False
         while steps < args.grasp_budget and not got:
             for a in chunk(hist):
-                env.step(a); steps += 1; hist.append(ov(env._get_observations(force_update=True)))
+                o, _, _, _ = env.step(a); steps += 1; hist.append(ov(o))  # step-return obs (force_update diverges closed-loop rollout)
                 if grasped():
                     p, an = frame_in_eef(); gen.append(np.r_[p, an]); got = True; break
                 if steps >= args.grasp_budget: break
