@@ -79,6 +79,7 @@ def get_network(network_config: NetworkConfig, task_config: TaskConfig):
             kernel_size=network_config.kernel_size,
             cond_predict_scale=network_config.cond_predict_scale,
             obs_as_global_cond=network_config.obs_as_global_cond,
+            gmm_k=getattr(network_config, "gmm_k", 0),
             dim_mult=network_config.dim_mult,
             timestep_emb_type=network_config.timestep_emb_type,
             skip_scale=getattr(network_config, "skip_scale", 1.0),

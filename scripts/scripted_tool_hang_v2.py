@@ -47,7 +47,7 @@ ENV_KWARGS = {
                 "input_min": -1,
                 "output_max": [0.05, 0.05, 0.05, 0.5, 0.5, 0.5],
                 "output_min": [-0.05, -0.05, -0.05, -0.5, -0.5, -0.5],
-                "kp": 150,
+                "kp": float(__import__("os").environ.get("KP_OVERRIDE", "150")),
                 "damping": 1,
                 "impedance_mode": "fixed",
                 "kp_limits": [0, 300],
@@ -184,8 +184,15 @@ def run_episode(seed, horizon=4000, render=False, verbose=False, record=False, n
             if _dart_rng.rand() < _dart_p:
                 a_exec[:3] = np.clip(a[:3] + _phase_noise(3), -1, 1)
         elif _dart_pos > 0 or _dart_rot > 0:  # DART: execute action + disturbance so state wanders off-tube
-            a_exec[:3] = np.clip(a[:3] + _dart_noise(3, _dart_pos), -1, 1)
-            a_exec[3:6] = np.clip(a[3:6] + _dart_noise(3, _dart_rot), -1, 1)
+            _gate = True
+            if _os.environ.get("DART_TRANSIT", "0") == "1":
+                _gate = _transit_flag[0] or np.linalg.norm(a[:3]) > 0.3   # transit context or fast command
+            _pb = float(_os.environ.get("DART_PB", "1.0"))  # burst mode: sparse-in-time large kicks
+            if _gate and _pb < 1.0 and _dart_rng.rand() >= _pb:
+                _gate = False
+            if _gate:
+                a_exec[:3] = np.clip(a[:3] + _dart_noise(3, _dart_pos), -1, 1)
+                a_exec[3:6] = np.clip(a[3:6] + _dart_noise(3, _dart_rot), -1, 1)
         obs_h[0], reward, done, _ = env.step(a_exec)
         if record and rec:
             traj["rewards"].append(float(reward))
@@ -205,22 +212,153 @@ def run_episode(seed, horizon=4000, render=False, verbose=False, record=False, n
         return np.clip(ea * og, -1, 1)
 
     _waypoint = _os.environ.get("WAYPOINT", "0") == "1"
+    _brake = _os.environ.get("BRAKE", "0") == "1"
+    _vtraj = _os.environ.get("VTRAJ", "0") == "1"   # virtual straight-line carrot transit
+    _vt_lead = float(_os.environ.get("VT_LEAD", "0.02"))  # carrot lead (m)
+    _mj = _os.environ.get("MJTRAJ", "0") == "1"     # min-jerk time-parameterized reference (MP-style)
+    _mj_vmax = float(_os.environ.get("MJ_VMAX", "0.006"))  # m per control step cruise
+    _exc_amp = float(_os.environ.get("EXC_AMP", "0"))   # planned excursion amplitude (m); 0 = pure zero-point
+    _exc_n = int(_os.environ.get("EXC_N", "2"))         # excursions per transit
+    _exc_len = int(_os.environ.get("EXC_LEN", "26"))    # steps per excursion (out and back)
+    _exc_asym = float(_os.environ.get("EXC_ASYM", "0.3"))  # fraction of window spent outbound (fast-out slow-back)
+    _mj_dec = _os.environ.get("MJ_DECOUPLE", "0") == "1"  # rotate-in-place first, then translate (kills rot-coupling bow)
+    _mj_ff = _os.environ.get("MJ_FF", "0") == "1"       # model-aware feedforward: action = KFF*dref (tangent) + KFB*(ref-eef)
+    _mj_kff = float(_os.environ.get("MJ_KFF", "100"))   # feedforward gain: a = KFF * ref-step (cmd/realized ~5x, 0.05 scaling)
+    _mj_kfb = float(_os.environ.get("MJ_KFB", "2"))     # small lateral correction gain (vs pg=10 pure feedback)
+    _mp_js = _os.environ.get("MP_JS", "0") == "1"       # joint-space motion planning (robot model + IK), plan->FK ref->track
+    _exc_rng = np.random.RandomState(int(_os.environ.get("EXC_SEED", "0")) + 7919)
+    _ramp = float(_os.environ.get("DECEL_RAMP", "0"))  # >0: cap_eff=min(cap, ramp*dist) near target
+    def _brake_stop(g, eps=4e-4, max_steps=25):
+        """zero-pos-action hold until eef velocity dies (momentum bleed before next target)."""
+        prev = None
+        for i in range(max_steps):
+            o = obs(); cur = o["robot0_eef_pos"].copy()
+            do_step(np.array([0, 0, 0, 0, 0, 0, g]))
+            if prev is not None and np.linalg.norm(cur - prev) < eps:
+                return i
+            prev = cur
+        return max_steps
     _wp_spacing = float(_os.environ.get("WP_SPACING", "0.015"))  # 1.5cm
     _wp_eps = float(_os.environ.get("WP_EPS", "0.01"))           # 1cm arrival
+    _wp_hopcap = int(_os.environ.get("WP_HOPCAP", "20"))         # per-hop safety valve (steps)
+    global WP_STATS
+    WP_STATS = {"hops": 0, "valve": 0}
+    _transit_flag = [False]  # set by waypoint-mode non-final hops; used by DART gate
 
     def move_ori(tp, tq, g, steps=80, pg=10, og=3, pt=0.005, ot=0.03):
         steps = _sc(steps)
         _wp_min = 0.03  # only decompose moves longer than 3cm; short/rotation moves stay original
+        if _mp_js and np.linalg.norm(tp - obs()["robot0_eef_pos"]) > 0.03:
+            refs = _mp_plan(tp, T.quat2mat(tq))
+            if refs is not None:
+                _mp_track(refs, g, og=og)
+                # terminal precision: short reactive convergence to pt/ot
+                for _i2 in range(20):
+                    o = obs(); eef = o["robot0_eef_pos"]
+                    em = T.quat2mat(o["robot0_eef_quat"]); tm = T.quat2mat(tq)
+                    ea = T.quat2axisangle(T.mat2quat(tm @ em.T))
+                    if np.linalg.norm(eef - tp) < pt and np.linalg.norm(ea) < ot:
+                        return 0
+                    dp = np.clip((tp - eef) * pg, -0.15, 0.15)
+                    do_step(np.concatenate([dp, np.clip(ea * og, -1, 1), [g]]))
+                return 0
         if not _waypoint or np.linalg.norm(tp - obs()["robot0_eef_pos"]) < _wp_min:
+            _vt_start = obs()["robot0_eef_pos"].copy()
+            _vt_dist = np.linalg.norm(tp - _vt_start)
+            _vt_dir = (tp - _vt_start) / (_vt_dist + 1e-9)
+            _vt_use = (_vtraj or _mj) and _vt_dist > 0.03   # transit only; short precision moves untouched
+            _mj_T = max(int(np.ceil(_vt_dist / _mj_vmax * 1.5)), 8)  # min-jerk duration (steps)
+            _wmax = float(_os.environ.get("MJ_WMAX", "0"))
+            if _wmax > 0:
+                # rotation-budgeted duration: cap angular speed at MJ_WMAX
+                # rad/step by extending the segment clock (SLERP follows it)
+                _em0 = T.quat2mat(obs()["robot0_eef_quat"]); _tm0 = T.quat2mat(tq)
+                _rot_d = float(np.linalg.norm(T.quat2axisangle(T.mat2quat(_tm0 @ _em0.T))))
+                _mj_T = max(_mj_T, int(np.ceil(_rot_d / _wmax * 1.5)))
+            _mj_i = 0
+            _mj_slerp = _os.environ.get("MJ_SLERP", "0") == "1"
+            _q_start = obs()["robot0_eef_quat"].copy()
+            _exc_sched = None
+            _ref_prev = _vt_start.copy()
             for i in range(steps):
                 o = obs(); eef = o["robot0_eef_pos"]
-                dp = np.clip((tp - eef) * pg, -_smooth_cap, _smooth_cap)
-                em = T.quat2mat(o["robot0_eef_quat"]); tm = T.quat2mat(tq)
+                if _mj and _vt_use:
+                    if _mj_dec and _mj_i == 0:
+                        em_ = T.quat2mat(o["robot0_eef_quat"]); tm_ = T.quat2mat(tq)
+                        ea_ = T.quat2axisangle(T.mat2quat(tm_ @ em_.T))
+                        if np.linalg.norm(ea_) > 0.15:
+                            # rotation not settled: hold position at start, rotate only
+                            dp = np.clip((_vt_start - eef) * pg, -1, 1)
+                            do_ = np.clip(ea_ * og, -1, 1)
+                            do_step(np.concatenate([dp, do_, [g]]))
+                            continue
+                    # min-jerk reference s(t): 10t^3-15t^4+6t^5, time-indexed (no arrival waits)
+                    if _exc_sched is None and _exc_amp > 0:
+                        # schedule excursions: (start_step, unit normal) pairs on this transit
+                        _exc_sched = []
+                        for _e in range(_exc_n):
+                            if _mj_T < 2 * _exc_len + 40: break  # transit too short for safe excursions
+                            c = int(_mj_T * (0.22 + 0.33 * _e / max(_exc_n - 1, 1)))
+                            nv = _exc_rng.randn(3); nv -= (nv @ _vt_dir) * _vt_dir
+                            nn_ = np.linalg.norm(nv)
+                            if nn_ > 1e-6: _exc_sched.append((c, nv / nn_))
+                    if _exc_sched is None: _exc_sched = []
+                    _mj_i = min(_mj_i + 1, _mj_T)
+                    tt_ = _mj_i / _mj_T
+                    sref = 10*tt_**3 - 15*tt_**4 + 6*tt_**5
+                    ref = _vt_start + _vt_dir * (_vt_dist * sref)
+                    if _exc_amp > 0 and _exc_sched:
+                        for (c0, nv) in _exc_sched:
+                            ph_ = (_mj_i - c0) / _exc_len
+                            if 0.0 <= ph_ <= 1.0:
+                                # asymmetric bump: fast out (half-cosine), slow back -> inbound labels dominate
+                                if ph_ < _exc_asym:
+                                    bump_ = 0.5 * (1 - np.cos(np.pi * ph_ / _exc_asym))
+                                else:
+                                    bump_ = 0.5 * (1 + np.cos(np.pi * (ph_ - _exc_asym) / (1 - _exc_asym)))
+                                ref = ref + nv * (_exc_amp * bump_)
+                    if _mj_ff:
+                        # model-aware MP: tangent feedforward from the plan, weak lateral servo
+                        dp = np.clip(_mj_kff * (ref - _ref_prev) + _mj_kfb * (ref - eef), -1, 1)
+                        _ref_prev = ref.copy()
+                    else:
+                        lead = _vt_dir * min(_vt_lead, _vt_dist * max(0.0, min(1.0, (10*3*tt_**2 - 15*4*tt_**3 + 6*5*tt_**4) / _mj_T)) * 3 + 0.004)
+                        dp = np.clip((ref + lead - eef) * pg, -1, 1)
+                elif _vt_use:
+                    # carrot on the straight line, leading the arm's own progress (closed-loop)
+                    prog = float((eef - _vt_start) @ _vt_dir)
+                    lead_eff = min(_vt_lead, 0.005 + max(prog, 0.0))
+                    carrot = _vt_start + _vt_dir * min(_vt_dist, prog + lead_eff)
+                    dp = np.clip((carrot - eef) * pg, -1, 1)
+                else:
+                    cap_eff = _smooth_cap if _ramp <= 0 else min(_smooth_cap, max(0.06, _ramp * np.linalg.norm(tp - eef)))
+                    dp = np.clip((tp - eef) * pg, -cap_eff, cap_eff)
+                if _mj and _vt_use and _mj_slerp:
+                    # SE(3) reference: orientation follows the same min-jerk
+                    # schedule (slerp q_start -> tq), no in-place twist
+                    tt_ = _mj_i / _mj_T
+                    s_ = 10*tt_**3 - 15*tt_**4 + 6*tt_**5
+                    d_ = float(np.dot(_q_start, tq))
+                    tq_u = -tq if d_ < 0 else tq; d_ = abs(np.clip(d_, -1, 1))
+                    th_ = np.arccos(d_)
+                    if th_ < 1e-6:
+                        q_ref = tq_u
+                    else:
+                        q_ref = (np.sin((1 - s_) * th_) / np.sin(th_)) * _q_start \
+                            + (np.sin(s_ * th_) / np.sin(th_)) * tq_u
+                    q_ref = q_ref / np.linalg.norm(q_ref)
+                else:
+                    q_ref = tq
+                em = T.quat2mat(o["robot0_eef_quat"]); tm = T.quat2mat(q_ref)
                 ea = T.quat2axisangle(T.mat2quat(tm @ em.T))
                 do = np.clip(ea * og, -1, 1)
                 do_step(np.concatenate([dp, do, [g]]))
-                if np.linalg.norm(eef - tp) < pt and np.linalg.norm(ea) < ot:
+                tmf = T.quat2mat(tq)
+                eaf = T.quat2axisangle(T.mat2quat(tmf @ em.T))
+                if np.linalg.norm(eef - tp) < pt and np.linalg.norm(eaf) < ot:
+                    if _brake: _brake_stop(g)
                     return i
+            if _brake: _brake_stop(g)
             return steps
         # --- waypoint mode: decompose current->tp into ~_wp_spacing waypoints,
         # track each (under noise the controller is forced back onto the line),
@@ -228,15 +366,29 @@ def run_episode(seed, horizon=4000, render=False, verbose=False, record=False, n
         start = obs()["robot0_eef_pos"].copy()
         dist = np.linalg.norm(tp - start)
         nwp = max(1, int(np.ceil(dist / _wp_spacing)))
-        budget = max(steps, nwp * 20)
+        if _os.environ.get("WP_REANCHOR", "0") == "1":
+            nwp = nwp * 3 + 10  # loop bound only; reanchor decides 'final' by remaining distance
+        budget = max(steps, nwp * _wp_hopcap)
         used = 0
+        _tpg = float(_os.environ.get("TRANSIT_PG", "0"))  # weak lateral authority in transit (0=off)
+        _reanchor = _os.environ.get("WP_REANCHOR", "0") == "1"  # re-plan chain from CURRENT pos toward the key point each hop
         for j in range(1, nwp + 1):
-            wp = start + (tp - start) * (j / nwp)
-            final = (j == nwp)
-            cap = (budget - used) if final else 20
+            if _reanchor:
+                eef_now = obs()["robot0_eef_pos"]
+                rem = tp - eef_now
+                nleft = max(1, int(np.ceil(np.linalg.norm(rem) / _wp_spacing)))
+                wp = eef_now + rem / nleft
+                final = nleft == 1
+            else:
+                wp = start + (tp - start) * (j / nwp)
+                final = (j == nwp)
+            cap = (budget - used) if final else _wp_hopcap
+            if not final: WP_STATS["hops"] += 1
+            _transit_flag[0] = (not final) and (j < nwp - 2)  # end margin: no noise near precision approach
             for _ in range(max(1, cap)):
                 o = obs(); eef = o["robot0_eef_pos"]
-                dp = np.clip((wp - eef) * pg, -_smooth_cap, _smooth_cap)
+                pg_eff = pg if (final or _tpg <= 0) else _tpg
+                dp = np.clip((wp - eef) * pg_eff, -_smooth_cap, _smooth_cap)
                 em = T.quat2mat(o["robot0_eef_quat"]); tm = T.quat2mat(tq)
                 ea = T.quat2axisangle(T.mat2quat(tm @ em.T))
                 do = np.clip(ea * og, -1, 1)
@@ -248,6 +400,7 @@ def run_episode(seed, horizon=4000, render=False, verbose=False, record=False, n
                 else:
                     if np.linalg.norm(eef - wp) < _wp_eps:
                         break
+                    if _ == cap - 1: WP_STATS["valve"] += 1
                 if used >= budget:
                     return used
         return used
@@ -334,6 +487,114 @@ def run_episode(seed, horizon=4000, render=False, verbose=False, record=False, n
     hc /= 4
     sm = gs("stand_mount_site"); hc[2] = sm[2]
 
+
+    # ---------- joint-space motion planning (robot model + IK) ----------
+    _rj = env.robots[0]
+    _qidx = np.array(_rj._ref_joint_pos_indexes)
+    _didx = np.array(getattr(_rj, "_ref_joint_vel_indexes", _rj._ref_joint_pos_indexes))
+    _site = "gripper0_right_grip_site"
+    _jlim = env.sim.model.jnt_range[:len(_qidx)].copy()
+
+    def _fk(q):
+        """kinematic-only FK on scratch state; restores sim exactly."""
+        sim = env.sim
+        q0 = sim.data.qpos.copy(); v0 = sim.data.qvel.copy()
+        sim.data.qpos[_qidx] = q; sim.forward()
+        pos = sim.data.get_site_xpos(_site).copy()
+        mat = sim.data.get_site_xmat(_site).copy()
+        sim.data.qpos[:] = q0; sim.data.qvel[:] = v0; sim.forward()
+        return pos, mat
+
+    def _mp_ik(p_star, R_star, iters=80):
+        """damped-least-squares IK from the CURRENT joint config (robot model)."""
+        sim = env.sim
+        q0 = sim.data.qpos.copy(); v0 = sim.data.qvel.copy()
+        q = sim.data.qpos[_qidx].copy()
+        ok_ik = False
+        for _ in range(iters):
+            sim.data.qpos[_qidx] = q; sim.forward()
+            pc = sim.data.get_site_xpos(_site).copy()
+            Rc = sim.data.get_site_xmat(_site).copy()
+            ep = p_star - pc
+            eR = T.quat2axisangle(T.mat2quat(R_star @ Rc.T))
+            if np.linalg.norm(ep) < 3e-4 and np.linalg.norm(eR) < 3e-3:
+                ok_ik = True; break
+            Jp = sim.data.get_site_jacp(_site).reshape(3, -1)[:, _didx]
+            Jr = sim.data.get_site_jacr(_site).reshape(3, -1)[:, _didx]
+            J = np.vstack([Jp, Jr])
+            e = np.concatenate([ep, 0.5 * eR])
+            dq = J.T @ np.linalg.solve(J @ J.T + 1e-4 * np.eye(6), e)
+            q = np.clip(q + np.clip(dq, -0.2, 0.2), _jlim[:, 0], _jlim[:, 1])
+        sim.data.qpos[:] = q0; sim.data.qvel[:] = v0; sim.forward()
+        return (q, ok_ik)
+
+    def _ik_step(q_from, p_t, R_t, iters=8):
+        """incremental DLS-IK: refine q_from toward (p_t, R_t) on scratch state."""
+        sim = env.sim
+        q0 = sim.data.qpos.copy(); v0 = sim.data.qvel.copy()
+        q = q_from.copy()
+        for _ in range(iters):
+            sim.data.qpos[_qidx] = q; sim.forward()
+            pc = sim.data.get_site_xpos(_site).copy()
+            Rc = sim.data.get_site_xmat(_site).copy()
+            ep = p_t - pc
+            eR = T.quat2axisangle(T.mat2quat(R_t @ Rc.T))
+            if np.linalg.norm(ep) < 2e-4 and np.linalg.norm(eR) < 2e-3:
+                break
+            Jp = sim.data.get_site_jacp(_site).reshape(3, -1)[:, _didx]
+            Jr = sim.data.get_site_jacr(_site).reshape(3, -1)[:, _didx]
+            J = np.vstack([Jp, Jr])
+            e = np.concatenate([ep, 0.5 * eR])
+            dq = J.T @ np.linalg.solve(J @ J.T + 1e-4 * np.eye(6), e)
+            q = np.clip(q + np.clip(dq, -0.15, 0.15), _jlim[:, 0], _jlim[:, 1])
+        pc, Rc = _fk(q)
+        err = np.linalg.norm(pc - p_t)
+        sim.data.qpos[:] = q0; sim.data.qvel[:] = v0; sim.forward()
+        return q, pc, Rc, err
+
+    def _mp_plan(p_star, R_star, vmax=None):
+        """Cartesian path planning with per-knot IK resolution (robot model):
+        pos = min-jerk straight line, ori = slerp on the same profile; each knot
+        resolved to joints incrementally -> kinematically verified FK path."""
+        vmax = vmax or _mj_vmax
+        o = obs()
+        p0 = o["robot0_eef_pos"].copy()
+        R0 = T.quat2mat(o["robot0_eef_quat"])
+        q = env.sim.data.qpos[_qidx].copy()
+        dist = np.linalg.norm(p_star - p0)
+        ang = np.linalg.norm(T.quat2axisangle(T.mat2quat(R_star @ R0.T)))
+        Tn = int(max(np.ceil(dist / vmax * 1.4), np.ceil(ang / 0.03), 8))
+        q0m = T.mat2quat(R0); q1m = T.mat2quat(R_star)
+        if np.dot(q0m, q1m) < 0: q1m = -q1m
+        th = np.arccos(np.clip(np.dot(q0m, q1m), -1, 1))
+        refs = []
+        for t in range(1, Tn + 1):
+            tt = t / Tn
+            ss = 10 * tt**3 - 15 * tt**4 + 6 * tt**5
+            p_t = p0 + (p_star - p0) * ss
+            if th < 1e-6:
+                R_t = R_star
+            else:
+                qm = (np.sin((1 - ss) * th) * q0m + np.sin(ss * th) * q1m) / np.sin(th)
+                R_t = T.quat2mat(qm / np.linalg.norm(qm))
+            q, pc, Rc, err = _ik_step(q, p_t, R_t)
+            if err > 0.01:
+                return None  # kinematically infeasible knot -> caller falls back
+            refs.append((pc, Rc))
+        return refs
+
+    def _mp_track(refs, g, og=4):
+        """track the planned FK reference through OSC: tangent feedforward +
+        weak trim; ori tracks the planned FK orientation profile."""
+        p_prev = obs()["robot0_eef_pos"].copy()
+        for (p_ref, R_ref) in refs:
+            o = obs(); eef = o["robot0_eef_pos"]
+            dp = np.clip(_mj_kff * (p_ref - p_prev) + _mj_kfb * (p_ref - eef), -1, 1)
+            p_prev = p_ref
+            em = T.quat2mat(o["robot0_eef_quat"])
+            ea = T.quat2axisangle(T.mat2quat(R_ref @ em.T))
+            do_step(np.concatenate([dp, np.clip(ea * og, -1, 1), [g]]))
+
     def frame_held():
         # frame still in gripper: frame body close to eef
         return np.linalg.norm(obs()["frame_pos"] - obs()["robot0_eef_pos"]) < 0.20
@@ -385,11 +646,67 @@ def run_episode(seed, horizon=4000, render=False, verbose=False, record=False, n
     # mount is precisely above the hole and the orientation is aligned.
     def approach_align_hole(tq, pg=12, og=6, zoff=0.05, xy_tol=0.004,
                             o_tol=0.025, max_steps=120):
+        _aah_start = None; _aah_dist = 0.0; _aah_dir = None
         max_steps = _sc(max_steps)
         """Move the frame_mount_site above the hole AND rotate the eef to the
         FIXED target quat `tq` simultaneously (continuous, no in-place hold).
         Orientation target is fixed (stable); only the position target adapts
         as the frame settles into `tq`. obs-triggered termination."""
+        if _mp_js:
+            used = 0
+            for _replan in range(4):
+                o = obs(); eef = o["robot0_eef_pos"]
+                etn = gs("frame_mount_site") - eef
+                goal = hc - etn; goal[2] = sm[2] + zoff - etn[2]
+                if np.linalg.norm(goal - eef) > 2e-3:
+                    refs = _mp_plan(goal, T.quat2mat(tq))
+                    if refs is None: break
+                    _mp_track(refs, 1, og=og); used += len(refs)
+                xy = np.linalg.norm((gs("frame_mount_site") - hc)[:2])
+                o = obs(); em = T.quat2mat(o["robot0_eef_quat"]); tm = T.quat2mat(tq)
+                ea = T.quat2axisangle(T.mat2quat(tm @ em.T))
+                if xy < xy_tol and np.linalg.norm(ea) < o_tol:
+                    return used
+            return used
+        if _mj_ff and _os.environ.get("MJ_ALIGN", "1") == "1":
+            # ---- plan -> track -> event-triggered replan (MP architecture) ----
+            budget = int(max_steps * 2.0); used = 0
+            # stage 1: rotation planned as its own segment (decoupled, position held)
+            hold = obs()["robot0_eef_pos"].copy()
+            while used < budget // 2:
+                o = obs(); em = T.quat2mat(o["robot0_eef_quat"]); tm = T.quat2mat(tq)
+                ea = T.quat2axisangle(T.mat2quat(tm @ em.T))
+                if np.linalg.norm(ea) < 0.06: break
+                dp = np.clip((hold - o["robot0_eef_pos"]) * 2.0, -1, 1)
+                do_step(np.concatenate([dp, np.clip(ea * og, -1, 1), [1]])); used += 1
+            # stage 2: plan a min-jerk straight segment to the goal, track it
+            # tangentially; replan (short segment) if slip moved the goal.
+            for _replan in range(4):
+                o = obs(); eef = o["robot0_eef_pos"]
+                etn = gs("frame_mount_site") - eef
+                goal = hc - etn; goal[2] = sm[2] + zoff - etn[2]
+                seg_d = np.linalg.norm(goal - eef)
+                if seg_d < 1e-4: break
+                seg_dir = (goal - eef) / seg_d
+                seg_T = max(int(np.ceil(seg_d / (_mj_vmax * 1.4) * 1.5)), 8)
+                ref_prev = eef.copy()
+                for j in range(1, seg_T + 1):
+                    if used >= budget: break
+                    o = obs(); eef = o["robot0_eef_pos"]
+                    ttj = j / seg_T
+                    ref = (eef * 0) + (goal - seg_dir * seg_d) + seg_dir * seg_d * (10*ttj**3 - 15*ttj**4 + 6*ttj**5)
+                    em = T.quat2mat(o["robot0_eef_quat"]); tm = T.quat2mat(tq)
+                    ea = T.quat2axisangle(T.mat2quat(tm @ em.T))
+                    dp = np.clip(_mj_kff * (ref - ref_prev) + _mj_kfb * (ref - eef), -1, 1)
+                    ref_prev = ref.copy()
+                    do_step(np.concatenate([dp, np.clip(ea * og, -1, 1), [1]])); used += 1
+                xy = np.linalg.norm((gs("frame_mount_site") - hc)[:2])
+                o = obs(); em = T.quat2mat(o["robot0_eef_quat"]); tm = T.quat2mat(tq)
+                ea = T.quat2axisangle(T.mat2quat(tm @ em.T))
+                if xy < xy_tol and np.linalg.norm(ea) < o_tol:
+                    return used
+                if used >= budget: break
+            return used
         for i in range(max_steps):
             o = obs(); eef = o["robot0_eef_pos"]
             etn = gs("frame_mount_site") - eef
@@ -524,6 +841,11 @@ def run_episode(seed, horizon=4000, render=False, verbose=False, record=False, n
     if not env._check_frame_assembled():
         if record: return False, traj, init_state, model_xml
         return (False, frames) if render else False
+
+    if _os.environ.get("STOP_AFTER_INSERT", "0") == "1":
+        # init->insertion subtask only: insertion verified seated, stop here
+        if record: return True, traj, init_state, model_xml
+        return (True, frames) if render else True
 
     # ==================== Phase 2: Tool Pick + Hang ====================
 

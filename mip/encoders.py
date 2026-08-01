@@ -492,6 +492,15 @@ class MLPEncoder(BaseEncoder):
             obs_list = [obs[k] for k in keys]
         else:
             obs_list = [obs]
+        # OBS_MASK env hook: zero the listed per-frame dims (state-ablation studies).
+        import os as _os
+        _mask_env = _os.environ.get("OBS_MASK")
+        if _mask_env:
+            _dims = [int(d) for d in _mask_env.split(",")]
+            obs_list = [t.clone() for t in obs_list]
+            for t in obs_list:
+                if t.dim() >= 3 and t.shape[-1] == 53:
+                    t[..., _dims] = 0.0
         # Flatten each tensor to (batch, -1) and concatenate
         flattened = [t.reshape(t.shape[0], -1) for t in obs_list]
         obs = torch.cat(flattened, dim=-1)

@@ -5,6 +5,8 @@ from __future__ import annotations
 from contextlib import contextmanager
 from copy import deepcopy
 
+import os
+
 import loguru
 import torch
 import torch.nn as nn
@@ -39,7 +41,12 @@ class TrainingAgent:
         self.interpolant = Interpolant(config.optimization.interp_type)
         net = get_network(config.network, config.task)
         report_parameters(net, model_name="Action Network")
-        self.flow_map = FlowMap(net).to(config.optimization.device)
+        import os as _os
+        if _os.environ.get("MIP_TWONET", "0") == "1":
+            import copy as _copy
+            self.flow_map = FlowMap(net, reference_net=_copy.deepcopy(net)).to(config.optimization.device)
+        else:
+            self.flow_map = FlowMap(net).to(config.optimization.device)
         self.encoder = get_encoder(config.network, config.task).to(
             config.optimization.device
         )
@@ -61,11 +68,40 @@ class TrainingAgent:
             self.encoder_ema_detach = None
 
         params = list(self.encoder.parameters()) + list(self.flow_map.parameters())
-        self.optimizer = torch.optim.AdamW(
-            params,
-            lr=config.optimization.lr,
-            weight_decay=config.optimization.weight_decay,
-        )
+        trunk_lr_mult = float(os.environ.get("TRUNK_LR_MULT", "1"))
+        if trunk_lr_mult != 1.0:
+            # lazy-trunk control: trunk (encoder + all UNet blocks except final_conv)
+            # trains at trunk_lr_mult * lr; the final_conv head at full lr
+            fc = None
+            for _n, _m in self.flow_map.named_modules():
+                if _n.endswith("final_conv"):
+                    fc = _m
+            head_ids = {id(p) for p in fc.parameters()}
+            head_p = [p for p in params if id(p) in head_ids]
+            trunk_p = [p for p in params if id(p) not in head_ids]
+            self.optimizer = torch.optim.AdamW(
+                [{"params": trunk_p, "lr": config.optimization.lr * trunk_lr_mult},
+                 {"params": head_p, "lr": config.optimization.lr}],
+                weight_decay=config.optimization.weight_decay,
+            )
+        elif __import__("os").environ.get("OPTIM", "") == "muon":
+            from mip.muon import MuonWithAdamW
+            import os as _os
+            named = list(self.flow_map.named_parameters()) + list(self.encoder.named_parameters())
+            have = {id(p) for p in params}
+            named = [(n, p) for n, p in named if id(p) in have]
+            self.optimizer = MuonWithAdamW(
+                named,
+                muon_lr=float(_os.environ.get("MUON_LR", "0.02")),
+                adamw_lr=config.optimization.lr,
+                weight_decay=config.optimization.weight_decay,
+            )
+        else:
+            self.optimizer = torch.optim.AdamW(
+                params,
+                lr=config.optimization.lr,
+                weight_decay=config.optimization.weight_decay,
+            )
 
         # Store obs keys if using image observations (for CUDA graph compatibility)
         if hasattr(config.task, "shape_meta") and "obs" in config.task.shape_meta:

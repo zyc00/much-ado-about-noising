@@ -10,6 +10,15 @@ from collections import defaultdict
 
 import h5py
 import numpy as np
+
+
+def _rj_set(z, i, v):
+    z = z.copy()
+    z[0, i:i + len(v)] = v
+    return z
+
+
+
 import torch
 import zarr
 from huggingface_hub import hf_hub_download
@@ -73,6 +82,15 @@ def make_dataset(task_config, mode="train"):
                 val_dataset_percentage=task_config.val_dataset_percentage,
                 phase_indicator=getattr(task_config, "phase_indicator", False),
                 phase_input=getattr(task_config, "phase_input", False),
+                progress_indicator=getattr(task_config, "progress_indicator", False),
+                rot_indicator=getattr(task_config, "rot_indicator", False),
+                despike=getattr(task_config, "despike", False),
+                mixup=getattr(task_config, "mixup", False),
+                knnsmooth=getattr(task_config, "knnsmooth", False),
+                normjit=getattr(task_config, "normjit", False),
+                pose_indicator=getattr(task_config, "pose_indicator", False),
+                tc_indicator=getattr(task_config, "tc_indicator", False),
+                fwd_indicator=getattr(task_config, "fwd_indicator", False),
             )
         elif task_config.obs_type == "image":
             return RobomimicImageDataset(
@@ -109,6 +127,15 @@ class RobomimicDataset(BaseDataset):
         use_key_state_for_val: bool = False,
         phase_indicator: bool = False,
         phase_input: bool = False,
+        progress_indicator: bool = False,
+        rot_indicator: bool = False,
+        despike: bool = False,
+        mixup: bool = False,
+        knnsmooth: bool = False,
+        normjit: bool = False,
+        pose_indicator: bool = False,
+        tc_indicator: bool = False,
+        fwd_indicator: bool = False,
     ):
         super().__init__()
         self.rotation_transformer = RotationTransformer(
@@ -119,6 +146,17 @@ class RobomimicDataset(BaseDataset):
         self.action_type = action_type
         self.phase_indicator = phase_indicator
         self.phase_input = phase_input
+        self.progress_indicator = progress_indicator
+        self.rot_indicator = rot_indicator
+        self.despike = despike
+        self.mixup = mixup
+        self.knnsmooth = knnsmooth
+        self.normjit = normjit
+        self.pose_indicator = pose_indicator
+        if pose_indicator:
+            self.rot_indicator = True  # pose pre-pass reuses the rot consensus frame
+        self.tc_indicator = tc_indicator
+        self.fwd_indicator = fwd_indicator
         self.obs_steps = obs_steps
 
         self.replay_buffer = ReplayBuffer.create_empty_numpy()
@@ -169,6 +207,36 @@ class RobomimicDataset(BaseDataset):
                 # Check if this is a robosuite environment
                 is_robosuite_env = EnvUtils.is_robosuite_env(env_meta)
 
+            if self.rot_indicator:
+                # demo-consensus insertion frame: frame quat shortly before first release,
+                # sign-aligned and averaged over demos (the branch-rule reference)
+                _quats = []
+                _offs = []
+                for i in demo_indices:
+                    d_ = demos[f"demo_{i}"]
+                    a_ = d_["actions"][:].astype(np.float32)
+                    g_ = a_[:, 6]
+                    T_ = len(a_)
+                    cl_ = [t for t in range(1, T_) if g_[t - 1] < 0 and g_[t] >= 0]
+                    op_ = [t for t in range(1, T_) if g_[t - 1] >= 0 and g_[t] < 0]
+                    if not cl_:
+                        continue
+                    r1_ = next((t for t in op_ if t > cl_[0]), None)
+                    if r1_ is None or r1_ < 20:
+                        continue
+                    q_ = d_["obs"]["object"][r1_ - 20, 17:21].astype(np.float32)
+                    q_ = q_ / (np.linalg.norm(q_) + 1e-9)
+                    if _quats and np.dot(q_, _quats[0]) < 0:
+                        q_ = -q_
+                    _quats.append(q_)
+                    _offs.append(
+                        d_["obs"]["object"][r1_ - 1, 21:24].astype(np.float32)
+                        - d_["obs"]["object"][r1_ - 1, 7:10].astype(np.float32)
+                    )
+                _qmu = np.mean(np.stack(_quats), axis=0)
+                self._rot_qmu = _qmu / (np.linalg.norm(_qmu) + 1e-9)
+                self._gate_off = np.median(np.stack(_offs), axis=0)
+
             for i in tqdm(demo_indices, desc=f"Loading {mode} hdf5 to ReplayBuffer"):
                 demo = demos[f"demo_{i}"]
 
@@ -201,6 +269,26 @@ class RobomimicDataset(BaseDataset):
                         logger.debug(distance)
                     exit()
 
+                if self.despike:
+                    # replace tremor spikes (top-decile |a_t - temporal median| steps,
+                    # threshold computed dataset-wide on first pass) with the local median;
+                    # leaves >=90% of steps untouched — data-side crowding-out test
+                    raw_a = demo["actions"][:].astype(np.float32)
+                    med = np.stack([np.median(raw_a[max(0, i - 2):i + 3], axis=0)
+                                    for i in range(len(raw_a))])
+                    dev_ = np.linalg.norm(raw_a - med, axis=1)
+                    if not hasattr(self, "_spike_thr"):
+                        _all = []
+                        for j2 in demo_indices:
+                            a2 = demos[f"demo_{j2}"]["actions"][:].astype(np.float32)
+                            m2 = np.stack([np.median(a2[max(0, i - 2):i + 3], axis=0)
+                                           for i in range(len(a2))])
+                            _all.append(np.linalg.norm(a2 - m2, axis=1))
+                        self._spike_thr = float(np.quantile(np.concatenate(_all), 0.9))
+                    mask = dev_ >= self._spike_thr
+                    raw_a[mask] = med[mask]
+                    demo = dict(demo)
+                    demo["actions"] = raw_a
                 episode = data_to_obs(
                     raw_obs=demo["obs"],
                     raw_actions=demo["actions"][:].astype(np.float32),
@@ -208,6 +296,53 @@ class RobomimicDataset(BaseDataset):
                     abs_action=abs_action,
                     rotation_transformer=self.rotation_transformer,
                 )
+                if self.tc_indicator:
+                    # signed time-to-closure ramp as AUX OUTPUT: steepest supervision through
+                    # the lethal (settle) window; clipped so far-from-closure steps saturate
+                    a_ = demo["actions"][:].astype(np.float32); g_ = a_[:, 6]; T_ = len(a_)
+                    cl_ = [t for t in range(1, T_) if g_[t-1] < 0 and g_[t] >= 0]
+                    c1_ = cl_[0] if cl_ else T_
+                    tc = np.clip((np.arange(T_, dtype=np.float32) - c1_) / 50.0, -2.0, 2.0)[:, None]
+                    episode["action"] = np.concatenate([episode["action"], tc], axis=-1)
+                if self.fwd_indicator:
+                    # k-step forward state delta as AUX OUTPUT: dense supervision along many
+                    # state directions (anti-starvation richness beyond a 1-D ramp)
+                    k_ = 8
+                    st_ = episode["obs"].astype(np.float32)
+                    fwd = np.concatenate([st_[k_:], np.repeat(st_[-1:], k_, axis=0)], axis=0) - st_
+                    episode["action"] = np.concatenate([episode["action"], fwd], axis=-1)
+                if self.rot_indicator:
+                    # in-hand orientation error to the insertion frame as AUX OUTPUT:
+                    # rotation vector (axis*angle) from current frame quat to the demo
+                    # consensus frame = the corrective rotational displacement the retry
+                    # servo must realize; magnitude clipped at 45deg so the align-window
+                    # variation occupies most of the normalized range
+                    fq = demo["obs"]["object"][:, 17:21].astype(np.float32)
+                    fq = fq / (np.linalg.norm(fq, axis=1, keepdims=True) + 1e-9)
+                    rv = (
+                        Rotation.from_quat(fq).inv() * Rotation.from_quat(self._rot_qmu)
+                    ).as_rotvec().astype(np.float32)
+                    ang = np.linalg.norm(rv, axis=1, keepdims=True)
+                    rv = rv * np.minimum(1.0, 0.785 / (ang + 1e-9))
+                    episode["action"] = np.concatenate([episode["action"], rv], axis=-1)
+                if self.pose_indicator:
+                    # gate-frame position offset of the frame as AUX OUTPUT (the lateral/
+                    # vertical alignment state), norm-clipped at 80mm
+                    pv = (
+                        demo["obs"]["object"][:, 21:24].astype(np.float32)
+                        - demo["obs"]["object"][:, 7:10].astype(np.float32)
+                        - self._gate_off[None]
+                    )
+                    pn = np.linalg.norm(pv, axis=1, keepdims=True)
+                    pv = pv * np.minimum(1.0, 0.080 / (pn + 1e-9))
+                    episode["action"] = np.concatenate([episode["action"], pv], axis=-1)
+                if self.progress_indicator:
+                    # progress ramp as AUX OUTPUT: normalized episode time t/T appended to
+                    # the action target — dense, monotone, phase-resolving supervision that
+                    # stays label-rich inside slow windows (anti-starvation aux)
+                    T_ = len(episode["action"])
+                    prog = (np.arange(T_, dtype=np.float32) / max(T_ - 1, 1))[:, None]
+                    episode["action"] = np.concatenate([episode["action"], prog], axis=-1)
                 if self.phase_indicator or self.phase_input:
                     # per-timestep 3-class phase one-hot:
                     # 0=reach (init->grasp), 1=lift+align (grasp->align_done), 2=insert
@@ -269,6 +404,149 @@ class RobomimicDataset(BaseDataset):
             self.obs_key_dims = {key: demo0_obs[key].shape[-1] for key in obs_keys}
 
         self.normalizer = self.get_normalizer()
+        if getattr(self, "mixup", False):
+            self._build_mixup_pairs()
+        if getattr(self, "knnsmooth", False):
+            self._build_knn_targets()
+        if getattr(self, "normjit", False):
+            self._build_knn_targets(k=16, store_only=True)
+
+    def _build_knn_targets(self, k=8, store_only=False):
+        """kNN-conditional-mean action targets: for each sequence, average the action
+        chunks of its k=8 nearest obs-window neighbors (cross-demo candidates included,
+        self included). Hands the network the smooth conditional mean instead of raw
+        noisy labels — the target-side version of the MLP's implicit smoothing."""
+        import torch as _t
+        n = len(self.sampler)
+        obs_w = []
+        for i in range(n):
+            smp = self.sampler.sample_sequence(i)
+            obs_w.append(smp["obs"][: self.obs_steps].reshape(-1))
+        X = _t.tensor(np.stack(obs_w), dtype=_t.float32)
+        X = (X - X.mean(0)) / (X.std(0) + 1e-6)
+        cand = np.arange(0, n, max(1, n // 16000))
+        dev_ = "cuda" if _t.cuda.is_available() else "cpu"
+        Xc = X[cand].to(dev_)
+        nbrs = np.zeros((n, k), dtype=np.int64)
+        B = 2048
+        for b in range(0, n, B):
+            d = _t.cdist(X[b:b + B].to(dev_), Xc)
+            top = d.topk(k, largest=False).indices.cpu().numpy()
+            nbrs[b:b + B] = cand[top]
+        self._knn_nbrs = nbrs
+        self._obs_std = np.asarray(X.std(0))
+        logger.info(f"knn neighbors built over {n} sequences (k={k}, store_only={store_only})")
+
+    def _build_mixup_pairs(self):
+        """Cross-demo kNN pairing over sampler indices: for each sequence, the nearest
+        obs-window among candidates from OTHER demos. Enables local mixup: interpolated
+        (obs, action) pairs that determine the field BETWEEN thin support points."""
+        import torch as _t
+        n = len(self.sampler)
+        obs_w, demo_ids = [], []
+        for i in range(n):
+            smp = self.sampler.sample_sequence(i)
+            obs_w.append(smp["obs"][: self.obs_steps].reshape(-1))
+            demo_ids.append(int(smp.get("demo_id", i) if isinstance(smp, dict) and "demo_id" in smp else -1))
+        X = _t.tensor(np.stack(obs_w), dtype=_t.float32)
+        X = (X - X.mean(0)) / (X.std(0) + 1e-6)
+        cand = np.arange(0, n, max(1, n // 16000))
+        Xc = X[cand]
+        pair = np.zeros(n, dtype=np.int64)
+        B = 2048
+        dev_ = "cuda" if _t.cuda.is_available() else "cpu"
+        Xc_d = Xc.to(dev_)
+        for b in range(0, n, B):
+            d = _t.cdist(X[b:b + B].to(dev_), Xc_d)
+            # exclude near-identical (same trajectory point): distance floor
+            d[d < 1e-3] = 1e9
+            top = d.topk(4, largest=False).indices.cpu().numpy()
+            for r in range(len(top)):
+                pair[b + r] = cand[top[r][np.random.randint(1, 4)]]
+        self._mix_pair = pair
+        logger.info(f"mixup pairs built over {n} sequences ({len(cand)} candidates)")
+
+
+    def density_resample_weights(self):
+        """DENSITY_RESAMPLE hook: inverse-density sampling weights — windows
+        in SPARSE regions of obs space (far cross-episode neighbors) are
+        upsampled, dense regions downsampled, total count unchanged.
+        w_i = clip((r_i/median_r)^DR_ALPHA, 1/DR_WMAX, DR_WMAX), r_i =
+        cross-episode nearest-neighbor distance in the z-scored window
+        metric (the D(r_nn) quantity of the epistemic-pocket analysis)."""
+        import os as _os
+
+        from scipy.spatial import cKDTree
+
+        alpha = float(_os.environ.get("DR_ALPHA", "1.0"))
+        wmax = float(_os.environ.get("DR_WMAX", "3.0"))
+        ends = np.asarray(self.replay_buffer.episode_ends[:])
+        try:
+            S_all = self.replay_buffer["obs"]["state"][:]
+        except (TypeError, IndexError, KeyError):
+            S_all = self.replay_buffer["obs"][:]
+        eid_step = np.searchsorted(ends, np.arange(len(S_all)), side="right")
+        idx = np.clip(np.asarray([r[0] for r in self.sampler.indices]),
+                      0, len(S_all) - 2)
+        W = np.stack([S_all[idx], S_all[np.minimum(idx + 1, len(S_all) - 1)]],
+                     axis=1).reshape(len(idx), -1)
+        mu, sd = W.mean(0), W.std(0) + 1e-6
+        Wn = (W - mu) / sd
+        eid = eid_step[idx]
+        tree = cKDTree(Wn)
+        d, nb = tree.query(Wn, k=16)
+        r = np.full(len(Wn), np.nan)
+        for i in range(len(Wn)):
+            m = eid[nb[i]] != eid[i]
+            r[i] = d[i][m][0] if m.any() else d[i][-1]
+        w = np.clip((r / np.median(r)) ** alpha, 1.0 / wmax, wmax)
+        logger.info(f"density_resample: {len(w)} windows, w p10/50/90 = "
+                    f"{np.percentile(w,10):.2f}/{np.median(w):.2f}/"
+                    f"{np.percentile(w,90):.2f}, alpha={alpha} wmax={wmax}")
+        return w
+
+
+    def phase_resample_weights(self):
+        """PHASE_RESAMPLE hook: per-window sampling weights that BOOST the
+        align/insert parts and CUT reach/pick/lift, at unchanged total
+        sample count (use with WeightedRandomSampler, num_samples=len(ds)).
+
+        Phases from the gripper channel of the raw actions: open segments =
+        reach/retreat; closed segments = lift/carry then align/insert. The
+        last PR_TAIL fraction (default 0.4) of each CLOSED segment (the
+        align+insert/hang part) gets weight PR_UP (default 3.0); everything
+        else PR_DOWN (default 0.4)."""
+        import os as _os
+
+        up = float(_os.environ.get("PR_UP", "3.0"))
+        down = float(_os.environ.get("PR_DOWN", "0.4"))
+        tail = float(_os.environ.get("PR_TAIL", "0.4"))
+        grip = np.asarray(self.replay_buffer["action"][:, -1])
+        ends = np.asarray(self.replay_buffer.episode_ends[:])
+        starts = np.concatenate([[0], ends[:-1]])
+        w_step = np.full(len(grip), down, dtype=np.float64)
+        for s0, e0 in zip(starts, ends):
+            g = grip[s0:e0] > 0
+            # closed segments
+            i = 0
+            while i < len(g):
+                if g[i]:
+                    j = i
+                    while j < len(g) and g[j]:
+                        j += 1
+                    k0 = i + int((j - i) * (1.0 - tail))
+                    w_step[s0 + k0:s0 + j] = up
+                    i = j
+                else:
+                    i += 1
+        # window weight = weight at the window's first executed step
+        idx = np.asarray([r[0] for r in self.sampler.indices])
+        idx = np.clip(idx, 0, len(w_step) - 1)
+        w = w_step[idx]
+        frac_up = float((w >= up).mean())
+        logger.info(f"phase_resample: {len(w)} windows, boosted frac "
+                    f"{frac_up:.3f}, up={up} down={down} tail={tail}")
+        return w
 
     def undo_transform_action(self, action):
         # drop any appended phase-indicator dims (act_dim 13 -> 10); keep 20 (dual arm)
@@ -296,6 +574,31 @@ class RobomimicDataset(BaseDataset):
         state_normalizer = MinMaxNormalizer(
             self.replay_buffer["obs"][:]
         )  # (N, obs_dim)
+        # CHAN_SCALE: channel-leverage rebalancing at fixed data. Multiplies
+        # the NORMALIZED obs per channel group (object, eef_pos, eef_quat,
+        # grip), consistently at train and eval (env var must be set for
+        # both). The first Linear can absorb any diagonal, so the function
+        # class is unchanged — only the training-dynamics leverage moves.
+        _cs = os.environ.get("CHAN_SCALE", "")
+        if _cs:
+            _c = [float(v) for v in _cs.split(",")]
+            _dim = state_normalizer.range.shape[0]
+            assert _dim == 53 and len(_c) == 4, (_dim, _c)
+            _m = np.ones(_dim, dtype=np.float32)
+            _m[0:44], _m[44:47], _m[47:51], _m[51:53] = _c[0], _c[1], _c[2], _c[3]
+
+            class _ChanScaled:
+                def __init__(self, base, mult):
+                    self.base, self.mult = base, mult
+
+                def normalize(self, x):
+                    return self.base.normalize(x) * self.mult
+
+                def unnormalize(self, x):
+                    return self.base.unnormalize(
+                        np.asarray(x, dtype=np.float32) / self.mult)
+
+            state_normalizer = _ChanScaled(state_normalizer, _m)
 
         if self.action_type == "relative":
             # For relative actions, compute relative action stats for normalizer.
@@ -421,6 +724,88 @@ class RobomimicDataset(BaseDataset):
     def __getitem__(self, idx: int) -> dict[str, torch.Tensor]:
         sample = self.sampler.sample_sequence(idx)
         data = self.sample_to_data(sample)
+        if getattr(self, "normjit", False) and np.random.rand() < float(os.environ.get("NJ_P", "0.5")):
+            # NORMAL-DIRECTION JITTER: perturb the obs window orthogonally to the local
+            # data-manifold tangent (top-8 PCs of kNN neighbor differences), keep the
+            # label. Trains annulus pull-back without touching on-manifold gains.
+            o0 = data["obs"]["state"] if isinstance(data["obs"], dict) else data["obs"]
+            base = o0[: self.obs_steps].reshape(-1).astype(np.float64)
+            nb = []
+            for j in self._knn_nbrs[idx][1:]:
+                d2 = self.sampler.sample_sequence(int(j))
+                nb.append(d2["obs"][: self.obs_steps].reshape(-1).astype(np.float64))
+            NB = np.stack(nb) - base
+            U, S, Vt = np.linalg.svd(NB, full_matrices=False)
+            V = Vt[:8]
+            g = np.random.randn(base.shape[0])
+            g = g - V.T @ (V @ g)
+            g = g / (np.linalg.norm(g) + 1e-9)
+            eps = np.random.uniform(float(os.environ.get("NJ_LO", "0.1")), float(os.environ.get("NJ_HI", "0.4"))) * (
+                float(np.linalg.norm(NB[0])) if os.environ.get("NJ_ABS", "0") == "0" else 1.0)
+            pert = (eps * g).reshape(self.obs_steps, -1).astype(np.float32)
+            if isinstance(data["obs"], dict):
+                data["obs"]["state"] = data["obs"]["state"].copy()
+                data["obs"]["state"][: self.obs_steps] += pert
+            else:
+                data["obs"] = data["obs"].copy()
+                data["obs"][: self.obs_steps] += pert
+        if getattr(self, "knnsmooth", False):
+            accs = [data["action"]]
+            for j in self._knn_nbrs[idx][1:]:
+                d2 = self.sample_to_data(self.sampler.sample_sequence(int(j)))
+                if d2["action"].shape == data["action"].shape:
+                    accs.append(d2["action"])
+            data["action"] = np.mean(accs, axis=0)
+        if os.environ.get("RECOVJIT", "0") == "1" and np.random.rand() < float(os.environ.get("RJ_P", "0.5")):
+            # RECOVERY JITTER: displace the eef-pos obs dims by a finite raw
+            # offset (annulus scale) and correct the position deltas of the
+            # first executed chunk steps so the label commands returning to
+            # the demonstrated path — supervises a restoring annulus field
+            # (the measured MIP property) instead of flat replay (OBSJIT).
+            if not hasattr(self, "_rj_scale"):
+                z_o, z_a = np.zeros((1, 53), np.float32), np.zeros((1, 10), np.float32)
+                no_, na_ = self.normalizer["obs"]["state"], self.normalizer["action"]
+                self._rj_scale = (
+                    lambda v: (no_.normalize(_rj_set(z_o, 44, v)) - no_.normalize(z_o))[0, 44:47],
+                    lambda v: (na_.normalize(_rj_set(z_a, 0, v)) - na_.normalize(z_a))[0, 0:3],
+                )
+            u = np.random.randn(3)
+            u /= np.linalg.norm(u) + 1e-9
+            if os.environ.get("RJ_NORMAL", "0") == "1":
+                # project displacement orthogonal to the local motion tangent
+                # (raw eef delta across the obs window); tangent-restoring
+                # supervision is anti-progress (PART CDIV/CDV)
+                _no = self.normalizer["obs"]["state"]
+                _raw = _no.unnormalize(data["obs"]["state"][:2])
+                tvec = _raw[1, 44:47] - _raw[0, 44:47]
+                tn = np.linalg.norm(tvec)
+                if tn > 1e-5:
+                    tvec = tvec / tn
+                    u = u - float(u @ tvec) * tvec
+                    un = np.linalg.norm(u)
+                    if un > 1e-6:
+                        u = u / un
+            dlt = np.random.uniform(float(os.environ.get("RJ_LO", "0.005")),
+                                    float(os.environ.get("RJ_HI", "0.05"))) * u
+            data["obs"]["state"] = data["obs"]["state"].copy()
+            data["obs"]["state"][:, 44:47] += self._rj_scale[0](dlt)
+            if os.environ.get("RJ_NOCORR", "0") != "1":
+                k_ = int(os.environ.get("RJ_K", "4"))
+                st_ = self.obs_steps - 1
+                data["action"] = data["action"].copy()
+                corr = self._rj_scale[1](dlt / k_)
+                data["action"][st_:st_ + k_, 0:3] -= corr
+        if getattr(self, "mixup", False) and np.random.rand() < 0.5:
+            j = int(self._mix_pair[idx])
+            data2 = self.sample_to_data(self.sampler.sample_sequence(j))
+            lam = 0.5 + 0.5 * np.random.rand()
+            def _mix(a, b):
+                if isinstance(a, dict):
+                    return {kk: _mix(a[kk], b[kk]) for kk in a}
+                return lam * a + (1.0 - lam) * b if getattr(a, "shape", None) == getattr(b, "shape", None) else a
+            for k in ("obs", "action"):
+                if k in data and k in data2:
+                    data[k] = _mix(data[k], data2[k])
         torch_data = dict_apply(data, torch.tensor)
         return torch_data
 
@@ -512,6 +897,67 @@ class RobomimicImageDataset(BaseDataset):
         self.n_obs_steps = n_obs_steps
 
         self.normalizer = self.get_normalizer()
+        if getattr(self, "mixup", False):
+            self._build_mixup_pairs()
+        if getattr(self, "knnsmooth", False):
+            self._build_knn_targets()
+        if getattr(self, "normjit", False):
+            self._build_knn_targets(k=16, store_only=True)
+
+    def _build_knn_targets(self, k=8, store_only=False):
+        """kNN-conditional-mean action targets: for each sequence, average the action
+        chunks of its k=8 nearest obs-window neighbors (cross-demo candidates included,
+        self included). Hands the network the smooth conditional mean instead of raw
+        noisy labels — the target-side version of the MLP's implicit smoothing."""
+        import torch as _t
+        n = len(self.sampler)
+        obs_w = []
+        for i in range(n):
+            smp = self.sampler.sample_sequence(i)
+            obs_w.append(smp["obs"][: self.obs_steps].reshape(-1))
+        X = _t.tensor(np.stack(obs_w), dtype=_t.float32)
+        X = (X - X.mean(0)) / (X.std(0) + 1e-6)
+        cand = np.arange(0, n, max(1, n // 16000))
+        dev_ = "cuda" if _t.cuda.is_available() else "cpu"
+        Xc = X[cand].to(dev_)
+        nbrs = np.zeros((n, k), dtype=np.int64)
+        B = 2048
+        for b in range(0, n, B):
+            d = _t.cdist(X[b:b + B].to(dev_), Xc)
+            top = d.topk(k, largest=False).indices.cpu().numpy()
+            nbrs[b:b + B] = cand[top]
+        self._knn_nbrs = nbrs
+        self._obs_std = np.asarray(X.std(0))
+        logger.info(f"knn neighbors built over {n} sequences (k={k}, store_only={store_only})")
+
+    def _build_mixup_pairs(self):
+        """Cross-demo kNN pairing over sampler indices: for each sequence, the nearest
+        obs-window among candidates from OTHER demos. Enables local mixup: interpolated
+        (obs, action) pairs that determine the field BETWEEN thin support points."""
+        import torch as _t
+        n = len(self.sampler)
+        obs_w, demo_ids = [], []
+        for i in range(n):
+            smp = self.sampler.sample_sequence(i)
+            obs_w.append(smp["obs"][: self.obs_steps].reshape(-1))
+            demo_ids.append(int(smp.get("demo_id", i) if isinstance(smp, dict) and "demo_id" in smp else -1))
+        X = _t.tensor(np.stack(obs_w), dtype=_t.float32)
+        X = (X - X.mean(0)) / (X.std(0) + 1e-6)
+        cand = np.arange(0, n, max(1, n // 16000))
+        Xc = X[cand]
+        pair = np.zeros(n, dtype=np.int64)
+        B = 2048
+        dev_ = "cuda" if _t.cuda.is_available() else "cpu"
+        Xc_d = Xc.to(dev_)
+        for b in range(0, n, B):
+            d = _t.cdist(X[b:b + B].to(dev_), Xc_d)
+            # exclude near-identical (same trajectory point): distance floor
+            d[d < 1e-3] = 1e9
+            top = d.topk(4, largest=False).indices.cpu().numpy()
+            for r in range(len(top)):
+                pair[b + r] = cand[top[r][np.random.randint(1, 4)]]
+        self._mix_pair = pair
+        logger.info(f"mixup pairs built over {n} sequences ({len(cand)} candidates)")
 
     def get_normalizer(self):
         normalizer = defaultdict(dict)

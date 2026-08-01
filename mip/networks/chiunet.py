@@ -84,6 +84,7 @@ class ChiUNet(BaseNetwork):
         disable_time_embedding: bool = False,
         skip_scale: float = 1.0,
         cond_dropout_rate: float = 0.0,
+        gmm_k: int = 0,
     ):
         # Default dim_mult if not provided
         if dim_mult is None:
@@ -216,6 +217,20 @@ class ChiUNet(BaseNetwork):
         nn.init.constant_(self.scalar_output_head[-1].weight, 0)
         nn.init.constant_(self.scalar_output_head[-1].bias, 0)
 
+        # Optional GMM/MDN head (regression_gmm): K-1 mean-offset maps +
+        # per-component logits/log-sigma from the mid features. Zero-init
+        # offsets start all components at the base mean.
+        self.gmm_k = int(gmm_k)
+        if self.gmm_k > 1:
+            self.gmm_extra = nn.Conv1d(model_dim, (self.gmm_k - 1) * act_dim, 1)
+            nn.init.constant_(self.gmm_extra.weight, 0)
+            nn.init.constant_(self.gmm_extra.bias, 0)
+            self.gmm_wsig = nn.Sequential(
+                nn.AdaptiveAvgPool1d(1), nn.Flatten(),
+                nn.Linear(mid_channels, 128), nn.SiLU(),
+                nn.Linear(128, 2 * self.gmm_k),
+            )
+
     def forward(
         self,
         x: torch.Tensor,
@@ -288,6 +303,7 @@ class ChiUNet(BaseNetwork):
 
         # Get scalar output after midmodule
         scalar_out = self.scalar_output_head(x)
+        mid_feat = x
 
         for idx, (resnet1, resnet2, upsample) in enumerate(self.ups):
             x = torch.cat((x, h.pop() * self.skip_scale), dim=1)
@@ -297,7 +313,17 @@ class ChiUNet(BaseNetwork):
             x = resnet2(x, emb)
             x = upsample(x)
 
+        x_pre = x
         x = self.final_conv(x)
+
+        if getattr(self, "gmm_k", 0) > 1:
+            B, A, T = x.shape
+            off = self.gmm_extra(x_pre).reshape(B, self.gmm_k - 1, A, T)
+            means = torch.cat([x.unsqueeze(1), x.unsqueeze(1) + off], dim=1)
+            ws = self.gmm_wsig(mid_feat)
+            self._gmm = (means.permute(0, 1, 3, 2), ws[:, : self.gmm_k],
+                         ws[:, self.gmm_k:])
+            x = means[torch.arange(B, device=x.device), ws[:, : self.gmm_k].argmax(dim=1)]
 
         x = x.permute(0, 2, 1)
         return x, scalar_out

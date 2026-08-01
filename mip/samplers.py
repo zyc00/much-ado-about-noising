@@ -16,7 +16,7 @@ from mip.torch_utils import at_least_ndim
 def get_default_step_list(loss_type: str):
     if loss_type in ["flow", "ctm", "lmd", "psd", "lsd", "esd", "mf"]:
         return 3 ** np.arange(2, -1, -1)
-    elif loss_type in ["regression", "regression_cauchy", "regression_student_t", "mip", "tsd", "straight_flow"]:
+    elif loss_type in ["regression", "regression_relerr", "regression_fadehint", "regression_residual", "regression_rw", "regression_cauchy", "regression_student_t", "regression_hetero_t", "regression_globalt", "regression_hgclip", "regression_gmm", "regression_sigmaw", "regression_selfsw", "regression_invw", "regression_gfloor", "regression_selfnorm", "regression_condreg", "regression_condnum", "regression_pathdamp", "regression_focal", "regression_hetero_t_rankmid", "regression_hetero_t_jspec", "regression_jspec", "regression_hetero_t_mixnn", "regression_hetero_t_midlin", "regression_hetero_t_jitcons", "regression_hetero_gauss_midlin", "regression_hetero_gauss_jspec", "regression_hetero_gauss_rankmid", "regression_fdistill", "regression_condann", "regression_dcr", "regression_hetero_gauss_cnd", "regression_hetero_diag", "regression_hetero_t_diag", "regression_hetero_t_cnd", "regression_dcw", "regression_labelnoise", "regression_featdrop", "regression_snteach", "regression_emaret", "regression_hetero_gauss", "regression_sigaux", "regression_headonly", "regression_binw", "regression_distinc", "regression_hetero_t_fdlip", "regression_hetero_t_tublip", "regression_pace", "regression_paceabs", "regression_trim", "regression_normed", "regression_stdt", "mip", "mip_cauchyv1", "mip_heterov1", "mip_quant", "mip_siganneal", "mip_rw", "mip_step1", "mip_nonoise", "mip_nonoise_atk", "mip_shufx", "mip_shufx", "mip_auxtan", "mip_auxflip", "mip_auxdetach", "mip_distill", "mip_distill2", "mip_lambda", "tsd", "straight_flow", "regression_manifold", "regression_obsnoise", "regression_offmanjac", "regression_geomreg", "regression_stressreg", "regression_sigreg", "regression_randaug", "regression_tjitter", "regression_jacreg", "regression_dup100", "regression_frozentrunk", "regression_cvu", "regression_recgeo", "regression_pdprior", "regression_tauteacher", "regression_taufeat", "regression_badpen", "regression_opanchor", "regression_cvu", "regression_recgeo", "regression_pdprior", "mip_tubeaux", "mip_scramaux", "mip_randaux", "mip_eqw", "denoise_only", "denoise_zeroin", "denoise_zeroin_flat", "denoise_randin", "denoise_scramble", "mip_auxdet", "mip_zeroaux", "mip_tubeaux", "mip_scramaux", "mip_randaux"]:
         return [1]
     else:
         raise NotImplementedError(f"Loss type {loss_type} not implemented.")
@@ -25,10 +25,18 @@ def get_default_step_list(loss_type: str):
 def get_sampler(loss_type: str):
     if loss_type == "flow":
         return ode_sampler
-    elif loss_type in ["regression", "regression_cauchy", "regression_student_t", "straight_flow"]:
+    elif loss_type == "regression_residual":
+        return regression_residual_sampler
+    elif loss_type in ["regression", "regression_relerr", "regression_fadehint", "regression_rw", "regression_cauchy", "regression_student_t", "regression_hetero_t", "regression_globalt", "regression_hgclip", "regression_gmm", "regression_sigmaw", "regression_selfsw", "regression_invw", "regression_gfloor", "regression_selfnorm", "regression_condreg", "regression_condnum", "regression_pathdamp", "regression_focal", "regression_hetero_t_rankmid", "regression_hetero_t_jspec", "regression_jspec", "regression_hetero_t_mixnn", "regression_hetero_t_midlin", "regression_hetero_t_jitcons", "regression_hetero_gauss_midlin", "regression_hetero_gauss_jspec", "regression_hetero_gauss_rankmid", "regression_fdistill", "regression_condann", "regression_dcr", "regression_hetero_gauss_cnd", "regression_hetero_diag", "regression_hetero_t_diag", "regression_hetero_t_cnd", "regression_dcw", "regression_labelnoise", "regression_featdrop", "regression_snteach", "regression_emaret", "regression_hetero_gauss", "regression_sigaux", "regression_headonly", "regression_binw", "regression_distinc", "regression_hetero_t_fdlip", "regression_hetero_t_tublip", "regression_pace", "regression_paceabs", "regression_trim", "regression_normed", "regression_stdt", "straight_flow", "regression_obsnoise", "regression_offmanjac", "regression_geomreg", "regression_stressreg", "regression_sigreg", "regression_randaug", "regression_tjitter", "regression_jacreg", "regression_dup100", "regression_frozentrunk", "regression_cvu", "regression_recgeo", "regression_pdprior", "regression_tauteacher", "regression_taufeat", "regression_badpen", "regression_opanchor"]:
         return regression_sampler
-    elif loss_type in ["tsd", "mip"]:
+    elif loss_type in ["mip_quant", "mip_siganneal", "mip_eqw", "denoise_only", "denoise_zeroin", "denoise_zeroin_flat", "denoise_randin", "denoise_scramble"]:
         return mip_sampler
+    elif loss_type == "regression_manifold":
+        return regression_manifold_sampler
+    elif loss_type in ["tsd", "mip", "mip_cauchyv1", "mip_heterov1", "mip_rw", "mip_nonoise", "mip_nonoise_atk", "mip_shufx", "mip_shufx", "mip_auxtan", "mip_auxflip", "mip_auxdetach", "mip_distill", "mip_distill2", "mip_lambda", "mip_auxdet", "mip_zeroaux", "mip_tubeaux", "mip_scramaux", "mip_randaux"]:
+        return mip_sampler
+    elif loss_type == "mip_step1":
+        return mip_step1_only_sampler
     elif loss_type in ["lmd", "ctm", "psd", "lsd", "esd", "mf"]:
         return flow_map_sampler
     else:
@@ -117,6 +125,24 @@ def regression_sampler(
     return act
 
 
+def regression_manifold_sampler(
+    config: OptimizationConfig,
+    flow_map: FlowMap,
+    encoder: BaseEncoder,
+    act_0: torch.Tensor,
+    obs: torch.Tensor,
+):
+    """Inference for regression_manifold: predict from zeros, then pass through the same
+    frozen action manifold (denoiser) used in training."""
+    from mip.action_manifold import project
+    bs = act_0.shape[0]
+    act_zeros = torch.zeros_like(act_0, device=act_0.device)
+    t = torch.zeros(bs, device=act_0.device)
+    obs_emb = encoder(obs, None)
+    act = flow_map.get_velocity(t, act_zeros, obs_emb)
+    return project(act, act_0.device)
+
+
 def mip_step1_only_sampler(
     config: OptimizationConfig,
     flow_map: FlowMap,
@@ -131,6 +157,24 @@ def mip_step1_only_sampler(
     act_0 = torch.zeros_like(act_0, device=act_0.device)
     act_pred_0 = flow_map.get_velocity(s, act_0, obs_emb)
     return act_pred_0
+
+
+def regression_residual_sampler(
+    config,
+    flow_map,
+    encoder,
+    act_0,
+    obs,
+):
+    """Deploy teacher(s) + student(s)."""
+    from mip.losses import _resid_teacher
+    bs = act_0.shape[0]
+    t = torch.zeros((bs,), device=act_0.device)
+    z = torch.zeros_like(act_0, device=act_0.device)
+    tfm, tenc = _resid_teacher(flow_map, encoder, act_0.device)
+    coarse = tfm.get_velocity(t, z, tenc(obs, None))
+    fine = flow_map.get_velocity(t, z, encoder(obs, None))
+    return coarse + fine
 
 
 def mip_sampler(

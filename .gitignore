@@ -237,3 +237,4 @@ analysis/*.csv
 *.npz
 *.mp4
 *.gif
+q_learning/ffn/

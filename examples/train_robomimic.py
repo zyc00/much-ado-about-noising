@@ -62,11 +62,21 @@ def train(config: Config, envs, dataset, agent, logger, resume_state=None):
         resume_state: Optional dict with training state to resume from
     """
     # dataloader
+    _pr_sampler = None
+    if os.environ.get("PHASE_RESAMPLE", "0") == "1":
+        _prw = torch.tensor(dataset.phase_resample_weights(), dtype=torch.double)
+        _pr_sampler = torch.utils.data.WeightedRandomSampler(
+            _prw, num_samples=len(dataset), replacement=True)
+    elif os.environ.get("DENSITY_RESAMPLE", "0") == "1":
+        _prw = torch.tensor(dataset.density_resample_weights(), dtype=torch.double)
+        _pr_sampler = torch.utils.data.WeightedRandomSampler(
+            _prw, num_samples=len(dataset), replacement=True)
     dataloader = torch.utils.data.DataLoader(
         dataset,
         batch_size=config.optimization.batch_size,
         num_workers=4 if config.task.obs_type == "state" else 8,
-        shuffle=True,
+        sampler=_pr_sampler,
+        shuffle=False if _pr_sampler is not None else True,
         # accelerate cpu-gpu transfer
         pin_memory=True,
         # don't kill worker process after each epoch
@@ -81,6 +91,20 @@ def train(config: Config, envs, dataset, agent, logger, resume_state=None):
         agent.optimizer,
         T_max=config.optimization.gradient_steps,
     )
+    if os.environ.get("LR_WARMUP_STEPS"):
+        # linear warmup 0->lr over N steps, then the cosine schedule above
+        from torch.optim.lr_scheduler import LinearLR, SequentialLR
+
+        _wu = int(os.environ["LR_WARMUP_STEPS"])
+        lr_scheduler = SequentialLR(
+            agent.optimizer,
+            schedulers=[
+                LinearLR(agent.optimizer, start_factor=1e-3, end_factor=1.0, total_iters=_wu),
+                CosineAnnealingLR(agent.optimizer, T_max=config.optimization.gradient_steps - _wu),
+            ],
+            milestones=[_wu],
+        )
+        loguru.logger.info(f"LR warmup enabled: {_wu} steps linear then cosine")
 
     # warmup scheduler (mainly for flow map learning)
     warmup_scheduler = WarmupAnnealingScheduler(
@@ -200,6 +224,19 @@ def train(config: Config, envs, dataset, agent, logger, resume_state=None):
             loguru.logger.info("Save model...")
             logger.save_agent(agent=agent, identifier="latest")
 
+        # Fast-iteration hooks: SNAP_AT="20000,60000" saves model_step<N>.pt
+        # at those steps; STOP_AT=60000 ends training early while keeping
+        # the full-schedule LR/delta_t shapes (recipe preserved).
+        _snapat = os.environ.get("SNAP_AT")
+        if _snapat and (n_gradient_step + 1) in {
+                int(x) for x in _snapat.split(",")}:
+            logger.save_agent(agent=agent,
+                              identifier=f"step{n_gradient_step + 1}")
+        _stopat = int(os.environ.get("STOP_AT", "0"))
+        if _stopat and (n_gradient_step + 1) >= _stopat:
+            loguru.logger.info(f"STOP_AT={_stopat} reached; ending early")
+            break
+
         if ((n_gradient_step + 1) % config.log.eval_freq) == 0:
             loguru.logger.info("Evaluate model...")
             agent.eval()
@@ -303,8 +340,12 @@ def eval(config: Config, envs, dataset, agent, logger, num_steps=1):
     for i in range(config.log.eval_episodes // config.task.num_envs):
         ep_reward = [0.0] * config.task.num_envs
         ever_assembled = np.zeros(config.task.num_envs, dtype=bool)
+        _ema_act = None  # per-episode state for AS_EMA action low-pass
         obs, _ = envs.reset()
         t = 0
+        _td = os.environ.get("TRAJDUMP")
+        if _td:
+            _tdo, _tda = [], []
 
         # initialize video stream
         if config.log.save_video:
@@ -380,6 +421,18 @@ def eval(config: Config, envs, dataset, agent, logger, num_steps=1):
                 start = config.task.obs_steps - 1
                 end = start + config.task.act_steps
                 act = act[:, start:end, :]
+                if os.environ.get("AS_REPEAT", "0") == "1":
+                    # zero-order hold: replan every act_steps but execute the
+                    # FIRST predicted action repeatedly (no chunk-tail content)
+                    act = np.repeat(act[:, :1, :], act.shape[1], axis=1)
+                _asema = float(os.environ.get("AS_EMA", "0"))
+                if _asema > 0:
+                    # low-pass the executed action across replans (jitter
+                    # filter at AS=1: keeps fresh re-decisions, removes
+                    # high-frequency resampling noise)
+                    _ema_act = (act if _ema_act is None
+                                else _asema * act + (1 - _asema) * _ema_act)
+                    act = _ema_act
 
                 # Convert relative actions back to absolute before env step
                 if action_type == "relative":
@@ -416,6 +469,15 @@ def eval(config: Config, envs, dataset, agent, logger, num_steps=1):
                     act = dataset.undo_transform_action(act)
 
             with timed("env_step", inference_times):
+                _ag = float(os.environ.get("ACTGAIN", "0"))
+                if _ag > 0:
+                    for _lo, _hi in [tuple(int(x) for x in b.split("-")) for b in os.environ.get("ACT_BLOCKS", "0-3,7-10").split(",")]:
+                        act[..., _lo:_hi] = np.clip(act[..., _lo:_hi] * _ag, -1, 1)
+                if _td:
+                    _o = obs["state"] if isinstance(obs, dict) else obs
+                    _o = _o.detach().cpu().numpy() if hasattr(_o, "detach") else np.asarray(_o)
+                    _tdo.append(_o[:, -1].copy())
+                    _tda.append(np.asarray(act).copy())
                 obs, reward, terminated, truncated, info = envs.step(act)
                 _ = terminated | truncated
                 ep_reward += reward
@@ -439,6 +501,10 @@ def eval(config: Config, envs, dataset, agent, logger, num_steps=1):
             # Use p4 success rate as the main success metric for kitchen environments
             success = [1 if num >= 4 else 0 for num in task_completion_counts]
 
+        if _td:
+            _np = {"obs": np.stack(_tdo, axis=1), "act": np.concatenate([a.reshape(a.shape[0], -1, a.shape[-1]) if a.ndim == 3 else a[:, None] for a in _tda], axis=1),
+                   "succ": np.array([1.0 if r > 0 else 0.0 for r in ep_reward])}
+            np.savez(f"{_td}_ep{i}.npz", **_np)
         episode_rewards.append(ep_reward)
         episode_steps.append(t)
         episode_success.append(success)
@@ -522,6 +588,8 @@ def main(config):
     obs, info = envs.reset()
     if config.task.obs_type == "state":
         config.task.obs_dim = obs.shape[-1]
+        if os.environ.get("OBS_DIM_OVERRIDE"):
+            config.task.obs_dim = int(os.environ["OBS_DIM_OVERRIDE"])
     else:
         # For image observations, set obs_dim to embedding dimension
         # This is used by the network but not actually used when encoder_type is "image"
@@ -535,9 +603,31 @@ def main(config):
     agent = TrainingAgent(config)
     resume_state = None
 
+    if os.environ.get("INIT_CKPT"):
+        # warm-start WEIGHTS ONLY: fresh optimizer/scheduler, hydra lr/wd apply as configured
+        loguru.logger.info(f"INIT_CKPT: loading weights (no optimizer) from {os.environ['INIT_CKPT']}")
+        _fresh_head = None
+        if os.environ.get("REINIT_HEAD") == "1":
+            from copy import deepcopy as _dc
+
+            def _fc(m):
+                out = None
+                for _n, _mod in m.named_modules():
+                    if _n.endswith("final_conv"):
+                        out = _mod
+                return out
+
+            _fresh_head = _dc(_fc(agent.flow_map).state_dict())
+        agent.load(os.environ["INIT_CKPT"], load_optimizer=False)
+        if _fresh_head is not None:
+            _fc(agent.flow_map).load_state_dict(_fresh_head)
+            _fc(agent.flow_map_ema).load_state_dict(_fresh_head)
+            loguru.logger.info("REINIT_HEAD: final_conv re-initialized to fresh random (net+ema)")
+
     if config.optimization.model_path and config.optimization.model_path != "None":
         loguru.logger.info(f"Loading model from {config.optimization.model_path}")
-        resume_state = agent.load(config.optimization.model_path, load_optimizer=True)
+        resume_state = agent.load(config.optimization.model_path,
+                                  load_optimizer=(config.mode != "eval"))
     elif config.optimization.auto_resume:
         # Automatically look for checkpoint to resume from
         checkpoint_base_name = (

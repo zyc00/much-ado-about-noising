@@ -51,6 +51,7 @@ class OptimizationConfig:
 @dataclass
 class NetworkConfig:
     network_type: str = "mlp"  # "mlp" or "cnn"
+    gmm_k: int = 0  # >1 enables the MDN/GMM head on chiunet (regression_gmm)
     num_layers: int = 4
     emb_dim: int = 512
     dropout: float = 0.1
@@ -111,6 +112,15 @@ class TaskConfig:
     obs_dim: int = -1
     act_dim: int = 10
     phase_indicator: bool = False  # if True, append 3-dim phase one-hot to action target (aux output task)
+    pose_indicator: bool = False  # if True (implies rot_indicator), also append gate-frame frame-position offset (3ch)
+    normjit: bool = False  # if True, normal-direction obs jitter (annulus pull-back regularizer)
+    knnsmooth: bool = False  # if True, replace action targets with kNN-conditional means (target-side smoothing)
+    mixup: bool = False  # if True, local cross-demo kNN mixup (interstitial-field training)
+    despike: bool = False  # if True, replace top-decile temporal-residual action steps with local median (crowding-out test)
+    rot_indicator: bool = False  # if True, append in-hand orientation-error rotvec (3ch, to demo insertion frame) to action target
+    progress_indicator: bool = False  # if True, append normalized episode-progress ramp t/T to action target (dense anti-starvation aux output)
+    tc_indicator: bool = False  # if True, append clipped signed time-to-closure ramp to action target
+    fwd_indicator: bool = False  # if True, append 8-step forward state delta (obs_dim channels) to action target
     phase_input: bool = False  # if True, append 3-dim phase one-hot to OBS (condition policy on phase)
     obs_steps: int = 2
     act_steps: int = 8
