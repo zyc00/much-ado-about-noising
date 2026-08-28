@@ -13,7 +13,7 @@ from mip.env_utils import MultiStepWrapper, VideoRecorder, VideoRecordingWrapper
 
 
 def make_env(task_config: TaskConfig, idx, render=False, seed=None):
-    if task_config.env_name in ["can", "lift", "square", "tool_hang", "transport"]:
+    if task_config.env_name in ["can", "lift", "square", "tool_hang", "transport", "cube"]:
         return make_robomimic_env(task_config, idx, render, seed=seed)
     else:
         raise ValueError(f"Environment {task_config.env_name} not supported")
@@ -33,7 +33,7 @@ def make_vec_env(task_config: TaskConfig, seed=None):
         vnc_env_class = gym.vector.SyncVectorEnv
     else:
         vnc_env_class = gym.vector.AsyncVectorEnv
-    if task_config.env_name in ["can", "lift", "square", "tool_hang", "transport"]:
+    if task_config.env_name in ["can", "lift", "square", "tool_hang", "transport", "cube"]:
         try:
             envs = vnc_env_class(
                 [
@@ -60,6 +60,8 @@ def make_robomimic_env(task_config: TaskConfig, idx, render=False, seed=None):
         import robomimic.utils.env_utils as EnvUtils
         import robomimic.utils.file_utils as FileUtils
         import robomimic.utils.obs_utils as ObsUtils
+
+        import mip.envs.robomimic.custom_envs  # noqa: F401  (registers BigCubeLift etc.)
 
         def create_robomimic_env(
             env_meta, obs_keys=None, shape_meta=None, enable_render=True

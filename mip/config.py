@@ -29,6 +29,15 @@ class OptimizationConfig:
     discrete_dt: float = 0.01
     grad_clip_norm: float = 10.0
     ema_rate: float = 0.995
+    # DP-style progressive (power-law) EMA. ema_power=0 keeps the constant
+    # ema_rate above; >0 uses decay = 1-(1+step/inv_gamma)^-power capped at
+    # ema_max, i.e. an averaging window that grows with training.
+    ema_power: float = 0.0
+    ema_inv_gamma: float = 1.0
+    ema_max: float = 0.9999
+    ema_min: float = 0.0
+    adam_beta1: float = 0.9
+    adam_beta2: float = 0.999
     batch_size: int = 1024
     gradient_steps: int = 300000
     warmup_ratio: float = 0.0
@@ -45,6 +54,9 @@ class OptimizationConfig:
     use_cudagraphs: bool = False  # Whether to use CUDA graphs (requires static shapes)
     auto_resume: bool = True  # Whether to automatically resume from checkpoint
     cauchy_c: float = 0.2
+    nu_cond_reg: float = 0.01  # learnnu_cond: deviation shrinkage weight
+    nu_cond_warmup: int = 30000  # learnnu_cond: steps before nu(s) unfreezes
+    xm_k: int = 4  # forward-XM best-of-K exploration (mip_xm / flow_xm)
     student_t_df: float = 2.0  # degrees of freedom for regression_student_t loss (df=1 -> Cauchy, df->inf -> Gaussian)
 
 

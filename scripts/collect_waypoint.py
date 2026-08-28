@@ -30,10 +30,13 @@ import sys
 sys.path.insert(0, "scripts")
 from scripted_tool_hang_v2 import run_episode, ENV_KWARGS, ENV_ARGS, OBS_KEYS_TO_RECORD, extract_obs
 
-WP_EPS = 0.01     # arrival tolerance (m)
-WP_STEPCAP = 25   # max PD steps per waypoint (noise/contact safety)
-PG = 12.0         # position gain
-OG = 6.0          # orientation gain
+WP_EPS = float(os.environ.get("WP_EPS", "0.01"))       # arrival tolerance (m)
+WP_STEPCAP = int(os.environ.get("WP_STEPCAP", "25"))   # max PD steps per waypoint
+PG = float(os.environ.get("WP_PG", "12.0"))            # position gain
+OG = float(os.environ.get("WP_OG", "6.0"))             # orientation gain
+WP_ORI_EPS = float(os.environ.get("WP_ORI_EPS", "0"))  # >0: also gate waypoint
+# advancement on orientation error (axis-angle norm, rad) — helps contact phases
+# where position arrives but orientation lags.
 
 
 def nominal_waypoints(seed):
@@ -59,8 +62,49 @@ def track(seed, wps, noise=0.0, noise_seed=0, record=False, horizon=4000):
             "obs": {k: [] for k in OBS_KEYS_TO_RECORD}}
     init_state = sim.get_state().flatten(); model_xml = sim.model.get_xml()
 
+    _sk = float(os.environ.get("SKEW_NOISE", "0"))
+    _sd = os.environ.get("SKEW_DIST", "exp")
+    _sp = float(os.environ.get("SKEW_P", "0.15"))
+    _snd = int(os.environ.get("SKEW_DIMS", "6"))
+    _scl = float(os.environ.get("SKEW_CLIP", "0"))
+    _sdf = float(os.environ.get("SKEW_DF", "2.0"))
+    _shold = int(os.environ.get("SKEW_HOLD", "1"))  # redraw eps every N steps;
+    # the toy residual is per replanning CYCLE, not per step — SKEW_HOLD=8
+    # matches the toy's temporal structure (and is gentler on the oracle).
+    _hstate = {"eps": None, "k": 0}
+
     def step(a):
         a = np.clip(a, -1, 1).astype(np.float64)
+        if _sk > 0:  # NFL witness: zero-mean behavior noise, recorded AND
+            # executed (on-dynamics oracle stochasticity; realizability =
+            # collection acceptance rate). Mutually exclusive with the DART
+            # `noise` arg, which executes noise but records CLEAN labels.
+            if _shold > 1 and _hstate["eps"] is not None and _hstate["k"] % _shold != 0:
+                eps = _hstate["eps"]
+            else:
+                if _sd == "t":
+                    eps = _sk * rng.standard_t(_sdf, _snd)
+                elif _sd == "twopoint":
+                    eps = _sk * ((rng.rand(_snd) < _sp).astype(np.float64) - _sp)
+                elif _sd == "toyskew":
+                    # toy2d_mip_nfl "skew" cell: -B w.p. .8, +4B w.p. .2 (zero mean)
+                    b = (rng.rand(_snd) < 0.2).astype(np.float64)
+                    eps = _sk * (5.0 * b - 1.0)  # -B / +4B with _sk = B
+                elif _sd == "contam":
+                    # toy2d_mip_nfl "contaminated" cell: 0 w.p. .7, +2B w.p. .2,
+                    # +16B w.p. .1 (one-sided; label mean = +2B). _sk = B.
+                    u = rng.rand(_snd)
+                    eps = np.where(u < 0.7, 0.0, np.where(u < 0.9, 2.0 * _sk, 16.0 * _sk))
+                elif _sd == "symm":
+                    # toy falsifier: +/-B 50/50
+                    eps = _sk * np.sign(rng.rand(_snd) - 0.5)
+                else:
+                    eps = _sk * (rng.exponential(1.0, _snd) - 1.0)
+                if _scl > 0:
+                    eps = np.clip(eps, -_scl, _scl)
+                _hstate["eps"] = eps
+            _hstate["k"] += 1
+            a[:_snd] = np.clip(a[:_snd] + eps, -1, 1)
         if record:
             traj["actions"].append(a.copy())  # CLEAN toward-waypoint action
             traj["states"].append(sim.get_state().flatten().copy())
@@ -83,7 +127,11 @@ def track(seed, wps, noise=0.0, noise_seed=0, record=False, horizon=4000):
             do = np.clip(ea * OG, -1, 1)
             step(np.concatenate([dp, do, [wp_grip]]))
             if np.linalg.norm(o[0]["robot0_eef_pos"] - wp_pos) < WP_EPS:
-                break
+                if WP_ORI_EPS <= 0:
+                    break
+                em2 = T.quat2mat(o[0]["robot0_eef_quat"])
+                if np.linalg.norm(T.quat2axisangle(T.mat2quat(T.quat2mat(wp_quat) @ em2.T))) < WP_ORI_EPS:
+                    break
     succ = env._check_success()
     env.close()
     return succ, traj, init_state, model_xml

@@ -1,0 +1,14 @@
+# @package log
+# Diffusion-Policy eval protocol: 22 rollouts per checkpoint (their robomimic
+# runs used 22 initial conditions), so our numbers are directly comparable to
+# their published logs rather than to a 50-episode estimate.
+defaults:
+  - default
+  - _self_
+
+eval_episodes: 22
+# 160 evals over a 300k-step run == DP's 160 (8000 epochs, rollout every 50),
+# which also makes last-5 span 3.1% of training, matching their window.
+# NOTE: the eval loop runs (eval_episodes // task.num_envs) rounds of
+# task.num_envs episodes, so task.num_envs=22 is required for 22 rollouts.
+eval_freq: 1875

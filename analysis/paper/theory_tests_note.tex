@@ -1,0 +1,438 @@
+\documentclass[10pt]{article}
+\usepackage[margin=0.95in]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage[colorlinks=true,linkcolor=blue,citecolor=blue]{hyperref}
+\newcommand{\yes}{\textcolor{teal}{\textbf{supported}}}
+\newcommand{\no}{\textcolor{red}{\textbf{refuted}}}
+\newcommand{\partialv}{\textcolor{orange}{\textbf{partial}}}
+\title{Do our scripted (MP) results follow Sokoli\'c et al., Dinh et al.,
+and Rahaman et al.?\\
+{\large A pre-specified test suite over three papers, with verdicts and
+the cells that failed}}
+\date{2026-07-25}
+\begin{document}
+\maketitle
+
+\paragraph{Scope.} ``Scripted data'' means the MP collector only (SE(3)
+min-jerk plan, feedforward/feedback tracking, reactive contact handoff);
+the pointing-label dataset is retired. Six trained arms: $\{$L2, HT, HG,
+MIP$\}$ at 200 demos and $\{$L2, MIP$\}$ at 2000 demos, all 300k steps,
+one seed each. Success rate (SR) is the twofactor harness, AS$=8$, 60
+seeds. All Jacobians below are of the \emph{deployed} policy map
+(observation window $\to$ executed 8-step action chunk, through the full
+sampler) unless stated otherwise.
+
+\paragraph{The two theories.}
+\textbf{(A) Sokoli\'c, Giryes, Sapiro, Rodrigues, \emph{Robust Large
+Margin Deep Neural Networks} (arXiv:1605.08254)}: the generalization
+error is controlled by the \emph{spectral norm of the network Jacobian in
+the neighbourhood of the training samples} (divided by the classification
+margin), with no dependence on width or depth; they also propose a
+Jacobian-norm regularizer.
+\textbf{(B) Dinh, Pascanu, Bengio, Bengio, \emph{Sharp Minima Can
+Generalize For Deep Nets} (arXiv:1703.04933)}: for rectifier networks,
+parameter-space flatness/sharpness measures can be changed arbitrarily by
+function-preserving reparameterizations, so they cannot by themselves
+explain generalization; any meaningful measure must be invariant.
+
+\section{Theory A: the Jacobian spectral norm}
+
+\subsection*{A1 --- cross-arm test}
+Two independent measurements were made. Both use the deployed map, but
+the first drew states and gaps from separate probes; the second
+(\texttt{probe\_theory\_suite}) measures $\|J\|_2$, the train error and
+the held-out error in \emph{one} pass with a single state protocol. We
+report the second as primary.
+
+\begin{center}\small
+\begin{tabular}{lrrrrrr}
+\toprule
+arm & $\|J\|_2$ & $N_{\text{win}}$ & $\|J\|_2/\sqrt{N}$ & gap & held-out err & SR \\
+\midrule
+MIP-2k  & 3.86 & 74111 & 0.0142 & 0.00428 & 0.00464 & 100 \\
+L2-2k   & 4.24 & 74111 & 0.0156 & 0.00433 & 0.00546 & 94 \\
+HT-200  & 2.18 & 7431  & 0.0253 & 0.01169 & 0.01179 & 75 \\
+MIP-200 & 2.38 & 7431  & 0.0276 & 0.01198 & 0.01211 & 94 \\
+L2-200  & 2.99 & 7431  & 0.0347 & 0.01141 & 0.01192 & 63 \\
+HG-200  & 3.08 & 7431  & 0.0357 & 0.01084 & 0.01107 & 87 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+$r(\|J\|_2/\sqrt N,\ \text{gap}) = +0.857$ and
+$r(\|J\|_2/\sqrt N,\ \text{held-out error}) = +0.869$ --- but the
+correlation is carried \emph{entirely by the data-scale contrast}: the
+two 2k arms have small gaps and small $\|J\|_2/\sqrt N$, the four
+200-demo arms have large ones. \textbf{Within the 200-demo group the
+relation vanishes}: sorted by $\|J\|_2$ the gaps read
+$2.18\!\to\!0.0117$, $2.38\!\to\!0.0120$, $2.99\!\to\!0.0114$,
+$3.08\!\to\!0.0108$ --- i.e.\ flat to slightly \emph{decreasing}. The
+apparent cross-arm success of Theory A is a two-group effect that
+$\sqrt N$ already accounts for. \no{} as an explanation of the
+objective axis; \partialv{} as a description of the data axis.
+
+\emph{Two recorded corrections.} (i) A first pass using Frobenius norms
+at rollout states gave $r=0.966$ and a 6/6 monotone ordering; it does not
+survive the single-protocol measurement. (ii) In that first pass MIP-200's
+gap ($0.0073$) was below L2-200's ($0.0095$); under the controlled
+protocol the ordering \emph{reverses} ($0.0120$ vs $0.0114$). The
+between-arm gap differences at 200 demos are within the state-sampling
+noise, so no claim should rest on them.
+
+\subsection*{A2 --- within-arm trajectory (no cross-arm confound)}
+Tracking both quantities across snapshots of the \emph{same} arm removes
+every cross-arm confound. The spectral norm falls by a factor of
+$2.7$--$4.7$ over training in every arm; the gap does not follow it.
+
+\begin{center}\small
+\begin{tabular}{lrrrrr}
+\toprule
+snapshot & 20k & 60k & 120k & 180k & 300k \\
+\midrule
+L2-200 \ $\|J\|_2$ & 7.93 & 5.15 & 3.14 & 2.94 & 2.99 \\
+L2-200 \ gap       & 0.0103 & 0.0127 & 0.0090 & 0.0101 & 0.0114 \\
+MIP-200 $\|J\|_2$  & 7.38 & 2.51 & 2.40 & 2.37 & 2.38 \\
+MIP-200 gap        & 0.0089 & 0.0092 & 0.0136 & 0.0125 & 0.0120 \\
+L2-2k \ $\|J\|_2$  & 13.76 & 13.05 & 5.40 & 4.61 & 4.24 \\
+L2-2k \ gap        & 0.0027 & 0.0038 & 0.0034 & 0.0035 & 0.0043 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+In L2-200 the norm falls $2.7\times$ while the gap rises slightly; in
+MIP-200 it falls $3.1\times$ while the gap rises $35\%$; in L2-2k it
+falls $3.2\times$ while the gap rises $60\%$. \no{} --- within a training
+run the Jacobian spectral norm and the generalization gap move in
+opposite directions.
+
+\subsection*{A3 --- their own regularizer, correctly dosed}
+Sokoli\'c et al.\ propose penalising the Jacobian norm. Our first attempt
+($\lambda=10^{-3}$) destroyed the fit (SR 2/60, on-support error $+35\%$)
+and is a void cell. Two correctly-dosed arms ($\lambda = 10^{-5},
+10^{-4}$) are training; the prediction is a \emph{lower} $\|J\|_2$ and a
+\emph{smaller} gap, with the fit intact.
+
+\subsection*{A4 --- width independence}
+The bound is claimed independent of width. A $2\times$-width L2 arm is
+training; the prediction is that its gap follows its measured $\|J\|_2$,
+not its parameter count.
+
+\section{Theory B: reparameterization invariance}
+
+The encoder is an MLP with LeakyReLU, which is positively homogeneous, so
+scaling the units of a hidden layer by $\alpha$ and dividing the next
+layer's incoming weights by $\alpha$ leaves the function \emph{exactly}
+unchanged. Applied to L2-200 (measured function change: mean
+$3.5\times10^{-5}$, on an action scale of $0.62$ --- float error):
+
+\begin{center}\small
+\begin{tabular}{lrrl}
+\toprule
+statistic & before & after & verdict \\
+\midrule
+encoder weight stable rank & [18.8, 21.0, 21.1] & [4.7, 7.9, 21.1] &
+\textcolor{red}{gauge artifact} \\
+embedding covariance PR     & 3.246 & 3.247 & invariant \\
+encoder-Jacobian PR         & 4.609 & 4.609 & invariant \\
+deployed-map PR             & 1.9460 & 1.9461 & invariant \\
+deployed $\|J\|_2$          & 2.9809 & 2.9809 & invariant \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Consequence for our own evidence.} We had cited the encoder
+weight stable rank as data-free evidence that the L2/MIP split ``lives in
+the weights''. That claim is \no{} and is withdrawn: the same function
+admits stable ranks of $18.8$ and $4.7$.
+
+\paragraph{What survives, and why.} The embedding PR survives this
+symmetry because the conditioning path applies a pointwise GELU
+\emph{directly} to the embedding
+(\texttt{cond\_encoder = Sequential(GELU, Linear)}), which pins the
+embedding's coordinate system --- it is not a free gauge in this
+architecture. It is, however, only weakly protected: rescaling the
+embedding's output units and compensating in the (GELU-preceded) consumers
+moved emb\_PR from $3.25$ to $4.84$ ($+49\%$) while changing the function
+by $\sim1\%$. We therefore treat emb\_PR as admissible but flagged, and
+treat the deployed-map quantities --- which are function-space objects and
+invariant by construction --- as the primary evidence.
+
+\subsection*{B2 --- $\epsilon$-sharpness}
+Dinh's own quantity
+$S(\theta)=\max_{\|\delta\|\le\epsilon\|\theta\|}
+(L(\theta+\delta)-L(\theta))/(1+L(\theta))$, $\epsilon=5\times10^{-4}$,
+16 random directions, measured before and after the \emph{exact}
+function-preserving rescaling:
+
+\begin{center}\small
+\begin{tabular}{lrrr}
+\toprule
+arm & $S(\theta)$ & after rescaling & ratio \\
+\midrule
+L2-200  & $1.93\times10^{-3}$ & $5.19\times10^{-4}$ & $0.27\times$ \\
+L2-2k   & $3.95\times10^{-3}$ & $1.35\times10^{-3}$ & $0.34\times$ \\
+HT-200  & $1.50\times10^{-2}$ & $2.55\times10^{-2}$ & $1.70\times$ \\
+HG-200  & $1.19\times10^{-1}$ & $3.26\times10^{-2}$ & $0.27\times$ \\
+MIP-200 & $6.25\times10^{-2}$ & $8.09\times10^{-2}$ & $1.29\times$ \\
+MIP-2k  & $6.95\times10^{-2}$ & $0$                 & $0\times$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Sharpness moves by factors of $0.27$ to $1.7$ (and to exactly zero for
+MIP-2k) under a transformation that leaves every prediction unchanged.
+\yes{} --- Dinh's construction applies to our networks directly.
+
+Two further observations. First, the deployed $\|J\|_2$ and deployed PR
+are invariant to \emph{machine precision} under both the rescaling and an
+exact hidden-unit permutation (e.g.\ L2-200: $2.9903 \to 2.9903 \to
+2.9903$), confirming the function-space/parameter-space split.
+Second, and directly in the spirit of the paper's title: MIP-200 sits in a
+minimum $32\times$ \emph{sharper} than L2-200's ($6.3\times10^{-2}$ vs
+$1.9\times10^{-3}$) while generalizing at least as well and succeeding
+$50\%$ more often. Sharp minima generalize here too. (Caveat: the loss
+functions differ between arms, so cross-arm sharpness comparisons are
+suggestive, not rigorous; the within-arm reparameterization results are
+the rigorous part.)
+
+\section{Theory C: spectral bias (Rahaman et al., arXiv:1806.08734)}
+
+\emph{Claim.} ReLU networks learn low frequencies first and express high
+frequencies only with finely tuned parameters, so high-frequency content
+is acquired late and is fragile.
+
+\emph{Test.} A demonstration trajectory is a dense 1-D path through
+observation space with ground-truth actions at every point, so the
+frequency content of a policy's output along that path can be compared
+directly with the target's own spectrum. Over 12 trajectories per arm we
+report the captured power ratio (pred/GT) in three bands
+($f<0.05$, $0.05\le f<0.2$, $f\ge0.2$ cycles/step), the error power by
+band, and the high-band power lost under a small parameter perturbation.
+The target itself is strongly low-frequency: its high/low power ratio is
+$0.0102$.
+
+\begin{center}\small
+\begin{tabular}{lrrrrr}
+\toprule
+ & \multicolumn{3}{c}{captured high-band power ratio} & err.\ frac.\ & frag.\ \\
+arm & 20k & 60k & 300k & high @300k & high \\
+\midrule
+L2-200  & 0.901 & 0.913 & 0.996 & 0.587 & $+0.001$ \\
+MIP-200 & \textbf{0.978} & \textbf{0.993} & 0.988 & 0.634 & $-0.004$ \\
+HT-200  & 0.919 & 0.958 & 0.988 & 0.624 & $-0.009$ \\
+HG-200  & 0.752 & 0.891 & 0.984 & 0.728 & $+0.001$ \\
+L2-2k   & 0.723 & 0.860 & 0.993 & 0.383 & $+0.001$ \\
+MIP-2k  & \textbf{1.012} & 0.964 & 1.000 & 0.352 & $+0.000$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{Learning order: \yes{}.} High-band capture rises monotonically
+with training in four of six arms (HG $0.75\!\to\!0.98$, L2-2k
+$0.72\!\to\!0.99$), i.e.\ low frequencies are fitted first --- exactly the
+predicted order. The residual error is high-frequency dominated in every
+arm ($35$--$73\%$ of error power above $f=0.2$), again as predicted.
+
+\paragraph{A new objective difference.} \textbf{MIP acquires the
+high-frequency content first}: at 20k steps it is already at $0.978$
+(200 demos) and $1.012$ (2k) while HG is at $0.752$ and L2-2k at
+$0.723$. This lines up with two independent measurements: MIP rebuilds
+representation rank from $\sim$1000 steps (§B), and MIP's success rate
+peaks at $20$--$60$k. Fast acquisition of fine structure is a genuine,
+measurable property of the objective.
+
+\paragraph{Endpoint deficiency: \no{}.} By 300k \emph{every} arm captures
+$98$--$100\%$ of the target's high-band power. The SR spread of $63$--$100$
+therefore cannot be attributed to missing high-frequency content along the
+demonstration manifold.
+
+\paragraph{Fragility: not observed.} A relative parameter perturbation of
+$2\times10^{-3}$ changes high-band power by less than $1\%$ in every arm
+($|{\rm frag}| \le 0.009$), so the ``finely tuned parameters'' claim does
+not manifest at this scale in our networks.
+
+\section{What the theories do and do not explain}
+
+\paragraph{Explained.} Theory C's learning-order claim is confirmed, and
+it yields a new and useful fact: MIP reaches the target's high-frequency
+content several times faster than the other objectives, which coincides
+with its early SR peak. Theory B is confirmed outright and gives us a
+measurement filter we now apply: \emph{function-space quantities only}.
+It also retires two things we had been quoting --- encoder weight stable
+rank (a gauge artifact) and any prospective ``MIP finds flatter minima''
+story (MIP's minima are $32\times$ sharper). Theory A survives only as a
+statement about the \emph{data} axis: $\|J\|_2/\sqrt N$ separates the 2k
+arms from the 200-demo arms in the right direction.
+
+\paragraph{Not explained.} (i) The objective axis: at matched data the
+four objectives span $63$--$94$ SR with $\|J\|_2$ spanning only
+$2.18$--$3.08$ in the \emph{wrong} order (HT lowest norm, second-worst
+SR; HG highest norm, third-best SR) and with held-out errors that agree
+to within sampling noise ($0.0111$--$0.0121$). Neither theory addresses
+why these four functions, which are equally accurate off their training
+sets, behave so differently in closed loop. (ii) The \emph{formation} asymmetry: from an
+identical initialization (emb\_PR $4.24$, encoder-Jacobian PR $35.7$),
+every objective collapses to emb\_PR $\approx2.6$--$3.1$ within
+$25$--$100$ steps, after which HG/HT rebuild from $\sim$400 steps, MIP
+from $\sim$1000, and L2 barely rebuilds at all
+($2.65\!\to\!3.69$ by 20k versus HG's $2.61\!\to\!6.54$). Neither theory
+addresses which objectives rebuild.
+
+\paragraph{Interventions attempted (honest accounting).} Five arms
+designed to move a candidate property have been damaged by dose or by
+train/test mismatch and are void cells, not evidence: obs-noise
+($\sigma=0.05$, SR 12), jacreg ($\lambda=10^{-3}$, SR 2), condreg v1
+($\lambda=1$, SR 0), featdrop $p=0.05$ (SR 17) and $p=0.15$ (SR 2). The
+featdrop pair is instructive nonetheless: it \emph{did} raise emb\_PR
+($3.29\to4.23$) and it \emph{did} shrink the gap ($0.0095\to0.0063$),
+while SR collapsed --- because the level of the held-out error rose
+($0.0100\to0.0136$). SR follows the error level, not the gap.
+Correctly-dosed replacements (condreg v2 at $3\times10^{-3}$ and
+$3\times10^{-4}$, jacreg at $10^{-5}$ and $10^{-4}$) are training.
+
+\section{The experiments run to try to establish the account}
+
+Every measurement below was undertaken specifically to give the three
+theories the best chance of explaining MIP/flow's advantage.
+
+\subsection*{E1 --- Sokoli\'c where the margin is tight (insertion phase)}
+The bound is margin/$\|J\|_2$; our margin is smallest at insertion, so that
+is where the theory should bite. A first pass ($n=40$ states) looked
+decisive --- MIP's insertion-phase gain appeared $3\times$ below L2's at
+both data scales ($5.6$ vs $16.2$; $10.3$ vs $35.6$). \textbf{It does not
+replicate at $n=120$}: the means are outlier-dominated and unstable
+(MIP-200 now reads $56.3$, \emph{above} L2-200's $26.3$). Robust
+statistics give
+
+\begin{center}\small
+\begin{tabular}{lrrr}
+\toprule
+arm & gain median & gain p90 & SR \\
+\midrule
+MIP-200 & 2.40 & \textbf{18.6} & 94 \\
+HT-200  & 2.71 & 54.4 & 75 \\
+HG-200  & 3.11 & 67.4 & 87 \\
+L2-200  & 3.11 & 49.4 & 63 \\
+L2-2k   & 4.10 & 74.2 & 94 \\
+MIP-2k  & 4.47 & \textbf{23.7} & 100 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+$r=+0.18$ (median) and $-0.02$ (p90) against SR. The one real signal is
+that \emph{both MIP arms have far fewer high-gain insertion states}
+(p90 $18.6$/$23.7$ versus $49$--$74$ for every other arm) --- an objective
+signature, but one that does not order the remaining four arms. \no{} as
+stated; \partialv{} as a MIP-vs-rest contrast.
+
+\subsection*{E2 --- Rahaman off the manifold (pre-registered falsifier)}
+On-manifold every arm is spectrally complete, so the pre-registered test
+was whether fine structure survives \emph{off} it. Along captured
+off-support rollout states ($d>10$, 600 states) versus on-support ones:
+
+\begin{center}\small
+\begin{tabular}{lrrrr}
+\toprule
+arm & high-band frac.\ on & off & output power off/on & SR \\
+\midrule
+MIP-200 & 0.607 & 0.559 & \textbf{0.29} & 94 \\
+MIP-2k  & 0.610 & 0.597 & \textbf{0.30} & 100 \\
+L2-2k   & 0.610 & 0.605 & 0.49 & 94 \\
+HT-200  & 0.606 & 0.586 & 0.57 & 75 \\
+HG-200  & 0.608 & 0.582 & 0.71 & 87 \\
+L2-200  & 0.606 & 0.590 & \textbf{1.03} & 63 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The spectral \emph{shape} is preserved by every arm off-manifold
+($0.56$--$0.60$ high-band fraction, essentially unchanged). What differs is
+the \emph{total output power}: the MIP arms attenuate to $29$--$30\%$ of
+their on-manifold energy, L2-2k to $49\%$, and L2-200 not at all
+($103\%$). This orders SR $5/6$ with $r=-0.844$ --- the best of any
+quantity in this report --- but it is a statement about response
+\emph{magnitude} off the data, i.e.\ a re-measurement of the off-support
+behaviour we already had ($|a|$ far-field $0.40$ for MIP vs $0.79$ for
+L2), not a spectral-bias effect.
+
+\subsection*{E3 --- causal tests of the in-support account}
+The incoherent (within-chunk) component of the held-out error orders SR
+$6/6$ --- the only on-manifold quantity that separates HT from MIP. Two
+manipulations tested it causally. Injecting incoherent error into MIP-200
+at doses spanning the entire between-arm range ($0.05$--$0.40$mm, both
+i.i.d.\ and the faithful state-correlated zero-mean-per-chunk version)
+left SR unchanged: $52/60 \to 51,54,50,51,52,57$. Removing it from L2-200
+by within-chunk low-pass destroyed the policy (the filter attenuates the
+coherent component too) and is void. \no{} --- the correlation does not
+survive intervention; the PD/impedance layer and arm inertia evidently
+absorb incoherent action error at these magnitudes.
+
+\subsection*{E4 --- ablations}
+Batch size $256$ vs $1024$: SR $41/60$, $38/60$ vs $40/60$, $38/60$; in-support
+error identical ($1.054$ vs $1.046$mm). The gradient-noise knob does
+nothing, weakening every noise-driven account. Coverage: $200 \to 38/60$,
+$800 \to 55/60$, $2000 \to 56/60$, with in-support error falling
+$1.046 \to 0.754 \to 0.449$mm --- on the \emph{data} axis precision and SR
+move together, which is what an on-manifold theory predicts and is the
+one place the theories work.
+
+\section{Verdict}
+
+\begin{center}\small
+\begin{tabular}{llp{7.4cm}}
+\toprule
+theory & verdict & what it does and does not carry \\
+\midrule
+Dinh & \yes{} & Applies to our networks exactly; retires weight stable
+rank and any flat-minima story (MIP's minima are $32\times$ sharper);
+supplies the function-space measurement filter. Methodological, not
+explanatory. \\
+Sokoli\'c & \partialv{} & Describes the \emph{data} axis (2k vs 200).
+Fails within a training run (norm falls $2.7$--$4.7\times$ while the gap
+is flat or rises), fails within matched data, and its margin-weighted
+form fails at adequate $n$. \\
+Rahaman & \partialv{} & Learning order confirmed, and MIP acquires
+high-frequency content $\sim3\times$ earlier --- a real objective
+difference. But every arm is spectrally complete by 300k, so it cannot
+explain the endpoint spread. \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\paragraph{The honest conclusion.} The three papers are theories of
+on-manifold supervised learning, and on that ground our six arms differ
+in the ways the papers describe --- but those differences do not survive
+intervention, while the differences that track SR (off-support response
+magnitude, $r=-0.84$; excursion escalation, $0.44$ vs $0.12$; the
+restoring-versus-escaping annulus field) are all off-manifold quantities
+that none of the three papers addresses. We therefore cannot claim these
+papers explain MIP/flow's benefit. What we can claim is narrower and
+defensible: \emph{Dinh tells us which of our measurements are admissible;
+Sokoli\'c accounts for why more data helps; Rahaman accounts for why MIP
+gets there first; and the residual advantage --- the part that separates
+the objectives at fixed data --- is an off-manifold property that remains
+unexplained by all three.}
+
+\section{Pre-registered falsifiers}
+\begin{enumerate}\itemsep2pt
+\item If the within-arm trajectory (A2) shows the gap and $\|J\|_2$ moving
+in opposite directions over training, Theory A does not describe our
+training dynamics, only our cross-arm variation.
+\item If correctly-dosed jacreg (A3) lowers $\|J\|_2$ with the fit intact
+and the gap does \emph{not} shrink, Theory A's mechanism is refuted
+constructively in our setting.
+\item If the $2\times$-width arm (A4) has the same $\|J\|_2$ and a
+different gap, the width-independence claim fails here.
+\item If $\epsilon$-sharpness is unchanged by the exact rescaling (B2),
+our architecture escapes Dinh's construction and sharpness would become
+admissible again.
+\item If a frequency-resolved measurement \emph{off} the demonstration
+manifold (the regime where the arms actually differ) shows the spectral
+deficiency that the on-manifold measurement does not, Theory C would be
+reinstated as an explanation of the objective axis rather than only of
+the learning order.
+\end{enumerate}
+
+\end{document}

@@ -23,43 +23,49 @@ MIP_REF = {
     ("lift_ph", "sudeepdit"): (1.00, 1.00),
     ("can_mh", "sudeepdit"): (0.98, 0.95),
     ("can_ph", "sudeepdit"): (1.00, 1.00),
-    ("square_mh", "sudeepdit"): (0.90, 0.81),
+    ("square_mh", "sudeepdit"): (0.82, 0.81),  # best: released ckpt filename mean (77/87/82); last5: paper (no artifact)
     ("square_ph", "sudeepdit"): (0.98, 0.94),
     ("transport_mh", "sudeepdit"): (0.44, 0.38),
-    ("transport_ph", "sudeepdit"): (0.76, 0.68),
-    ("tool_hang_ph", "sudeepdit"): (0.92, 0.88),
+    ("transport_ph", "sudeepdit"): (0.68, 0.55),  # released abs (paper delta unreproducible: no artifact)
+    ("tool_hang_ph", "sudeepdit"): (0.50, 0.37),  # released-artifacts recomputation (PART CDXLVI)
     ("lift_mh", "chitransformer"): (1.00, 1.00),
     ("lift_ph", "chitransformer"): (1.00, 1.00),
     ("can_mh", "chitransformer"): (0.96, 0.95),
     ("can_ph", "chitransformer"): (1.00, 1.00),
-    ("square_mh", "chitransformer"): (0.86, 0.73),
+    ("square_mh", "chitransformer"): (0.80, 0.73),  # best: released ckpt filename mean (77/87/77); last5: paper
     ("square_ph", "chitransformer"): (0.96, 0.89),
     ("transport_mh", "chitransformer"): (0.42, 0.37),
-    ("transport_ph", "chitransformer"): (0.80, 0.68),
-    ("tool_hang_ph", "chitransformer"): (0.76, 0.69),
+    ("transport_ph", "chitransformer"): (0.69, 0.58),  # released abs (paper delta unreproducible: no artifact)
+    ("tool_hang_ph", "chitransformer"): (0.74, 0.62),  # released-artifacts recomputation (PART CDXLVI)
     ("lift_mh", "chiunet"): (1.00, 1.00),
     ("lift_ph", "chiunet"): (1.00, 1.00),
     ("can_mh", "chiunet"): (1.00, 0.98),
     ("can_ph", "chiunet"): (1.00, 0.99),
-    ("square_mh", "chiunet"): (0.92, 0.81),
+    ("square_mh", "chiunet"): (0.89, 0.81),  # best: released ckpt filename mean (87/87/92; paper 0.92 = max seed); last5: paper
     ("square_ph", "chiunet"): (1.00, 0.94),
     ("transport_mh", "chiunet"): (0.62, 0.46),
-    ("transport_ph", "chiunet"): (0.80, 0.69),
-    ("tool_hang_ph", "chiunet"): (0.80, 0.64),
+    ("transport_ph", "chiunet"): (0.81, 0.66),  # released abs
+    ("tool_hang_ph", "chiunet"): (0.57, 0.43),  # released-artifacts recomputation (PART CDXLVI)
+    ("kitchen_state", "sudeepdit"): (1.0, 0.97),
+    ("kitchen_state", "chitransformer"): (0.98, 0.96),
+    ("kitchen_state", "chiunet"): (1.0, 0.96),
 }
 LOGDIR = "/mnt/pfs/yuchen/.krun-logs"
 NAME_RE = re.compile(
     r"t12_(?P<task>.+?)_(?P<net>chiunet|chitransformer|"
-    r"sudeepdit)_s(?P<seed>\d+)")
+    r"sudeepdit)_s(?P<seed>\d+)(?P<sfx>_.+)?$")
 
 # Table 13 (image) MIP reference row, keyed by "<task>_<v>_img"
 MIP_REF_IMG = {}
-_T13 = {"sudeepdit": [1.00, 1.00, 1.00, 1.00, 0.90, 1.00, 0.50, 0.90,
-                      0.76, 0.91],
-        "chitransformer": [1.00, 1.00, 0.96, 1.00, 0.72, 0.90, 0.18,
-                           0.86, 0.60, 0.87],
-        "chiunet": [1.00, 1.00, 1.00, 1.00, 0.92, 0.96, 0.52, 0.96,
-                    0.56, 0.83]}
+# best: released ckpt filename means (mean over seeds; PART CDXLVI method)
+# where artifacts exist; transport columns (idx 6,7) keep paper values
+# (no released image artifacts for transport).
+_T13 = {"sudeepdit": [1.00, 1.00, 0.99, 1.00, 0.83, 0.94, 0.50, 0.90,
+                      0.49, 0.93],
+        "chitransformer": [1.00, 1.00, 0.99, 0.99, 0.82, 0.92, 0.18,
+                           0.86, 0.53, 0.92],
+        "chiunet": [1.00, 1.00, 0.98, 1.00, 0.84, 0.90, 0.52, 0.96,
+                    0.62, 0.94]}
 _T13L5 = {"sudeepdit": [0.99, 1.00, 0.96, 0.98, 0.83, 0.92, 0.31, 0.84,
                         0.66, 0.87],
           "chitransformer": [0.98, 1.00, 0.91, 0.98, 0.21, 0.04, 0.06,
@@ -76,6 +82,8 @@ for _n in _T13:
 
 def ref_key(task):
     """Map a run's task-config name to the reference-table key."""
+    task = re.sub(r"_(ht|hg|l2|mip|flow|sflow)?_?(optimization|task)[a-z0-9]+$", "", task)
+    task = re.sub(r"_(mip|flow|sflow|l2|hg)$", "", task)
     if task.endswith("_state_delta_legacy"):
         return task[: -len("_state_delta_legacy")]
     if task.endswith("_state_abs"):
@@ -85,6 +93,8 @@ def ref_key(task):
             return task[: -len(suf)] + "_img"
     if task.startswith("pusht"):
         return "pusht_img"
+    if task.startswith("kitchen"):
+        return "kitchen_state"
     return task
 SR_RE = re.compile(r"mean_success_1 - ([0-9.]+)")
 
@@ -96,6 +106,8 @@ def harvest():
         m = NAME_RE.search(d)
         if not m:
             continue
+        m2 = NAME_RE.search(d.split("/")[-1])
+        sfx = (m2.group("sfx") or "") if m2 else ""
         srs = []
         try:
             for line in open(d + "/metrics.jsonl"):
@@ -111,7 +123,7 @@ def harvest():
         except FileNotFoundError:
             continue
         if srs:
-            runs[(m["task"], m["net"], int(m["seed"]))] = srs
+            runs[(m["task"] + sfx, m["net"], int(m["seed"]))] = srs
     return runs
 
 

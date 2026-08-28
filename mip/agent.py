@@ -51,6 +51,56 @@ class TrainingAgent:
             config.optimization.device
         )
         report_parameters(self.encoder, model_name="Encoder Network")
+        if config.optimization.loss_type in (
+            "regression_hetero_t_learnnu_cond",
+            "regression_hetero_t_learnnu_cond2",
+        ):
+            assert config.task.obs_type == "state", "learnnu_cond: state obs only"
+            with torch.no_grad():
+                _dummy = torch.zeros(
+                    2,
+                    config.task.obs_steps,
+                    config.task.obs_dim,
+                    device=config.optimization.device,
+                )
+                _emb = self.encoder(_dummy, None)
+            _in_dim = _emb.reshape(2, -1).shape[1]
+            _head = torch.nn.Sequential(
+                torch.nn.Linear(_in_dim, 64),
+                torch.nn.SiLU(),
+                torch.nn.Linear(64, 1),
+            ).to(config.optimization.device)
+            torch.nn.init.zeros_(_head[-1].weight)
+            torch.nn.init.zeros_(_head[-1].bias)
+            self.flow_map.nu_cond_head = _head
+            if config.optimization.loss_type.endswith("cond2"):
+                # v2: nu = floor + softplus(raw); pick raw so nu starts at
+                # NU_INIT (default 2.0 = the measured demo df).
+                _floor = float(os.environ.get("NU_FLOOR", "1.0"))
+                _init = float(os.environ.get("NU_INIT", "2.0"))
+                _target = max(_init - _floor, 1e-3)
+                _raw0 = float(torch.log(torch.expm1(torch.tensor(_target))))
+            else:
+                # v1: sigmoid(-2.16) ~= 0.1034 -> nu ~= 1 + 29*0.1034 ~= 4.0
+                _raw0 = -2.16
+            self.flow_map.register_parameter(
+                "nu_base_raw",
+                torch.nn.Parameter(
+                    torch.tensor(_raw0, device=config.optimization.device)
+                ),
+            )
+            self.flow_map.register_buffer(
+                "nu_cond_step",
+                torch.tensor(0.0, device=config.optimization.device),
+            )
+        if config.optimization.loss_type == "regression_hetero_t_learnnu":
+            # nu = 0.5 + softplus(raw); raw=3.47 -> nu ~= 4.0 start
+            self.flow_map.register_parameter(
+                "learn_nu_raw",
+                torch.nn.Parameter(
+                    torch.tensor(3.47, device=config.optimization.device)
+                ),
+            )
         self.encoder_ema = deepcopy(self.encoder).requires_grad_(False)
         self.flow_map_ema = deepcopy(self.flow_map).requires_grad_(False)
 
@@ -96,11 +146,57 @@ class TrainingAgent:
                 adamw_lr=config.optimization.lr,
                 weight_decay=config.optimization.weight_decay,
             )
+        elif os.environ.get("WD_ENCODER"):
+            # DP-T applies weight decay 1e-3 to the policy network but only
+            # 1e-6 to the observation encoder. Flat decay on a ResNet encoder
+            # is not what they run, so split the groups when WD_ENCODER is set.
+            # WD_NODECAY=1 additionally reproduces their minGPT-style grouping:
+            # biases, norm gains and embeddings are exempt from decay.
+            groups = []
+            if os.environ.get("WD_NODECAY"):
+                _norms = (torch.nn.LayerNorm, torch.nn.GroupNorm,
+                          torch.nn.Embedding, torch.nn.BatchNorm1d,
+                          torch.nn.BatchNorm2d)
+                decay, no_decay, seen = [], [], set()
+                for _mn, _m in self.flow_map.named_modules():
+                    for _pn, _p in _m.named_parameters(recurse=False):
+                        if id(_p) in seen:
+                            continue
+                        seen.add(id(_p))
+                        if _pn.endswith("bias") or isinstance(_m, _norms):
+                            no_decay.append(_p)
+                        else:
+                            decay.append(_p)
+                groups += [
+                    {"params": decay,
+                     "weight_decay": config.optimization.weight_decay},
+                    {"params": no_decay, "weight_decay": 0.0},
+                ]
+                loguru.logger.info(
+                    f"WD_NODECAY: {len(decay)} decayed / {len(no_decay)} exempt"
+                )
+            else:
+                groups.append({"params": list(self.flow_map.parameters()),
+                               "weight_decay": config.optimization.weight_decay})
+            groups.append({"params": list(self.encoder.parameters()),
+                           "weight_decay": float(os.environ["WD_ENCODER"])})
+            self.optimizer = torch.optim.AdamW(
+                groups,
+                lr=config.optimization.lr,
+                betas=(
+                    config.optimization.adam_beta1,
+                    config.optimization.adam_beta2,
+                ),
+            )
         else:
             self.optimizer = torch.optim.AdamW(
                 params,
                 lr=config.optimization.lr,
                 weight_decay=config.optimization.weight_decay,
+                betas=(
+                    config.optimization.adam_beta1,
+                    config.optimization.adam_beta2,
+                ),
             )
 
         # Store obs keys if using image observations (for CUDA graph compatibility)
@@ -282,16 +378,42 @@ class TrainingAgent:
                 self._ema_update_impl()
 
             # Return as TensorDict for CUDA graph compatibility (static shapes)
-            result = TensorDict(
-                {
-                    "loss": loss.detach(),
-                    "grad_norm": grad_norm.detach(),
-                },
-                batch_size=(),
-            )
+            result_dict = {
+                "loss": loss.detach(),
+                "grad_norm": grad_norm.detach(),
+            }
+            # pass scalar aux metrics from the loss (e.g. condreg/* diagnostics)
+            for _ak, _av in (_info or {}).items():
+                if isinstance(_av, (int, float)):
+                    result_dict[_ak] = torch.tensor(float(_av), device=loss.device)
+            _nu_raw = getattr(self.flow_map, "learn_nu_raw", None)
+            if _nu_raw is not None:
+                result_dict["nu"] = (
+                    0.5 + torch.nn.functional.softplus(_nu_raw)
+                ).detach()
+            if hasattr(self.flow_map, "nu_cond_step"):
+                self.flow_map.nu_cond_step += 1.0
+                _st = getattr(self.flow_map, "_nu_stats", None)
+                if _st is not None:
+                    result_dict["nu"] = _st[0]
+                    result_dict["nu_p10"] = _st[1]
+                    result_dict["nu_p90"] = _st[2]
+            result = TensorDict(result_dict, batch_size=())
             return result
 
         return update_impl
+
+    def _ema_decay(self):
+        """Constant ema_rate, or DP-style power-law schedule when ema_power>0."""
+        cfg = self.config.optimization
+        if getattr(cfg, "ema_power", 0.0) <= 0.0:
+            return cfg.ema_rate
+        self._ema_step = getattr(self, "_ema_step", 0) + 1
+        step = max(0, self._ema_step - 1)
+        if step <= 0:
+            return 0.0
+        value = 1.0 - (1.0 + step / cfg.ema_inv_gamma) ** (-cfg.ema_power)
+        return max(cfg.ema_min, min(value, cfg.ema_max))
 
     def _ema_update_impl(self):
         """EMA update implementation (can be part of compiled function)."""
@@ -299,11 +421,10 @@ class TrainingAgent:
         params_ema = list(self.encoder_ema.parameters()) + list(
             self.flow_map_ema.parameters()
         )
+        rate = self._ema_decay()
         with torch.no_grad():
             for p, p_ema in zip(params, params_ema, strict=False):
-                p_ema.data.mul_(self.config.optimization.ema_rate).add_(
-                    p.data, alpha=1.0 - self.config.optimization.ema_rate
-                )
+                p_ema.data.mul_(rate).add_(p.data, alpha=1.0 - rate)
 
     def update(
         self,
@@ -348,10 +469,14 @@ class TrainingAgent:
         result = self._compiled_update(data)
 
         # Convert TensorDict to regular dict with scalar values
-        return {
+        out = {
             "loss": result["loss"],
             "grad_norm": result["grad_norm"],
         }
+        for _k in result.keys():
+            if _k not in out:
+                out[_k] = result[_k]
+        return out
 
     def ema_update(self):
         """Update exponential moving average parameters."""
@@ -359,11 +484,11 @@ class TrainingAgent:
         ema_params = list(self.encoder_ema.parameters()) + list(
             self.flow_map_ema.parameters()
         )
+        rate = self._ema_decay()
         with torch.no_grad():
             for p, p_ema in zip(params, ema_params, strict=False):
-                p_ema.data.mul_(self.config.optimization.ema_rate).add_(
-                    p.data, alpha=1.0 - self.config.optimization.ema_rate
-                )
+                p_ema.data.mul_(rate).add_(p.data, alpha=1.0 - rate)
+
 
     def _sample_impl(
         self,

@@ -1,0 +1,7 @@
+# @package task
+defaults:
+  - transport_ph_image
+  - _self_
+
+abs_action: true
+action_type: "delta"

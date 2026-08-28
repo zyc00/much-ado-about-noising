@@ -4,6 +4,7 @@ Author: Chaoyi Pan
 Date: 2025-10-17
 """
 
+import os
 import time
 
 import hydra
@@ -98,7 +99,20 @@ def train(config: Config, envs, dataset, agent, logger, resume_state=None):
         delta_t = torch.full(
             (batch_size,), delta_t_scalar, device=config.optimization.device
         )
+        if os.environ.get("KT_DEBUG") and n_gradient_step < 16:
+            import torch as _t
+            print(f"KTDBG step {n_gradient_step} "
+                  f"obs {tuple(obs.shape)} nan {int(_t.isnan(obs).sum())} "
+                  f"absmax {float(obs.abs().max()):.3f} | "
+                  f"act {tuple(act.shape)} nan {int(_t.isnan(act).sum())} "
+                  f"absmax {float(act.abs().max()):.3f} | "
+                  f"delta_t {delta_t_scalar} | "
+                  f"pnan {sum(int(_t.isnan(p).sum()) for p in agent.flow_map.parameters())}",
+                  flush=True)
         info = agent.update(act, obs, delta_t)
+        if os.environ.get("KT_DEBUG") and n_gradient_step < 16:
+            print(f"KTDBG step {n_gradient_step} -> loss {float(info['loss'])} "
+                  f"gn {float(info['grad_norm'])}", flush=True)
         lr_scheduler.step()
         info_list.append(info)
 
@@ -112,7 +126,12 @@ def train(config: Config, envs, dataset, agent, logger, resume_state=None):
             }
             for key in info:
                 try:
-                    metrics[key] = np.nanmean([info[key] for info in info_list])
+                    vals = []
+                    for _i in info_list:
+                        _v = _i[key]
+                        vals.append(float(_v.detach().cpu())
+                                    if hasattr(_v, "detach") else float(_v))
+                    metrics[key] = np.nanmean(vals)
                 except (KeyError, TypeError, ValueError):
                     metrics[key] = np.nan
             logger.log(metrics, category="train")
@@ -264,21 +283,42 @@ def evaluate(config: Config, envs, dataset, agent, logger, num_steps=1):
             ep_reward += reward
             t += config.task.act_steps
 
-            # Update task completion counts from info
-            # In vectorized envs, info is a dict with integer keys for each environment
+            # Update task completion counts from info.
+            # gymnasium vector envs aggregate per-env infos as
+            # {key: object-array over envs, "_key": presence mask}; the
+            # MultiStepWrapper additionally turns each env's value into a
+            # per-substep list. (The old dict-with-int-keys parsing matched
+            # neither, so completions were never counted.)
+            def _count_completed(val):
+                if val is None:
+                    return None
+                if isinstance(val, (list, tuple)):
+                    if not val:
+                        return None
+                    val = val[-1]  # completions only grow; take last substep
+                try:
+                    return len(val)
+                except TypeError:
+                    return None
+
+            ct_arr = info.get("completed_tasks")
+            ct_mask = info.get("_completed_tasks")
+            fi_arr = info.get("final_info")
+            fi_mask = info.get("_final_info")
             for env_idx in range(config.task.num_envs):
-                if "completed_tasks" in info.get(env_idx, {}):
-                    num_completed = len(info[env_idx]["completed_tasks"][0])
-                    max_tasks_completed[env_idx] = max(
-                        max_tasks_completed[env_idx], num_completed
-                    )
-                # Also check final_info for auto-reset environments
-                elif "_final_info" in info and info["_final_info"][env_idx]:
-                    final_info = info["final_info"][env_idx]
-                    if "completed_tasks" in final_info:
-                        num_completed = len(final_info["completed_tasks"][0])
+                cands = []
+                if ct_arr is not None and (ct_mask is None or ct_mask[env_idx]):
+                    cands.append(_count_completed(ct_arr[env_idx]))
+                if fi_arr is not None and (fi_mask is None or fi_mask[env_idx]):
+                    fin = fi_arr[env_idx]
+                    if isinstance(fin, dict):
+                        cands.append(
+                            _count_completed(fin.get("completed_tasks"))
+                        )
+                for n in cands:
+                    if n is not None:
                         max_tasks_completed[env_idx] = max(
-                            max_tasks_completed[env_idx], num_completed
+                            max_tasks_completed[env_idx], n
                         )
 
         # Kitchen-specific: compute task completion metrics

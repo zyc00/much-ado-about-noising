@@ -67,7 +67,7 @@ def make_dataset(task_config, mode="train"):
         )
 
     action_type = getattr(task_config, "action_type", "absolute")
-    if task_config.env_name in ["can", "lift", "square", "tool_hang", "transport"]:
+    if task_config.env_name in ["can", "lift", "square", "tool_hang", "transport", "cube"]:
         if task_config.obs_type == "state":
             return RobomimicDataset(
                 dataset_path,
@@ -904,6 +904,59 @@ class RobomimicImageDataset(BaseDataset):
         if getattr(self, "normjit", False):
             self._build_knn_targets(k=16, store_only=True)
 
+        # MIP_FAST_IMG=1: batch-level loading from materialized numpy arrays.
+        # zarr-python v3 costs ~350us per chunk access (sync/async bridge),
+        # ~6 accesses/sample; images additionally get cast to float32 and
+        # normalized per-sample in workers. This path gathers whole batches
+        # from plain numpy and returns rgb as uint8; the trainer applies
+        # x*(2/255)-1 on GPU (== /255 then ImageNormalizer, exactly).
+        self._fast = os.environ.get("MIP_FAST_IMG") == "1"
+        if self._fast:
+            self._init_fast()
+
+    def _init_fast(self):
+        import gc
+
+        assert not getattr(self.sampler, "zero_padding", False)
+        inds = np.asarray(self.sampler.indices, dtype=np.int64)
+        b_start, b_end, s_start = inds[:, 0], inds[:, 1], inds[:, 2]
+        t = np.arange(self.horizon, dtype=np.int64)[None]
+        # window index with repeat-first/repeat-last padding, identical to
+        # SequenceSampler.sample_sequence with zero_padding=False
+        win = b_start[:, None] + t - s_start[:, None]
+        np.clip(win, b_start[:, None], (b_end - 1)[:, None], out=win)
+        self._win = win.astype(np.int64)
+
+        rb = self.replay_buffer
+        self._np_rgb = {}
+        for k in self.rgb_keys:
+            self._np_rgb[k] = rb[k][:]  # (N,H,W,C) uint8
+            try:
+                del rb.data[k]  # free the zarr MemoryStore copy
+            except (AttributeError, KeyError, TypeError):
+                pass
+            gc.collect()
+        self._np_low = {
+            k: rb[k][:].astype(np.float32) for k in self.lowdim_keys
+        }
+        self._np_act = rb["action"][:].astype(np.float32)
+
+    def _get_batch(self, idxs):
+        rows = self._win[np.asarray(idxs, dtype=np.int64)]  # (B, horizon)
+        orows = rows[:, : self.n_obs_steps]  # (B, T)
+        obs = {}
+        for k, arr in self._np_rgb.items():
+            g = np.moveaxis(arr[orows], -1, 2)  # B,T,C,H,W uint8
+            obs[k] = torch.from_numpy(np.ascontiguousarray(g))
+        for k, arr in self._np_low.items():
+            obs[k] = torch.from_numpy(
+                self.normalizer["obs"][k].normalize(arr[orows])
+            )
+        action = torch.from_numpy(
+            self.normalizer["action"].normalize(self._np_act[rows])
+        )
+        return {"obs": obs, "action": action}
+
     def _build_knn_targets(self, k=8, store_only=False):
         """kNN-conditional-mean action targets: for each sequence, average the action
         chunks of its k=8 nearest obs-window neighbors (cross-demo candidates included,
@@ -976,6 +1029,9 @@ class RobomimicImageDataset(BaseDataset):
         return len(self.sampler)
 
     def __getitem__(self, idx: int) -> dict[str, torch.Tensor]:
+        if self._fast and not isinstance(idx, (int, np.integer)):
+            # BatchSampler path: idx is a list of window indices
+            return self._get_batch(idx)
         sample = self.sampler.sample_sequence(idx)
 
         # obs

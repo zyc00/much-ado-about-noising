@@ -1,0 +1,9 @@
+# @package network
+# chitransformer + DP's per-task regularisation for tool-hang:
+#   attn_dropout 0.3 (they tune it per task; 0.01 on push-T, 0.3 on robomimic)
+#   dropout 0.1 kept, encoder_dropout exposed for the cond-dropout sweep.
+defaults:
+  - chitransformer
+  - _self_
+
+attn_dropout: 0.3

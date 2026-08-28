@@ -1,0 +1,9 @@
+# @package task
+# Transport-ph image with ABSOLUTE actions (matches DP's published image setting).
+# Same 4-camera observations as transport_ph_image_dl; only the action space differs.
+defaults:
+  - transport_ph_image
+  - _self_
+
+abs_action: true
+action_type: "absolute"

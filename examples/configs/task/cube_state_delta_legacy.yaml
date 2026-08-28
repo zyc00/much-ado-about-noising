@@ -1,0 +1,23 @@
+# @package task
+defaults:
+  - robomimic_base
+  - _self_
+
+# BigCubeLift: scripted NFL witness task (gripper-width cube, lateral-precision
+# grasp, no wrist rotation). Env class registered via mip.envs.robomimic.custom_envs;
+# the dataset's env_args carries env_name=BigCubeLift. Always pass
+# +task.dataset_path=<collected hdf5>.
+env_name: "cube"
+obs_type: "state"
+env_type: "ph"
+abs_action: true
+action_type: "delta"
+
+dataset_filename: "cube_script_200.hdf5"
+
+max_episode_steps: 400
+obs_keys: ["object", "robot0_eef_pos", "robot0_eef_quat", "robot0_gripper_qpos"]
+
+# Required keys
+horizon: 10
+act_dim: 10

@@ -1,0 +1,12 @@
+# @package network
+# chiunet + the two knobs our own campaign found helpful on tool-hang
+# (PART CXCIV: cond_dropout 0.2 -> 88 best / 81.6 last-5, beating both MIP
+# replicas' last-5 by 5-9), to be combined with optimization=dp_harness
+# (progressive EMA, betas 0.9/0.95, wd 1e-3) and log=dp_harness (22-ep eval).
+# NOTE: cond_dropout_rate is a chiunet-only knob -- get_network() does not pass
+# it to chitransformer, and network.dropout is never consumed at all.
+defaults:
+  - chiunet
+  - _self_
+
+cond_dropout_rate: 0.2

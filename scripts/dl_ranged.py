@@ -58,7 +58,7 @@ def fetch(url, dest, size, done, sidecar):
             time.sleep(1 + a % 5)
         print(f"CHUNK_FAIL {lo}", flush=True)
 
-    with ThreadPoolExecutor(max_workers=8) as ex:
+    with ThreadPoolExecutor(max_workers=int(os.environ.get("DL_WORKERS", "8"))) as ex:
         list(ex.map(one, range(len(done))))
     return all(done)
 

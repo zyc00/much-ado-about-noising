@@ -17,7 +17,8 @@ TOKEN = sys.argv[1]
 PORT = int(sys.argv[2]) if len(sys.argv) > 2 else 8931
 ROOT = "/home/jigu/projects/much-ado-about-noising/data/mip_local"
 WHITELIST = re.compile(
-    r"^robomimic/[a-z_]+/(ph|mh)/(low_dim(_abs)?|image_abs)\.hdf5$")
+    r"^(robomimic/[a-z_]+/(ph|mh)/(low_dim(_abs)?|image_abs)\.hdf5"
+    r"|groot/[A-Za-z0-9_.-]+\.tar)$")
 
 
 class H(http.server.BaseHTTPRequestHandler):

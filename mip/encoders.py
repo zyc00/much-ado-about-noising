@@ -486,7 +486,7 @@ class MLPEncoder(BaseEncoder):
 
     def forward(self, obs: torch.Tensor | dict, mask: torch.Tensor = None):
         # Handle dict input by concatenating all tensors
-        if isinstance(obs, dict):
+        if hasattr(obs, "keys"):
             # Sort keys for consistent ordering and concatenate all values
             keys = sorted(obs.keys())
             obs_list = [obs[k] for k in keys]
@@ -552,7 +552,7 @@ class PerStepMLPEncoder(BaseEncoder):
         self.mlp = nn.Sequential(*layers)
 
     def forward(self, obs: torch.Tensor | dict, mask: torch.Tensor = None):
-        if isinstance(obs, dict):
+        if hasattr(obs, "keys"):
             keys = sorted(obs.keys())
             obs_list = [obs[k] for k in keys]
             obs = torch.cat(obs_list, dim=-1)

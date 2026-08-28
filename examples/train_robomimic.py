@@ -71,19 +71,46 @@ def train(config: Config, envs, dataset, agent, logger, resume_state=None):
         _prw = torch.tensor(dataset.density_resample_weights(), dtype=torch.double)
         _pr_sampler = torch.utils.data.WeightedRandomSampler(
             _prw, num_samples=len(dataset), replacement=True)
-    dataloader = torch.utils.data.DataLoader(
-        dataset,
-        batch_size=config.optimization.batch_size,
-        num_workers=4 if config.task.obs_type == "state" else 8,
-        sampler=_pr_sampler,
-        shuffle=False if _pr_sampler is not None else True,
-        # accelerate cpu-gpu transfer
-        pin_memory=True,
-        # don't kill worker process after each epoch
-        persistent_workers=True,
-        # IMPORTANT: drop_last=True is required for CUDA graphs (static shapes)
-        drop_last=True,
+    _num_workers = int(
+        os.environ.get(
+            "MIP_NUM_WORKERS", 4 if config.task.obs_type == "state" else 8
+        )
     )
+    _fast_img = (
+        os.environ.get("MIP_FAST_IMG") == "1"
+        and config.task.obs_type == "image"
+        and getattr(dataset, "_fast", False)
+        and _pr_sampler is None
+    )
+    if _fast_img:
+        # batch-level dataset: each __getitem__ receives a list of indices
+        # and returns a fully collated batch (rgb as uint8; cast on GPU)
+        dataloader = torch.utils.data.DataLoader(
+            dataset,
+            batch_size=None,
+            sampler=torch.utils.data.BatchSampler(
+                torch.utils.data.RandomSampler(dataset),
+                batch_size=config.optimization.batch_size,
+                drop_last=True,
+            ),
+            num_workers=_num_workers,
+            pin_memory=True,
+            persistent_workers=True,
+        )
+    else:
+        dataloader = torch.utils.data.DataLoader(
+            dataset,
+            batch_size=config.optimization.batch_size,
+            num_workers=_num_workers,
+            sampler=_pr_sampler,
+            shuffle=False if _pr_sampler is not None else True,
+            # accelerate cpu-gpu transfer
+            pin_memory=True,
+            # don't kill worker process after each epoch
+            persistent_workers=True,
+            # IMPORTANT: drop_last=True required for CUDA graphs (static shapes)
+            drop_last=True,
+        )
     loop_loader = loop_dataloader(dataloader)
 
     # lr scheduler
@@ -155,9 +182,14 @@ def train(config: Config, envs, dataset, agent, logger, resume_state=None):
                     obs_batch = batch["obs"]
                     obs_dict = {}
                     for k in obs_batch:
-                        obs_dict[k] = obs_batch[k][:, : config.task.obs_steps, :].to(
-                            config.optimization.device
+                        v = obs_batch[k][:, : config.task.obs_steps, :].to(
+                            config.optimization.device, non_blocking=True
                         )
+                        if v.dtype == torch.uint8:
+                            # fast loader ships rgb as uint8; this reproduces
+                            # (x/255) followed by ImageNormalizer (x*2-1)
+                            v = v.float().mul_(2.0 / 255.0).sub_(1.0)
+                        obs_dict[k] = v
                     # Convert to TensorDict for consistent handling throughout pipeline
                     batch_size = next(iter(obs_dict.values())).shape[0]
                     obs = TensorDict(obs_dict, batch_size=batch_size)
@@ -341,7 +373,18 @@ def eval(config: Config, envs, dataset, agent, logger, num_steps=1):
         ep_reward = [0.0] * config.task.num_envs
         ever_assembled = np.zeros(config.task.num_envs, dtype=bool)
         _ema_act = None  # per-episode state for AS_EMA action low-pass
-        obs, _ = envs.reset()
+        # DP protocol: every checkpoint is scored on the SAME initial
+        # conditions (their runners use test_start_seed=4300000). Opt in
+        # with EVAL_SEED_BASE=4300000; unset keeps the legacy random reset
+        # that every pre-2026-08-07 number in the campaign was measured on.
+        _sb = os.environ.get("EVAL_SEED_BASE", "")
+        if _sb:
+            _n = config.task.num_envs
+            obs, _ = envs.reset(
+                seed=[int(_sb) + i * _n + k for k in range(_n)]
+            )
+        else:
+            obs, _ = envs.reset()
         t = 0
         _td = os.environ.get("TRAJDUMP")
         if _td:
@@ -465,6 +508,7 @@ def eval(config: Config, envs, dataset, agent, logger, num_steps=1):
                     "square",
                     "tool_hang",
                     "transport",
+                    "cube",
                 ]:
                     act = dataset.undo_transform_action(act)
 

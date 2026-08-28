@@ -12048,3 +12048,1589 @@ POD-SIDE (three phantom local patches burned on this).
 ## dataset_path; the mip-dataset HF zip ships npy-seq format that
 ## NOTHING in this repo consumes — recorded as an upstream wart).
 ## All 11 Table-12 columns now validated end-to-end.
+
+## PART CDXXXIV — TABLE-12 HT CAMPAIGN HARVEST (state, seeds 1/2/3,
+## in-train protocol best/last5; 79/99 base series complete + tuning arms)
+SATURATED / >=MIP (main-table wins, delta convention, obs2):
+  lift mh/ph all 3 backbones 1.00/~1.00 (= MIP)
+  can mh: ct 1.00/0.94, cu 1.00/0.97, dit 0.98/0.90 (>= MIP best/last5)
+  can ph: all 1.00/0.96-0.99 (= MIP)
+  tool_hang ct 0.90/0.80 vs MIP-col-SOTA 0.92/0.88 (best ~=, last5 below)
+NU CURVE tool_hang chitransformer (ref col-SOTA 0.92/0.88):
+  v1 0.88/0.81 | v2 0.90/0.80 | v4 0.86/0.78 | v8+o4 0.85/0.78 |
+  v1.5+o1 0.75/0.63 -> shallow plateau v in [1,4]; obs1 hurts; best
+  last5 at v1 (0.81). dit stuck ~0.65 under every lever (arch-limited).
+CONVENTION A/B (chiunet, uniform obs2):
+  square-ph: delta 0.93/0.83 -> ABS 0.98/0.92 (col-SOTA 1.00/0.94; -0.02/-0.02)
+  square-mh: delta 0.87/0.74 ~ abs 0.85/0.72 (col-SOTA 0.92/0.81)
+  transport-ph: delta 0.42/0.27 -> ABS 0.73/0.58 (+0.31 best)
+  transport-mh: delta 0.36 ~ abs 0.37 (both far below 0.62)
+OBS-HISTORY LEVER (chiunet abs, the user's transport insight):
+  transport-mh: obs2 0.37 -> obs4 0.50 -> OBS8 0.64/0.44 (>= MIP 0.62/0.46!)
+  transport-ph: obs2 0.73 -> obs4 0.75 -> OBS8 0.80/0.64 (= MIP 0.80 best!)
+  (delta transport-mh obs8 only 0.46 -> abs+obs8 is the winning combo)
+  FAIRNESS CONTROL LAUNCHED: MIP+obs8 on transport mh/ph abs (matched
+  cell, same seeds) to verify obs8 helps HT not MIP; obs8 is an ablation
+  finding not a main-table cell (MIP table is uniform obs2).
+COLUMN-SOTA SCOREBOARD (>= MIP best-of-any-backbone): lift OK, can OK,
+tool-hang best OK (0.90-0.93 vs 0.92; last5 gap open), transport-mh OK
+via abs+obs8 (0.64>0.62), transport-ph best-tie via abs+obs8 (0.80).
+STILL BELOW: square mh/ph (nu+obs arms in flight), tool-hang last5,
+sudeepdit tool-hang (arch-limited). Unified-nu: tool-hang favors ~[1,4];
+square/transport nu series pending.
+
+## PART CDXXXIV ADDENDUM — updates + one excluded config
+TRANSPORT SOTA CONFIRMED (abs+obs8, all 3 seeds, chiunet):
+  transport-mh 0.67/0.51 >= MIP 0.62/0.46 (beats BEST and LAST5)
+  transport-ph 0.81/0.70 >= MIP 0.80/0.69 (beats BEST and LAST5)
+  nu inert on transport (v8/v1.5 ~0.40 mh); obs-history is the lever.
+EXCLUDED (non-functional config, not a fair HT result): chitransformer
++ obs_steps=8 on tool-hang -> loss converges normally (-0.15 to -0.33,
+no NaN) but SR=0.00 all 15 evals. Isolated to (chitransformer x obs8);
+chiunet-obs8 functional everywhere, chitransformer-obs2 functional
+(0.90). Cause: chitransformer context config does not absorb obs8
+window (trains on scrambled conditioning). obs8 not needed for
+tool-hang (nu is its lever) so not pursued. Do NOT tabulate as "below".
+
+## PART CDXXXV — HARVEST + TWO DEFECTS FOUND (81/99 base series)
+(1) NAME-COLLISION BUG (found + fixed): k_t12.sh built log-dir names
+from task+net+seed+overrides but NOT the loss, so MIP+obs8 and HT+obs8
+on the same cell wrote to ONE directory (30 interleaved evals). The
+earlier "transport-mh HT+obs8 0.67/0.51 SOTA" reading came from that
+contaminated file and is RETRACTED pending clean re-runs. Fix: loss tag
+in NAME (_ht/_mip/_flow/...); bare-default HT keeps legacy names so the
+79 completed cells stay valid. Contaminated dirs purged; HT/MIP/FLOW
+obs8 relaunched on transport mh+ph abs (18 runs, distinct dirs) — this
+doubles as the fairness control (all three methods get obs8).
+(2) KITCHEN IS BROKEN, NOT "BELOW": loss = NaN from the first logged
+step in all seeds; p1..p4 all 0.00 at every eval; runs complete 300k
+steps regardless. Config: abs_action=true, act_dim=9, obs_dim=60 (a
+9-dim action space, NOT robomimic's 7->10 rot6d lineage). Prime
+suspects: rot6d/abs conversion applied to a 9-dim non-SE(3) action, or
+a zero-variance dim in the normalizer. NOT tabulatable as an HT result.
+(3) SQUARE OBS-HISTORY DIRECTION IS OPPOSITE TO TRANSPORT'S:
+  square-ph abs: obs1 0.97/0.93 (n=2) | obs2 0.98/0.92 | obs4 0.81/0.72
+    | obs8 0.68/0.54  -> SHORT history best; long history harmful
+  square-mh abs: obs8 0.56/0.39 (vs obs2 0.85/0.72) -> same direction
+  cf. transport: obs8 >> obs2. So obs-history is task-dependent in SIGN,
+  which strengthens the case for reporting it as a per-task declared
+  hyperparameter (or as an ablation) rather than a single global value.
+(4) SQUARE NU: mh abs v8 0.88/0.72 (n=1), v1.5 0.86/0.70 vs base
+  0.85/0.72; delta v8 0.85/0.73, v1.5 0.82/0.74 vs base 0.87/0.74 —
+  nu is nearly inert on square (all within +-0.03), consistent with
+  tool-hang's shallow plateau. Unified nu remains viable.
+
+## PART CDXXXVI — KITCHEN "NaN" WAS A LOGGING BUG, NOT TRAINING
+Multi-hour investigation resolved. Chain of findings:
+(1) Reported loss = NaN at every logged step for ALL objectives
+(regression/HT/MIP), p1..p4 = 0.00. Data, forward pass, normalizer,
+torch.compile, env creation, DataLoader, node/GPU, and seed were each
+tested and cleared.
+(2) ROOT CAUSE: examples/train_kitchen.py metrics aggregation calls
+np.nanmean() on a list of CUDA tensors -> TypeError -> caught by a bare
+`except (KeyError, TypeError, ValueError)` -> metrics[key] = np.nan.
+The MODEL was training correctly the whole time: an in-process debug
+hook on the same run/steps showed loss 0.401 -> 0.228 with healthy
+grad norms while metrics.jsonl recorded NaN. (train_robomimic.py has
+the same line but its info values arrive as floats, so robomimic was
+never affected.) FIX: cast tensors via float(v.detach().cpu()).
+METHODOLOGICAL LESSON: every "working" control run used
+gradient_steps=6, and the debug hook printed only steps<6 — so the
+hook and the trainer were never compared on the same steps until late;
+the contradiction (finite in memory, NaN in file) is what exposed it.
+(3) SECOND DEFECT: the HF kitchen zip (mip-dataset
+kitchen/kitchen_demos_multitask.zip) contains ONLY .npy sequence
+arrays, but make_dataset(kitchen_state) builds KitchenMjlDataset which
+globs "*/*.mjl". The documented default path therefore yields no demos.
+Using RAW MJL data (diffusion-policy kitchen.zip, 608 demos) is
+required.
+(4) THIRD DEFECT (eval): p4=0.00 persisted even with healthy training
+-> upstream README requires MuJoCo 3.1.6; the fleet runs 3.3.7 (which
+also forced the kettle_asset.xml default-class patch). FIX: isolated
+slim package dir (/mnt/pfs/yuchen/mj316_slim: mujoco 3.1.6 +
+dm_control 1.0.18 + dm_env + labmaze ONLY) injected via PYTHONPATH for
+kitchen runs only, leaving the shared venv (80+ running jobs) on 3.3.7.
+NOTE: a full --target install also shadowed numpy (2.5 vs venv 2.2.6)
+and broke numba; the slim dir avoids this.
+VERIFIED: mujoco 3.1.6 + numpy 2.2.6 + logged losses finite
+(0.0204 -> 0.00065). Kitchen production relaunched (9 runs).
+
+## PART CDXXXVII — VISION DATALOADER BOTTLENECK: PROFILED AND ISOLATED
+Probe pod (14 CPU, no GPU, can-mh image_abs staged to /dev/shm), fleet
+config (bs=1024, 12 workers, pin_memory). Steady-state wall-clock
+windows, hard worker teardown between variants.
+  V0 current (per-sample zarr read, f32+normalize in worker): 562 ms/batch (1.78 st/s)
+  V1 V0 but images stay uint8 through workers:                487 ms/batch (1.15x)
+  V2 whole-batch assembly but reads still via zarr:           519 ms/batch (1.08x)
+  V4 whole-batch assembly from MATERIALIZED numpy, f32:       204 ms/batch (2.76x)
+  V5 = V4 + images uint8 until GPU (cast+affine on GPU):       52 ms/batch (10.85x)
+  zarr fancy-gather 2048 frames: 639-835 ms (0.3-0.4 ms/frame)
+ATTRIBUTION (paired differences): zarr-python v3 per-access machinery
+(sync/async bridge, ~350us PER CHUNK ACCESS, 6+ accesses/sample) costs
+2.5x (V2 vs V4); float32 conversion + x*2-1 in workers + 4x IPC/pin
+byte volume costs another 3.9x (V4 vs V5). Storage/decompression is NOT
+involved (MemoryStore, compressor=None). Earlier hypotheses refuted:
+gzip-chunk decompression (no compression in hot path), IPC byte volume
+alone (V1 only 1.15x).
+Image normalizer is stateless x*2-1, so the GPU-side op for V5 is
+exactly x.float()*(2/255)-1: numerically identical arithmetic.
+Fleet implication at GPU update ~156-190 ms: V5 makes runs GPU-bound
+(~5 st/s, 300k in ~17h) vs current 1.5 st/s (~55h).
+
+## PART CDXXXVIII — FAST IMAGE LOADER: VALIDATED AND DEPLOYED
+Fix B implemented behind MIP_FAST_IMG=1 (image tasks only):
+(1) RobomimicImageDataset._init_fast materializes replay-buffer arrays
+to plain numpy (freeing the zarr MemoryStore copies) and precomputes a
+(N_windows, horizon) index matrix idx[t]=clip(bs+t-ss, bs, be-1),
+which reproduces SequenceSampler repeat-padding exactly.
+(2) DataLoader switches to BatchSampler(RandomSampler) with
+batch_size=None: one __getitem__ builds a whole collated batch; rgb
+stays uint8 through workers/pin_memory.
+(3) Trainer preprocess casts uint8 rgb on GPU: x.float()*(2/255)-1
+(== /255 then ImageNormalizer x*2-1).
+VALIDATION (one pod, can-mh chiunet s1):
+- index-level equivalence vs per-sample path on 64 shared indices incl
+  24 episode-boundary padded windows: lowdim/action maxdiff 0.0,
+  rgb maxdiff 1.19e-07 (f32 rounding of the fused affine). PASS.
+- integration: 800-step fast run vs 400-step control, same seed:
+  losses at steps 99/199/299/399 = -0.0646/-0.1214/-0.1451/-0.1615
+  vs -0.0642/-0.1223/-0.1467/-0.1590. Same trajectory.
+- throughput: 4.5-4.7 st/s fast vs 2.2-2.8 control on an idle node
+  (fleet baseline was 1.5); now GPU-bound as predicted by V5 probe.
+Pitfall logged: first validation attempt silently skipped the
+equivalence check - _init_fast frees the zarr arrays, so the slow path
+in the SAME instance raises, and the traceback line
+"slow = default_collate..." matched the grep pattern "low ". Fixed by
+comparing against an independent MIP_FAST_IMG=0 instance.
+Fleet relaunched (81 pods, 14 CPU/110Gi). Expected 300k in ~17-18h.
+
+## PART CDXXXIX — KITCHEN p=0.00 WAS A METRICS BUG; POLICY WORKS (p1=p2=1.0)
+Root cause of the all-zero kitchen evals: train_kitchen.py parsed
+vector-env info as a dict keyed by env index (`info.get(env_idx, {})`).
+gymnasium Sync/AsyncVectorEnv aggregates info as
+{key: object-array over envs, "_key": mask}, and MultiStepWrapper wraps
+each env value in a per-substep list — the old parsing matched neither,
+so max_tasks_completed could NEVER increment: p1..p4 = 0 for any policy.
+FIX: parse {completed_tasks: obj-array, _completed_tasks: mask} (+
+final_info), take last substep of the per-substep list.
+VERIFIED: re-eval of the previously-"0.00" checkpoint
+(t12 kitchen chiunet s1 HT, model_latest 300k, NLL converged -0.56):
+p1_1 = 1.00, p2_1 = 1.00, p3 = p4 = 0.00, mean_step = 280 (== episode
+cap, no early termination): every episode completes exactly 2 subtasks
+then stalls. MIP ref p4 = 1.00/0.96 at the same cap, so the remaining
+gap is real policy behavior, not the metric. In flight: corrected
+re-eval of all 9 kitchen cells (model_latest) + a max_episode_steps=560
+probe to separate "slow execution" from "stuck after 2 tasks".
+ALSO: pusht startup TypeError fixed — agent.update wraps obs into
+TensorDict; MLPEncoder/PerStep dict-handling used isinstance(obs, dict)
+which TensorDict fails, so the TensorDict hit nn.Linear raw. Widened to
+hasattr(obs, "keys") duck-type (dict + TensorDict). Keypoint obs is the
+only dict->MLPEncoder route, hence only pusht crashed. 300-step
+validation run in flight.
+
+## PART CDXL — KITCHEN STALL LOCALIZED: NOT DATA, NOT ENV, NOT METRICS
+Corrected 9-cell re-eval (fixed info parsing, model_latest 300k):
+ALL cells identically p1=1.00 p2=1.00 p3=0.00 p4=0.00 (chiunet/
+chitransformer/sudeepdit x s1/2/3, 50 eps each). 560-step probe: same
+(mean_step=560): stuck, not slow. Null-action probe: 0 completions,
+all 7 tasks remain -> no auto-complete at reset; the 2 completions are
+earned. Demo-replay probe: replaying raw parsed MJL actions open-loop
+through the SAME env+parser completes 4 tasks per demo (demos 2/50/100,
+len 197-260) -> training data contains full 4-task behavior; action
+convention and completion counting verified end-to-end.
+Remaining hypothesis space: policy-side behavior shared by all 9 runs
+(e.g., obs content mismatch between KitchenMjlDataset obs layout and
+KitchenLowdimWrapper eval obs - goal dims / masking - such that the
+policy executes the first two tasks then loses conditioning). Decisive
+control in flight: MIP's released kitchen checkpoint
+(ChaoyiPan/mip-checkpoints, mip_chiunet_256_seed99, filename suffix
+"success0" - note THEIR eval also recorded 0) evaluated in our fixed
+harness.
+
+## PART CDXLI — TOOL-HANG COLUMN-SOTA CAMPAIGN (abs RETIRED per user)
+User directive: tool-hang abs does not work (prior experience); all
+tool-hang abs attempts stopped (download killed, gated launcher
+stopped, no pods ran). Goal: one backbone >= MIP column SOTA 0.92 (dit)
+via other levers.
+EVIDENCE from eval curves (tool-hang delta_legacy, HT):
+- ct per-seed bests: s1 0.88@120k, s2 0.88@140k, s3 0.90@100k,
+  s1000 0.93@240k, s2000 0.93@140k; last-3 evals 0.72-0.85 -> peak at
+  ~100-150k then late decline. The 300k cosine anneals past the peak.
+- dit: bests 0.60-0.65 late (180-260k), flat-low -> capacity-limited,
+  not overfit.
+ARMS LAUNCHED (seeds 1/2/3 each):
+- ct gradient_steps=150k (cosine annealed into the peak)
+- ct gradient_steps=200k (anneal-position hedge)
+- dit emb_dim=384 (capacity probe on the weak backbone)
+Also running: transport ph/mh abs obs_steps=12 (monotone obs trend:
+ph 0.73/0.75/0.78 at 2/4/8 -> target ph > 0.80).
+
+## PART CDXLII — LEARNABLE-nu HETERO-T (regression_hetero_t_learnnu)
+Implemented per user request: nu = 0.5 + softplus(raw), raw a trainable
+parameter registered on flow_map BEFORE the EMA deepcopy (parameter
+ordering stays aligned) and before optimizer construction. The full t
+NLL normalizer D*[lgamma(nu/2) - lgamma((nu+1)/2) + (1/2)log nu] is
+restored - with it, d(loss)/d(nu) is a proper MLE signal (the truncated
+fixed-nu form would give a degenerate always-decrease-nu gradient).
+nu logged to metrics each step (trajectory data). Init nu=4.0
+(lighter-tailed than the measured human df~2, so convergence DIRECTION
+is informative).
+Validation (tool-hang ct, 600 steps): loss -0.105 finite/decreasing,
+nu 4.005 -> 4.029 (moving; early drift up while residuals are
+fit-dominated). Debug ledger: two false starts were MY patch landing in
+get_default_step_list's list instead of get_sampler's (two identical
+dispatch lists in samplers.py; grep -c verified presence not location),
+and agent.update()'s return dict dropping non-loss keys. pycache theory
+was wrong.
+ARMS (3 seeds each): tool-hang ct, square-mh cu, transport-mh cu
+(abs+obs8). Readout: SR vs fixed nu=2 + the nu(t) trajectory and final
+nu vs the independently measured demo-noise df~2.
+
+## PART CDXLIII — PUSHT: WRONG TASK VARIANT; ROW RESET TO OFFICIAL pusht_state
+RETRACTION + correction. The pusht campaign (and the "HT mode-averaging
+boundary condition" interpretation I floated) was run on task=
+pusht_keypoint (20-dim keypoints). The OFFICIAL upstream recipe is
+`train_pusht.py task=pusht_state` (5-dim privileged state), confirmed
+by (a) the upstream README command and (b) the released-checkpoint
+inventory: 73 pusht_ph_state_* checkpoints at success 85-100 vs
+keypoint variants at 55-95 (regression/MSE keypoint: 65-85, NOT >90 -
+the >90 MSE figures are image/state). Our keypoint HT 0.20-0.44 was
+therefore measured on a nonstandard variant and is VOID for Table 12;
+whether it reflects an additional keypoint-path bug is now moot (the
+keypoint loss-controls and their-checkpoint eval were cancelled).
+ACTION: 9 keypoint runs + 2 controls killed; pusht_state HT relaunched
+(3 backbones x seeds 1/2/3, official trainer + official task config).
+Trainer script itself was always the official one; the task argument
+was my error.
+
+## PART CDXLIV — ARM READOUTS: SCHEDULE/CAPACITY REFUTED; nu FINDINGS; PUSHT FIXED
+pusht_state (official recipe): first evals at ~20k already 0.87/0.93/
+0.86 (chiunet s1/2/3) - in the official 85-100 band. Task-variant fix
+confirmed; HT competitive out of the gate.
+TH ct 150k anneal arms COMPLETE: best 0.85/0.88/0.82 (mean 0.85) vs
+300k baseline mean 0.887. 200k arms (~159k in): 0.80/0.88/0.80.
+ANNEAL-POSITION HYPOTHESIS REFUTED - the s1000/s2000 0.93s were seed
+draws, not schedule artifacts; ct per-seed peak variance dominates.
+THdit-384 (~130k): 0.57-0.62 = dit-256 band. CAPACITY HYPOTHESIS
+REFUTED for the TH dit gap.
+learnnu (global): nu climbs monotonically (TH 14.0, SQ-mh 17.4,
+TR-mh 12.7-16.4 and rising); SR consistently slightly BELOW fixed
+nu=2 (TH best 0.72-0.85 vs 0.88-0.90; SQ 0.75-0.82 vs 0.87; TR
+0.53-0.57 vs 0.63). READING (deferred): the pooled-chunk MLE prefers
+light tails (CLT over 160 dims), and following it degrades SR ->
+nu=2's benefit is optimization/robustness dynamics, not likelihood
+fit. Fixed nu=2 stands.
+learnnu_cond: DESIGN FAILURE by saturation - nu_base drifts to the
+sigmoid ceiling (27.2-29.8), sigmoid gradient vanishes, conditional
+spread collapses to zero ([27.6,27.6]): the head is dead and the loss
+degenerates to near-Gaussian hetero. The [1,30] bound became an
+attractor; my anti-collapse guards did not anticipate ceiling
+saturation. Arms killed at 50-85k. NOTE: SQ-mh lnuc s1 hit 0.95 best
+@79k (n=1; other seeds 0.72/0.78) - an intriguing hetero-Gauss-like
+datapoint, not evidence. v2 design if resumed: freeze base at nu=2,
+learn bounded multiplicative deviations nu(s)=2*exp(g(s)) in [1,8]
+(softplus, no ceiling), same warmup+shrinkage.
+
+## PART CDXLV — FORK-DRIFT AUDIT (CLEAN) + sigma-FLOOR ARMS; EMA/SWA BRANCH STOPPED
+Per user directive the slow-EMA/SWA branch is STOPPED and its code
+reverted (never ran). Levers pursued instead:
+(2) sigma-floor: HT_SMIN=0.05 arms launched (tool-hang ct x3,
+square-mh cu x3; k_t12.sh now encodes _smin005 in run names).
+Mechanism: as residuals shrink late in training, learned sigma shrinks,
+sharpening the NLL and amplifying gradient noise exactly when
+checkpoints should settle; a floor damps the late oscillation that
+drives our last-5 gaps.
+(3) FULL fork-drift audit vs upstream simchowitzlabpublic@main:
+- mip_loss, flow_loss: byte-identical (modulo cauchy_c param plumbing,
+  identical default).
+- regression_loss: identical when OBSJIT/MSE_DEAD/ROTW env hooks unset
+  (they are unset in ALL t12 runs).
+- agent: FlowMap wrap + AdamW identical on default path (MIP_TWONET /
+  TRUNK_LR_MULT / OPTIM=muon env-gated).
+- networks: sudeepdit + chitransformer UNTOUCHED; chiunet GMM head
+  fully gated behind gmm_k>1 (config: 0).
+- encoders: dict-handling widened (affects dict obs only, i.e. pusht
+  keypoint); state tensors unchanged; OBS_MASK env-gated.
+- dataset state path: phase features constructor-gated off; fast
+  loader image-only + env-gated.
+- env wrapper: dataset_path precedence + save_video render flag;
+  same data files resolved either way.
+- ONLY runtime divergence: MUJOCO_GL default osmesa -> egl (rendering
+  backend). Irrelevant to state tasks; affects image offscreen
+  rasterization pixel-level. (osmesa is ~17 s/env-step software
+  rendering - implausible for anyone's actual training; likely their
+  compat fallback, not their real backend.)
+VERDICT: state-benchmark comparisons run functionally upstream-
+identical code; the DiT column gap is NOT code drift - consistent with
+their table entries being favorable seed draws (cf. MIP-repro margins
+of -2 to -7 points).
+
+## PART CDXLVI — THEIR RELEASED LOGS CONTRADICT TABLE REFS ON TOOL-HANG
+The mip-checkpoints HF repo ships full metrics.jsonl for two columns
+(tool_hang_ph_state/abs, transport_ph_state/abs; seeds 0/1/2; same
+in-train eval protocol, 50 eps). Computed from THEIR artifacts:
+TOOL-HANG (abs): mip dit 0.50/0.37, ct 0.74/0.62, cu 0.57/0.43;
+regression best cell 0.42; flow best cell 0.66/0.54 (cu).
+-> The table ref MIP-dit 0.92/0.88 exceeds EVERY released artifact by
++0.18 to +0.42. Our delta HT-ct 0.90/0.80 beats every released
+tool-hang cell of every method by >= +0.16 best / +0.18 last5.
+Released column SOTA belongs to our HT row.
+TRANSPORT-PH (abs): mip cu 0.81/0.66 (~= table 0.80/0.69 OK), ct
+0.69/0.58, dit 0.68/0.55; regression best 0.47; flow best 0.57.
+Our HT abs+obs8 0.78/0.67 vs released mip-cu 0.81/0.66: last5 parity,
+best -0.03.
+CAVEATS: releases are abs-actions (their choice); paper may have used
+delta for the table (not released). The square repro (-2/-3 pts, ct
+exact) says the paper refs are reproducible for ct/cu columns; the
+unsupported entries are concentrated in dit cells (repro -7 on square
+dit; released TH dit 0.50 vs table 0.92).
+IMPLICATION for the paper: report both reference rows (paper table +
+released-artifacts recomputation); by the artifact-backed reference,
+tool-hang and transport-ph both move to parity-or-ours.
+
+## PART CDXLVII — T12 TUNING CLOSED; DP-FRAMEWORK HT PORT (in progress)
+Per user: Table-12 tuning stopped, resources released to Table-13.
+All state tuning arms killed (sigma-floor x12, obs1 x6, transport-mh
+cell arms x12, transport obs4/obs8 backbone arms x12, learnable-nu x9,
+schedule/capacity x6). Final T12 = the recipe already reported
+(nu=2, learned sigma, no floor, 300k cosine, EMA 0.995, stock configs;
+per-task action space + transport obs8 only).
+Tuning ledger (all pre-registered, all refuted): sigma-floor 0.05
+(TH 0.86/0.74 vs 0.90/0.80; SQ-mh 0.85/0.73 vs 0.87/0.74; SQ-ph
+0.96/0.85 vs 0.99/0.92; can ~0), obs1 (SQ-mh 0.82/0.71), obs4/obs8 on
+ct+dit transport (0.00-0.07 = collapse), obs10/12, act_steps=4,
+horizon=32, lr 2e-4, learnable/conditional nu, 150k/200k schedules,
+dit emb384. NEGATIVE-RESULT VALUE: the reported HT recipe is
+untuned-by-elimination - no per-task knob search survived.
+IN PROGRESS (separate track, DP framework, tool-hang state only):
+HeteroTTransformerLowdimPolicy implemented as a drop-in for
+DiffusionTransformerLowdimPolicy (same TransformerForDiffusion
+backbone, same optimizer grouping/EMA power-law schedule/lr warmup/
+dataloader/env runner/eval-with-22-inits); only the objective (t-NLL,
+learned scale, output_dim=action_dim+1) and single-pass inference
+differ. Legacy env built on PFS (py3.9, torch 1.12.1+cu116,
+mujoco-py 2.0.2.13 compiled, robosuite cheng-chi fork, robomimic
+0.2.0; setuptools MUST be <66 - 82.x drops pkg_resources).
+Remaining blocker: numba/_internal init failure in that venv during
+the abs-action dataset conversion.
+
+## PART CDXLVIII — HT INSIDE DIFFUSION POLICY'S FRAMEWORK (tool-hang state)
+Fair head-to-head vs DP's PUBLISHED runs: their code, their recipe, our
+loss. Two files ADDED, zero existing files edited:
+  policy/hetero_t_transformer_lowdim_policy.py (BaseLowdimPolicy with
+  compute_loss/predict_action/set_normalizer/get_optimizer; instantiates
+  THEIR TransformerForDiffusion, delegates optimizer to THEIR
+  configure_optimizers; t-NLL with learned scale; ONE forward at t=0
+  from a zero trajectory instead of the 100-step DDPM chain) and a
+  config that reuses THEIR workspace _target_ unchanged.
+Recipe taken verbatim from the config embedded in their released
+tool-hang checkpoint: abs actions (low_dim_abs.hdf5, action_dim 10 via
+rot6d), horizon 10 / To 2 / Ta 8, batch 256, lr 1e-4, wd 1e-3, betas
+(0.9,0.95), cosine + 1000-step warmup, EMAModel power 0.75 cap 0.9999,
+8000 epochs, env_runner n_test 50 / n_train 6 (their 22-init eval bug
+inherited identically). Only architectural delta: output_dim =
+action_dim + 1 (256 extra params) to carry the scale; total 8,976,395
+params == DP paper Table 8's "9M" for this model.
+Baseline side needs NO retraining: their 3-seed logs are published
+(best 1.00 / last-5 0.86 / last-15 0.866 +/- 0.021).
+ENV NOTES (hard-won): py3.9 venv on PFS; setuptools MUST be <66
+(82.x drops pkg_resources); torch 1.12.1+cu116 SEGFAULTS in
+torch::onnx::initONNXBindings on this cluster -> torch 2.4.1+cu121;
+zarr 2.12/gym 0.21/diffusers 0.11.1/hf_hub 0.11.1; numba 0.56.4 +
+numpy 1.23.5; pandas; pytorch3d replaced by a shim built from our
+vendored rotation_conversion.py (+ `from __future__ import
+annotations` for py3.9; roundtrip err 2.4e-07); mujoco-py needs
+build-essential + libosmesa6-dev + libglew-dev in EVERY pod.
+DATA: DP's own low_dim_abs.hdf5 range-extracted from their
+robomimic_lowdim.zip (member offset parse, 120MB deflate -> 202MB) and
+moved to the cluster over the desktop token server on :8931
+(md5 d2abfa10f473f49ec91937b2b6902150; 23 s via proxy vs 15 min+
+direct - the PROXY route is the fast one).
+
+## PART CDXLIX — DP CODE AUDIT: WHAT THEIR HARNESS ACTUALLY DOES
+Read end-to-end to find leverage for the HT port. Inherited by our runs
+automatically (we reuse their workspace/dataset/runner):
+- EMA is PROGRESSIVE weight averaging, not fixed decay:
+  decay = 1-(1+step)^-0.75 capped at 0.9999 => averaging window grows
+  ~32 steps (step 100) -> ~1k (10k) -> ~10k steps (215k+). Eval always
+  rolls out the EMA model, never the raw weights. This is the same
+  mechanism as the slow-EMA branch we prototyped and dropped; the
+  field's strongest baseline ships it by default.
+- ABS-ACTION NORMALIZER IS SPLIT: pos dims 0:3 -> [-1,1] min-max;
+  rot6d+gripper dims 3:10 -> IDENTITY (no scaling). So per-dimension
+  residual scales are heterogeneous by construction -> a single pooled
+  sigma is mismatched. Direct motivation for the perdim-sigma arms.
+  (delta actions: identity normalizer on all dims, "already normalized".)
+- dataset: pad_before=To-1, pad_after=Ta-1, val_ratio 0.02 (seed 42),
+  rotation_rep rotation_6d, use_legacy_normalizer False.
+- runner: n_test 50 / n_train 6, test_start_seed 100000, max_steps 700,
+  n_envs 28, policy.reset() per episode, receding horizon Ta=8,
+  undo_transform_action converts rot6d->axis-angle before env.step.
+- NO gradient clipping, NO AMP, NO extra augmentation.
+- knob not used by them: n_cond_layers=0 (obs condition encoded by MLP);
+  their code supports a TransformerEncoder cond stack -> arm launched,
+  since with a zero-trajectory decoder input ALL information for a
+  regression policy flows through the conditioning path.
+EVAL PARITY: our first runs used n_test=50 (scores quantized 1/50) vs
+their published 22 (1/22). All arms relaunched FROM SCRATCH with
+n_test=22 so best/last-5 are directly comparable to their logs.
+
+## PART CDL — WHY DP-HARNESS HT < OUR T12 ON TOOL-HANG (diagnosis)
+Observation (user): our T12 tool-hang HT is 0.90/0.80 (our harness,
+delta, chitransformer, 50-ep eval) but HT in DP's harness sits at
+0.64/0.36 (22-ep eval). Investigated rather than assumed.
+RULED OUT: data. DP's tool_hang ph low_dim.hdf5 and mip's are
+statistically identical (per-dim action std matches to 3 decimals;
+both 200 demos).
+FOUND: action normalization differs for DELTA actions.
+- DP: identity normalizer for delta ("already normalized") - verified
+  empirically in our own checkpoints (scale all 1.0, offset all 0.0).
+- T12/much-ado: MinMaxNormalizer per-dim -> [-1,1].
+Per-dim data: pos and gripper already saturate +-1 so MinMax is a
+no-op there, but ROTATION dims get amplified 2.94x / 1.80x / 1.16x.
+Post-normalization std: T12 [0.21 0.33 0.37 0.144 0.174 0.164 0.918]
+vs DP [0.21 0.33 0.37 0.049 0.097 0.142 0.918]. Under a squared-error
+objective the rotation dims therefore carry up to ~8.6x more gradient
+weight in T12 - and tool-hang fails precisely on rotational alignment
+during insertion. Diffusion is insensitive to this (it predicts
+unit-scale epsilon regardless of target scale); regression is not.
+CAVEATS (not yet the proven cause): amplification is only 2.94x on one
+dim, and the DP-harness runs are at ~38% of T12's sample budget
+(116M vs 307M samples at epoch 850).
+TEST LAUNCHED: HT_MINMAX_ACTION=1 applies T12's per-dim min-max inside
+DP's harness (verified to reproduce scale [1,1,1,2.94,1.8,1.16,1]),
+on the two strongest arms (unet_delta, tf_delta_cl4). Isolates the
+normalizer from every other factor.
+
+## PART CDLI — DP-harness campaign: protocol matching, recipe isolation, and per-task laws (2026-08-04)
+
+Protocol: DP's exact eval statistics reproduced in our trainer (log=dp_harness
++ task.num_envs=22): 22-episode evals every 1875 steps -> 160 evals/300k run,
+last-5 spanning 3.1% of training. DP's published 0.864 tool-hang l5 verified
+= last-5 of their released eval series (last-10 gives 0.871; their Table-1
+caption says 10 but the numbers are last-5).
+
+Closed columns (HT, 3-seed means, DP protocol; DP best-of-C/T in parens):
+  lift-ph 1.00/0.98 (=)   lift-mh 1.00/0.99 (1.00/1.00)
+  can-ph  1.00/0.99 (1.00/0.96)  push-T 1.00/0.98 (0.95/0.91)
+  can-mh  1.00/0.961 (1.00/1.00)
+  tool-hang 1.00 best (3 seeds all 22/22, ad0.1+emaC+lr3e-4); l5 0.83
+  transport-mh 0.70/0.50 @235k, three arms agree (0.68/0.46) -> winning
+  square-ph 1.00/0.888 abs+progEMA (1.00/0.93)
+  square-mh 0.94/0.74 abs+progEMA (0.97/0.82)
+
+Mechanistic findings, each multi-arm:
+1. RECIPE SUPPRESSION: DP's regularisation bundle (wd 1e-3 + dropout),
+   imported as optimization=dp_harness, systematically hurts chiunet
+   columns: square-mh l5 0.58-0.59 (bundle) vs 0.72+ (T12 recipe, same
+   protocol); transport-mh cd response is monotone-destructive
+   0.0/0.1/0.2/0.3 -> 0.65/0.59/0.39/0.30 best. Transformer columns
+   tolerate ad 0.1 and betas (0.9,0.95) (tool-hang best config).
+2. ACTION SPACE (square): ph abs >> delta (T12 harness 0.99/0.92 vs
+   0.925/0.83; DP protocol l5 0.888 vs 0.758). mh insensitive
+   (0.86 vs 0.87). The historical 0.99/0.92 "square-ph" cell was the
+   ABS config (t12_square_ph_state_abs_chiunet, plain recipe).
+3. EMA-WINDOW LAW: window fraction of training is what matters. DP's cap
+   0.9999 at their 4.25M steps = 0.24% of run; same cap at our 300k =
+   3.3% -> -0.12 l5 (over-smoothing). Constant 0.995 (0.07%) under-
+   smooths late tails. Progressive power-law capped 0.999 cushions the
+   end-of-run sag: +0.027 sq-ph, +0.048 sq-mh l5 vs plain.
+4. PROTOCOL INFLATION: best-over-160-evals at 22 eps vs 15 evals adds
+   ~+0.05-0.08 to "best" at true SR ~0.6-0.9 (transport-mh 0.65->0.70,
+   can-mh l5 0.95->0.96 via tight window). Both directions verified
+   against much-ado anchors.
+5. OBS HISTORY (transport-mh): 1/4/8 -> 0.37/0.50/0.63 saturates at 8;
+   obs10 tracks slightly below obs8; obs12 collapses (0.05). Gains are
+   the 1->8 climb only.
+6. BUDGET ASYMMETRY: ours bs1024 x 300k = 307M samples vs DP-T bs256 x
+   8000 ep = 1.09B (tool-hang). Matching eval protocol, not train
+   budget, is the fair comparison; our results at 3.5x fewer samples.
+Final wave in flight: sqp3w (progEMA cap 0.9995, ph), sqm3l (450k, mh,
+l5 still rising at 299k cutoff), sqm3lr (lr 3e-4, mh best gap), plus
+m5long/lone (tool-hang 450k) and xm / learnnu-cond2 softplus/exp science
+arms on the much-ado harness.
+
+## PART CDLII — Closed-loop verification of the rank mechanism on script data (twofactor, N=200)
+
+Setup: eval_twofactor.py, mp200 family checkpoints (model_latest), dataset
+tool_hang_full2ins_mp_200.hdf5, AS=8, seeds 21000-21200. Earlier failures
+attributed: passing the relabel dataset produces the normalizer-mismatch
+signature (SR 0, SR|stay=nan); the checkpoints are intact.
+
+Result (SR; cross4 rate; excursion return<2 @20; excursion cross4 @20;
+band [2,4) dd p90):
+  mip      84.0%  0.22  0.51  0.18  +0.088
+  hgcbest  80.5%  0.24  0.64  0.17  +0.182
+  ht(hg)   74.0%  0.30  0.55  0.21  +0.204
+  htrank   61.0%  0.51  0.51  0.29  +0.225
+  l2       51.0%  0.61  0.53  0.30  +0.163
+SR|stay(d<4)=100% for all five arms. mip SR matches the recorded 84.
+hgcbest reads 80.5 vs recorded 87 (seed band/selection differ; residual
+gap cause unidentified). N=40 values run 7-16 points higher (seed bias).
+
+Verified statements:
+1. Failure occurs through deep excursions for every arm (SR|stay=100%).
+2. cross4 rate orders exactly with SR (0.22/0.24/0.30/0.51/0.61).
+3. Two distinct repair signatures among top arms:
+   hgcbest: active return (return@20 0.64 vs l2 0.53) — the explicit
+   rank penalty's closed-loop expression (response existence along
+   deviation directions).
+   mip: bounded outward drift (dd p90 +0.088, half of all other arms;
+   return fraction at l2 level) — the anchor/DC channel's expression
+   (response magnitude), consistent with far-field |a| 0.32-0.43 vs
+   l2 0.58 and with the two-factor decomposition.
+4. ht improves via excursion initiation (entry 0.85 vs l2 0.95) with a
+   l2-level Jacobian profile — estimation channel, outside the rank
+   mechanism.
+5. Untuned htrank (lam 1e-4) shows l2-level excursion outcomes: dose
+   sensitivity confirmed at the closed-loop level.
+Instrument notes: static-perturbation probe vs edge-state probe disagree
+on mip's annulus PR (1.66 vs 1.74) — unresolved; Jacobian probes on this
+family used the relabel file's obs normalizer (obs stats likely equal
+between files; verification pending). Schematic panel B splits into B1
+(inward return, hgcbest) and B2 (bounded outward, mip) for the paper
+figure.
+
+## PART CDLIII — MP-geometry toy (3D, clean): both mechanisms demonstrated; MIP requires capacity/budget (2026-08-05)
+
+Task (scripts/toy_mp3d.py): common start -> per-episode y-anchor (frame)
+-> merge to common staging -> z-descent to insertion; clean capped servo,
+zero noise; obs (x,y,z,g); kicks at carry or descent.
+
+1. Optimization transition for the two-pass MIP objective (concat-MLP
+   h64, SR at carry kick 10mm): 0.10 @4k steps, 0.00 @6k, 0.95 @8k,
+   1.00 @12k. All earlier failed MIP toys trained 4-6k. At h256/12k the
+   MIP cell saturates every kick incl. the unidentified descent regime.
+   User hypothesis "MIP requires a strong NN" confirmed (capacity and
+   budget); FiLM-architecture hypothesis refuted (film cells mid-field).
+2. Emergent bounded extrapolation at matched capacity (h256): off-tube
+   |a| at 10/20/40mm: L2 24/51/360 vs MIP 12/31/64 (demo cap 4); both
+   fields corrective in direction. Reproduces the real discriminator
+   (far-field |a| 0.32-0.43 vs 0.58; outward tail halved) with nothing
+   imposed.
+3. condreg on clean degenerate data: L2 0.20 SR at k=0 (unidentified-
+   direction drift), +condreg 0.85, graceful dose response — the PR
+   mechanism as variance suppression of the response spectrum,
+   effective at low capacity/budget where the MIP route is unavailable.
+4. Collinearity result (2D version): with the frame in the observation,
+   the transit funnel can be attributed to the frame coordinate;
+   frame-blind control recovers L2 (0.00 -> 0.65). Attribution, not
+   only missing data, drives part of the script-data failure.
+Correspondence table toy<->real recorded in the session; figures:
+toy_mp3d.png, toy_mp3d_mag.png, toy_mp2d_*.png, toy_tube_*.png.
+
+## PART CDLIV — Corrected takeover/kick instrument; real-data overshoot and wrong-direction extrapolation (mp200 family)
+
+### Instrument fault and resolution
+The previous takeover battery (trajdump4) replayed demos from `tool_hang_full2ins_2000.hdf5` while probing checkpoints trained on `tool_hang_full2ins_mp_200.hdf5`. The two collections share start and end but follow different mid-routes: one mp_200 demo measured against the 2000-set bundle is 3.2 mm away at 5% progress, **54.4 mm at 15%, 27.5 mm at 30%**, 6.0 mm at 60%, 0.2 mm at 90%. Every takeover therefore started the policy 30–50 mm off its own support, and all previous "universal divergence" (0/9 insertion for all arms) and the anti-aligned takeover decode at t=30 (cos −0.5, |a| 2.5× recorded) were artifacts of the cross-collection reference. On the training route the takeover decode matches the recorded action exactly (|a0| 1.101 vs 1.101).
+
+Corrected battery: replay demos, takeover states, tube statistics, and the support reference all from `tool_hang_full2ins_mp_200.hdf5` (also the normalizer source). 3 demos × probes t=50,120 × {dose 0, kick 1.0 action units × 2 steps ≈ 3.4 mm × 2 directions} × {recorded-action replay, l2, hgcbest, mip}, TCONT=250. Checkpoints: `mp200_{l2,hgc_best,mip}_s1000/models/model_latest.pt`. Figures: `analysis/paper/real_kick_3d.png`, `analysis/paper/real_onset_chain.png`; generator `scripts/fig_real_kick.py`; data `analysis/kickpack5.npz`.
+
+### Result: deviation source (dose 0, no kick; n=6/arm)
+Mean distance to training support (mm) at steps 0/8/16/32 after takeover:
+
+| arm | d0 | d8 | d16 | d32 |
+|---|---|---|---|---|
+| recorded-action replay | 0.1 | 0.2 | 0.2 | 0.1 |
+| l2 | 0.1 | 0.4 | 1.8 | 13.3 |
+| hgcbest | 0.1 | 0.3 | 1.5 | 7.5 |
+| mip | 0.1 | 0.4 | 3.5 | 21.3 |
+
+The simulator is deterministic and replay is faithful (0.1 mm); there is no injected noise. All deviation originates from the policy's own prediction error: ~0.4 mm after the first chunk, compounding to 7.5–21 mm within 32 steps. Insertion-zone reach over full takeover continuations (dose 0): l2 3/6, hgcbest 5/6, mip 3/6.
+
+### Result: response to a 3.4 mm kick (n=12/arm)
+Mean d (mm) at steps 0/8/16/32; peak d within 40 steps; drift rate while 4<d<60 mm; escalation (d32>1.5×d8) vs return; insertion reach over the full continuation:
+
+| arm | d8 | d16 | d32 | peak median | peak p90 | Δd/step | esc | ret | reach |
+|---|---|---|---|---|---|---|---|---|---|
+| replay | 4.9 | 4.4 | 3.5 | 7.3 | 15.5 | −0.02 | 2/12 | 9/12 | — |
+| l2 | 40.3 | 53.6 | 65.1 | 103.4 | 146.7 | +2.04 | 7/12 | 1/12 | 1/12 |
+| hgcbest | 12.2 | 15.1 | 9.0 | 14.6 | 45.9 | +0.35 | 4/12 | 7/12 | 5/12 |
+| mip | 11.3 | 17.4 | 30.6 | 27.4 | 110.8 | +1.41 | 6/12 | 5/12 | 2/12 |
+
+- Overshoot: l2 amplifies the 3.4 mm displacement 12× within 8 steps and reaches a median peak of 103 mm (30×). Open-loop replay of the recorded actions, which applies no correction at all, holds the offset at 3.5–7 mm — the escalation is generated entirely by the l2 policy's own output.
+- Wrong-direction extrapolation: while off-support (d>2), motion direction has negative mean cosine to the nearest support point for learned arms (l2 −0.15, hgcbest −0.15, mip −0.08; replay +0.01), and l2 sustains +2.04 mm/step net motion away from support versus +0.35 for hgcbest.
+- Per-step direction and oscillation statistics do not separate the arms (reversal fraction 0.00 everywhere; OSC impedance and 8-step chunks smooth single-step behavior). The separation is in the integrated excursion outcome, consistent with the on-manifold probe equivalence (PART CDLIII context: MSE≡MIP on-manifold).
+- hgcbest shows the best excursion outcomes (return 7/12, drift +0.35), reproducing the twofactor N=200 ordering (return@20 0.64, highest). mip is bounded relative to l2 (peak 27 vs 103 mm) but has no local return force; at this forced dose its recovery (basin capture) often does not complete within the window (reach 2/12). Interpretation, labeled: mip's SR advantage at scale (84% vs 51%) is carried by fewer and smaller self-generated excursions plus bounded response magnitude, not by strong recovery from forced mid-route displacement.
+
+Caveat: n=12 kicked branches per arm (3 demos × 2 probes × 2 directions); reach counts at this dose are ordering evidence, not calibrated success rates.
+
+Addendum: `analysis/paper/real_takeover_3d.png` (generator `scripts/fig_takeover_3d.py`) shows the no-kick branches in the same 3D + d(t) format: takeover at t=50/120 with zero injected perturbation. Insertion reach l2 3/6, hgcbest 5/6, mip 3/6; failing branches leave support and do not return (final d 50–200 mm); recorded-action replay stays at 0.1–1 mm throughout. All deviation in that figure is generated by the policy's own prediction error.
+
+### Takeover-only reach vs closed-loop SR: resolution (n=16/arm, fresh per-chunk latents)
+Question raised: mid-route takeover reach (initial run: mip 3/6) appeared inconsistent with twofactor SR (mip 84.0 vs l2 51.0, N=200). Two instrument issues were fixed — the battery had reused one fixed latent for every MIP chunk (eval_twofactor draws a fresh latent per chunk; l2/ht are deterministic and unaffected), and n=6 was insufficient. Rerun: 8 demos × probes t=50,120, no kicks, TCONT=250, `analysis/kickpack6.npz`.
+
+Result, insertion reach split by probe:
+
+| arm | total | t=50 | t=120 |
+|---|---|---|---|
+| replay | 16/16 | 8/8 | 8/8 |
+| l2 | 8/16 | 8/8 | 0/8 |
+| hgcbest | 11/16 | 5/8 | 6/8 |
+| mip | 7/16 | 6/8 | 1/8 |
+
+Mean d (mm) at steps 8/16/24/40 after takeover: at t=50, replay 0.0 throughout; l2 0.1→0.3; mip 0.0→0.8; hgcbest 0.1→10.1. At t=120, replay holds a persistent 1.4–1.8 mm offset (a controller-goal transient present at this probe point and absent at t=50); from the same start l2 grows 1.6→5.6→19.3→59.9, mip 1.5→5.3→12.2→68.1, hgcbest 1.4→1.8→3.0→19.0.
+
+Reading, labeled as interpretation:
+- The takeover instrument at t=120 injects an effective ~1.5 mm perturbation at the staging→descent transition, where the demo bundle has converged (local support width ~1 mm). Every t=120 branch therefore starts at the support boundary. Open-loop replay is neutral to the offset (no feedback; 16/16 reach). The learned arms close the loop through the offset state: l2 and mip amplify it (0/8 and 1/8), hgcbest's corrective channel contains it (6/8).
+- Takeover reach is therefore a forced-transient-response measurement, not an SR measurement. At t=50 (fan region, wide support, no transient) all arms track their SR-consistent behavior (l2 8/8 — takeover at t=50 also skips the early segment where l2 accumulates part of its episode risk; mip 6/8).
+- mip's 84% SR is consistent with these probes: full episodes contain no forced 1.5 mm offset at the narrow-support point; mip wins episodes by rarely escalating its self-generated deviations (cross4 0.22 vs l2 0.61 per episode), while its recovery from forced displacement is weak (bounded response, basin capture only, no local return force) — matching both the kick battery (peak 27 vs 103 mm) and the toy.
+- Fixed-latent sampling had additionally depressed mip's dose-0 aggregate (d32 21.3 → 15.6 mm after the fix); it was a real bias but not the main effect.
+
+### Natural-episode demonstration (no kick, no takeover)
+30 fresh full episodes per arm through the canonical twofactor harness (seeds 21000–21029, `DUMPTRAJ` trajectory dump), mp200 model_latest checkpoints. Results: SR l2 19/30, hgcbest 27/30, mip 28/30; episodes crossing d=4: l2 15/30, hgcbest 4/30, mip 3/30; cross2 0.90/0.73/0.83; SR|stay=100 all arms; maxd p90 l2 63.6 vs mip 5.9. Figure `analysis/paper/real_natural_3d.png` (generator `scripts/fig_natural_failures.py`, data `analysis/natpack.npz`): l2's 11 failures depart the bundle around the insertion approach (fc4 p50 ≈ 190) and travel across the workspace (d 10–1000 units); hgcbest/mip failures are rare. mip's 2 failures also show a large escape once past the boundary — bounded response reduces escalation frequency, it does not remove the instability. This is the natural-noise version of the overshoot/wrong-direction demonstration: no injected perturbation anywhere in the pipeline; all excursions originate from the policy's own prediction error on fresh placements. Reproduces the N=200 statistics (cross4 0.50 vs 0.61; 30-episode binomial noise).
+
+### Toy, natural-error configuration (no kicks anywhere)
+Question: does the toy explain the natural-episode phenomenon, or only the kicked-response regime? The base toy could not produce natural failures (rollouts at training anchors, dense K=30 coverage, near-zero prediction error). Adding the real experiment's initiation ingredients — K limited training demos, 100 FRESH anchors g~U(-15,15), clean plant, per-step closed loop, no kicks (`scripts/toy_mp3d_natural.py`, h=256/12k for all arms) — reproduces it:
+
+Mean over 3 training seeds (SR / frac maxd>4mm / maxd p90 mm):
+| model | K=8 | K=15 | K=30 |
+|---|---|---|---|
+| L2 | 0.02 / 0.99 / 375 | 0.35 / 0.66 / 180 | 0.38 / 0.63 / 173 |
+| L2+condreg | 0.44 / 1.00 / 90 | 0.40 / 1.00 / 178 | 0.65 / 1.00 / 56 |
+| MIP | 1.00 / 0.31 / 4.0 | 1.00 / 0.00 / 2.7 | 1.00 / 0.01 / 3.2 |
+
+Figure `analysis/paper/toy_natural_fig.png` (K=8, seed 1): L2 rollouts track the route at d≈1–2 mm and depart at the merge→descent transition (step ~30) into 100–500 mm flights — the same departure location (support-narrowing point) and flight signature as the real natural episodes (real fc4 p50 ≈ step 190, insertion approach). MIP: SR 1.00 in all 9 cells, d ≤ 4 mm; at K=8 seed 3 it crosses 4 mm in 92% of rollouts and still succeeds 100% — the leaves-band-but-stays-bounded signature (real: cross2 0.83, SR 93%).
+
+Interpretation, labeled: the toy now covers both halves — initiation (interpolation error on novel anchors, largest where cross-demo variation collapses at the transition) and response (L2 amplification vs MIP bounded). Caveats: the toy overstates MIP (1.00 vs real 93%; no contacts, no perceptual noise, no chunked execution); L2's failure rate is training-seed-fragile at K≥15 (0.00–1.00 across seeds — an instability direction either forms or does not), so the K-trend for L2 is dominated by seed variance; L2+condreg remains seed-fragile as in the base toy.
+
+### Single-segment mechanism evidence on script data (natural episode, seed 21003)
+Figure `analysis/paper/departure_segment.png` (`scripts/fig_departure_segment.py`). One L2 natural failure and the same-seed MIP success, zoomed to the departure segment. Measured on the segment: (1) L2 tracks in-band for 30 steps before departure (harness d mean 2.1); (2) the no-return point (step 198) sits at the insertion approach, where the demo bundle converges into the final insertion column — the support-narrowing location (all 11 L2 natural failures have no-return points at steps 189–301; the same-seed MIP episodes complete at 176–206); (3) after departure, d grows 2.1 → 16 within 5 steps with motion-vs-support cosine −0.37 (83% of steps directed away) and the trajectory ascends away from the insertion column to >100 mm — no kick, no takeover, deterministic simulator; (4) control: MIP on the identical placement holds d ≤ 1.1 through the same window and completes (across all pairs: MIP succeeds on 9/11 placements where L2 fails; 1 also fails, 1 finishes before L2's departure time).
+Correspondence to the toy: the same three stages (in-band tracking → departure at the support-narrowing transition → amplified motion away from support; same-placement MIP bounded). Geometric detail differs (toy failure descends laterally displaced; real failure veers sideways/up off the insertion column) — the shared mechanism is the stage structure, not the flight direction.
+
+Correction/refinement of the segment anatomy (front view (y,z), figure updated): the departure is NOT post-insertion — the L2 episode never assembles (0 through 700 steps). At step 183 L2 reaches the same (x,z) as the same-placement MIP completion point but offset 16 mm in y (60.8 vs 44.8; demo-end y is 43.7 ± 0.4 across all placements — the insertion line is placement-invariant in y). It then descends a parallel column beside the hole, 50 mm past the completion depth, with the y offset uncorrected (harness d oscillating 1.2→4.3→1.9→4.7 during the miss), and the amplified flight starts from that state. Failure anatomy: lateral misalignment (prediction error at a fresh placement) → descend past the target beside the hole → deep off-support → amplified departure. The toy L2 failure (laterally displaced descent past target depth, then flight) matches this anatomy directly.
+
+### Corrected causal anatomy of the natural failures (event-level, 90 episodes)
+The user's question ("is the departure already after the failed insertion?") was correct: the flight segment is a post-failure symptom. Working backward with the natural-episode dumps (obs windows contain frame/stand poses):
+
+1. **Placement novelty is not the initiator.** The 30 test placements lie 0.2–3.5 mm from their nearest training placement (dense coverage at 200 demos); spearman(align error, placement distance) = −0.12 (p=0.55). The toy's fresh-anchor interpolation story does not transfer as the initiation mechanism at this data scale.
+2. **Position alignment at descent entry is not the discriminator.** |y − insertion line| (placement-invariant, 43.7±0.4 mm): L2 failures median 3.5 mm (several at 0.1–3 mm) vs successes 2.5 mm — heavily overlapping; one 7.3 mm entry succeeded, one 0.1 mm entry failed.
+3. **The first insertion attempt is the fork, and no arm has retry competence.** All 70 successes (18 L2, 27 MIP, 25 hgcbest) are single-attempt insertions; 0 successful retries in 90 episodes. Failed first attempts show within-attempt lateral drift (|y-drift| p50 7.3 mm vs ~0.1 mm for successes) and depth overshoot (min z ≈ 945 vs 1020 mm — the rod slides down beside the base). SR ≈ P(first attempt succeeds): L2 18/28, MIP 27/29, hgcbest 25/28.
+4. **The discriminating variable is frame orientation at descent entry** (the frame is reoriented ~100° during carry; residual misorientation vs the inserted orientation): L2 successes 0.9–3.5° (p50 1.8) vs L2 failures 5.2–14.7° (p50 9.6) — no overlap; hgcbest 1.9 vs 13.3; mip 2.2 vs 6.3 (n=2). Geometry: 5–15° tilt on the ~200 mm rod displaces the tip 17–50 mm — a miss with the eef exactly on the insertion line. This also explains why eef-position metrics could not find the cause.
+5. **Arm ordering is set by the rate of large orientation errors at commitment** (L2 ~10/17 episodes ≥5° vs MIP ~2/15, hgcbest ~3/15), i.e., precision of pose tracking through the carry/reorientation phase. The post-failure response (L2 workspace flights vs bounded flailing) determines the failure signature, not the SR, in this regime.
+
+Interpretation, labeled: on script mp200 at dense placement coverage, MIP's natural-episode advantage is carried by smaller accumulated orientation error at the insertion commitment. The amplification/bounded-response mechanism remains demonstrated (kick battery, post-failure flights, toy) but is the terminal-phase behavior here, not the SR-determining event. Scope note for the toy: it reproduces initiation only via coverage gaps (fresh anchors, small K); the real initiation at this scale is pose-tracking residual, which the toy does not model (no orientation DOF).
+Instruments: align3.py/align4.py (align error, placement novelty), attempts.py (attempt cycles), frame_orient.py (orientation at entry), attempt_quality.py (within-attempt drift) — run on pod natdump dumps.
+
+### Real-trajectory evidence figure for the precision mechanism
+`analysis/paper/real_orientation_chain.png` (`scripts/fig_orientation_chain.py`, data `analysis/orientpack.npz` + `natpack.npz`). Panels 1–3: frame-misorientation trajectories for all 30 natural episodes per arm (reorientation from ~100° during carry; dots at descent entry). Panel 4: residual at the attempt bottom (successes: at completion) — successes 0.5–10.3° (p50 2.3–3.8) vs failures 8.5–160° (p50 18–64) across all arms. Refinements this figure exposed: (a) entry-instant residual separates L2 cleanly (succ max 3.5° vs fail min 5.2°) but MIP/hgcbest can enter at 6–10° and still converge during the descent (late correction visible in the curves); the arm-general invariant is convergence by the attempt bottom. (b) Some L2 retries reach good orientation late and still fail — consistent with the first miss leaving the setup physically out of tolerance (bumped base or slipped grasp), which is why 0/20 failed-first-attempt episodes recover. Toy scope: `toy_natural_fig.png` remains the response-mechanism illustration (commitment error → miss → amplified escape vs bounded); the real commitment error is this orientation residual.
+
+### Trajectory-level pair figure (reviewer illustration)
+`analysis/paper/mechanism_pair.png` (`scripts/fig_mechanism_pair.py`, data `analysis/pairpack.npz`; pairs 21003/21008/21025 dumped via eval_twofactor DUMPTRAJ, which now also saves the per-step action-error series). Seed 21025, identical placement, no perturbation: (A) L2 enters the reorientation phase at d≈2.5 and returns to the tube ~40 steps after MIP; (B) during that window L2's rotation actions deviate from the locally-reconstructed expert action (error ≈1.5 sustained ≈50 steps — the reorientation lags), MIP matches within 3 steps; (C) MIP aligns to 7° by step 150 and inserts at 193; L2 aligns 30 steps later, does not complete, the alignment degrades from ≈205 (7°→25° while d re-enters the band), the late attempt misses, and the amplified departure follows (d→50, frame wrenched to 160°). Per-episode variation: 21003 is a marginal case (both converge ≈5°, L2 misses narrowly); 21008 similar shape to 21025. The aggregate band statistics (band [2,4) rotation error p50: L2 1.46 vs MIP 0.36 vs hgcbest 0.13; on-support ≈0.04 all arms) are the population version of panel B.
+
+## PART CDLV — No-free-lunch toys: where does L2 beat MIP/Flow?
+Question: design toy scenarios where L2 beats MIP/Flow (label-noise denoising; capacity/budget starvation). Scripts `toy2d_nofreelunch.py` (+ CORR_H/CORR_STEPS/SKIP flags), figure `toy_nofreelunch_fig.png`, data `analysis/toy2d_corr48.pkl` and `toy2d_nfl.pkl/nfl2.pkl`.
+
+Design 1 (Gaussian action-label noise + 1 mm gate), well-conditioned regime (corridor task, h=48/3k, all methods 1.00 at sigma=0; 3 seeds x 30 starts):
+| sigma | L2 SR / p90 err | MIP | Flow |
+|---|---|---|---|
+| 0 | 1.00 / 0.28 | 1.00 / 0.27 | 1.00 / 0.36 |
+| 1 | 0.80 / 1.17 | 0.83 / 1.33 | 0.53 / 2.31 |
+| 2 | 0.53 / 2.67 | 0.62 / 2.20 | 0.36 / 3.69 |
+| 3 | 0.43 / 4.32 | 0.59 / 3.00 | 0.23 / 7.05 |
+Mechanism (200 sampled actions at one state, trained at sigma=2): output std L2 0.000, MIP 0.001–0.02, Flow 1.6–2.5 (≈ the injected sigma). Flow reproduces the conditional distribution and re-injects the label noise at inference; L2 and MIP output near-deterministic conditional means.
+
+Verdicts:
+- L2 > Flow: established (SR gap up to 0.20–0.27 across sigma; error growth ∝ sigma; mechanism measured).
+- L2 > MIP: NOT established — refuted in this axis. MIP ≥ L2 at every sigma (0.59 vs 0.43 at sigma=3); its two-pass objective behaves as a mean estimator (no noise re-injection) and denoises slightly better than plain L2. Caveat: the toy MIP is more anchor-collapsed (std ~0.001) than the real MIP (which shows measurable latent sensitivity); the real-data version could differ.
+- Design 2 (capacity/steps starvation): unsupported — the earlier v1/v2 budget cliff did not reproduce in the current 3D toy (non-monotone, seed-noisy at 3 seeds); at small h (16) all methods are ~1.00 on the easy 2D task.
+- Boundary case (long fan+merge route, overtrained h=256/12k, clean labels): L2 0.22 / MIP 0.67 / Flow 1.00 — on route-structured data the closed-loop instability owns L2's outcome regardless of favorable label statistics, and heavier training makes it worse (h=256: 0.83@2k → 0.04@6k). Label noise sigma=0.5 partially RESCUES overtrained L2 (0.22→0.43) — label noise as field smoothing.
+
+Story implication: the clean two-family split is mean-seeking (L2, HT, and MIP-as-implemented) vs distribution-reproducing (Flow). Gaussian-label-noise precision data defeats the distribution family; script-structured data defeats unstabilized mean regression; heavy-tailed human noise selects HT. A scenario where MIP itself loses is not achieved by noise re-injection; the measured candidates are backbone/late-training instability (T13: Chi-Tf image square-ph Regression 0.98/0.90 vs MIP 0.92/0.04) and possibly compute budget (currently unreproduced in toy).
+
+### PART CDLV addendum — skew witness verified + extended; DART scenario refuted
+Verification of the codex-designed witness (`scripts/toy2d_mip_nfl.py`, artifacts `analysis/toy2d_mip_nfl_results.json`/`_highcap.json`): all claimed numbers reproduce — skew cell regression SR 1.000 (8/8 seeds, dock p50 0.25 mm) vs MIP-full 0.000 (8/8, bias −0.1048±0.0040 vs analytic −0.09999); symmetric/Gaussian controls all-methods 1.000; high-capacity causal check (w256/12k, same weights): step1-only 1.00 (median 0.055 mm) vs full 0.00 (1.996 mm). Robustness caveat from an independent GPU-stream rerun: at w128/6k regression's dock margin sits at the 0.5 mm tolerance knife-edge (0.25 mm CPU-stream vs 0.32-0.56 mm GPU-stream; SR 1.000 vs 0.625) — cite the high-capacity cell or dock error (0.06 vs 2.0 mm) rather than w128 SR. MIP-full's failure is stream- and capacity-robust.
+
+Extension (8 seeds, GPU stream, same task): HG (hetero-Gaussian NLL) SR 1.000 (0.18 mm, bias −0.0035) — the only method fully robust at both capacities; HT (Student-t nu=2) SR 0.000 with bias −0.1000±0.0023 — numerically AT the analytic mode bias: the t-location is mode-seeking under skew, same failure family as MIP's denoiser. Symmetric control: all arms 0.875-1.000. The witness therefore defeats the whole mode-seeking family including our HT; HG is the surviving mean-family member.
+
+DART recovery-covered scenario: REFUTED as an L2>MIP candidate. dart02 checkpoints (dual-noise wp3dart02_2000 training): twofactor SR l2 16/30 vs mip 25/30 (SR|stay 79 vs 92); corrected kick battery (n=32 kicked branches/arm): oracle 3.3→4.9→4.4→4.7 mm at steps 0/8/16/32, l2 3.3→20.3→27.2→31.9 (still 6x amplification despite corrective labels in training), mip 3.3→4.8→7.9→14.6 (near-oracle early response). Corrective-label coverage does not remove L2's off-support amplification and MIP exploits the coverage better. Data `/mnt/pfs/yuchen/dartdump.npz`.
+
+Final no-free-lunch triangle (all measured): route-structured clean data -> MIP wins (84 vs 51; bounded response + commitment precision); skewed zero-mean nuisance + tight tolerance -> mean family wins (HG 1.00, L2 0.6-1.0) and the mode-seeking family loses (MIP-full 0.00 at bias −0.105, HT 0.00 at −0.100); symmetric heavy-tailed noise (human data) -> HT wins. The deciding data properties are the nuisance distribution's symmetry and the closed-loop structure; no method dominates.
+
+### Heavy-tail witness (HT-only-wins) + figures
+Third leg of the triangle, same funnel-to-dock task, only the label-noise distribution changed (`--modes heavy` in `scripts/toy2d_mip_nfl.py`): recorded-only symmetric Student-t df=1.05 corruption (demonstrator executes the clean servo — oracle SR 1.000 by construction), 3k chunks, dock 0.5 mm. 8 seeds: HT 0.875 SR / 0.24 mm dock p50; HG 0.250 / 0.55; MIP full 0.125 / 0.67; MIP step1 0.000 / 0.78; regression 0.000 / 0.83. Control at 30k chunks: every method 1.000 (the small-data regime is a necessary ingredient — the attack is estimator variance, not bias). Design constraints found on the way: executed heavy noise makes the oracle itself fail (SR 0.037), and any zero-mean executed noise leaves L2 unbiased — recorded-only corruption is what reconciles oracle-100% with defeating the mean family. Figures `analysis/paper/toy_ht_nfl_design.png` / `toy_ht_nfl_results.png` (generator `scripts/fig_toy_ht_nfl.py`); data `analysis/toy2d_mip_nfl_heavy.json` / `_heavy30k.json`. Caveats: HT dropped one seed (7/8; n=3000 is deliberately the knife edge — cite the 3-4x dock-error gap alongside SR); toy df=1.05 exaggerates the human data's measured df≈2 for visibility at toy scale.
+
+### Three-branch witness, trained results + composition matrix
+`analysis/paper/toy_threeway_nfl_results.png` (`scripts/fig_toy_threeway_results.py`; data `analysis/toy2d_mip_nfl_threeway.json`, 8 seeds, mode `threeway` in toy2d_mip_nfl.py). Trained: HT nu=0.5 1.000 (0.08 mm) vs MIP full 0.125 (0.69 mm, bias −0.034); HT nu=2 0.625 (0.43 mm, tolerance edge); regression/HG/step1 1.000. Causal control: same MIP weights, step1-only 1.000 -> full 0.125. Trained biases land on the population predictions (MIP −0.68 vs analytic −0.57 mm; ht05 −0.08 vs −0.02). Learned-nu caveat: the chunk-norm NLL's nu-MLE finds 1.75 on threeway (16-dim pooling lightens the tail it sees; fails like nu=2) but 0.59 on skew — parameterization-dependent; the witness arm is fixed nu=0.5. Skew rerun with the new arms: all HT variants fail at bias ~−0.100 (nu-independent — near modes offer no redescending escape); hg 1.000; regression 0.625 (knife-edge as documented). Oracle honesty (executed per-step mixtures): skew 0.000, threeway 0.344 — the expert-100% premise requires the recorded-corruption or style/recenter framing for every witness (the threeway data-level figure provides it).
+Composition matrix (panel D): L2 0.63/1.00/0.00/0.51, HG 1.00/1.00/0.25/0.805, HT(best) 0.00/1.00/0.875/0.74, MIP 0.00/0.125/0.125/0.84 across skew / three-branch / heavy / real script data — every method has a measured winning and losing regime.
+
+### Midlock witness: only standard HT (nu=2) docks — data edit answering "can nu=2 commit to the middle?"
+Mode `midlock` in toy2d_mip_nfl.py: dominant tight middle 72% at the true action; bottom branch 22% at −0.17 (1.7 anchor-sigma); one-sided far glitch tail 6% at −2.21 (heavy, t df=1.05) placed so the label MEAN sits exactly on the bottom branch. Design constraints satisfied simultaneously: far mass 0.28 < 1/(nu+1) = 1/3 (nu=2 scale capture of the tight middle) and mean-on-bottom (mean-family + MIP anchor commit bottom-ward). Trained, 8 seeds, 30k chunks, all seeds unanimous:
+| arm | SR | dock p50 | bias (analytic) |
+|---|---|---|---|
+| HT nu=2 | 1.000 | 0.02 mm | −0.0006 (−0.000) |
+| HT nu=0.5 / learned-nu (nu_hat=0.53) | 1.000 | 0.02 mm | ~0 |
+| MIP full | 0.000 | 1.91 mm | −0.090 (−0.096) |
+| MIP step1 | 0.000 | 3.77 mm | −0.161 (−0.170) |
+| regression | 0.000 | 3.59 mm | −0.180 (−0.170) |
+| HG | 0.000 | 3.62 mm | −0.178 |
+Only the HT family docks, at the paper's standard nu=2 — no small-data ingredient, no nu tuning; the learned-nu learner independently finds the heavy hypothesis (0.53) on this data (unlike threeway, where chunk-norm pooling hid it). Trained biases land on the population predictions. Figures: `toy_midlock_rollouts.png` (equilibria visible at funnel scale). Framing: the one-sided glitch tail is inherently a recorded-corruption story (e.g., teleop rest-pose snaps in the log); executed-reading oracle 0.055, consistent with all label-noise witnesses requiring that framing. HG failing here sharpens the family split: HG = Gaussian location = mean; HT = redescending location — the witness separates HT from HG, not just from L2/MIP.
+
+### Three-slot witness: zero-injection, only HT nu=0.5 wins (8/8 seeds)
+Mode `slots` in toy2d_mip_nfl.py (+ SLOT_DOCKS/SLOT_TOL success): the funnel forks into three valid slots (0/−6/−11 mm, tolerance 1.0 mm); label variance = between-operator AIM CHOICE only (60% center tight / 28% low / 12% lower, all executed, per-episode expert success 0.995) — no noise channel exists in the generator. This evades the executed+100% impossibility (feedback rescue / state separation / clean-final-labels) because the fork makes convex combinations of valid aims INVALID.
+Trained (8 seeds, 30k chunks): HT nu=0.5 1.000 (0.01 mm, center slot); everything else 0/8 — regression 3.03 mm (wall), HG 3.06, MIP step1 3.41, MIP full 2.00 (soft average of the two nearest slots, weights 0.68/0.32), HT nu=2 1.29 (wall edge; population −1.22). All trained values on the population predictions.
+Caveats: (1) the script's oracle print (0.035) is an instrument artifact — oracle_expert_sr resamples the aim per STEP; the true per-episode-aim expert is 0.995 (population + data-figure sample 30/30). (2) learned-nu reports nu_hat≈2.5 and wins only 3/8 — honestly so: this data has NO heavy tails (finite tight mixture), so the nu-MLE correctly finds light tails; nu=0.5's win is an INDUCTIVE-BIAS effect (redescending influence = plurality-mode selector under multimodal aim data), not noise-model matching. The paper should present small-nu HT as having two distinct virtues: heavy-noise matching (heavy witness) and plurality-mode selection (slots witness).
+Figures: toy_slots_data.png (data + estimator targets + HT-vs-nu curve), toy_slots_rollouts.png (trained equilibria vs slots/wall). Data analysis/toy2d_mip_nfl_slots.json.
+
+### Task-level NFL witnesses, final grids (ToolHang-MP + BigCubeLift; harvested 2026-08-14)
+Protocol for all cells below: train-harness eval (mode=eval), metric = avg_mean_success_1
+at step 299999 (tail-averaged evals), 2 seeds per cell. Oracle certificate = collection
+acceptance rate of the scripted collector under the injected corruption; all cited cells
+have certificate >= 0.99 unless noted. Corruption constructions match the toy generators
+(toyskew {-B:.8,+4B:.2}, contam {0:.7,+2B:.2,+16B:.1}, symm +-B; SKEW_HOLD=8 chunk-held).
+
+BigCubeLift (cube_state_delta_legacy; 66 mm cube vs ~80 mm opening; zero wrist rotation;
+oracle 100% clean and under every injected corruption; pods yuchen-ncb5-*):
+| cell | HT (s1/s2) | L2 (s1/s2) | MIP (s1/s2) | ordering |
+|---|---|---|---|---|
+| clean | .935/.930 | .935/.955 | .945/.955 | ceiling, unseparated |
+| toyskew B=0.05 | .890/.865 | .845/.810 | .755/.720 | HT > L2 > MIP (HT-wins) |
+| toyskew B=0.10 | .540/.620 | .670/.640 | .600/.645 | L2 > MIP ~ HT (L2-wins) |
+| contam B=0.025 | .925/.930 | .915/.950 | .965/.965 | MIP top by ~3 pts |
+| symm B (falsifier) | .890/.825 | .850/.875 | .815/.850 | unseparated, no reordering |
+Readings: (1) the toy-predicted skew flip reproduces at task level — HT beats L2 beats
+MIP at B=0.05, and the ordering inverts to L2-first at B=0.10 (magnitude crossover:
+at 4B=0.4 the skew spike is far enough that HT's redescending influence gates it but
+L2's mean-shift is small relative to the tolerance; at task level the crossover lands
+between 0.05 and 0.10). (2) The symmetric falsifier does not reorder methods — the flip
+is attributable to the injected asymmetry, not to noise per se. (3) contam did NOT
+produce the toy-predicted HT win on either task; at task level MIP absorbs the
+16B outlier mass best (bounded response of the two-step anchor). Toy contam and task
+contam disagree — reported as-is.
+
+ToolHang-MP Round-2 escalation (STOP_AFTER_INSERT collector; metric = avg_mean_assembled_1,
+the segment endpoint; pods yuchen-nfm2-*):
+| cell | HT (s1/s2) | L2 (s1/s2) | MIP (s1/s2) | ordering |
+|---|---|---|---|---|
+| toyskew B=0.05 | .360/.540 | .520/.410 | .480/.480 | unseparated (seed spread > method spread) |
+| contam B=0.025 | .550/.530 | .415/.570 | .780/.840 | MIP wins clearly |
+Reading: on ToolHang no injected-corruption cell reorders methods away from MIP at a
+valid certificate (R1 result stands); the wrist-rotation/precision structure keeps
+MIP's advantage under contamination. The HT-wins and L2-wins witnesses live on the
+low-rotation BigCubeLift task. Combined with ToolHang-MP clean (MIP-wins, twofactor
+2-seed: MIP 50.5 / HT 46 / MSE 36) the task-level witness triple is complete:
+MIP-wins (ToolHang-MP clean), HT-wins (cube toyskew B=0.05), L2-wins (cube toyskew
+B=0.10), with a symmetric falsifier showing no reordering.
+
+### Branch+noise endpoint-sweep witness (2D, verified 2026-08-14): the endpoint position alone selects the winner
+Design (user-proposed): bimodal executed aims (majority -A p=0.8, minority +A p=0.2,
+branch equilibria at -+6 mm) + symmetric Gaussian smear (sigma=0.1, ~2 mm on-support
+width), chunk-held; NO dock is assumed during training or rollout — landings are
+recorded and success is graded post-hoc for a swept endpoint d (tol 0.5 mm).
+Script scripts/toy2d_branchnoise.py; data analysis/toy2d_branchnoise_p08_wide.json;
+figure analysis/paper/toy_branchnoise_results.png. 8 seeds, 30k chunks, w128/12k.
+
+| arm | landing p50 | SR peak at | peak SR |
+|---|---|---|---|
+| L2 | -3.44 | -3.75 | 1.000 |
+| HG | -3.63 | -3.50 | 1.000 |
+| MIP step1 (control) | -3.52 | -3.75 | 1.000 |
+| MIP full | -4.63 | -4.75 | 1.000 |
+| HT nu=2 | -5.52 | -5.75 | 1.000 |
+| HT nu=0.5 | -5.81 | -6.00 | 1.000 |
+
+Readings: (1) mean family lands on the mixture mean (-3.6 analytic); (2) HT commits
+to the majority branch (nu=0.5 exactly on it, nu=2 a shade inside); (3) MIP-full lands
+BETWEEN, on the smeared support (anchor at the mean, denoiser projection onto the
+majority branch's inner edge) — step1 control at the mean proves the displacement is
+the second step; (4) three mutually separated peaks (1 mm gaps = 2x tol), each at
+SR 1.000 — same data, same training, only the graded endpoint moves.
+Iteration history (all recorded): 0.6/0.4 -> HT nu=2 undercommits (minority mass
+0.4 > 1/(nu+1) = 1/3, per the midlock design rule); 0.7/0.3 -> partial (-4.74);
+0.8/0.2 with the original 5 mm funnel end -> committed HT collides with the WALL
+(branch equilibrium -6 mm outside +-5 mm) — funnel floor widened to 8 mm for this
+witness; with it, even nu=0.5 docks 1.000. Design constraints exported to the
+task-level (two-knob object) version: minority mass < 1/(nu+1), and every
+estimator's landing point must sit on physically valid geometry with margin.
+
+### Skew witness + movable endpoint (2D, measured 2026-08-14): the original nuisance, both families winnable
+Same construction as the original skew witness (single correct action, zero-mean
+toyskew jitter {-b:.8, +4b:.2}, b=0.1, chunk-held) — the ONLY change is grading
+success at a swept endpoint d instead of the fixed dock at 0. 8 seeds, tol 0.5mm.
+Measured landings/peaks: L2 +0.09 / HG +0.07 / MIP-step1 -0.13 (peaks -0.25 ~ 0)
+vs MIP-full -1.95 / HT nu=2 -1.99 / HT nu=0.5 -2.00 (peaks -2.25 ~ -b*gain = -2.0);
+every arm SR 1.000 at its own peak. Reading: the original witness's "MIP loses"
+was a statement about the dock position, not the method — placing the endpoint on
+the majority-mode equilibrium makes MIP-full (and HT) the winners and the mean
+family the losers, with the SAME data and training. MIP and HT co-locate under
+pure skew (both at -b); separating them requires the branched-aims construction
+(recorded separately). Design figure analysis/paper/toy_branchnoise_design.png;
+data analysis/toy2d_skew_endpoint_sweep.json.
+
+### Panel-A-exact rerun (original geometry): endpoint reversal confirmed
+Rerun of the skew+movable-endpoint sweep under the EXACT original panel-A setting
+(5 mm funnel floor, 0.5 mm tolerance, toyskew b=0.1, original start distribution;
+8 seeds). Landings: Regression +0.06 / HG +0.10 / step1 +0.02 vs MIP-full -1.95 /
+HT nu=2 -1.99 / HT nu=0.5 -1.97 (population: 0 and -2.0). Dock success at d=0:
+mean family 1.000, mode family 0; at d=-2: mode family 1.000, mean family 0 —
+a complete verdict reversal from the same checkpoints. Figure
+analysis/paper/toy_skew_endpoint_results.png (A: two-endpoint bars; B: landings
+vs population predictions; C: seed-0 rollouts splitting into the two equilibria);
+data analysis/toy2d_skew_endpoint_orig.json.
+
+### Skew-magnitude sweep with the movable endpoint (panel-A geometry; b in {0.10,0.15,0.20,0.25}, 8 seeds)
+Landings: mean family (L2/HG/step1) pinned at 0 (+0.04..+0.10 mm) with peak SR 1.000
+at EVERY b. Mode family (MIP-full/HT nu=2/nu=0.5) slides exactly on the analytic
+-20b line: -1.95..-2.0 / -3.0 / -4.0..-4.1 mm, peak SR 1.000 — until b=0.25, where
+the mode equilibrium (-5.0) coincides with the funnel wall and commitment becomes
+collision: reached rates drop to 0.500 (MIP-full) / 0.598 (HT nu=2) / 0.125
+(HT nu=0.5, the hardest committer), while the mean family remains at 1.000 and wins
+at every endpoint by default. Reading: mode-seeker bias is a precise linear function
+of the skew magnitude; failure is not gradual but structural, arriving when the bias
+exhausts the task geometry — the toy mechanism behind the BigCubeLift sk5->sk10
+ordering flip. Figure analysis/paper/toy_skew_bsweep.png; data
+analysis/toy2d_skew_endpoint_{orig,b015,b020,b025}.json.
+
+### Wide-majority skew (b=0.2, sigma=0.1): all three methods separated on the single-target task
+Replacing the point-mass majority atom with a BAND (-b + N(0, sigma), minority +4b
+atom unchanged, labels still zero-mean) separates MIP from HT: HT's redescending
+location sits at the band center (mode), while MIP's denoiser lands at the
+precision-weighted posterior between its mean anchor and the band (sigma = sigma_a
+-> halfway). Measured (8 seeds): L2 +0.01 / HG -0.05 / step1 -0.01 vs MIP-full
+-1.78 (prediction -2.0) vs HT nu=2 -3.73, nu=0.5 -3.85 (prediction -4.0); every
+arm SR 1.000 at its own endpoint. Three distinguishable trajectory bundles from
+one dataset — noise design alone (majority width), no branched aims required.
+Figure analysis/paper/toy_skew_data_vs_trained_wide.png; data
+analysis/toy2d_skewwide_b02.json.
+
+### High-frequency mode oscillation (skewflip): the mean-family-only cell with a 100% oracle
+Recorded-only framing (demonstrator executes the clean servo to the final target ->
+oracle SR 1.000 by construction; user-required certificate). Labels = clean action +
+s(x) * wide-skew draw, s(x) a square wave of period P; zero-mean at every state.
+8 seeds, panel-A geometry, final target = 0. Peak SR at own best endpoint:
+P=64mm: L2 1.000 / HG .875 / MIP .875(at mean) / HT nu2 .594 / nu05 .750
+P=96mm: L2 1.000 / HG 1.000 / MIP .797 / HT nu2 .536 / nu05 .483
+P=128mm: L2 1.000 / HG 1.000 / MIP .750 / HT nu2 .474 / nu05 .510
+Readings: (1) at P>=96 both mode-seekers fail structurally at every endpoint while
+the mean family is exact — the label mean is flip-invariant, mode positions are not;
+(2) HT phase-locks (landings +1.0..+2.3, deterministic terminal sign at P=64;
+seed-level phase-lock SPLITS for nu=0.5 at P=96); (3) MIP is rescued at P=64
+(boundary blur -> posterior collapses to mean) and dragged at P>=96 (resolves phase
+partially -> 20-25 pt loss at its own peak); (4) frequency window documented:
+too fast saves MIP, slower makes it chase. Data analysis/toy2d_skewflip_{b02,p96,p128}.json.
+
+### Fixed-goal SR table for the 2D constructions (goal = oracle target, tol 0.5mm, 8 seeds)
+Same trained checkpoints as the endpoint sweeps, graded at the fixed oracle goal
+(recorded-only framing -> oracle 1.000). Mean-family/mode-family separation is total
+on every skew construction: L2 1.000+-0.00 everywhere; MIP-full/HT nu2/HT nu05 all
+0.000 (landing mass 2-5mm from a 0.5mm dock); step1 control 1.000. Flip cells give
+graded, high-variance failures (MIP .875/.625/.443, HT .281/.000/.403 at P=64/96/128
+— phase-lock lottery) with L2 1.000 throughout. Toy-vs-cube reconciliation: the toy's
+bias/tolerance ratio is 4-8x (hard zeros); the cube's is ~1 (graded orderings) — one
+mechanism, two regimes. Table in-report; data = the eight endpoint-sweep JSONs.
+
+### Obstacle-detour toy (push-T mechanism): only committed regression solves it
+Goal hidden behind a mid-corridor block (x 60-100, |y|<=3); demos detour +-6mm
+(0.6 left / 0.4 right, executed, small aim smear) and re-center — oracle 1.000.
+8 seeds, fixed goal at 0, tol 0.5mm:
+| arm | SR | collision |
+|---|---|---|
+| MSE (L2) | 0.000 | 1.000 |
+| HG | 0.000 | 1.000 |
+| HT nu=2 | 0.000 | 1.000 |
+| HT nu=0.5 | 1.000 | 0.000 |
+| diffusion (flow, K=16, replan 8) | 0.091 | 0.873 |
+Readings: (1) the classic mean-averages-into-the-obstacle failure is measured and
+TOTAL (mean detour aim +1.2mm sits inside the block band); (2) HT nu=2 fails as the
+slots mass rule predicts (minority 0.4 > 1/(nu+1)); nu=0.5 plurality-commits and is
+perfect — trajectory figure shows its bundle riding the majority lane; (3) the
+diffusion arm LOSES on diffusion's home-turf mechanism: per-replan resampling flips
+branch intention (visible zigzags in the figure) and 87% of rollouts die on the
+block face — sampling multimodality is not commitment. Follow-ups running: nu=2 at
+0.8/0.2 (mass-rule rescue check) and frozen-noise flow (causal probe of the
+resample-flip mechanism). Figure analysis/paper/toy2d_obstacle_trajs.png; data
+analysis/toy2d_obstacle_{l2,ht,flow}.json.
+
+### Obstacle toy follow-ups: mass-rule phase boundary + two-factor diffusion failure
+(1) HT nu=2 at 0.8/0.2 branches: SR 1.000, collision 0.000 (vs 0.000/1.000 at
+0.6/0.4) — the 1/(nu+1) minority-mass rule is a sharp, predictive phase boundary
+on this task (0.4 > 1/3 fails, 0.2 < 1/3 perfect). (2) Frozen-noise flow (one
+noise draw held across all replans): SR 0.091 -> 0.351, collision 0.873 -> 0.555.
+Causal decomposition of the diffusion failure: per-replan resample flipping is the
+largest factor (4x SR from intention persistence alone) but the learned field's
+mode separation at ambiguous states is independently imperfect (55% still collide
+with a fixed intention). Data analysis/toy2d_obstacle_ht2_p08.json,
+analysis/toy2d_obstacle_flow_frozen.json.
+
+### Obstacle nu-ladder complete: the 1/(nu+1) boundary measured at three points
+60/40 obstacle, 8 seeds: MSE/HG 0.000 | HT nu=2 0.000 (0.4 > 1/3) | Cauchy nu=1
+0.919+-0.22 (0.4 just under 1/2 — soft-boundary seeds) | HT nu=0.5 1.000 (0.4 << 2/3).
+Monotone in tail-aggression as the rejection rule predicts; the near-threshold
+Cauchy softness is consistent with chunk-norm pooling lightening effective
+aggression. Plus nu=2 at 80/20: 1.000 — the same estimator crosses the boundary
+by moving the DATA instead of nu. Real-task counterpart pending: GR00T+GR1
+nu=0.5 arm training (vs recorded nu=2 curve 29.0@16k / 44.7@60k); prior:
+Cauchy-family aggression plateaued on tool-hang, so the toy ordering may invert
+on the real task. Data analysis/toy2d_obstacle_cauchy.json.
+
+### Idle-mode toy (user-designed dual of the block cell): the mode family parks
+60% of recorded chunks are IDLE (zeros; unobservable operator pauses), 40% clean
+servo chunks; every demo reaches the goal (oracle 1.000). 8 seeds, fixed goal:
+MSE 1.000 | HG 1.000 | HT nu=2 0.978 | Cauchy nu=1 0.000 (reached 0) |
+HT nu=0.5 0.000 (reached 0) | flow 0.942.
+Readings: (1) aggressive HT commits to the plurality — which is INACTION — and
+never moves (the teleop-pause / "stopping is the mode" failure, measured);
+(2) the mean family averages through pauses (40% throttle) and is perfect;
+(3) nu=2 survives HERE (0.978) by the same compromise that killed it at the
+BLOCK: interpolation is fatal when the interpolant is inside an obstacle, benign
+when it is reduced speed — one mechanism, opposite outcomes; (4) diffusion passes
+(0.942): resample-flipping is harmless when one mode is "do nothing".
+Block+idle together close the NFL loop INSIDE the action-head zoo: tail-aggression
+(nu) has measured wins and losses at both ends, with 100% oracles throughout.
+Data analysis/toy2d_idle.json.
+
+### Idle-proportion sweep: nu=2's cliff lands on the mirrored mass rule
+p_idle in {0.6,0.7,0.8,0.9}, 8 seeds (oracle 1.000/1.000/0.995/0.823 — 0.9 is
+budget-limited even for the demonstrator, caveated):
+MSE 1.000/1.000/0.750+-.43/0.750+-.43 | HT nu=2 0.978/0.000/0.000/0.000 (reached
+0 from 0.7) | flow 0.942/0.890/0.774/0.441.
+Readings: (1) nu=2 falls off a CLIFF between 0.6 and 0.7 — the 1/(nu+1) rule
+mirrored: once the GO mass (1-p) drops below 1/3, nu=2 can reject it entirely and
+commits to inaction (predicted threshold p=2/3; third independent confirmation of
+the rule); (2) diffusion degrades smoothly (go-sampling rate + marginal blur);
+(3) MSE holds longest but develops seed-bimodal failures at 0.8+ as the mean
+throttle shrinks into estimator noise. Data analysis/toy2d_idle_p{07,08,09}.json.
+
+### Block-cell diffusion resolved: the sequential ingredient, not the sampling
+Tuning ladder (8 seeds; user directive to make diffusion work before concluding):
+marginal K=16 0.091 -> +frozen noise 0.351 -> w256/24k 0.476 -> +warm-start 0.381
+-> w512/48k frozen 0.568 (capacity curve flattening) -> HISTORY-CONDITIONED
+(prev action chunk in the conditioning, episode-rollout training data) 0.894+-0.05,
+collisions 0.095. Reading: diffusion solves the obstacle ONLY via the sequential
+mechanism — once the first chunk breaks the tie, the history-conditional is
+unimodal and the lane is held; multimodal sampling alone plateaus ~0.5-0.6 at any
+capacity/sampler/persistence. This is the ingredient real DP has (To=2) and the
+honest explanation of its push-T success. Fairness note: HT arms have no history
+conditioning; tuned diffusion 0.894 at K=64 vs untuned single-pass HT nu=0.5 1.000.
+Data analysis/toy2d_obstacle_flow_{k64,big,ws,xl,hist}.json.
+
+### Reach-phase cube grid FINAL (ncb6): both flips replicate under the clean design
+SKEW_PHASE=reach (noise in reach/align only; pick phase clean; pre-grasp entry
+tolerance-matched across cells; certs 97/99/98%). avg_mean_success@300k, 2 seeds:
+| cell | HT | L2 | MIP |
+|---|---|---|---|
+| toyskew B=0.05 | .795/.880 | .855/.780 | .760/.720 |
+| toyskew B=0.10 | .645/.565 | .760/.730 | .670/.645 |
+| symm falsifier | .965/.930 | .955/.965 | .980/.935 |
+Orderings identical to the all-phase grid (HT>L2>MIP at B=.05; L2>MIP>HT at B=.10;
+falsifier flat, best-ckpt 1.00s) — the flips are NOT artifacts of the executed-noise
+confounds (sample inflation 1.0-2.45x, endgame luck), which this design removes.
+Gap structure sharpens as expected: HT's sk5 edge purer but smaller (+2.0 vs +5.0),
+L2's sk10 win larger (+8.8). Data yuchen-ncb6[c]* logs; run dirs logs/ncb6_*.
+
+## PART CDLVI — Mechanism triad completed: idle / block / spurious (2026-08-14)
+
+### MIP and 0.85 point added to the idle cell
+MIP (kind mip, sampler mip_full) added to scripts/toy2d_idle.py and run at
+p_idle in {0.6,0.7,0.8,0.85,0.9}, 8 seeds, local GPU. New p=0.85 point for
+l2/ht2/flow as well. Full idle sweep (SR mean):
+| p_idle | oracle | L2 | MIP | HT nu=2 | diffusion |
+|---|---|---|---|---|---|
+| 0.6  | 1.000 | 1.000 | 0.250+-0.43 | 0.978 | 0.942 |
+| 0.7  | 1.000 | 1.000 | 0.000 | 0.000 | 0.890 |
+| 0.8  | 1.000 | 0.750+-0.43 | 0.000 | 0.000 | 0.774 |
+| 0.85 | 1.000 | 0.806+-0.35 | 0.000 | 0.000 | 0.704 |
+| 0.9  | 1.000 | 0.750+-0.43 | 0.000 | 0.000 | 0.441 |
+
+FRAMING CORRECTION (user-caught): the script's original oracle simulated an
+EXECUTING-idle demonstrator, which itself timed out at high p (0.995/0.975/0.823
+at 0.8/0.85/0.9) — violating the oracle-100% design rule. Fixed to recorded-only
+corruption, the same framing as the skew/spurious cells: the demonstrator
+executes clean servo (completes in <=5 of the 70 budget chunks, 14x margin;
+oracle 1.000 at every p by construction) and the idle chunks exist only in the
+recorded command stream (logging dropout / dead-man-release artifact). The
+TRAINING DATA IS NUMERICALLY IDENTICAL under both framings (states x chunks,
+zeros w.p. p), so every policy number above stands unchanged; only the oracle
+row changes. Under the corrected framing the timeout readings are: HT's 0.000
+is budget-independent (emits exactly zero); MIP's stall would need ~60x demo
+time; diffusion's decay is honest timeout failure against a 14x allowance.
+scripts/toy2d_idle.py oracle_sr() updated accordingly.
+MIP at 0.6: reached=1.000 every seed but only 2/8 seeds dock (refinement shrinks
+the servo gain); at 0.7+ full stall (mid-start trace: x=26mm of 130 in the full
+70-chunk budget). Mechanism: step-1 predicts the mean; for p_idle>0.5 that anchor
+is closer to the idle cluster than the go cluster, so the step-2 conditional
+refinement reweights toward idle — output below the mean. MIP is effectively in
+the mode family on this cell, with an earlier onset than HT nu=2's 1/3-mass cliff
+(partial failure at 0.6 where ht2=0.978; dead at 0.7). L2 sub-1.0 entries are all
+docking-precision misses (reached=1.000; lateral gain scaled by go-mass); it
+never stalls. Data analysis/toy2d_idle_mip_p*.json, analysis/toy2d_idle_p085.json.
+
+### Block cell: memoryless vs history DP reproduced locally + figure
+Rerun at recorded config (OB_FLOW_K=64, width 256, 24k steps, 3 seeds):
+memoryless resample 0.248+-0.03 (collision 0.699) vs history-conditioned
+0.932+-0.03 (collision 0.048) — matches the 8-seed pod result (0.894+-0.05).
+At small config (w128/K16/12k) history-DP reaches only 0.455+-0.16: memory is
+necessary but not sufficient (also needs capacity+solver budget); committed
+regression (HT nu=0.5 1.000) needs neither. Figure
+analysis/paper/toy2d_obstacle_dpmem.png (fig_toy2d_obstacle_dpmem.py); data
+analysis/toy2d_obstacle_dpmem.json. Claim discipline: this falsifies the
+sampler-based account of DP's multimodal robustness (commitment lives in the
+conditioning context, which any head can use), NOT "DP fails push-T" — shipped
+DP has To=2 history + receding horizon, i.e. exactly the fixing ingredient.
+
+### NEW spurious-mode cell: HT > L2 ~= DP (the third mechanism corner)
+scripts/toy2d_spurious.py. Same funnel corridor, no block. 25% of RECORDED
+chunks are glitch chunks (lateral axis stuck at +2.0mm/step, fixed direction);
+executed demos are clean servo — oracle 1.0 by construction (recorded-only
+corruption, same framing as the skew cells). 3 seeds, width 256, 24k steps,
+flow at K=64. Full-chunk execution (5 replans):
+| arm | SR | reached | collision | landing_p50 |
+|---|---|---|---|---|
+| L2 | 0.000 | 0.667 | 0.333 | +4.17mm |
+| HG | 0.000 | 0.667 | 0.333 | +3.44mm |
+| MIP | 1.000 | 1.000 | 0.000 | +0.05mm |
+| HT nu=2/1/0.5 | 1.000 all | 1.000 | 0.000 | ~0.00mm |
+| diffusion | 0.229+-0.02 | 0.261 | 0.739 | +0.05mm |
+Receding-horizon variant (execute 4 of 8, 10 replans): L2 0.000 (landing +2.21,
+collision 0 — near the closed-loop equilibrium p*k/((1-p)K)=1.33mm against the
+0.5mm dock tol), ht2 1.000, diffusion 0.181+-0.01. Mechanism readings:
+(1) L2/HG absorb a persistent directional bias; under full-chunk execution the
+bias compounds open-loop within the chunk (landing +4.2, 1/3 collide) — failure
+by bias, never by stalling. (2) Diffusion fails by faithfulness: it samples the
+glitch mode at data frequency and executes a fatal kick; survivors fly clean
+(landing +0.05). Exec-4 does NOT follow the naive (1-p)^replans law (predicted
+~0.06, measured 0.181): halving the horizon also halves the executed kick, which
+the wide early corridor survives — exposure and per-glitch damage partially
+cancel. Report qualitatively. Memory does not rescue DP here: the glitch is
+history-independent (unlike the block cell's legitimate branch mode).
+(3) All three HT nu reject the 0.25-mass cluster (below every 1/(nu+1)
+threshold); (4) MIP fully rescued (anchor closer to the clean cluster AND clean
+3x heavier -> refinement snaps to clean servo). The cell separates
+rejection-committers {HT, MIP} / averagers {L2, HG} / faithful sampler {DP}.
+Figure analysis/paper/toy2d_spurious_trajs.png (fig_toy2d_spurious.py); data
+analysis/toy2d_spurious{,_exec4}.json.
+
+### The completed mechanism triad (all oracles ~100%, all mechanism not noise)
+| cell | mechanism | L2 | DP | HT | MIP |
+|---|---|---|---|---|---|
+| idle | majority mode = inaction | 1.00 | 0.94->0.44 | 0.98; 0.00 past 2/3 | 0.25->0.00 |
+| block | minority mode legitimate (branch) | 0.00 | 0.93 (needs memory) | 1.00 (nu<=0.5) | — |
+| spurious | minority mode fatal (glitch) | 0.00 | 0.23 | 1.00 (any nu) | 1.00 |
+Each inductive bias (average / sample faithfully / commit-and-reject) has one
+cell where it is the right prior and at least one where it is fatal. Caveats to
+carry into the paper: idle's L2 wins carry the docking-precision asterisk;
+block's DP number requires the history ingredient (and capacity); spurious's
+L2~=DP tie is "both lose" by different routes (bias vs sampled catastrophe) and
+DP's exact number is execution-schedule-dependent.
+
+## PART CDLVII — Clean behavioral slots cell: HT > DP > L2 with zero injection (2026-08-14)
+
+User request: a cell in the idle/block class (mechanism in the EXECUTED
+demonstrator behavior, no recording corruption) where HT beats both L2 and DP.
+
+GEOMETRY CORRECTION on the original slots witness (toy2d_mip_nfl --modes slots):
+its funnel narrows to +-5mm while the minority slots sit at -6/-11mm — a
+demonstrator executing the -11 aim would collide from x~43, so the quoted
+"expert 0.995" was computed on inconsistent geometry and the witness did NOT
+satisfy the oracle-100% rule. (Its trained-arm comparisons stand — no arm ever
+landed beyond -5 — but the cell is superseded by the version below.)
+
+NEW scripts/toy2d_slots_dp.py: corridor +-14 -> +-12.5mm (all lanes inside with
+margin), three docks at 0/-6/-11mm (success = any dock within 1.0mm), operator
+picks a slot PER EPISODE (60/28/12, aim jitter 0.08/0.30/0.50mm clipped at
++-0.9mm), servo to lane, run to goal. Everything executed; measured oracle
+1.000 (20k chunks from 4000 episodes). ALL arms train on chunks from the SAME
+episode data; the history arm additionally sees the previous chunk. 3 seeds,
+width 256, 24k steps, flow at K=64 (the block-tuned settings).
+| arm | SR | landing_p50 | docks 0/-6/-11 |
+|---|---|---|---|
+| ht05 | 1.000+-0.00 | -0.04 | 401/0/0 |
+| flow_hist | 0.503+-0.05 | -1.66 | 128/41/10 |
+| flow | 0.466+-0.07 | -1.68 | 165/44/13 |
+| ht2 | 0.000+-0.00 | -1.42 | 0 |
+| mip | 0.116+-0.08 | -1.64 | 30+18 |
+| hg | 0.017+-0.02 | -2.99 | ~0 |
+| l2 | 0.000+-0.00 | -3.26 | 0 |
+Readings: (1) HISTORY DOES NOT RESCUE DP HERE (0.503 vs 0.466 memoryless; same
+tuned settings that took block from 0.25 to 0.93) — two-way commitment with
+rejoining paths is learnable from history, three-way lane-holding at 1mm
+tolerance is not, at this capacity/data; half of DP's rollouts land between
+lanes (landing_p50 -1.66 identical to memoryless). (2) ht2's pre-clip partial
+credit (0.24+-0.31) collapsed to 0.000 — undercommits (non-majority mass 0.40 >
+1/3), so the cell doubles as an internal HT falsifier: the win is the
+redescending plurality-commitment bias (nu=0.5), not the t-likelihood. (3) L2/HG
+land at the mixture lane (-3.3): reach, never dock, never collide — failure by
+invalid landing, cleanly. (4) MIP soft-averages (0.116). Disclosure: DP arms
+were not re-tuned beyond the block-cell settings; more capacity/steps might lift
+DP — the claim is at matched budget, where HT needs one pass and no history.
+The four-cell behavioral set: idle (L2 wins), block (HT+DP win), slots
+(HT-nu05 alone wins), spurious [recording-channel, separate axis] (HT+MIP win).
+Data analysis/toy2d_slots_dp.json; script scripts/toy2d_slots_dp.py.
+
+## PART CDLVIII — Retry/regrasp cell: the real-phenomenon HT witness (2026-08-14)
+
+Behavioral, all executed, oracle 1.000 measured. scripts/toy2d_retry.py:
+demonstrator servos to a 0.5mm dock; with prob 0.4 the FIRST dock approach is
+flawed (hidden cause, not in the state): back off 2 chunks to a +8mm staging
+lane, then re-approach and dock — at most ONE retry per episode (bounded), so
+demo worst case = 8 chunks. Near-dock retreat mass 0.305 (< 1/3 by design).
+Budgets = multiples of measured demo worst case: generous 2x (16), tight 1.25x
+(10); oracle 1.000 under both. 3 seeds, w256, 24k steps, flow K=64. First run
+was INVALID (chunk-grid bug: trigger x>=140 unreachable on the 32mm chunk grid
+-> zero retreats, all arms 1.000) — fixed with TRIG_X=120 + start-x jitter and
+verified on data (retreat mass) before rerun.
+| arm | generous (2x) | tight (1.25x) | landing_p50 |
+|---|---|---|---|
+| ht2 | 1.000+-0.00 | 1.000+-0.00 | -0.02 |
+| ht05 | 1.000+-0.00 | 1.000+-0.00 | -0.01 |
+| mip | 1.000+-0.00 | 1.000+-0.00 | +0.13 |
+| flow_hist | 0.998 | 0.979 | -0.03 |
+| flow | 0.987 | 0.912 (timeout .087) | -0.01 |
+| l2 | 0.000+-0.00 | 0.000 | -0.9..-2.3 |
+| hg | 0.000+-0.00 | 0.000 | +2.1..+3.1 |
+Readings: (1) mean family killed by the staging blend at near-dock states (HG
+lands toward staging +2..+3 as predicted; L2's blend composes within-chunk
+open-loop dynamics from both modes and lands low -0.9..-2.3 — sign differs,
+failure identical: 1-3mm off a 0.5mm dock, every seed). (2) DP's deficit is the
+renewal tail and matches the model QUANTITATIVELY: tight-budget timeout 0.087
+~= P(sampling >=2 retreats) = 0.305^2 = 0.093 — the demonstrator's retries are
+bounded (hidden flaw resolves), the sampler's are i.i.d. per dock visit;
+decays further as budget tightens or retry mass grows (idle cell = the limit
+case). (3) HT (both nu) rejects the 0.305 retreat cluster and docks; MIP also
+commits clean. Ordering: HT 1.000 > DP 0.91-0.99 (budget-dependent) > L2/HG
+0.000. This is the REAL-phenomenon witness (regrasp/retry segments documented
+in our human tool-hang demos) — behavioral, zero injection, oracle-perfect.
+Data analysis/toy2d_retry.json.
+
+### Retry cell: flaw-rate sweep + exact-budget column (user: "let DP fail harder")
+Wider trigger zone (RT_TRIG=100) + flaw-rate sweep, budgets still pinned to the
+measured slowest demo (oracle 1.000 everywhere; worst case 8 chunks in all cells).
+Tight (1.25x) SRs: flow 0.940/0.912/0.850 at F=0.4/0.6/0.8; flow_hist holds
+0.975-0.986; ht2 AND ht05 1.000 throughout (wider zone spreads per-state retreat
+mass below 1/3 even at F=0.8, so no nu=2 cliff); l2 0.000-0.002 (landing drifts
+-2.9 to -7.2 with F). The geometric retry tail is thin whenever the budget
+allows a spare loop — the honest amplifier is the budget rule, not more knobs:
+EXACT budget = slowest demo (1.0x, 8 chunks), F=0.8:
+| arm | 2x | 1.25x | 1.0x |
+|---|---|---|---|
+| ht2 | 1.000 | 1.000 | 1.000 (timeout 0.000) |
+| flow | 0.958 | 0.850 | 0.627 (timeout 0.372) |
+| flow_hist | 1.000 | 0.975 | 0.575 (timeout 0.425) |
+| l2 | 0.002 | 0.002 | 0.002 |
+Under "no slower than the slowest demonstration", ANY sampled retry exceeds the
+line, exposing DP's per-rollout retry probability (~0.4) directly. NOTE:
+flow_hist < flow at 1.0x — history commits DP to full retreat sequences (3-chunk
+loss every sampled retry) while memoryless sometimes churns out mid-loop;
+commitment helps only if it selects the productive mode. HT: zero timeouts at
+every budget. Claim discipline: 2x/1.25x columns show soft (time-cost) failure;
+the 1.0x column is the strict-budget reading and should be presented WITH the
+budget rule stated. Data analysis/toy2d_retry_f{0.4,0.6,0.8,0.8_exact}.json.
+
+### Status demotion: retry cell is a TIME-INFLATION observation, not an NFL witness (user-caught)
+As budget -> infinity, DP -> ~1.0 on the retry cell (all failures are timeouts;
+retreat loops have positive drift; retry count geometric) — DP contains HT's
+behavior plus optionality, which is an efficiency claim, not no-free-lunch.
+Same holds for the idle cell's DP column. Structural insight recorded: a
+literal absorbing deadlock for DP alone is impossible in these constructions
+(any supported mode has an exit sample -> geometric escape), and state-aliased
+bidirectional behaviors (patrol/scan, out-and-back) that DO trap a sampler
+freeze location estimators HARDER (balanced opposing modes -> mean/mode dx=0)
+— literal deadlocks are DP-favoring cells. DP's genuinely TERMINAL failure
+mechanism is commitment churn at forks (slots: 0.50 per plate, history does
+not fix 3-way). Follow-up cell launched: two-plate slot slalom
+(scripts/toy2d_slalom.py) to compound churn ~0.5^2, with terminal collision
+failures — the proper "DP just fails" NFL witness if it lands as predicted.
+
+## PART CDLIX — Two-plate slot slalom: DP's TERMINAL NFL cell (2026-08-15)
+
+scripts/toy2d_slalom.py. Wide corridor; two wall plates (x 50-58, 100-108),
+each with three gaps at lanes 0/-6/-11mm (gap half-height 1.2mm); demonstrator
+picks a lane PER PLATE (60/28/12, independent, jitter clipped +-0.9mm), threads
+both, docks center (tol 1mm). All executed, zero injection, oracle 1.000
+(data-verified before every run). Failures are TERMINAL (plate collisions /
+off-dock landings) — the infinite-time defense does not apply. 3 seeds, w256,
+24k steps, flow K=64, budget 70 chunks (>10x demo time, deliberately generous).
+| arm | SR | collision |
+|---|---|---|
+| ht05 | 1.000+-0.00 | 0.000 |
+| ht2 | 0.959+-0.06 | 0.041 |
+| mip | 0.775+-0.32 | 0.225 |
+| flow | 0.535+-0.02 | 0.461 |
+| flow_hist | 0.363+-0.02 | 0.631 |
+| l2 | 0.000+-0.00 | 1.000 |
+Readings: (1) per-plate churn compounds: single-plate slots DP ~0.5 -> two
+plates 0.36-0.54; plate count is a dial driving DP -> 0 geometrically. (2)
+flow_hist < flow AGAIN (third cell: slots, retry@1.0x, slalom) — history
+commits DP to its current lane mid-churn, converting flips into collisions.
+(3) L2 collision 1.000: the mean lane (-3.2) is web at both plates — the most
+decisive MSE kill in the toy family. (4) GEOMETRY HONESTY: at 1.5mm gaps ht2
+scored 1.000 by slipping its undercommitted -1.4mm offset through the center
+gap — tightened to 1.2mm; ht2 then 0.959 (0.041 collisions), i.e. its
+committed location here is closer to lane-center than the single-plate cell's
+-1.42 landing suggested (seed-variable); ht05 is the clean 1.000 arm. (5) MIP
+0.775+-0.32 (seed-bimodal refinement snapping). Figure
+analysis/paper/toy2d_slalom_trajs.png; data analysis/toy2d_slalom.json.
+Combined with the demotion note in CDLVIII: the NFL table's DP column should
+cite slalom/slots (terminal churn) and spurious (corruption axis); idle/retry
+DP columns are time-inflation observations.
+
+### Composite figure: toy2d_mechanisms.png (paper-ready, 2x3)
+Columns idle (p=0.7) / block detour / slot slalom; top row demonstration data,
+bottom row trained rollouts (MSE blue / diffusion purple / HT red in every
+panel, SR in legends). Arm-selection rule, DISCLOSED: each family is shown at
+its best variant per column — DP = flow_hist on block (0.93, where memory is
+the fix) and memoryless flow on slalom (0.54 > hist 0.36); HT = nu2 (the
+paper's default; at idle p=0.7 the whole HT family freezes so the verdict is
+variant-independent — this is why the idle column uses 0.7 rather than 0.6,
+where nu2 still scores 0.978). All three oracles exactly 1.000. Verdict line:
+idle -> mean family wins, committers freeze; block -> committers win, mean
+collides; slalom -> only HT wins, churn and averaging both collide.
+Script fig_toy2d_mechanisms.py; idle traces analysis/toy2d_idle_fig.json
+(p=0.7, 8 seeds: l2 1.000 / ht2 0.000 / flow 0.890).
+
+## PART CDLX — Idle failure mode: remedy + real-data audit (2026-08-15)
+
+User concern: the idle cell shows HT committing to inaction, so does HT freeze on
+real robot data (which contains pauses)? Answered on three axes.
+
+### (a) The remedy: no-op filtering restores HT completely
+Added ID_FILTER=1 to scripts/toy2d_idle.py — drops chunks with max|a| <= 1e-6,
+i.e. the standard curation behind the *_no_noops datasets every LIBERO-based VLA
+trains on. 4 seeds, recorded-only framing, oracle 1.000:
+| p_idle | arm | unfiltered | no-op filtered |
+|---|---|---|---|
+| 0.70 | HT nu=2 | 0.000 | 1.000 |
+| 0.70 | HT nu=0.5 | 0.000 | 1.000 |
+| 0.70 | L2 | 1.000 | 1.000 |
+| 0.70 | diffusion | 0.890 | 0.968 |
+| 0.85 | HT nu=2 | 0.000 | 1.000 |
+| 0.85 | HT nu=0.5 | 0.000 | 1.000 |
+| 0.85 | L2 | 0.806 | 1.000 |
+| 0.85 | diffusion | 0.704 | 0.978 |
+The pathology is a DATA-CURATION artifact, not an intrinsic property of the loss:
+one filtering line removes it at every idle proportion tested. (Note filtering
+also lifts L2 at 0.85 and diffusion everywhere — it helps every family.)
+Data analysis/toy2d_idle_filt_p{0.7,0.85}.json.
+
+### (b) Real-data audit: how much idle mass actually exists
+A step counts as idle when max|action| < f x (that dataset's median max|action|):
+| dataset | f=1% | f=5% | f=10% | HT nu=2 tolerates | nu=0.5 tolerates |
+|---|---|---|---|---|---|
+| LIBERO-10 (LeRobot v3, NOT no-op filtered) | 0.04% | 0.73% | 2.63% | <66.7% | <33.3% |
+| GR1 gr1_unified.PnPBottleToCabinetClose (GR00T train data) | 0.00% | 0.00% | 0.00% | <66.7% | <33.3% |
+n = 101,469 steps (LIBERO-10) and 8,941 steps (GR1 task). Even the most generous
+idle definition on the UNFILTERED LIBERO variant leaves a ~25x margin to nu=2's
+threshold; GR1 is exactly zero. This is the quantitative explanation for the
+already-recorded negative result "no parking pathology on GR1".
+Script /mnt/pfs/yuchen/idle_audit.py.
+
+### (c) The dial: nu is a free safety knob
+Larger nu tolerates more idle mass (nu -> infinity is the mean, immune). The GR1
+nu ablation measured nu=2 vs nu=0.5 as a tie at convergence (44.7 vs 44.8), so
+defaulting to nu=2 buys idle-robustness at no measured cost.
+
+RECIPE LINE: use no-op filtering (already universal practice), keep nu >= 2, and
+verify idle mass < 1/(nu+1) on any new corpus before training. The idle cell
+remains a valid NFL witness — it defines the boundary; this section shows the
+boundary is far from where real data sits and how to stay clear of it.
+
+## PART CDLXI — OFT: reference checkpoints on OUR harness (2026-08-15)
+
+The OFT arm was the only one in the fleet compared against PUBLISHED numbers
+rather than a control we trained, which conflates HT-vs-L1 with our-stack-vs-
+theirs and pre-decay-vs-150k. Fix: evaluate NVIDIA/moojink's RELEASED OFT
+checkpoints on our own harness (same A800s, same MuJoCo 2.3.7 / robosuite 1.4.1,
+500 episodes, num_trials_per_task 50).
+
+### Harness validation — our stack reproduces their published numbers
+| suite | their released ckpt on OUR stack | their published | delta |
+|---|---|---|---|
+| goal | 97.4% | 97.9 | -0.5 |
+| object | 98.2% | 98.4 | -0.2 |
+| long | 95.0% (323 eps) | 94.5 | +0.5 |
+All three within 0.5 pt => eval harness, simulator versions, and A800 hardware
+are all exonerated. (Their LIBERO.md warns performance "may drop substantially"
+when testing on a different device than training; it did not materialise here.)
+
+### Head-to-head, identical conditions (500 eps; SE ~0.6-1.0 pt)
+| suite | THEIR released | OUR HT | diff | sigma | our ckpt |
+|---|---|---|---|---|---|
+| goal | 97.4 | 97.6 | +0.2 | 0.28 | 30k, PRE-decay |
+| goal | 97.4 | 97.0 | -0.4 | 0.56 | 60k, PRE-decay |
+| object | 98.2 | 97.4 | -0.8 | 1.35 | 70k, PRE-decay |
+| long | 95.0 | ~80 | -15.0 | 15.4 | 90k, PRE-decay |
+Reading: on goal and object, single-pass HT is STATISTICALLY INDISTINGUISHABLE
+from their tuned L1 regression (0.28 and 1.35 sigma) — and our checkpoints are
+pre-decay at 30-70k while theirs are the final 150k ones their own docs say are
+required to reproduce their results. Only long shows a real gap, and it is
+concentrated: per-task, ours is 0.24/0.56 on tasks 1-2 and 1.00/1.00/0.94 on
+tasks 3-5 vs their 0.90/1.00/0.98/0.98/0.94 — i.e. the suite is solved except
+for two long-horizon sequences, the signature of a run that is 60k steps short
+with no LR decay yet. Our long-150k lands ~19 h after this entry and is the
+directly comparable number.
+Consistency check on the pipeline: their docs report LIBERO-Goal peaking at the
+50K checkpoint "for unknown reasons"; our goal arm reproduced exactly that
+(best at 30k, later checkpoints no better).
+Data /mnt/pfs/yuchen/oft/oftref_{obj,goal,long}.log.
+
+## PART CDLXII — NFL wrap-up figure + staggered block commitment (2026-08-15)
+
+### Block cell redesigned: per-demo commitment point (user request)
+Previously every demonstrator forked at the same x (AIM_X0=20), which reads as an
+artificially synchronized decision. Now each demo starts its detour at a
+different x: aim0 ~ U(AIM_X0 +- OB_AIM_JITTER), default jitter 16mm, applied in
+both make_chunks_target (map-style data) and make_ds_episodes (history arm).
+OB_AIM_JITTER=0 restores the original behaviour. Retrained, 3 seeds, w256/24k,
+flow K=64; oracle still 1.000:
+| arm | single fork | staggered commitment |
+|---|---|---|
+| L2 | 0.000 (collision 0.96) | 0.000 (collision **1.000**) |
+| diffusion | 0.248 | 0.307 |
+| HT nu=0.5 | 1.000 | 1.000 |
+The cell gets STRONGER: with commitment spread out, the near-block conditional
+mean averages over already-up / already-down / still-centred demos, so the mean
+family points at the obstacle over a longer stretch and now collides on every
+rollout. Data analysis/toy2d_obstacle_jit.json.
+
+### Summary figure: analysis/paper/nfl_three_tasks.png
+One row, three panels (idle p=0.7 / block staggered / slot slalom), each showing
+demonstrations faintly behind the three trained families with measured SR in the
+legend and a one-line verdict beneath:
+| task | MSE | diffusion | HT |
+|---|---|---|---|
+| idle (majority mode = inaction) | **1.00** | 0.89 | 0.00 (frozen at start, marked) |
+| block (minority mode legitimate) | 0.00 | 0.31 | **1.00** (nu=0.5) |
+| slalom (sequential 3-way commitment) | 0.00 | 0.54 | **1.00** (nu=0.5) |
+All three demonstrators ~100%, no injected corruption in any cell. Each family
+wins exactly one panel and fails hard in another. Script
+scripts/fig_nfl_three_tasks.py.
+
+### Terminology correction (2026-08-15): the toy sampler arm is FLOW MATCHING, not DDPM
+`train_flow` is conditional/rectified flow matching: z0~N(0,I), t~U(0,1), z_t=(1-t)z0+t*a, regress v onto
+(a - z0); sampling Euler-integrates that field from z0 over K steps. Diffusion Policy (Chi et al.) uses a
+DDPM/DDIM schedule with noise injected at EVERY denoising step; ours is stochastic only in the initial draw.
+Figures/text relabelled 'Flow matching'. This is the right call because every VLA in our tables uses a
+flow-matching action head (GR00T N1.7, pi0.5, Cosmos3-Nano rectified flow), so the toy mirrors the models we
+actually run. The distinction does not affect any claim: both families are iterative samplers over the action
+chunk, both redraw randomness at every replan (the source of commitment churn), and both reproduce the
+conditional marginal rather than a point estimate.
+
+## PART CDLXIII — Last-area cell: a BEHAVIOURAL mean-family witness (2026-08-15)
+
+User-designed construction that finally gives MSE a win with no injected
+corruption. scripts/toy2d_lastarea.py: the demonstrator detours to a per-chunk
+aim drawn 80% at -a / 20% at +4a (ZERO MEAN, mode -a), EXECUTED, everywhere
+except the last 30mm, where the aim is 0 so every demo re-centres and docks
+(oracle 1.000). The point: the demonstrator's BEHAVIOUR (detour with proportion
+p) is separable from its PURPOSE (arrive centred); a policy that models the
+conditional distribution inherits the behaviour, a policy that models the mean
+inherits the purpose.
+| aim | tail | oracle | MSE | flow | HT nu=2 |
+|---|---|---|---|---|---|
+| 2.0mm | x>=130 | 1.000 | 1.000 | 0.718 | 0.651 |
+| **3.0mm** | **x>=130** | **1.000** | **1.000** | **0.704** | **0.385** |
+| 3.0mm | x>=145 | 0.812 (INVALID) | 1.000 | 0.338 | 0.641 |
+| 3.0mm | x>=152 | 0.000 (INVALID) | 1.000 | 0.161 | 0.000 |
+| 4.5mm | x>=125 | 1.000 | 0.250 | 0.281 | 0.777 |
+Two design laws found: (1) the clean tail must be long enough (>=30mm) for the
+DEMONSTRATOR to re-centre, and the same runway lets the failing policies
+partially recover — shortening it to sharpen the margin invalidates the oracle;
+(2) 4*aim must fit inside the corridor, else the +4a tail is clipped, the
+mixture is no longer zero-mean, and MSE inherits a bias (aim 4.5 -> MSE lands
++1.00mm, SR 0.250). aim 3.0 / tail 130 is the usable optimum.
+All three arms history-conditioned. Figure analysis/paper/nfl_three_tasks.png
+now uses this cell as panel A; idle moves to the mechanism section (boundary +
+no-op-filter fix + real-data audit + slow-mode control).
+
+## PART CDLXIV — Unobserved-obstacle rectangles: distribution-matching is unsafe (2026-08-15)
+
+User-designed cell (`scripts/toy2d_rects.py`). Four rectangles per episode along
+the corridor, each ABOVE (blocks y in [INNER, OUTER]) or BELOW (blocks
+y in [-OUTER, -INNER]) with probability p_up; **the centre band |y| < INNER is
+free whichever side the rectangle is on**. The demonstrator SEES the layout and
+berths BERTH mm to the free side; the policy sees only (x, y), so the layout is
+UNOBSERVED CONTEXT. The last 30mm carry no rectangles, so demos re-centre and
+dock. Every eval rollout draws a FRESH layout. Nothing is injected; oracle 1.000.
+
+Mechanism: the demonstrator's up/down detours look like ordinary 50/50
+multimodality, but each mode is SELECTED by information the policy never sees.
+Reproducing the conditional marginal therefore picks a side blind; the
+conditional MEAN sits in the always-free centre.
+
+Narrow corridor (INNER 1mm, OUTER 9mm, berth 5mm), 3 seeds, 401 rollouts each:
+| p_up | oracle | MSE | flow | HT nu=2 | flow collision |
+|---|---|---|---|---|---|
+| **0.50** | 1.000 | **1.000** | **0.039** | 0.956 | 0.926 |
+| 0.60 | 1.000 | 0.195 | 0.037 | 0.081 | 0.924 |
+| 0.70 | 1.000 | 0.089 | 0.082 | 0.247 | 0.878 |
+| 0.80 | 1.000 | 0.126 | 0.200 | 0.403 | 0.781 |
+| 0.90 | 1.000 | 0.642 | 0.307 | 0.642 | 0.539 |
+
+Quantitative check at p_up=0.5: a side-sampling policy is safe at one rectangle
+with probability p^2 + (1-p)^2 = 0.5, so 0.5^4 = 0.0625 over four; measured flow
+SR 0.039 with per-rectangle safety 0.074. Flow is doing exactly what the model
+says it does.
+
+CAVEAT the sweep exposes: MSE's safety at p_up=0.5 is SYMMETRY, not principle.
+Off 0.5 the conditional mean drifts to (2p-1)*BERTH, which leaves a 1mm free
+band, and MSE collides too (p=0.9: MSE 0.642 == HT 0.642 to 3 decimals, both
+committing to the same blocked offset). The safe action under partial
+observability is not any statistic of the demonstrator's marginal — it is the
+centre, which coincides with the mean only when the layout prior is symmetric.
+Widening the free band (INNER 5mm, band 5-13mm, berth 7mm) restores the margin
+and is the setting used for the skewed arm.
+
+Wide corridor (INNER 5mm, band 5-13mm, berth 7mm), same protocol:
+| p_up | oracle | MSE | flow | HT nu=2 | note |
+|---|---|---|---|---|---|
+| **0.50** | 1.000 | **1.000** | **0.055** | **1.000** | both point estimators exactly safe |
+| 0.75 | 1.000 | 0.315 (seeds 0.00/0.00/0.95) | 0.104 | 0.319 | MSE now docks off-centre, not colliding (coll 0.032) |
+| 0.85 | 1.000 | 0.000 | 0.204 | 0.521 | mean offset -5.95mm sits on the band edge |
+HT at p_up=0.75 lands 0.319 against the 0.75^4 = 0.316 predicted by "commits to
+the majority berth, blocked whenever the block is on that side" — the 1/(nu+1)
+commitment rule again, now with a success-rate consequence.
+
+Figure `analysis/paper/rects_cell.png` (scripts/fig_toy2d_rects.py) uses the
+symmetric wide setting: top row = demonstrations under two different layouts
+(same states, opposite actions), bottom row = MSE (SR 1.00) and flow (SR 0.03)
+under one fresh layout, collisions marked. This is a DISTRIBUTION-vs-POINT
+dissociation, not a mean-vs-mode one: MSE and HT are both perfect, flow alone
+fails, so it complements rather than replaces the last-area cell (PART CDLXIII),
+where MSE beats HT as well.
+
+## PART CDLXV — History-matched arms: block holds, slalom exposes the ν=2 boundary (2026-08-15)
+
+Panels B and C had been comparing a history-conditioned flow arm against
+non-history MSE/HT arms, so part of those gaps could have been conditioning
+rather than loss. Added `l2_hist` / `ht2_hist` / `ht05_hist` to
+scripts/toy2d_obstacle.py and scripts/toy2d_slalom.py: same episode-rollout data
+as `flow_hist`, previous action chunk in the anchor slot, losses byte-identical
+to train()/train_nll(). Only the loss differs across arms now.
+
+Block cell (3 seeds), unchanged by matching:
+| arm | SR | collision |
+|---|---|---|
+| l2_hist | 0.000 | 1.000 |
+| ht2_hist | 0.000 | 1.000 |
+| flow_hist | 0.735 | — |
+
+Slalom (8 seeds), history-matched:
+| arm | SR | per-seed |
+|---|---|---|
+| l2_hist | 0.000 ± 0.00 | all zero |
+| flow_hist | 0.373 ± 0.02 | 0.34-0.42 |
+| ht2_hist | 0.645 ± 0.39 | 0.67/0.10/1.00/1.00/0.00/0.48/0.91/1.00 |
+| **ht05_hist** | **1.000 ± 0.00** | all eight seeds |
+
+ht2 is BIMODAL across seeds and the reason is the commitment threshold, not
+noise: slot probabilities are [0.60, 0.28, 0.12], so the opposing mass against
+the majority lane is 0.40, while nu=2 commits only below 1/(nu+1) = 0.333.
+Slalom sits just OUTSIDE nu=2's commitment region, so training noise decides
+whether a seed commits; nu=0.5 (threshold 2/3) is comfortably inside and solves
+it on every seed. The earlier non-history 0.959 came from three seeds that all
+landed on the committing side. This is the 1/(nu+1) rule predicting a
+success-rate consequence at a phase boundary, now under matched conditioning.
+Panel C's honest claim: MSE fails completely, flow fails partially but stably,
+and the HT family wins provided nu is below the task's commitment threshold.
+
+## PART CDLXVI — Square-wave / ECG excursion cell: the sampler alone fails (2026-08-15)
+
+User-designed construction (`scripts/toy2d_rectwave.py`). The demonstrator holds
+a flat baseline and occasionally makes a SQUARE excursion: step +-AMP (up or down
+at random, p_up=0.5), hold, step back. Gain 1.0 reaches the aim in one 4mm step,
+so edges are vertical and tops flat — an actual square wave, not an exponential
+ramp. Baseline segments (25-55mm) dominate; holds are 20-52mm, LONGER than the
+32mm action chunk, so "go out" and "come back" are separate chunk decisions and
+the policy cannot tell from (x, y, previous chunk) how long it has been out. The
+last excursion ends by x=150, leaving a 10mm straight run-in. Executed, no
+injection, oracle 1.000. Dock tolerance is cell-local at 1.5mm (a quarter of the
+amplitude): the global 0.5mm sits ~1.5 sigma from a regression net's own landing
+error, which made SR flip on seed noise rather than on the mechanism.
+
+3 seeds x 401 rollouts, all arms history-conditioned:
+| arm | SR | per-seed | median landing |
+|---|---|---|---|
+| MSE | 1.000 ± 0.00 | 1.00/1.00/1.00 | 0.19mm |
+| **HT nu=2** | **1.000 ± 0.00** | 1.00/1.00/1.00 | **0.09mm** |
+| flow | 0.519 ± 0.05 | 0.50/0.58/0.47 | 1.49mm |
+
+Failure mode confirmed by trace: failing flow rollouts cross the goal STILL
+DEFLECTED at +-4 to +-6mm — they went out and never came back. "Excursions happen
+with proportion p" is what the data shows; "you must be on the baseline when you
+arrive" is not, and only the goal-directed mean recovers it.
+
+NO-HISTORY CONTROL (previous chunk blanked in training and rollout, RW_NOHIST=1):
+| arm | SR | per-seed |
+|---|---|---|
+| MSE | 1.000 ± 0.00 | 1.00/1.00/1.00 |
+| flow | 0.534 ± 0.01 | 0.54/0.55/0.52 |
+| HT nu=2 | 0.342 ± 0.47 | 0.02/0.00/1.00 |
+History HELPS HT here (1.000 with, 0.342 without) and does nothing for flow
+(0.519 vs 0.534) — so flow's failure is the sampling alone, and the HT=0.000 seen
+on the earlier CONTINUOUS-wave variant (18mm segments, no baseline gaps, where HT
+left the corridor at |y|~22mm) is a property of that configuration, not of the
+anchor-slot conditioning. Cause of the continuous-wave runaway unidentified.
+
+Design note: because each excursion returns to baseline on its own, the straight
+tail only has to be long enough for the POLICY to recover, not the demonstrator.
+That removes the design-law tension of the last-area cell (PART CDLXIII), where
+the tail had to be >=30mm for the oracle to stay valid.
+
+Paper placement: this cell and the unobserved-rectangle cell (PART CDLXIV) share
+a signature — BOTH POINT ESTIMATORS SURVIVE, THE SAMPLER ALONE FAILS (1.00/1.00/
+0.52 and 1.00/1.00/0.055). They belong in a separate two-panel figure from the
+three-way NFL taxonomy, and HT is deliberately NOT handicapped in them.
+
+## PART CDLXVII — Block cell: HT's failure is OPTIMIZATION, not the objective (2026-08-15)
+
+Chasing a user challenge ("HT collides more than MSE, that is weird") the block
+panel turned out to be measuring something other than what it claimed.
+
+**Convergence first.** Panel B had been trained at the block script's defaults
+(12000 steps, width 128) while panels A/C used 24000 at width 256. At matched
+budget flow keeps improving: SR 0.735 (12k/128) -> 0.873 (36k/256) -> 0.918
+(72k/256), loss flat from ~24k. MSE and HT are unmoved (0.000, collision 1.000).
+So the flow number in the figure was 18 points low; the HT/MSE numbers are not a
+budget artifact.
+
+**Where each loss AIMS at the single decision state.** Branch choice happens in
+ONE chunk: the state grid is x = 0/32/64/96/128, the block starts at 60, and by
+x=64 the state already encodes the branch (std 0.02mm). At x=32, |y|<1 the
+conditional is 61/39 up/down. Fitting each loss EXACTLY on those real samples
+(no network, mu and sigma free) gives the aim each family wants:
+| p_maj | MSE (mean) | HT nu=2 | HT nu=1 | HT nu=0.5 |
+|---|---|---|---|---|
+| 0.50 | +0.33 | +0.67 | +1.28 | +3.24 |
+| 0.60 | +1.62 | +2.98 | +4.07 | +4.79 |
+| 0.70 | +2.72 | +4.38 | +4.99 | +5.63 |
+| 0.80 | +3.75 | +5.17 | +5.43 | +5.87 |
+Block half-height is 3.0mm, demonstrated detour 6.0mm. HT DOES commit — it is
+graded in nu, and nu=2 at p=0.60 aims 2.98mm, i.e. it misses clearing by 0.02mm.
+Commitment scales with 1/sigma (nu=2, p=0.6: sigma 0.30 -> 1.38mm, 0.10 -> 2.06,
+0.05 -> 3.72, 0.02 -> 5.31). Figure: analysis/paper/ht_commitment.png.
+
+**But the trained network does not reach its own optimum.** At p=0.70 (72k, 256):
+| arm | SR | collision | trained aim | loss optimum |
+|---|---|---|---|---|
+| flow | 0.904 ± 0.01 | 0.093 | 5.49mm | — |
+| MSE | 0.091 ± 0.13 | 0.414 | 3.13mm | 2.72mm |
+| HT nu=2 | 0.000 | 1.000 | 1.91mm | 4.38mm |
+A ~44% shortfall for HT at both p=0.60 (1.32 vs 2.98) and p=0.70 (1.91 vs 4.38);
+MSE slightly OVERSHOOTS its optimum. sigma is NOT the cause: the network predicts
+sigma 0.087 at that state against the optimal 0.081.
+
+**Isolating control (decisive).** Same net, same steps, decision state only:
+| HT nu=2 trained on | aim at the decision state |
+|---|---|
+| all states (deciding = 4.9% of data) | +0.36mm |
+| the decision state alone | +4.32mm |
+| (loss optimum) | +4.38mm |
+| MSE, all states | +2.82mm (optimum +2.72) |
+MECHANISM: the Student-t NLL is REDESCENDING — with mu between the branches both
+residuals are large and their gradients decay, so there is almost no pull toward
+either mode. MSE is convex and pulls with full strength from anywhere. 95% of
+states are near-zero-residual "hold your lane"; a shared smooth network is
+dominated by them, and producing a sharp spike at one rare state has a cost that
+HT has no gradient force to pay. So a mode-seeking loss can fail to realize its
+own optimum exactly when the deciding states are rare — MSE is immune because it
+is convex. Also found en route: train_hist has NO sbias (sigma_0 = softplus(0) =
+0.694 vs a 0.0433 residual scale, 16x too large) and the toy never standardizes
+actions (half the chunk dims are the constant 0.400). Neither changes this result
+(sbias -3.12 gives the same converged sigma and no commitment) but both are
+genuine mismatches with the VLA harness and should be fixed.
+
+CONSEQUENCE: panel B as it stands measures an optimization pathology, not the
+objective's preference, and must not be captioned "HT averages". Options: (a)
+keep it with the correct explanation plus ht_commitment.png, (b) move HT's
+no-free-lunch loss to a LOSS-LEVEL cell — transient excursions at a skewed
+direction (0.75/0.25), where HT commits to one side and holds it past the goal.

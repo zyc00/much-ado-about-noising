@@ -48,8 +48,29 @@ def get_loss_fn(loss_type: str) -> Callable:
         return regression_normed_loss
     elif loss_type == "regression_stdt":
         return regression_stdt_loss
+    elif loss_type == "regression_welsch":
+        return regression_welsch_loss
+    elif loss_type == "regression_welsch_hetero":
+        return regression_welsch_hetero_loss
+    elif loss_type == "regression_welsch_l2mix":
+        return regression_welsch_l2mix_loss
+    elif loss_type == "regression_barron":
+        return regression_barron_loss
+    elif loss_type == "regression_barron_hetero":
+        return regression_barron_hetero_loss
+    elif loss_type == "regression_barron_hetero_diag":
+        return regression_barron_hetero_diag_loss
     elif loss_type == "regression_hetero_t":
         return regression_hetero_t_loss
+    elif loss_type == "regression_hetero_t_learnnu":
+        return regression_hetero_t_learnnu_loss
+    elif loss_type == "regression_hetero_t_learnnu_cond":
+        return regression_hetero_t_learnnu_cond_loss
+    elif loss_type == "regression_hetero_t_learnnu_cond2":
+        return regression_hetero_t_learnnu_cond2_loss
+    elif loss_type == "xm":
+        return xm_loss
+
     elif loss_type == "regression_globalt":
         return regression_globalt_loss
     elif loss_type == "regression_gmm":
@@ -94,6 +115,8 @@ def get_loss_fn(loss_type: str) -> Callable:
         return regression_condann_loss
     elif loss_type == "regression_condreg":
         return regression_condreg_loss
+    elif loss_type == "regression_condreg_axis":
+        return regression_condreg_axis_loss
     elif loss_type == "regression_dcr":
         return regression_dcr_loss
     elif loss_type == "regression_hetero_gauss_cnd":
@@ -367,6 +390,419 @@ def regression_stdt_loss(
     per = 0.5 * (nu + 1.0) * torch.log1p(z2 / nu).sum(dim=(1, 2)) + D * torch.log(sb)
     loss = config.loss_scale * torch.mean(per) / D
     return loss, {}
+
+
+def regression_hetero_t_learnnu_loss(
+    config: OptimizationConfig,
+    flow_map: FlowMap,
+    encoder: BaseEncoder,
+    interp: Interpolant,
+    act: torch.Tensor,
+    obs: torch.Tensor,
+    delta_t: torch.Tensor,
+) -> float:
+    """hetero-t with LEARNABLE degrees of freedom: nu = 0.5 + softplus(raw),
+    raw registered on flow_map (TrainingAgent) so it joins the optimizer.
+    Unlike the fixed-nu loss, the nu-dependent normalizer (lgamma terms) is
+    kept - it is what trades tail-heaviness against density mass, making
+    the nu-gradient a proper MLE signal."""
+    t = torch.zeros_like(delta_t, device=delta_t.device)
+    act_0 = torch.zeros_like(act, device=act.device)
+    obs_emb = encoder(obs, None)
+    act_pred, s_raw = flow_map.net(act_0, t, t, obs_emb)
+    sigma = (
+        torch.nn.functional.softplus(s_raw).reshape(len(act), -1).mean(dim=1)
+        + 1e-3
+    )
+    nu = 0.5 + torch.nn.functional.softplus(flow_map.learn_nu_raw)
+    r2 = (act_pred - act) ** 2
+    n_dim = r2[0].numel()
+    sum_r2 = r2.sum(dim=tuple(range(1, r2.dim())))
+    per = (
+        0.5 * (nu + 1.0) * torch.log1p(sum_r2 / (nu * sigma**2 * n_dim)) * n_dim
+        + n_dim * torch.log(sigma)
+        + n_dim
+        * (
+            torch.lgamma(0.5 * nu)
+            - torch.lgamma(0.5 * (nu + 1.0))
+            + 0.5 * torch.log(nu)
+        )
+    )
+    loss = config.loss_scale * torch.mean(per) / n_dim
+    return loss, {}
+
+
+def regression_hetero_t_learnnu_cond2_loss(
+    config: OptimizationConfig,
+    flow_map: FlowMap,
+    encoder: BaseEncoder,
+    interp: Interpolant,
+    act: torch.Tensor,
+    obs: torch.Tensor,
+    delta_t: torch.Tensor,
+) -> float:
+    """State-conditional learnable nu, v2 -- NO SIGMOID (see PART CDXLII).
+
+    v1 used nu = 1 + 29*sigmoid(base + gate*head): the base drifted to the
+    sigmoid ceiling, the gradient vanished there, and the conditional spread
+    collapsed to exactly zero (p10 == p90 == 27.6) -- the bound became an
+    attractor.  v2 removes every saturating nonlinearity:
+
+        nu(s) = nu_floor + softplus(nu_base_raw + gate * g(s))
+
+    softplus is monotone with a gradient that never vanishes upward, so
+    there is no ceiling to stick to; the multiplicative reading is
+    exp-shaped near the base but cannot blow up because g is shrunk toward
+    0 by nu_cond_reg and (optionally) hard-capped by NU_MAX for stability
+    only -- the cap sits far above the operating range rather than at the
+    edge of it.  Base init puts nu at NU_INIT (default 2, the measured
+    demo df) instead of v1's 4, so deviations are learned around the value
+    the fixed-nu recipe uses.
+    """
+    import os as _os
+
+    t = torch.zeros_like(delta_t, device=delta_t.device)
+    act_0 = torch.zeros_like(act, device=act.device)
+    obs_emb = encoder(obs, None)
+    act_pred, s_raw = flow_map.net(act_0, t, t, obs_emb)
+    sigma = (
+        torch.nn.functional.softplus(s_raw).reshape(len(act), -1).mean(dim=1)
+        + 1e-3
+    )
+
+    nu_floor = float(_os.environ.get("NU_FLOOR", "1.0"))
+    nu_max = float(_os.environ.get("NU_MAX", "40.0"))
+    nu_mode = _os.environ.get("NU_MODE", "softplus")  # softplus | exp
+    dnu_raw = flow_map.nu_cond_head(obs_emb.reshape(len(act), -1)).reshape(-1)
+    gate = torch.clamp(
+        flow_map.nu_cond_step / max(float(config.nu_cond_warmup), 1.0), 0.0, 1.0
+    )
+    if nu_mode == "exp":
+        # multiplicative: nu(s) = nu_base * exp(gate * g(s)), nu_base>floor.
+        # g is a log-ratio, so deviations are symmetric in relative terms
+        # (g=+0.7 doubles nu, g=-0.7 halves it) and the shrinkage penalty
+        # g^2 is a proper log-space prior around the global base.
+        nu_dev = torch.clamp(gate * dnu_raw, min=-3.0, max=3.0)
+        nu_base = nu_floor + torch.nn.functional.softplus(flow_map.nu_base_raw)
+        nu = nu_base * torch.exp(nu_dev)
+    else:
+        # additive-in-raw: nu(s) = floor + softplus(base + gate * g(s))
+        nu = nu_floor + torch.nn.functional.softplus(
+            flow_map.nu_base_raw + gate * dnu_raw
+        )
+    nu = torch.clamp(nu, min=nu_floor, max=nu_max)
+
+    r2 = (act_pred - act) ** 2
+    n_dim = r2[0].numel()
+    sum_r2 = r2.sum(dim=tuple(range(1, r2.dim())))
+    per = (
+        0.5 * (nu + 1.0) * torch.log1p(sum_r2 / (nu * sigma**2 * n_dim)) * n_dim
+        + n_dim * torch.log(sigma)
+        + n_dim
+        * (
+            torch.lgamma(0.5 * nu)
+            - torch.lgamma(0.5 * (nu + 1.0))
+            + 0.5 * torch.log(nu)
+        )
+    )
+    loss = (
+        config.loss_scale * torch.mean(per) / n_dim
+        + config.nu_cond_reg * torch.mean(dnu_raw**2)
+    )
+    flow_map._nu_stats = (
+        nu.detach().mean(),
+        torch.quantile(nu.detach(), 0.1),
+        torch.quantile(nu.detach(), 0.9),
+    )
+    return loss, {}
+
+
+def regression_hetero_t_learnnu_cond_loss(
+    config: OptimizationConfig,
+    flow_map: FlowMap,
+    encoder: BaseEncoder,
+    interp: Interpolant,
+    act: torch.Tensor,
+    obs: torch.Tensor,
+    delta_t: torch.Tensor,
+) -> float:
+    """State-CONDITIONAL learnable nu with anti-collapse constraints:
+    nu(s) = 1 + 29*sigmoid(nu_base + gate * head(obs_emb)) in [1, 30];
+    gate ramps 0->1 after nu_cond_warmup steps (mean/sigma fit first, so
+    early model error cannot be absorbed as heavy tails); deviation
+    regularizer nu_cond_reg * mean(head^2) shrinks state-variation toward
+    the pooled-MLE global base (nu-sigma identifiability). Full t NLL
+    normalizer kept, as in learnnu."""
+    t = torch.zeros_like(delta_t, device=delta_t.device)
+    act_0 = torch.zeros_like(act, device=act.device)
+    obs_emb = encoder(obs, None)
+    act_pred, s_raw = flow_map.net(act_0, t, t, obs_emb)
+    sigma = (
+        torch.nn.functional.softplus(s_raw).reshape(len(act), -1).mean(dim=1)
+        + 1e-3
+    )
+    dnu_raw = flow_map.nu_cond_head(obs_emb.reshape(len(act), -1)).reshape(-1)
+    gate = torch.clamp(
+        flow_map.nu_cond_step / max(float(config.nu_cond_warmup), 1.0), 0.0, 1.0
+    )
+    nu = 1.0 + 29.0 * torch.sigmoid(flow_map.nu_base_raw + gate * dnu_raw)
+    r2 = (act_pred - act) ** 2
+    n_dim = r2[0].numel()
+    sum_r2 = r2.sum(dim=tuple(range(1, r2.dim())))
+    per = (
+        0.5 * (nu + 1.0) * torch.log1p(sum_r2 / (nu * sigma**2 * n_dim)) * n_dim
+        + n_dim * torch.log(sigma)
+        + n_dim
+        * (
+            torch.lgamma(0.5 * nu)
+            - torch.lgamma(0.5 * (nu + 1.0))
+            + 0.5 * torch.log(nu)
+        )
+    )
+    loss = (
+        config.loss_scale * torch.mean(per) / n_dim
+        + config.nu_cond_reg * torch.mean(dnu_raw**2)
+    )
+    flow_map._nu_stats = (
+        nu.detach().mean(),
+        torch.quantile(nu.detach(), 0.1),
+        torch.quantile(nu.detach(), 0.9),
+    )
+    return loss, {}
+
+
+def _gnc_anneal(fn, base, start_env, frac_env, config):
+    """Graduated non-convexity: anneal a kernel scale from a loose start
+    to its target over the first frac of training. Counts calls on the
+    loss function itself (one call per gradient step)."""
+    import os as _os
+    start = float(_os.environ.get(start_env, "0"))
+    if start <= 0:
+        return base
+    frac = float(_os.environ.get(frac_env, "0.4"))
+    step = getattr(fn, "_gnc_step", 0)
+    fn._gnc_step = step + 1
+    total = max(int(config.gradient_steps * frac), 1)
+    w = max(0.0, 1.0 - step / total)
+    return base + (start - base) * w
+
+
+def regression_welsch_loss(
+    config: OptimizationConfig,
+    flow_map: FlowMap,
+    encoder: BaseEncoder,
+    interp: Interpolant,
+    act: torch.Tensor,
+    obs: torch.Tensor,
+    delta_t: torch.Tensor,
+) -> float:
+    """Direct reverse-KL surrogate (correntropy/Welsch): minimizing
+    1 - exp(-||r||^2 / (2 h^2 D)) maximizes the h-smoothed conditional
+    label density at the prediction (sample-based mode-seeking).
+    h -> inf recovers MSE; kernel width from WELSCH_H (normalized action
+    units, default 0.1)."""
+    t = torch.zeros_like(delta_t, device=delta_t.device)
+    act_0 = torch.zeros_like(act, device=act.device)
+    obs_emb = encoder(obs, None)
+    act_pred, _ = flow_map.net(act_0, t, t, obs_emb)
+    import os as _os
+    h = float(_os.environ.get("WELSCH_H", "0.1"))
+    h = _gnc_anneal(regression_welsch_loss, h, "WELSCH_H_START",
+                    "WELSCH_WARM_FRAC", config)
+    r2 = (act_pred - act) ** 2
+    d = r2[0].numel()
+    sum_r2 = r2.sum(dim=tuple(range(1, r2.dim())))
+    loss = config.loss_scale * torch.mean(
+        1.0 - torch.exp(-sum_r2 / (2.0 * h * h * d)))
+    return loss, {}
+
+
+def regression_welsch_l2mix_loss(
+    config: OptimizationConfig,
+    flow_map: FlowMap,
+    encoder: BaseEncoder,
+    interp: Interpolant,
+    act: torch.Tensor,
+    obs: torch.Tensor,
+    delta_t: torch.Tensor,
+) -> float:
+    """Linear homotopy L2 -> Welsch: (1-lam)*MSE + lam*Welsch(h), with
+    lam ramping 0 -> 1 over the first WELSCH_MIX_FRAC of training and h
+    fixed at the target width. The L2 term keeps gradients alive at any
+    residual until the endpoint is pure Welsch. Env: WELSCH_H,
+    WELSCH_MIX_FRAC."""
+    t = torch.zeros_like(delta_t, device=delta_t.device)
+    act_0 = torch.zeros_like(act, device=act.device)
+    obs_emb = encoder(obs, None)
+    act_pred, _ = flow_map.net(act_0, t, t, obs_emb)
+    import os as _os
+    h = float(_os.environ.get("WELSCH_H", "0.05"))
+    frac = float(_os.environ.get("WELSCH_MIX_FRAC", "0.5"))
+    fn = regression_welsch_l2mix_loss
+    step = getattr(fn, "_step", 0)
+    fn._step = step + 1
+    lam = min(1.0, step / max(int(config.gradient_steps * frac), 1))
+    r2 = (act_pred - act) ** 2
+    d = r2[0].numel()
+    sum_r2 = r2.sum(dim=tuple(range(1, r2.dim())))
+    wel = 1.0 - torch.exp(-sum_r2 / (2.0 * h * h * d))
+    mse = 0.5 * sum_r2 / d
+    per = (1.0 - lam) * mse + lam * wel
+    return config.loss_scale * torch.mean(per), {}
+
+
+def regression_welsch_hetero_loss(
+    config: OptimizationConfig,
+    flow_map: FlowMap,
+    encoder: BaseEncoder,
+    interp: Interpolant,
+    act: torch.Tensor,
+    obs: torch.Tensor,
+    delta_t: torch.Tensor,
+) -> float:
+    """Welsch with LEARNED per-state kernel width (cold-start fix: the
+    width stays wide where residuals are large, so gradients never
+    vanish). Penalty WELSCH_BETA * log(sigma) prevents the width from
+    diverging; floor WELSCH_SMIN prevents collapse."""
+    t = torch.zeros_like(delta_t, device=delta_t.device)
+    act_0 = torch.zeros_like(act, device=act.device)
+    obs_emb = encoder(obs, None)
+    act_pred, s_raw = flow_map.net(act_0, t, t, obs_emb)
+    import os as _os
+    beta = float(_os.environ.get("WELSCH_BETA", "1.0"))
+    smin = float(_os.environ.get("WELSCH_SMIN", "0.02"))
+    sigma = torch.nn.functional.softplus(s_raw).reshape(
+        len(act), -1).mean(dim=1) + smin
+    r2 = (act_pred - act) ** 2
+    d = r2[0].numel()
+    sum_r2 = r2.sum(dim=tuple(range(1, r2.dim())))
+    per = 1.0 - torch.exp(-sum_r2 / (2.0 * sigma ** 2 * d))         + beta * torch.log(sigma)
+    return config.loss_scale * torch.mean(per), {}
+
+
+def regression_barron_loss(
+    config: OptimizationConfig,
+    flow_map: FlowMap,
+    encoder: BaseEncoder,
+    interp: Interpolant,
+    act: torch.Tensor,
+    obs: torch.Tensor,
+    delta_t: torch.Tensor,
+) -> float:
+    """Barron general robust loss (fixed alpha, scale c): rho(r) =
+    (|2-a|/a) * (((r/c)^2/|2-a| + 1)^(a/2) - 1). alpha=2 -> L2,
+    0 -> Cauchy, -2 -> Geman-McClure, -inf -> Welsch. Polynomial
+    redescending tails keep cold-start gradients alive. Env: BARRON_A,
+    BARRON_C. Chunk-norm convention matching the HT loss."""
+    t = torch.zeros_like(delta_t, device=delta_t.device)
+    act_0 = torch.zeros_like(act, device=act.device)
+    obs_emb = encoder(obs, None)
+    act_pred, _ = flow_map.net(act_0, t, t, obs_emb)
+    import os as _os
+    a = float(_os.environ.get("BARRON_A", "-2.0"))
+    c = float(_os.environ.get("BARRON_C", "0.1"))
+    c = _gnc_anneal(regression_barron_loss, c, "BARRON_C_START",
+                    "BARRON_WARM_FRAC", config)
+    r2 = (act_pred - act) ** 2
+    d = r2[0].numel()
+    x = r2.sum(dim=tuple(range(1, r2.dim()))) / (c * c * d)
+    if abs(a) < 1e-6:
+        per = torch.log1p(0.5 * x)
+    else:
+        b = abs(2.0 - a)
+        per = (b / a) * ((x / b + 1.0) ** (a / 2.0) - 1.0)
+    return config.loss_scale * torch.mean(per), {}
+
+
+def regression_barron_hetero_loss(
+    config: OptimizationConfig,
+    flow_map: FlowMap,
+    encoder: BaseEncoder,
+    interp: Interpolant,
+    act: torch.Tensor,
+    obs: torch.Tensor,
+    delta_t: torch.Tensor,
+) -> float:
+    """Barron rho with LEARNED per-state scale c(s) plus the D*log(c)
+    normalizer (MLE-style): adaptive-width cold start, self-annealing
+    sharpness. Env: BARRON_A (fixed alpha), BARRON_BETA, BARRON_CMIN.
+    Optional BARRON_MIX_FRAC: linear L2->Barron homotopy, lam ramping
+    0 -> 1 over the first BARRON_MIX_FRAC of training (GNC-style convex
+    warmup; the log(c) normalizer stays on so c(s) trains throughout)."""
+    t = torch.zeros_like(delta_t, device=delta_t.device)
+    act_0 = torch.zeros_like(act, device=act.device)
+    obs_emb = encoder(obs, None)
+    act_pred, s_raw = flow_map.net(act_0, t, t, obs_emb)
+    import os as _os
+    a = float(_os.environ.get("BARRON_A", "-2.0"))
+    beta = float(_os.environ.get("BARRON_BETA", "1.0"))
+    cmin = float(_os.environ.get("BARRON_CMIN", "0.02"))
+    c = torch.nn.functional.softplus(s_raw).reshape(
+        len(act), -1).mean(dim=1) + cmin
+    r2 = (act_pred - act) ** 2
+    d = r2[0].numel()
+    sum_r2 = r2.sum(dim=tuple(range(1, r2.dim())))
+    x = sum_r2 / (c * c * d)
+    if abs(a) < 1e-6:
+        rho = torch.log1p(0.5 * x)
+    else:
+        b = abs(2.0 - a)
+        rho = (b / a) * ((x / b + 1.0) ** (a / 2.0) - 1.0)
+    per = rho + beta * torch.log(c)
+    mix = _os.environ.get("BARRON_MIX_FRAC")
+    if mix is not None:
+        fn = regression_barron_hetero_loss
+        step = getattr(fn, "_step", 0)
+        fn._step = step + 1
+        lam = min(1.0, step / max(
+            int(config.gradient_steps * float(mix)), 1))
+        per = (1.0 - lam) * 0.5 * sum_r2 / d + lam * per
+    return config.loss_scale * torch.mean(per), {}
+
+
+def regression_barron_hetero_diag_loss(
+    config: OptimizationConfig,
+    flow_map: FlowMap,
+    encoder: BaseEncoder,
+    interp: Interpolant,
+    act: torch.Tensor,
+    obs: torch.Tensor,
+    delta_t: torch.Tensor,
+) -> float:
+    """Anisotropic hetero-Barron: learned per-sample scale c(s) times an
+    EMA per-dimension residual profile (mode boundaries differ per sample
+    AND per action dimension). Env: BARRON_A, BARRON_BETA, BARRON_CMIN,
+    HGD_EMA."""
+    import os as _os
+    t = torch.zeros_like(delta_t, device=delta_t.device)
+    act_0 = torch.zeros_like(act, device=act.device)
+    obs_emb = encoder(obs, None)
+    act_pred, s_raw = flow_map.net(act_0, t, t, obs_emb)
+    a = float(_os.environ.get("BARRON_A", "-2.0"))
+    beta = float(_os.environ.get("BARRON_BETA", "1.0"))
+    cmin = float(_os.environ.get("BARRON_CMIN", "0.02"))
+    ema = float(_os.environ.get("HGD_EMA", "0.99"))
+    c = torch.nn.functional.softplus(s_raw).reshape(
+        len(act), -1).mean(dim=1) + cmin
+    r = (act_pred - act).reshape(len(act), -1)
+    d = r.shape[1]
+    with torch.no_grad():
+        rms = r.detach().pow(2).mean(dim=0).sqrt() + 1e-4
+        prof = getattr(regression_barron_hetero_diag_loss, "_prof", None)
+        if prof is None or prof.shape != rms.shape:
+            prof = rms.clone()
+        else:
+            prof = ema * prof + (1 - ema) * rms
+        regression_barron_hetero_diag_loss._prof = prof
+        proen = prof / prof.mean()
+    x = (r ** 2 / (proen[None, :] ** 2)).sum(dim=1) / (c ** 2 * d)
+    if abs(a) < 1e-6:
+        rho = torch.log1p(0.5 * x)
+    else:
+        b = abs(2.0 - a)
+        rho = (b / a) * ((x / b + 1.0) ** (a / 2.0) - 1.0)
+    per = rho + beta * torch.log(c)
+    return config.loss_scale * torch.mean(per), {}
 
 
 def regression_hetero_t_loss(
@@ -1305,6 +1741,88 @@ def regression_condreg_loss(
     loss = config.loss_scale * (mse + lam * pen)
     return loss, {"condreg/mse": float(mse.detach()),
                   "condreg/cv2": float(cv2.mean().detach()),
+                  "condreg/pen": float(pen.detach())}
+
+
+def regression_condreg_axis_loss(
+    config: OptimizationConfig,
+    flow_map: FlowMap,
+    encoder: BaseEncoder,
+    interp: Interpolant,
+    act: torch.Tensor,
+    obs: torch.Tensor,
+    delta_t: torch.Tensor,
+) -> float:
+    """Axis-decomposed condreg: which axis of the obs-Jacobian's effective
+    rank carries the MP-200 conditioning benefit?
+
+    dim  - probes perturb ONLY the last obs frame (K random within-frame
+           directions); CV^2 over probes = dimension-wise anisotropy at
+           fixed history.
+    hist - M shared within-frame directions, each applied to ONE frame at
+           a time; per-direction CV^2 across the To frame-responses =
+           history-wise anisotropy (how unevenly the policy relies on
+           frames; with To=2 this is current-frame vs velocity reliance).
+    Both diagnostics are always logged; CONDREG_AXIS picks which one is
+    penalized. Env: CONDREG_AXIS (dim|hist), CONDREG_LAM (3e-3),
+    CONDREG_TAU (1.0), CONDREG_TAU_HIST (0.5), CONDREG_EPS (0.05),
+    CONDREG_K (6), CONDREG_M (3)."""
+    import os as _os
+
+    axis = _os.environ.get("CONDREG_AXIS", "dim")
+    lam = float(_os.environ.get("CONDREG_LAM", "3e-3"))
+    tau_d = float(_os.environ.get("CONDREG_TAU", "1.0"))
+    tau_h = float(_os.environ.get("CONDREG_TAU_HIST", "0.5"))
+    eps = float(_os.environ.get("CONDREG_EPS", "0.05"))
+    K = int(_os.environ.get("CONDREG_K", "6"))
+    M = int(_os.environ.get("CONDREG_M", "3"))
+    t = torch.zeros_like(delta_t, device=delta_t.device)
+    act_0 = torch.zeros_like(act, device=act.device)
+    obs_t = obs["state"] if isinstance(obs, dict) else obs
+    b = len(act)
+    emb = encoder({"state": obs_t} if isinstance(obs, dict) else obs_t, None)
+    pred, _ = flow_map.net(act_0, t, t, emb)
+    mse = ((pred - act) ** 2).mean()
+
+    def resp(v):
+        emb_p = encoder({"state": obs_t + eps * v}, None)
+        pred_p, _ = flow_map.net(act_0, t, t, emb_p)
+        return ((pred_p - pred) ** 2).reshape(b, -1).mean(dim=1)
+
+    # dimension-wise probes: random directions confined to the last frame
+    d_dim = []
+    for _k in range(K):
+        v = torch.zeros_like(obs_t)
+        r = torch.randn_like(obs_t[:, -1, :])
+        r = r / (r.norm(dim=1, keepdim=True) + 1e-9)
+        v[:, -1, :] = r
+        d_dim.append(resp(v))
+    Dd = torch.stack(d_dim, 1)
+    cv2_dim = Dd.var(dim=1) / (Dd.mean(dim=1) ** 2 + 1e-12)
+
+    # history-wise probes: one shared direction, moved across frames
+    n_frames = obs_t.shape[1]
+    cv2_hs = []
+    for _m in range(M):
+        u = torch.randn_like(obs_t[:, 0, :])
+        u = u / (u.norm(dim=1, keepdim=True) + 1e-9)
+        ds = []
+        for f in range(n_frames):
+            v = torch.zeros_like(obs_t)
+            v[:, f, :] = u
+            ds.append(resp(v))
+        Dh = torch.stack(ds, 1)
+        cv2_hs.append(Dh.var(dim=1) / (Dh.mean(dim=1) ** 2 + 1e-12))
+    cv2_hist = torch.stack(cv2_hs, 1).mean(dim=1)
+
+    if axis == "hist":
+        pen = torch.relu(cv2_hist - tau_h).mean()
+    else:
+        pen = torch.relu(cv2_dim - tau_d).mean()
+    loss = config.loss_scale * (mse + lam * pen)
+    return loss, {"condreg/mse": float(mse.detach()),
+                  "condreg/cv2_dim": float(cv2_dim.mean().detach()),
+                  "condreg/cv2_hist": float(cv2_hist.mean().detach()),
                   "condreg/pen": float(pen.detach())}
 
 
@@ -2843,6 +3361,44 @@ def mip_loss(
     loss = loss0 + loss1
     loss = config.loss_scale * torch.mean(loss)
 
+    return loss, {}
+
+
+def _xm_rep(x, k):
+    return x.repeat(k, *([1] * (x.dim() - 1)))
+
+
+def xm_loss(
+    config: OptimizationConfig,
+    flow_map: FlowMap,
+    encoder: BaseEncoder,
+    interp: Interpolant,
+    act: torch.Tensor,
+    obs: torch.Tensor,
+    delta_t: torch.Tensor,
+) -> float:
+    """PURE Forward XM (Gladstone et al.): end-to-end one-step generator.
+    The latent z ~ N(0,1) is fed as the network input at t=0; K candidates
+    per sample, train on the per-sample best. Inference = one forward with
+    a single z draw (xm_sampler). Multimodality is handled by latent
+    exploration - no diffusion/flow steps, no anchor, no tail model."""
+    k = max(int(config.xm_k), 1)
+    b = act.shape[0]
+    obs_emb = encoder(obs, None)
+    act_rep = _xm_rep(act, k)
+    z = torch.empty_like(act_rep).normal_(0, 1)
+    t0 = torch.zeros(k * b, device=act.device)
+    obs_emb_rep = (
+        {kk: _xm_rep(v, k) for kk, v in obs_emb.items()}
+        if isinstance(obs_emb, dict)
+        else _xm_rep(obs_emb, k)
+    )
+    pred = flow_map.get_velocity(t0, z, obs_emb_rep)
+    per = get_norm(pred - act_rep, config.norm_type, config.cauchy_c)
+    n_el = per[0].numel()
+    per_sample = per.reshape(k, b, -1).sum(dim=-1)
+    best = per_sample.min(dim=0).values / n_el
+    loss = config.loss_scale * torch.mean(best)
     return loss, {}
 
 

@@ -157,8 +157,53 @@ def run_episode(seed, horizon=4000, render=False, verbose=False, record=False, n
     _dart_act = float(_os.environ.get("DART_ACT", "0.0"))  # if >0: also add action-target noise (dual: state+action noise, human-like)
     _impulse_mag = float(_os.environ.get("IMPULSE", "0.0"))  # if >0: one-shot per-phase position impulse
     _imp_state = {"done_in": set(), "cnt": 0, "last_phase": None}
+    _skew = float(_os.environ.get("SKEW_NOISE", "0.0"))  # NFL witness: zero-mean
+    # SKEWED behavior noise (shifted exponential, skew +2), applied to the action
+    # BEFORE both recording and execution — the oracle's own stochasticity, so the
+    # dataset is on-dynamics and a perfect clone of it is a valid policy. The
+    # conditional mean at every state is the clean script; the mode is shifted by
+    # -SKEW_NOISE, so symmetric-loss estimators acquire a constant action bias.
+    _skew_dist = _os.environ.get("SKEW_DIST", "exp")    # exp | twopoint | t | toyskew | contam | symm
+    _skew_p = float(_os.environ.get("SKEW_P", "0.15"))  # twopoint kick probability
+    _skew_ndim = int(_os.environ.get("SKEW_DIMS", "6")) # noised leading action dims
+    _skew_hold = int(_os.environ.get("SKEW_HOLD", "1")) # redraw eps every N steps
+    # (chunk-held: matches the toy's per-replanning-cycle residual structure)
+    _skew_hstate = {"eps": None, "k": 0}
     def do_step(a, rec=True):
         a = np.clip(a, -1, 1).astype(np.float64)
+        if _skew > 0:
+            if _skew_hold > 1 and _skew_hstate["eps"] is not None and _skew_hstate["k"] % _skew_hold != 0:
+                eps = _skew_hstate["eps"]
+            else:
+                if _skew_dist == "t":
+                    # HT-wins witness: zero-mean SYMMETRIC heavy tails (Student-t).
+                    # Matched t-NLL is the MLE; L2-based losses chase the tails.
+                    eps = _skew * _dart_rng.standard_t(float(_os.environ.get("SKEW_DF", "2.0")), _skew_ndim)
+                elif _skew_dist == "twopoint":
+                    # zero-mean sparse-kick: small -c*p offset most steps, rare +c*(1-p)
+                    # kicks. Robust losses discard the kicks as outliers, but they
+                    # carry the mean - "the tails are the signal".
+                    b = (_dart_rng.rand(_skew_ndim) < _skew_p).astype(np.float64)
+                    eps = _skew * (b - _skew_p)
+                elif _skew_dist == "toyskew":
+                    # toy2d_mip_nfl "skew" cell: -B w.p. .8, +4B w.p. .2 (zero mean)
+                    b = (_dart_rng.rand(_skew_ndim) < 0.2).astype(np.float64)
+                    eps = _skew * (5.0 * b - 1.0)
+                elif _skew_dist == "contam":
+                    # toy "contaminated" cell: 0 w.p. .7, +2B w.p. .2, +16B w.p. .1
+                    u = _dart_rng.rand(_skew_ndim)
+                    eps = np.where(u < 0.7, 0.0, np.where(u < 0.9, 2.0 * _skew, 16.0 * _skew))
+                elif _skew_dist == "symm":
+                    # toy falsifier: +/-B 50/50
+                    eps = _skew * np.sign(_dart_rng.rand(_skew_ndim) - 0.5)
+                else:
+                    eps = _skew * (_dart_rng.exponential(1.0, _skew_ndim) - 1.0)
+                _sc = float(_os.environ.get("SKEW_CLIP", "0"))
+                if _sc > 0:  # bound per-step kicks (truncated-tail variants)
+                    eps = np.clip(eps, -_sc, _sc)
+                _skew_hstate["eps"] = eps
+            _skew_hstate["k"] += 1
+            a[:_skew_ndim] = np.clip(a[:_skew_ndim] + eps, -1, 1)
         if record and rec:
             a_rec = a.copy()
             if _dart_act > 0:  # DUAL noise: record corrective action + human-like action noise

@@ -1,0 +1,313 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1.1in]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{assumption}{Assumption}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\enc}{\phi_\theta}
+\newcommand{\head}{g_\theta}
+\newcommand{\pol}{f_\theta}
+
+\title{Why Mean Regression Fails Behavior Cloning:\\
+A Unified Gradient- and Representation-Level Account\\
+of the Regression--MIP Gap}
+\author{Theory note draft}
+\date{July 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We give a unified account of why $L_2$ behavior-cloning regression underperforms
+two-view denoising objectives (MIP) on both human-demonstrated and scripted
+manipulation data, from the joint viewpoint of \emph{gradient dynamics} and
+\emph{representation dynamics}. The organizing object is the \emph{realizability}
+of the training target given the network input. For state-only regression the
+target contains an unrealizable component --- cross-demonstration disagreement on
+human data, near-degenerate label micro-differences on scripted data --- and the
+two observed failure modes are the two ways this component can damage training:
+(I) when it is heavy-tailed at macroscopic scale, it captures the batch gradient
+of the shared encoder and destroys previously learned structure (optimization
+pathology); (II) when it is microscopic and degenerate, it withdraws the
+incentive to keep distinct states distinct, and the encoder folds (representation
+pathology). The anchor view of MIP makes every training target realizable, which
+simultaneously removes the noise gradient of (I) and creates a distinction
+incentive of relative strength $(\delta/\sigma)^2$ against (II). On the
+regression side, (I) is replaceable by a bounded-influence likelihood with
+learned state-conditional scale (Student-$t$), and the conditioning deficit is
+replaceable by observation history; (II) has no known loss-side replacement.
+Every proposition is paired with a measured quantity from our experiments. The
+note does not claim distributional multimodality is the operative difficulty;
+the measured disagreement is timing jitter around a single strategy, and the
+analysis proceeds entirely at the level of training signals.
+\end{abstract}
+
+\section{Setup}
+
+Let $s \in \mathcal{S} \subset \R^{d_s}$ be an observation (possibly a window of
+past frames) and $a \in \R^{d_a}$ an action chunk. Demonstrations supply pairs
+$(s_i, a_i)$ with
+\begin{equation}
+a_i = \mu(s_i) + \eta_i, \qquad \E[\eta \mid s] = 0 ,
+\end{equation}
+where $\mu$ is the state-conditional mean and $\eta$ collects the component of
+the action that is \emph{not a function of the input}: across demonstrations,
+operators at indistinguishable states act at different times, speeds, and grasp
+instants. The policy is $\pol = \head \circ \enc$ with a shared encoder $\enc$
+and action head $\head$; both views of the analysis concern the gradient
+received by the shared parameters of $\enc$.
+
+\begin{definition}[Realizable component]
+Given a network input $x$ (which may be $s$, an observation window, or an
+augmented input), the target $a$ decomposes as $a = m^\star(x) + \eta(x)$ with
+$m^\star(x) = \E[a \mid x]$. We call $\eta(x)$ the \emph{unrealizable component}
+relative to $x$: no measurable function of $x$ can reduce it.
+\end{definition}
+
+Two empirically measured data regimes anchor the analysis.
+
+\begin{assumption}[Human regime]\label{as:human}
+$\eta \mid s$ is heavy-tailed with tail index $\nu \approx 2$ and strongly
+state-dependent scale: $\mathrm{Var}(\eta \mid s)$ varies by orders of magnitude
+across task phases, and the top-decile states by conditional scale carry a
+disagreement dominated by discrete timing events (gripper open/close instants,
+pause-versus-move). Measured: tail energy of the top decile is $85\%$ gripper
+channel; kurtosis of the per-sample deviation $\approx 10.6$ (tool-hang),
+$8.1$ (square-mh).
+\end{assumption}
+
+\begin{assumption}[Scripted regime]\label{as:script}
+$\eta \approx 0$, but the labels are \emph{degenerate}: there exist large state
+regions $R$ on which labels differ only microscopically, $a(s) = \bar a + \delta
+u(s)$ with $\|\delta u\| \ll$ the typical action scale, while closed-loop
+correctness requires distinguishing states inside $R$.
+\end{assumption}
+
+\section{Gradient dynamics under $L_2$ (human regime)}
+
+The per-sample loss $\ell_i = \|\pol(s_i) - a_i\|^2$ contributes to the encoder
+the gradient
+\begin{equation}
+g_i \;=\; -2\, J_i^\top r_i, \qquad
+J_i = \frac{\partial \pol}{\partial \enc}(s_i), \quad r_i = a_i - \pol(s_i).
+\label{eq:persample}
+\end{equation}
+Once the realizable part is fit, $r_i \to \eta_i$: \emph{the residual, and hence
+the per-sample encoder gradient, is the unrealizable component itself}.
+
+\begin{proposition}[Gradient capture and churn]\label{prop:capture}
+Under Assumption~\ref{as:human} with tail index $\nu \le 2$,
+$\E\|\eta\|^2 = \infty$ (Student-$t$ boundary case), and for a batch
+$B$ the noise part of the batch gradient $\sum_{i \in B} J_i^\top \eta_i$ is
+dominated by its top order statistics: the ratio of the largest summand to the
+sum does not vanish as $|B| \to \infty$ (regular variation), and the
+signal-to-noise ratio of the batch mean gradient tends to zero. Consequently the
+shared encoder performs a heavy-tailed random walk driven by irreducible
+residuals, which degrades components of $\enc$ that carry already-learned
+structure.
+\end{proposition}
+
+\emph{Derivation sketch.} For regularly varying $\|\eta\|$ with index
+$\nu \le 2$, sums and maxima are of the same order
+(single-big-jump principle); the empirical mean does not concentrate. Since
+$\eta \perp$ the learnable signal, the noise gradient is an unbiased zero-mean
+perturbation of unbounded variance applied to \emph{shared} parameters, i.e.\ a
+random reparameterization of features used elsewhere. \hfill$\square$
+
+\noindent\textbf{Measured counterparts.} Top-$10\%$ of samples carry
+$74\%$--$77\%$ of the encoder gradient under $L_2$; the influence distribution's
+kurtosis grows $36 \to 4041$ over training (spike churn); behavioral
+acquire-then-unlearn (partial insertion servo at $37$k steps, lost by $300$k,
+SR $43 \to 31$); fit on the SR-critical low-disagreement samples is up to
+$9\times$ worse than under the robust loss at matched steps.
+
+\begin{proposition}[Bounded influence restores the signal]\label{prop:robust}
+Replace $\ell_i$ by the Student-$t$ negative log-likelihood with
+state-conditional scale $\sigma(s)$,
+$\rho(r) = \tfrac{\nu+1}{2}\log\!\big(1 + \|r\|^2/(\nu\sigma^2 D)\big)$.
+Its influence function
+$\psi(r) = (\nu+1)\, r / (\nu\sigma^2 + \|r\|^2/D)$
+is bounded, so the noise-gradient has finite variance and the batch SNR is
+restored; and with $\sigma(s)$ fit by maximum likelihood the per-sample weight
+is asymptotically inverse to the conditional scale --- the efficient reweighting
+under the assumed family. The predicted influence ratio between top-decile
+disagreement samples and typical samples is
+$\psi(\eta_{\mathrm{tail}})/\psi(\eta_{\mathrm{typ}}) < 1$ once
+$\sigma(s)$ calibrates.
+\end{proposition}
+
+\noindent\textbf{Measured counterparts.} Own-view top-$1\%$ share $5$--$9\%$
+late (versus $59\%$ for $L_2$), kurtosis $9.5$--$23$; tail/typical influence
+$0.60$; the calibration transient is visible ($\approx 50$k steps of
+$L_2$-like behavior before $\sigma$ fits); SR $31$--$43 \to 75$--$88$. Hard
+removal of the same samples (trimming, kNN smoothing) \emph{hurts} --- the
+information is bounded, not deleted --- consistent with the estimator view and
+inconsistent with a ``noise filtering'' view.
+
+\begin{proposition}[The anchor removes the unrealizable component]\label{prop:anchor}
+The MIP anchor view supplies input $x = (s,\, a + \sigma\varepsilon,\, t^\star)$
+with target $a$. Then $a$ is realizable given $x$ up to the Bayes error of
+denoising, which the identity-plus-correction map attains; residuals vanish for
+\emph{every} sample, including the disagreement tail. Hence the anchor view
+contributes no irreducible noise gradient, and no reweighting is needed:
+$g(\mathrm{tail})/g(\mathrm{typ}) \approx 1$.
+\end{proposition}
+
+\noindent\textbf{Measured counterparts.} MIP own-view tail ratios $0.85$--$1.04$
+and top-$1\%$ shares $3$--$17\%$ throughout training; evaluating the
+\emph{anchor-free} readout of an anchor-trained network shows residuals
+concentrated precisely on the tail (ratios $3.9$--$4.1$) --- the network never
+learned those targets from the state; the anchor carried them.
+
+\begin{remark}[Conditioning as an alternative route to realizability]
+Realizability can also be improved on the input side: if part of $\eta$ is
+predictable from longer observation history $h$, then
+$\mathrm{Var}(\eta \mid s, h) < \mathrm{Var}(\eta \mid s)$ and the unrealizable
+component shrinks before the loss ever acts. Measured: extending the window from
+$2$ to $8$ frames cuts the tail-sample fitting error $4$--$5\times$ for
+\emph{both} losses early in training, while leaving the learnable-majority fit
+nearly unchanged; the loss and history factors act on complementary terms, and
+success rates combine superadditively ($12/28/35/60$ across the $2\times2$).
+\end{remark}
+
+\begin{remark}[Estimator location]
+Where $\eta \mid s$ is a mixture over timing (moving versus paused), the
+conditional mean is itself a biased action: on transport its speed is
+$\approx 0.5\times$ the demonstrated speed in closed loop. No reweighting moves
+a location estimate off the mean; a quantile relocation along the demonstrated
+direction (pinball loss on the parallel speed component, $\tau > 1/2$) does,
+and only there. This is a second, logically independent defect of the mean.
+\end{remark}
+
+\section{Representation dynamics under label degeneracy (scripted regime)}
+
+\begin{proposition}[No distinction incentive]\label{prop:fold}
+Under Assumption~\ref{as:script}, let $\enc$ be \emph{collapsed on $R$}
+($\enc(s) = \bar\phi$ for $s \in R$). The excess $L_2$ risk of the collapsed
+encoder is $O(\|\delta\|^2)$, and the loss gradient toward separating $R$'s
+states scales as $O(\|\delta\|^2)$ as well --- for microscopic $\delta$ it is
+dominated by any competing compression pressure (weight decay, simplicity bias).
+The encoder therefore folds: states requiring different downstream behavior
+share a representation cell. The train loss cost is $O(\|\delta\|^2)$, but the
+closed-loop cost is $O(1)$: at deployment, neighborhoods are misassigned and the
+policy reads out the wrong region's behavior.
+\end{proposition}
+
+\noindent\textbf{Measured counterparts.} Distinction sensitivity of $L_2$ and
+Cauchy on scripted data $0.95$--$0.98$ (blind); settle-phase embedding
+neighborhoods $4\%$ pure; deployed failure is an attenuated readout of
+wrong-phase actions (cosine $+0.97$ to the wrong region's labels at half
+amplitude). Note the loss-side lever of Section~2 is inert here: robust
+reweighting acts on residual \emph{scale}, and all residuals are microscopic.
+
+\begin{proposition}[The anchor creates a distinction incentive of relative
+strength $(\delta/\sigma)^2$]\label{prop:incentive}
+Consider two states $s_1, s_2 \in R$ with labels $\bar a \pm \delta/2$ and the
+anchor view with noise level $\sigma \gg \|\delta\|$. If $\enc$ is collapsed,
+the denoiser must estimate the label from the anchor alone; the two-point
+mixture posterior yields excess denoising risk
+\begin{equation}
+\Delta \;=\; \frac{\|\delta\|^2}{4}\,
+\Big(1 - \E\tanh^2\!\big(\tfrac{\delta^\top(\sigma\varepsilon)}{2\sigma^2} +
+\tfrac{\|\delta\|^2}{4\sigma^2}\big)\Big)
+\;\approx\; \frac{\|\delta\|^2}{4}\Big(1 - O\big(\tfrac{\|\delta\|^2}{\sigma^2}\big)\Big),
+\end{equation}
+which a separated encoder reduces to zero. Normalizing by the view's overall
+loss scale $\sigma^2$, the \emph{relative} incentive to separate is
+$\Theta\!\big((\|\delta\|/\sigma)^2\big)$ per unit of anchor-view weight ---
+whereas for $L_2$ the relative incentive is $\Theta(\|\delta\|^2)$ against an
+$O(1)$ loss scale. The anchor thus amplifies microscopic label distinctions
+into a first-order representation pressure, with an explicit dose control
+$\sigma$.
+\end{proposition}
+
+\noindent\textbf{Measured counterparts.} Distinction sensitivity of the anchor
+view $13\times$ that of $L_2$ on scripted data, with measured dose--response
+$(\delta/\sigma)^2$; smaller $\sigma$ increases the incentive (until anchors
+under-mix). We know of no loss reweighting that reproduces this: any
+$\rho(\|r\|)$ evaluated at $\|r\| = O(\delta)$ gives an incentive vanishing with
+$\delta$.
+
+\section{The unified statement}
+
+\begin{center}
+\begin{tabular}{@{}lll@{}}
+\toprule
+ & \textbf{Human regime} & \textbf{Scripted regime} \\
+\midrule
+unrealizable component & macroscopic, heavy-tailed & microscopic, degenerate \\
+pathology & gradient capture, churn (Prop.~\ref{prop:capture}) & representation fold (Prop.~\ref{prop:fold}) \\
+level & optimization & representation \\
+MIP's fix & realizability (Prop.~\ref{prop:anchor}) & incentive $(\delta/\sigma)^2$ (Prop.~\ref{prop:incentive}) \\
+regression-side fix & Student-$t$ + history (+ quantile) & \emph{open} \\
+measured signature & top-share, kurtosis, tail ratio & sensitivity, neighborhood purity \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+Both regimes instantiate one principle: \emph{$L_2$ regression charges the
+network for the component of the target it cannot realize, and the damage is
+determined by the scale distribution of that component.} Heavy macroscopic
+scale damages optimization; degenerate microscopic scale damages
+representation. The anchor view is a single mechanism that neutralizes both
+(realizability removes the charge; the anchor-conditioned Bayes problem
+re-prices microscopic distinctions at $(\delta/\sigma)^2$). On the regression
+side the first regime is fully replaceable by matched training signals; the
+second is not, and this asymmetry is exactly where a denoising-class objective
+is irreplaceable.
+
+\section{Relation to Jacobian-regularization accounts}
+
+A complementary hypothesis holds that denoising objectives implicitly regularize
+the conditioning Jacobian of the recovered clean map (schedule coefficient
+$\kappa_t$). Two of our measurements bound its role in the present setting.
+First, for the $x_0$-parameterization used by MIP, $\kappa_t = 1$ and no
+shrinkage is implied; consistently, measured boundary effective-Lipschitz
+constants of MIP and regression policies coincide ($2.6$--$3.7$) while their
+success rates differ by $40$ points. Second, enforcing output flatness directly
+(finite-difference penalties at the deficit radius, normal-direction jitter,
+shell-derivative penalties) degrades or destroys the policy at every dose tried,
+while the successful interventions leave the Jacobian unchanged. In this domain
+the operative channels of the denoising signal are the two identified above ---
+gradient realizability and representation incentive --- not clean-map
+smoothness. The Jacobian account may govern other regimes (e.g.\ genuinely
+low-variance conditionals with $\kappa_t < 1$ parameterizations); the two
+accounts are logically independent and empirically separable by the probes used
+here.
+
+\section{Design implications}
+
+\begin{enumerate}[leftmargin=1.4em]
+\item \textbf{Diagnose the unrealizable component first}: its tail index,
+alignment with a data-defined minority, channel decomposition, and
+history-resolvability determine which fix applies.
+\item \textbf{Human-style data}: bounded-influence likelihood with learned
+state-conditional scale (Student-$t$, $\nu$ set to the measured tail index);
+observation history to the resolvability plateau; quantile relocation only on
+coordinates where the mean is demonstrably biased.
+\item \textbf{Scripted-style data}: no loss reweighting suffices; a
+distinction incentive is required (anchor view with $\sigma$ chosen by the
+$(\delta/\sigma)^2$ trade-off, or data-side diversification).
+\item \textbf{What not to do}: hard sample removal (deletes bounded
+information), isotropic input noise with fixed labels (destroys closed-loop
+gain), output-flatness penalties (attack magnitude, not direction), inverse-residual
+channel weighting (re-concentrates on noise floors).
+\end{enumerate}
+
+\section{Limitations}
+
+The propositions are stated at the level of estimator and incentive structure,
+not end-to-end learning dynamics; the churn mechanism in
+Proposition~\ref{prop:capture} is supported by measured stream statistics and
+behavioral unlearning rather than a convergence theorem. The $(\delta/\sigma)^2$
+computation treats a two-point mixture with a collapsed encoder; the constant in
+front depends on architecture. Success-rate arithmetic (which points a fix
+recovers) is task-dependent and is reported empirically in the companion
+experimental tables.
+
+\end{document}

@@ -278,7 +278,8 @@ def main():
             _dt = _os.environ["DUMPTRAJ"]
             _os.makedirs(_dt, exist_ok=True)
             np.savez(f"{_dt}/ep_{sd}.npz", eef=np.array(pser), asm=int(asm), seed=sd,
-                     obsw=np.array(oser, dtype=np.float32), dser=dser)
+                     obsw=np.array(oser, dtype=np.float32), dser=dser,
+                     eser=eser)
     ep = np.array(ep); c2 = ep[:, 2].astype(bool); c4 = ep[:, 3].astype(bool)
     sr_c4 = 100 * ep[c4, 0].mean() if c4.any() else float("nan")
     sr_n4 = 100 * ep[~c4, 0].mean() if (~c4).any() else float("nan")

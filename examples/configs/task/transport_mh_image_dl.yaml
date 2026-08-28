@@ -1,0 +1,10 @@
+# @package task
+defaults:
+  - transport_mh_image
+  - _self_
+
+# delta-legacy image variant: regenerated 4-camera image dataset with RAW delta
+# actions; rot6d conversion at load (7D->10D per arm), matching the state
+# delta_legacy convention. dataset_path supplied at launch.
+abs_action: true
+action_type: "delta"
