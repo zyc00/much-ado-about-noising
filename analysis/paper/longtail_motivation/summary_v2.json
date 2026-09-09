@@ -1,0 +1,70 @@
+{
+  "states": 1728,
+  "folds": 5,
+  "stats": {
+    "hg_residual": {
+      "tag": "hg_residual",
+      "n": 1728,
+      "dimension": 48,
+      "threshold": 9.699484522385712,
+      "empirical_tail": 0.09490740740740741,
+      "gaussian_tail": 7.974906972085822e-05,
+      "tail_ratio": 1190.0754170500945,
+      "tail_fit_nu": 10.940060766584187,
+      "tail_fit_scale": 0.97,
+      "heldout_gaussian_nll_per_dim": 1.4458176301366277,
+      "heldout_student_nll_per_dim": 1.3673466808451489,
+      "heldout_nll_gain_per_dim": 0.0784709492914788,
+      "q90": 9.643313599935583,
+      "q99": 12.712690807743174
+    },
+    "mse_residual": {
+      "tag": "mse_residual",
+      "n": 1728,
+      "dimension": 48,
+      "threshold": 9.699484522385712,
+      "empirical_tail": 0.0954861111111111,
+      "gaussian_tail": 7.974906972085822e-05,
+      "tail_ratio": 1197.3319744711316,
+      "tail_fit_nu": 10.537511581372256,
+      "tail_fit_scale": 0.96,
+      "heldout_gaussian_nll_per_dim": 1.4450874362242818,
+      "heldout_student_nll_per_dim": 1.364007313587194,
+      "heldout_nll_gain_per_dim": 0.08108012263708786,
+      "q90": 9.611095485071747,
+      "q99": 12.651390954320535
+    },
+    "flow_sample_spread": {
+      "tag": "flow_sample_spread",
+      "n": 27648,
+      "dimension": 48,
+      "threshold": 9.699484522385712,
+      "empirical_tail": 0.11566840277777778,
+      "gaussian_tail": 7.974906972085822e-05,
+      "tail_ratio": 1450.4044145298026,
+      "tail_fit_nu": 6.719826077934128,
+      "tail_fit_scale": 0.8899999999999999,
+      "heldout_gaussian_nll_per_dim": 1.425093157570997,
+      "heldout_student_nll_per_dim": 1.275721256742468,
+      "heldout_nll_gain_per_dim": 0.14937190082852903,
+      "q90": 10.008760487754,
+      "q99": 15.019967291123919
+    },
+    "flow_to_label": {
+      "tag": "flow_to_label",
+      "n": 27648,
+      "dimension": 48,
+      "threshold": 9.699484522385712,
+      "empirical_tail": 0.09454571759259259,
+      "gaussian_tail": 7.974906972085822e-05,
+      "tail_ratio": 1185.5400686619462,
+      "tail_fit_nu": 10.940060766584187,
+      "tail_fit_scale": 0.96,
+      "heldout_gaussian_nll_per_dim": 1.4387437528446974,
+      "heldout_student_nll_per_dim": 1.3557024048321205,
+      "heldout_nll_gain_per_dim": 0.0830413480125769,
+      "q90": 9.599510951315102,
+      "q99": 13.014464783752237
+    }
+  }
+}

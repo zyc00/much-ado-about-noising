@@ -1,0 +1,44 @@
+[
+  {
+    "uid": "close_drawer:126:2",
+    "group": "arm",
+    "delta_bic": 16.981154801447275,
+    "separation_sd": 2.7700179784129833,
+    "minimum_weight": 0.4385102704371501,
+    "fitted_density_modes": 2,
+    "valley_depth": 0.5004011288298859,
+    "energy_translation": 0.39694344146364713,
+    "energy_rotation": 0.6030362574782198,
+    "energy_gripper": 2.030105813299069e-05,
+    "dominant_coordinate": "dpitch",
+    "between_within_rms_ratio": 1.4319089768654445
+  },
+  {
+    "uid": "eggplant_basket:53:3",
+    "group": "arm",
+    "delta_bic": 12.442068652631036,
+    "separation_sd": 3.00474206549897,
+    "minimum_weight": 0.47902410223609004,
+    "fitted_density_modes": 2,
+    "valley_depth": 0.4010111477491165,
+    "energy_translation": 0.7838966619422049,
+    "energy_rotation": 0.11231048393164136,
+    "energy_gripper": 0.10379285412615397,
+    "dominant_coordinate": "dy",
+    "between_within_rms_ratio": 1.2433964835996203
+  },
+  {
+    "uid": "eggplant_basket:53:0",
+    "group": "gripper",
+    "delta_bic": 65.60114822632463,
+    "separation_sd": 5.117271862786833,
+    "minimum_weight": 0.4695139779598324,
+    "fitted_density_modes": 2,
+    "valley_depth": 0.9750322158555623,
+    "energy_translation": 0.02763431492373611,
+    "energy_rotation": 0.014274339767177555,
+    "energy_gripper": 0.9580913453090864,
+    "dominant_coordinate": "gripper",
+    "between_within_rms_ratio": 2.370108737001484
+  }
+]

@@ -1,0 +1,2386 @@
+{
+  "gr1": {
+    "method": "within-task cross-episode kNN residual-energy estimate from proprioception",
+    "status": "exploratory follow-up; no query residuals used for scale estimation or grouping",
+    "n": 2880,
+    "tasks": 24,
+    "task_names": [
+      "gr1_unified.PnPBottleToCabinetClose",
+      "gr1_unified.PnPCanToDrawerClose",
+      "gr1_unified.PnPCupToDrawerClose",
+      "gr1_unified.PnPMilkToMicrowaveClose",
+      "gr1_unified.PnPPotatoToMicrowaveClose",
+      "gr1_unified.PnPWineToCabinetClose",
+      "gr1_unified.PosttrainPnPNovelFromCuttingboardToBasketSplitA",
+      "gr1_unified.PosttrainPnPNovelFromCuttingboardToCardboardboxSplitA",
+      "gr1_unified.PosttrainPnPNovelFromCuttingboardToPanSplitA",
+      "gr1_unified.PosttrainPnPNovelFromCuttingboardToPotSplitA",
+      "gr1_unified.PosttrainPnPNovelFromCuttingboardToTieredbasketSplitA",
+      "gr1_unified.PosttrainPnPNovelFromPlacematToBasketSplitA",
+      "gr1_unified.PosttrainPnPNovelFromPlacematToBowlSplitA",
+      "gr1_unified.PosttrainPnPNovelFromPlacematToPlateSplitA",
+      "gr1_unified.PosttrainPnPNovelFromPlacematToTieredshelfSplitA",
+      "gr1_unified.PosttrainPnPNovelFromPlateToBowlSplitA",
+      "gr1_unified.PosttrainPnPNovelFromPlateToCardboardboxSplitA",
+      "gr1_unified.PosttrainPnPNovelFromPlateToPanSplitA",
+      "gr1_unified.PosttrainPnPNovelFromPlateToPlateSplitA",
+      "gr1_unified.PosttrainPnPNovelFromTrayToCardboardboxSplitA",
+      "gr1_unified.PosttrainPnPNovelFromTrayToPlateSplitA",
+      "gr1_unified.PosttrainPnPNovelFromTrayToPotSplitA",
+      "gr1_unified.PosttrainPnPNovelFromTrayToTieredbasketSplitA",
+      "gr1_unified.PosttrainPnPNovelFromTrayToTieredshelfSplitA"
+    ],
+    "records": [
+      {
+        "task": "gr1_unified.PnPBottleToCabinetClose",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.589451360205229,
+          1.7528840237407637,
+          1.28784093742796
+        ],
+        "high_low_ratio": 2.1848129029332855,
+        "rho": 0.18320504690329575
+      },
+      {
+        "task": "gr1_unified.PnPBottleToCabinetClose",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.5034269550890957,
+          0.9707280313364598,
+          0.7592061331082035
+        ],
+        "high_low_ratio": 1.5080760484385274,
+        "rho": 0.3278961858727272
+      },
+      {
+        "task": "gr1_unified.PnPCanToDrawerClose",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.7880439797981834,
+          1.2184120421941385,
+          1.1758414347448798
+        ],
+        "high_low_ratio": 1.492101284811554,
+        "rho": 0.32526019400425227
+      },
+      {
+        "task": "gr1_unified.PnPCanToDrawerClose",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.987609262331995,
+          0.9804276976864956,
+          0.8022206445412406
+        ],
+        "high_low_ratio": 0.8122854605950081,
+        "rho": 0.021647909059879625
+      },
+      {
+        "task": "gr1_unified.PnPCupToDrawerClose",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.5794370398303264,
+          0.6183133408635909,
+          1.709980103523716
+        ],
+        "high_low_ratio": 2.951105963168045,
+        "rho": 0.4933375981661256
+      },
+      {
+        "task": "gr1_unified.PnPCupToDrawerClose",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.6641115252913967,
+          0.39589098396993083,
+          1.3686980705717868
+        ],
+        "high_low_ratio": 2.0609461189086185,
+        "rho": 0.23269645471778014
+      },
+      {
+        "task": "gr1_unified.PnPMilkToMicrowaveClose",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.9380138405886528,
+          1.4495541860352608,
+          1.1935153711629571
+        ],
+        "high_low_ratio": 1.272385672277462,
+        "rho": 0.20058924198277137
+      },
+      {
+        "task": "gr1_unified.PnPMilkToMicrowaveClose",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.5178858691286192,
+          1.0625522856123493,
+          0.803524551596093
+        ],
+        "high_low_ratio": 1.5515475503281866,
+        "rho": 0.27975545636175636
+      },
+      {
+        "task": "gr1_unified.PnPPotatoToMicrowaveClose",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.6813221359576885,
+          0.6390333822769317,
+          1.074216199131327
+        ],
+        "high_low_ratio": 1.576664168736238,
+        "rho": 0.09641869942349571
+      },
+      {
+        "task": "gr1_unified.PnPPotatoToMicrowaveClose",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.8990716226520095,
+          1.557157736925759,
+          1.0991251172724177
+        ],
+        "high_low_ratio": 1.222511187740868,
+        "rho": 0.14803184731769
+      },
+      {
+        "task": "gr1_unified.PnPWineToCabinetClose",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.9500185299889955,
+          1.2558297749185798,
+          1.0695173538433518
+        ],
+        "high_low_ratio": 1.1257857821528392,
+        "rho": 0.0614397068472123
+      },
+      {
+        "task": "gr1_unified.PnPWineToCabinetClose",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.9164702617208512,
+          0.7067283718872851,
+          1.0697645167445435
+        ],
+        "high_low_ratio": 1.167265934778781,
+        "rho": 0.34583470017884804
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromCuttingboardToBasketSplitA",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.9466642797435513,
+          1.1236567771454549,
+          1.4920559428241682
+        ],
+        "high_low_ratio": 1.57611940658452,
+        "rho": 0.1528308444118423
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromCuttingboardToBasketSplitA",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.7175297721981773,
+          0.8013328446643718,
+          0.9462896717531286
+        ],
+        "high_low_ratio": 1.3188158992401633,
+        "rho": -0.013115482959010808
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromCuttingboardToCardboardboxSplitA",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.8774502903181053,
+          0.8317634858355191,
+          0.7023108564590222
+        ],
+        "high_low_ratio": 0.8003995943797693,
+        "rho": 0.061470911804733866
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromCuttingboardToCardboardboxSplitA",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          1.0985331507536247,
+          1.4951256750037525,
+          1.0776957508567075
+        ],
+        "high_low_ratio": 0.9810316148560267,
+        "rho": 0.20185627868822328
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromCuttingboardToPanSplitA",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.47325299487498573,
+          0.5214785727347678,
+          0.6043153204349293
+        ],
+        "high_low_ratio": 1.2769392417570753,
+        "rho": 0.06130758140540104
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromCuttingboardToPanSplitA",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          2.1610607196704756,
+          2.1582933584871338,
+          1.0598441928792022
+        ],
+        "high_low_ratio": 0.49042777152546185,
+        "rho": -0.24953797526704258
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromCuttingboardToPotSplitA",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.9101726859820268,
+          1.4325192014674915,
+          0.9673098614964949
+        ],
+        "high_low_ratio": 1.0627761922484196,
+        "rho": -0.1255818492068681
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromCuttingboardToPotSplitA",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.7917300190068829,
+          1.1799370109170866,
+          0.5824693716113595
+        ],
+        "high_low_ratio": 0.7356919121773199,
+        "rho": 0.0023065166264056598
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromCuttingboardToTieredbasketSplitA",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          1.3972177413509743,
+          0.8512140134750188,
+          0.9197897659061439
+        ],
+        "high_low_ratio": 0.6583009495834173,
+        "rho": -0.03501604959375921
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromCuttingboardToTieredbasketSplitA",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          1.108540184227542,
+          0.8846790041664064,
+          0.7370689513805813
+        ],
+        "high_low_ratio": 0.6649005258155698,
+        "rho": -0.22997193510870256
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlacematToBasketSplitA",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          1.0537992580431907,
+          1.1239995071002051,
+          1.1559358945660565
+        ],
+        "high_low_ratio": 1.0969222892721753,
+        "rho": 0.17907338784444646
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlacematToBasketSplitA",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          1.0588286542386647,
+          0.7343352844769876,
+          0.8749132829048328
+        ],
+        "high_low_ratio": 0.8263029900092065,
+        "rho": 0.016979297093179014
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlacematToBowlSplitA",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          1.061121822451865,
+          1.122796285611959,
+          1.2901156562714933
+        ],
+        "high_low_ratio": 1.2158035288450737,
+        "rho": 0.23647935663134428
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlacematToBowlSplitA",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.7492995893337112,
+          0.8059108366677603,
+          1.005337954385233
+        ],
+        "high_low_ratio": 1.3417035971942746,
+        "rho": 0.14036941769049774
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlacematToPlateSplitA",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          1.3600842001374907,
+          1.3728335752314105,
+          1.3637356598041885
+        ],
+        "high_low_ratio": 1.002684730597068,
+        "rho": 0.05718704101495399
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlacematToPlateSplitA",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.5015306352980954,
+          0.4905781258401458,
+          1.0566869876992637
+        ],
+        "high_low_ratio": 2.1069241105704326,
+        "rho": 0.27953702615000803
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlacematToTieredshelfSplitA",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.7086491336458617,
+          1.0717004902927347,
+          1.497017883667025
+        ],
+        "high_low_ratio": 2.1124951863909853,
+        "rho": 0.2984062617356384
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlacematToTieredshelfSplitA",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.8444641486806365,
+          0.8032126414448221,
+          0.9768784159296708
+        ],
+        "high_low_ratio": 1.1568027102819156,
+        "rho": 0.050717690879849654
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlateToBowlSplitA",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.7665179721327798,
+          1.010208836236387,
+          0.866022617211789
+        ],
+        "high_low_ratio": 1.1298138448106374,
+        "rho": 0.23395209392568167
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlateToBowlSplitA",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.6339383938891764,
+          0.9817737140708126,
+          1.5655440418721323
+        ],
+        "high_low_ratio": 2.4695523365726557,
+        "rho": 0.41427698185570366
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlateToCardboardboxSplitA",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.9796673534912751,
+          1.6756468111393343,
+          1.964066469663692
+        ],
+        "high_low_ratio": 2.004829968727935,
+        "rho": 0.35294281327355775
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlateToCardboardboxSplitA",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.48981424869928947,
+          0.4810075670313897,
+          0.8420371163444383
+        ],
+        "high_low_ratio": 1.7190947763983653,
+        "rho": 0.3340836491885403
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlateToPanSplitA",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.5406756848850289,
+          0.5018769418923381,
+          1.186965176522326
+        ],
+        "high_low_ratio": 2.1953367049874384,
+        "rho": 0.060078085121516495
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlateToPanSplitA",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          1.1384325306042329,
+          1.1672681664360516,
+          1.3962530152644077
+        ],
+        "high_low_ratio": 1.2264697096483481,
+        "rho": 0.14232917491865327
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlateToPlateSplitA",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.7850452931113183,
+          0.8214565487286052,
+          0.8093161434646509
+        ],
+        "high_low_ratio": 1.0309164968777043,
+        "rho": 0.07052742776854497
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlateToPlateSplitA",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          1.0759529826102272,
+          1.3711058662230018,
+          1.2597921491479303
+        ],
+        "high_low_ratio": 1.1708617100458378,
+        "rho": 0.19297368810951665
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromTrayToCardboardboxSplitA",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          1.1890000778695589,
+          1.7401940623591983,
+          1.575062899140021
+        ],
+        "high_low_ratio": 1.3246953708886264,
+        "rho": 0.34053696849884574
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromTrayToCardboardboxSplitA",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.38026206896594783,
+          0.844180813028735,
+          0.6654380640798342
+        ],
+        "high_low_ratio": 1.7499459409384943,
+        "rho": 0.1648418839728167
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromTrayToPlateSplitA",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          1.4724090638898424,
+          2.1863701578519126,
+          1.8370864028612253
+        ],
+        "high_low_ratio": 1.24767392969449,
+        "rho": 0.4286965404040687
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromTrayToPlateSplitA",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.32639611629664494,
+          0.41145010509459107,
+          0.7720145206009441
+        ],
+        "high_low_ratio": 2.3652687089551616,
+        "rho": 0.523781078524242
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromTrayToPotSplitA",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.6100806526721725,
+          1.1904432245335,
+          1.2178756914607027
+        ],
+        "high_low_ratio": 1.9962535873353282,
+        "rho": 0.3083186307470942
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromTrayToPotSplitA",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.6428404590873082,
+          1.0816388966889041,
+          1.0802507454696868
+        ],
+        "high_low_ratio": 1.680433660014811,
+        "rho": 0.44525953164234994
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromTrayToTieredbasketSplitA",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          1.0462645612979093,
+          1.0213325789924381,
+          0.8265274438254993
+        ],
+        "high_low_ratio": 0.7899793937397417,
+        "rho": 0.30101162435939477
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromTrayToTieredbasketSplitA",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          1.0454939608588172,
+          1.044906219768943,
+          1.002767278156832
+        ],
+        "high_low_ratio": 0.9591325399269762,
+        "rho": 0.3321797692589206
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromTrayToTieredshelfSplitA",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          1.7009644353964903,
+          1.1818771757820712,
+          1.2592512257431516
+        ],
+        "high_low_ratio": 0.74031602280363,
+        "rho": 0.14310325686208825
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromTrayToTieredshelfSplitA",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.590614740364349,
+          0.7267001843456122,
+          0.8091849417601112
+        ],
+        "high_low_ratio": 1.3700723779107287,
+        "rho": 0.3134388592662593
+      }
+    ],
+    "task_curves": [
+      [
+        0.5481293666453537,
+        1.4168477884917579,
+        1.057101753064585
+      ],
+      [
+        0.8934162997002313,
+        1.1058404891652622,
+        1.0065190117904035
+      ],
+      [
+        0.6232140086487935,
+        0.5191536664026246,
+        1.5487682787999484
+      ],
+      [
+        0.75765286859451,
+        1.2708707050507488,
+        1.0173816015193007
+      ],
+      [
+        0.7976620950014062,
+        1.1901898758878868,
+        1.0867420268617711
+      ],
+      [
+        0.9333951328191982,
+        1.0189635457666049,
+        1.0696409424329671
+      ],
+      [
+        0.8399470913495518,
+        0.9758941747860791,
+        1.2493388410242359
+      ],
+      [
+        0.9941564502843637,
+        1.2097998347711658,
+        0.909579207797432
+      ],
+      [
+        1.5643132408921203,
+        1.5700589356949572,
+        0.8626896080549882
+      ],
+      [
+        0.8530095958734509,
+        1.3123190565378924,
+        0.7984231137102995
+      ],
+      [
+        1.261165880602776,
+        0.868107780505714,
+        0.8334518140105488
+      ],
+      [
+        1.0563169494259856,
+        0.9493743208001263,
+        1.0251002499632758
+      ],
+      [
+        0.9185394375472499,
+        0.9772829108406996,
+        1.1565255745300904
+      ],
+      [
+        1.0250273190520702,
+        1.0308586039888028,
+        1.2199103122349833
+      ],
+      [
+        0.7795201386186063,
+        0.9470196640699855,
+        1.2639924808969716
+      ],
+      [
+        0.7033589726623729,
+        0.996092746296868,
+        1.265093538155122
+      ],
+      [
+        0.7744889029952103,
+        1.2327125608232596,
+        1.5110565182280336
+      ],
+      [
+        0.89116744301053,
+        0.8984418281608961,
+        1.2958411964649885
+      ],
+      [
+        0.941799058457822,
+        1.130203998807348,
+        1.0587891383857448
+      ],
+      [
+        0.8827005229034591,
+        1.3676469975392163,
+        1.2090556135624377
+      ],
+      [
+        1.0664246049671058,
+        1.5731347138957532,
+        1.4090587055897106
+      ],
+      [
+        0.6266746598532947,
+        1.1373429064420515,
+        1.1511218165204538
+      ],
+      [
+        1.0458793320503479,
+        1.0331866348881908,
+        0.9188824270652843
+      ],
+      [
+        1.2732057536037427,
+        0.9810521944735029,
+        1.058417195511048
+      ]
+    ],
+    "curve": [
+      0.9187985468983147,
+      1.1130164972536416,
+      1.124270040257276
+    ],
+    "ci": [
+      [
+        0.8160404950616951,
+        1.0087613233366306,
+        1.0437936528670126
+      ],
+      [
+        0.981942522292056,
+        1.1883561814776276,
+        1.1750897146853958
+      ]
+    ],
+    "high_low_ratio": 1.2236306250729205,
+    "high_low_ratio_ci": [
+      1.1166848778943295,
+      1.3806284778466482
+    ],
+    "median_rho": 0.1880893675064062
+  },
+  "pi05": {
+    "method": "within-task cross-episode kNN residual-energy estimate from proprioception",
+    "status": "exploratory follow-up; no query residuals used for scale estimation or grouping",
+    "n": 4730,
+    "tasks": 40,
+    "task_names": [
+      "open the middle drawer of the cabinet",
+      "open the top drawer and put the bowl inside",
+      "pick up the alphabet soup and place it in the basket",
+      "pick up the bbq sauce and place it in the basket",
+      "pick up the black bowl between the plate and the ramekin and place it on the plate",
+      "pick up the black bowl from table center and place it on the plate",
+      "pick up the black bowl in the top drawer of the wooden cabinet and place it on the plate",
+      "pick up the black bowl next to the cookie box and place it on the plate",
+      "pick up the black bowl next to the plate and place it on the plate",
+      "pick up the black bowl next to the ramekin and place it on the plate",
+      "pick up the black bowl on the cookie box and place it on the plate",
+      "pick up the black bowl on the ramekin and place it on the plate",
+      "pick up the black bowl on the stove and place it on the plate",
+      "pick up the black bowl on the wooden cabinet and place it on the plate",
+      "pick up the book and place it in the back compartment of the caddy",
+      "pick up the butter and place it in the basket",
+      "pick up the chocolate pudding and place it in the basket",
+      "pick up the cream cheese and place it in the basket",
+      "pick up the ketchup and place it in the basket",
+      "pick up the milk and place it in the basket",
+      "pick up the orange juice and place it in the basket",
+      "pick up the salad dressing and place it in the basket",
+      "pick up the tomato sauce and place it in the basket",
+      "push the plate to the front of the stove",
+      "put both moka pots on the stove",
+      "put both the alphabet soup and the cream cheese box in the basket",
+      "put both the alphabet soup and the tomato sauce in the basket",
+      "put both the cream cheese box and the butter in the basket",
+      "put the black bowl in the bottom drawer of the cabinet and close it",
+      "put the bowl on the plate",
+      "put the bowl on the stove",
+      "put the bowl on top of the cabinet",
+      "put the cream cheese in the bowl",
+      "put the white mug on the left plate and put the yellow and white mug on the right plate",
+      "put the white mug on the plate and put the chocolate pudding to the right of the plate",
+      "put the wine bottle on the rack",
+      "put the wine bottle on top of the cabinet",
+      "put the yellow and white mug in the microwave and close it",
+      "turn on the stove",
+      "turn on the stove and put the moka pot on it"
+    ],
+    "records": [
+      {
+        "task": "open the middle drawer of the cabinet",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          1.0223566945709237,
+          1.1107546703338782,
+          1.2157776154060431
+        ],
+        "high_low_ratio": 1.1891912302841592,
+        "rho": 0.2001028362047408
+      },
+      {
+        "task": "open the middle drawer of the cabinet",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.8906274635614592,
+          0.8501697286897628,
+          0.937793133676484
+        ],
+        "high_low_ratio": 1.052957798905524,
+        "rho": 0.10075462248779819
+      },
+      {
+        "task": "open the top drawer and put the bowl inside",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.9530005023753941,
+          0.8802973254206401,
+          1.0088080430893516
+        ],
+        "high_low_ratio": 1.0585598229747568,
+        "rho": 0.12845490401921
+      },
+      {
+        "task": "open the top drawer and put the bowl inside",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          1.0808968305511564,
+          1.0157339422973832,
+          1.0640767126913036
+        ],
+        "high_low_ratio": 0.9844387388468184,
+        "rho": -0.026454732559359657
+      },
+      {
+        "task": "pick up the alphabet soup and place it in the basket",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.916006567327229,
+          1.0026723288704376,
+          1.1466360954115968
+        ],
+        "high_low_ratio": 1.251777155656548,
+        "rho": 0.2976600752805752
+      },
+      {
+        "task": "pick up the alphabet soup and place it in the basket",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.8992617965736526,
+          0.9504682044647184,
+          1.0661923659840424
+        ],
+        "high_low_ratio": 1.1856306695629961,
+        "rho": 0.1846350533592458
+      },
+      {
+        "task": "pick up the bbq sauce and place it in the basket",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.9195812379866031,
+          0.9064198815241697,
+          1.0789785132172836
+        ],
+        "high_low_ratio": 1.1733368066313274,
+        "rho": 0.21788922121803925
+      },
+      {
+        "task": "pick up the bbq sauce and place it in the basket",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.8903649708166587,
+          1.0233926134964377,
+          1.1569500518084348
+        ],
+        "high_low_ratio": 1.2994110165264696,
+        "rho": 0.30131733277671113
+      },
+      {
+        "task": "pick up the black bowl between the plate and the ramekin and place it on the plate",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 56,
+        "query_n": 55,
+        "low_mid_high": [
+          0.8410170049901087,
+          1.0016292601870114,
+          0.8962508501487905
+        ],
+        "high_low_ratio": 1.065675063442185,
+        "rho": 0.1141124966893758
+      },
+      {
+        "task": "pick up the black bowl between the plate and the ramekin and place it on the plate",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 55,
+        "query_n": 56,
+        "low_mid_high": [
+          1.0734716179707224,
+          1.0384931444921355,
+          1.1698698924184228
+        ],
+        "high_low_ratio": 1.089800487347705,
+        "rho": 0.007011425474823011
+      },
+      {
+        "task": "pick up the black bowl from table center and place it on the plate",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 59,
+        "low_mid_high": [
+          0.8575001175584911,
+          0.9610972805010509,
+          0.9130989121435243
+        ],
+        "high_low_ratio": 1.0648382355250707,
+        "rho": 0.15455675956984216
+      },
+      {
+        "task": "pick up the black bowl from table center and place it on the plate",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 59,
+        "query_n": 60,
+        "low_mid_high": [
+          1.0988781054828396,
+          1.0851437813646512,
+          1.107062866051428
+        ],
+        "high_low_ratio": 1.0074482879654718,
+        "rho": 0.11919711921493475
+      },
+      {
+        "task": "pick up the black bowl in the top drawer of the wooden cabinet and place it on the plate",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.9797056116128161,
+          1.0347729603457687,
+          1.0556049349056074
+        ],
+        "high_low_ratio": 1.0774715612456724,
+        "rho": 0.052275412793997895
+      },
+      {
+        "task": "pick up the black bowl in the top drawer of the wooden cabinet and place it on the plate",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.9689012732824864,
+          0.979503893143616,
+          0.9816297194284386
+        ],
+        "high_low_ratio": 1.0131369898016855,
+        "rho": 0.08209318293647994
+      },
+      {
+        "task": "pick up the black bowl next to the cookie box and place it on the plate",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.9601349750466425,
+          0.9702708526606294,
+          1.0176615953713715
+        ],
+        "high_low_ratio": 1.0599151388292405,
+        "rho": 0.12154068021066751
+      },
+      {
+        "task": "pick up the black bowl next to the cookie box and place it on the plate",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.9698841114194734,
+          0.993009106241031,
+          1.0852936887950255
+        ],
+        "high_low_ratio": 1.1189931621899079,
+        "rho": 0.12899729775879742
+      },
+      {
+        "task": "pick up the black bowl next to the plate and place it on the plate",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 58,
+        "query_n": 59,
+        "low_mid_high": [
+          0.987953653791967,
+          0.9258298263627367,
+          0.995459835691449
+        ],
+        "high_low_ratio": 1.0075977065023969,
+        "rho": -0.043588847713319646
+      },
+      {
+        "task": "pick up the black bowl next to the plate and place it on the plate",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 59,
+        "query_n": 58,
+        "low_mid_high": [
+          1.0482349724171796,
+          0.9858930502056579,
+          1.0568760463069138
+        ],
+        "high_low_ratio": 1.008243451246249,
+        "rho": -0.08935558729844004
+      },
+      {
+        "task": "pick up the black bowl next to the ramekin and place it on the plate",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.8959066242853088,
+          1.0174027872136036,
+          1.0859184261844874
+        ],
+        "high_low_ratio": 1.2120888458110874,
+        "rho": 0.29784870187508145
+      },
+      {
+        "task": "pick up the black bowl next to the ramekin and place it on the plate",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.8400375474949087,
+          0.9985076109157439,
+          1.1315648681663093
+        ],
+        "high_low_ratio": 1.347040821616569,
+        "rho": 0.48714318952565405
+      },
+      {
+        "task": "pick up the black bowl on the cookie box and place it on the plate",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 56,
+        "query_n": 56,
+        "low_mid_high": [
+          1.043318633206719,
+          0.9231988021087373,
+          0.9031742240186925
+        ],
+        "high_low_ratio": 0.8656743925321433,
+        "rho": -0.11567253629889797
+      },
+      {
+        "task": "pick up the black bowl on the cookie box and place it on the plate",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 56,
+        "query_n": 56,
+        "low_mid_high": [
+          0.9528349493411221,
+          1.1289237898245479,
+          1.0370715139545628
+        ],
+        "high_low_ratio": 1.088406249866978,
+        "rho": 0.026356722514001774
+      },
+      {
+        "task": "pick up the black bowl on the ramekin and place it on the plate",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 59,
+        "query_n": 59,
+        "low_mid_high": [
+          0.8422328507238337,
+          0.9735276620174091,
+          1.1887265837259842
+        ],
+        "high_low_ratio": 1.4113989767845865,
+        "rho": 0.33104712999920205
+      },
+      {
+        "task": "pick up the black bowl on the ramekin and place it on the plate",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 59,
+        "query_n": 59,
+        "low_mid_high": [
+          0.8519714724619055,
+          1.045760308281036,
+          1.0671251168095426
+        ],
+        "high_low_ratio": 1.25253620725811,
+        "rho": 0.38145089363335405
+      },
+      {
+        "task": "pick up the black bowl on the stove and place it on the plate",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          1.1018941039706294,
+          1.2858409529140742,
+          1.231007418942177
+        ],
+        "high_low_ratio": 1.1171739775231513,
+        "rho": 0.11039927186800948
+      },
+      {
+        "task": "pick up the black bowl on the stove and place it on the plate",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.7726887889529319,
+          0.8256633616194767,
+          0.8801418807061775
+        ],
+        "high_low_ratio": 1.1390638680015728,
+        "rho": 0.21220837674440104
+      },
+      {
+        "task": "pick up the black bowl on the wooden cabinet and place it on the plate",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.9130826992571023,
+          1.1364497887808689,
+          1.0343040885215178
+        ],
+        "high_low_ratio": 1.1327605805728693,
+        "rho": 0.2734674612569941
+      },
+      {
+        "task": "pick up the black bowl on the wooden cabinet and place it on the plate",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.8662669528912347,
+          0.9580305700606816,
+          1.0717462610576602
+        ],
+        "high_low_ratio": 1.2372009084273872,
+        "rho": 0.37148812363603445
+      },
+      {
+        "task": "pick up the book and place it in the back compartment of the caddy",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          1.0453422364142342,
+          1.0345807031884129,
+          1.061436425055829
+        ],
+        "high_low_ratio": 1.0153960952508736,
+        "rho": -0.10998667537846785
+      },
+      {
+        "task": "pick up the book and place it in the back compartment of the caddy",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          1.003282771096377,
+          0.9546933220008927,
+          0.9043001563392058
+        ],
+        "high_low_ratio": 0.9013412593051867,
+        "rho": -0.13266994666074172
+      },
+      {
+        "task": "pick up the butter and place it in the basket",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.9289395629294911,
+          0.9145521494219956,
+          0.9479611089821446
+        ],
+        "high_low_ratio": 1.0204766238964647,
+        "rho": 0.1308299589143345
+      },
+      {
+        "task": "pick up the butter and place it in the basket",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          1.0242676971138704,
+          1.110711883024237,
+          1.0869430625617933
+        ],
+        "high_low_ratio": 1.0611904149906575,
+        "rho": 0.2474467504625651
+      },
+      {
+        "task": "pick up the chocolate pudding and place it in the basket",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.8947414495858733,
+          0.9430699990987214,
+          1.1244904712745585
+        ],
+        "high_low_ratio": 1.256776996075261,
+        "rho": 0.3350145209181327
+      },
+      {
+        "task": "pick up the chocolate pudding and place it in the basket",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.9277318348844446,
+          1.0018708298207228,
+          1.0871290211759652
+        ],
+        "high_low_ratio": 1.171813858593496,
+        "rho": 0.32112589970439426
+      },
+      {
+        "task": "pick up the cream cheese and place it in the basket",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.9504998290173696,
+          1.1869567858942183,
+          1.2416298054115054
+        ],
+        "high_low_ratio": 1.3062914558281478,
+        "rho": 0.3686192981851264
+      },
+      {
+        "task": "pick up the cream cheese and place it in the basket",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.7844688991113565,
+          0.9221596254207229,
+          0.9324644634576602
+        ],
+        "high_low_ratio": 1.1886570194356367,
+        "rho": 0.2530396775594635
+      },
+      {
+        "task": "pick up the ketchup and place it in the basket",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.9496293645836682,
+          0.9953246872543462,
+          1.2243634384177045
+        ],
+        "high_low_ratio": 1.2893066327561213,
+        "rho": 0.2623028439883153
+      },
+      {
+        "task": "pick up the ketchup and place it in the basket",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.9379712199557171,
+          0.8859709108138157,
+          0.9944509927860048
+        ],
+        "high_low_ratio": 1.060214824963344,
+        "rho": 0.1417292407017357
+      },
+      {
+        "task": "pick up the milk and place it in the basket",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.9692808976000564,
+          0.9637818507914552,
+          0.9544139752547527
+        ],
+        "high_low_ratio": 0.9846619051483277,
+        "rho": -0.0118941753543167
+      },
+      {
+        "task": "pick up the milk and place it in the basket",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          1.0243342073710262,
+          1.0531776265412414,
+          1.0391327996558448
+        ],
+        "high_low_ratio": 1.0144470351359245,
+        "rho": 0.06391882810413305
+      },
+      {
+        "task": "pick up the orange juice and place it in the basket",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.8383217772014174,
+          1.0218158396854287,
+          0.9750082145562218
+        ],
+        "high_low_ratio": 1.1630476996686245,
+        "rho": 0.26565444761627316
+      },
+      {
+        "task": "pick up the orange juice and place it in the basket",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.9636391840851657,
+          1.0668145508703706,
+          1.1268048781405586
+        ],
+        "high_low_ratio": 1.1693223944710123,
+        "rho": 0.3281960227133575
+      },
+      {
+        "task": "pick up the salad dressing and place it in the basket",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.9824985178593914,
+          0.8532404408013153,
+          0.9617821338842271
+        ],
+        "high_low_ratio": 0.9789145901000442,
+        "rho": -0.029435474584756167
+      },
+      {
+        "task": "pick up the salad dressing and place it in the basket",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          1.0732798449323384,
+          1.0738716527723857,
+          1.0640265899829109
+        ],
+        "high_low_ratio": 0.9913785253742365,
+        "rho": -0.00739351027878477
+      },
+      {
+        "task": "pick up the tomato sauce and place it in the basket",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          1.083984259141085,
+          0.9943451371227182,
+          1.1303525819360523
+        ],
+        "high_low_ratio": 1.0427758266819371,
+        "rho": 0.10756125473664217
+      },
+      {
+        "task": "pick up the tomato sauce and place it in the basket",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.9577272392301506,
+          0.8627676878401884,
+          0.9765111206653972
+        ],
+        "high_low_ratio": 1.0196129760811081,
+        "rho": 0.0972085214705963
+      },
+      {
+        "task": "push the plate to the front of the stove",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          1.0239540987695381,
+          0.925684413346123,
+          0.8577502432780373
+        ],
+        "high_low_ratio": 0.837684271500818,
+        "rho": -0.300579491029092
+      },
+      {
+        "task": "push the plate to the front of the stove",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          1.1035715504063763,
+          1.1723389311909673,
+          0.9030008618171715
+        ],
+        "high_low_ratio": 0.8182531177834848,
+        "rho": -0.15789254378374504
+      },
+      {
+        "task": "put both moka pots on the stove",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          1.0209970337674383,
+          0.9969727421813696,
+          1.0890789368495752
+        ],
+        "high_low_ratio": 1.066681783423912,
+        "rho": -0.14686675145245678
+      },
+      {
+        "task": "put both moka pots on the stove",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          1.0010827251340133,
+          0.9315440850173441,
+          0.9606960117210523
+        ],
+        "high_low_ratio": 0.9596569670028474,
+        "rho": -0.06339104697111167
+      },
+      {
+        "task": "put both the alphabet soup and the cream cheese box in the basket",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.9855307516308544,
+          1.029570218286736,
+          1.031901687400245
+        ],
+        "high_low_ratio": 1.0470517390681682,
+        "rho": 0.07608197309084076
+      },
+      {
+        "task": "put both the alphabet soup and the cream cheese box in the basket",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          1.0217998506167734,
+          1.0172396570192803,
+          0.9099588033379722
+        ],
+        "high_low_ratio": 0.8905450541891425,
+        "rho": -0.21831974121801886
+      },
+      {
+        "task": "put both the alphabet soup and the tomato sauce in the basket",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          1.1511618110089978,
+          1.0165448122489187,
+          1.0926619659906602
+        ],
+        "high_low_ratio": 0.9491819095639888,
+        "rho": -0.06399444266917688
+      },
+      {
+        "task": "put both the alphabet soup and the tomato sauce in the basket",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.8823776854829423,
+          1.0072698624229162,
+          0.8603964058042614
+        ],
+        "high_low_ratio": 0.9750885816353684,
+        "rho": -0.09308658456077587
+      },
+      {
+        "task": "put both the cream cheese box and the butter in the basket",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.9617602755566248,
+          1.0666856531193438,
+          1.0166105476444505
+        ],
+        "high_low_ratio": 1.0570311266558403,
+        "rho": 0.16772257445040092
+      },
+      {
+        "task": "put both the cream cheese box and the butter in the basket",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.9461514417674243,
+          0.9685865868506003,
+          1.036018498641907
+        ],
+        "high_low_ratio": 1.094981683594552,
+        "rho": 0.20918665146185508
+      },
+      {
+        "task": "put the black bowl in the bottom drawer of the cabinet and close it",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.9118324748011518,
+          0.9726127433741458,
+          1.3169633732823247
+        ],
+        "high_low_ratio": 1.444304090583659,
+        "rho": 0.15576258455225245
+      },
+      {
+        "task": "put the black bowl in the bottom drawer of the cabinet and close it",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.7691537210446272,
+          0.863570527763029,
+          1.10699233964203
+        ],
+        "high_low_ratio": 1.439234199034449,
+        "rho": 0.4677137307191434
+      },
+      {
+        "task": "put the bowl on the plate",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 55,
+        "query_n": 54,
+        "low_mid_high": [
+          0.94678155239716,
+          0.8937684153761337,
+          0.9037408700619946
+        ],
+        "high_low_ratio": 0.9545400074323475,
+        "rho": -0.026955411926357625
+      },
+      {
+        "task": "put the bowl on the plate",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 54,
+        "query_n": 55,
+        "low_mid_high": [
+          1.026640737892861,
+          1.0786778859566626,
+          1.1717975741008784
+        ],
+        "high_low_ratio": 1.1413900996233073,
+        "rho": 0.19519059199879785
+      },
+      {
+        "task": "put the bowl on the stove",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 57,
+        "query_n": 58,
+        "low_mid_high": [
+          0.8671320684919643,
+          0.90955950392829,
+          0.9780852037188494
+        ],
+        "high_low_ratio": 1.127954136697821,
+        "rho": 0.20255385392040834
+      },
+      {
+        "task": "put the bowl on the stove",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 58,
+        "query_n": 57,
+        "low_mid_high": [
+          1.0054423541874864,
+          1.1266335431839039,
+          1.1294407466025953
+        ],
+        "high_low_ratio": 1.123327202100327,
+        "rho": 0.24201160205924815
+      },
+      {
+        "task": "put the bowl on top of the cabinet",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 54,
+        "query_n": 56,
+        "low_mid_high": [
+          0.9036021048750094,
+          1.0040750588687415,
+          0.9840160964015255
+        ],
+        "high_low_ratio": 1.0889927005400672,
+        "rho": 0.11162793308922858
+      },
+      {
+        "task": "put the bowl on top of the cabinet",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 56,
+        "query_n": 54,
+        "low_mid_high": [
+          1.0059305180172091,
+          1.0119685887033205,
+          1.0902883268706831
+        ],
+        "high_low_ratio": 1.0838604728085512,
+        "rho": 0.14559461426317657
+      },
+      {
+        "task": "put the cream cheese in the bowl",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 58,
+        "query_n": 57,
+        "low_mid_high": [
+          0.7571438867996444,
+          0.9217475179989811,
+          0.9875661462793585
+        ],
+        "high_low_ratio": 1.3043308722384077,
+        "rho": 0.37460904072284557
+      },
+      {
+        "task": "put the cream cheese in the bowl",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 57,
+        "query_n": 58,
+        "low_mid_high": [
+          0.9462796993101628,
+          1.2070215547735292,
+          1.1913113179717563
+        ],
+        "high_low_ratio": 1.2589420642123268,
+        "rho": 0.26505176677353814
+      },
+      {
+        "task": "put the white mug on the left plate and put the yellow and white mug on the right plate",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          1.0216962909073959,
+          0.9231884186003901,
+          0.9739087530455409
+        ],
+        "high_low_ratio": 0.9532272571730552,
+        "rho": 0.09390415204548601
+      },
+      {
+        "task": "put the white mug on the left plate and put the yellow and white mug on the right plate",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          1.0334166670704652,
+          0.9754939105142874,
+          1.069723496358649
+        ],
+        "high_low_ratio": 1.0351328079419375,
+        "rho": -0.08972684611720644
+      },
+      {
+        "task": "put the white mug on the plate and put the chocolate pudding to the right of the plate",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          1.123395494716094,
+          1.037493068171731,
+          0.9022417902603405
+        ],
+        "high_low_ratio": 0.8031381597167222,
+        "rho": -0.2749628638071069
+      },
+      {
+        "task": "put the white mug on the plate and put the chocolate pudding to the right of the plate",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          1.0825876723077075,
+          0.9079411665985124,
+          0.9265902747828405
+        ],
+        "high_low_ratio": 0.8559032201130337,
+        "rho": -0.23459433946680078
+      },
+      {
+        "task": "put the wine bottle on the rack",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.9399531482974027,
+          0.9678678675621664,
+          0.8678272174488151
+        ],
+        "high_low_ratio": 0.9232664617601058,
+        "rho": -0.04351635477265513
+      },
+      {
+        "task": "put the wine bottle on the rack",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          1.0755929683593013,
+          1.010355676980209,
+          1.1487359026548125
+        ],
+        "high_low_ratio": 1.0680024288435825,
+        "rho": 0.1230110797313695
+      },
+      {
+        "task": "put the wine bottle on top of the cabinet",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 59,
+        "query_n": 57,
+        "low_mid_high": [
+          1.1864723907110515,
+          1.0432355590240814,
+          1.0814232328468147
+        ],
+        "high_low_ratio": 0.911460933531474,
+        "rho": -0.10856241385553203
+      },
+      {
+        "task": "put the wine bottle on top of the cabinet",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 57,
+        "query_n": 59,
+        "low_mid_high": [
+          0.89821638760232,
+          0.9232513094188675,
+          0.8915964045774368
+        ],
+        "high_low_ratio": 0.9926298572189777,
+        "rho": 0.07595750627904493
+      },
+      {
+        "task": "put the yellow and white mug in the microwave and close it",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          1.10791086498765,
+          1.0212699818566444,
+          1.138295891812575
+        ],
+        "high_low_ratio": 1.027425515702713,
+        "rho": 0.04341540090639603
+      },
+      {
+        "task": "put the yellow and white mug in the microwave and close it",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.9131246798905633,
+          0.9884972039888846,
+          0.8442677231277994
+        ],
+        "high_low_ratio": 0.9245919442556121,
+        "rho": -0.04970740642283412
+      },
+      {
+        "task": "turn on the stove",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 54,
+        "query_n": 54,
+        "low_mid_high": [
+          0.9881825832511462,
+          0.9404454475890376,
+          0.9382078193088218
+        ],
+        "high_low_ratio": 0.9494276009420182,
+        "rho": -0.06485581620811359
+      },
+      {
+        "task": "turn on the stove",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 54,
+        "query_n": 54,
+        "low_mid_high": [
+          1.1586490212655571,
+          0.9435399309558096,
+          1.0249520805064904
+        ],
+        "high_low_ratio": 0.8846096287096211,
+        "rho": -0.07204736642698194
+      },
+      {
+        "task": "turn on the stove and put the moka pot on it",
+        "split": 0,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.7621418080193667,
+          0.817809087797337,
+          1.0810693606564694
+        ],
+        "high_low_ratio": 1.4184622196044105,
+        "rho": 0.36110151120033124
+      },
+      {
+        "task": "turn on the stove and put the moka pot on it",
+        "split": 1,
+        "k": 8,
+        "calibration_n": 60,
+        "query_n": 60,
+        "low_mid_high": [
+          0.8607482974256501,
+          1.0607120282908473,
+          1.3621664970350185
+        ],
+        "high_low_ratio": 1.5825375444935805,
+        "rho": 0.5361223044647959
+      }
+    ],
+    "task_curves": [
+      [
+        0.9587571355103188,
+        0.9890815197062743,
+        1.0857189258028903
+      ],
+      [
+        1.0189572895424244,
+        0.9504311712790454,
+        1.0368107151967756
+      ],
+      [
+        0.9076727962662224,
+        0.9769190362514318,
+        1.1071450890880117
+      ],
+      [
+        0.9050909994344002,
+        0.9666771547371331,
+        1.1186438339266256
+      ],
+      [
+        0.96427457637107,
+        1.02072567402243,
+        1.042079927735757
+      ],
+      [
+        0.9856062962264346,
+        1.0249987826385185,
+        1.0171983472918316
+      ],
+      [
+        0.9743184188944766,
+        1.0075174827630153,
+        1.0192886452478087
+      ],
+      [
+        0.9650218546467635,
+        0.9817058145392631,
+        1.0520212720359126
+      ],
+      [
+        1.0185403721599215,
+        0.9555631226059055,
+        1.0266273086500721
+      ],
+      [
+        0.868421487711917,
+        1.0079994743269154,
+        1.1089765279741568
+      ],
+      [
+        0.9991016492535268,
+        1.03120438115992,
+        0.9724302041760571
+      ],
+      [
+        0.8471161563585311,
+        1.0102897433630442,
+        1.129563390382016
+      ],
+      [
+        0.9516350616015535,
+        1.0805338826042774,
+        1.070053502322124
+      ],
+      [
+        0.889982710324785,
+        1.0510329908216194,
+        1.0531915769752913
+      ],
+      [
+        1.024528357345549,
+        0.9954387400746797,
+        0.9860035641899095
+      ],
+      [
+        0.9777660832035916,
+        1.0173707586479075,
+        1.0198224074303004
+      ],
+      [
+        0.9113859278771776,
+        0.972914740058379,
+        1.1059675240870075
+      ],
+      [
+        0.8714474679047018,
+        1.062836955119745,
+        1.0979832761243669
+      ],
+      [
+        0.9438182927727132,
+        0.9422355565001312,
+        1.1153471671159376
+      ],
+      [
+        0.9971875517781997,
+        1.0094698036499272,
+        0.9976730455119487
+      ],
+      [
+        0.9031566528666184,
+        1.0445575369937234,
+        1.0536437376678776
+      ],
+      [
+        1.0288908987676695,
+        0.9698503947637795,
+        1.0141936346796796
+      ],
+      [
+        1.0228057828417507,
+        0.930884078417045,
+        1.0562364622263072
+      ],
+      [
+        1.0645074361537525,
+        1.0562362904904221,
+        0.8806662353826467
+      ],
+      [
+        1.0110889094247968,
+        0.9648132023825753,
+        1.0268957487559625
+      ],
+      [
+        1.0038291182095034,
+        1.0234235081811685,
+        0.9728427715288188
+      ],
+      [
+        1.0256129618339829,
+        1.0119179638329556,
+        0.9834104298418503
+      ],
+      [
+        0.953987782520649,
+        1.0188175152591206,
+        1.0263603984736989
+      ],
+      [
+        0.8435152365840196,
+        0.9197090857968889,
+        1.216516454182453
+      ],
+      [
+        0.988596444769391,
+        0.9905473138563095,
+        1.0463883396925624
+      ],
+      [
+        0.9370676125406193,
+        1.0238656239500852,
+        1.0564769438610506
+      ],
+      [
+        0.9547543938055494,
+        1.0079228761036434,
+        1.038512473128698
+      ],
+      [
+        0.8593524071540064,
+        1.0738993250359157,
+        1.0941913794224176
+      ],
+      [
+        1.0275731892748463,
+        0.9497013282312354,
+        1.0229385655845842
+      ],
+      [
+        1.1031802902928056,
+        0.974871537308547,
+        0.9144970709122922
+      ],
+      [
+        1.0100525121443371,
+        0.9893398817053398,
+        1.018017252651722
+      ],
+      [
+        1.048594560298537,
+        0.9835353265917873,
+        0.9910651737389091
+      ],
+      [
+        1.015200267381497,
+        1.0050171884438877,
+        1.0021241254537243
+      ],
+      [
+        1.0767944029202006,
+        0.9419939599591494,
+        0.9825377039958311
+      ],
+      [
+        0.8129415006789186,
+        0.9470801737563711,
+        1.2296764875760697
+      ]
+    ],
+    "curve": [
+      0.966803321141193,
+      0.9970732723982376,
+      1.044743441000549
+    ],
+    "ci": [
+      [
+        0.9512352458688461,
+        0.980532945577269,
+        1.0237190450998133
+      ],
+      [
+        0.9787402850522551,
+        1.0124185492144768,
+        1.0622265339408468
+      ]
+    ],
+    "high_low_ratio": 1.080616313737273,
+    "high_low_ratio_ci": [
+      1.0575674808226863,
+      1.1031853019454398
+    ],
+    "median_rho": 0.11665480795215527
+  },
+  "tool_hang": {
+    "method": "within-task cross-episode kNN residual-energy estimate from proprioception",
+    "status": "exploratory follow-up; no query residuals used for scale estimation or grouping",
+    "n": 4000,
+    "tasks": 1,
+    "task_names": [
+      "tool_hang"
+    ],
+    "records": [
+      {
+        "task": "tool_hang",
+        "split": 0,
+        "k": 30,
+        "calibration_n": 2000,
+        "query_n": 2000,
+        "low_mid_high": [
+          0.8961649092225903,
+          1.0407884887892913,
+          1.0897440270443526
+        ],
+        "high_low_ratio": 1.216008366127267,
+        "rho": 0.34250717667495684
+      },
+      {
+        "task": "tool_hang",
+        "split": 1,
+        "k": 30,
+        "calibration_n": 2000,
+        "query_n": 2000,
+        "low_mid_high": [
+          0.869603008775345,
+          1.0021197261753925,
+          1.0807170120339973
+        ],
+        "high_low_ratio": 1.2427705529169712,
+        "rho": 0.37016167736201433
+      }
+    ],
+    "task_curves": [
+      [
+        0.8829838439612204,
+        1.0216370745000742,
+        1.0852399054076785
+      ]
+    ],
+    "curve": [
+      0.8829838439612204,
+      1.0216370745000742,
+      1.0852399054076785
+    ],
+    "ci": [
+      [
+        0.8687384232606596,
+        1.0007662292232378,
+        1.0671243224523488
+      ],
+      [
+        0.8976736619660157,
+        1.0443659471324376,
+        1.1038451712894717
+      ]
+    ],
+    "high_low_ratio": 1.2290597532782728,
+    "high_low_ratio_ci": [
+      1.1973254622289147,
+      1.2584443161264385
+    ],
+    "median_rho": 0.3563344270184856
+  },
+  "transport": {
+    "method": "within-task cross-episode kNN residual-energy estimate from proprioception",
+    "status": "exploratory follow-up; no query residuals used for scale estimation or grouping",
+    "n": 4000,
+    "tasks": 1,
+    "task_names": [
+      "transport"
+    ],
+    "records": [
+      {
+        "task": "transport",
+        "split": 0,
+        "k": 30,
+        "calibration_n": 2000,
+        "query_n": 2000,
+        "low_mid_high": [
+          0.9290463204974371,
+          1.0049319393597373,
+          1.0159144305990373
+        ],
+        "high_low_ratio": 1.0935024531985538,
+        "rho": 0.2309784925656191
+      },
+      {
+        "task": "transport",
+        "split": 1,
+        "k": 30,
+        "calibration_n": 2000,
+        "query_n": 2000,
+        "low_mid_high": [
+          0.9691641154086064,
+          1.0168240686888579,
+          1.0606756929700074
+        ],
+        "high_low_ratio": 1.0944232004739662,
+        "rho": 0.24246931975418376
+      }
+    ],
+    "task_curves": [
+      [
+        0.9493171620237287,
+        1.0108954914852193,
+        1.038536242977772
+      ]
+    ],
+    "curve": [
+      0.9493171620237287,
+      1.0108954914852193,
+      1.038536242977772
+    ],
+    "ci": [
+      [
+        0.9272062290036784,
+        0.995467053870656,
+        1.0224926908930703
+      ],
+      [
+        0.977052414660666,
+        1.0293909640572525,
+        1.0529615253328102
+      ]
+    ],
+    "high_low_ratio": 1.0939823744088313,
+    "high_low_ratio_ci": [
+      1.05842135064668,
+      1.123744807739871
+    ],
+    "median_rho": 0.2367239061599014
+  }
+}

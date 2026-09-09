@@ -1,0 +1,635 @@
+{
+  "seed": 20260908,
+  "run": "/mnt/pfs/yuchen/groot/ft_fr_nu1024_hold7k_to14_20260908",
+  "transitions": [
+    [
+      7000,
+      1024.0,
+      512.0
+    ],
+    [
+      8000,
+      512.0,
+      256.0
+    ],
+    [
+      9000,
+      256.0,
+      128.0
+    ],
+    [
+      10000,
+      128.0,
+      64.0
+    ],
+    [
+      11000,
+      64.0,
+      32.0
+    ],
+    [
+      12000,
+      32.0,
+      14.0
+    ]
+  ],
+  "batch_size": 16,
+  "batches": {
+    "mixed_0": [
+      {
+        "episode_index": 14691,
+        "tasks": [
+          "move apple near blue plastic bottle"
+        ],
+        "length": 31,
+        "ordinal": 14691,
+        "step": 9
+      },
+      {
+        "episode_index": 26652,
+        "tasks": [
+          "pick pepsi can"
+        ],
+        "length": 13,
+        "ordinal": 26652,
+        "step": 3
+      },
+      {
+        "episode_index": 48483,
+        "tasks": [
+          "move redbull can near coke can"
+        ],
+        "length": 40,
+        "ordinal": 48483,
+        "step": 5
+      },
+      {
+        "episode_index": 9294,
+        "tasks": [
+          "pick apple from white bowl"
+        ],
+        "length": 67,
+        "ordinal": 9294,
+        "step": 11
+      },
+      {
+        "episode_index": 34936,
+        "tasks": [
+          "pick 7up can from top drawer and place on counter"
+        ],
+        "length": 36,
+        "ordinal": 34936,
+        "step": 8
+      },
+      {
+        "episode_index": 83837,
+        "tasks": [
+          "place sponge into top drawer"
+        ],
+        "length": 34,
+        "ordinal": 83837,
+        "step": 1
+      },
+      {
+        "episode_index": 18587,
+        "tasks": [
+          "open middle drawer"
+        ],
+        "length": 47,
+        "ordinal": 18587,
+        "step": 21
+      },
+      {
+        "episode_index": 76292,
+        "tasks": [
+          "open middle drawer"
+        ],
+        "length": 62,
+        "ordinal": 76292,
+        "step": 44
+      },
+      {
+        "episode_index": 79623,
+        "tasks": [
+          "pick coke can from top shelf of fridge"
+        ],
+        "length": 144,
+        "ordinal": 79623,
+        "step": 108
+      },
+      {
+        "episode_index": 17350,
+        "tasks": [
+          "pick redbull can from top shelf of fridge"
+        ],
+        "length": 54,
+        "ordinal": 17350,
+        "step": 18
+      },
+      {
+        "episode_index": 19043,
+        "tasks": [
+          "move green can near blue chip bag"
+        ],
+        "length": 26,
+        "ordinal": 19043,
+        "step": 3
+      },
+      {
+        "episode_index": 56566,
+        "tasks": [
+          "move orange near sponge"
+        ],
+        "length": 28,
+        "ordinal": 56566,
+        "step": 18
+      },
+      {
+        "episode_index": 79701,
+        "tasks": [
+          "place redbull can upright"
+        ],
+        "length": 69,
+        "ordinal": 79701,
+        "step": 55
+      },
+      {
+        "episode_index": 66401,
+        "tasks": [
+          "pick green can"
+        ],
+        "length": 18,
+        "ordinal": 66401,
+        "step": 4
+      },
+      {
+        "episode_index": 35699,
+        "tasks": [
+          "close bottom drawer"
+        ],
+        "length": 45,
+        "ordinal": 35699,
+        "step": 19
+      },
+      {
+        "episode_index": 55662,
+        "tasks": [
+          "place coke can upright"
+        ],
+        "length": 46,
+        "ordinal": 55662,
+        "step": 30
+      }
+    ],
+    "mixed_1": [
+      {
+        "episode_index": 83081,
+        "tasks": [
+          "open bottom drawer"
+        ],
+        "length": 136,
+        "ordinal": 83081,
+        "step": 117
+      },
+      {
+        "episode_index": 14791,
+        "tasks": [
+          "open middle drawer"
+        ],
+        "length": 30,
+        "ordinal": 14791,
+        "step": 19
+      },
+      {
+        "episode_index": 48354,
+        "tasks": [
+          "pick orange can"
+        ],
+        "length": 20,
+        "ordinal": 48354,
+        "step": 1
+      },
+      {
+        "episode_index": 20729,
+        "tasks": [
+          "place sponge into bottom drawer"
+        ],
+        "length": 60,
+        "ordinal": 20729,
+        "step": 44
+      },
+      {
+        "episode_index": 22972,
+        "tasks": [
+          "close top drawer"
+        ],
+        "length": 44,
+        "ordinal": 22972,
+        "step": 10
+      },
+      {
+        "episode_index": 65870,
+        "tasks": [
+          "place rxbar blueberry into top drawer"
+        ],
+        "length": 53,
+        "ordinal": 65870,
+        "step": 30
+      },
+      {
+        "episode_index": 60466,
+        "tasks": [
+          "pick apple from white bowl"
+        ],
+        "length": 25,
+        "ordinal": 60466,
+        "step": 14
+      },
+      {
+        "episode_index": 51710,
+        "tasks": [
+          "move rxbar chocolate near orange"
+        ],
+        "length": 38,
+        "ordinal": 51710,
+        "step": 16
+      },
+      {
+        "episode_index": 38181,
+        "tasks": [
+          "knock green can over"
+        ],
+        "length": 15,
+        "ordinal": 38181,
+        "step": 0
+      },
+      {
+        "episode_index": 21787,
+        "tasks": [
+          "place water bottle into top drawer"
+        ],
+        "length": 89,
+        "ordinal": 21787,
+        "step": 29
+      },
+      {
+        "episode_index": 69343,
+        "tasks": [
+          "move green rice chip bag near orange"
+        ],
+        "length": 39,
+        "ordinal": 69343,
+        "step": 2
+      },
+      {
+        "episode_index": 46367,
+        "tasks": [
+          "move orange near redbull can"
+        ],
+        "length": 38,
+        "ordinal": 46367,
+        "step": 26
+      },
+      {
+        "episode_index": 26829,
+        "tasks": [
+          "move rxbar blueberry near 7up can"
+        ],
+        "length": 37,
+        "ordinal": 26829,
+        "step": 12
+      },
+      {
+        "episode_index": 77263,
+        "tasks": [
+          "pick pepsi can"
+        ],
+        "length": 15,
+        "ordinal": 77263,
+        "step": 3
+      },
+      {
+        "episode_index": 30333,
+        "tasks": [
+          "pick orange from middle drawer and place on counter"
+        ],
+        "length": 55,
+        "ordinal": 30333,
+        "step": 13
+      },
+      {
+        "episode_index": 4594,
+        "tasks": [
+          "pick apple from white bowl"
+        ],
+        "length": 36,
+        "ordinal": 4594,
+        "step": 0
+      }
+    ],
+    "move_near": [
+      {
+        "episode_index": 78510,
+        "tasks": [
+          "move brown chip bag near redbull can"
+        ],
+        "length": 38,
+        "ordinal": 78510,
+        "step": 13
+      },
+      {
+        "episode_index": 29926,
+        "tasks": [
+          "move brown chip bag near apple"
+        ],
+        "length": 42,
+        "ordinal": 29926,
+        "step": 8
+      },
+      {
+        "episode_index": 26228,
+        "tasks": [
+          "move green can near green jalapeno chip bag"
+        ],
+        "length": 36,
+        "ordinal": 26228,
+        "step": 26
+      },
+      {
+        "episode_index": 54056,
+        "tasks": [
+          "move coke can near orange"
+        ],
+        "length": 66,
+        "ordinal": 54056,
+        "step": 56
+      },
+      {
+        "episode_index": 73282,
+        "tasks": [
+          "move brown chip bag near orange can"
+        ],
+        "length": 47,
+        "ordinal": 73282,
+        "step": 25
+      },
+      {
+        "episode_index": 57167,
+        "tasks": [
+          "move redbull can near pepsi can"
+        ],
+        "length": 52,
+        "ordinal": 57167,
+        "step": 1
+      },
+      {
+        "episode_index": 2748,
+        "tasks": [
+          "move green rice chip bag near white bowl"
+        ],
+        "length": 25,
+        "ordinal": 2748,
+        "step": 2
+      },
+      {
+        "episode_index": 30880,
+        "tasks": [
+          "move green can near rxbar blueberry"
+        ],
+        "length": 53,
+        "ordinal": 30880,
+        "step": 25
+      },
+      {
+        "episode_index": 46457,
+        "tasks": [
+          "move water bottle near brown chip bag"
+        ],
+        "length": 35,
+        "ordinal": 46457,
+        "step": 6
+      },
+      {
+        "episode_index": 57721,
+        "tasks": [
+          "move green can near coke can"
+        ],
+        "length": 35,
+        "ordinal": 57721,
+        "step": 25
+      },
+      {
+        "episode_index": 24825,
+        "tasks": [
+          "move green rice chip bag near coke can"
+        ],
+        "length": 38,
+        "ordinal": 24825,
+        "step": 11
+      },
+      {
+        "episode_index": 14059,
+        "tasks": [
+          "move orange can near rxbar blueberry"
+        ],
+        "length": 74,
+        "ordinal": 14059,
+        "step": 15
+      },
+      {
+        "episode_index": 3158,
+        "tasks": [
+          "move green jalapeno chip bag near white bowl"
+        ],
+        "length": 32,
+        "ordinal": 3158,
+        "step": 15
+      },
+      {
+        "episode_index": 39126,
+        "tasks": [
+          "move green jalapeno chip bag near pepsi can"
+        ],
+        "length": 24,
+        "ordinal": 39126,
+        "step": 1
+      },
+      {
+        "episode_index": 35163,
+        "tasks": [
+          "move brown chip bag near water bottle"
+        ],
+        "length": 44,
+        "ordinal": 35163,
+        "step": 27
+      },
+      {
+        "episode_index": 45223,
+        "tasks": [
+          "move sponge near rxbar chocolate"
+        ],
+        "length": 39,
+        "ordinal": 45223,
+        "step": 21
+      }
+    ],
+    "close_drawer": [
+      {
+        "episode_index": 18175,
+        "tasks": [
+          "close top drawer"
+        ],
+        "length": 33,
+        "ordinal": 18175,
+        "step": 15
+      },
+      {
+        "episode_index": 83231,
+        "tasks": [
+          "close bottom drawer"
+        ],
+        "length": 29,
+        "ordinal": 83231,
+        "step": 9
+      },
+      {
+        "episode_index": 24807,
+        "tasks": [
+          "close middle drawer"
+        ],
+        "length": 38,
+        "ordinal": 24807,
+        "step": 24
+      },
+      {
+        "episode_index": 4195,
+        "tasks": [
+          "close middle drawer"
+        ],
+        "length": 29,
+        "ordinal": 4195,
+        "step": 2
+      },
+      {
+        "episode_index": 44485,
+        "tasks": [
+          "close top drawer"
+        ],
+        "length": 28,
+        "ordinal": 44485,
+        "step": 11
+      },
+      {
+        "episode_index": 51280,
+        "tasks": [
+          "close bottom drawer"
+        ],
+        "length": 50,
+        "ordinal": 51280,
+        "step": 2
+      },
+      {
+        "episode_index": 57512,
+        "tasks": [
+          "close middle drawer"
+        ],
+        "length": 33,
+        "ordinal": 57512,
+        "step": 6
+      },
+      {
+        "episode_index": 19768,
+        "tasks": [
+          "close top drawer"
+        ],
+        "length": 23,
+        "ordinal": 19768,
+        "step": 10
+      },
+      {
+        "episode_index": 83633,
+        "tasks": [
+          "close middle drawer"
+        ],
+        "length": 58,
+        "ordinal": 83633,
+        "step": 39
+      },
+      {
+        "episode_index": 68329,
+        "tasks": [
+          "close top drawer"
+        ],
+        "length": 33,
+        "ordinal": 68329,
+        "step": 10
+      },
+      {
+        "episode_index": 51836,
+        "tasks": [
+          "close top drawer"
+        ],
+        "length": 33,
+        "ordinal": 51836,
+        "step": 4
+      },
+      {
+        "episode_index": 14927,
+        "tasks": [
+          "close middle drawer"
+        ],
+        "length": 37,
+        "ordinal": 14927,
+        "step": 15
+      },
+      {
+        "episode_index": 10016,
+        "tasks": [
+          "close top drawer"
+        ],
+        "length": 33,
+        "ordinal": 10016,
+        "step": 13
+      },
+      {
+        "episode_index": 36528,
+        "tasks": [
+          "close bottom drawer"
+        ],
+        "length": 41,
+        "ordinal": 36528,
+        "step": 25
+      },
+      {
+        "episode_index": 37793,
+        "tasks": [
+          "close top drawer"
+        ],
+        "length": 29,
+        "ordinal": 37793,
+        "step": 17
+      },
+      {
+        "episode_index": 10000,
+        "tasks": [
+          "close bottom drawer"
+        ],
+        "length": 49,
+        "ordinal": 10000,
+        "step": 32
+      }
+    ]
+  },
+  "pool_counts": {
+    "mixed_0": 86566,
+    "mixed_1": 86566,
+    "move_near": 20090,
+    "close_drawer": 6940
+  },
+  "task_scope": "Instruction-filtered training demonstrations, not simulator rollouts.",
+  "model_mode": "train; checkpoint trainable mask; paired augmentation and dropout seeds",
+  "gradients": "Actual raw loss parameter gradients, before clipping, Adam, or weight decay.",
+  "channels": "Exact training action mask, including gripper; joint Student-t.",
+  "comparisons": "nu_before vs 0.9*nu_before vs nu_after; same-nu independent-dropout control on mixed_0",
+  "updates": 0
+}

@@ -1,0 +1,68 @@
+[
+  {
+    "task": "tool_hang",
+    "valid_action_elements": 80,
+    "normalization_roundtrip_error": 3.0616757129564576e-08,
+    "objectives": {
+      "flow": {
+        "loss": 1.6628262996673584,
+        "finite_gradient_tensors": 537
+      },
+      "mse": {
+        "loss": 0.6351996660232544,
+        "finite_gradient_tensors": 537
+      },
+      "hetero_t": {
+        "loss": 1.1610817909240723,
+        "finite_gradient_tensors": 541
+      }
+    },
+    "inference": {
+      "flow": [
+        8,
+        7
+      ],
+      "mse": [
+        8,
+        7
+      ],
+      "hetero_t": [
+        8,
+        7
+      ]
+    }
+  },
+  {
+    "task": "transport_ph",
+    "valid_action_elements": 160,
+    "normalization_roundtrip_error": 1.50276984189901e-08,
+    "objectives": {
+      "flow": {
+        "loss": 1.2967102527618408,
+        "finite_gradient_tensors": 537
+      },
+      "mse": {
+        "loss": 0.3224128186702728,
+        "finite_gradient_tensors": 537
+      },
+      "hetero_t": {
+        "loss": 1.1363976001739502,
+        "finite_gradient_tensors": 541
+      }
+    },
+    "inference": {
+      "flow": [
+        8,
+        14
+      ],
+      "mse": [
+        8,
+        14
+      ],
+      "hetero_t": [
+        8,
+        14
+      ]
+    }
+  }
+]

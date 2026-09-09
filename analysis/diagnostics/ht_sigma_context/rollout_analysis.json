@@ -1,0 +1,45 @@
+{
+  "scope": "All saved episodes, successes and failures. First call of each episode excluded. No demonstration labels or verified contact states.",
+  "per_task": [
+    {
+      "task": "PnPBottleToCabinetClose",
+      "n": 221,
+      "raw_calls": 225,
+      "rho_sigma_arm_offset": 0.17601142895260544,
+      "rho_sigma_commanded_hand_range": 0.9234982823218117,
+      "amplitude_high_sigma_vs_rest": 1.0539988279342651
+    },
+    {
+      "task": "PnPCanToDrawerClose",
+      "n": 249,
+      "raw_calls": 253,
+      "rho_sigma_arm_offset": -0.216827050136028,
+      "rho_sigma_commanded_hand_range": 0.9191939370384764,
+      "amplitude_high_sigma_vs_rest": 0.9752958416938782
+    },
+    {
+      "task": "PosttrainPnPNovelFromCuttingboardToPanSplitA",
+      "n": 318,
+      "raw_calls": 322,
+      "rho_sigma_arm_offset": 0.29903635009037194,
+      "rho_sigma_commanded_hand_range": 0.7756910648138388,
+      "amplitude_high_sigma_vs_rest": 1.1191421747207642
+    },
+    {
+      "task": "PosttrainPnPNovelFromPlacematToBasketSplitA",
+      "n": 473,
+      "raw_calls": 481,
+      "rho_sigma_arm_offset": -0.03287614876354692,
+      "rho_sigma_commanded_hand_range": 0.7516631869051503,
+      "amplitude_high_sigma_vs_rest": 0.7884277105331421
+    },
+    {
+      "task": "PosttrainPnPNovelFromTrayToPotSplitA",
+      "n": 163,
+      "raw_calls": 167,
+      "rho_sigma_arm_offset": 0.5441751043277304,
+      "rho_sigma_commanded_hand_range": 0.7979533476316358,
+      "amplitude_high_sigma_vs_rest": 1.5819796323776245
+    }
+  ]
+}

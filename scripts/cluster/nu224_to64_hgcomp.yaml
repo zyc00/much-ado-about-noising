@@ -1,0 +1,36 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: yuchen-fr-nu224to64-hgcomp-0909
+  labels: {owner: yuchen, app: nu224-to64-hgcomp}
+spec:
+  restartPolicy: Never
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: aihc.baidu.com/dedicated-pool
+                operator: DoesNotExist
+  containers:
+    - name: main
+      image: zyc00/easypod:latest
+      command: [bash, -lc]
+      args:
+        - bash /mnt/pfs/yuchen/nu224_to64_hgcomp_20260909/code/nu224_to64_hgcomp_train.sh
+      env:
+        - {name: NVIDIA_DRIVER_CAPABILITIES, value: all}
+        - {name: HF_HOME, value: /mnt/pfs/yuchen/hf_home}
+        - {name: HF_HUB_OFFLINE, value: '1'}
+        - {name: TRANSFORMERS_OFFLINE, value: '1'}
+      resources:
+        requests: {cpu: '96', memory: 768Gi, nvidia.com/gpu: '8'}
+        limits: {cpu: '96', memory: 768Gi, nvidia.com/gpu: '8'}
+      volumeMounts:
+        - {name: pfs, mountPath: /mnt/pfs}
+        - {name: dshm, mountPath: /dev/shm}
+  volumes:
+    - name: pfs
+      persistentVolumeClaim: {claimName: main-pfs-pvc}
+    - name: dshm
+      emptyDir: {medium: Memory}

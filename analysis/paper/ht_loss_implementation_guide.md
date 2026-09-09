@@ -109,7 +109,7 @@ Details that matter:
 
 | quantity | value we use | how to set it |
 |---|---|---|
-| `nu` | `nu = c^2 * d` with `c = 2`, i.e. `nu = 4d` | Default prescription. Verified: GR1 `nu = 928` 51.5 vs 47.5 at `2d`, WidowX `nu = 224` (= sweep optimum), Cosmos3 `nu = 640` (= flow, 96), OFT-long `nu = 224` 95 @150k vs 98 for the swept best (`nu = 1024`, = 18d), both above the released L1 head (94.5). Anything in `[2d, 20d]` is within a few points on every stack; `nu = 2d` was the accidental default that underperformed on OFT-long (82) and Cosmos3 (93). |
+| `nu` | `nu = c^2 * d` with `c = 2`, i.e. `nu = 4d` | Default prescription. Verified: GR1 `nu = 928` 51.5 vs 47.5 at `2d`, WidowX `nu = 224` (= sweep optimum), Cosmos3 `nu = 640` (= flow, 96), OFT-long `nu = 224` 95 @150k vs 98 for the swept best (`nu = 1024`, = 18d), both above the released L1 head (94.5). pi0.5 is the mild exception where `2d` beats `4d` (97.6 vs 96.6, budget-matched). Anything in `[2d, 20d]` is within a few points on every stack; `nu = 2d` was the accidental default that underperformed on OFT-long (82) and Cosmos3 (93). |
 | `sbias` | `sbias = log(exp(rms_0) - 1)` so that `softplus(sbias) = rms_0` | `rms_0` = per-element rms of the residual at initialization on a few hundred training samples (run the initialized head once; for a fresh head this is the rms of the normalized action targets). Values used: OFT libero-long `-0.373`, GR00T GR1 `-1.088` (rms 0.29), pi0.5 `-0.396`, Cosmos3-LIBERO `0.589`, Cosmos3-DROID `0.354` (raw joint positions, rms 0.886). A 10x miscalibration either removes the gradient (sigma too large) or gates most samples from step 0 (sigma too small). |
 | everything else | baseline recipe unchanged | Same lr, schedule, batch size, EMA, augmentation and checkpoint cadence as the flow / L1 baseline. The loss is normalized per element, so no loss-scale change. |
 | `beta` (beta-NLL) | 0 | Tested; no gain. |
@@ -171,6 +171,7 @@ i. **Deployment.** Load the mean weights only; run one forward; no sampling. If 
 | beta-NLL weighting | no gain | — |
 | simple Huber cap (`delta = 2.5 x EMA-median chunk-residual norm`, no sigma head) | OFT-long 97 @50k (= HT within noise) but GR1 37.4 @60k (= MSE 37.8, vs HT 47.5) | not a substitute: it matches HT only where the residual tail is mild (OFT) |
 | heteroscedastic Huber (Huber rho on the sigma-normalized norm + `d log sigma`) | OFT-long 95 @50k; GR1 40.7 @60k (between MSE 37.8 and HT 47.5) | the per-sample sigma recovers about half of the GR1 gap; the redescending t-gate is needed for the rest |
+| heteroscedastic L1 (`sum|r|/sigma + d log sigma`, per-sample sigma) | GR1 44.5 @60k (above hetero-Huber 40.7, level with flow 44.1, under HT 47.5 / 51.5); OFT-long 69 @20k (HT c=2 89, MSE 84) | the sigma head carries most of the GR1 gain with an L1 kernel, but the Student-t gate is still 3-7 points better there and 20 points better on OFT-long at 20k |
 
 ## 8. Reference results (single-pass HT vs iterative baseline, budget-matched)
 
@@ -180,7 +181,7 @@ i. **Deployment.** Load the mean weights only; run one forward; no sampling. If 
 | GR00T WidowX bridge (56) | flow 57.1 @20k | 67.4 @20k | 224 (4d) |
 | OpenVLA-OFT libero-long (56) | released L1 94.5 | 98 @150k | 1024 (18d); 4d (224): 95 @150k |
 | OpenVLA-OFT libero-goal / object | 97.9 / 98.4 | 98 / 97 @150k | 1024 |
-| pi0.5 LIBERO 4-suite (350) | published flow ~96.9 | 97.6 @30k | 700 (2d); 4d rerun pending |
+| pi0.5 LIBERO 4-suite (350) | published flow ~96.9 | 97.6 @30k (96.6 at nu = 1400 = 4d) | 700 (2d) |
 | Cosmos3 libero-10 (160) | flow 96 @2000 | 96 @2000 | 640 (4d) |
 
 Full tables and the mechanism results (gradient shares, gate fractions, multimodality probes)

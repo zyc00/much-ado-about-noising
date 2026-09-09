@@ -1,0 +1,24 @@
+{
+  "dataset": "gr1",
+  "phase": "payload_to_parcc",
+  "utc": "2026-09-08T23:59:48.177914+00:00",
+  "source": "/mnt/pfs/yuchen/groot/lerobot/LeRobot",
+  "staging": "/home/jigu/tmp/parcc-datasets-20260908/gr1",
+  "destination": "/vast/projects/jiayuanm/mao-lab/yuchen/data/gr1",
+  "command": [
+    "rsync",
+    "-rt",
+    "--partial",
+    "--partial-dir=.rsync-partial",
+    "--timeout=600",
+    "--info=progress2,stats2",
+    "--outbuf=L",
+    "-e",
+    "ssh -S /tmp/parcc-jigu-control -o BatchMode=yes -o ConnectTimeout=15 -o ServerAliveInterval=30 -o ServerAliveCountMax=6",
+    "--exclude=.rsync-partial/",
+    "--exclude=*.seed-partial",
+    "--exclude=*.jpgpack",
+    "/home/jigu/tmp/parcc-datasets-20260908/gr1/",
+    "parcc:/vast/projects/jiayuanm/mao-lab/yuchen/data/gr1/"
+  ]
+}

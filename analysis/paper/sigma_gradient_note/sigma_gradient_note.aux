@@ -1,0 +1,71 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyperFirstAtBeginDocument{\AtBeginDocument}
+\HyperFirstAtBeginDocument{\ifx\hyper@anchor\@undefined
+\global\let\oldcontentsline\contentsline
+\gdef\contentsline#1#2#3#4{\oldcontentsline{#1}{#2}{#3}}
+\global\let\oldnewlabel\newlabel
+\gdef\newlabel#1#2{\newlabelxx{#1}#2}
+\gdef\newlabelxx#1#2#3#4#5#6{\oldnewlabel{#1}{{#2}{#3}}}
+\AtEndDocument{\ifx\hyper@anchor\@undefined
+\let\contentsline\oldcontentsline
+\let\newlabel\oldnewlabel
+\fi}
+\fi}
+\global\let\hyper@last\relax 
+\gdef\HyperFirstAtBeginDocument#1{#1}
+\providecommand*\HyPL@Entry[1]{}
+\HyPL@Entry{0<</S/D>>}
+\@writefile{toc}{\contentsline {section}{\numberline {1}问题设置与记号}{1}{section.1}\protected@file@percent }
+\newlabel{eq:notation}{{1}{1}{问题设置与记号}{equation.1.1}{}}
+\newlabel{eq:t-nll}{{2}{1}{问题设置与记号}{equation.1.2}{}}
+\newlabel{eq:hg-nll}{{3}{1}{问题设置与记号}{equation.1.3}{}}
+\@writefile{toc}{\contentsline {paragraph}{为什么现在才暴露问题。}{1}{section*.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}问题一：小 $\nu $ 让 scale path 被 mean path 抢占}{1}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}精确梯度恒等式}{1}{subsection.2.1}\protected@file@percent }
+\newlabel{eq:t-grads}{{4}{1}{精确梯度恒等式}{equation.2.4}{}}
+\newlabel{eq:g-grads}{{5}{1}{精确梯度恒等式}{equation.2.5}{}}
+\newlabel{eq:gradient-identities}{{6}{1}{精确梯度恒等式}{equation.2.6}{}}
+\newlabel{eq:relative-suppression}{{8}{2}{精确梯度恒等式}{equation.2.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}scale correction 还具有方向不对称}{2}{subsection.2.2}\protected@file@percent }
+\newlabel{eq:scale-cap}{{9}{2}{scale correction 还具有方向不对称}{equation.2.9}{}}
+\newlabel{eq:scale-curvature}{{10}{2}{scale correction 还具有方向不对称}{equation.2.10}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}真实模型上的梯度证据}{2}{subsection.2.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces \textbf  {小 $\nu $ 显著压缩共享特征上的 scale-path 梯度。} 数值为 128 个 Fractal 训练样本的 per-example feature-gradient；不是 rollout 成功率，也不是 Adam 更新量。\relax }}{2}{table.caption.2}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{tab:feature-grads}{{1}{2}{\textbf {小 $\nu $ 显著压缩共享特征上的 scale-path 梯度。} 数值为 128 个 Fractal 训练样本的 per-example feature-gradient；不是 rollout 成功率，也不是 Adam 更新量。\relax }{table.caption.2}{}}
+\@writefile{toc}{\contentsline {paragraph}{一个必要 caveat。}{2}{section*.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}问题二：大绝对尺度在 raw sigma head 中被额外降权}{2}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}问题来自参数化，而不是 proper likelihood 本身}{2}{subsection.3.1}\protected@file@percent }
+\newlabel{eq:softplus-chain}{{12}{2}{问题来自参数化，而不是 proper likelihood 本身}{equation.3.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces \textbf  {两个梯度问题与两种 robust influence。} (a) 真实 GR00T/Fractal checkpoint 上，减小 $\nu /d$ 后共享特征收到的 scale/mean 梯度比快速下降。 (b) Student-$t$ 的 log-scale score 在 $q/d\gg 1$ 时饱和于 $-\nu /d$。 (c) 直接预测 log scale 保持单位链式因子；softplus raw scale 在大 $\sigma $ 时近似按 $1/\sigma $ 衰减。 (d) Gaussian mean influence 随残差无界增长，Student-$t$ redescends 到零；scaled energy influence 有界但不 redescend。只有 (a) 是真实模型测量，(b--d) 是解析或固定随机种子的 Monte Carlo loss 诊断。\relax }}{3}{figure.caption.6}\protected@file@percent }
+\newlabel{fig:diagnostics}{{1}{3}{\textbf {两个梯度问题与两种 robust influence。} (a) 真实 GR00T/Fractal checkpoint 上，减小 $\nu /d$ 后共享特征收到的 scale/mean 梯度比快速下降。 (b) Student-$t$ 的 log-scale score 在 $q/d\gg 1$ 时饱和于 $-\nu /d$。 (c) 直接预测 log scale 保持单位链式因子；softplus raw scale 在大 $\sigma $ 时近似按 $1/\sigma $ 衰减。 (d) Gaussian mean influence 随残差无界增长，Student-$t$ redescends 到零；scaled energy influence 有界但不 redescend。只有 (a) 是真实模型测量，(b--d) 是解析或固定随机种子的 Monte Carlo loss 诊断。\relax }{figure.caption.6}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces \textbf  {同样的相对误差，不同的绝对尺度。} 两个样本均有 residual RMS$/\sigma =2$，故 $q/d=4$；取 $d=56,\nu =14$。\relax }}{3}{table.caption.4}\protected@file@percent }
+\newlabel{tab:scale-example}{{2}{3}{\textbf {同样的相对误差，不同的绝对尺度。} 两个样本均有 residual RMS$/\sigma =2$，故 $q/d=4$；取 $d=56,\nu =14$。\relax }{table.caption.4}{}}
+\@writefile{toc}{\contentsline {paragraph}{证据边界。}{3}{section*.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}方案 A：detached-mean HG auxiliary 恢复 scale supervision}{3}{section.4}\protected@file@percent }
+\newlabel{eq:aux-objective}{{13}{3}{方案 A：detached-mean HG auxiliary 恢复 scale supervision}{equation.4.13}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}为什么梯度方向是对的}{3}{subsection.4.1}\protected@file@percent }
+\newlabel{eq:aux-gradients}{{15}{3}{为什么梯度方向是对的}{equation.4.15}{}}
+\newlabel{eq:aux-curvature}{{16}{3}{为什么梯度方向是对的}{equation.4.16}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}它补偿了什么，又没有补偿什么}{4}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}已有实验证据}{4}{subsection.4.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5}方案 B：scaled energy proper score}{4}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}完整定义与严格 propriety}{4}{subsection.5.1}\protected@file@percent }
+\newlabel{eq:scaled-energy-general}{{18}{4}{完整定义与严格 propriety}{equation.5.18}{}}
+\newlabel{eq:propriety}{{19}{4}{完整定义与严格 propriety}{equation.5.19}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}固定 $\nu $ joint-$t$ 的可训练形式}{4}{subsection.5.2}\protected@file@percent }
+\newlabel{eq:scaled-energy-t}{{21}{4}{固定 $\nu $ joint-$t$ 的可训练形式}{equation.5.21}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}为什么它能帮助两个 scale 问题}{4}{subsection.5.3}\protected@file@percent }
+\newlabel{eq:se-gradients}{{22}{4}{为什么它能帮助两个 scale 问题}{equation.5.22}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}它是否像 Student-$t$ 一样抑制长尾？}{5}{subsection.5.4}\protected@file@percent }
+\newlabel{eq:se-bound}{{23}{5}{它是否像 Student-$t$ 一样抑制长尾？}{equation.5.23}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces \textbf  {三种 score 的尾部 influence。} 令 $R=\left \lVert r\right \rVert /\sigma \rightarrow \infty $；忽略与 $R$ 无关的正常数。\relax }}{5}{table.caption.7}\protected@file@percent }
+\newlabel{tab:influence}{{3}{5}{\textbf {三种 score 的尾部 influence。} 令 $R=\norm {r}/\sigma \rightarrow \infty $；忽略与 $R$ 无关的正常数。\relax }{table.caption.7}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}两个方案如何选择与验证}{5}{section.6}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces \textbf  {两个候选方案的功能边界。}\relax }}{5}{table.caption.8}\protected@file@percent }
+\newlabel{tab:solutions}{{4}{5}{\textbf {两个候选方案的功能边界。}\relax }{table.caption.8}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces \textbf  {可安全写入论文的结论与证据状态。}\relax }}{6}{table.caption.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}Claim--evidence map 与当前结论}{6}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{最终判断。}{6}{section*.10}\protected@file@percent }
+\gdef \@abspage@last{6}

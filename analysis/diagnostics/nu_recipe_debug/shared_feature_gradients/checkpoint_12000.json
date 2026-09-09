@@ -1,0 +1,118 @@
+{
+  "checkpoint": 12000,
+  "samples": 128,
+  "d": 56,
+  "native_nu": 32.0,
+  "fp32_replay_prediction_rms_difference_max": 0.000808198528829962,
+  "gradient_identity_tests": "branch sum and both HG scaling identities passed",
+  "settings": {
+    "HG": {
+      "mu_norm_mean": 0.1295555801464791,
+      "sigma_norm_mean": 0.039992431359552674,
+      "sigma_over_mu_norm_median": 0.2265784398332707,
+      "sigma_over_mu_norm_sum": 0.30868937728761764,
+      "mu_stacked_norm": 1.6503977613357463,
+      "sigma_stacked_norm": 0.807427549414213,
+      "combined_stacked_norm": 1.9524131230374246,
+      "cosine_median": 0.055976567531201976,
+      "cosine_negative_fraction": 0.2109375,
+      "combined_over_sum_norms": 0.8467830427359696
+    },
+    "1024": {
+      "mu_norm_mean": 0.12653905006711336,
+      "sigma_norm_mean": 0.03608016894299418,
+      "sigma_over_mu_norm_median": 0.21482995867125237,
+      "sigma_over_mu_norm_sum": 0.2851307080609353,
+      "mu_stacked_norm": 1.567618483972717,
+      "sigma_stacked_norm": 0.670389660518136,
+      "combined_stacked_norm": 1.792973126456236,
+      "cosine_median": 0.055976567767417496,
+      "cosine_negative_fraction": 0.2109375,
+      "combined_over_sum_norms": 0.8523622765865911
+    },
+    "448": {
+      "mu_norm_mean": 0.12397075261520282,
+      "sigma_norm_mean": 0.032407256726874625,
+      "sigma_over_mu_norm_median": 0.20140304656728425,
+      "sigma_over_mu_norm_sum": 0.2614105024228146,
+      "mu_stacked_norm": 1.5052406204426103,
+      "sigma_stacked_norm": 0.5623495928317467,
+      "combined_stacked_norm": 1.6753329548320735,
+      "cosine_median": 0.0559765575773061,
+      "cosine_negative_fraction": 0.2109375,
+      "combined_over_sum_norms": 0.8588015182073147
+    },
+    "224": {
+      "mu_norm_mean": 0.12129028389926035,
+      "sigma_norm_mean": 0.027875197460125886,
+      "sigma_over_mu_norm_median": 0.1812627841913599,
+      "sigma_over_mu_norm_sum": 0.22982218001301813,
+      "mu_stacked_norm": 1.4459999342589207,
+      "sigma_stacked_norm": 0.45130556855977555,
+      "combined_stacked_norm": 1.5651570442271312,
+      "cosine_median": 0.05597656081182039,
+      "cosine_negative_fraction": 0.2109375,
+      "combined_over_sum_norms": 0.8687008064087185
+    },
+    "128": {
+      "mu_norm_mean": 0.11939346118051358,
+      "sigma_norm_mean": 0.02346314850070609,
+      "sigma_over_mu_norm_median": 0.1576197818953411,
+      "sigma_over_mu_norm_sum": 0.19651954360575613,
+      "mu_stacked_norm": 1.4062296613365608,
+      "sigma_stacked_norm": 0.3621385257632853,
+      "combined_stacked_norm": 1.4895929262182017,
+      "cosine_median": 0.05597656500726084,
+      "cosine_negative_fraction": 0.2109375,
+      "combined_over_sum_norms": 0.880875259446731
+    },
+    "64": {
+      "mu_norm_mean": 0.11839545400802831,
+      "sigma_norm_mean": 0.01767538494872253,
+      "sigma_over_mu_norm_median": 0.12084183308215365,
+      "sigma_over_mu_norm_sum": 0.14929107791185947,
+      "mu_stacked_norm": 1.3828454812584254,
+      "sigma_stacked_norm": 0.26667394630924046,
+      "combined_stacked_norm": 1.4338893460025939,
+      "cosine_median": 0.05597656452236943,
+      "cosine_negative_fraction": 0.2109375,
+      "combined_over_sum_norms": 0.9015187167209177
+    },
+    "32": {
+      "mu_norm_mean": 0.11951156659733259,
+      "sigma_norm_mean": 0.012287852072203335,
+      "sigma_over_mu_norm_median": 0.08239215519676274,
+      "sigma_over_mu_norm_sum": 0.10281726214504824,
+      "mu_stacked_norm": 1.3962796124866315,
+      "sigma_stacked_norm": 0.19235841990529262,
+      "combined_stacked_norm": 1.4273149562561704,
+      "cosine_median": 0.055976563053039254,
+      "cosine_negative_fraction": 0.2109375,
+      "combined_over_sum_norms": 0.9262374839651717
+    },
+    "14": {
+      "mu_norm_mean": 0.12288259109352216,
+      "sigma_norm_mean": 0.007184955902662638,
+      "sigma_over_mu_norm_median": 0.04531566410267024,
+      "sigma_over_mu_norm_sum": 0.058470087900363274,
+      "mu_stacked_norm": 1.4503451317315583,
+      "sigma_stacked_norm": 0.12590135503026617,
+      "combined_stacked_norm": 1.4678929350631789,
+      "cosine_median": 0.05597655845181718,
+      "cosine_negative_fraction": 0.2109375,
+      "combined_over_sum_norms": 0.9545470911881383
+    },
+    "7": {
+      "mu_norm_mean": 0.12604910837055522,
+      "sigma_norm_mean": 0.004239632127711962,
+      "sigma_over_mu_norm_median": 0.025175393997888436,
+      "sigma_over_mu_norm_sum": 0.03363476491438896,
+      "mu_stacked_norm": 1.508545173103989,
+      "sigma_stacked_norm": 0.08358354782381183,
+      "combined_stacked_norm": 1.5195007574682904,
+      "cosine_median": 0.05597656261822545,
+      "cosine_negative_fraction": 0.2109375,
+      "combined_over_sum_norms": 0.9726669745582825
+    }
+  }
+}

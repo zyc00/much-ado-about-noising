@@ -1,0 +1,99 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: yuchen-gr1-baseline-convergence
+  labels:
+    app: gr1-baseline-convergence-eval
+    owner: yuchen
+spec:
+  completionMode: Indexed
+  completions: 64
+  parallelism: 15
+  backoffLimitPerIndex: 1
+  maxFailedIndexes: 8
+  template:
+    metadata:
+      labels:
+        app: gr1-baseline-convergence-eval
+        owner: yuchen
+    spec:
+      restartPolicy: Never
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: aihc.baidu.com/dedicated-pool
+                    operator: DoesNotExist
+      containers:
+        - name: eval
+          image: zyc00/easypod:latest
+          imagePullPolicy: Always
+          command: ["bash", "-lc"]
+          args:
+            - |
+              set -euo pipefail
+              idx="${JOB_COMPLETION_INDEX}"
+              model_slot=$((idx / 32))
+              within_model=$((idx % 32))
+              checkpoint_slot=$((within_model / 8))
+              shard=$((within_model % 8))
+
+              case "${model_slot}" in
+                0) model=mse ;;
+                1) model=flow ;;
+                *) echo "invalid model slot: ${model_slot}"; exit 2 ;;
+              esac
+              case "${checkpoint_slot}" in
+                0) step=52000 ;;
+                1) step=54000 ;;
+                2) step=56000 ;;
+                3) step=58000 ;;
+                *) echo "invalid checkpoint slot: ${checkpoint_slot}"; exit 2 ;;
+              esac
+
+              case "${shard}" in
+                0) envs="gr1_unified/PnPBottleToCabinetClose_GR1ArmsAndWaistFourierHands_Env gr1_unified/PnPCanToDrawerClose_GR1ArmsAndWaistFourierHands_Env gr1_unified/PnPCupToDrawerClose_GR1ArmsAndWaistFourierHands_Env" ;;
+                1) envs="gr1_unified/PnPMilkToMicrowaveClose_GR1ArmsAndWaistFourierHands_Env gr1_unified/PnPPotatoToMicrowaveClose_GR1ArmsAndWaistFourierHands_Env gr1_unified/PnPWineToCabinetClose_GR1ArmsAndWaistFourierHands_Env" ;;
+                2) envs="gr1_unified/PosttrainPnPNovelFromCuttingboardToBasketSplitA_GR1ArmsAndWaistFourierHands_Env gr1_unified/PosttrainPnPNovelFromCuttingboardToCardboardboxSplitA_GR1ArmsAndWaistFourierHands_Env gr1_unified/PosttrainPnPNovelFromCuttingboardToPanSplitA_GR1ArmsAndWaistFourierHands_Env" ;;
+                3) envs="gr1_unified/PosttrainPnPNovelFromCuttingboardToPotSplitA_GR1ArmsAndWaistFourierHands_Env gr1_unified/PosttrainPnPNovelFromCuttingboardToTieredbasketSplitA_GR1ArmsAndWaistFourierHands_Env gr1_unified/PosttrainPnPNovelFromPlacematToBasketSplitA_GR1ArmsAndWaistFourierHands_Env" ;;
+                4) envs="gr1_unified/PosttrainPnPNovelFromPlacematToBowlSplitA_GR1ArmsAndWaistFourierHands_Env gr1_unified/PosttrainPnPNovelFromPlacematToPlateSplitA_GR1ArmsAndWaistFourierHands_Env gr1_unified/PosttrainPnPNovelFromPlacematToTieredshelfSplitA_GR1ArmsAndWaistFourierHands_Env" ;;
+                5) envs="gr1_unified/PosttrainPnPNovelFromPlateToBowlSplitA_GR1ArmsAndWaistFourierHands_Env gr1_unified/PosttrainPnPNovelFromPlateToCardboardboxSplitA_GR1ArmsAndWaistFourierHands_Env gr1_unified/PosttrainPnPNovelFromPlateToPanSplitA_GR1ArmsAndWaistFourierHands_Env" ;;
+                6) envs="gr1_unified/PosttrainPnPNovelFromPlateToPlateSplitA_GR1ArmsAndWaistFourierHands_Env gr1_unified/PosttrainPnPNovelFromTrayToCardboardboxSplitA_GR1ArmsAndWaistFourierHands_Env gr1_unified/PosttrainPnPNovelFromTrayToPlateSplitA_GR1ArmsAndWaistFourierHands_Env" ;;
+                7) envs="gr1_unified/PosttrainPnPNovelFromTrayToPotSplitA_GR1ArmsAndWaistFourierHands_Env gr1_unified/PosttrainPnPNovelFromTrayToTieredbasketSplitA_GR1ArmsAndWaistFourierHands_Env gr1_unified/PosttrainPnPNovelFromTrayToTieredshelfSplitA_GR1ArmsAndWaistFourierHands_Env" ;;
+                *) echo "invalid task shard: ${shard}"; exit 2 ;;
+              esac
+
+              checkpoint="/mnt/pfs/yuchen/groot/ft_${model}/checkpoint-${step}"
+              tag="${model}-${step}"
+              test -d "${checkpoint}"
+              exec bash /mnt/pfs/yuchen/groot/gr1_eval_pod_ready.sh \
+                "${checkpoint}" "${tag}" "${shard}" "${envs}"
+          env:
+            - name: JOB_COMPLETION_INDEX
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.annotations['batch.kubernetes.io/job-completion-index']
+            - name: NVIDIA_DRIVER_CAPABILITIES
+              value: all
+          resources:
+            requests:
+              cpu: "8"
+              memory: 64Gi
+              nvidia.com/gpu: "1"
+            limits:
+              cpu: "8"
+              memory: 64Gi
+              nvidia.com/gpu: "1"
+          volumeMounts:
+            - name: pfs
+              mountPath: /mnt/pfs
+            - name: dshm
+              mountPath: /dev/shm
+      volumes:
+        - name: pfs
+          persistentVolumeClaim:
+            claimName: main-pfs-pvc
+        - name: dshm
+          emptyDir:
+            medium: Memory

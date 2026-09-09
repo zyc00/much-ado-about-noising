@@ -1,0 +1,92 @@
+{
+  "definition": "f(o)=0 in training-normalized action space, residual=-target; no mean subtraction",
+  "source": "analysis/paper/longtail_motivation/fractal_raw/fit_dump_fractal.npz",
+  "cluster_source": "/mnt/pfs/yuchen/groot/fit_dump_fractal.npz",
+  "source_sha256": "80cb3a3a8e7627907c0fefb706e184c958623833c237ae28467bcf7227efbd9f",
+  "sampling": "Existing first 2000 training-loader items, seed 0; not the WidowX task-balanced subset",
+  "states": 2000,
+  "episodes": 561,
+  "instructions": 249,
+  "coordinates": 96000,
+  "channels": "eight steps, six continuous channels; gripper excluded",
+  "protocol": "Same v4 panel-b helper and zero-model analyzer as WidowX: task-stratified episode folds, other-fold coordinate RMS, final pooled unit RMS, fixed zero location",
+  "fold_state_counts": [
+    968,
+    463,
+    287,
+    170,
+    112
+  ],
+  "zero_model": {
+    "p_gt3": 0.01440625,
+    "gauss_gt3": 0.0026997960632601866,
+    "excess": 5.336051191438319,
+    "kurtosis": 1.5847932723942932,
+    "heldout_nll_gain": 0.04744701052564926,
+    "tailfit_nu": 300.0000000000001,
+    "tailfit_scale": 1.12,
+    "tail_log_mse": 0.30925841678406196,
+    "tailfit_hits_upper_nu_bound": true,
+    "max_abs_z": 3.4281342716254453,
+    "tail_fractions": {
+      "1": 0.23660416666666667,
+      "2": 0.07045833333333333,
+      "3": 0.01440625,
+      "4": 0.0,
+      "5": 0.0,
+      "6": 0.0
+    },
+    "mle_nu": 3.1622776601683795,
+    "mle_scale": 0.6830510969804744,
+    "mle_search": "same v4 coarse grid: 23 nu values from 10**0.1 to 10**2.3",
+    "mle_nu_by_training_fold": [
+      3.1622776601683795,
+      3.1622776601683795,
+      3.1622776601683795,
+      3.1622776601683795,
+      3.1622776601683795
+    ],
+    "standardized_mean": -0.011506050042454767
+  },
+  "balanced_episode_split_sensitivity": {
+    "protocol": "Same statistics, five episode folds without task stratification",
+    "fold_state_counts": [
+      400,
+      399,
+      430,
+      391,
+      380
+    ],
+    "zero_model": {
+      "p_gt3": 0.012666666666666666,
+      "gauss_gt3": 0.0026997960632601866,
+      "excess": 4.6917123997028165,
+      "kurtosis": 1.5610709557467795,
+      "heldout_nll_gain": 0.048016223335627384,
+      "tailfit_nu": 269.5478054090642,
+      "tailfit_scale": 1.135,
+      "tail_log_mse": 0.23519021771006413,
+      "tailfit_hits_upper_nu_bound": false,
+      "max_abs_z": 3.3349137984228996,
+      "tail_fractions": {
+        "1": 0.23680208333333333,
+        "2": 0.07015625,
+        "3": 0.012666666666666666,
+        "4": 0.0,
+        "5": 0.0,
+        "6": 0.0
+      },
+      "mle_nu": 3.1622776601683795,
+      "mle_scale": 0.6839616113207247,
+      "mle_search": "same v4 coarse grid: 23 nu values from 10**0.1 to 10**2.3",
+      "mle_nu_by_training_fold": [
+        3.1622776601683795,
+        3.1622776601683795,
+        3.1622776601683795,
+        3.1622776601683795,
+        3.1622776601683795
+      ],
+      "standardized_mean": -0.011836179293620401
+    }
+  }
+}

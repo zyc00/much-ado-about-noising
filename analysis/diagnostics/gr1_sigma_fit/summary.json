@@ -1,0 +1,288 @@
+{
+  "source": "/home/jigu/projects/much-ado-about-noising/analysis/diagnostics/gr1_sigma_fit/vectors.npz",
+  "source_sha256": "550bdece1f50d6ffbef1c4a46bed84dc6e05c110d5677f96faafe4cf78d2f1b5",
+  "checkpoint": "/mnt/pfs/yuchen/groot/ft_gr1c2/checkpoint-60000",
+  "n": 2400,
+  "steps": 8,
+  "channels": 29,
+  "scope": "Training data; task and episode identities not saved. No contact labels.",
+  "eval_mode": {
+    "spearman": 0.9090288895883488,
+    "pearson_log": 0.9108849147986031,
+    "residual_to_sigma_quantiles": {
+      "p10": 0.6630821446931285,
+      "p50": 0.9765417180132406,
+      "p90": 1.4740495720284985
+    },
+    "pooled_residual_rms": 0.07475980638501481,
+    "pooled_sigma_rms": 0.06717717526730337,
+    "normalized_residual_rms": 1.16150240030305,
+    "high_low_residual_ratio": 9.766167204694169,
+    "bins": [
+      {
+        "group": 1,
+        "n": 480,
+        "sigma_median": 0.013874700292944908,
+        "sigma_rms": 0.0139076088708084,
+        "residual_rms": 0.014944411307916135,
+        "residual_rms_median": 0.013271800574707495
+      },
+      {
+        "group": 2,
+        "n": 480,
+        "sigma_median": 0.022554113529622555,
+        "sigma_rms": 0.022814668333802666,
+        "residual_rms": 0.027167440205940654,
+        "residual_rms_median": 0.022579857392807264
+      },
+      {
+        "group": 3,
+        "n": 480,
+        "sigma_median": 0.032843708992004395,
+        "sigma_rms": 0.033074683295648936,
+        "residual_rms": 0.03884212136755101,
+        "residual_rms_median": 0.032490085836627845
+      },
+      {
+        "group": 4,
+        "n": 480,
+        "sigma_median": 0.04956868104636669,
+        "sigma_rms": 0.05175097578913666,
+        "residual_rms": 0.06460445929382018,
+        "residual_rms_median": 0.04663961666387849
+      },
+      {
+        "group": 5,
+        "n": 480,
+        "sigma_median": 0.12871123105287552,
+        "sigma_rms": 0.13445384166527147,
+        "residual_rms": 0.14594961960883124,
+        "residual_rms_median": 0.11542537129243804
+      }
+    ]
+  },
+  "train_mode": {
+    "spearman": 0.9003208403334793,
+    "pearson_log": 0.9047967734756793,
+    "residual_to_sigma_quantiles": {
+      "p10": 0.6238819186475367,
+      "p50": 0.9231005479873147,
+      "p90": 1.4198568839728636
+    },
+    "pooled_residual_rms": 0.08040338894496664,
+    "pooled_sigma_rms": 0.07476496883530434,
+    "normalized_residual_rms": 1.072172012670422,
+    "high_low_residual_ratio": 8.605189762452934,
+    "bins": [
+      {
+        "group": 1,
+        "n": 480,
+        "sigma_median": 0.01712633203715086,
+        "sigma_rms": 0.01721423751992257,
+        "residual_rms": 0.018082901482568883,
+        "residual_rms_median": 0.016085090990525817
+      },
+      {
+        "group": 2,
+        "n": 480,
+        "sigma_median": 0.02776820119470358,
+        "sigma_rms": 0.028170313280033707,
+        "residual_rms": 0.02952621461094897,
+        "residual_rms_median": 0.02669017926759196
+      },
+      {
+        "group": 3,
+        "n": 480,
+        "sigma_median": 0.039174409583210945,
+        "sigma_rms": 0.03988701110053553,
+        "residual_rms": 0.04109406561887677,
+        "residual_rms_median": 0.03556943427454685
+      },
+      {
+        "group": 4,
+        "n": 480,
+        "sigma_median": 0.059165531769394875,
+        "sigma_rms": 0.06242966615152217,
+        "residual_rms": 0.07226712986568909,
+        "residual_rms_median": 0.054861435978306804
+      },
+      {
+        "group": 5,
+        "n": 480,
+        "sigma_median": 0.14038507640361786,
+        "sigma_rms": 0.14618710418743455,
+        "residual_rms": 0.15560679871324673,
+        "residual_rms_median": 0.12736063905326095
+      }
+    ]
+  },
+  "original_source": "/mnt/pfs/yuchen/groot/resid_dump3_gr1_c2_60k_all.npz",
+  "original_sha256": "d26f053332bbeff048a3f4a0224888bcd0be233d3ae0622a3d2b8f03f859eb5b",
+  "channel_checks": {
+    "arms": {
+      "spearman": 0.7748707126511652,
+      "pearson_log": 0.7345525860250659,
+      "residual_to_sigma_quantiles": {
+        "p10": 0.5266432454463483,
+        "p50": 1.2400847028265338,
+        "p90": 1.9233089599767426
+      },
+      "pooled_residual_rms": 0.057654825844961594,
+      "pooled_sigma_rms": 0.06717717526730337,
+      "normalized_residual_rms": 1.3620360594735463,
+      "high_low_residual_ratio": 4.16650047749323,
+      "bins": [
+        {
+          "group": 1,
+          "n": 480,
+          "sigma_median": 0.013874700292944908,
+          "sigma_rms": 0.0139076088708084,
+          "residual_rms": 0.021012814917729727,
+          "residual_rms_median": 0.018647041572875493
+        },
+        {
+          "group": 2,
+          "n": 480,
+          "sigma_median": 0.022554113529622555,
+          "sigma_rms": 0.022814668333802666,
+          "residual_rms": 0.034411224610964665,
+          "residual_rms_median": 0.03073985350258305
+        },
+        {
+          "group": 3,
+          "n": 480,
+          "sigma_median": 0.032843708992004395,
+          "sigma_rms": 0.033074683295648936,
+          "residual_rms": 0.048821202625879766,
+          "residual_rms_median": 0.04248673951969064
+        },
+        {
+          "group": 4,
+          "n": 480,
+          "sigma_median": 0.04956868104636669,
+          "sigma_rms": 0.05175097578913666,
+          "residual_rms": 0.07032942866930784,
+          "residual_rms_median": 0.06077984312885418
+        },
+        {
+          "group": 5,
+          "n": 480,
+          "sigma_median": 0.12871123105287552,
+          "sigma_rms": 0.13445384166527147,
+          "residual_rms": 0.08754990338819776,
+          "residual_rms_median": 0.06827392382715808
+        }
+      ]
+    },
+    "hands": {
+      "spearman": 0.8307441424903025,
+      "pearson_log": 0.8603690537855392,
+      "residual_to_sigma_quantiles": {
+        "p10": 0.08832864251261349,
+        "p50": 0.3269667883028859,
+        "p90": 1.3241696529356706
+      },
+      "pooled_residual_rms": 0.09707683062339831,
+      "pooled_sigma_rms": 0.06717717526730337,
+      "normalized_residual_rms": 1.0136764838939316,
+      "high_low_residual_ratio": 50.23647421493212,
+      "bins": [
+        {
+          "group": 1,
+          "n": 480,
+          "sigma_median": 0.013874700292944908,
+          "sigma_rms": 0.0139076088708084,
+          "residual_rms": 0.004078079013644306,
+          "residual_rms_median": 0.001784804456346821
+        },
+        {
+          "group": 2,
+          "n": 480,
+          "sigma_median": 0.022554113529622555,
+          "sigma_rms": 0.022814668333802666,
+          "residual_rms": 0.019491620648740465,
+          "residual_rms_median": 0.004567788115672052
+        },
+        {
+          "group": 3,
+          "n": 480,
+          "sigma_median": 0.032843708992004395,
+          "sigma_rms": 0.033074683295648936,
+          "residual_rms": 0.027354927647243357,
+          "residual_rms_median": 0.011389834021298013
+        },
+        {
+          "group": 4,
+          "n": 480,
+          "sigma_median": 0.04956868104636669,
+          "sigma_rms": 0.05175097578913666,
+          "residual_rms": 0.06327467272636662,
+          "residual_rms_median": 0.018687367062685156
+        },
+        {
+          "group": 5,
+          "n": 480,
+          "sigma_median": 0.12871123105287552,
+          "sigma_rms": 0.13445384166527147,
+          "residual_rms": 0.204868311215398,
+          "residual_rms_median": 0.15723747444900946
+        }
+      ]
+    },
+    "waist": {
+      "spearman": 0.6594317915680193,
+      "pearson_log": 0.6137134712187999,
+      "residual_to_sigma_quantiles": {
+        "p10": 0.06055418254383243,
+        "p50": 0.17583663684746806,
+        "p90": 0.7354071323494965
+      },
+      "pooled_residual_rms": 0.028622794758924788,
+      "pooled_sigma_rms": 0.06717717526730337,
+      "normalized_residual_rms": 0.5231556814501553,
+      "high_low_residual_ratio": 8.417610862473007,
+      "bins": [
+        {
+          "group": 1,
+          "n": 480,
+          "sigma_median": 0.013874700292944908,
+          "sigma_rms": 0.0139076088708084,
+          "residual_rms": 0.005645683862679337,
+          "residual_rms_median": 0.0019379030766802632
+        },
+        {
+          "group": 2,
+          "n": 480,
+          "sigma_median": 0.022554113529622555,
+          "sigma_rms": 0.022814668333802666,
+          "residual_rms": 0.009435602747342065,
+          "residual_rms_median": 0.0033634551635645235
+        },
+        {
+          "group": 3,
+          "n": 480,
+          "sigma_median": 0.032843708992004395,
+          "sigma_rms": 0.033074683295648936,
+          "residual_rms": 0.021632991909452767,
+          "residual_rms_median": 0.0071682937342230375
+        },
+        {
+          "group": 4,
+          "n": 480,
+          "sigma_median": 0.04956868104636669,
+          "sigma_rms": 0.05175097578913666,
+          "residual_rms": 0.03534090471345197,
+          "residual_rms_median": 0.012715367270124962
+        },
+        {
+          "group": 5,
+          "n": 480,
+          "sigma_median": 0.12871123105287552,
+          "sigma_rms": 0.13445384166527147,
+          "residual_rms": 0.04752316980857815,
+          "residual_rms_median": 0.017447947715645208
+        }
+      ]
+    }
+  }
+}

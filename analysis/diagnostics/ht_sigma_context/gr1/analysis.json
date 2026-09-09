@@ -1,0 +1,1509 @@
+{
+  "dataset": "gr1",
+  "n": 2880,
+  "episodes": 144,
+  "tasks": 24,
+  "metadata": {
+    "dataset": "gr1",
+    "checkpoint": "/mnt/pfs/yuchen/groot/ft_gr1c2/checkpoint-60000",
+    "seed": 20260908,
+    "tasks": [
+      "gr1_unified.PnPBottleToCabinetClose",
+      "gr1_unified.PnPCanToDrawerClose",
+      "gr1_unified.PnPCupToDrawerClose",
+      "gr1_unified.PnPMilkToMicrowaveClose",
+      "gr1_unified.PnPPotatoToMicrowaveClose",
+      "gr1_unified.PnPWineToCabinetClose",
+      "gr1_unified.PosttrainPnPNovelFromCuttingboardToBasketSplitA",
+      "gr1_unified.PosttrainPnPNovelFromCuttingboardToCardboardboxSplitA",
+      "gr1_unified.PosttrainPnPNovelFromCuttingboardToPanSplitA",
+      "gr1_unified.PosttrainPnPNovelFromCuttingboardToPotSplitA",
+      "gr1_unified.PosttrainPnPNovelFromCuttingboardToTieredbasketSplitA",
+      "gr1_unified.PosttrainPnPNovelFromPlacematToBasketSplitA",
+      "gr1_unified.PosttrainPnPNovelFromPlacematToBowlSplitA",
+      "gr1_unified.PosttrainPnPNovelFromPlacematToPlateSplitA",
+      "gr1_unified.PosttrainPnPNovelFromPlacematToTieredshelfSplitA",
+      "gr1_unified.PosttrainPnPNovelFromPlateToBowlSplitA",
+      "gr1_unified.PosttrainPnPNovelFromPlateToCardboardboxSplitA",
+      "gr1_unified.PosttrainPnPNovelFromPlateToPanSplitA",
+      "gr1_unified.PosttrainPnPNovelFromPlateToPlateSplitA",
+      "gr1_unified.PosttrainPnPNovelFromTrayToCardboardboxSplitA",
+      "gr1_unified.PosttrainPnPNovelFromTrayToPlateSplitA",
+      "gr1_unified.PosttrainPnPNovelFromTrayToPotSplitA",
+      "gr1_unified.PosttrainPnPNovelFromTrayToTieredbasketSplitA",
+      "gr1_unified.PosttrainPnPNovelFromTrayToTieredshelfSplitA"
+    ],
+    "task_selection": "24 most frequent nonempty instructions; GR1 all 24 task datasets",
+    "episodes_per_task": 6,
+    "steps_per_episode": 20,
+    "scope": "Training-demonstration descriptive diagnostic, not held-out or contact ground truth.",
+    "ht_df": 928.0,
+    "ht_sbias": -1.088,
+    "action_keys": [
+      "left_arm",
+      "right_arm",
+      "left_hand",
+      "right_hand",
+      "waist"
+    ],
+    "sigma": "masked mean softplus(s_raw + checkpoint ht_sbias) + 1e-3; all valid channels",
+    "episodes": [
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PnPBottleToCabinetClose",
+        "ordinal": 198,
+        "episode": 198,
+        "length": 371,
+        "task_id": 0
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PnPBottleToCabinetClose",
+        "ordinal": 304,
+        "episode": 304,
+        "length": 271,
+        "task_id": 0
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PnPBottleToCabinetClose",
+        "ordinal": 647,
+        "episode": 647,
+        "length": 292,
+        "task_id": 0
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PnPBottleToCabinetClose",
+        "ordinal": 761,
+        "episode": 761,
+        "length": 297,
+        "task_id": 0
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PnPBottleToCabinetClose",
+        "ordinal": 871,
+        "episode": 871,
+        "length": 422,
+        "task_id": 0
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PnPBottleToCabinetClose",
+        "ordinal": 958,
+        "episode": 958,
+        "length": 362,
+        "task_id": 0
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PnPCanToDrawerClose",
+        "ordinal": 106,
+        "episode": 106,
+        "length": 293,
+        "task_id": 1
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PnPCanToDrawerClose",
+        "ordinal": 167,
+        "episode": 167,
+        "length": 278,
+        "task_id": 1
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PnPCanToDrawerClose",
+        "ordinal": 217,
+        "episode": 217,
+        "length": 294,
+        "task_id": 1
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PnPCanToDrawerClose",
+        "ordinal": 555,
+        "episode": 555,
+        "length": 442,
+        "task_id": 1
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PnPCanToDrawerClose",
+        "ordinal": 684,
+        "episode": 684,
+        "length": 325,
+        "task_id": 1
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PnPCanToDrawerClose",
+        "ordinal": 911,
+        "episode": 911,
+        "length": 265,
+        "task_id": 1
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PnPCupToDrawerClose",
+        "ordinal": 207,
+        "episode": 207,
+        "length": 252,
+        "task_id": 2
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PnPCupToDrawerClose",
+        "ordinal": 283,
+        "episode": 283,
+        "length": 318,
+        "task_id": 2
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PnPCupToDrawerClose",
+        "ordinal": 457,
+        "episode": 457,
+        "length": 346,
+        "task_id": 2
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PnPCupToDrawerClose",
+        "ordinal": 465,
+        "episode": 465,
+        "length": 368,
+        "task_id": 2
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PnPCupToDrawerClose",
+        "ordinal": 513,
+        "episode": 513,
+        "length": 237,
+        "task_id": 2
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PnPCupToDrawerClose",
+        "ordinal": 657,
+        "episode": 657,
+        "length": 240,
+        "task_id": 2
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PnPMilkToMicrowaveClose",
+        "ordinal": 72,
+        "episode": 72,
+        "length": 679,
+        "task_id": 3
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PnPMilkToMicrowaveClose",
+        "ordinal": 174,
+        "episode": 174,
+        "length": 364,
+        "task_id": 3
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PnPMilkToMicrowaveClose",
+        "ordinal": 190,
+        "episode": 190,
+        "length": 255,
+        "task_id": 3
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PnPMilkToMicrowaveClose",
+        "ordinal": 292,
+        "episode": 292,
+        "length": 659,
+        "task_id": 3
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PnPMilkToMicrowaveClose",
+        "ordinal": 546,
+        "episode": 546,
+        "length": 292,
+        "task_id": 3
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PnPMilkToMicrowaveClose",
+        "ordinal": 806,
+        "episode": 806,
+        "length": 295,
+        "task_id": 3
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PnPPotatoToMicrowaveClose",
+        "ordinal": 237,
+        "episode": 237,
+        "length": 393,
+        "task_id": 4
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PnPPotatoToMicrowaveClose",
+        "ordinal": 366,
+        "episode": 366,
+        "length": 354,
+        "task_id": 4
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PnPPotatoToMicrowaveClose",
+        "ordinal": 436,
+        "episode": 436,
+        "length": 293,
+        "task_id": 4
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PnPPotatoToMicrowaveClose",
+        "ordinal": 501,
+        "episode": 501,
+        "length": 374,
+        "task_id": 4
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PnPPotatoToMicrowaveClose",
+        "ordinal": 553,
+        "episode": 553,
+        "length": 238,
+        "task_id": 4
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PnPPotatoToMicrowaveClose",
+        "ordinal": 769,
+        "episode": 769,
+        "length": 264,
+        "task_id": 4
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PnPWineToCabinetClose",
+        "ordinal": 346,
+        "episode": 346,
+        "length": 357,
+        "task_id": 5
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PnPWineToCabinetClose",
+        "ordinal": 590,
+        "episode": 590,
+        "length": 1010,
+        "task_id": 5
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PnPWineToCabinetClose",
+        "ordinal": 691,
+        "episode": 691,
+        "length": 454,
+        "task_id": 5
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PnPWineToCabinetClose",
+        "ordinal": 794,
+        "episode": 794,
+        "length": 637,
+        "task_id": 5
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PnPWineToCabinetClose",
+        "ordinal": 885,
+        "episode": 885,
+        "length": 410,
+        "task_id": 5
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PnPWineToCabinetClose",
+        "ordinal": 947,
+        "episode": 947,
+        "length": 631,
+        "task_id": 5
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromCuttingboardToBasketSplitA",
+        "ordinal": 45,
+        "episode": 45,
+        "length": 204,
+        "task_id": 6
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromCuttingboardToBasketSplitA",
+        "ordinal": 398,
+        "episode": 398,
+        "length": 140,
+        "task_id": 6
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromCuttingboardToBasketSplitA",
+        "ordinal": 411,
+        "episode": 411,
+        "length": 128,
+        "task_id": 6
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromCuttingboardToBasketSplitA",
+        "ordinal": 442,
+        "episode": 442,
+        "length": 300,
+        "task_id": 6
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromCuttingboardToBasketSplitA",
+        "ordinal": 467,
+        "episode": 467,
+        "length": 143,
+        "task_id": 6
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromCuttingboardToBasketSplitA",
+        "ordinal": 867,
+        "episode": 867,
+        "length": 124,
+        "task_id": 6
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromCuttingboardToCardboardboxSplitA",
+        "ordinal": 132,
+        "episode": 132,
+        "length": 210,
+        "task_id": 7
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromCuttingboardToCardboardboxSplitA",
+        "ordinal": 284,
+        "episode": 284,
+        "length": 191,
+        "task_id": 7
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromCuttingboardToCardboardboxSplitA",
+        "ordinal": 825,
+        "episode": 825,
+        "length": 232,
+        "task_id": 7
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromCuttingboardToCardboardboxSplitA",
+        "ordinal": 830,
+        "episode": 830,
+        "length": 177,
+        "task_id": 7
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromCuttingboardToCardboardboxSplitA",
+        "ordinal": 879,
+        "episode": 879,
+        "length": 162,
+        "task_id": 7
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromCuttingboardToCardboardboxSplitA",
+        "ordinal": 906,
+        "episode": 906,
+        "length": 156,
+        "task_id": 7
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromCuttingboardToPanSplitA",
+        "ordinal": 34,
+        "episode": 34,
+        "length": 170,
+        "task_id": 8
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromCuttingboardToPanSplitA",
+        "ordinal": 73,
+        "episode": 73,
+        "length": 155,
+        "task_id": 8
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromCuttingboardToPanSplitA",
+        "ordinal": 276,
+        "episode": 276,
+        "length": 146,
+        "task_id": 8
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromCuttingboardToPanSplitA",
+        "ordinal": 420,
+        "episode": 420,
+        "length": 169,
+        "task_id": 8
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromCuttingboardToPanSplitA",
+        "ordinal": 445,
+        "episode": 445,
+        "length": 146,
+        "task_id": 8
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromCuttingboardToPanSplitA",
+        "ordinal": 852,
+        "episode": 852,
+        "length": 175,
+        "task_id": 8
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromCuttingboardToPotSplitA",
+        "ordinal": 36,
+        "episode": 36,
+        "length": 205,
+        "task_id": 9
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromCuttingboardToPotSplitA",
+        "ordinal": 285,
+        "episode": 285,
+        "length": 165,
+        "task_id": 9
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromCuttingboardToPotSplitA",
+        "ordinal": 300,
+        "episode": 300,
+        "length": 122,
+        "task_id": 9
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromCuttingboardToPotSplitA",
+        "ordinal": 342,
+        "episode": 342,
+        "length": 242,
+        "task_id": 9
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromCuttingboardToPotSplitA",
+        "ordinal": 353,
+        "episode": 353,
+        "length": 138,
+        "task_id": 9
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromCuttingboardToPotSplitA",
+        "ordinal": 519,
+        "episode": 519,
+        "length": 223,
+        "task_id": 9
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromCuttingboardToTieredbasketSplitA",
+        "ordinal": 43,
+        "episode": 43,
+        "length": 161,
+        "task_id": 10
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromCuttingboardToTieredbasketSplitA",
+        "ordinal": 182,
+        "episode": 182,
+        "length": 274,
+        "task_id": 10
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromCuttingboardToTieredbasketSplitA",
+        "ordinal": 408,
+        "episode": 408,
+        "length": 221,
+        "task_id": 10
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromCuttingboardToTieredbasketSplitA",
+        "ordinal": 537,
+        "episode": 537,
+        "length": 201,
+        "task_id": 10
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromCuttingboardToTieredbasketSplitA",
+        "ordinal": 658,
+        "episode": 658,
+        "length": 201,
+        "task_id": 10
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromCuttingboardToTieredbasketSplitA",
+        "ordinal": 806,
+        "episode": 806,
+        "length": 261,
+        "task_id": 10
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlacematToBasketSplitA",
+        "ordinal": 225,
+        "episode": 225,
+        "length": 124,
+        "task_id": 11
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlacematToBasketSplitA",
+        "ordinal": 241,
+        "episode": 241,
+        "length": 138,
+        "task_id": 11
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlacematToBasketSplitA",
+        "ordinal": 244,
+        "episode": 244,
+        "length": 130,
+        "task_id": 11
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlacematToBasketSplitA",
+        "ordinal": 264,
+        "episode": 264,
+        "length": 181,
+        "task_id": 11
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlacematToBasketSplitA",
+        "ordinal": 364,
+        "episode": 364,
+        "length": 159,
+        "task_id": 11
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlacematToBasketSplitA",
+        "ordinal": 420,
+        "episode": 420,
+        "length": 121,
+        "task_id": 11
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlacematToBowlSplitA",
+        "ordinal": 218,
+        "episode": 218,
+        "length": 157,
+        "task_id": 12
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlacematToBowlSplitA",
+        "ordinal": 231,
+        "episode": 231,
+        "length": 135,
+        "task_id": 12
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlacematToBowlSplitA",
+        "ordinal": 369,
+        "episode": 369,
+        "length": 162,
+        "task_id": 12
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlacematToBowlSplitA",
+        "ordinal": 552,
+        "episode": 552,
+        "length": 272,
+        "task_id": 12
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlacematToBowlSplitA",
+        "ordinal": 603,
+        "episode": 603,
+        "length": 119,
+        "task_id": 12
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlacematToBowlSplitA",
+        "ordinal": 899,
+        "episode": 899,
+        "length": 132,
+        "task_id": 12
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlacematToPlateSplitA",
+        "ordinal": 49,
+        "episode": 49,
+        "length": 191,
+        "task_id": 13
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlacematToPlateSplitA",
+        "ordinal": 203,
+        "episode": 203,
+        "length": 127,
+        "task_id": 13
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlacematToPlateSplitA",
+        "ordinal": 276,
+        "episode": 276,
+        "length": 157,
+        "task_id": 13
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlacematToPlateSplitA",
+        "ordinal": 424,
+        "episode": 424,
+        "length": 178,
+        "task_id": 13
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlacematToPlateSplitA",
+        "ordinal": 582,
+        "episode": 582,
+        "length": 139,
+        "task_id": 13
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlacematToPlateSplitA",
+        "ordinal": 950,
+        "episode": 950,
+        "length": 118,
+        "task_id": 13
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlacematToTieredshelfSplitA",
+        "ordinal": 112,
+        "episode": 112,
+        "length": 246,
+        "task_id": 14
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlacematToTieredshelfSplitA",
+        "ordinal": 220,
+        "episode": 220,
+        "length": 284,
+        "task_id": 14
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlacematToTieredshelfSplitA",
+        "ordinal": 486,
+        "episode": 486,
+        "length": 306,
+        "task_id": 14
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlacematToTieredshelfSplitA",
+        "ordinal": 587,
+        "episode": 587,
+        "length": 136,
+        "task_id": 14
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlacematToTieredshelfSplitA",
+        "ordinal": 664,
+        "episode": 664,
+        "length": 282,
+        "task_id": 14
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlacematToTieredshelfSplitA",
+        "ordinal": 996,
+        "episode": 996,
+        "length": 400,
+        "task_id": 14
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlateToBowlSplitA",
+        "ordinal": 26,
+        "episode": 26,
+        "length": 341,
+        "task_id": 15
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlateToBowlSplitA",
+        "ordinal": 115,
+        "episode": 115,
+        "length": 153,
+        "task_id": 15
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlateToBowlSplitA",
+        "ordinal": 236,
+        "episode": 236,
+        "length": 106,
+        "task_id": 15
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlateToBowlSplitA",
+        "ordinal": 633,
+        "episode": 633,
+        "length": 157,
+        "task_id": 15
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlateToBowlSplitA",
+        "ordinal": 645,
+        "episode": 645,
+        "length": 146,
+        "task_id": 15
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlateToBowlSplitA",
+        "ordinal": 802,
+        "episode": 802,
+        "length": 167,
+        "task_id": 15
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlateToCardboardboxSplitA",
+        "ordinal": 52,
+        "episode": 52,
+        "length": 187,
+        "task_id": 16
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlateToCardboardboxSplitA",
+        "ordinal": 261,
+        "episode": 261,
+        "length": 243,
+        "task_id": 16
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlateToCardboardboxSplitA",
+        "ordinal": 398,
+        "episode": 398,
+        "length": 261,
+        "task_id": 16
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlateToCardboardboxSplitA",
+        "ordinal": 551,
+        "episode": 551,
+        "length": 181,
+        "task_id": 16
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlateToCardboardboxSplitA",
+        "ordinal": 650,
+        "episode": 650,
+        "length": 168,
+        "task_id": 16
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlateToCardboardboxSplitA",
+        "ordinal": 771,
+        "episode": 771,
+        "length": 201,
+        "task_id": 16
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlateToPanSplitA",
+        "ordinal": 5,
+        "episode": 5,
+        "length": 156,
+        "task_id": 17
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlateToPanSplitA",
+        "ordinal": 221,
+        "episode": 221,
+        "length": 300,
+        "task_id": 17
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlateToPanSplitA",
+        "ordinal": 253,
+        "episode": 253,
+        "length": 139,
+        "task_id": 17
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlateToPanSplitA",
+        "ordinal": 319,
+        "episode": 319,
+        "length": 190,
+        "task_id": 17
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlateToPanSplitA",
+        "ordinal": 767,
+        "episode": 767,
+        "length": 205,
+        "task_id": 17
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlateToPanSplitA",
+        "ordinal": 768,
+        "episode": 768,
+        "length": 186,
+        "task_id": 17
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlateToPlateSplitA",
+        "ordinal": 72,
+        "episode": 72,
+        "length": 175,
+        "task_id": 18
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlateToPlateSplitA",
+        "ordinal": 103,
+        "episode": 103,
+        "length": 279,
+        "task_id": 18
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlateToPlateSplitA",
+        "ordinal": 195,
+        "episode": 195,
+        "length": 221,
+        "task_id": 18
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlateToPlateSplitA",
+        "ordinal": 497,
+        "episode": 497,
+        "length": 246,
+        "task_id": 18
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlateToPlateSplitA",
+        "ordinal": 679,
+        "episode": 679,
+        "length": 202,
+        "task_id": 18
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromPlateToPlateSplitA",
+        "ordinal": 987,
+        "episode": 987,
+        "length": 208,
+        "task_id": 18
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromTrayToCardboardboxSplitA",
+        "ordinal": 131,
+        "episode": 131,
+        "length": 165,
+        "task_id": 19
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromTrayToCardboardboxSplitA",
+        "ordinal": 384,
+        "episode": 384,
+        "length": 186,
+        "task_id": 19
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromTrayToCardboardboxSplitA",
+        "ordinal": 410,
+        "episode": 410,
+        "length": 172,
+        "task_id": 19
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromTrayToCardboardboxSplitA",
+        "ordinal": 631,
+        "episode": 631,
+        "length": 229,
+        "task_id": 19
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromTrayToCardboardboxSplitA",
+        "ordinal": 941,
+        "episode": 941,
+        "length": 254,
+        "task_id": 19
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromTrayToCardboardboxSplitA",
+        "ordinal": 960,
+        "episode": 960,
+        "length": 247,
+        "task_id": 19
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromTrayToPlateSplitA",
+        "ordinal": 523,
+        "episode": 523,
+        "length": 164,
+        "task_id": 20
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromTrayToPlateSplitA",
+        "ordinal": 613,
+        "episode": 613,
+        "length": 157,
+        "task_id": 20
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromTrayToPlateSplitA",
+        "ordinal": 765,
+        "episode": 765,
+        "length": 279,
+        "task_id": 20
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromTrayToPlateSplitA",
+        "ordinal": 772,
+        "episode": 772,
+        "length": 188,
+        "task_id": 20
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromTrayToPlateSplitA",
+        "ordinal": 845,
+        "episode": 845,
+        "length": 185,
+        "task_id": 20
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromTrayToPlateSplitA",
+        "ordinal": 954,
+        "episode": 954,
+        "length": 360,
+        "task_id": 20
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromTrayToPotSplitA",
+        "ordinal": 119,
+        "episode": 119,
+        "length": 394,
+        "task_id": 21
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromTrayToPotSplitA",
+        "ordinal": 237,
+        "episode": 237,
+        "length": 168,
+        "task_id": 21
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromTrayToPotSplitA",
+        "ordinal": 704,
+        "episode": 704,
+        "length": 169,
+        "task_id": 21
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromTrayToPotSplitA",
+        "ordinal": 729,
+        "episode": 729,
+        "length": 105,
+        "task_id": 21
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromTrayToPotSplitA",
+        "ordinal": 851,
+        "episode": 851,
+        "length": 175,
+        "task_id": 21
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromTrayToPotSplitA",
+        "ordinal": 891,
+        "episode": 891,
+        "length": 450,
+        "task_id": 21
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromTrayToTieredbasketSplitA",
+        "ordinal": 80,
+        "episode": 80,
+        "length": 200,
+        "task_id": 22
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromTrayToTieredbasketSplitA",
+        "ordinal": 252,
+        "episode": 252,
+        "length": 137,
+        "task_id": 22
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromTrayToTieredbasketSplitA",
+        "ordinal": 403,
+        "episode": 403,
+        "length": 190,
+        "task_id": 22
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromTrayToTieredbasketSplitA",
+        "ordinal": 521,
+        "episode": 521,
+        "length": 195,
+        "task_id": 22
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromTrayToTieredbasketSplitA",
+        "ordinal": 798,
+        "episode": 798,
+        "length": 272,
+        "task_id": 22
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromTrayToTieredbasketSplitA",
+        "ordinal": 932,
+        "episode": 932,
+        "length": 164,
+        "task_id": 22
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromTrayToTieredshelfSplitA",
+        "ordinal": 303,
+        "episode": 303,
+        "length": 400,
+        "task_id": 23
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromTrayToTieredshelfSplitA",
+        "ordinal": 388,
+        "episode": 388,
+        "length": 226,
+        "task_id": 23
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromTrayToTieredshelfSplitA",
+        "ordinal": 554,
+        "episode": 554,
+        "length": 176,
+        "task_id": 23
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromTrayToTieredshelfSplitA",
+        "ordinal": 636,
+        "episode": 636,
+        "length": 249,
+        "task_id": 23
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromTrayToTieredshelfSplitA",
+        "ordinal": 763,
+        "episode": 763,
+        "length": 276,
+        "task_id": 23
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/lerobot/LeRobot/gr1_unified.PosttrainPnPNovelFromTrayToTieredshelfSplitA",
+        "ordinal": 886,
+        "episode": 886,
+        "length": 303,
+        "task_id": 23
+      }
+    ],
+    "inference_forward_max_difference": 0.0
+  },
+  "pooled_correlations": {
+    "arm_label_rms": 0.2733984403209925,
+    "arm_pred_rms": 0.19141219976677434,
+    "arm_residual_rms": 0.8234452605708181,
+    "hand_residual_rms": 0.7733518300522236,
+    "total_residual_rms": 0.9075319823252616,
+    "hand_label_range": -0.0015773083740003343,
+    "hand_pred_range": 0.41754222866578095,
+    "arm_label_range": 0.18285821351653486,
+    "progress": 0.0799784229656959
+  },
+  "within_task_rank_correlations": {
+    "arm_label_rms": 0.2539125980970901,
+    "arm_pred_rms": 0.17539065212862004,
+    "arm_residual_rms": 0.804753223603491,
+    "hand_residual_rms": 0.7556239437923931,
+    "total_residual_rms": 0.884639847674607,
+    "hand_label_range": 0.0036443503021043127,
+    "hand_pred_range": 0.3829858641588582,
+    "arm_label_range": 0.17892041113966248,
+    "progress": 0.08437785838533739
+  },
+  "hand_range_partial_rank_given_arm_magnitude": 0.0685947614563052,
+  "per_task": [
+    {
+      "task": "gr1_unified.PnPBottleToCabinetClose",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.38120702826585173,
+        "arm_pred_rms": 0.34724633655114934,
+        "arm_residual_rms": 0.8285505937912354,
+        "hand_residual_rms": 0.7763177998472115,
+        "total_residual_rms": 0.8902493228696436,
+        "hand_label_range": -0.07221334814917701,
+        "hand_pred_range": 0.38213764844780884,
+        "arm_label_range": -0.07902632127231056,
+        "progress": 0.26111778688472137
+      }
+    },
+    {
+      "task": "gr1_unified.PnPCanToDrawerClose",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.4126536565039238,
+        "arm_pred_rms": 0.4095006597680394,
+        "arm_residual_rms": 0.8170220154177372,
+        "hand_residual_rms": 0.7333217584554482,
+        "total_residual_rms": 0.8918813806514341,
+        "hand_label_range": 0.155906660184735,
+        "hand_pred_range": 0.4829857680849145,
+        "arm_label_range": -0.04014167650531286,
+        "progress": 0.3056161832270258
+      }
+    },
+    {
+      "task": "gr1_unified.PnPCupToDrawerClose",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.3440933398152649,
+        "arm_pred_rms": 0.2798249878463782,
+        "arm_residual_rms": 0.8758177651225778,
+        "hand_residual_rms": 0.8014723244669768,
+        "total_residual_rms": 0.953218973539829,
+        "hand_label_range": 0.015188554760747272,
+        "hand_pred_range": 0.47203972498090135,
+        "arm_label_range": -0.09624973956524759,
+        "progress": 0.24478534576608207
+      }
+    },
+    {
+      "task": "gr1_unified.PnPMilkToMicrowaveClose",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.4588165844850336,
+        "arm_pred_rms": 0.3472741162580734,
+        "arm_residual_rms": 0.8467185221195915,
+        "hand_residual_rms": 0.8597402597402596,
+        "total_residual_rms": 0.9261059795819153,
+        "hand_label_range": 0.022661295923328006,
+        "hand_pred_range": 0.5835703297845093,
+        "arm_label_range": 0.09180498645739286,
+        "progress": 0.1901917617845305
+      }
+    },
+    {
+      "task": "gr1_unified.PnPPotatoToMicrowaveClose",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.4903326619904159,
+        "arm_pred_rms": 0.3953052295298284,
+        "arm_residual_rms": 0.8486353218973539,
+        "hand_residual_rms": 0.802166817140079,
+        "total_residual_rms": 0.9194527397735952,
+        "hand_label_range": 0.07215778873532883,
+        "hand_pred_range": 0.4997195980971455,
+        "arm_label_range": 0.1006389332592541,
+        "progress": 0.3972288065676181
+      }
+    },
+    {
+      "task": "gr1_unified.PnPWineToCabinetClose",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.3833669004791999,
+        "arm_pred_rms": 0.20932703659976384,
+        "arm_residual_rms": 0.8271268838113757,
+        "hand_residual_rms": 0.743801652892562,
+        "total_residual_rms": 0.9160427807486629,
+        "hand_label_range": 0.25424682269602056,
+        "hand_pred_range": 0.5886519897215083,
+        "arm_label_range": 0.12148065837905409,
+        "progress": -0.11989081916172094
+      }
+    },
+    {
+      "task": "gr1_unified.PosttrainPnPNovelFromCuttingboardToBasketSplitA",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.05777484547538023,
+        "arm_pred_rms": -0.03855823321063962,
+        "arm_residual_rms": 0.7709979859712479,
+        "hand_residual_rms": 0.7166400444475309,
+        "total_residual_rms": 0.8349468713105075,
+        "hand_label_range": -0.10626432391138273,
+        "hand_pred_range": 0.18376276130286823,
+        "arm_label_range": 0.3515799708313077,
+        "progress": 0.005274992413265597
+      }
+    },
+    {
+      "task": "gr1_unified.PosttrainPnPNovelFromCuttingboardToCardboardboxSplitA",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.20282658517952634,
+        "arm_pred_rms": 0.10086117091464684,
+        "arm_residual_rms": 0.8471143829432599,
+        "hand_residual_rms": 0.7696020556983123,
+        "total_residual_rms": 0.9102368220015278,
+        "hand_label_range": 0.0495173275921939,
+        "hand_pred_range": 0.36562261268143614,
+        "arm_label_range": 0.3765955969164525,
+        "progress": 0.14208819246961454
+      }
+    },
+    {
+      "task": "gr1_unified.PosttrainPnPNovelFromCuttingboardToPanSplitA",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.08486700465310089,
+        "arm_pred_rms": 0.015112160566706018,
+        "arm_residual_rms": 0.7916383082158482,
+        "hand_residual_rms": 0.7851100770886866,
+        "total_residual_rms": 0.89280505590666,
+        "hand_label_range": 0.1421487603305785,
+        "hand_pred_range": 0.5338965688502527,
+        "arm_label_range": 0.16277519272171675,
+        "progress": -0.1412323631668032
+      }
+    },
+    {
+      "task": "gr1_unified.PosttrainPnPNovelFromCuttingboardToPotSplitA",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.2647683866935204,
+        "arm_pred_rms": 0.22897423432182787,
+        "arm_residual_rms": 0.8658795749704841,
+        "hand_residual_rms": 0.7938815195499687,
+        "total_residual_rms": 0.9173345371206332,
+        "hand_label_range": -0.010424335023265504,
+        "hand_pred_range": 0.29409732290016355,
+        "arm_label_range": 0.1251684144732273,
+        "progress": 0.13347918590433824
+      }
+    },
+    {
+      "task": "gr1_unified.PosttrainPnPNovelFromCuttingboardToTieredbasketSplitA",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.24349607611639693,
+        "arm_pred_rms": 0.15889297867907493,
+        "arm_residual_rms": 0.8105493437044238,
+        "hand_residual_rms": 0.8685325369817347,
+        "total_residual_rms": 0.9068893673171746,
+        "hand_label_range": 0.020029168692270293,
+        "hand_pred_range": 0.5562747413014791,
+        "arm_label_range": 0.2793944023890548,
+        "progress": 0.07123495189388479
+      }
+    },
+    {
+      "task": "gr1_unified.PosttrainPnPNovelFromPlacematToBasketSplitA",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.039273560663934996,
+        "arm_pred_rms": 0.0025001736231682753,
+        "arm_residual_rms": 0.7154316271963329,
+        "hand_residual_rms": 0.720605597610945,
+        "total_residual_rms": 0.8316202514063475,
+        "hand_label_range": -0.11868879783318284,
+        "hand_pred_range": 0.4014723244669768,
+        "arm_label_range": 0.22394610736856724,
+        "progress": 0.04297464419034511
+      }
+    },
+    {
+      "task": "gr1_unified.PosttrainPnPNovelFromPlacematToBowlSplitA",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.07739426349052016,
+        "arm_pred_rms": 0.004722550177095631,
+        "arm_residual_rms": 0.6640669490936869,
+        "hand_residual_rms": 0.8040350024307243,
+        "total_residual_rms": 0.8198833252309187,
+        "hand_label_range": 0.1607958886033752,
+        "hand_pred_range": 0.3973893975097967,
+        "arm_label_range": 0.35882352941176465,
+        "progress": -0.000489647940615301
+      }
+    },
+    {
+      "task": "gr1_unified.PosttrainPnPNovelFromPlacematToPlateSplitA",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": -0.08390860476421974,
+        "arm_pred_rms": -0.076435863601639,
+        "arm_residual_rms": 0.7870616015001041,
+        "hand_residual_rms": 0.7474130147926938,
+        "total_residual_rms": 0.8570803528022778,
+        "hand_label_range": -0.11586915758038752,
+        "hand_pred_range": 0.19752760608375577,
+        "arm_label_range": 0.3796930342384887,
+        "progress": 0.008598446329457051
+      }
+    },
+    {
+      "task": "gr1_unified.PosttrainPnPNovelFromPlacematToTieredshelfSplitA",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.3913396763664143,
+        "arm_pred_rms": 0.17243558580456972,
+        "arm_residual_rms": 0.882519619418015,
+        "hand_residual_rms": 0.797638724911452,
+        "total_residual_rms": 0.9331411903604414,
+        "hand_label_range": 0.020418084589207578,
+        "hand_pred_range": 0.47428988124175286,
+        "arm_label_range": 0.18531147996388636,
+        "progress": 0.09387680704924878
+      }
+    },
+    {
+      "task": "gr1_unified.PosttrainPnPNovelFromPlateToBowlSplitA",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.2254462115424682,
+        "arm_pred_rms": 0.1674074588513091,
+        "arm_residual_rms": 0.830849364539204,
+        "hand_residual_rms": 0.8275921939023543,
+        "total_residual_rms": 0.916653934300993,
+        "hand_label_range": 0.03798874921869574,
+        "hand_pred_range": 0.38353357872074445,
+        "arm_label_range": 0.22048058892978675,
+        "progress": 0.08936974123585772
+      }
+    },
+    {
+      "task": "gr1_unified.PosttrainPnPNovelFromPlateToCardboardboxSplitA",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.43222446003194664,
+        "arm_pred_rms": 0.3729634002361275,
+        "arm_residual_rms": 0.8814223209945133,
+        "hand_residual_rms": 0.7264810056253906,
+        "total_residual_rms": 0.9033752343912771,
+        "hand_label_range": -0.08223487742204319,
+        "hand_pred_range": 0.45923328008889497,
+        "arm_label_range": 0.1869296478922147,
+        "progress": -0.02825397328658029
+      }
+    },
+    {
+      "task": "gr1_unified.PosttrainPnPNovelFromPlateToPanSplitA",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.14224598930481283,
+        "arm_pred_rms": 0.09754149593721785,
+        "arm_residual_rms": 0.7687964441975136,
+        "hand_residual_rms": 0.6551288283908603,
+        "total_residual_rms": 0.8714355163553023,
+        "hand_label_range": -0.06578234599624974,
+        "hand_pred_range": 0.2671088270018751,
+        "arm_label_range": 0.13272449475658032,
+        "progress": -0.09075503035489557
+      }
+    },
+    {
+      "task": "gr1_unified.PosttrainPnPNovelFromPlateToPlateSplitA",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.2213417598444336,
+        "arm_pred_rms": 0.11095214945482325,
+        "arm_residual_rms": 0.8158830474338494,
+        "hand_residual_rms": 0.7124244739218,
+        "total_residual_rms": 0.8989165914299603,
+        "hand_label_range": -0.07338704076671991,
+        "hand_pred_range": 0.3374401000069449,
+        "arm_label_range": 0.32062643239113825,
+        "progress": -0.07056474380352662
+      }
+    },
+    {
+      "task": "gr1_unified.PosttrainPnPNovelFromTrayToCardboardboxSplitA",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.20745190638238764,
+        "arm_pred_rms": 0.2000625043405792,
+        "arm_residual_rms": 0.7525105910132648,
+        "hand_residual_rms": 0.8111188276963678,
+        "total_residual_rms": 0.8155288561705673,
+        "hand_label_range": -0.16304604486422666,
+        "hand_pred_range": 0.2370789638169317,
+        "arm_label_range": 0.2102229321480658,
+        "progress": 0.18227783960120036
+      }
+    },
+    {
+      "task": "gr1_unified.PosttrainPnPNovelFromTrayToPlateSplitA",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.30023612750885476,
+        "arm_pred_rms": 0.2750954927425515,
+        "arm_residual_rms": 0.7117369261754287,
+        "hand_residual_rms": 0.664962844641989,
+        "total_residual_rms": 0.8536773387040765,
+        "hand_label_range": 0.12410584068338075,
+        "hand_pred_range": 0.33857212306410167,
+        "arm_label_range": 0.1077435933050906,
+        "progress": 0.14528627886358972
+      }
+    },
+    {
+      "task": "gr1_unified.PosttrainPnPNovelFromTrayToPotSplitA",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.18429057573442598,
+        "arm_pred_rms": -0.008632543926661573,
+        "arm_residual_rms": 0.8530592402250154,
+        "hand_residual_rms": 0.7605042016806721,
+        "total_residual_rms": 0.9350302104312798,
+        "hand_label_range": 0.10812556427529688,
+        "hand_pred_range": 0.4251753593999583,
+        "arm_label_range": 0.28050559066601843,
+        "progress": 0.1259645372336086
+      }
+    },
+    {
+      "task": "gr1_unified.PosttrainPnPNovelFromTrayToTieredbasketSplitA",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.36527536634488506,
+        "arm_pred_rms": 0.26613653725953185,
+        "arm_residual_rms": 0.8083200222237654,
+        "hand_residual_rms": 0.7620737551218834,
+        "total_residual_rms": 0.8854225987915826,
+        "hand_label_range": -0.1805819848600597,
+        "hand_pred_range": 0.1628209001360609,
+        "arm_label_range": 0.15096187235224667,
+        "progress": 0.00027781395198238823
+      }
+    },
+    {
+      "task": "gr1_unified.PosttrainPnPNovelFromTrayToTieredshelfSplitA",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.26708799222168206,
+        "arm_pred_rms": 0.17086603236335854,
+        "arm_residual_rms": 0.7123689145079518,
+        "hand_residual_rms": 0.4944093339815264,
+        "total_residual_rms": 0.7504271129939578,
+        "hand_label_range": -0.10733384262796027,
+        "hand_pred_range": 0.16728245017015067,
+        "arm_label_range": 0.14210014584346134,
+        "progress": 0.03678951259126776
+      }
+    }
+  ],
+  "top_sigma_quintile": {
+    "n": 576,
+    "sigma_median": 0.10313418135046959,
+    "arm_label_rms_median": 0.23246032130633534,
+    "arm_residual_rms": 0.08909336107547332,
+    "hand_residual_rms": 0.17393762617193118,
+    "hand_error_energy_share": 0.7553022366054432,
+    "arm_error_energy_share": 0.23119113081568288,
+    "hand_label_range_median": 0.030676298417282824,
+    "residual_rms_by_step": [
+      0.12954181224067213,
+      0.1343689699931318,
+      0.1299899033793938,
+      0.1294156625979933,
+      0.12447715064655529,
+      0.12889809761461501,
+      0.12712225806215366,
+      0.12588703315817276
+    ]
+  },
+  "bottom_sigma_quintile": {
+    "n": 576,
+    "sigma_median": 0.013331589289009571,
+    "arm_label_rms_median": 0.20445558909669725,
+    "arm_residual_rms": 0.02145794967977815,
+    "hand_residual_rms": 0.0041141389736414555,
+    "hand_error_energy_share": 0.029284898225328624,
+    "arm_error_energy_share": 0.9294136316672567,
+    "hand_label_range_median": 0.029826978496296043,
+    "residual_rms_by_step": [
+      0.017632979013672136,
+      0.014778118221945706,
+      0.01472665360511578,
+      0.014919523439747192,
+      0.01502935686291602,
+      0.01521147635388031,
+      0.015454877989868025,
+      0.01576115929150493
+    ]
+  },
+  "all": {
+    "n": 2880,
+    "sigma_median": 0.02390828263014555,
+    "arm_label_rms_median": 0.227970213308083,
+    "arm_residual_rms": 0.05378119352699227,
+    "hand_residual_rms": 0.08168567286313244,
+    "hand_error_energy_share": 0.6507142954859414,
+    "arm_error_energy_share": 0.3290835910830034,
+    "hand_label_range_median": 0.02981141802689085,
+    "residual_rms_by_step": [
+      0.06679940016169555,
+      0.06630833590590432,
+      0.06424932328127539,
+      0.06390853437317094,
+      0.06268966125633724,
+      0.06563647782572304,
+      0.06551055244957027,
+      0.06590831253376746
+    ]
+  },
+  "amplitude_matched_hand_change": [],
+  "amplitude_matched_median_sigma_ratio": null
+}

@@ -1,0 +1,2018 @@
+{
+  "gr1": {
+    "scope": "Training-demonstration descriptive diagnostic, not held-out or contact ground truth.",
+    "physical_amplitude_units": "rad RMS of relative arm joints",
+    "hand_event_definition": "max in-chunk hand joint command range > 0.2 rad",
+    "physical_amplitude_correlation": 0.31320281614135037,
+    "hand_excursion_correlation": 0.2532038316427135,
+    "event": {
+      "n": 300,
+      "sigma_median": 0.11746854707598686,
+      "physical_arm_amplitude_median": 0.09498912317325134,
+      "hand_event_fraction": 1.0,
+      "hand_energy_share": 0.8647655922313406,
+      "hand_error_constant_in_chunk_fraction": 0.39259235219778166
+    },
+    "no_event": {
+      "n": 2580,
+      "sigma_median": 0.022352462634444237,
+      "physical_arm_amplitude_median": 0.095140517685063,
+      "hand_event_fraction": 0.0,
+      "hand_energy_share": 0.3452674989062766,
+      "hand_error_constant_in_chunk_fraction": 0.7496254511088233
+    },
+    "high_sigma": {
+      "n": 576,
+      "sigma_median": 0.10313418135046959,
+      "physical_arm_amplitude_median": 0.1062032728575715,
+      "hand_event_fraction": 0.4982638888888889,
+      "hand_energy_share": 0.7553022366054432,
+      "hand_error_constant_in_chunk_fraction": 0.460710455823406
+    },
+    "low_sigma": {
+      "n": 576,
+      "sigma_median": 0.013331589289009571,
+      "physical_arm_amplitude_median": 0.06928323103589917,
+      "hand_event_fraction": 0.0,
+      "hand_energy_share": 0.029284898225328624,
+      "hand_error_constant_in_chunk_fraction": 0.9413194479116026
+    },
+    "matched": [
+      {
+        "task": "gr1_unified.PnPBottleToCabinetClose",
+        "n_event": 3,
+        "n_no_event": 27,
+        "sigma_ratio": 10.494721024159817,
+        "amplitude_ratio": 1.2849336118645172
+      },
+      {
+        "task": "gr1_unified.PnPBottleToCabinetClose",
+        "n_event": 3,
+        "n_no_event": 27,
+        "sigma_ratio": 4.891497664165364,
+        "amplitude_ratio": 1.0171649618360652
+      },
+      {
+        "task": "gr1_unified.PnPBottleToCabinetClose",
+        "n_event": 3,
+        "n_no_event": 27,
+        "sigma_ratio": 4.904814682674994,
+        "amplitude_ratio": 0.8655209070125476
+      },
+      {
+        "task": "gr1_unified.PnPCanToDrawerClose",
+        "n_event": 5,
+        "n_no_event": 25,
+        "sigma_ratio": 12.793084958390684,
+        "amplitude_ratio": 0.8498501638367649
+      },
+      {
+        "task": "gr1_unified.PnPCupToDrawerClose",
+        "n_event": 5,
+        "n_no_event": 25,
+        "sigma_ratio": 7.198438995060164,
+        "amplitude_ratio": 0.8316502805433025
+      },
+      {
+        "task": "gr1_unified.PnPCupToDrawerClose",
+        "n_event": 5,
+        "n_no_event": 25,
+        "sigma_ratio": 6.7046909014188305,
+        "amplitude_ratio": 0.946177840330329
+      },
+      {
+        "task": "gr1_unified.PnPMilkToMicrowaveClose",
+        "n_event": 3,
+        "n_no_event": 27,
+        "sigma_ratio": 6.198932098257923,
+        "amplitude_ratio": 1.0903997740503721
+      },
+      {
+        "task": "gr1_unified.PnPMilkToMicrowaveClose",
+        "n_event": 3,
+        "n_no_event": 27,
+        "sigma_ratio": 2.2465978791813517,
+        "amplitude_ratio": 1.0292476405974507
+      },
+      {
+        "task": "gr1_unified.PnPMilkToMicrowaveClose",
+        "n_event": 6,
+        "n_no_event": 24,
+        "sigma_ratio": 6.228475389258806,
+        "amplitude_ratio": 0.9874365501211563
+      },
+      {
+        "task": "gr1_unified.PnPMilkToMicrowaveClose",
+        "n_event": 4,
+        "n_no_event": 26,
+        "sigma_ratio": 3.4452784474102054,
+        "amplitude_ratio": 1.0048472970654256
+      },
+      {
+        "task": "gr1_unified.PnPPotatoToMicrowaveClose",
+        "n_event": 6,
+        "n_no_event": 24,
+        "sigma_ratio": 7.635090765774103,
+        "amplitude_ratio": 0.9430023723401288
+      },
+      {
+        "task": "gr1_unified.PnPPotatoToMicrowaveClose",
+        "n_event": 7,
+        "n_no_event": 23,
+        "sigma_ratio": 5.807022325108135,
+        "amplitude_ratio": 1.0895483611965986
+      },
+      {
+        "task": "gr1_unified.PnPWineToCabinetClose",
+        "n_event": 3,
+        "n_no_event": 27,
+        "sigma_ratio": 3.667685233560946,
+        "amplitude_ratio": 0.9867502993162696
+      },
+      {
+        "task": "gr1_unified.PnPWineToCabinetClose",
+        "n_event": 5,
+        "n_no_event": 25,
+        "sigma_ratio": 3.600059030731481,
+        "amplitude_ratio": 1.075562072124532
+      },
+      {
+        "task": "gr1_unified.PnPWineToCabinetClose",
+        "n_event": 4,
+        "n_no_event": 26,
+        "sigma_ratio": 2.86919278524284,
+        "amplitude_ratio": 0.896276827184103
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromCuttingboardToBasketSplitA",
+        "n_event": 3,
+        "n_no_event": 27,
+        "sigma_ratio": 3.5098741550235197,
+        "amplitude_ratio": 0.9508325415521168
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromCuttingboardToBasketSplitA",
+        "n_event": 6,
+        "n_no_event": 24,
+        "sigma_ratio": 3.4412980360971805,
+        "amplitude_ratio": 0.9962376028381331
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromCuttingboardToCardboardboxSplitA",
+        "n_event": 5,
+        "n_no_event": 25,
+        "sigma_ratio": 8.893863850419608,
+        "amplitude_ratio": 1.0028135850889168
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromCuttingboardToCardboardboxSplitA",
+        "n_event": 4,
+        "n_no_event": 26,
+        "sigma_ratio": 5.424958072582309,
+        "amplitude_ratio": 0.9569973085286672
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromCuttingboardToCardboardboxSplitA",
+        "n_event": 4,
+        "n_no_event": 26,
+        "sigma_ratio": 6.712220281309262,
+        "amplitude_ratio": 0.969787904460509
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromCuttingboardToPanSplitA",
+        "n_event": 6,
+        "n_no_event": 24,
+        "sigma_ratio": 7.246012230327198,
+        "amplitude_ratio": 0.9959447128954587
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromCuttingboardToPanSplitA",
+        "n_event": 5,
+        "n_no_event": 25,
+        "sigma_ratio": 5.242552569668571,
+        "amplitude_ratio": 1.022400781621213
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromCuttingboardToPanSplitA",
+        "n_event": 6,
+        "n_no_event": 24,
+        "sigma_ratio": 3.25535313677632,
+        "amplitude_ratio": 0.8996492768733838
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromCuttingboardToPanSplitA",
+        "n_event": 4,
+        "n_no_event": 26,
+        "sigma_ratio": 4.47820737987482,
+        "amplitude_ratio": 0.818849887864789
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromCuttingboardToPotSplitA",
+        "n_event": 3,
+        "n_no_event": 27,
+        "sigma_ratio": 7.7570351040240935,
+        "amplitude_ratio": 0.9212375449468363
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromCuttingboardToPotSplitA",
+        "n_event": 3,
+        "n_no_event": 27,
+        "sigma_ratio": 5.91760863934937,
+        "amplitude_ratio": 0.9589598278559561
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromCuttingboardToPotSplitA",
+        "n_event": 3,
+        "n_no_event": 27,
+        "sigma_ratio": 3.415950100375806,
+        "amplitude_ratio": 1.1277353686542486
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromCuttingboardToTieredbasketSplitA",
+        "n_event": 6,
+        "n_no_event": 24,
+        "sigma_ratio": 4.551763669955254,
+        "amplitude_ratio": 0.9984627018860249
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromCuttingboardToTieredbasketSplitA",
+        "n_event": 3,
+        "n_no_event": 27,
+        "sigma_ratio": 5.746417102376183,
+        "amplitude_ratio": 1.089843419254746
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlacematToBasketSplitA",
+        "n_event": 3,
+        "n_no_event": 27,
+        "sigma_ratio": 5.335386450354149,
+        "amplitude_ratio": 0.9914216871586968
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlacematToBasketSplitA",
+        "n_event": 3,
+        "n_no_event": 27,
+        "sigma_ratio": 3.8141217880370832,
+        "amplitude_ratio": 0.9865658676064655
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlacematToBasketSplitA",
+        "n_event": 4,
+        "n_no_event": 26,
+        "sigma_ratio": 3.6459143677814136,
+        "amplitude_ratio": 0.9468110476910655
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlacematToBowlSplitA",
+        "n_event": 6,
+        "n_no_event": 24,
+        "sigma_ratio": 5.050772787935885,
+        "amplitude_ratio": 0.8677391087927072
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlacematToBowlSplitA",
+        "n_event": 8,
+        "n_no_event": 22,
+        "sigma_ratio": 3.777841721416673,
+        "amplitude_ratio": 0.9090101304957862
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlacematToPlateSplitA",
+        "n_event": 4,
+        "n_no_event": 26,
+        "sigma_ratio": 4.479538441695797,
+        "amplitude_ratio": 0.9685861271586623
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlacematToPlateSplitA",
+        "n_event": 5,
+        "n_no_event": 25,
+        "sigma_ratio": 4.482379383001601,
+        "amplitude_ratio": 1.0098701052111483
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlacematToTieredshelfSplitA",
+        "n_event": 5,
+        "n_no_event": 25,
+        "sigma_ratio": 4.3519348096502695,
+        "amplitude_ratio": 0.9668255165962452
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlacematToTieredshelfSplitA",
+        "n_event": 4,
+        "n_no_event": 26,
+        "sigma_ratio": 4.381367425539797,
+        "amplitude_ratio": 1.025274054497959
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlateToBowlSplitA",
+        "n_event": 3,
+        "n_no_event": 27,
+        "sigma_ratio": 9.450445996519342,
+        "amplitude_ratio": 0.8002279139075055
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlateToBowlSplitA",
+        "n_event": 4,
+        "n_no_event": 26,
+        "sigma_ratio": 4.1633598363508755,
+        "amplitude_ratio": 1.0874722630809994
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlateToBowlSplitA",
+        "n_event": 5,
+        "n_no_event": 25,
+        "sigma_ratio": 3.3176776237628394,
+        "amplitude_ratio": 0.9683582341943594
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlateToCardboardboxSplitA",
+        "n_event": 4,
+        "n_no_event": 26,
+        "sigma_ratio": 4.871130906479117,
+        "amplitude_ratio": 0.9575645530136594
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlateToCardboardboxSplitA",
+        "n_event": 3,
+        "n_no_event": 27,
+        "sigma_ratio": 3.958053677920505,
+        "amplitude_ratio": 1.1871648068469645
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlateToPanSplitA",
+        "n_event": 3,
+        "n_no_event": 27,
+        "sigma_ratio": 6.487721856884396,
+        "amplitude_ratio": 0.42327122019289076
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlateToPanSplitA",
+        "n_event": 3,
+        "n_no_event": 27,
+        "sigma_ratio": 6.703313356422226,
+        "amplitude_ratio": 1.1364561643325883
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlateToPanSplitA",
+        "n_event": 3,
+        "n_no_event": 27,
+        "sigma_ratio": 3.6478407582371397,
+        "amplitude_ratio": 0.9702646132570824
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlateToPlateSplitA",
+        "n_event": 3,
+        "n_no_event": 27,
+        "sigma_ratio": 7.2399703182931185,
+        "amplitude_ratio": 0.8259536955168898
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlateToPlateSplitA",
+        "n_event": 4,
+        "n_no_event": 26,
+        "sigma_ratio": 3.5963773212754435,
+        "amplitude_ratio": 0.9405498819206579
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromTrayToCardboardboxSplitA",
+        "n_event": 5,
+        "n_no_event": 25,
+        "sigma_ratio": 8.21780061207997,
+        "amplitude_ratio": 0.9190036604290012
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromTrayToPlateSplitA",
+        "n_event": 5,
+        "n_no_event": 25,
+        "sigma_ratio": 10.168705905448146,
+        "amplitude_ratio": 1.2314097261986787
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromTrayToPlateSplitA",
+        "n_event": 3,
+        "n_no_event": 27,
+        "sigma_ratio": 6.769513954912775,
+        "amplitude_ratio": 1.0475106526148528
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromTrayToPlateSplitA",
+        "n_event": 3,
+        "n_no_event": 27,
+        "sigma_ratio": 5.370301093103001,
+        "amplitude_ratio": 0.9522792779893071
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromTrayToPotSplitA",
+        "n_event": 6,
+        "n_no_event": 24,
+        "sigma_ratio": 4.593361650845183,
+        "amplitude_ratio": 1.05972858472232
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromTrayToPotSplitA",
+        "n_event": 4,
+        "n_no_event": 26,
+        "sigma_ratio": 3.937060721754737,
+        "amplitude_ratio": 0.977034544342897
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromTrayToPotSplitA",
+        "n_event": 4,
+        "n_no_event": 26,
+        "sigma_ratio": 5.126310868822196,
+        "amplitude_ratio": 0.93340263740559
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromTrayToTieredbasketSplitA",
+        "n_event": 3,
+        "n_no_event": 27,
+        "sigma_ratio": 10.034329836839913,
+        "amplitude_ratio": 1.1539851756483397
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromTrayToTieredbasketSplitA",
+        "n_event": 3,
+        "n_no_event": 27,
+        "sigma_ratio": 8.410096546538739,
+        "amplitude_ratio": 0.8417444864569087
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromTrayToTieredbasketSplitA",
+        "n_event": 3,
+        "n_no_event": 27,
+        "sigma_ratio": 4.264358721109549,
+        "amplitude_ratio": 0.8790576412358764
+      }
+    ],
+    "matched_sigma_ratio_median": 4.97779373530544,
+    "per_task": [
+      {
+        "task": "gr1_unified.PnPBottleToCabinetClose",
+        "rho_sigma_physical_amplitude": 0.4175220501423709
+      },
+      {
+        "task": "gr1_unified.PnPCanToDrawerClose",
+        "rho_sigma_physical_amplitude": 0.17356760886172648
+      },
+      {
+        "task": "gr1_unified.PnPCupToDrawerClose",
+        "rho_sigma_physical_amplitude": 0.065261476491423
+      },
+      {
+        "task": "gr1_unified.PnPMilkToMicrowaveClose",
+        "rho_sigma_physical_amplitude": 0.33478019306896306
+      },
+      {
+        "task": "gr1_unified.PnPPotatoToMicrowaveClose",
+        "rho_sigma_physical_amplitude": 0.42766164316966454
+      },
+      {
+        "task": "gr1_unified.PnPWineToCabinetClose",
+        "rho_sigma_physical_amplitude": 0.3338009583998888
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromCuttingboardToBasketSplitA",
+        "rho_sigma_physical_amplitude": 0.31773734287103267
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromCuttingboardToCardboardboxSplitA",
+        "rho_sigma_physical_amplitude": 0.2696576151121606
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromCuttingboardToPanSplitA",
+        "rho_sigma_physical_amplitude": 0.16171261893187025
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromCuttingboardToPotSplitA",
+        "rho_sigma_physical_amplitude": 0.24823946107368564
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromCuttingboardToTieredbasketSplitA",
+        "rho_sigma_physical_amplitude": 0.3287311618862421
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlacematToBasketSplitA",
+        "rho_sigma_physical_amplitude": 0.09745121188971455
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlacematToBowlSplitA",
+        "rho_sigma_physical_amplitude": 0.2502395999722203
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlacematToPlateSplitA",
+        "rho_sigma_physical_amplitude": 0.10551427182443224
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlacematToTieredshelfSplitA",
+        "rho_sigma_physical_amplitude": 0.4480658379054101
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlateToBowlSplitA",
+        "rho_sigma_physical_amplitude": 0.39182582123758586
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlateToCardboardboxSplitA",
+        "rho_sigma_physical_amplitude": 0.5098340162511285
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlateToPanSplitA",
+        "rho_sigma_physical_amplitude": 0.2787068546426835
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromPlateToPlateSplitA",
+        "rho_sigma_physical_amplitude": 0.356205292034169
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromTrayToCardboardboxSplitA",
+        "rho_sigma_physical_amplitude": 0.45009375651086875
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromTrayToPlateSplitA",
+        "rho_sigma_physical_amplitude": 0.4340926453225918
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromTrayToPotSplitA",
+        "rho_sigma_physical_amplitude": 0.29984721161191746
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromTrayToTieredbasketSplitA",
+        "rho_sigma_physical_amplitude": 0.4368358913813459
+      },
+      {
+        "task": "gr1_unified.PosttrainPnPNovelFromTrayToTieredshelfSplitA",
+        "rho_sigma_physical_amplitude": 0.33667615806653234
+      }
+    ]
+  },
+  "bridge": {
+    "scope": "Training-demonstration descriptive diagnostic, not held-out or contact ground truth.",
+    "physical_amplitude_units": "m RMS of translational action",
+    "hand_event_definition": "in-chunk gripper command range > 0.5",
+    "physical_amplitude_correlation": 0.19168591482710864,
+    "hand_excursion_correlation": 0.2967698607537989,
+    "event": {
+      "n": 1026,
+      "sigma_median": 0.2270357459783554,
+      "physical_arm_amplitude_median": 0.008865236782956634,
+      "hand_event_fraction": 1.0,
+      "hand_energy_share": 0.5017556262810294,
+      "hand_error_constant_in_chunk_fraction": 0.21638547694392904
+    },
+    "no_event": {
+      "n": 1841,
+      "sigma_median": 0.19036069512367249,
+      "physical_arm_amplitude_median": 0.01218384050128244,
+      "hand_event_fraction": 0.0,
+      "hand_energy_share": 0.06774384314716432,
+      "hand_error_constant_in_chunk_fraction": 0.37599500737340297
+    },
+    "high_sigma": {
+      "n": 576,
+      "sigma_median": 0.2882244288921356,
+      "physical_arm_amplitude_median": 0.012624212861352634,
+      "hand_event_fraction": 0.4895833333333333,
+      "hand_energy_share": 0.30109535719341846,
+      "hand_error_constant_in_chunk_fraction": 0.30166581195460856
+    },
+    "low_sigma": {
+      "n": 576,
+      "sigma_median": 0.13968650251626968,
+      "physical_arm_amplitude_median": 0.009537846428897321,
+      "hand_event_fraction": 0.12152777777777778,
+      "hand_energy_share": 0.07941320206621653,
+      "hand_error_constant_in_chunk_fraction": 0.15134532768221426
+    },
+    "matched": [
+      {
+        "task": "sweep into pile",
+        "n_event": 12,
+        "n_no_event": 18,
+        "sigma_ratio": 1.6076731135597129,
+        "amplitude_ratio": 0.8746944778503676
+      },
+      {
+        "task": "sweep into pile",
+        "n_event": 4,
+        "n_no_event": 26,
+        "sigma_ratio": 1.8654444948879623,
+        "amplitude_ratio": 1.0211660825623798
+      },
+      {
+        "task": "sweep into pile",
+        "n_event": 3,
+        "n_no_event": 27,
+        "sigma_ratio": 1.8690968416473004,
+        "amplitude_ratio": 1.0809732368476512
+      },
+      {
+        "task": "open the drawer",
+        "n_event": 18,
+        "n_no_event": 12,
+        "sigma_ratio": 3.1881196995798176,
+        "amplitude_ratio": 1.1474864753390803
+      },
+      {
+        "task": "open the drawer",
+        "n_event": 18,
+        "n_no_event": 12,
+        "sigma_ratio": 1.4356909339906143,
+        "amplitude_ratio": 1.0326853737820556
+      },
+      {
+        "task": "open the drawer",
+        "n_event": 11,
+        "n_no_event": 19,
+        "sigma_ratio": 1.6171796676168653,
+        "amplitude_ratio": 1.0052204403588831
+      },
+      {
+        "task": "open the drawer",
+        "n_event": 6,
+        "n_no_event": 24,
+        "sigma_ratio": 1.253404182681937,
+        "amplitude_ratio": 0.9314099400638678
+      },
+      {
+        "task": "close the drawer",
+        "n_event": 5,
+        "n_no_event": 25,
+        "sigma_ratio": 2.097169706948503,
+        "amplitude_ratio": 1.4115024695800678
+      },
+      {
+        "task": "close the drawer",
+        "n_event": 6,
+        "n_no_event": 24,
+        "sigma_ratio": 1.00316948862275,
+        "amplitude_ratio": 0.9763701767042586
+      },
+      {
+        "task": "close the drawer",
+        "n_event": 10,
+        "n_no_event": 19,
+        "sigma_ratio": 0.8820633215898844,
+        "amplitude_ratio": 0.9703124792104465
+      },
+      {
+        "task": "close the drawer",
+        "n_event": 3,
+        "n_no_event": 26,
+        "sigma_ratio": 1.0230848527941274,
+        "amplitude_ratio": 0.7149686767422663
+      },
+      {
+        "task": "open microwave",
+        "n_event": 27,
+        "n_no_event": 3,
+        "sigma_ratio": 1.385398437295763,
+        "amplitude_ratio": 0.8381421106845738
+      },
+      {
+        "task": "open microwave",
+        "n_event": 15,
+        "n_no_event": 15,
+        "sigma_ratio": 1.2915199944670204,
+        "amplitude_ratio": 1.0518568903776784
+      },
+      {
+        "task": "open microwave",
+        "n_event": 10,
+        "n_no_event": 20,
+        "sigma_ratio": 1.3156065046927807,
+        "amplitude_ratio": 0.9885717070953428
+      },
+      {
+        "task": "open fridge",
+        "n_event": 27,
+        "n_no_event": 3,
+        "sigma_ratio": 1.0514942500899962,
+        "amplitude_ratio": 0.8057413197790455
+      },
+      {
+        "task": "open fridge",
+        "n_event": 16,
+        "n_no_event": 14,
+        "sigma_ratio": 1.3838538729737249,
+        "amplitude_ratio": 0.947973412975347
+      },
+      {
+        "task": "open fridge",
+        "n_event": 6,
+        "n_no_event": 24,
+        "sigma_ratio": 1.3430560314286566,
+        "amplitude_ratio": 0.9661033058508676
+      },
+      {
+        "task": "open fridge",
+        "n_event": 5,
+        "n_no_event": 25,
+        "sigma_ratio": 1.3227061039409846,
+        "amplitude_ratio": 0.9669657350869179
+      },
+      {
+        "task": "put carrot on plate",
+        "n_event": 20,
+        "n_no_event": 10,
+        "sigma_ratio": 1.4168090828258137,
+        "amplitude_ratio": 1.2332901103844076
+      },
+      {
+        "task": "put carrot on plate",
+        "n_event": 14,
+        "n_no_event": 16,
+        "sigma_ratio": 1.0977262191191979,
+        "amplitude_ratio": 1.0510216708752427
+      },
+      {
+        "task": "put carrot on plate",
+        "n_event": 13,
+        "n_no_event": 17,
+        "sigma_ratio": 1.2683202347813622,
+        "amplitude_ratio": 0.9603500389142791
+      },
+      {
+        "task": "take broccoli out of pan",
+        "n_event": 17,
+        "n_no_event": 13,
+        "sigma_ratio": 1.612352717589691,
+        "amplitude_ratio": 0.9016282958037656
+      },
+      {
+        "task": "take broccoli out of pan",
+        "n_event": 15,
+        "n_no_event": 15,
+        "sigma_ratio": 1.2544573358953588,
+        "amplitude_ratio": 1.0438361811272938
+      },
+      {
+        "task": "take broccoli out of pan",
+        "n_event": 10,
+        "n_no_event": 20,
+        "sigma_ratio": 1.1505130217570385,
+        "amplitude_ratio": 0.9773068675314317
+      },
+      {
+        "task": "take broccoli out of pan",
+        "n_event": 6,
+        "n_no_event": 23,
+        "sigma_ratio": 1.2019016687064237,
+        "amplitude_ratio": 0.9550527376220159
+      },
+      {
+        "task": "take carrot off plate",
+        "n_event": 21,
+        "n_no_event": 9,
+        "sigma_ratio": 1.4807757440914635,
+        "amplitude_ratio": 0.7963437472656412
+      },
+      {
+        "task": "take carrot off plate",
+        "n_event": 17,
+        "n_no_event": 13,
+        "sigma_ratio": 1.0942486219033543,
+        "amplitude_ratio": 0.9703384597799494
+      },
+      {
+        "task": "take carrot off plate",
+        "n_event": 7,
+        "n_no_event": 23,
+        "sigma_ratio": 1.0410064520698774,
+        "amplitude_ratio": 0.9621669989656466
+      },
+      {
+        "task": "take carrot off plate",
+        "n_event": 3,
+        "n_no_event": 27,
+        "sigma_ratio": 1.4378154064736104,
+        "amplitude_ratio": 1.0889725759136413
+      },
+      {
+        "task": "fold the cloth from bottom right to top left",
+        "n_event": 24,
+        "n_no_event": 6,
+        "sigma_ratio": 1.4642798761085718,
+        "amplitude_ratio": 0.8508617656355617
+      },
+      {
+        "task": "fold the cloth from bottom right to top left",
+        "n_event": 15,
+        "n_no_event": 15,
+        "sigma_ratio": 1.5464570149399375,
+        "amplitude_ratio": 0.9791089863392112
+      },
+      {
+        "task": "fold the cloth from bottom right to top left",
+        "n_event": 10,
+        "n_no_event": 20,
+        "sigma_ratio": 1.2085746845634673,
+        "amplitude_ratio": 0.9961586735677798
+      },
+      {
+        "task": "fold the cloth from bottom right to top left",
+        "n_event": 11,
+        "n_no_event": 19,
+        "sigma_ratio": 1.2087777936084918,
+        "amplitude_ratio": 0.9411401968590546
+      },
+      {
+        "task": "put broccoli in pot",
+        "n_event": 18,
+        "n_no_event": 12,
+        "sigma_ratio": 1.6799780032655305,
+        "amplitude_ratio": 0.9675794342128734
+      },
+      {
+        "task": "put broccoli in pot",
+        "n_event": 8,
+        "n_no_event": 22,
+        "sigma_ratio": 1.5802549583286924,
+        "amplitude_ratio": 0.8638280593335532
+      },
+      {
+        "task": "put broccoli in pot",
+        "n_event": 10,
+        "n_no_event": 20,
+        "sigma_ratio": 1.299347205108717,
+        "amplitude_ratio": 0.9690557748039008
+      },
+      {
+        "task": "put broccoli in pot",
+        "n_event": 7,
+        "n_no_event": 23,
+        "sigma_ratio": 1.1611490968580742,
+        "amplitude_ratio": 0.9604767223053512
+      },
+      {
+        "task": "fold the cloth from bottom left to top right",
+        "n_event": 26,
+        "n_no_event": 4,
+        "sigma_ratio": 1.5997004706537283,
+        "amplitude_ratio": 0.8829813303927675
+      },
+      {
+        "task": "fold the cloth from bottom left to top right",
+        "n_event": 14,
+        "n_no_event": 16,
+        "sigma_ratio": 1.0566989821920756,
+        "amplitude_ratio": 1.0015772522849455
+      },
+      {
+        "task": "fold the cloth from bottom left to top right",
+        "n_event": 10,
+        "n_no_event": 20,
+        "sigma_ratio": 1.127173626004398,
+        "amplitude_ratio": 0.9566804296268467
+      },
+      {
+        "task": "fold the cloth from bottom left to top right",
+        "n_event": 6,
+        "n_no_event": 24,
+        "sigma_ratio": 0.8023558180855911,
+        "amplitude_ratio": 0.9922979445941364
+      },
+      {
+        "task": "fold the cloth from top left to bottom right",
+        "n_event": 23,
+        "n_no_event": 7,
+        "sigma_ratio": 1.3975667765999058,
+        "amplitude_ratio": 0.7838977986053396
+      },
+      {
+        "task": "fold the cloth from top left to bottom right",
+        "n_event": 15,
+        "n_no_event": 15,
+        "sigma_ratio": 1.1997979214075483,
+        "amplitude_ratio": 1.1416822546779481
+      },
+      {
+        "task": "fold the cloth from top left to bottom right",
+        "n_event": 9,
+        "n_no_event": 21,
+        "sigma_ratio": 1.189932743030582,
+        "amplitude_ratio": 1.0327738758815426
+      },
+      {
+        "task": "fold the cloth from top left to bottom right",
+        "n_event": 6,
+        "n_no_event": 24,
+        "sigma_ratio": 1.056771433584514,
+        "amplitude_ratio": 1.0607369028314233
+      },
+      {
+        "task": "unfold the cloth from top right to bottom left",
+        "n_event": 22,
+        "n_no_event": 8,
+        "sigma_ratio": 1.5235521397453171,
+        "amplitude_ratio": 0.772436236636707
+      },
+      {
+        "task": "unfold the cloth from top right to bottom left",
+        "n_event": 14,
+        "n_no_event": 16,
+        "sigma_ratio": 1.625319618368313,
+        "amplitude_ratio": 1.0273247343867726
+      },
+      {
+        "task": "unfold the cloth from top right to bottom left",
+        "n_event": 9,
+        "n_no_event": 21,
+        "sigma_ratio": 1.0617337528820685,
+        "amplitude_ratio": 0.9524869784205686
+      },
+      {
+        "task": "unfold the cloth from top right to bottom left",
+        "n_event": 8,
+        "n_no_event": 22,
+        "sigma_ratio": 1.6477077708486159,
+        "amplitude_ratio": 1.0899374229125776
+      },
+      {
+        "task": "unfold the cloth from left to right",
+        "n_event": 26,
+        "n_no_event": 4,
+        "sigma_ratio": 1.0503593419754176,
+        "amplitude_ratio": 0.9960038913658517
+      },
+      {
+        "task": "unfold the cloth from left to right",
+        "n_event": 18,
+        "n_no_event": 12,
+        "sigma_ratio": 1.26553762551433,
+        "amplitude_ratio": 0.9872171288835526
+      },
+      {
+        "task": "unfold the cloth from left to right",
+        "n_event": 12,
+        "n_no_event": 18,
+        "sigma_ratio": 1.556130028301141,
+        "amplitude_ratio": 0.9919337722614779
+      },
+      {
+        "task": "unfold the cloth from left to right",
+        "n_event": 7,
+        "n_no_event": 23,
+        "sigma_ratio": 1.2370879944593098,
+        "amplitude_ratio": 1.035319522157332
+      },
+      {
+        "task": "put pear in bowl",
+        "n_event": 17,
+        "n_no_event": 12,
+        "sigma_ratio": 1.0147792001901728,
+        "amplitude_ratio": 1.06132068736346
+      },
+      {
+        "task": "put pear in bowl",
+        "n_event": 10,
+        "n_no_event": 19,
+        "sigma_ratio": 1.2152862931851454,
+        "amplitude_ratio": 1.010580045315248
+      },
+      {
+        "task": "put pear in bowl",
+        "n_event": 11,
+        "n_no_event": 18,
+        "sigma_ratio": 1.3153517754622108,
+        "amplitude_ratio": 0.9534626995893184
+      },
+      {
+        "task": "put the blue figure on the top edge of the cloth",
+        "n_event": 23,
+        "n_no_event": 7,
+        "sigma_ratio": 1.1318840711783094,
+        "amplitude_ratio": 1.0906215453696297
+      },
+      {
+        "task": "put the blue figure on the top edge of the cloth",
+        "n_event": 12,
+        "n_no_event": 18,
+        "sigma_ratio": 1.1751680082448392,
+        "amplitude_ratio": 0.9241928364799646
+      },
+      {
+        "task": "put the blue figure on the top edge of the cloth",
+        "n_event": 12,
+        "n_no_event": 18,
+        "sigma_ratio": 1.062392679369476,
+        "amplitude_ratio": 0.9625909683213724
+      },
+      {
+        "task": "put the blue figure on the top edge of the cloth",
+        "n_event": 9,
+        "n_no_event": 21,
+        "sigma_ratio": 1.04467243591665,
+        "amplitude_ratio": 0.981242343352511
+      },
+      {
+        "task": "fold the cloth from left to right",
+        "n_event": 21,
+        "n_no_event": 9,
+        "sigma_ratio": 1.1418853145442793,
+        "amplitude_ratio": 0.8356891220829403
+      },
+      {
+        "task": "fold the cloth from left to right",
+        "n_event": 17,
+        "n_no_event": 13,
+        "sigma_ratio": 1.2482431677771804,
+        "amplitude_ratio": 1.0055824243684528
+      },
+      {
+        "task": "fold the cloth from left to right",
+        "n_event": 12,
+        "n_no_event": 18,
+        "sigma_ratio": 1.0539071808997815,
+        "amplitude_ratio": 0.997486205690624
+      },
+      {
+        "task": "fold the cloth from left to right",
+        "n_event": 9,
+        "n_no_event": 20,
+        "sigma_ratio": 1.2993125330135122,
+        "amplitude_ratio": 1.0561706847982648
+      },
+      {
+        "task": "unfold the cloth from top left to bottom right",
+        "n_event": 23,
+        "n_no_event": 7,
+        "sigma_ratio": 1.554949777393563,
+        "amplitude_ratio": 0.7692469544493555
+      },
+      {
+        "task": "unfold the cloth from top left to bottom right",
+        "n_event": 15,
+        "n_no_event": 15,
+        "sigma_ratio": 1.6365734487195691,
+        "amplitude_ratio": 0.9642378217120684
+      },
+      {
+        "task": "unfold the cloth from top left to bottom right",
+        "n_event": 13,
+        "n_no_event": 17,
+        "sigma_ratio": 1.4846231871523918,
+        "amplitude_ratio": 1.0205510065139547
+      },
+      {
+        "task": "unfold the cloth from top left to bottom right",
+        "n_event": 7,
+        "n_no_event": 23,
+        "sigma_ratio": 0.9865472441957983,
+        "amplitude_ratio": 1.0078242741844101
+      },
+      {
+        "task": "unfold the cloth from bottom right to top left",
+        "n_event": 16,
+        "n_no_event": 14,
+        "sigma_ratio": 2.702701391025647,
+        "amplitude_ratio": 1.224316179577827
+      },
+      {
+        "task": "unfold the cloth from bottom right to top left",
+        "n_event": 16,
+        "n_no_event": 14,
+        "sigma_ratio": 1.5754200752813101,
+        "amplitude_ratio": 0.9255071861195705
+      },
+      {
+        "task": "unfold the cloth from bottom right to top left",
+        "n_event": 13,
+        "n_no_event": 17,
+        "sigma_ratio": 1.2584145178782753,
+        "amplitude_ratio": 1.0275306849628536
+      },
+      {
+        "task": "unfold the cloth from bottom right to top left",
+        "n_event": 5,
+        "n_no_event": 25,
+        "sigma_ratio": 1.0833334094581768,
+        "amplitude_ratio": 0.9361976895105542
+      },
+      {
+        "task": "unfold the cloth from right to left",
+        "n_event": 19,
+        "n_no_event": 11,
+        "sigma_ratio": 1.112274559915633,
+        "amplitude_ratio": 0.7375254598233124
+      },
+      {
+        "task": "unfold the cloth from right to left",
+        "n_event": 17,
+        "n_no_event": 13,
+        "sigma_ratio": 0.9725398982737707,
+        "amplitude_ratio": 0.909750479136465
+      },
+      {
+        "task": "unfold the cloth from right to left",
+        "n_event": 11,
+        "n_no_event": 18,
+        "sigma_ratio": 1.1296485382713974,
+        "amplitude_ratio": 1.0162992097645744
+      },
+      {
+        "task": "unfold the cloth from right to left",
+        "n_event": 11,
+        "n_no_event": 18,
+        "sigma_ratio": 1.1193857406220038,
+        "amplitude_ratio": 0.9703062052668611
+      }
+    ],
+    "matched_sigma_ratio_median": 1.256435926886817,
+    "per_task": [
+      {
+        "task": "sweep into pile",
+        "rho_sigma_physical_amplitude": 0.1973192582818251
+      },
+      {
+        "task": "open the drawer",
+        "rho_sigma_physical_amplitude": 0.3406972706437946
+      },
+      {
+        "task": "close the drawer",
+        "rho_sigma_physical_amplitude": 0.7136575621121982
+      },
+      {
+        "task": "open microwave",
+        "rho_sigma_physical_amplitude": 0.026515730259045765
+      },
+      {
+        "task": "close microwave",
+        "rho_sigma_physical_amplitude": 0.5218008976732806
+      },
+      {
+        "task": "open fridge",
+        "rho_sigma_physical_amplitude": -0.17513021737620665
+      },
+      {
+        "task": "put carrot on plate",
+        "rho_sigma_physical_amplitude": -0.09134026491952715
+      },
+      {
+        "task": "take broccoli out of pan",
+        "rho_sigma_physical_amplitude": 0.396944879646774
+      },
+      {
+        "task": "take carrot off plate",
+        "rho_sigma_physical_amplitude": 0.19935412181401485
+      },
+      {
+        "task": "fold the cloth from bottom right to top left",
+        "rho_sigma_physical_amplitude": 0.1991318841586221
+      },
+      {
+        "task": "put broccoli in pot",
+        "rho_sigma_physical_amplitude": 0.14035002430724355
+      },
+      {
+        "task": "fold the cloth from bottom left to top right",
+        "rho_sigma_physical_amplitude": 0.041009792346690735
+      },
+      {
+        "task": "fold the cloth from top left to bottom right",
+        "rho_sigma_physical_amplitude": 0.08841586221265364
+      },
+      {
+        "task": "unfold the cloth from top right to bottom left",
+        "rho_sigma_physical_amplitude": 0.004826724078060975
+      },
+      {
+        "task": "close fridge",
+        "rho_sigma_physical_amplitude": 0.67739426349052
+      },
+      {
+        "task": "open oven",
+        "rho_sigma_physical_amplitude": 0.5595944162789082
+      },
+      {
+        "task": "unfold the cloth from left to right",
+        "rho_sigma_physical_amplitude": -0.02909229807625529
+      },
+      {
+        "task": "put pear in bowl",
+        "rho_sigma_physical_amplitude": 0.005934451288045677
+      },
+      {
+        "task": "close oven",
+        "rho_sigma_physical_amplitude": 0.2136946303945307
+      },
+      {
+        "task": "put the blue figure on the top edge of the cloth",
+        "rho_sigma_physical_amplitude": 0.13660670879922215
+      },
+      {
+        "task": "fold the cloth from left to right",
+        "rho_sigma_physical_amplitude": 0.4365617433414044
+      },
+      {
+        "task": "unfold the cloth from top left to bottom right",
+        "rho_sigma_physical_amplitude": 0.07818598513785678
+      },
+      {
+        "task": "unfold the cloth from bottom right to top left",
+        "rho_sigma_physical_amplitude": 0.24014862143204385
+      },
+      {
+        "task": "unfold the cloth from right to left",
+        "rho_sigma_physical_amplitude": -0.02838736537639828
+      }
+    ]
+  },
+  "fractal": {
+    "scope": "Training-demonstration descriptive diagnostic, not held-out or contact ground truth.",
+    "physical_amplitude_units": "m RMS of translational action",
+    "hand_event_definition": "in-chunk gripper command range > 0.5",
+    "physical_amplitude_correlation": 0.22157715019410473,
+    "hand_excursion_correlation": 0.3656094069412831,
+    "event": {
+      "n": 1168,
+      "sigma_median": 0.21368997544050217,
+      "physical_arm_amplitude_median": 0.03601228504336031,
+      "hand_event_fraction": 1.0,
+      "hand_energy_share": 0.6632156066841752,
+      "hand_error_constant_in_chunk_fraction": 0.2365869205607537
+    },
+    "no_event": {
+      "n": 1694,
+      "sigma_median": 0.16743209958076477,
+      "physical_arm_amplitude_median": 0.045005204571265764,
+      "hand_event_fraction": 0.0,
+      "hand_energy_share": 0.17150583547538986,
+      "hand_error_constant_in_chunk_fraction": 0.518629261705675
+    },
+    "high_sigma": {
+      "n": 575,
+      "sigma_median": 0.27387821674346924,
+      "physical_arm_amplitude_median": 0.04205418843786063,
+      "hand_event_fraction": 0.6660869565217391,
+      "hand_energy_share": 0.55804217997165,
+      "hand_error_constant_in_chunk_fraction": 0.3154512560805814
+    },
+    "low_sigma": {
+      "n": 575,
+      "sigma_median": 0.11456961929798126,
+      "physical_arm_amplitude_median": 0.0363547997315615,
+      "hand_event_fraction": 0.10782608695652174,
+      "hand_energy_share": 0.14134667608176946,
+      "hand_error_constant_in_chunk_fraction": 0.16419272217050823
+    },
+    "matched": [
+      {
+        "task": "open top drawer",
+        "n_event": 10,
+        "n_no_event": 20,
+        "sigma_ratio": 1.5975474344881782,
+        "amplitude_ratio": 0.9896777561888516
+      },
+      {
+        "task": "open top drawer",
+        "n_event": 5,
+        "n_no_event": 25,
+        "sigma_ratio": 1.8105169651318822,
+        "amplitude_ratio": 0.9886709265776987
+      },
+      {
+        "task": "open top drawer",
+        "n_event": 16,
+        "n_no_event": 14,
+        "sigma_ratio": 1.793266131286799,
+        "amplitude_ratio": 0.9542859547536353
+      },
+      {
+        "task": "open top drawer",
+        "n_event": 10,
+        "n_no_event": 20,
+        "sigma_ratio": 1.034137755684029,
+        "amplitude_ratio": 0.8708073497611674
+      },
+      {
+        "task": "pick banana from white bowl",
+        "n_event": 3,
+        "n_no_event": 27,
+        "sigma_ratio": 3.5035648509176673,
+        "amplitude_ratio": 0.9871684278861655
+      },
+      {
+        "task": "pick banana from white bowl",
+        "n_event": 8,
+        "n_no_event": 22,
+        "sigma_ratio": 2.4265209865804853,
+        "amplitude_ratio": 1.0321355906876757
+      },
+      {
+        "task": "pick banana from white bowl",
+        "n_event": 9,
+        "n_no_event": 21,
+        "sigma_ratio": 1.9333399865581309,
+        "amplitude_ratio": 0.9503162951715858
+      },
+      {
+        "task": "pick banana from white bowl",
+        "n_event": 9,
+        "n_no_event": 20,
+        "sigma_ratio": 1.6560509554140128,
+        "amplitude_ratio": 1.0154407851351217
+      },
+      {
+        "task": "open middle drawer",
+        "n_event": 10,
+        "n_no_event": 20,
+        "sigma_ratio": 1.8742998114442007,
+        "amplitude_ratio": 1.0240337841444478
+      },
+      {
+        "task": "open middle drawer",
+        "n_event": 14,
+        "n_no_event": 16,
+        "sigma_ratio": 1.7790580805263465,
+        "amplitude_ratio": 1.2169111651988862
+      },
+      {
+        "task": "open middle drawer",
+        "n_event": 17,
+        "n_no_event": 13,
+        "sigma_ratio": 1.4572281906120448,
+        "amplitude_ratio": 0.98240266251419
+      },
+      {
+        "task": "open middle drawer",
+        "n_event": 18,
+        "n_no_event": 12,
+        "sigma_ratio": 1.4694810611641387,
+        "amplitude_ratio": 1.025812564465028
+      },
+      {
+        "task": "close middle drawer",
+        "n_event": 13,
+        "n_no_event": 17,
+        "sigma_ratio": 1.6198680519897941,
+        "amplitude_ratio": 0.8431333271011421
+      },
+      {
+        "task": "close middle drawer",
+        "n_event": 7,
+        "n_no_event": 23,
+        "sigma_ratio": 1.6467561532165458,
+        "amplitude_ratio": 1.054902911511976
+      },
+      {
+        "task": "close middle drawer",
+        "n_event": 11,
+        "n_no_event": 19,
+        "sigma_ratio": 1.7031657305976466,
+        "amplitude_ratio": 1.0452536868884983
+      },
+      {
+        "task": "close bottom drawer",
+        "n_event": 5,
+        "n_no_event": 25,
+        "sigma_ratio": 2.0071578165067887,
+        "amplitude_ratio": 0.966779127292502
+      },
+      {
+        "task": "close bottom drawer",
+        "n_event": 7,
+        "n_no_event": 23,
+        "sigma_ratio": 1.2174072391915363,
+        "amplitude_ratio": 1.02552418616944
+      },
+      {
+        "task": "close bottom drawer",
+        "n_event": 5,
+        "n_no_event": 25,
+        "sigma_ratio": 1.383077981457889,
+        "amplitude_ratio": 1.0686910968846606
+      },
+      {
+        "task": "close bottom drawer",
+        "n_event": 11,
+        "n_no_event": 19,
+        "sigma_ratio": 1.219153907070053,
+        "amplitude_ratio": 0.9819495522123336
+      },
+      {
+        "task": "open bottom drawer",
+        "n_event": 6,
+        "n_no_event": 24,
+        "sigma_ratio": 2.300101665823225,
+        "amplitude_ratio": 1.3328222047768798
+      },
+      {
+        "task": "open bottom drawer",
+        "n_event": 13,
+        "n_no_event": 17,
+        "sigma_ratio": 2.1176403969848594,
+        "amplitude_ratio": 1.0117078824029895
+      },
+      {
+        "task": "open bottom drawer",
+        "n_event": 7,
+        "n_no_event": 23,
+        "sigma_ratio": 1.6191233084524048,
+        "amplitude_ratio": 0.9763149695710897
+      },
+      {
+        "task": "open bottom drawer",
+        "n_event": 8,
+        "n_no_event": 22,
+        "sigma_ratio": 1.8959616093572285,
+        "amplitude_ratio": 1.0448217086778488
+      },
+      {
+        "task": "close top drawer",
+        "n_event": 18,
+        "n_no_event": 12,
+        "sigma_ratio": 1.28001550477205,
+        "amplitude_ratio": 1.2235121973778207
+      },
+      {
+        "task": "close top drawer",
+        "n_event": 11,
+        "n_no_event": 18,
+        "sigma_ratio": 1.7140264151079163,
+        "amplitude_ratio": 0.9098779727844787
+      },
+      {
+        "task": "close top drawer",
+        "n_event": 14,
+        "n_no_event": 15,
+        "sigma_ratio": 1.3163031929872562,
+        "amplitude_ratio": 1.0206675317205882
+      },
+      {
+        "task": "close top drawer",
+        "n_event": 14,
+        "n_no_event": 15,
+        "sigma_ratio": 1.384999947474749,
+        "amplitude_ratio": 0.8814956119796771
+      },
+      {
+        "task": "pick orange from white bowl",
+        "n_event": 20,
+        "n_no_event": 10,
+        "sigma_ratio": 3.4758982675083177,
+        "amplitude_ratio": 1.0232572176733543
+      },
+      {
+        "task": "pick orange from white bowl",
+        "n_event": 12,
+        "n_no_event": 18,
+        "sigma_ratio": 2.0730244850395745,
+        "amplitude_ratio": 0.9170962465494769
+      },
+      {
+        "task": "pick orange from white bowl",
+        "n_event": 3,
+        "n_no_event": 27,
+        "sigma_ratio": 1.6060836700023629,
+        "amplitude_ratio": 0.8132139014877655
+      },
+      {
+        "task": "pick orange from white bowl",
+        "n_event": 3,
+        "n_no_event": 27,
+        "sigma_ratio": 1.7121415027313553,
+        "amplitude_ratio": 1.3292768017191772
+      },
+      {
+        "task": "pick apple from white bowl",
+        "n_event": 12,
+        "n_no_event": 18,
+        "sigma_ratio": 3.6776464247021474,
+        "amplitude_ratio": 1.0268608708719382
+      },
+      {
+        "task": "pick apple from white bowl",
+        "n_event": 12,
+        "n_no_event": 17,
+        "sigma_ratio": 1.6394162995735213,
+        "amplitude_ratio": 1.0625996153069657
+      },
+      {
+        "task": "pick apple from white bowl",
+        "n_event": 17,
+        "n_no_event": 12,
+        "sigma_ratio": 1.8728978511278265,
+        "amplitude_ratio": 0.9721392207759875
+      },
+      {
+        "task": "pick apple from white bowl",
+        "n_event": 8,
+        "n_no_event": 21,
+        "sigma_ratio": 1.3659395235429777,
+        "amplitude_ratio": 0.9202207257483096
+      },
+      {
+        "task": "place blue plastic bottle upright",
+        "n_event": 14,
+        "n_no_event": 16,
+        "sigma_ratio": 1.1329216682233045,
+        "amplitude_ratio": 0.652270182556293
+      },
+      {
+        "task": "place blue plastic bottle upright",
+        "n_event": 18,
+        "n_no_event": 12,
+        "sigma_ratio": 1.1912976930132713,
+        "amplitude_ratio": 0.9434824937710643
+      },
+      {
+        "task": "place blue plastic bottle upright",
+        "n_event": 15,
+        "n_no_event": 15,
+        "sigma_ratio": 1.0572679942919305,
+        "amplitude_ratio": 0.9878264405626044
+      },
+      {
+        "task": "place blue plastic bottle upright",
+        "n_event": 6,
+        "n_no_event": 24,
+        "sigma_ratio": 1.0004361003825795,
+        "amplitude_ratio": 1.1043657813150196
+      },
+      {
+        "task": "place green can upright",
+        "n_event": 15,
+        "n_no_event": 15,
+        "sigma_ratio": 1.1362273026011074,
+        "amplitude_ratio": 0.9335489148928814
+      },
+      {
+        "task": "place green can upright",
+        "n_event": 10,
+        "n_no_event": 20,
+        "sigma_ratio": 1.3530812887734898,
+        "amplitude_ratio": 1.0084380273028966
+      },
+      {
+        "task": "place green can upright",
+        "n_event": 11,
+        "n_no_event": 19,
+        "sigma_ratio": 1.195491270564067,
+        "amplitude_ratio": 1.0155300483642964
+      },
+      {
+        "task": "place green can upright",
+        "n_event": 7,
+        "n_no_event": 23,
+        "sigma_ratio": 1.000520022255636,
+        "amplitude_ratio": 0.8285497918899996
+      },
+      {
+        "task": "place water bottle upright",
+        "n_event": 15,
+        "n_no_event": 15,
+        "sigma_ratio": 1.8845520425495548,
+        "amplitude_ratio": 0.9737389131349575
+      },
+      {
+        "task": "place water bottle upright",
+        "n_event": 16,
+        "n_no_event": 14,
+        "sigma_ratio": 1.4710409707227237,
+        "amplitude_ratio": 1.0358543280328905
+      },
+      {
+        "task": "place water bottle upright",
+        "n_event": 4,
+        "n_no_event": 26,
+        "sigma_ratio": 1.3171308425389192,
+        "amplitude_ratio": 0.911486559415719
+      },
+      {
+        "task": "place coke can upright",
+        "n_event": 19,
+        "n_no_event": 11,
+        "sigma_ratio": 1.6332535681281792,
+        "amplitude_ratio": 0.8695087493320632
+      },
+      {
+        "task": "place coke can upright",
+        "n_event": 16,
+        "n_no_event": 14,
+        "sigma_ratio": 1.8041443536933677,
+        "amplitude_ratio": 1.019331008611156
+      },
+      {
+        "task": "place coke can upright",
+        "n_event": 13,
+        "n_no_event": 17,
+        "sigma_ratio": 1.658095084872819,
+        "amplitude_ratio": 1.017737736141282
+      },
+      {
+        "task": "place coke can upright",
+        "n_event": 5,
+        "n_no_event": 25,
+        "sigma_ratio": 1.1931670572007527,
+        "amplitude_ratio": 0.9087002186641822
+      },
+      {
+        "task": "place pepsi can upright",
+        "n_event": 15,
+        "n_no_event": 15,
+        "sigma_ratio": 1.1983727236153527,
+        "amplitude_ratio": 1.286717892348871
+      },
+      {
+        "task": "place pepsi can upright",
+        "n_event": 21,
+        "n_no_event": 9,
+        "sigma_ratio": 1.021923298793915,
+        "amplitude_ratio": 0.9608097191234711
+      },
+      {
+        "task": "place pepsi can upright",
+        "n_event": 14,
+        "n_no_event": 16,
+        "sigma_ratio": 1.497003160332242,
+        "amplitude_ratio": 0.963452122582382
+      },
+      {
+        "task": "place pepsi can upright",
+        "n_event": 7,
+        "n_no_event": 23,
+        "sigma_ratio": 1.0840608530958173,
+        "amplitude_ratio": 0.9692649053060886
+      },
+      {
+        "task": "place 7up can upright",
+        "n_event": 13,
+        "n_no_event": 17,
+        "sigma_ratio": 0.940349022624028,
+        "amplitude_ratio": 1.04553039306763
+      },
+      {
+        "task": "place 7up can upright",
+        "n_event": 11,
+        "n_no_event": 19,
+        "sigma_ratio": 1.0862354955796127,
+        "amplitude_ratio": 1.0149270316507564
+      },
+      {
+        "task": "place 7up can upright",
+        "n_event": 13,
+        "n_no_event": 17,
+        "sigma_ratio": 1.1312532220853153,
+        "amplitude_ratio": 0.9547790353161293
+      },
+      {
+        "task": "place 7up can upright",
+        "n_event": 5,
+        "n_no_event": 25,
+        "sigma_ratio": 1.0548664068803004,
+        "amplitude_ratio": 0.8266438254541023
+      },
+      {
+        "task": "knock blue plastic bottle over",
+        "n_event": 15,
+        "n_no_event": 15,
+        "sigma_ratio": 1.2177963484855672,
+        "amplitude_ratio": 0.9107933611080287
+      },
+      {
+        "task": "knock blue plastic bottle over",
+        "n_event": 15,
+        "n_no_event": 15,
+        "sigma_ratio": 1.0947498416986279,
+        "amplitude_ratio": 1.0864198571063162
+      },
+      {
+        "task": "knock blue plastic bottle over",
+        "n_event": 9,
+        "n_no_event": 21,
+        "sigma_ratio": 1.0733029734727844,
+        "amplitude_ratio": 1.0020191932506635
+      },
+      {
+        "task": "knock blue plastic bottle over",
+        "n_event": 10,
+        "n_no_event": 20,
+        "sigma_ratio": 1.0707832618214743,
+        "amplitude_ratio": 0.9288911436331513
+      },
+      {
+        "task": "knock redbull can over",
+        "n_event": 18,
+        "n_no_event": 12,
+        "sigma_ratio": 0.9465354753826324,
+        "amplitude_ratio": 1.2311729478806004
+      },
+      {
+        "task": "knock redbull can over",
+        "n_event": 19,
+        "n_no_event": 10,
+        "sigma_ratio": 1.1903254351938655,
+        "amplitude_ratio": 0.9313448198833548
+      },
+      {
+        "task": "knock redbull can over",
+        "n_event": 16,
+        "n_no_event": 13,
+        "sigma_ratio": 0.9927811943770639,
+        "amplitude_ratio": 1.010208238399738
+      },
+      {
+        "task": "knock redbull can over",
+        "n_event": 6,
+        "n_no_event": 23,
+        "sigma_ratio": 1.4990737907914993,
+        "amplitude_ratio": 1.0411787916047601
+      },
+      {
+        "task": "knock coke can over",
+        "n_event": 19,
+        "n_no_event": 10,
+        "sigma_ratio": 1.259656929877552,
+        "amplitude_ratio": 1.0397405049665318
+      },
+      {
+        "task": "knock coke can over",
+        "n_event": 25,
+        "n_no_event": 4,
+        "sigma_ratio": 1.0806484445926523,
+        "amplitude_ratio": 1.025150451904521
+      },
+      {
+        "task": "knock coke can over",
+        "n_event": 18,
+        "n_no_event": 11,
+        "sigma_ratio": 0.8943768945182433,
+        "amplitude_ratio": 1.086391067267622
+      },
+      {
+        "task": "knock coke can over",
+        "n_event": 12,
+        "n_no_event": 16,
+        "sigma_ratio": 1.0504455431692943,
+        "amplitude_ratio": 0.8006468755267702
+      },
+      {
+        "task": "knock green can over",
+        "n_event": 22,
+        "n_no_event": 8,
+        "sigma_ratio": 1.2189498710544062,
+        "amplitude_ratio": 0.9220467290706655
+      },
+      {
+        "task": "knock green can over",
+        "n_event": 19,
+        "n_no_event": 11,
+        "sigma_ratio": 0.986219036370427,
+        "amplitude_ratio": 0.9523904710093768
+      },
+      {
+        "task": "knock green can over",
+        "n_event": 13,
+        "n_no_event": 17,
+        "sigma_ratio": 1.0507666921847894,
+        "amplitude_ratio": 0.8922738132353121
+      },
+      {
+        "task": "knock green can over",
+        "n_event": 4,
+        "n_no_event": 26,
+        "sigma_ratio": 0.9247984005153005,
+        "amplitude_ratio": 0.9371815148985441
+      },
+      {
+        "task": "place orange can upright",
+        "n_event": 23,
+        "n_no_event": 7,
+        "sigma_ratio": 1.3562367721990811,
+        "amplitude_ratio": 0.9604184912316304
+      },
+      {
+        "task": "place orange can upright",
+        "n_event": 14,
+        "n_no_event": 16,
+        "sigma_ratio": 1.2980756568917402,
+        "amplitude_ratio": 0.9752335472490344
+      },
+      {
+        "task": "place orange can upright",
+        "n_event": 10,
+        "n_no_event": 20,
+        "sigma_ratio": 1.1034425986748067,
+        "amplitude_ratio": 0.9471854400571232
+      },
+      {
+        "task": "place orange can upright",
+        "n_event": 3,
+        "n_no_event": 27,
+        "sigma_ratio": 1.3484543863337417,
+        "amplitude_ratio": 0.8921617316347781
+      },
+      {
+        "task": "place redbull can upright",
+        "n_event": 22,
+        "n_no_event": 8,
+        "sigma_ratio": 1.4491390547827177,
+        "amplitude_ratio": 1.1564475191831203
+      },
+      {
+        "task": "place redbull can upright",
+        "n_event": 14,
+        "n_no_event": 16,
+        "sigma_ratio": 1.380389271810434,
+        "amplitude_ratio": 1.160502905662686
+      },
+      {
+        "task": "place redbull can upright",
+        "n_event": 9,
+        "n_no_event": 21,
+        "sigma_ratio": 1.4889568999427745,
+        "amplitude_ratio": 0.9735381102657524
+      },
+      {
+        "task": "place redbull can upright",
+        "n_event": 7,
+        "n_no_event": 23,
+        "sigma_ratio": 1.1557353958288503,
+        "amplitude_ratio": 0.9632541524112019
+      },
+      {
+        "task": "knock orange can over",
+        "n_event": 19,
+        "n_no_event": 11,
+        "sigma_ratio": 2.2445200038778297,
+        "amplitude_ratio": 0.9984985257944873
+      },
+      {
+        "task": "knock orange can over",
+        "n_event": 15,
+        "n_no_event": 15,
+        "sigma_ratio": 1.2461127764562683,
+        "amplitude_ratio": 1.074414824707974
+      },
+      {
+        "task": "knock orange can over",
+        "n_event": 12,
+        "n_no_event": 18,
+        "sigma_ratio": 1.0454144745250122,
+        "amplitude_ratio": 0.93566806628387
+      },
+      {
+        "task": "knock orange can over",
+        "n_event": 8,
+        "n_no_event": 22,
+        "sigma_ratio": 1.362307251317052,
+        "amplitude_ratio": 0.8864427897388742
+      },
+      {
+        "task": "knock water bottle over",
+        "n_event": 21,
+        "n_no_event": 9,
+        "sigma_ratio": 1.2408965556538072,
+        "amplitude_ratio": 1.4124393107380255
+      },
+      {
+        "task": "knock water bottle over",
+        "n_event": 21,
+        "n_no_event": 8,
+        "sigma_ratio": 0.658975205269355,
+        "amplitude_ratio": 0.9033627621385365
+      },
+      {
+        "task": "knock water bottle over",
+        "n_event": 20,
+        "n_no_event": 9,
+        "sigma_ratio": 1.1854267397957126,
+        "amplitude_ratio": 0.961974546141998
+      },
+      {
+        "task": "knock water bottle over",
+        "n_event": 7,
+        "n_no_event": 22,
+        "sigma_ratio": 1.1186871221186567,
+        "amplitude_ratio": 0.9249571300869933
+      },
+      {
+        "task": "knock 7up can over",
+        "n_event": 18,
+        "n_no_event": 12,
+        "sigma_ratio": 1.9034734634304078,
+        "amplitude_ratio": 1.3284989828189429
+      },
+      {
+        "task": "knock 7up can over",
+        "n_event": 19,
+        "n_no_event": 11,
+        "sigma_ratio": 1.80233177741425,
+        "amplitude_ratio": 0.9616047033095976
+      },
+      {
+        "task": "knock 7up can over",
+        "n_event": 8,
+        "n_no_event": 22,
+        "sigma_ratio": 1.7206501506191394,
+        "amplitude_ratio": 1.1365083033549683
+      },
+      {
+        "task": "knock 7up can over",
+        "n_event": 5,
+        "n_no_event": 25,
+        "sigma_ratio": 1.3613436251216249,
+        "amplitude_ratio": 0.9301767868646537
+      }
+    ],
+    "matched_sigma_ratio_median": 1.3546590304862853,
+    "per_task": [
+      {
+        "task": "open top drawer",
+        "rho_sigma_physical_amplitude": 0.5253628724216959
+      },
+      {
+        "task": "pick banana from white bowl",
+        "rho_sigma_physical_amplitude": 0.5556117362199118
+      },
+      {
+        "task": "open middle drawer",
+        "rho_sigma_physical_amplitude": 0.27224112785610105
+      },
+      {
+        "task": "close middle drawer",
+        "rho_sigma_physical_amplitude": 0.16925480936176124
+      },
+      {
+        "task": "close bottom drawer",
+        "rho_sigma_physical_amplitude": 0.523293284255851
+      },
+      {
+        "task": "open bottom drawer",
+        "rho_sigma_physical_amplitude": 0.4967636641433432
+      },
+      {
+        "task": "close top drawer",
+        "rho_sigma_physical_amplitude": 0.26236393165673355
+      },
+      {
+        "task": "pick orange from white bowl",
+        "rho_sigma_physical_amplitude": -0.0022987747391776075
+      },
+      {
+        "task": "pick apple from white bowl",
+        "rho_sigma_physical_amplitude": -0.07346131367171693
+      },
+      {
+        "task": "place blue plastic bottle upright",
+        "rho_sigma_physical_amplitude": -0.05047572748107507
+      },
+      {
+        "task": "place green can upright",
+        "rho_sigma_physical_amplitude": -0.04621154246822696
+      },
+      {
+        "task": "place water bottle upright",
+        "rho_sigma_physical_amplitude": 0.03630807694978818
+      },
+      {
+        "task": "place coke can upright",
+        "rho_sigma_physical_amplitude": 0.15057295645530938
+      },
+      {
+        "task": "place pepsi can upright",
+        "rho_sigma_physical_amplitude": 0.06541426487950551
+      },
+      {
+        "task": "place 7up can upright",
+        "rho_sigma_physical_amplitude": -0.13010625737898462
+      },
+      {
+        "task": "knock blue plastic bottle over",
+        "rho_sigma_physical_amplitude": -0.2162650184040558
+      },
+      {
+        "task": "knock redbull can over",
+        "rho_sigma_physical_amplitude": -0.062476584393591994
+      },
+      {
+        "task": "knock coke can over",
+        "rho_sigma_physical_amplitude": -0.0846445198453405
+      },
+      {
+        "task": "knock green can over",
+        "rho_sigma_physical_amplitude": 0.10760469477047016
+      },
+      {
+        "task": "place orange can upright",
+        "rho_sigma_physical_amplitude": -0.055649697895687196
+      },
+      {
+        "task": "place redbull can upright",
+        "rho_sigma_physical_amplitude": -0.05159386068476977
+      },
+      {
+        "task": "knock orange can over",
+        "rho_sigma_physical_amplitude": 0.1529620112507813
+      },
+      {
+        "task": "knock water bottle over",
+        "rho_sigma_physical_amplitude": 0.189587735467338
+      },
+      {
+        "task": "knock 7up can over",
+        "rho_sigma_physical_amplitude": 0.20207653309257584
+      }
+    ]
+  }
+}

@@ -11,16 +11,59 @@ at the same K and dimension (K=16: median 2.90, q95 3.97, max over 2000 draws
 7.90); a pure single-mode Gaussian cloud produces separations up to ~8, so
 only separations beyond that range indicate genuine structure.
 
+WidowX extension (2026-09-03): the same checkpoint was additionally probed on
+3000 Bridge training states and 1000 observations from its own saved rollouts.
+The screen uses K=8. Confirmation fixes PC1 on 32 fresh samples and tests a
+one- versus two-Gaussian fit on 64 further, independent samples, with BH
+correction, delta-BIC >= 10, separation >= 2 pooled SD, and at least 20% mass
+per component. One hundred on-policy states are confirmed from a uniform
+random sample so that the rate is interpretable; the original extreme-state
+confirmation is retained only as a discovery audit. Because evaluation
+executes four of the eight predicted actions, a post-hoc check repeats the
+same independent test on the executed four-step prefix. A subsequent causal
+audit fits modes on that executed prefix, forks exact simulator states with 12
+representative chunks per component, and follows each branch for 48 closed-loop
+steps.
+
 | policy | inference | SR | per-state sample spread | eff. rank | 2-means separation, median | states beyond null q95 (chance = 5%) | content of the variance |
 |---|---|---|---|---|---|---|---|
 | push-T MIP (vision) | 1 pass | 0.947 | 3e-4 px | 1.0 | — | — | none (float jitter) |
 | push-T HT (vision) | 1 pass | 0.927 | 3e-4 px | 1.0 | — | — | none (float jitter) |
 | GR1 HT | 1 pass | **0.475** | 0 (bitwise identical) | — | — | — | none (deterministic) |
 | GR1 flow | 4 steps | 0.441 | 0.299 | 3.1 | 2.85 (= null median) | 5/40, all within null max | single mode + undirected sampling noise |
+| GR00T WidowX flow | 4 steps | 0.571 | 1.258 | 2.9 | 3.55 (K=8 null median 3.09) | 82/1000 arm; 184/1000 gripper at screen | gripper timing + sparse arm-phase modes |
 | pi0.5 HT | 1 pass | **0.976** | 0 (bitwise identical) | — | — | — | none (deterministic) |
 | pi0.5 flow | 10 steps | 0.969 | 0.924 | 4.6 | 3.23 | 17/60; 14 beyond null max | single trajectory; timing of the gripper transition |
 
 Notes.
+- WidowX flow, unbiased deep confirmation: among 100 uniformly sampled
+  on-policy states, 27 pass the full-chunk test, 22 the gripper test and 6 the
+  arm test. Every full-chunk positive is accounted for by a gripper or arm
+  positive (22 and 5, respectively; the sixth arm split is diluted in full
+  space). A density-shape and raw-trajectory audit leaves three clearly
+  resolved, arm-dominated profiles: two drawer states choose between executing
+  a wrist rotation within this chunk and deferring it, and one eggplant state
+  shifts the same lateral-motion pulse within the 8-step horizon. The largest
+  examples differ by 12.4 degrees of yaw or 1.5 cm laterally. An independent
+  adjacent-frame probe localizes these splits to short windows: the two
+  replicated drawer cases pass at offsets {-2,0,+1} and {-1,0}, and the
+  eggplant case at {0,+2}; all disappear by offset +4. This is real local
+  arm-phase multimodality. In the executed-prefix reanalysis, 10/100 arm tests
+  are positive and 6/100 have two resolved peaks (three drawer, two
+  arm-dominated basket, and one gripper-correlated basket state), ruling out
+  the explanation that all modes occur only in discarded future actions.
+  A direct closed-loop fork screened 165 additional states, deep-tested 66,
+  and found four independently confirmed prefix modes (Bonferroni p=0.026;
+  two episodes per task). Three modes induce a measurable initial pose split;
+  their label is decoded from pose at 65/72 during the forced four-step prefix
+  (90.3%, permutation p=0.0002), but only 40/72 in the middle (55.6%, p=0.253)
+  and 31/72 late (43.1%, p=0.808). Late centroid separation is 0.24--0.35 of
+  radial within-mode RMS, and no case has a significant late path, endpoint
+  metric, or success split. The fourth confirmed action mode produces no
+  measurable arm actuation. Thus these modes causally change the immediate
+  maneuver but do not behave as persistent route variables.
+  Full protocol, raw outputs and figures are in
+  `widowx_mm/widowx_experiment_report.md`.
 - pi0.5 flow: the 14 states beyond the null's full range are all
   gripper-timing splits (share of the cluster-difference energy in the gripper
   channel 0.53-0.95, median 0.66). At the most separated state
@@ -47,8 +90,10 @@ Notes.
 - GR1 extreme-state search, 3000 screened states (K=8; 10.1% exceed the K=8
   null q95 vs 5% chance), top 30 deep-verified with fresh K=32 samples: 15
   states beyond the K=32 null maximum (separations 4.7-8.7). Every one
-  splits on the same two binary hand-command channel groups (dims 22-24 or
-  15-18; the dominant channel takes two discrete levels). Per-sample
+  splits on one of two articulated-hand joint groups (dims 20-25 or 14-19).
+  Although these are continuous-valued joint targets, the fingers move
+  together between two narrow open/close configurations; the dominant
+  channels are dims 24 or 18. Per-sample
   classification at those 15 states: 348/480 hold a constant level across
   the whole 8-step chunk, 118/480 contain exactly one coherent transition,
   14/480 (3%) flicker. This is the same event-timing phenomenon as pi0.5's
@@ -63,13 +108,84 @@ Notes.
   actions and all its sample variance is seeded latent noise of that process
   (identical-seed control collapses spread 48x).
 
-Conclusion: at the action-chunk level none of the policies samples
-alternative actions. Flow-head sampling variance is undirected noise plus,
-at a small fraction of states (~3% on GR1, ~25% of probed states on pi0.5
-weighted by its longer chunk), the jittered timing of a discrete
-open/close event on a single trajectory. A deterministic single-pass head
-therefore loses nothing at execution, which matches the success rates
-(GR1 HT 0.475 vs flow 0.441; pi0.5 HT 0.976 vs flow 0.969).
+### Contact-state channel ablation
+
+The held-out density audit evaluates the same 30 adversarial GR1 states three
+ways, so only channel inclusion changes. PC1 is discovered on samples disjoint
+from all evaluated draws; a one-Gaussian density, Student-t density, and
+two-Gaussian mixture are compared by four-fold held-out likelihood. Gripper is
+excluded for WidowX and pi0.5. `1G > 2G` counts states whose state-averaged
+held-out score favors the single Gaussian; delta LL is the median 2G-minus-1G
+score in nats per projected draw.
+
+| policy / subspace | states | 1G > 2G | median delta LL | exact-normality BH rejects |
+|---|---:|---:|---:|---:|
+| WidowX arm, no detected phase split | 90 uniform | 53/90 | -0.018 | — |
+| WidowX arm, detected local phase | 10 uniform | 0/10 | +0.170 | — |
+| GR1 arm + waist | 30 adversarial | **29/30** | **-0.279** | **1/30** |
+| GR1 articulated hands | 30 adversarial | 14/30 | +0.256 | 26/30 |
+| GR1 all 29 joints | 30 adversarial | 14/30 | +0.246 | 26/30 |
+| pi0.5 arm | 36 adversarial | **32/36** | **-0.266** | **3/36** |
+
+The ablation localizes GR1's full-action non-Gaussianity to the articulated
+hands: adding the hand channels changes both predictive mixture preference and
+exact-normality rejection, whereas arm+waist remains single-component. Exact
+normality is also rejected on the independent arm PC1 in 45/100 WidowX states,
+mostly because of skew and the sparse phase cases; the supported wording is
+therefore "single Gaussian component" or "single continuous basin," not
+"mathematically Gaussian everywhere." Full protocol and raw results:
+`gaussianity/action_basin_report.md`.
+
+An exact-state WidowX intervention separately tests whether the continuous
+mean is executable. At 40 on-policy states, the arm mean estimated from 64
+same-observation draws is executed against eight fresh reference chunks while
+holding the gripper sequence matched within each comparison. The mean is
+outside the empirical 95% reference-path envelope in 0/40 states. Its median
+path-centroid distance is 0.415 reference RMS in position and 0.382 in
+orientation, substantially below the nearest sampled arm medoid (0.770 and
+0.575; paired p=6.5e-8 and 2.0e-5). This supports mean-action validity, not
+exact Gaussianity. Full protocol: `widowx_mm/widowx_arm_mean_report.md`.
+
+Conclusion: the iterative heads do not show broad alternative-route sampling.
+GR1 body motion is a single noisy component while its full-vector structure is
+articulated-hand event timing; pi0.5's resolved structure is likewise
+gripper-event timing. WidowX makes the literal "unimodal" claim untenable: it has frequent
+gripper modes (22/100 on-policy states) and sparse but real arm-phase modes
+(6/100 statistical arm splits; 3/100 clearly resolved and arm-dominated after
+the geometric audit). Those arm modes are short-lived execute/defer or phase
+shifts along one local maneuver, not different targets or routes. The
+closed-loop intervention strengthens that interpretation for the tested
+WidowX modes: a strong immediate mode signal disappears under replanning. The
+reviewer-safe claim is therefore that learned stochasticity is dominated by
+local event timing and maneuver phase, while persistent semantic-plan
+multimodality is not observed in these probes.
+
+## Figure: WidowX local modes (`widowx_mm/widowx_main_modes.png/.pdf`)
+
+Three uniformly sampled on-policy states, each with 64 independent
+confirmation chunks. Left: the exact observation; middle: the confirmation
+samples projected onto PC1 fixed from a separate 32-sample discovery batch,
+with the two fitted components; right: every sampled chunk and the two cluster
+means in physical units. The rows show a drawer wrist execute/defer split, two
+phase-shifted lateral pulses for eggplant transport, and gripper-close timing.
+The first two rows are genuine arm distributions, but neither is a different
+route. Script: `widowx_mm/make_widowx_mm_audit.py`.
+
+## Figure: WidowX same-state closed-loop forks (`widowx_mm/widowx_branching_audit.png/.pdf`)
+
+Modes are fit only over the four actions executed before replanning. Panels a
+and b show all 24 exact-state branches for one independently confirmed drawer
+and basket case (12 representative chunks per action component); thick lines
+are component means, circles mark the end of the forced prefix, and crosses
+mark the final state after 48 simulator steps. Panel c gives
+leave-one-branch-out mode decoding from full end-effector pose with Wilson 95%
+intervals. Panel d plots Euclidean mode-centroid distance divided by radial
+within-mode RMS; panel e relates independent action-space evidence to late
+spatial separation. Decoding is strong during intervention and at chance
+thereafter, while every late between/within ratio is below one. The fourth
+accepted case is omitted from the route panels because its translation-space
+mode causes no measurable end-effector motion. Script:
+`widowx_mm/make_widowx_branching_audit.py`.
 
 ## LaTeX
 
@@ -85,17 +201,20 @@ push-T MIP & 1 pass & 0.947 & $3{\times}10^{-4}$\,px & --- & --- & none (float j
 push-T HT  & 1 pass & 0.927 & $3{\times}10^{-4}$\,px & --- & --- & none (float jitter) \\
 GR1 HT     & 1 pass & \textbf{0.475} & 0 & --- & --- & none (deterministic) \\
 GR1 flow   & 4 steps & 0.441 & 0.299 & 2.85 & 5/40, all $\le$ null max & single mode $+$ sampling noise \\
+GR00T WidowX flow & 4 steps & 0.571 & 1.258 & 3.55 & 82/1000 arm; 184/1000 gripper & gripper timing $+$ sparse arm phase \\
 $\pi_{0.5}$ HT   & 1 pass & \textbf{0.976} & 0 & --- & --- & none (deterministic) \\
 $\pi_{0.5}$ flow & 10 steps & 0.969 & 0.924 & 3.23 & 17/60; 14 $>$ null max & gripper-transition timing \\
 \bottomrule
 \end{tabular}
-\caption{Same-state $K{=}16$-sample probe at exact evaluation settings.
-Separation is the 2-means cluster separation on the first principal component
-of the $K$ sampled chunks, compared to a Monte-Carlo Gaussian null (median
-2.90, q95 3.97, max 7.90 over 2000 draws). No policy samples alternative
-actions at the chunk level: GR1-flow variance matches a single Gaussian mode,
-and every $\pi_{0.5}$ split beyond the null's range is a one-step difference
-in gripper-transition timing on one trajectory (Fig.~\ref{fig:flow_unimodal}).}
+\caption{Same-state sample probes at exact evaluation settings. For GR1 and
+$\pi_{0.5}$, separation is the 2-means cluster separation on the first principal
+component of the $K{=}16$ sampled chunks, compared to a Monte-Carlo Gaussian null (median
+2.90, q95 3.97, max 7.90 over 2000 draws). WidowX uses a K=8 on-policy screen
+with independent K=32/K=64 discovery/confirmation. Its unbiased 100-state
+confirmation finds 22 gripper and 6 arm positives; only three are clearly
+resolved arm-dominated profiles, all short-lived maneuver-phase splits. GR1
+matches a single noisy mode and $\pi_{0.5}$ differs only in gripper-transition
+timing (Fig.~\ref{fig:flow_unimodal}).}
 \label{tab:multimodality}
 \end{table}
 ```
@@ -173,6 +292,16 @@ wrists/shoulder), i.e., a 7-9 cm wrist jump between steps 0 and 1 and a 10-13 cm
 by step 7. Verified to be genuine model output: fresh re-draws reproduce the probe samples (corr
 0.97-1.00) and GR00T's own `unapply` gives the same absolute joints. This concerns the GR1 flow
 checkpoint's chunk shape, not the multimodality question (all samples share it).
+CAUSE IDENTIFIED (2026-08-28): the elbow offset is a probe-side normalization artifact. The
+GR00T mixture dataset recomputes q01/q99 statistics from the datasets it is given and overrides the
+processor's; the GR1 probe loader used a 4-dataset subset, so its STATE normalization differed from
+the 24-dataset training run (right-shoulder joints shifted by up to 0.34 rad after un-normalization),
+and every checkpoint (flow, MSE, L1, HT) then predicted the same constant elbow offset at chunk steps
+>= 1 (forward loss on such batches 0.041 vs the logged 0.0083). With all 24 datasets in the loader
+the offset disappears and the forward loss matches the training log. The GR1 chunk-path panels
+(`fig_chunk_paths_3d.png`, `fig_gr1_ee_clarity.png`) should be regenerated with a full-mixture
+loader before use; the multimodality reading (one bundle per state) is unaffected because all
+draws share the offset. Details: `gr1_ht_mechanism.md` section 4.
 Correction to the joint-space panels: GR00T relative actions are offsets from the current state,
 not per-step deltas, so the earlier cumulative-sum integration was wrong; both joint-space figures
 now plot the offset sequence directly (tube/fan reading unchanged; path lengths differ from before).
@@ -248,3 +377,28 @@ fig_chunk_paths_3d, fig_pi05_paths_boundary): paths are colored by the gripper s
 orange while open, blue after the close command, with a diamond at the close step - instead of one
 color per sample. The two sample groups therefore show as the same path with the diamond one step
 apart (step 46 in 22 samples, 47 in 10).
+
+## Long-tail videos: which state-action pairs HT down-weights (`videos/ht_longtail_ep*.mp4`, frame `fig_ht_longtail_frame.png`)
+
+pi0.5 / LIBERO, HT checkpoint run_ht 30k (legacy form nu'=2, i.e. nu_eff = 700) and flow checkpoint
+libero_ft. Probe `pi05/probe_ht_video.py`: 60 episodes scanned at stride 5 with the HT policy
+(S = chunk residual, sigma from the head, gate w = (nu+d)/(nu+S/sigma^2), "gated" = S/sigma^2 > nu);
+then every frame of 4 episodes (two most gated, median, least) with HT and flow (8 (t,noise) draws
+of the flow loss, flow's per-sample gradient is proportional to it). Renderer `videos/make_ht_video.py`.
+- Gating is rare and concentrated: median episode 0% of frames past the knee, q90 7%, max 40%.
+- ep 1634 (bowl on stove -> plate, 40% gated): frames 69-118 = exactly the 50-frame windows that
+  contain one demonstrator GRIPPER FLICKER (release at chunk step ~13, re-close spike at ~17-19,
+  release again). Both HT and flow predict one clean release; the residual is 77% in the gripper
+  channel; S/sigma^2 up to 819 vs nu 700, w down to 0.28. A single non-reproducible event in the
+  demonstration gates every chunk that straddles it.
+- ep 1663 (median): the one gated frame is the same phenomenon (gripper share 0.85).
+- ep 1491 (13% gated): frames 84-96 at the END of the episode with a SMALL residual (rms 0.044 vs
+  0.152 elsewhere) but a collapsed sigma (0.027): the head is over-confident on the idle terminal
+  frames, so the gate fires on sigma, not on a large error.
+- Flow's smallest gradients (bottom 10% of per-sample loss) sit almost entirely on the idle
+  end-of-episode frames (ep 1634: 110-124; ep 1491: 85-99; ep 1663: 114-137; ep 487: 78-87) plus a
+  few early static frames - where the action is nearly constant. Overlap with HT-gated frames is
+  small except on the terminal idle frames (ep 1491: 7/13).
+Reading: on pi0.5 the samples HT treats as long-tail are demonstrator gripper flickers (a discrete
+event with no visual cause the policy can learn) and over-confident terminal frames; flow's
+gradient is smallest where nothing happens. Neither set is a second behavior mode.

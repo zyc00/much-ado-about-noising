@@ -1,0 +1,2007 @@
+{
+  "dataset": "fractal",
+  "n": 2862,
+  "episodes": 144,
+  "tasks": 24,
+  "metadata": {
+    "dataset": "fractal",
+    "checkpoint": "/mnt/pfs/yuchen/groot/ft_fr_nu224/checkpoint-20000",
+    "seed": 20260908,
+    "tasks": [
+      "open top drawer",
+      "pick banana from white bowl",
+      "open middle drawer",
+      "close middle drawer",
+      "close bottom drawer",
+      "open bottom drawer",
+      "close top drawer",
+      "pick orange from white bowl",
+      "pick apple from white bowl",
+      "place blue plastic bottle upright",
+      "place green can upright",
+      "place water bottle upright",
+      "place coke can upright",
+      "place pepsi can upright",
+      "place 7up can upright",
+      "knock blue plastic bottle over",
+      "knock redbull can over",
+      "knock coke can over",
+      "knock green can over",
+      "place orange can upright",
+      "place redbull can upright",
+      "knock orange can over",
+      "knock water bottle over",
+      "knock 7up can over"
+    ],
+    "task_selection": "24 most frequent nonempty instructions; GR1 all 24 task datasets",
+    "episodes_per_task": 6,
+    "steps_per_episode": 20,
+    "scope": "Training-demonstration descriptive diagnostic, not held-out or contact ground truth.",
+    "ht_df": 224.0,
+    "ht_sbias": -0.5093,
+    "action_keys": [
+      "x",
+      "y",
+      "z",
+      "roll",
+      "pitch",
+      "yaw",
+      "gripper"
+    ],
+    "sigma": "masked mean softplus(s_raw + checkpoint ht_sbias) + 1e-3; all valid channels",
+    "episodes": [
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 17351,
+        "episode": 17351,
+        "length": 51,
+        "task_id": 0
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 27208,
+        "episode": 27208,
+        "length": 51,
+        "task_id": 0
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 56483,
+        "episode": 56483,
+        "length": 67,
+        "task_id": 0
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 66363,
+        "episode": 66363,
+        "length": 64,
+        "task_id": 0
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 75813,
+        "episode": 75813,
+        "length": 49,
+        "task_id": 0
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 83777,
+        "episode": 83777,
+        "length": 64,
+        "task_id": 0
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 8500,
+        "episode": 8500,
+        "length": 69,
+        "task_id": 1
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 13072,
+        "episode": 13072,
+        "length": 36,
+        "task_id": 1
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 17952,
+        "episode": 17952,
+        "length": 38,
+        "task_id": 1
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 47612,
+        "episode": 47612,
+        "length": 39,
+        "task_id": 1
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 59263,
+        "episode": 59263,
+        "length": 26,
+        "task_id": 1
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 79612,
+        "episode": 79612,
+        "length": 33,
+        "task_id": 1
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 18520,
+        "episode": 18520,
+        "length": 109,
+        "task_id": 2
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 25132,
+        "episode": 25132,
+        "length": 58,
+        "task_id": 2
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 39547,
+        "episode": 39547,
+        "length": 77,
+        "task_id": 2
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 40204,
+        "episode": 40204,
+        "length": 57,
+        "task_id": 2
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 44934,
+        "episode": 44934,
+        "length": 79,
+        "task_id": 2
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 57789,
+        "episode": 57789,
+        "length": 83,
+        "task_id": 2
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 6797,
+        "episode": 6797,
+        "length": 37,
+        "task_id": 3
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 15857,
+        "episode": 15857,
+        "length": 40,
+        "task_id": 3
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 17198,
+        "episode": 17198,
+        "length": 32,
+        "task_id": 3
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 26721,
+        "episode": 26721,
+        "length": 34,
+        "task_id": 3
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 48423,
+        "episode": 48423,
+        "length": 97,
+        "task_id": 3
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 69962,
+        "episode": 69962,
+        "length": 32,
+        "task_id": 3
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 21307,
+        "episode": 21307,
+        "length": 48,
+        "task_id": 4
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 32326,
+        "episode": 32326,
+        "length": 40,
+        "task_id": 4
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 38725,
+        "episode": 38725,
+        "length": 57,
+        "task_id": 4
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 44519,
+        "episode": 44519,
+        "length": 31,
+        "task_id": 4
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 48574,
+        "episode": 48574,
+        "length": 27,
+        "task_id": 4
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 67457,
+        "episode": 67457,
+        "length": 54,
+        "task_id": 4
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 28647,
+        "episode": 28647,
+        "length": 85,
+        "task_id": 5
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 50205,
+        "episode": 50205,
+        "length": 41,
+        "task_id": 5
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 59147,
+        "episode": 59147,
+        "length": 63,
+        "task_id": 5
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 68634,
+        "episode": 68634,
+        "length": 145,
+        "task_id": 5
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 77091,
+        "episode": 77091,
+        "length": 112,
+        "task_id": 5
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 82673,
+        "episode": 82673,
+        "length": 80,
+        "task_id": 5
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 3381,
+        "episode": 3381,
+        "length": 28,
+        "task_id": 6
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 35080,
+        "episode": 35080,
+        "length": 26,
+        "task_id": 6
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 36209,
+        "episode": 36209,
+        "length": 33,
+        "task_id": 6
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 38877,
+        "episode": 38877,
+        "length": 25,
+        "task_id": 6
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 41147,
+        "episode": 41147,
+        "length": 28,
+        "task_id": 6
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 76440,
+        "episode": 76440,
+        "length": 31,
+        "task_id": 6
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 11704,
+        "episode": 11704,
+        "length": 31,
+        "task_id": 7
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 26126,
+        "episode": 26126,
+        "length": 40,
+        "task_id": 7
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 72778,
+        "episode": 72778,
+        "length": 39,
+        "task_id": 7
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 73133,
+        "episode": 73133,
+        "length": 42,
+        "task_id": 7
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 77401,
+        "episode": 77401,
+        "length": 44,
+        "task_id": 7
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 79790,
+        "episode": 79790,
+        "length": 32,
+        "task_id": 7
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 2898,
+        "episode": 2898,
+        "length": 27,
+        "task_id": 8
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 6339,
+        "episode": 6339,
+        "length": 54,
+        "task_id": 8
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 23995,
+        "episode": 23995,
+        "length": 26,
+        "task_id": 8
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 37567,
+        "episode": 37567,
+        "length": 29,
+        "task_id": 8
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 40001,
+        "episode": 40001,
+        "length": 25,
+        "task_id": 8
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 75306,
+        "episode": 75306,
+        "length": 51,
+        "task_id": 8
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 2457,
+        "episode": 2457,
+        "length": 45,
+        "task_id": 9
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 24372,
+        "episode": 24372,
+        "length": 36,
+        "task_id": 9
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 25452,
+        "episode": 25452,
+        "length": 42,
+        "task_id": 9
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 28924,
+        "episode": 28924,
+        "length": 36,
+        "task_id": 9
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 29629,
+        "episode": 29629,
+        "length": 30,
+        "task_id": 9
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 45176,
+        "episode": 45176,
+        "length": 46,
+        "task_id": 9
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 4979,
+        "episode": 4979,
+        "length": 40,
+        "task_id": 10
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 16577,
+        "episode": 16577,
+        "length": 79,
+        "task_id": 10
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 36614,
+        "episode": 36614,
+        "length": 32,
+        "task_id": 10
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 47504,
+        "episode": 47504,
+        "length": 57,
+        "task_id": 10
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 60003,
+        "episode": 60003,
+        "length": 43,
+        "task_id": 10
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 70671,
+        "episode": 70671,
+        "length": 46,
+        "task_id": 10
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 17240,
+        "episode": 17240,
+        "length": 47,
+        "task_id": 11
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 18458,
+        "episode": 18458,
+        "length": 47,
+        "task_id": 11
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 18504,
+        "episode": 18504,
+        "length": 41,
+        "task_id": 11
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 19500,
+        "episode": 19500,
+        "length": 41,
+        "task_id": 11
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 28026,
+        "episode": 28026,
+        "length": 65,
+        "task_id": 11
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 34547,
+        "episode": 34547,
+        "length": 44,
+        "task_id": 11
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 17659,
+        "episode": 17659,
+        "length": 41,
+        "task_id": 12
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 19236,
+        "episode": 19236,
+        "length": 32,
+        "task_id": 12
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 30402,
+        "episode": 30402,
+        "length": 47,
+        "task_id": 12
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 47997,
+        "episode": 47997,
+        "length": 35,
+        "task_id": 12
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 52010,
+        "episode": 52010,
+        "length": 65,
+        "task_id": 12
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 76821,
+        "episode": 76821,
+        "length": 46,
+        "task_id": 12
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 4495,
+        "episode": 4495,
+        "length": 45,
+        "task_id": 13
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 18514,
+        "episode": 18514,
+        "length": 32,
+        "task_id": 13
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 24938,
+        "episode": 24938,
+        "length": 33,
+        "task_id": 13
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 37345,
+        "episode": 37345,
+        "length": 45,
+        "task_id": 13
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 51423,
+        "episode": 51423,
+        "length": 32,
+        "task_id": 13
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 83266,
+        "episode": 83266,
+        "length": 63,
+        "task_id": 13
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 9386,
+        "episode": 9386,
+        "length": 31,
+        "task_id": 14
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 18683,
+        "episode": 18683,
+        "length": 46,
+        "task_id": 14
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 43923,
+        "episode": 43923,
+        "length": 55,
+        "task_id": 14
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 50227,
+        "episode": 50227,
+        "length": 38,
+        "task_id": 14
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 57467,
+        "episode": 57467,
+        "length": 53,
+        "task_id": 14
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 86732,
+        "episode": 86732,
+        "length": 69,
+        "task_id": 14
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 1364,
+        "episode": 1364,
+        "length": 38,
+        "task_id": 15
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 8901,
+        "episode": 8901,
+        "length": 33,
+        "task_id": 15
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 18539,
+        "episode": 18539,
+        "length": 29,
+        "task_id": 15
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 54341,
+        "episode": 54341,
+        "length": 51,
+        "task_id": 15
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 55062,
+        "episode": 55062,
+        "length": 36,
+        "task_id": 15
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 70015,
+        "episode": 70015,
+        "length": 54,
+        "task_id": 15
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 5175,
+        "episode": 5175,
+        "length": 53,
+        "task_id": 16
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 22787,
+        "episode": 22787,
+        "length": 37,
+        "task_id": 16
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 32700,
+        "episode": 32700,
+        "length": 31,
+        "task_id": 16
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 48160,
+        "episode": 48160,
+        "length": 24,
+        "task_id": 16
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 55508,
+        "episode": 55508,
+        "length": 29,
+        "task_id": 16
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 67580,
+        "episode": 67580,
+        "length": 43,
+        "task_id": 16
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 729,
+        "episode": 729,
+        "length": 25,
+        "task_id": 17
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 17881,
+        "episode": 17881,
+        "length": 31,
+        "task_id": 17
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 20669,
+        "episode": 20669,
+        "length": 42,
+        "task_id": 17
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 26954,
+        "episode": 26954,
+        "length": 27,
+        "task_id": 17
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 65653,
+        "episode": 65653,
+        "length": 24,
+        "task_id": 17
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 85884,
+        "episode": 85884,
+        "length": 28,
+        "task_id": 17
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 5554,
+        "episode": 5554,
+        "length": 35,
+        "task_id": 18
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 6901,
+        "episode": 6901,
+        "length": 37,
+        "task_id": 18
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 15419,
+        "episode": 15419,
+        "length": 50,
+        "task_id": 18
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 40514,
+        "episode": 40514,
+        "length": 33,
+        "task_id": 18
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 58759,
+        "episode": 58759,
+        "length": 28,
+        "task_id": 18
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 86304,
+        "episode": 86304,
+        "length": 29,
+        "task_id": 18
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 12279,
+        "episode": 12279,
+        "length": 33,
+        "task_id": 19
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 33168,
+        "episode": 33168,
+        "length": 46,
+        "task_id": 19
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 35344,
+        "episode": 35344,
+        "length": 42,
+        "task_id": 19
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 57076,
+        "episode": 57076,
+        "length": 53,
+        "task_id": 19
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 81612,
+        "episode": 81612,
+        "length": 33,
+        "task_id": 19
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 82844,
+        "episode": 82844,
+        "length": 35,
+        "task_id": 19
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 45956,
+        "episode": 45956,
+        "length": 42,
+        "task_id": 20
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 52575,
+        "episode": 52575,
+        "length": 39,
+        "task_id": 20
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 64628,
+        "episode": 64628,
+        "length": 35,
+        "task_id": 20
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 64986,
+        "episode": 64986,
+        "length": 37,
+        "task_id": 20
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 71801,
+        "episode": 71801,
+        "length": 45,
+        "task_id": 20
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 80775,
+        "episode": 80775,
+        "length": 36,
+        "task_id": 20
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 9743,
+        "episode": 9743,
+        "length": 31,
+        "task_id": 21
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 19055,
+        "episode": 19055,
+        "length": 36,
+        "task_id": 21
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 59132,
+        "episode": 59132,
+        "length": 36,
+        "task_id": 21
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 62768,
+        "episode": 62768,
+        "length": 47,
+        "task_id": 21
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 72619,
+        "episode": 72619,
+        "length": 39,
+        "task_id": 21
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 76388,
+        "episode": 76388,
+        "length": 37,
+        "task_id": 21
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 7808,
+        "episode": 7808,
+        "length": 29,
+        "task_id": 22
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 21355,
+        "episode": 21355,
+        "length": 26,
+        "task_id": 22
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 33123,
+        "episode": 33123,
+        "length": 26,
+        "task_id": 22
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 46043,
+        "episode": 46043,
+        "length": 26,
+        "task_id": 22
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 69267,
+        "episode": 69267,
+        "length": 54,
+        "task_id": 22
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 79415,
+        "episode": 79415,
+        "length": 36,
+        "task_id": 22
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 29033,
+        "episode": 29033,
+        "length": 37,
+        "task_id": 23
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 34361,
+        "episode": 34361,
+        "length": 46,
+        "task_id": 23
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 49429,
+        "episode": 49429,
+        "length": 41,
+        "task_id": 23
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 56632,
+        "episode": 56632,
+        "length": 55,
+        "task_id": 23
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 66127,
+        "episode": 66127,
+        "length": 45,
+        "task_id": 23
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 76540,
+        "episode": 76540,
+        "length": 29,
+        "task_id": 23
+      }
+    ],
+    "inference_forward_max_difference": 0.0
+  },
+  "pooled_correlations": {
+    "arm_label_rms": 0.12086941950364825,
+    "arm_pred_rms": -0.002626020515692611,
+    "arm_residual_rms": 0.48746648986540664,
+    "hand_residual_rms": 0.6219583284022046,
+    "total_residual_rms": 0.7662898205789179,
+    "hand_label_range": 0.3656094069412831,
+    "hand_pred_range": 0.4154597858306712,
+    "arm_label_range": 0.2690838615995593,
+    "progress": 0.04484908998219055
+  },
+  "within_task_rank_correlations": {
+    "arm_label_rms": 0.14596804869000196,
+    "arm_pred_rms": 0.06425640840351288,
+    "arm_residual_rms": 0.4353436151666555,
+    "hand_residual_rms": 0.6070429825150023,
+    "total_residual_rms": 0.728892650526431,
+    "hand_label_range": 0.38577663869533163,
+    "hand_pred_range": 0.47583379061780934,
+    "arm_label_range": 0.22463402914253763,
+    "progress": 0.0710621488992649
+  },
+  "hand_range_partial_rank_given_arm_magnitude": 0.4705342666396276,
+  "per_task": [
+    {
+      "task": "open top drawer",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.5537259531911938,
+        "arm_pred_rms": 0.4778317938745746,
+        "arm_residual_rms": 0.6172859226335161,
+        "hand_residual_rms": 0.726164659622392,
+        "total_residual_rms": 0.8285158691575804,
+        "hand_label_range": 0.5967754029259339,
+        "hand_pred_range": 0.6998867157385268,
+        "arm_label_range": 0.5936453920411139,
+        "progress": 0.31674252443876116
+      }
+    },
+    {
+      "task": "pick banana from white bowl",
+      "n": 119,
+      "correlation": {
+        "arm_label_rms": 0.4516521862982481,
+        "arm_pred_rms": 0.20509186725537673,
+        "arm_residual_rms": 0.6079974362626407,
+        "hand_residual_rms": 0.7520947219844857,
+        "total_residual_rms": 0.8774391112377155,
+        "hand_label_range": 0.7048690511331914,
+        "hand_pred_range": 0.8136460928121365,
+        "arm_label_range": 0.5010228335089691,
+        "progress": -0.3608027897910376
+      }
+    },
+    {
+      "task": "open middle drawer",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.11250781304257239,
+        "arm_pred_rms": 0.10601430654906589,
+        "arm_residual_rms": 0.5777970692409193,
+        "hand_residual_rms": 0.7851426924497777,
+        "total_residual_rms": 0.8064171122994652,
+        "hand_label_range": 0.6277368406282242,
+        "hand_pred_range": 0.5257344749912517,
+        "arm_label_range": 0.2680325022571011,
+        "progress": 0.2789569462530958
+      }
+    },
+    {
+      "task": "close middle drawer",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.08786721300090282,
+        "arm_pred_rms": -0.06784498923536357,
+        "arm_residual_rms": 0.2672268907563025,
+        "hand_residual_rms": 0.7587585120056689,
+        "total_residual_rms": 0.7809014514896867,
+        "hand_label_range": 0.6936734918765288,
+        "hand_pred_range": 0.7311311715803573,
+        "arm_label_range": 0.2500312521702896,
+        "progress": 0.05767320746702564
+      }
+    },
+    {
+      "task": "close bottom drawer",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.5220293075908049,
+        "arm_pred_rms": 0.5043614139870825,
+        "arm_residual_rms": 0.4549760400027779,
+        "hand_residual_rms": 0.7014442328262618,
+        "total_residual_rms": 0.7604139176331688,
+        "hand_label_range": 0.4180602413164588,
+        "hand_pred_range": 0.6616497853290176,
+        "arm_label_range": 0.38142992817254545,
+        "progress": -0.21215283570141413
+      }
+    },
+    {
+      "task": "open bottom drawer",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.49008958955483023,
+        "arm_pred_rms": 0.1692270296548371,
+        "arm_residual_rms": 0.6315994166261545,
+        "hand_residual_rms": 0.8011181527381676,
+        "total_residual_rms": 0.8863393291200777,
+        "hand_label_range": 0.5440138506632699,
+        "hand_pred_range": 0.7412500237617272,
+        "arm_label_range": 0.4536086770072067,
+        "progress": 0.21631016690962238
+      }
+    },
+    {
+      "task": "close top drawer",
+      "n": 117,
+      "correlation": {
+        "arm_label_rms": 0.18916473565637287,
+        "arm_pred_rms": 0.08316474096719567,
+        "arm_residual_rms": 0.15553207750753043,
+        "hand_residual_rms": 0.734931972609572,
+        "total_residual_rms": 0.6474771089031756,
+        "hand_label_range": 0.5776878269127996,
+        "hand_pred_range": 0.5932467526404293,
+        "arm_label_range": 0.18085192074901235,
+        "progress": 0.027863023338089203
+      }
+    },
+    {
+      "task": "pick orange from white bowl",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.12965506225289047,
+        "arm_pred_rms": 0.07359538856865058,
+        "arm_residual_rms": 0.3446072643933606,
+        "hand_residual_rms": 0.8077714405075589,
+        "total_residual_rms": 0.8899715258004027,
+        "hand_label_range": 0.5512935829918093,
+        "hand_pred_range": 0.7186861127139753,
+        "arm_label_range": 0.13581522295878337,
+        "progress": -0.14103944297978604
+      }
+    },
+    {
+      "task": "pick apple from white bowl",
+      "n": 117,
+      "correlation": {
+        "arm_label_rms": -0.3209698931499048,
+        "arm_pred_rms": -0.3318871854815747,
+        "arm_residual_rms": -0.28488363380239473,
+        "hand_residual_rms": 0.8237522275491989,
+        "total_residual_rms": 0.712171619535734,
+        "hand_label_range": 0.6288667002451727,
+        "hand_pred_range": 0.7716071702696692,
+        "arm_label_range": -0.18400274245413997,
+        "progress": -0.2184128993637596
+      }
+    },
+    {
+      "task": "place blue plastic bottle upright",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": -0.027022709910410444,
+        "arm_pred_rms": -0.16391416070560455,
+        "arm_residual_rms": 0.32854364886450443,
+        "hand_residual_rms": 0.47344954510729903,
+        "total_residual_rms": 0.5720883394680185,
+        "hand_label_range": 0.29381903377225094,
+        "hand_pred_range": 0.3107775438347162,
+        "arm_label_range": 0.02615116701019118,
+        "progress": -0.10479195332477141
+      }
+    },
+    {
+      "task": "place green can upright",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": -0.11811931384123896,
+        "arm_pred_rms": -0.1548649211750816,
+        "arm_residual_rms": 0.39283283561358423,
+        "hand_residual_rms": 0.5887745481892134,
+        "total_residual_rms": 0.7186124036391416,
+        "hand_label_range": 0.3594686838291142,
+        "hand_pred_range": 0.4207682023662557,
+        "arm_label_range": 0.11071602194596845,
+        "progress": 0.30400772440113943
+      }
+    },
+    {
+      "task": "place water bottle upright",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.05076741440377803,
+        "arm_pred_rms": 0.04304465587888047,
+        "arm_residual_rms": 0.3310160427807486,
+        "hand_residual_rms": 0.5953718686987715,
+        "total_residual_rms": 0.6552677269254809,
+        "hand_label_range": 0.4977545519632858,
+        "hand_pred_range": 0.5637581794530427,
+        "arm_label_range": 0.2536981734842697,
+        "progress": 0.039063422834979114
+      }
+    },
+    {
+      "task": "place coke can upright",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.19507604694770467,
+        "arm_pred_rms": 0.051371623029377034,
+        "arm_residual_rms": 0.611514688520036,
+        "hand_residual_rms": 0.5509464231800116,
+        "total_residual_rms": 0.7651989721508436,
+        "hand_label_range": 0.4062114753801029,
+        "hand_pred_range": 0.5001286945374251,
+        "arm_label_range": 0.458010972984235,
+        "progress": 0.08940446816075995
+      }
+    },
+    {
+      "task": "place pepsi can upright",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": -0.008493645392041112,
+        "arm_pred_rms": -0.07653309257587332,
+        "arm_residual_rms": 0.6441905687894992,
+        "hand_residual_rms": 0.48556149732620313,
+        "total_residual_rms": 0.7061184804500312,
+        "hand_label_range": 0.3316810802471008,
+        "hand_pred_range": 0.24633242755808954,
+        "arm_label_range": 0.14992013334259321,
+        "progress": -0.17404487077977873
+      }
+    },
+    {
+      "task": "place 7up can upright",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.061295923328008886,
+        "arm_pred_rms": -0.1884922564066949,
+        "arm_residual_rms": 0.5821098687408847,
+        "hand_residual_rms": 0.41779290228488086,
+        "total_residual_rms": 0.7133273143968331,
+        "hand_label_range": 0.19973202104073018,
+        "hand_pred_range": 0.3971987032268959,
+        "arm_label_range": 0.10322939092992568,
+        "progress": 0.09978885838859343
+      }
+    },
+    {
+      "task": "knock blue plastic bottle over",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": -0.12126536565039238,
+        "arm_pred_rms": -0.19220084728106118,
+        "arm_residual_rms": 0.2558094312105007,
+        "hand_residual_rms": 0.45859673552640734,
+        "total_residual_rms": 0.5332731439683311,
+        "hand_label_range": 0.43829128274764634,
+        "hand_pred_range": 0.36276333279239037,
+        "arm_label_range": -0.1378567956108063,
+        "progress": 0.3880357563467775
+      }
+    },
+    {
+      "task": "knock redbull can over",
+      "n": 117,
+      "correlation": {
+        "arm_label_rms": 0.25431221807609883,
+        "arm_pred_rms": 0.12340961201276805,
+        "arm_residual_rms": 0.4529739693386683,
+        "hand_residual_rms": 0.45099255004066924,
+        "total_residual_rms": 0.5843261550450328,
+        "hand_label_range": 0.29255563026733233,
+        "hand_pred_range": 0.3659920221123829,
+        "arm_label_range": 0.33060588349892844,
+        "progress": 0.266460588845395
+      }
+    },
+    {
+      "task": "knock coke can over",
+      "n": 115,
+      "correlation": {
+        "arm_label_rms": 0.037875798942633945,
+        "arm_pred_rms": 0.176414424366764,
+        "arm_residual_rms": 0.5536968357926301,
+        "hand_residual_rms": 0.4771847178749873,
+        "total_residual_rms": 0.7589126489386886,
+        "hand_label_range": 0.15039524597961088,
+        "hand_pred_range": -0.036239080783993696,
+        "arm_label_range": 0.10209895052473764,
+        "progress": 0.018260912525724867
+      }
+    },
+    {
+      "task": "knock green can over",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.3660393082852975,
+        "arm_pred_rms": 0.41852211959163826,
+        "arm_residual_rms": 0.656490034030141,
+        "hand_residual_rms": 0.461353084776324,
+        "total_residual_rms": 0.7231266060143065,
+        "hand_label_range": 0.07173000878931865,
+        "hand_pred_range": 0.13509714684451157,
+        "arm_label_range": 0.2670016442146607,
+        "progress": 0.22762245713746862
+      }
+    },
+    {
+      "task": "place orange can upright",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": -0.1063754427390791,
+        "arm_pred_rms": -0.15772623098826305,
+        "arm_residual_rms": 0.2878463782207097,
+        "hand_residual_rms": 0.49003488095580655,
+        "total_residual_rms": 0.624189179804153,
+        "hand_label_range": 0.3718308388105589,
+        "hand_pred_range": 0.2963328022678535,
+        "arm_label_range": 0.008674213487047711,
+        "progress": -0.04701535198483678
+      }
+    },
+    {
+      "task": "place redbull can upright",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": -0.07269949302034863,
+        "arm_pred_rms": -0.20654906590735464,
+        "arm_residual_rms": 0.4062643239113827,
+        "hand_residual_rms": 0.5732466603502174,
+        "total_residual_rms": 0.7134870477116465,
+        "hand_label_range": 0.4495513598272548,
+        "hand_pred_range": 0.5796589460742279,
+        "arm_label_range": 0.10418084589207582,
+        "progress": 0.29060134834932366
+      }
+    },
+    {
+      "task": "knock orange can over",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.20270852142509896,
+        "arm_pred_rms": 0.1804569761789013,
+        "arm_residual_rms": 0.47529689561775124,
+        "hand_residual_rms": 0.5850938967700571,
+        "total_residual_rms": 0.7805333703729425,
+        "hand_label_range": 0.4028103406327019,
+        "hand_pred_range": 0.3718139852602264,
+        "arm_label_range": 0.22922117720219493,
+        "progress": -0.0007744480805997646
+      }
+    },
+    {
+      "task": "knock water bottle over",
+      "n": 117,
+      "correlation": {
+        "arm_label_rms": 0.3919285468087338,
+        "arm_pred_rms": 0.3464760448980203,
+        "arm_residual_rms": 0.6650931379160485,
+        "hand_residual_rms": 0.3645491465479776,
+        "total_residual_rms": 0.669281721590313,
+        "hand_label_range": 0.030354806750390838,
+        "hand_pred_range": 0.05485044569085194,
+        "arm_label_range": 0.42232013067781615,
+        "progress": 0.2170204849564603
+      }
+    },
+    {
+      "task": "knock 7up can over",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.17962358497117853,
+        "arm_pred_rms": 0.12917563719702754,
+        "arm_residual_rms": 0.42007083825265634,
+        "hand_residual_rms": 0.6980267555888034,
+        "total_residual_rms": 0.7816237238697131,
+        "hand_label_range": 0.5718973006377626,
+        "hand_pred_range": 0.585473939428989,
+        "arm_label_range": 0.3850059031877213,
+        "progress": 0.11272443193666438
+      }
+    }
+  ],
+  "top_sigma_quintile": {
+    "n": 575,
+    "sigma_median": 0.27387821674346924,
+    "arm_label_rms_median": 0.3302877706496578,
+    "arm_residual_rms": 0.22450857868073856,
+    "hand_residual_rms": 0.6179476252169543,
+    "hand_error_energy_share": 0.55804217997165,
+    "arm_error_energy_share": 0.4419578200283501,
+    "hand_label_range_median": 2.0,
+    "residual_rms_by_step": [
+      0.28259608711913103,
+      0.2939756173216674,
+      0.30550025424364163,
+      0.31159866460763597,
+      0.3178787733108955,
+      0.33030509130902824,
+      0.33013626094392706,
+      0.3258742931638665
+    ]
+  },
+  "bottom_sigma_quintile": {
+    "n": 575,
+    "sigma_median": 0.11456961929798126,
+    "arm_label_rms_median": 0.28138199648434614,
+    "arm_residual_rms": 0.12505379760973673,
+    "hand_residual_rms": 0.12428147025294509,
+    "hand_error_energy_share": 0.14134667608176946,
+    "arm_error_energy_share": 0.8586533239182308,
+    "hand_label_range_median": 0.0,
+    "residual_rms_by_step": [
+      0.1399890643536818,
+      0.11375475682426206,
+      0.10863079270725619,
+      0.11296740390799817,
+      0.11834592401094707,
+      0.12859777429661143,
+      0.1281715246527204,
+      0.14428128368459955
+    ]
+  },
+  "all": {
+    "n": 2862,
+    "sigma_median": 0.18359432369470596,
+    "arm_label_rms_median": 0.31549948199389233,
+    "arm_residual_rms": 0.17724921528419246,
+    "hand_residual_rms": 0.39451631863679376,
+    "hand_error_energy_share": 0.45225790676147376,
+    "arm_error_energy_share": 0.5477420932385263,
+    "hand_label_range_median": 0.0,
+    "residual_rms_by_step": [
+      0.2113691273311222,
+      0.20906924516518638,
+      0.20841352644554376,
+      0.2165754284428307,
+      0.22249841864319977,
+      0.22823128882623378,
+      0.23447143354902308,
+      0.24085425581759867
+    ]
+  },
+  "amplitude_matched_hand_change": [
+    {
+      "task_id": 0,
+      "n_low": 19,
+      "n_high": 11,
+      "sigma_ratio": 1.7817833639966822,
+      "arm_amplitude_ratio": 0.9363842769458155,
+      "arm_residual_ratio": 1.1055171604294913,
+      "hand_residual_ratio": 48.54376437319223
+    },
+    {
+      "task_id": 0,
+      "n_low": 16,
+      "n_high": 14,
+      "sigma_ratio": 1.5527637196550574,
+      "arm_amplitude_ratio": 1.0316812599113658,
+      "arm_residual_ratio": 0.955690822118649,
+      "hand_residual_ratio": 6.3419928923650435
+    },
+    {
+      "task_id": 1,
+      "n_low": 16,
+      "n_high": 14,
+      "sigma_ratio": 2.038771370332186,
+      "arm_amplitude_ratio": 1.0640127942460977,
+      "arm_residual_ratio": 1.076384061695877,
+      "hand_residual_ratio": 5.153264681040671
+    },
+    {
+      "task_id": 1,
+      "n_low": 18,
+      "n_high": 11,
+      "sigma_ratio": 1.712745918136735,
+      "arm_amplitude_ratio": 0.9470530734850906,
+      "arm_residual_ratio": 0.9099042710888621,
+      "hand_residual_ratio": 7.971376726356033
+    },
+    {
+      "task_id": 2,
+      "n_low": 15,
+      "n_high": 15,
+      "sigma_ratio": 1.9781397418947015,
+      "arm_amplitude_ratio": 1.0250719414341836,
+      "arm_residual_ratio": 1.3813645520525004,
+      "hand_residual_ratio": 2.065166626321795
+    },
+    {
+      "task_id": 2,
+      "n_low": 14,
+      "n_high": 16,
+      "sigma_ratio": 1.829476019014531,
+      "arm_amplitude_ratio": 0.9954295108280122,
+      "arm_residual_ratio": 0.9009812852874848,
+      "hand_residual_ratio": 2.304695675537307
+    },
+    {
+      "task_id": 2,
+      "n_low": 19,
+      "n_high": 11,
+      "sigma_ratio": 1.5934878780676214,
+      "arm_amplitude_ratio": 0.9616980368313932,
+      "arm_residual_ratio": 1.114275298671471,
+      "hand_residual_ratio": 11.44860818558912
+    },
+    {
+      "task_id": 2,
+      "n_low": 13,
+      "n_high": 17,
+      "sigma_ratio": 1.316059915344149,
+      "arm_amplitude_ratio": 0.9982605420369448,
+      "arm_residual_ratio": 0.9830264556642972,
+      "hand_residual_ratio": 2.9661348057906127
+    },
+    {
+      "task_id": 3,
+      "n_low": 17,
+      "n_high": 13,
+      "sigma_ratio": 1.6198680519897941,
+      "arm_amplitude_ratio": 0.8340775602489582,
+      "arm_residual_ratio": 0.9255380709223466,
+      "hand_residual_ratio": 3.197409065808544
+    },
+    {
+      "task_id": 4,
+      "n_low": 20,
+      "n_high": 10,
+      "sigma_ratio": 1.9129377684285178,
+      "arm_amplitude_ratio": 1.0593562386006423,
+      "arm_residual_ratio": 0.9999976667065263,
+      "hand_residual_ratio": 4.784487118850659
+    },
+    {
+      "task_id": 4,
+      "n_low": 20,
+      "n_high": 10,
+      "sigma_ratio": 1.7181554668773034,
+      "arm_amplitude_ratio": 0.9699703116685652,
+      "arm_residual_ratio": 0.8859820734440428,
+      "hand_residual_ratio": 1.4213857181036906
+    },
+    {
+      "task_id": 5,
+      "n_low": 18,
+      "n_high": 12,
+      "sigma_ratio": 2.5613107979001355,
+      "arm_amplitude_ratio": 0.9954932652804601,
+      "arm_residual_ratio": 1.2726198316947606,
+      "hand_residual_ratio": 16.361764396912246
+    },
+    {
+      "task_id": 5,
+      "n_low": 20,
+      "n_high": 10,
+      "sigma_ratio": 1.329924352183674,
+      "arm_amplitude_ratio": 1.0704745989109898,
+      "arm_residual_ratio": 1.1969953065775656,
+      "hand_residual_ratio": 2.0604065542779777
+    },
+    {
+      "task_id": 6,
+      "n_low": 14,
+      "n_high": 15,
+      "sigma_ratio": 1.4278969336371174,
+      "arm_amplitude_ratio": 0.9779292448312654,
+      "arm_residual_ratio": 0.6865526334850209,
+      "hand_residual_ratio": 2.447412972027422
+    },
+    {
+      "task_id": 6,
+      "n_low": 18,
+      "n_high": 11,
+      "sigma_ratio": 1.1464924160802878,
+      "arm_amplitude_ratio": 0.9970060318671043,
+      "arm_residual_ratio": 1.1626699522547301,
+      "hand_residual_ratio": 3.8712465361310118
+    },
+    {
+      "task_id": 7,
+      "n_low": 12,
+      "n_high": 18,
+      "sigma_ratio": 2.5451117953967346,
+      "arm_amplitude_ratio": 0.9936895780661317,
+      "arm_residual_ratio": 0.8877603265922874,
+      "hand_residual_ratio": 4.866722293958879
+    },
+    {
+      "task_id": 7,
+      "n_low": 15,
+      "n_high": 15,
+      "sigma_ratio": 2.18625781109604,
+      "arm_amplitude_ratio": 1.0465037515586773,
+      "arm_residual_ratio": 1.1358883979631218,
+      "hand_residual_ratio": 1.8727891796640823
+    },
+    {
+      "task_id": 8,
+      "n_low": 17,
+      "n_high": 13,
+      "sigma_ratio": 1.3017876429758362,
+      "arm_amplitude_ratio": 0.9103158929485732,
+      "arm_residual_ratio": 0.7260487641046061,
+      "hand_residual_ratio": 1.7282294758919576
+    },
+    {
+      "task_id": 8,
+      "n_low": 11,
+      "n_high": 18,
+      "sigma_ratio": 1.8534448664769245,
+      "arm_amplitude_ratio": 1.0499321767546408,
+      "arm_residual_ratio": 1.370069237273394,
+      "hand_residual_ratio": 4.237263429318276
+    },
+    {
+      "task_id": 8,
+      "n_low": 19,
+      "n_high": 10,
+      "sigma_ratio": 1.774515966911454,
+      "arm_amplitude_ratio": 0.9467518438330833,
+      "arm_residual_ratio": 1.0264552341631057,
+      "hand_residual_ratio": 3.211824813676113
+    },
+    {
+      "task_id": 9,
+      "n_low": 12,
+      "n_high": 18,
+      "sigma_ratio": 1.616621806956749,
+      "arm_amplitude_ratio": 0.7698261193998436,
+      "arm_residual_ratio": 0.92263774936578,
+      "hand_residual_ratio": 2.05312862732616
+    },
+    {
+      "task_id": 9,
+      "n_low": 12,
+      "n_high": 18,
+      "sigma_ratio": 1.1370904985348058,
+      "arm_amplitude_ratio": 0.9109906794019973,
+      "arm_residual_ratio": 0.9431061126181298,
+      "hand_residual_ratio": 6.693448972997153
+    },
+    {
+      "task_id": 9,
+      "n_low": 16,
+      "n_high": 14,
+      "sigma_ratio": 0.9256960255390697,
+      "arm_amplitude_ratio": 0.9200846432521107,
+      "arm_residual_ratio": 0.7011430576486678,
+      "hand_residual_ratio": 0.9347294831971706
+    },
+    {
+      "task_id": 10,
+      "n_low": 10,
+      "n_high": 20,
+      "sigma_ratio": 1.5039191696993852,
+      "arm_amplitude_ratio": 0.8469229075611717,
+      "arm_residual_ratio": 0.9186603665875167,
+      "hand_residual_ratio": 0.7859300840361264
+    },
+    {
+      "task_id": 10,
+      "n_low": 20,
+      "n_high": 10,
+      "sigma_ratio": 1.1979258450252763,
+      "arm_amplitude_ratio": 0.977669755470014,
+      "arm_residual_ratio": 0.9954956731341355,
+      "hand_residual_ratio": 2.2101452436681432
+    },
+    {
+      "task_id": 10,
+      "n_low": 19,
+      "n_high": 11,
+      "sigma_ratio": 1.1450981404044198,
+      "arm_amplitude_ratio": 0.9664807999421029,
+      "arm_residual_ratio": 0.8189210299287815,
+      "hand_residual_ratio": 2.5501192917240414
+    },
+    {
+      "task_id": 11,
+      "n_low": 15,
+      "n_high": 15,
+      "sigma_ratio": 1.558034067820072,
+      "arm_amplitude_ratio": 0.7491088944058205,
+      "arm_residual_ratio": 0.9327006145015351,
+      "hand_residual_ratio": 1.6874636240062457
+    },
+    {
+      "task_id": 11,
+      "n_low": 14,
+      "n_high": 16,
+      "sigma_ratio": 1.4598482303939528,
+      "arm_amplitude_ratio": 0.9443247047145323,
+      "arm_residual_ratio": 0.9259896273631674,
+      "hand_residual_ratio": 6.255413831506357
+    },
+    {
+      "task_id": 12,
+      "n_low": 11,
+      "n_high": 19,
+      "sigma_ratio": 1.6708622604688927,
+      "arm_amplitude_ratio": 1.2239352190953319,
+      "arm_residual_ratio": 0.9071197122941599,
+      "hand_residual_ratio": 6.646771181394293
+    },
+    {
+      "task_id": 12,
+      "n_low": 13,
+      "n_high": 17,
+      "sigma_ratio": 1.3919806406290522,
+      "arm_amplitude_ratio": 0.9039865761290655,
+      "arm_residual_ratio": 0.9908763079063667,
+      "hand_residual_ratio": 10.650878639579371
+    },
+    {
+      "task_id": 12,
+      "n_low": 19,
+      "n_high": 11,
+      "sigma_ratio": 1.5385130282848969,
+      "arm_amplitude_ratio": 0.9393013288590369,
+      "arm_residual_ratio": 1.1963625270552796,
+      "hand_residual_ratio": 8.223518461869297
+    },
+    {
+      "task_id": 13,
+      "n_low": 14,
+      "n_high": 16,
+      "sigma_ratio": 1.1429867045498427,
+      "arm_amplitude_ratio": 0.9877800461591102,
+      "arm_residual_ratio": 1.0764162161253075,
+      "hand_residual_ratio": 9.50345337630588
+    },
+    {
+      "task_id": 14,
+      "n_low": 13,
+      "n_high": 17,
+      "sigma_ratio": 1.5830949324224972,
+      "arm_amplitude_ratio": 1.2369451560458065,
+      "arm_residual_ratio": 0.9704864287240457,
+      "hand_residual_ratio": 1.3354968047659228
+    },
+    {
+      "task_id": 14,
+      "n_low": 20,
+      "n_high": 10,
+      "sigma_ratio": 0.978358210325767,
+      "arm_amplitude_ratio": 1.0008941766610393,
+      "arm_residual_ratio": 0.7551974950406819,
+      "hand_residual_ratio": 1.6392897486373954
+    },
+    {
+      "task_id": 15,
+      "n_low": 17,
+      "n_high": 13,
+      "sigma_ratio": 1.0720599626782954,
+      "arm_amplitude_ratio": 0.8604878047457492,
+      "arm_residual_ratio": 0.772590526108997,
+      "hand_residual_ratio": 2.785225195034102
+    },
+    {
+      "task_id": 15,
+      "n_low": 14,
+      "n_high": 16,
+      "sigma_ratio": 1.253272083817587,
+      "arm_amplitude_ratio": 1.029801472632093,
+      "arm_residual_ratio": 0.9698540020044034,
+      "hand_residual_ratio": 19.423650262584545
+    },
+    {
+      "task_id": 15,
+      "n_low": 19,
+      "n_high": 11,
+      "sigma_ratio": 1.3155029006109344,
+      "arm_amplitude_ratio": 0.9275501548510487,
+      "arm_residual_ratio": 0.9744893063256697,
+      "hand_residual_ratio": 6.890092420397695
+    },
+    {
+      "task_id": 16,
+      "n_low": 14,
+      "n_high": 16,
+      "sigma_ratio": 1.224750128854369,
+      "arm_amplitude_ratio": 0.8669064143066616,
+      "arm_residual_ratio": 0.7903015166882565,
+      "hand_residual_ratio": 13.543436391860707
+    },
+    {
+      "task_id": 16,
+      "n_low": 14,
+      "n_high": 15,
+      "sigma_ratio": 1.2294107454138639,
+      "arm_amplitude_ratio": 1.0472572763705013,
+      "arm_residual_ratio": 0.9983216037422492,
+      "hand_residual_ratio": 1.7947861247833146
+    },
+    {
+      "task_id": 17,
+      "n_low": 11,
+      "n_high": 18,
+      "sigma_ratio": 1.3796252125855448,
+      "arm_amplitude_ratio": 0.9577648842009355,
+      "arm_residual_ratio": 0.7393526079040912,
+      "hand_residual_ratio": 9.016132916614485
+    },
+    {
+      "task_id": 17,
+      "n_low": 11,
+      "n_high": 18,
+      "sigma_ratio": 1.524916296039912,
+      "arm_amplitude_ratio": 0.9327493632262005,
+      "arm_residual_ratio": 0.8627668234794071,
+      "hand_residual_ratio": 13.224951226532818
+    },
+    {
+      "task_id": 17,
+      "n_low": 12,
+      "n_high": 17,
+      "sigma_ratio": 1.0370773878742479,
+      "arm_amplitude_ratio": 1.0180886156582831,
+      "arm_residual_ratio": 0.7400608355683622,
+      "hand_residual_ratio": 1.2192083683340262
+    },
+    {
+      "task_id": 18,
+      "n_low": 12,
+      "n_high": 18,
+      "sigma_ratio": 1.1881463831494359,
+      "arm_amplitude_ratio": 0.9278540857639841,
+      "arm_residual_ratio": 0.8602854594502336,
+      "hand_residual_ratio": 3.2173763095565406
+    },
+    {
+      "task_id": 18,
+      "n_low": 18,
+      "n_high": 12,
+      "sigma_ratio": 1.1112442619654421,
+      "arm_amplitude_ratio": 0.9628904669378886,
+      "arm_residual_ratio": 0.7371894103680632,
+      "hand_residual_ratio": 7.9853918535081485
+    },
+    {
+      "task_id": 18,
+      "n_low": 19,
+      "n_high": 11,
+      "sigma_ratio": 0.8231276520954628,
+      "arm_amplitude_ratio": 0.9321307442546817,
+      "arm_residual_ratio": 0.6251876995861039,
+      "hand_residual_ratio": 1.8304790074802524
+    },
+    {
+      "task_id": 18,
+      "n_low": 13,
+      "n_high": 17,
+      "sigma_ratio": 1.0681816666585855,
+      "arm_amplitude_ratio": 0.9153515631455472,
+      "arm_residual_ratio": 0.8940928801964662,
+      "hand_residual_ratio": 7.5727419424849325
+    },
+    {
+      "task_id": 19,
+      "n_low": 13,
+      "n_high": 17,
+      "sigma_ratio": 1.142548732710072,
+      "arm_amplitude_ratio": 0.9611730496836759,
+      "arm_residual_ratio": 0.8430218485667587,
+      "hand_residual_ratio": 0.994254675866092
+    },
+    {
+      "task_id": 20,
+      "n_low": 11,
+      "n_high": 19,
+      "sigma_ratio": 1.5607065489744527,
+      "arm_amplitude_ratio": 0.9361678526556221,
+      "arm_residual_ratio": 1.0090789079607843,
+      "hand_residual_ratio": 10.288970015770488
+    },
+    {
+      "task_id": 21,
+      "n_low": 14,
+      "n_high": 16,
+      "sigma_ratio": 1.1098720776615951,
+      "arm_amplitude_ratio": 1.092570459390973,
+      "arm_residual_ratio": 0.9202781106095034,
+      "hand_residual_ratio": 1.7857160047564868
+    },
+    {
+      "task_id": 22,
+      "n_low": 10,
+      "n_high": 20,
+      "sigma_ratio": 1.0237401998297244,
+      "arm_amplitude_ratio": 1.167638716565748,
+      "arm_residual_ratio": 0.9682707390771593,
+      "hand_residual_ratio": 1.8808200045512007
+    },
+    {
+      "task_id": 22,
+      "n_low": 16,
+      "n_high": 13,
+      "sigma_ratio": 1.0039305885805654,
+      "arm_amplitude_ratio": 0.9816915822327346,
+      "arm_residual_ratio": 0.7854142099375181,
+      "hand_residual_ratio": 8.597251309135027
+    },
+    {
+      "task_id": 22,
+      "n_low": 13,
+      "n_high": 16,
+      "sigma_ratio": 0.7364432343363028,
+      "arm_amplitude_ratio": 1.004468741770724,
+      "arm_residual_ratio": 0.7522580303425938,
+      "hand_residual_ratio": 2.4707870225237696
+    },
+    {
+      "task_id": 23,
+      "n_low": 10,
+      "n_high": 20,
+      "sigma_ratio": 1.8630155440915923,
+      "arm_amplitude_ratio": 0.8681838398739016,
+      "arm_residual_ratio": 0.8129209202245932,
+      "hand_residual_ratio": 23.145531735938317
+    },
+    {
+      "task_id": 23,
+      "n_low": 18,
+      "n_high": 12,
+      "sigma_ratio": 1.7061078231121563,
+      "arm_amplitude_ratio": 0.8397986093719355,
+      "arm_residual_ratio": 0.8902805831693263,
+      "hand_residual_ratio": 2.5379368178884576
+    },
+    {
+      "task_id": 23,
+      "n_low": 19,
+      "n_high": 11,
+      "sigma_ratio": 1.270101642086042,
+      "arm_amplitude_ratio": 0.9564587957060239,
+      "arm_residual_ratio": 0.8731403789469837,
+      "hand_residual_ratio": 4.823522409848481
+    }
+  ],
+  "amplitude_matched_median_sigma_ratio": 1.3919806406290522
+}

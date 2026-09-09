@@ -1,0 +1,58 @@
+{
+  "states": 1728,
+  "folds": 5,
+  "stats": {
+    "hg_residual": {
+      "tag": "hg_residual",
+      "n": 82944,
+      "frac_gt3": 0.01265914351851852,
+      "gaussian_gt3": 0.0026997960632601866,
+      "excess3": 4.688925838061912,
+      "kurtosis": 2.9343007951606923,
+      "tail_fit_nu": 6.947012019124307,
+      "tail_fit_scale": 0.8900000000000001,
+      "heldout_gaussian_nll_per_dim": 1.4182933317180484,
+      "heldout_student_nll_per_dim": 1.3676910415059154,
+      "heldout_nll_gain_per_dim": 0.05060229021213303
+    },
+    "mse_residual": {
+      "tag": "mse_residual",
+      "n": 82944,
+      "frac_gt3": 0.01644483024691358,
+      "gaussian_gt3": 0.0026997960632601866,
+      "excess3": 6.091137945825188,
+      "kurtosis": 3.6721899220603804,
+      "tail_fit_nu": 5.68809353951666,
+      "tail_fit_scale": 0.8600000000000001,
+      "heldout_gaussian_nll_per_dim": 1.4186077675347373,
+      "heldout_student_nll_per_dim": 1.336938801848765,
+      "heldout_nll_gain_per_dim": 0.08166896568597237
+    },
+    "flow_sample_spread": {
+      "tag": "flow_sample_spread",
+      "n": 1327104,
+      "frac_gt3": 0.014411078559027778,
+      "gaussian_gt3": 0.0026997960632601866,
+      "excess3": 5.337839681722265,
+      "kurtosis": 4.336802692101134,
+      "tail_fit_nu": 5.321363864273106,
+      "tail_fit_scale": 0.8300000000000001,
+      "heldout_gaussian_nll_per_dim": 1.4189346210396423,
+      "heldout_student_nll_per_dim": 1.3477070736810175,
+      "heldout_nll_gain_per_dim": 0.0712275473586248
+    },
+    "flow_to_label": {
+      "tag": "flow_to_label",
+      "n": 1327104,
+      "frac_gt3": 0.013731403115354939,
+      "gaussian_gt3": 0.0026997960632601866,
+      "excess3": 5.086089020654893,
+      "kurtosis": 4.155183864794034,
+      "tail_fit_nu": 5.146963274015111,
+      "tail_fit_scale": 0.81,
+      "heldout_gaussian_nll_per_dim": 1.419991395124726,
+      "heldout_student_nll_per_dim": 1.353694217346062,
+      "heldout_nll_gain_per_dim": 0.06629717777866406
+    }
+  }
+}

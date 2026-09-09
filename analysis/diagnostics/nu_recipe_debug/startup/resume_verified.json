@@ -1,0 +1,12 @@
+{
+  "source": "/mnt/pfs/yuchen/groot/ft_fr_nu1024_hold7k_to14_20260908/checkpoint-7000",
+  "step": 7000,
+  "optimizer_step_min": 7000.0,
+  "optimizer_step_max": 7000.0,
+  "optimizer_states": 6,
+  "lr": [
+    7.228691778882693e-05,
+    7.228691778882693e-05
+  ],
+  "data_stream": "Trainer reset_seed(base_seed+7000), same across resumed arms; not uninterrupted replay."
+}

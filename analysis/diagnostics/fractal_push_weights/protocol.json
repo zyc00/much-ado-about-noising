@@ -1,0 +1,555 @@
+{
+  "checkpoint": "/mnt/pfs/yuchen/groot/ft_fr_nu224/checkpoint-20000",
+  "seed": 20260909,
+  "names": [
+    "close bottom drawer",
+    "close middle drawer",
+    "close top drawer"
+  ],
+  "episodes": [
+    {
+      "episode_index": 1052,
+      "tasks": [
+        "close bottom drawer"
+      ],
+      "length": 45,
+      "ordinal": 1052,
+      "task_id": 0
+    },
+    {
+      "episode_index": 4097,
+      "tasks": [
+        "close bottom drawer"
+      ],
+      "length": 45,
+      "ordinal": 4097,
+      "task_id": 0
+    },
+    {
+      "episode_index": 4211,
+      "tasks": [
+        "close bottom drawer"
+      ],
+      "length": 44,
+      "ordinal": 4211,
+      "task_id": 0
+    },
+    {
+      "episode_index": 7980,
+      "tasks": [
+        "close bottom drawer"
+      ],
+      "length": 74,
+      "ordinal": 7980,
+      "task_id": 0
+    },
+    {
+      "episode_index": 9024,
+      "tasks": [
+        "close bottom drawer"
+      ],
+      "length": 57,
+      "ordinal": 9024,
+      "task_id": 0
+    },
+    {
+      "episode_index": 12219,
+      "tasks": [
+        "close bottom drawer"
+      ],
+      "length": 30,
+      "ordinal": 12219,
+      "task_id": 0
+    },
+    {
+      "episode_index": 22182,
+      "tasks": [
+        "close bottom drawer"
+      ],
+      "length": 49,
+      "ordinal": 22182,
+      "task_id": 0
+    },
+    {
+      "episode_index": 24108,
+      "tasks": [
+        "close bottom drawer"
+      ],
+      "length": 45,
+      "ordinal": 24108,
+      "task_id": 0
+    },
+    {
+      "episode_index": 33416,
+      "tasks": [
+        "close bottom drawer"
+      ],
+      "length": 37,
+      "ordinal": 33416,
+      "task_id": 0
+    },
+    {
+      "episode_index": 40418,
+      "tasks": [
+        "close bottom drawer"
+      ],
+      "length": 53,
+      "ordinal": 40418,
+      "task_id": 0
+    },
+    {
+      "episode_index": 40856,
+      "tasks": [
+        "close bottom drawer"
+      ],
+      "length": 39,
+      "ordinal": 40856,
+      "task_id": 0
+    },
+    {
+      "episode_index": 49908,
+      "tasks": [
+        "close bottom drawer"
+      ],
+      "length": 66,
+      "ordinal": 49908,
+      "task_id": 0
+    },
+    {
+      "episode_index": 51084,
+      "tasks": [
+        "close bottom drawer"
+      ],
+      "length": 33,
+      "ordinal": 51084,
+      "task_id": 0
+    },
+    {
+      "episode_index": 55484,
+      "tasks": [
+        "close bottom drawer"
+      ],
+      "length": 34,
+      "ordinal": 55484,
+      "task_id": 0
+    },
+    {
+      "episode_index": 66608,
+      "tasks": [
+        "close bottom drawer"
+      ],
+      "length": 51,
+      "ordinal": 66608,
+      "task_id": 0
+    },
+    {
+      "episode_index": 68848,
+      "tasks": [
+        "close bottom drawer"
+      ],
+      "length": 54,
+      "ordinal": 68848,
+      "task_id": 0
+    },
+    {
+      "episode_index": 72881,
+      "tasks": [
+        "close bottom drawer"
+      ],
+      "length": 32,
+      "ordinal": 72881,
+      "task_id": 0
+    },
+    {
+      "episode_index": 73659,
+      "tasks": [
+        "close bottom drawer"
+      ],
+      "length": 51,
+      "ordinal": 73659,
+      "task_id": 0
+    },
+    {
+      "episode_index": 76133,
+      "tasks": [
+        "close bottom drawer"
+      ],
+      "length": 52,
+      "ordinal": 76133,
+      "task_id": 0
+    },
+    {
+      "episode_index": 86631,
+      "tasks": [
+        "close bottom drawer"
+      ],
+      "length": 74,
+      "ordinal": 86631,
+      "task_id": 0
+    },
+    {
+      "episode_index": 6145,
+      "tasks": [
+        "close middle drawer"
+      ],
+      "length": 40,
+      "ordinal": 6145,
+      "task_id": 1
+    },
+    {
+      "episode_index": 12119,
+      "tasks": [
+        "close middle drawer"
+      ],
+      "length": 36,
+      "ordinal": 12119,
+      "task_id": 1
+    },
+    {
+      "episode_index": 14733,
+      "tasks": [
+        "close middle drawer"
+      ],
+      "length": 36,
+      "ordinal": 14733,
+      "task_id": 1
+    },
+    {
+      "episode_index": 24703,
+      "tasks": [
+        "close middle drawer"
+      ],
+      "length": 35,
+      "ordinal": 24703,
+      "task_id": 1
+    },
+    {
+      "episode_index": 29997,
+      "tasks": [
+        "close middle drawer"
+      ],
+      "length": 36,
+      "ordinal": 29997,
+      "task_id": 1
+    },
+    {
+      "episode_index": 33518,
+      "tasks": [
+        "close middle drawer"
+      ],
+      "length": 61,
+      "ordinal": 33518,
+      "task_id": 1
+    },
+    {
+      "episode_index": 35128,
+      "tasks": [
+        "close middle drawer"
+      ],
+      "length": 30,
+      "ordinal": 35128,
+      "task_id": 1
+    },
+    {
+      "episode_index": 37099,
+      "tasks": [
+        "close middle drawer"
+      ],
+      "length": 30,
+      "ordinal": 37099,
+      "task_id": 1
+    },
+    {
+      "episode_index": 37188,
+      "tasks": [
+        "close middle drawer"
+      ],
+      "length": 66,
+      "ordinal": 37188,
+      "task_id": 1
+    },
+    {
+      "episode_index": 39670,
+      "tasks": [
+        "close middle drawer"
+      ],
+      "length": 37,
+      "ordinal": 39670,
+      "task_id": 1
+    },
+    {
+      "episode_index": 41785,
+      "tasks": [
+        "close middle drawer"
+      ],
+      "length": 38,
+      "ordinal": 41785,
+      "task_id": 1
+    },
+    {
+      "episode_index": 47831,
+      "tasks": [
+        "close middle drawer"
+      ],
+      "length": 47,
+      "ordinal": 47831,
+      "task_id": 1
+    },
+    {
+      "episode_index": 57413,
+      "tasks": [
+        "close middle drawer"
+      ],
+      "length": 48,
+      "ordinal": 57413,
+      "task_id": 1
+    },
+    {
+      "episode_index": 69253,
+      "tasks": [
+        "close middle drawer"
+      ],
+      "length": 53,
+      "ordinal": 69253,
+      "task_id": 1
+    },
+    {
+      "episode_index": 71888,
+      "tasks": [
+        "close middle drawer"
+      ],
+      "length": 37,
+      "ordinal": 71888,
+      "task_id": 1
+    },
+    {
+      "episode_index": 75889,
+      "tasks": [
+        "close middle drawer"
+      ],
+      "length": 28,
+      "ordinal": 75889,
+      "task_id": 1
+    },
+    {
+      "episode_index": 79422,
+      "tasks": [
+        "close middle drawer"
+      ],
+      "length": 37,
+      "ordinal": 79422,
+      "task_id": 1
+    },
+    {
+      "episode_index": 82006,
+      "tasks": [
+        "close middle drawer"
+      ],
+      "length": 41,
+      "ordinal": 82006,
+      "task_id": 1
+    },
+    {
+      "episode_index": 84239,
+      "tasks": [
+        "close middle drawer"
+      ],
+      "length": 27,
+      "ordinal": 84239,
+      "task_id": 1
+    },
+    {
+      "episode_index": 86582,
+      "tasks": [
+        "close middle drawer"
+      ],
+      "length": 36,
+      "ordinal": 86582,
+      "task_id": 1
+    },
+    {
+      "episode_index": 1208,
+      "tasks": [
+        "close top drawer"
+      ],
+      "length": 28,
+      "ordinal": 1208,
+      "task_id": 2
+    },
+    {
+      "episode_index": 10835,
+      "tasks": [
+        "close top drawer"
+      ],
+      "length": 43,
+      "ordinal": 10835,
+      "task_id": 2
+    },
+    {
+      "episode_index": 11697,
+      "tasks": [
+        "close top drawer"
+      ],
+      "length": 48,
+      "ordinal": 11697,
+      "task_id": 2
+    },
+    {
+      "episode_index": 19034,
+      "tasks": [
+        "close top drawer"
+      ],
+      "length": 39,
+      "ordinal": 19034,
+      "task_id": 2
+    },
+    {
+      "episode_index": 20445,
+      "tasks": [
+        "close top drawer"
+      ],
+      "length": 34,
+      "ordinal": 20445,
+      "task_id": 2
+    },
+    {
+      "episode_index": 34196,
+      "tasks": [
+        "close top drawer"
+      ],
+      "length": 29,
+      "ordinal": 34196,
+      "task_id": 2
+    },
+    {
+      "episode_index": 35347,
+      "tasks": [
+        "close top drawer"
+      ],
+      "length": 28,
+      "ordinal": 35347,
+      "task_id": 2
+    },
+    {
+      "episode_index": 38335,
+      "tasks": [
+        "close top drawer"
+      ],
+      "length": 43,
+      "ordinal": 38335,
+      "task_id": 2
+    },
+    {
+      "episode_index": 42904,
+      "tasks": [
+        "close top drawer"
+      ],
+      "length": 36,
+      "ordinal": 42904,
+      "task_id": 2
+    },
+    {
+      "episode_index": 43775,
+      "tasks": [
+        "close top drawer"
+      ],
+      "length": 31,
+      "ordinal": 43775,
+      "task_id": 2
+    },
+    {
+      "episode_index": 58722,
+      "tasks": [
+        "close top drawer"
+      ],
+      "length": 30,
+      "ordinal": 58722,
+      "task_id": 2
+    },
+    {
+      "episode_index": 61856,
+      "tasks": [
+        "close top drawer"
+      ],
+      "length": 35,
+      "ordinal": 61856,
+      "task_id": 2
+    },
+    {
+      "episode_index": 68358,
+      "tasks": [
+        "close top drawer"
+      ],
+      "length": 48,
+      "ordinal": 68358,
+      "task_id": 2
+    },
+    {
+      "episode_index": 69373,
+      "tasks": [
+        "close top drawer"
+      ],
+      "length": 32,
+      "ordinal": 69373,
+      "task_id": 2
+    },
+    {
+      "episode_index": 76126,
+      "tasks": [
+        "close top drawer"
+      ],
+      "length": 22,
+      "ordinal": 76126,
+      "task_id": 2
+    },
+    {
+      "episode_index": 76440,
+      "tasks": [
+        "close top drawer"
+      ],
+      "length": 31,
+      "ordinal": 76440,
+      "task_id": 2
+    },
+    {
+      "episode_index": 79546,
+      "tasks": [
+        "close top drawer"
+      ],
+      "length": 29,
+      "ordinal": 79546,
+      "task_id": 2
+    },
+    {
+      "episode_index": 81859,
+      "tasks": [
+        "close top drawer"
+      ],
+      "length": 28,
+      "ordinal": 81859,
+      "task_id": 2
+    },
+    {
+      "episode_index": 84933,
+      "tasks": [
+        "close top drawer"
+      ],
+      "length": 27,
+      "ordinal": 84933,
+      "task_id": 2
+    },
+    {
+      "episode_index": 86215,
+      "tasks": [
+        "close top drawer"
+      ],
+      "length": 21,
+      "ordinal": 86215,
+      "task_id": 2
+    }
+  ],
+  "nu": 224.0,
+  "sbias": -0.5093,
+  "definition": "all valid starts; no progress filtering",
+  "scope": "Frozen checkpoint on training demonstrations in eval mode; not historical optimizer gradients"
+}

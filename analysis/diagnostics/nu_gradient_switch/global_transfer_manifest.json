@@ -1,0 +1,56 @@
+{
+  "tasks": [
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/global1024/checkpoint_10000.json",
+      "source_sha256": "12232c1061de56bebe49e0855cc2fae3eda3d0056c0c2489975a7fa4b49cf09a"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/global1024/checkpoint_12000.json",
+      "source_sha256": "33fd4847fe2fee73f7edc357ee3c9ea6fd033ff40f6edabc73918ea07880263b"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/global1024/parameters_10000.json",
+      "source_sha256": "9778166dd65ef8cc1a033a1e665e794fcc7c333f492b2c9e3db5ff011cf0ec83"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/global1024/parameters_12000.json",
+      "source_sha256": "9778166dd65ef8cc1a033a1e665e794fcc7c333f492b2c9e3db5ff011cf0ec83"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/global1024/protocol.json",
+      "source_sha256": "3e23b996d59d40c19d1d2e3ea209f91c5a7338411bc29df4d204688aa2424017"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/global1024/raw_10000_mixed_0_before.npz",
+      "source_sha256": "ad1b82f7c6bdc18562d9c182db439c5b15f8065ecf6385c4eb7cc9f9aa44a750"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/global1024/raw_10000_mixed_0_dropout_control.npz",
+      "source_sha256": "d613e99d217ed425d2bb66ba5629c2c031ceb4737afed18b7e94f311c276e1e2"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/global1024/raw_10000_mixed_0_halving.npz",
+      "source_sha256": "22925fb8475fd3cabda7b3269dc612eb9e3f39b680ca0eb1024c672014f6c798"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/global1024/raw_10000_mixed_0_small_drop.npz",
+      "source_sha256": "dac3c1bec235e6a18d34df13a0682df9794550139ef5e1bbae9d4b77bf93fec4"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/global1024/raw_12000_mixed_0_before.npz",
+      "source_sha256": "25edcaea56e758d859728dd5a212be5f1df02dcf30bdefda0935846af1e4aa48"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/global1024/raw_12000_mixed_0_dropout_control.npz",
+      "source_sha256": "6393b33ec8e8467feb2d21a033eec2bac2475fa7a701ac49f7b1a249cfdc9553"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/global1024/raw_12000_mixed_0_halving.npz",
+      "source_sha256": "68f6412b1c79f57d7b725011aea113349d87debfb69bba17b6484a527d1a9d9f"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/global1024/raw_12000_mixed_0_small_drop.npz",
+      "source_sha256": "0c580e18d45bed56f9931ca11426c72e278e3323a78a0418b02cc0c70ac07b2b"
+    }
+  ]
+}

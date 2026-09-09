@@ -1,0 +1,147 @@
+{
+  "n_cases": 4,
+  "n_branches": 96,
+  "n_motion_cases": 3,
+  "n_motion_branches": 72,
+  "motion_case_rule": "forced-prefix mode-centroid gap >= 0.05 cm in position or >= 0.5 deg in orientation",
+  "normalization_note": "late_position_between_within is recomputed from raw trajectories using Euclidean centroid distance / radial within-mode RMS; the run JSON used a per-coordinate RMS denominator",
+  "source_runs": [
+    {
+      "stem": "widowx_branching_prefix_v1",
+      "n_screened": 165,
+      "n_deep_attempts": 66,
+      "n_accepted_cases": 4,
+      "execution_horizon": 4,
+      "mode_test_horizon": 4
+    }
+  ],
+  "decoding": {
+    "forced chunk": {
+      "correct": 65,
+      "total": 72,
+      "accuracy": 0.9027777777777778,
+      "wilson_95": [
+        0.812647509746432,
+        0.9521042887388321
+      ],
+      "per_case_accuracy": [
+        0.9166666666666666,
+        0.8333333333333334,
+        0.9583333333333334
+      ],
+      "permutation_p_above_chance": 0.0001999600079984003
+    },
+    "middle": {
+      "correct": 40,
+      "total": 72,
+      "accuracy": 0.5555555555555556,
+      "wilson_95": [
+        0.44087185773467513,
+        0.6646111489529475
+      ],
+      "per_case_accuracy": [
+        0.625,
+        0.5416666666666666,
+        0.5
+      ],
+      "permutation_p_above_chance": 0.2533493301339732
+    },
+    "late": {
+      "correct": 31,
+      "total": 72,
+      "accuracy": 0.4305555555555556,
+      "wilson_95": [
+        0.3225772336645315,
+        0.5455690079759403
+      ],
+      "per_case_accuracy": [
+        0.5,
+        0.2916666666666667,
+        0.5
+      ],
+      "permutation_p_above_chance": 0.8078384323135372
+    }
+  },
+  "cases": [
+    {
+      "uid": "widowx_close_drawer:ep0:m10",
+      "task": "widowx_close_drawer",
+      "group": "rotation",
+      "delta_bic": 36.41855309443517,
+      "separation_sd": 3.654451533734025,
+      "late_position_between_within": 0.3310409399251659,
+      "time_aligned_curve_rms_cm": 1.091703861169342,
+      "late_path_permutation_p": 0.6482703459308138,
+      "success_count": [
+        0,
+        0
+      ],
+      "final_task_metric_delta": 7.145106792449951e-06,
+      "final_task_metric_permutation_p": 0.09998000399920016,
+      "success_fisher_p": 1.0,
+      "forced_position_gap_cm": 4.963851898085279,
+      "forced_orientation_gap_deg": 15.20624581193311,
+      "produces_measurable_pose_split": true
+    },
+    {
+      "uid": "widowx_close_drawer:ep1:m30",
+      "task": "widowx_close_drawer",
+      "group": "translation",
+      "delta_bic": 11.514683177754534,
+      "separation_sd": 3.206323029543318,
+      "late_position_between_within": 0.23606913021889162,
+      "time_aligned_curve_rms_cm": 0.9187889414118888,
+      "late_path_permutation_p": 0.8428314337132573,
+      "success_count": [
+        1,
+        1
+      ],
+      "final_task_metric_delta": -0.012245982885360718,
+      "final_task_metric_permutation_p": 0.2555488902219556,
+      "success_fisher_p": 1.0,
+      "forced_position_gap_cm": 3.8535239188511725,
+      "forced_orientation_gap_deg": 5.058280141925332,
+      "produces_measurable_pose_split": true
+    },
+    {
+      "uid": "widowx_put_eggplant_in_basket:ep3:m2",
+      "task": "widowx_put_eggplant_in_basket",
+      "group": "rotation",
+      "delta_bic": 12.294441101802107,
+      "separation_sd": 4.064982972877069,
+      "late_position_between_within": 0.35432322511242903,
+      "time_aligned_curve_rms_cm": 1.2157327289924906,
+      "late_path_permutation_p": 0.5322935412917417,
+      "success_count": [
+        4,
+        2
+      ],
+      "final_task_metric_delta": -0.0065791125794723015,
+      "final_task_metric_permutation_p": 0.668866226754649,
+      "success_fisher_p": 0.6404053612291598,
+      "forced_position_gap_cm": 0.6398930176753805,
+      "forced_orientation_gap_deg": 7.094894668684346,
+      "produces_measurable_pose_split": true
+    },
+    {
+      "uid": "widowx_put_eggplant_in_basket:ep4:m40",
+      "task": "widowx_put_eggplant_in_basket",
+      "group": "translation",
+      "delta_bic": 53.76664309595259,
+      "separation_sd": 2.8060443060426294,
+      "late_position_between_within": 0.42640143574800005,
+      "time_aligned_curve_rms_cm": 2.1138181444534543e-07,
+      "late_path_permutation_p": 1.0,
+      "success_count": [
+        0,
+        0
+      ],
+      "final_task_metric_delta": 0.0,
+      "final_task_metric_permutation_p": 1.0,
+      "success_fisher_p": 1.0,
+      "forced_position_gap_cm": 0.0,
+      "forced_orientation_gap_deg": 0.0,
+      "produces_measurable_pose_split": false
+    }
+  ]
+}

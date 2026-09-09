@@ -1,0 +1,16 @@
+{
+  "dataset": "widowx",
+  "phase": "public_asset_seed",
+  "utc": "2026-09-08T23:56:53.221006+00:00",
+  "source": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+  "staging": "/home/jigu/tmp/parcc-datasets-20260908/widowx",
+  "destination": "/vast/projects/jiayuanm/mao-lab/yuchen/data/widowx",
+  "command": [
+    "/usr/bin/python",
+    "-u",
+    "/home/jigu/projects/much-ado-about-noising/scripts/cluster/parcc_public_seed.py",
+    "widowx",
+    "/home/jigu/tmp/parcc-datasets-20260908/widowx",
+    "/home/jigu/projects/much-ado-about-noising/analysis/diagnostics/parcc_dataset_setup/widowx.inventory.json.gz"
+  ]
+}

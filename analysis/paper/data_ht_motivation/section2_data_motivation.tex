@@ -1,0 +1,33 @@
+% Candidate Section 2 text accompanying figures.tex.
+\section{Action Variability in Robot Demonstrations}
+\label{sec:data-structure}
+
+\subsection{Action scale changes across task phases}
+
+Robot demonstrations do not share a single action scale. We first use a
+converged MSE policy as an operational estimate of the conditional mean and
+measure its residual RMS separately for every input. The resulting scale
+distributions are broad (Figure~\ref{fig:data-phase-scale}, left): their
+10th--90th-percentile spans range from $1.8\times$ to $4.6\times$, and the full
+GR1/RoboCasa range reaches $51\times$. Because these residuals may include model
+error, we independently test the same property using demonstrations alone. For
+each task stage, we estimate an action radius from one fold of demonstrations
+and evaluate its residual variance on a disjoint fold. Across 149 tasks from
+five datasets, high-radius stages have $1.8$--$4.6\times$ the held-out variance
+of low-radius stages (Figure~\ref{fig:data-phase-scale}, right). A fixed-variance
+Gaussian assigns the same scale to all of these inputs; heteroscedastic
+regression instead learns the required observation-dependent $\sigma(o)$.
+
+\subsection{Local residuals are heavy-tailed}
+
+Input-dependent scale does not by itself capture the shape of the residual
+distribution. To isolate shape from scale, we standardize each residual by its
+local RMS and additionally normalize every action coordinate using statistics
+estimated only from the training demonstrations. The held-out residuals still
+depart systematically from a Gaussian (Figure~\ref{fig:data-heavy-tail}):
+events beyond three standard deviations occur 3.6 times as often as predicted
+by the Gaussian fit. A fitted Student-$t$ distribution follows this tail and
+achieves lower held-out negative log-likelihood. These two observations
+motivate a heteroscedastic Student-$t$ objective: the predicted scale adapts
+across task stages, while the heavy-tailed likelihood limits the influence of
+rare deviations.

@@ -1,0 +1,163 @@
+{
+  "source_sha256": "403d2efe9fdbdd2d86ddce7824a99e1dcbd7e706e9fafc16a9f843d86d5a797f",
+  "selection": "Unchanged from expanded_progress_lines_manifest.json",
+  "band": "Pointwise 10th\u201390th percentiles across all qualifying tasks; not a confidence interval.",
+  "datasets": {
+    "gr1": {
+      "task_count": 24,
+      "rho_quantiles": [
+        0.14135495520522257,
+        0.37738384610042364,
+        0.47033405097576214
+      ],
+      "stage_q10": [
+        0.5784134772843039,
+        0.5035092184395673,
+        0.47954140217372326,
+        0.8274455412414019,
+        0.7351358825416701,
+        0.6782970277289084,
+        0.683308478837349,
+        0.8335012296324182,
+        0.8290291745387786,
+        0.6537996719868931
+      ],
+      "stage_q90": [
+        1.1378903837576146,
+        0.851210029632163,
+        1.128701421204076,
+        1.6838510225689685,
+        1.4745405140309873,
+        1.1965279480340998,
+        1.3521573857069435,
+        1.332952000930951,
+        1.5003892337658058,
+        1.4536607376495738
+      ],
+      "highlighted_tasks": [
+        "gr1_unified.PnPMilkToMicrowaveClose",
+        "gr1_unified.PnPPotatoToMicrowaveClose",
+        "gr1_unified.PosttrainPnPNovelFromPlacematToBasketSplitA",
+        "gr1_unified.PosttrainPnPNovelFromPlacematToTieredshelfSplitA",
+        "gr1_unified.PosttrainPnPNovelFromPlateToBowlSplitA"
+      ]
+    },
+    "pi05": {
+      "task_count": 40,
+      "rho_quantiles": [
+        0.004766124899814741,
+        0.14232238349885407,
+        0.314249600666713
+      ],
+      "stage_q10": [
+        0.8685966185531041,
+        0.8640126866868093,
+        0.839590549234307,
+        0.8553441843952598,
+        0.9186897104386735,
+        0.8599667051132938,
+        0.80451338572998,
+        0.9029676707621056,
+        0.8847390740420826,
+        0.7813262654684108
+      ],
+      "stage_q90": [
+        1.1614929067166122,
+        1.0786818515975294,
+        1.1240147503024964,
+        1.135037218816402,
+        1.1292372946627898,
+        1.1189555634683335,
+        1.141636286515598,
+        1.132767682908188,
+        1.099465268746119,
+        1.072794622906935
+      ],
+      "highlighted_tasks": [
+        "pick up the black bowl on the wooden cabinet and place it on the plate",
+        "pick up the book and place it in the back compartment of the caddy",
+        "pick up the chocolate pudding and place it in the basket",
+        "put the bowl on the stove",
+        "put the wine bottle on top of the cabinet"
+      ]
+    },
+    "bridge": {
+      "task_count": 230,
+      "rho_quantiles": [
+        0.3960607967451126,
+        0.6173828579179909,
+        0.7646963758172501
+      ],
+      "stage_q10": [
+        0.8384672440365342,
+        0.7392932390639866,
+        0.7417748497068807,
+        0.7903437474155947,
+        0.8657084516165777,
+        0.8944999416639492,
+        0.8862372528422985,
+        0.8851030499964521,
+        0.7822038011695406,
+        0.7904916835519279
+      ],
+      "stage_q90": [
+        1.2127079856126717,
+        1.046168898560326,
+        1.0116820046126247,
+        1.0804301497354327,
+        1.166288560856989,
+        1.172152958256257,
+        1.2176882169535,
+        1.2285928773952004,
+        1.3166036577676452,
+        1.3322257809301514
+      ],
+      "highlighted_tasks": [
+        "pick up blue pen and put into drawer",
+        "put broccoli in bowl",
+        "take lid off pot",
+        "take spoon out of bowl sink",
+        "take sushi out of pot cardboard fence"
+      ]
+    },
+    "fractal": {
+      "task_count": 468,
+      "rho_quantiles": [
+        0.5189453336950623,
+        0.675984112241997,
+        0.8182323968485333
+      ],
+      "stage_q10": [
+        0.9838552988963394,
+        0.8635797266008663,
+        0.7978306736637742,
+        0.8263960329531834,
+        0.8876248507336971,
+        0.8437394098947262,
+        0.782022686197651,
+        0.7580209218410695,
+        0.6348883893180196,
+        0.1679552652533022
+      ],
+      "stage_q90": [
+        1.2591947800542727,
+        1.131964277729141,
+        1.0905930987160997,
+        1.1288779191672114,
+        1.214231296812027,
+        1.2253344369238492,
+        1.1679933382258982,
+        1.1246380661904039,
+        1.1789605851422291,
+        1.3173405552743782
+      ],
+      "highlighted_tasks": [
+        "move coke can near sponge",
+        "move green jalapeno chip bag near pepsi can",
+        "move rxbar blueberry near orange can",
+        "pick rxbar blueberry",
+        "place orange into bottom drawer"
+      ]
+    }
+  }
+}

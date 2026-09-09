@@ -1,0 +1,16 @@
+{
+  "dataset": "fractal",
+  "phase": "public_asset_seed",
+  "utc": "2026-09-08T23:56:52.887773+00:00",
+  "source": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+  "staging": "/home/jigu/tmp/parcc-datasets-20260908/fractal",
+  "destination": "/vast/projects/jiayuanm/mao-lab/yuchen/data/fractal",
+  "command": [
+    "/usr/bin/python",
+    "-u",
+    "/home/jigu/projects/much-ado-about-noising/scripts/cluster/parcc_public_seed.py",
+    "fractal",
+    "/home/jigu/tmp/parcc-datasets-20260908/fractal",
+    "/home/jigu/projects/much-ado-about-noising/analysis/diagnostics/parcc_dataset_setup/fractal.inventory.json.gz"
+  ]
+}

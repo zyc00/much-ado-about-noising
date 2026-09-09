@@ -1,0 +1,114 @@
+[
+  {
+    "dataset": "RoboCasa-GR1",
+    "task_count": 24,
+    "empirical_probability_at_zero": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "tail_curve_source": "Saved cross-fitted residuals; exact empirical counts from zero; old thresholds verified unchanged.",
+    "tasks_above_gaussian": 24,
+    "median_tail_ratio": 7.799785600969193,
+    "mean_tail_ratio": 7.746890821810761,
+    "ratio_range": [
+      6.341829941370829,
+      8.991650493796753
+    ],
+    "selected_tasks": [
+      "gr1_unified.PosttrainPnPNovelFromCuttingboardToCardboardboxSplitA",
+      "gr1_unified.PosttrainPnPNovelFromTrayToTieredshelfSplitA",
+      "gr1_unified.PnPWineToCabinetClose"
+    ],
+    "selection": "Ranks nearest 10th, 50th and 90th percentile of measured tail ratio; all tasks remain visible.",
+    "nll_gain_range": [
+      0.24757530218597024,
+      1.6006134790825133
+    ]
+  },
+  {
+    "dataset": "Bridge / WidowX",
+    "task_count": 40,
+    "empirical_probability_at_zero": [
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0,
+      1.0
+    ],
+    "tail_curve_source": "Saved cross-fitted residuals; exact empirical counts from zero; old thresholds verified unchanged.",
+    "tasks_above_gaussian": 40,
+    "median_tail_ratio": 4.769307423857258,
+    "mean_tail_ratio": 4.787058357387064,
+    "ratio_range": [
+      3.0812941221549703,
+      6.162588244309941
+    ],
+    "selected_tasks": [
+      "put knife on cutting board cardboard fence",
+      "fold the cloth from right to left",
+      "unfold the cloth from bottom right to top left"
+    ],
+    "selection": "Ranks nearest 10th, 50th and 90th percentile of measured tail ratio; all tasks remain visible.",
+    "nll_gain_range": [
+      0.01219867237437929,
+      0.07043981144094173
+    ]
+  }
+]

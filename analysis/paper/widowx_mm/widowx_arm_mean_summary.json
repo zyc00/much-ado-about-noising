@@ -1,0 +1,136 @@
+{
+  "protocol": {
+    "checkpoint": "/mnt/pfs/yuchen/groot/ft_wxflow/checkpoint-20000",
+    "n_states": 40,
+    "tasks": [
+      "widowx_close_drawer",
+      "widowx_put_eggplant_in_basket"
+    ],
+    "k_mean": 64,
+    "k_reference": 8,
+    "execution_horizon": 4,
+    "gripper": "never averaged; each sampled/mean/medoid arm triple uses the same sampled gripper sequence",
+    "snapshot_replay_max_abs_pose_error": 0.0
+  },
+  "all_states": {
+    "position_between_within": {
+      "mean_arm": {
+        "median": 0.41480539652888854,
+        "q25": 0.2655009112694216,
+        "q75": 0.5395027340740335,
+        "q95": 0.8880957294764077
+      },
+      "medoid_arm": {
+        "median": 0.7699338523356241,
+        "q25": 0.5205265426530976,
+        "q75": 0.9492478551414194,
+        "q95": 1.4085398523974455
+      },
+      "mean_lower_than_medoid": 32,
+      "ties": 0,
+      "n_states": 40,
+      "paired_wilcoxon_mean_less_p": 6.522168405354023e-08
+    },
+    "orientation_between_within": {
+      "mean_arm": {
+        "median": 0.3817512013980053,
+        "q25": 0.28193514587701396,
+        "q75": 0.5164430446367054,
+        "q95": 0.7050330507360572
+      },
+      "medoid_arm": {
+        "median": 0.5751187343307949,
+        "q25": 0.3340464660241608,
+        "q75": 0.7230064219572419,
+        "q95": 1.0176141830403345
+      },
+      "mean_lower_than_medoid": 29,
+      "ties": 0,
+      "n_states": 40,
+      "paired_wilcoxon_mean_less_p": 2.049409522442147e-05
+    },
+    "mean_position_inside_reference_rms": 39,
+    "mean_orientation_inside_reference_rms": 40,
+    "mean_outside_95pct_reference_paths": 0
+  },
+  "by_task": {
+    "widowx_close_drawer": {
+      "n_states": 20,
+      "position_between_within": {
+        "mean_arm": {
+          "median": 0.383834846459536,
+          "q25": 0.30558709747322915,
+          "q75": 0.4628081977329054,
+          "q95": 0.5825321579823622
+        },
+        "medoid_arm": {
+          "median": 0.7649963180616262,
+          "q25": 0.48337397969317203,
+          "q75": 0.9320184413760266,
+          "q95": 1.0992433555207328
+        },
+        "mean_lower_than_medoid": 16,
+        "ties": 0,
+        "n_states": 20,
+        "paired_wilcoxon_mean_less_p": 8.392333984375e-05
+      },
+      "orientation_between_within": {
+        "mean_arm": {
+          "median": 0.4545382682926107,
+          "q25": 0.28193514587701396,
+          "q75": 0.5322535109081893,
+          "q95": 0.5807650474150879
+        },
+        "medoid_arm": {
+          "median": 0.5923065059571266,
+          "q25": 0.37662793144780876,
+          "q75": 0.6938273852572324,
+          "q95": 1.017614183040336
+        },
+        "mean_lower_than_medoid": 13,
+        "ties": 0,
+        "n_states": 20,
+        "paired_wilcoxon_mean_less_p": 0.004717826843261719
+      }
+    },
+    "widowx_put_eggplant_in_basket": {
+      "n_states": 20,
+      "position_between_within": {
+        "mean_arm": {
+          "median": 0.41857073899872554,
+          "q25": 0.2418380796689617,
+          "q75": 0.658987526689617,
+          "q95": 0.9620805057972854
+        },
+        "medoid_arm": {
+          "median": 0.7875335948922195,
+          "q25": 0.6386547363762531,
+          "q75": 0.9847186992946848,
+          "q95": 1.4085398523974457
+        },
+        "mean_lower_than_medoid": 16,
+        "ties": 0,
+        "n_states": 20,
+        "paired_wilcoxon_mean_less_p": 0.00024127960205078125
+      },
+      "orientation_between_within": {
+        "mean_arm": {
+          "median": 0.3718457458019272,
+          "q25": 0.28392005219959576,
+          "q75": 0.47047501425724314,
+          "q95": 0.7050330507360573
+        },
+        "medoid_arm": {
+          "median": 0.5572126114185556,
+          "q25": 0.33028813901450726,
+          "q75": 0.7597795113751052,
+          "q95": 1.0069105300119674
+        },
+        "mean_lower_than_medoid": 16,
+        "ties": 0,
+        "n_states": 20,
+        "paired_wilcoxon_mean_less_p": 0.0005083084106445312
+      }
+    }
+  }
+}

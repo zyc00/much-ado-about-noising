@@ -1,0 +1,400 @@
+{
+  "definitions": {
+    "forward": "positive robot-forward mean x >= lateral mean-vector norm, over 8-step raw label chunk",
+    "strong": "forward AND top quartile of mean-translation magnitude within the same episode",
+    "weight": "(nu+d)/(nu*sigma^2 + sum_squared_normalized_residual); output gradient = weight * residual / d",
+    "caveat": "Action-defined proxy, not confirmed contact. Frozen eval-mode checkpoint, not historical training gradients."
+  },
+  "overall": {
+    "all": {
+      "n": 2006,
+      "episodes": 60,
+      "sigma_median": 0.2311316430568695,
+      "gate_median": 1.0093762278556824,
+      "weight_median": 18.35138988494873,
+      "rms_median": 0.22575380874130263,
+      "gradient_norm_median": 0.5713913527941533,
+      "action_mean_translation_norm_median": 0.08385230600833893,
+      "first_x_residual_mean": 0.004968819674104452,
+      "first_x_underprediction_fraction": 0.5109670987038883,
+      "gate_below_half_fraction": 0.004985044865403789,
+      "gripper_error_energy_share": 0.38287191438197127
+    },
+    "forward": {
+      "n": 856,
+      "episodes": 60,
+      "sigma_median": 0.21914149075746536,
+      "gate_median": 1.0167090892791748,
+      "weight_median": 20.522149085998535,
+      "rms_median": 0.21223759864015931,
+      "gradient_norm_median": 0.5786511501826317,
+      "action_mean_translation_norm_median": 0.06913314759731293,
+      "first_x_residual_mean": 0.01084868609905243,
+      "first_x_underprediction_fraction": 0.4766355140186916,
+      "gate_below_half_fraction": 0.0035046728971962616,
+      "gripper_error_energy_share": 0.39013260532274274
+    },
+    "nonforward": {
+      "n": 1150,
+      "episodes": 60,
+      "sigma_median": 0.2401546835899353,
+      "gate_median": 1.0037556290626526,
+      "weight_median": 16.806171417236328,
+      "rms_median": 0.23763284632744197,
+      "gradient_norm_median": 0.569067790065876,
+      "action_mean_translation_norm_median": 0.09682980179786682,
+      "first_x_residual_mean": 0.0005921534611843526,
+      "first_x_underprediction_fraction": 0.5365217391304348,
+      "gate_below_half_fraction": 0.00608695652173913,
+      "gripper_error_energy_share": 0.37816447516409274
+    },
+    "strong_forward": {
+      "n": 126,
+      "episodes": 27,
+      "sigma_median": 0.2315303385257721,
+      "gate_median": 1.0111502408981323,
+      "weight_median": 17.72777271270752,
+      "rms_median": 0.22659106453596362,
+      "gradient_norm_median": 0.5598779849741797,
+      "action_mean_translation_norm_median": 0.12675844132900238,
+      "first_x_residual_mean": -0.05281228944659233,
+      "first_x_underprediction_fraction": 0.5476190476190477,
+      "gate_below_half_fraction": 0.0,
+      "gripper_error_energy_share": 0.2560181494331677
+    },
+    "other": {
+      "n": 1880,
+      "episodes": 60,
+      "sigma_median": 0.2311316430568695,
+      "gate_median": 1.0092692971229553,
+      "weight_median": 18.42512607574463,
+      "rms_median": 0.22560029778806673,
+      "gradient_norm_median": 0.5722702076363513,
+      "action_mean_translation_norm_median": 0.08007892966270447,
+      "first_x_residual_mean": 0.008841382339596748,
+      "first_x_underprediction_fraction": 0.5085106382978724,
+      "gate_below_half_fraction": 0.005319148936170213,
+      "gripper_error_energy_share": 0.3937661050053341
+    },
+    "amplitude_q1": {
+      "n": 526,
+      "episodes": 60,
+      "sigma_median": 0.24109746515750885,
+      "gate_median": 1.0261994004249573,
+      "weight_median": 16.70687961578369,
+      "rms_median": 0.22738864579488594,
+      "gradient_norm_median": 0.5339002953954819,
+      "action_mean_translation_norm_median": 0.04036771506071091,
+      "first_x_residual_mean": 0.02796139381825924,
+      "first_x_underprediction_fraction": 0.49049429657794674,
+      "gate_below_half_fraction": 0.009505703422053232,
+      "gripper_error_energy_share": 0.49984808299038447
+    },
+    "amplitude_q4": {
+      "n": 526,
+      "episodes": 60,
+      "sigma_median": 0.23953624069690704,
+      "gate_median": 1.0003672242164612,
+      "weight_median": 17.431096076965332,
+      "rms_median": 0.2287870779222414,
+      "gradient_norm_median": 0.5707640562246525,
+      "action_mean_translation_norm_median": 0.13594797253608704,
+      "first_x_residual_mean": -0.018609561026096344,
+      "first_x_underprediction_fraction": 0.5494296577946768,
+      "gate_below_half_fraction": 0.0076045627376425855,
+      "gripper_error_energy_share": 0.2989838802559503
+    },
+    "first_forward": {
+      "n": 684,
+      "episodes": 59,
+      "sigma_median": 0.23133689910173416,
+      "gate_median": 1.0196316242218018,
+      "weight_median": 18.443928718566895,
+      "rms_median": 0.21696697399474493,
+      "gradient_norm_median": 0.557744388494984,
+      "action_mean_translation_norm_median": 0.06563015282154083,
+      "first_x_residual_mean": -0.03708320111036301,
+      "first_x_underprediction_fraction": 0.5804093567251462,
+      "gate_below_half_fraction": 0.0043859649122807015,
+      "gripper_error_energy_share": 0.3934776277769825
+    }
+  },
+  "paired_forward_vs_nonforward": {
+    "sigma": {
+      "episodes": 59,
+      "median_ratio": 0.8805080817931757,
+      "ci95": [
+        0.788936316486791,
+        0.9829761263752256
+      ]
+    },
+    "gate": {
+      "episodes": 59,
+      "median_ratio": 1.0006208532971443,
+      "ci95": [
+        0.9877512805708786,
+        1.0273322843626902
+      ]
+    },
+    "weight": {
+      "episodes": 59,
+      "median_ratio": 1.218346617145822,
+      "ci95": [
+        1.0209456310895233,
+        1.5039965052303284
+      ]
+    },
+    "gradient_norm": {
+      "episodes": 59,
+      "median_ratio": 1.1015038512290958,
+      "ci95": [
+        1.036725907822864,
+        1.244230342711488
+      ]
+    }
+  },
+  "paired_strong_vs_other": {
+    "sigma": {
+      "episodes": 21,
+      "median_ratio": 0.9285319787742736,
+      "ci95": [
+        0.8675332823619192,
+        1.0098188145340936
+      ]
+    },
+    "gate": {
+      "episodes": 21,
+      "median_ratio": 1.0088387481720946,
+      "ci95": [
+        0.9754233931354519,
+        1.0394473773190593
+      ]
+    },
+    "weight": {
+      "episodes": 21,
+      "median_ratio": 1.1809364593532365,
+      "ci95": [
+        0.9240570695269623,
+        1.3013005865114926
+      ]
+    },
+    "gradient_norm": {
+      "episodes": 21,
+      "median_ratio": 1.037702744572257,
+      "ci95": [
+        0.9905134660770493,
+        1.1750028610472334
+      ]
+    }
+  },
+  "paired_q4_vs_q1": {
+    "sigma": {
+      "episodes": 60,
+      "median_ratio": 0.9730226341867192,
+      "ci95": [
+        0.8860633238420456,
+        1.0666407740762394
+      ]
+    },
+    "gate": {
+      "episodes": 60,
+      "median_ratio": 0.9980427043692104,
+      "ci95": [
+        0.9683835250740682,
+        1.015616253562853
+      ]
+    },
+    "weight": {
+      "episodes": 60,
+      "median_ratio": 1.0652826572371223,
+      "ci95": [
+        0.8555648400207405,
+        1.3223349735116123
+      ]
+    },
+    "gradient_norm": {
+      "episodes": 60,
+      "median_ratio": 1.0716357512502057,
+      "ci95": [
+        0.9577343139692907,
+        1.1594806386583278
+      ]
+    }
+  },
+  "by_task": {
+    "close bottom drawer": {
+      "forward": {
+        "n": 289,
+        "episodes": 20,
+        "sigma_median": 0.20288723707199097,
+        "gate_median": 1.0098378658294678,
+        "weight_median": 24.095869064331055,
+        "rms_median": 0.19516633150060217,
+        "gradient_norm_median": 0.6459915456388885,
+        "action_mean_translation_norm_median": 0.057764116674661636,
+        "first_x_residual_mean": 0.024979425594210625,
+        "first_x_underprediction_fraction": 0.4359861591695502,
+        "gate_below_half_fraction": 0.0034602076124567475,
+        "gripper_error_energy_share": 0.42062401287164747
+      },
+      "nonforward": {
+        "n": 536,
+        "episodes": 20,
+        "sigma_median": 0.2444113790988922,
+        "gate_median": 0.9962175190448761,
+        "weight_median": 15.672893047332764,
+        "rms_median": 0.25148639180856697,
+        "gradient_norm_median": 0.5522978141918595,
+        "action_mean_translation_norm_median": 0.10334707796573639,
+        "first_x_residual_mean": -0.003879489842802286,
+        "first_x_underprediction_fraction": 0.5279850746268657,
+        "gate_below_half_fraction": 0.0037313432835820895,
+        "gripper_error_energy_share": 0.3118661435911371
+      },
+      "strong": {
+        "n": 12,
+        "episodes": 2,
+        "sigma_median": 0.16236507147550583,
+        "gate_median": 0.8934664726257324,
+        "weight_median": 33.49724006652832,
+        "rms_median": 0.21332886559758849,
+        "gradient_norm_median": 0.9136165935276641,
+        "action_mean_translation_norm_median": 0.12649093568325043,
+        "first_x_residual_mean": -0.30209285020828247,
+        "first_x_underprediction_fraction": 0.9166666666666666,
+        "gate_below_half_fraction": 0.0,
+        "gripper_error_energy_share": 0.001271127039427026
+      },
+      "other": {
+        "n": 813,
+        "episodes": 20,
+        "sigma_median": 0.23023617267608643,
+        "gate_median": 1.003699779510498,
+        "weight_median": 17.822959899902344,
+        "rms_median": 0.23716694166025004,
+        "gradient_norm_median": 0.580492057729972,
+        "action_mean_translation_norm_median": 0.08233550935983658,
+        "first_x_residual_mean": 0.010780764743685722,
+        "first_x_underprediction_fraction": 0.48954489544895446,
+        "gate_below_half_fraction": 0.0036900369003690036,
+        "gripper_error_energy_share": 0.34417256070333263
+      }
+    },
+    "close middle drawer": {
+      "forward": {
+        "n": 302,
+        "episodes": 20,
+        "sigma_median": 0.21887970715761185,
+        "gate_median": 1.0111973881721497,
+        "weight_median": 20.780242919921875,
+        "rms_median": 0.21388370936267098,
+        "gradient_norm_median": 0.5663699005781117,
+        "action_mean_translation_norm_median": 0.0823337584733963,
+        "first_x_residual_mean": 0.03496547415852547,
+        "first_x_underprediction_fraction": 0.4768211920529801,
+        "gate_below_half_fraction": 0.0033112582781456954,
+        "gripper_error_energy_share": 0.3760174479457774
+      },
+      "nonforward": {
+        "n": 357,
+        "episodes": 20,
+        "sigma_median": 0.23380693793296814,
+        "gate_median": 1.0033366680145264,
+        "weight_median": 18.83814239501953,
+        "rms_median": 0.21658290088305449,
+        "gradient_norm_median": 0.5838072813936572,
+        "action_mean_translation_norm_median": 0.10558868944644928,
+        "first_x_residual_mean": -0.0019007978262379766,
+        "first_x_underprediction_fraction": 0.5378151260504201,
+        "gate_below_half_fraction": 0.0056022408963585435,
+        "gripper_error_energy_share": 0.4245073192783749
+      },
+      "strong": {
+        "n": 51,
+        "episodes": 9,
+        "sigma_median": 0.24894282221794128,
+        "gate_median": 1.0150588750839233,
+        "weight_median": 16.510713577270508,
+        "rms_median": 0.24775738123247076,
+        "gradient_norm_median": 0.5233217881892889,
+        "action_mean_translation_norm_median": 0.20377060770988464,
+        "first_x_residual_mean": 0.026446497067809105,
+        "first_x_underprediction_fraction": 0.49019607843137253,
+        "gate_below_half_fraction": 0.0,
+        "gripper_error_energy_share": 0.15483302579150174
+      },
+      "other": {
+        "n": 608,
+        "episodes": 20,
+        "sigma_median": 0.22117315232753754,
+        "gate_median": 1.0057594776153564,
+        "weight_median": 20.15025234222412,
+        "rms_median": 0.21219708459685846,
+        "gradient_norm_median": 0.5832226382076089,
+        "action_mean_translation_norm_median": 0.08983507007360458,
+        "first_x_residual_mean": 0.014033248648047447,
+        "first_x_underprediction_fraction": 0.5115131578947368,
+        "gate_below_half_fraction": 0.004934210526315789,
+        "gripper_error_energy_share": 0.4275803417446069
+      }
+    },
+    "close top drawer": {
+      "forward": {
+        "n": 265,
+        "episodes": 20,
+        "sigma_median": 0.24071155488491058,
+        "gate_median": 1.0302925109863281,
+        "weight_median": 17.429615020751953,
+        "rms_median": 0.227756623104678,
+        "gradient_norm_median": 0.5207659210619825,
+        "action_mean_translation_norm_median": 0.07474697381258011,
+        "first_x_residual_mean": -0.03204584866762161,
+        "first_x_underprediction_fraction": 0.5207547169811321,
+        "gate_below_half_fraction": 0.0037735849056603774,
+        "gripper_error_energy_share": 0.3797665211379222
+      },
+      "nonforward": {
+        "n": 257,
+        "episodes": 20,
+        "sigma_median": 0.25162044167518616,
+        "gate_median": 1.018243670463562,
+        "weight_median": 15.73088264465332,
+        "rms_median": 0.23525071711160905,
+        "gradient_norm_median": 0.5625537305088877,
+        "action_mean_translation_norm_median": 0.07866252213716507,
+        "first_x_residual_mean": 0.013381192460656166,
+        "first_x_underprediction_fraction": 0.5525291828793775,
+        "gate_below_half_fraction": 0.011673151750972763,
+        "gripper_error_energy_share": 0.4669133252379741
+      },
+      "strong": {
+        "n": 63,
+        "episodes": 16,
+        "sigma_median": 0.23651301860809326,
+        "gate_median": 1.0272235870361328,
+        "weight_median": 17.429615020751953,
+        "rms_median": 0.2213140200156706,
+        "gradient_norm_median": 0.5565653698122646,
+        "action_mean_translation_norm_median": 0.10736016929149628,
+        "first_x_residual_mean": -0.0694921463727951,
+        "first_x_underprediction_fraction": 0.5238095238095238,
+        "gate_below_half_fraction": 0.0,
+        "gripper_error_energy_share": 0.3317504981221325
+      },
+      "other": {
+        "n": 459,
+        "episodes": 20,
+        "sigma_median": 0.24631136655807495,
+        "gate_median": 1.0225684642791748,
+        "weight_median": 16.138408660888672,
+        "rms_median": 0.23249271774020935,
+        "gradient_norm_median": 0.5391131748428197,
+        "action_mean_translation_norm_median": 0.07182106375694275,
+        "first_x_residual_mean": -0.0014709755778312683,
+        "first_x_underprediction_fraction": 0.5381263616557734,
+        "gate_below_half_fraction": 0.008714596949891068,
+        "gripper_error_energy_share": 0.44086048895521757
+      }
+    }
+  }
+}

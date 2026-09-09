@@ -1,0 +1,56 @@
+{
+  "mode": "expert_replay",
+  "task": "tool_hang",
+  "source": "/mnt/pfs/yuchen/data/mip/robomimic/tool_hang/ph/image_abs.hdf5",
+  "dataset": "/mnt/pfs/yuchen/groot/robomimic_adapter_20260907/tool_hang_smoke",
+  "results": [
+    {
+      "demo": "demo_0",
+      "steps": 681,
+      "success": true,
+      "raw_action_replay_success": false,
+      "raw_float32_replay_success": false,
+      "one_step_raw_vs_converted_max_error": 7.792304809184358e-07,
+      "action_roundtrip_max_error": 5.960464477539063e-08,
+      "initial_proprioception_max_error": 0.0,
+      "image_orientation": {
+        "sideview": {
+          "same_mae": 0.0,
+          "vertical_flip_mae": 87.41090325018897,
+          "rotate180_mae": 95.28561980347695
+        },
+        "robot0_eye_in_hand": {
+          "same_mae": 0.0,
+          "vertical_flip_mae": 99.609410430839,
+          "rotate180_mae": 101.74092970521542
+        }
+      },
+      "mean_state_trajectory_l2_error": 0.12552200605569142
+    },
+    {
+      "demo": "demo_1",
+      "steps": 613,
+      "success": false,
+      "raw_action_replay_success": true,
+      "raw_float32_replay_success": false,
+      "one_step_raw_vs_converted_max_error": 1.2531655808473152e-06,
+      "action_roundtrip_max_error": 5.960464477539063e-08,
+      "initial_proprioception_max_error": 0.0,
+      "image_orientation": {
+        "sideview": {
+          "same_mae": 0.0,
+          "vertical_flip_mae": 86.2521730914588,
+          "rotate180_mae": 94.46645880574452
+        },
+        "robot0_eye_in_hand": {
+          "same_mae": 0.0,
+          "vertical_flip_mae": 91.97637944066516,
+          "rotate180_mae": 94.24508692365835
+        }
+      },
+      "mean_state_trajectory_l2_error": 0.11042186623710314
+    }
+  ],
+  "full_replay_success_agreement": false,
+  "success_rate": 0.5
+}

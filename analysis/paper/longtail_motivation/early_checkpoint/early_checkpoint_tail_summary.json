@@ -1,0 +1,39 @@
+{
+  "checkpoint": "/mnt/pfs/yuchen/groot/ft_wxht10k/checkpoint-2000",
+  "objective": "hetero_t",
+  "states": 1728,
+  "episodes": 144,
+  "input_and_target_match": "passed against 20k MSE probe",
+  "protocol": "Same five-fold fixed-coordinate RMS standardization as zero model; no own-sigma division",
+  "early_ht": {
+    "p_gt3": 0.018072434413580248,
+    "gauss_gt3": 0.0026997960632601866,
+    "excess": 6.69399983929029,
+    "kurtosis": 3.4669119797541175,
+    "heldout_nll_gain": 0.09044312285433231,
+    "tailfit_nu": 6.7125513570857835,
+    "tailfit_scale": 0.925,
+    "tail_log_mse": 0.03204312310050572,
+    "tailfit_hits_upper_nu_bound": false,
+    "max_abs_z": 7.963021265949274,
+    "tail_fractions": {
+      "1": 0.22583912037037038,
+      "2": 0.06252411265432099,
+      "3": 0.018072434413580248,
+      "4": 0.004099151234567901,
+      "5": 0.0008921682098765432,
+      "6": 0.00015673225308641974
+    },
+    "mle_nu": 2.51188643150958,
+    "mle_scale": 0.601454311664533,
+    "mle_search": "same v4 coarse grid: 23 nu values from 10**0.1 to 10**2.3",
+    "mle_nu_by_training_fold": [
+      2.51188643150958,
+      2.51188643150958,
+      2.51188643150958,
+      2.51188643150958,
+      2.51188643150958
+    ],
+    "standardized_mean": -0.03281822553857724
+  }
+}

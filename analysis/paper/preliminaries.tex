@@ -1,0 +1,113 @@
+% ICLR preliminaries excerpt; requires amsmath and amssymb.
+% Citation: section1_references.bib. Review: preliminaries_review.md.
+% Replaces the former standalone section1_single_mode.tex motivation.
+% Outline: behavior-cloning setup -> MSE baseline -> multimodality explanation
+% -> evidence against that explanation -> successful regression -> M-estimation
+% -> heteroscedastic regression -> demonstration-data analysis.
+
+\section{Preliminaries}
+\label{sec:preliminaries}
+
+% Setup: define the task without restricting the policy class.
+We study behavior cloning from demonstrations $\mathcal{D}=\{(o_i,a_i)\}$,
+where $o_i$ contains the observations and task instruction, and $a_i$ is an
+action chunk. The goal is to learn a policy that generates action chunks
+conditioned on these inputs to accomplish the demonstrated tasks.
+A standard baseline is direct action regression~\citep{robomimic2021}, which
+trains a network $f_\theta(o)$ to predict an action chunk by minimizing the
+mean squared error (MSE):
+\begin{equation}
+    \mathcal{L}_{\mathrm{MSE}}(\theta)
+    = \mathbb{E}_{(o,a)\sim\mathcal{D}}
+      \bigl[\lVert f_\theta(o)-a\rVert_2^2\bigr].
+    \label{eq:prelim-mse}
+\end{equation}
+
+% Background: frame diffusion and flow together as denoising-based policy learning.
+However, denoising-based policies have outperformed conventional
+behavior-cloning baselines on challenging manipulation
+tasks~\citep{chi2023diffusionpolicy,pan2026much}.
+A common explanation attributes this advantage to multimodal demonstrations:
+generative policies can represent multiple valid actions for the same
+observation, whereas direct MSE regression can average incompatible
+actions~\citep{chi2023diffusionpolicy}.
+
+\subsection{Multimodality and deterministic policies}
+\label{sec:prelim-regression-gap}
+
+% Evidence against the explanation: unimodal samples and deterministic data.
+\citet{pan2026much} challenge this explanation. In their Flow-policy probes,
+action samples form a single cluster even at symmetry-critical or ambiguous
+states, and executing the mean sampled action has little effect on task
+success. The Flow--regression gap also persists on data collected from a
+deterministic expert, indicating that multimodality does not explain
+the performance gap.
+
+% Evidence and takeaway: regression can succeed without multimodal sampling.
+Deterministic regression can match Flow's performance. The minimal iterative
+policy (MIP) of \citet{pan2026much}, trained with squared-error supervision
+and noise injection, generates actions deterministically in two network
+evaluations.
+Across seven challenging tasks, the authors report an average success rate
+relative to Flow of $1.02$ for MIP and $0.74$ for direct regression
+(their Figure~1). These results show that modeling multiple action modes
+is not necessary for strong control performance: regression-based policies
+can match Flow.
+
+\subsection{M-estimation and robust regression}
+\label{sec:prelim-m-estimation}
+
+% Background: connect residual penalties, maximum likelihood, and MSE.
+M-estimation generalizes least squares by replacing the squared error with
+a residual penalty~\citep{huber1964robust}. For the continuous action
+channels, let $r_\theta=f_\theta(o)-a\in\mathbb{R}^d$ denote the flattened
+action-chunk residual. An M-estimator minimizes
+\begin{equation}
+    \mathcal{L}_{\rho}(\theta)
+    = \mathbb{E}_{(o,a)\sim\mathcal{D}}
+      \bigl[\rho(r_\theta)\bigr].
+    \label{eq:prelim-m-estimation}
+\end{equation}
+Choosing $\rho(r)=-\log q(r)$ for a residual density $q$ gives maximum
+likelihood estimation (MLE). In particular, an isotropic Gaussian
+$q=\mathcal{N}(0,\sigma^2 I_d)$ with fixed $\sigma>0$ yields the MSE
+objective in Eq.~\ref{eq:prelim-mse}, up to a positive multiplicative
+factor and an additive constant.
+
+% Mechanism: the residual derivative explains sensitivity to large errors.
+Robust regression reduces sensitivity to extreme residuals through the
+shape of $\rho$. The prediction gradient $\psi(r)=\nabla_r\rho(r)$ equals
+$2r$ for squared error and grows linearly with residual magnitude.
+By contrast, coordinate-wise Huber penalties are quadratic near zero and
+linear beyond a threshold, yielding bounded derivatives~\citep{huber1964robust}.
+
+\subsection{Heteroscedastic regression}
+\label{sec:prelim-heteroscedastic}
+
+% Background: input-dependent scale leads to a normalized likelihood.
+Heteroscedastic regression allows the conditional residual scale to vary
+with the input. A common formulation jointly predicts an action mean
+$f_\theta(o)$ and a positive scalar scale $\sigma_\theta(o)$, using the
+Gaussian model
+$p_\theta(a\mid o)=\mathcal{N}\!\bigl(a;f_\theta(o),
+\sigma_\theta(o)^2 I_d\bigr)$~\citep{nix1994estimating,seitzer2022pitfalls}.
+Omitting additive constants, its negative log-likelihood is
+\begin{equation}
+    \mathcal{L}_{\mathrm{HG}}(\theta)
+    = \mathbb{E}_{(o,a)\sim\mathcal{D}}
+      \left[
+        \frac{\lVert r_\theta\rVert_2^2}{2\sigma_\theta(o)^2}
+        + d\log\sigma_\theta(o)
+      \right].
+    \label{eq:prelim-hg}
+\end{equation}
+Inverse-variance weighting measures each residual relative to its predicted
+local scale, while the logarithmic term penalizes scale inflation.
+This adapts the scale across inputs but retains a quadratic penalty on
+the standardized residual $r_\theta/\sigma_\theta(o)$.
+
+% Synthesis and transition: distinguish scale from tails before probing data.
+Together, these formulations distinguish input-dependent scale from
+sensitivity to extreme residuals, while retaining deterministic inference
+through $f_\theta(o)$. We next examine both properties in the demonstration
+data.

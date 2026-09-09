@@ -1,0 +1,23 @@
+% ICLR appendix table; requires booktabs.
+\begin{table}[t]
+  \centering
+  \caption{\textbf{Additional iterative-policy baselines on RoboMimic.}
+  Success rate (\%). Each entry selects the best checkpoint for its backbone
+  and then averages over all nine task--dataset variants. Published Flow, MSE,
+  and MIP results are from \citet{pan2026much}.}
+  \label{tab:robomimic-iterative-appendix}
+  \small
+  \setlength{\tabcolsep}{4pt}
+  \begin{tabular}{@{}lrrrrrrrr@{}}
+    \toprule
+    & \multicolumn{4}{c}{State} & \multicolumn{4}{c}{Image} \\
+    \cmidrule(lr){2-5}\cmidrule(lr){6-9}
+    Backbone & Flow & MSE & MIP & HT & Flow & MSE & MIP & HT \\
+    \midrule
+    U-Net       & 89.3 & 83.1 & 90.4 & \textbf{95.1}
+                & 81.8 & 73.8 & 88.0 & \textbf{95.1} \\
+    Transformer & 86.0 & 77.8 & 86.2 & \textbf{87.6}
+                & 80.4 & 83.6 & 80.2 & \textbf{96.1} \\
+    \bottomrule
+  \end{tabular}
+\end{table}

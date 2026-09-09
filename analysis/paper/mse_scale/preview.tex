@@ -1,0 +1,35 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage{iclr2027_conference,times}
+\usepackage{amsmath,amssymb,graphicx}
+\usepackage[hidelinks]{hyperref}
+\begin{document}
+\section*{Frozen-MSE data diagnostic}
+We evaluate existing, late-trained MSE policies on demonstration observations.
+These are training-data fit diagnostics: the episodes were used to train the
+policies. Separate episode groups are used only to validate scale estimates.
+\input{figure}
+\input{figure_magnitude}
+\clearpage
+\section*{Independent-episode check}
+\begin{figure}[h]
+\centering
+\includegraphics[width=\linewidth]{mse_local_scale.pdf}
+\caption{An exploratory observation-dependent scale check. Within each task,
+nearest neighbors from a separate episode group estimate residual energy
+using proprioception. Query observations are grouped by that predicted scale,
+without using their target actions or residuals. The plotted query residual
+RMS is normalized within task; tasks are equally weighted. Error bars are
+episode-bootstrap 95\% intervals conditional on the fitted scale predictor.}
+\end{figure}
+\paragraph{Interpretation.}
+Task-dependent precision is a hypothesis about the demonstration process,
+not a consequence of unequal action magnitudes. Signal-dependent motor noise
+and task-constrained variability provide relevant motivation
+\citep{harris1998signal,todorov2002optimal}.
+Fitting residuals also contain model error and need not equal the underlying
+demonstration noise. No Gaussian-mixture or discrete-scale claim follows
+from these plots.
+\bibliography{motor_control_references}
+\bibliographystyle{iclr2027_conference}
+\end{document}

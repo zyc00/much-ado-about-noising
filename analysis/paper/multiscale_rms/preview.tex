@@ -1,0 +1,23 @@
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage{iclr2027_conference,times}
+\usepackage{amsmath,amssymb,graphicx}
+\usepackage[hidelinks]{hyperref}
+\begin{document}
+\section*{Residual-scale diagnostic}
+\input{figure}
+Residual magnitudes span multiple scales across demonstration inputs
+(Figure~\ref{fig:multiscale-rms}). After removing differences in median
+scale between tasks, the 10th--90th percentile range of MSE residual RMS
+spans 4.6$\times$ on GR1, 2.1$\times$ on LIBERO, 1.9$\times$ on Tool-Hang,
+and 1.8$\times$ on Transport. In a separate GR1 HT probe, the learned
+input-dependent scale is strongly associated with the measured residual
+RMS (Spearman $\rho=0.91$). These fitting diagnostics motivate an
+input-dependent scale in the regression objective.
+\paragraph{Scope of this diagnostic.}
+The measurements describe fitting residuals, not isolated demonstration
+noise. The two panels use different sampled inputs and are not a paired
+MSE--HT performance comparison. The observed spread does not establish
+discrete Gaussian components, and the HT panel is a training-set check,
+not held-out calibration.
+\end{document}

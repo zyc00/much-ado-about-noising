@@ -1,0 +1,48 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: yuchen-bridge-fractal-scale-0907
+  labels: {app: crossdataset-general-mse-probe, owner: yuchen}
+spec:
+  restartPolicy: Never
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: aihc.baidu.com/dedicated-pool
+                operator: DoesNotExist
+  containers:
+    - name: main
+      image: zyc00/easypod:latest
+      command: [bash, -lc]
+      args:
+        - |
+          set -euo pipefail
+          cd /mnt/pfs/yuchen/groot/Isaac-GR00T
+          export PATH="$PWD/.venv/bin:$PATH"
+          export HF_HOME=/mnt/pfs/yuchen/hf_home HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1
+          export PYTHONUNBUFFERED=1 PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+          export OMP_NUM_THREADS=2
+          probe_root=/mnt/pfs/yuchen/crossdataset_general_mse_20260907
+          probe_script="$probe_root/code/probe_bridge_fractal_all_scale.py"
+          python "$probe_script" --dataset bridge --output "$probe_root/smoke_bridge" --max-episodes 2
+          python "$probe_script" --dataset fractal --output "$probe_root/smoke_fractal" --max-episodes 2
+          CUDA_VISIBLE_DEVICES=0,1 torchrun --standalone --nproc_per_node=2 "$probe_script" --dataset bridge --output "$probe_root/bridge" &
+          bridge_probe_pid=$!
+          CUDA_VISIBLE_DEVICES=2,3 torchrun --standalone --nproc_per_node=2 "$probe_script" --dataset fractal --output "$probe_root/fractal" &
+          fractal_probe_pid=$!
+          wait "$bridge_probe_pid"
+          wait "$fractal_probe_pid"
+          echo DATASET_PROBES_COMPLETE
+      resources:
+        requests: {cpu: '16', memory: 96Gi, nvidia.com/gpu: '4'}
+        limits: {cpu: '16', memory: 96Gi, nvidia.com/gpu: '4'}
+      volumeMounts:
+        - {name: pfs, mountPath: /mnt/pfs}
+        - {name: dshm, mountPath: /dev/shm}
+  volumes:
+    - name: pfs
+      persistentVolumeClaim: {claimName: main-pfs-pvc}
+    - name: dshm
+      emptyDir: {medium: Memory, sizeLimit: 16Gi}

@@ -1,0 +1,14 @@
+{
+  "step": 0,
+  "recipe": {
+    "nu": 14.0,
+    "gaussian_aux_weight": 1.0,
+    "detached": "prediction in Gaussian auxiliary only",
+    "sigma": "native masked-mean softplus + 0.001, shared between both losses",
+    "reduction": "each loss normalized by total valid action dimensions",
+    "start": "fresh optimizer and step 0 from original pretrained GR00T",
+    "updates": 20000,
+    "online_gradient_balancing": false,
+    "inference": "unchanged deterministic mean; loss wrapper required for training"
+  }
+}

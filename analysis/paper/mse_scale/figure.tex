@@ -1,0 +1,16 @@
+% Include from this directory, or set \graphicspath to its location.
+% ICLR single-column figure: native width 5.5 inches; do not resize text below this.
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=\linewidth]{mse_stage_scale.pdf}
+    \caption{\textbf{Residual scale across demonstration progress.}
+    Frozen MSE policies are evaluated on demonstration observations.
+    Each task's continuous-action residual RMS is normalized by its pooled
+    RMS with equal weighting of available progress bins.
+    Gray lines show individual tasks; colored lines show their median,
+    with episode-bootstrap 95\% confidence bands. Annotations give the
+    median within-task maximum-to-minimum stage ratio.
+    Binary grippers are excluded; GR1 hand joints are retained.
+    Progress bins are a stage proxy, not semantic phase labels.}
+    \label{fig:mse-stage-scale}
+\end{figure}

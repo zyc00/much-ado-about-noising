@@ -1,0 +1,50 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: yuchen-ams-eval-pi05-rest
+  labels: {app: action-mag-specialist-eval, owner: yuchen, stack: pi05}
+spec:
+  completionMode: Indexed
+  completions: 4
+  parallelism: 4
+  backoffLimitPerIndex: 1
+  template:
+    metadata:
+      labels: {app: action-mag-specialist-eval, owner: yuchen, stack: pi05}
+    spec:
+      restartPolicy: Never
+      nodeName: 172.17.0.18
+      containers:
+        - name: main
+          image: zyc00/easypod:latest
+          command: ["bash", "-lc"]
+          args:
+            - |
+              set -euo pipefail
+              root=/mnt/pfs/yuchen/action_mag_specialists_20260905
+              bin=$((JOB_COMPLETION_INDEX + 1))
+              export HF_HOME=/mnt/pfs/yuchen/hf_home
+              export HF_HUB_OFFLINE=1
+              export TRANSFORMERS_OFFLINE=1
+              export LIBERO_CONFIG_PATH=/mnt/pfs/yuchen/oft/libero_cfg
+              export PYTHONPATH=/mnt/pfs/yuchen/pi05/lerobot_src/src
+              export PYTHONUNBUFFERED=1
+              mkdir -p "$root/results" "$root/eval_logs"
+              /mnt/pfs/yuchen/pi05/venv/bin/python \
+                "$root/scripts/evaluate_specialists.py" pi05 \
+                --bin "$bin" --batch 4 --per-task 40 \
+                --output "$root/results/pi05_q${bin}.npz" \
+                2>&1 | tee "$root/eval_logs/pi05_q${bin}.log"
+          env:
+            - {name: NVIDIA_DRIVER_CAPABILITIES, value: all}
+          resources:
+            requests: {cpu: "12", memory: 96Gi, nvidia.com/gpu: "1"}
+            limits: {cpu: "12", memory: 96Gi, nvidia.com/gpu: "1"}
+          volumeMounts:
+            - {name: pfs, mountPath: /mnt/pfs}
+            - {name: dshm, mountPath: /dev/shm}
+      volumes:
+        - name: pfs
+          persistentVolumeClaim: {claimName: main-pfs-pvc}
+        - name: dshm
+          emptyDir: {medium: Memory}

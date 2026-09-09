@@ -1,0 +1,430 @@
+{
+  "step": 11000,
+  "nu_before": 64.0,
+  "nu_after": 32.0,
+  "batches": [
+    {
+      "batch": "mixed_0",
+      "loss_before": -0.43674544245004654,
+      "native_loss_max_difference": 1.1920928955078125e-07,
+      "comparisons": {
+        "small_drop": {
+          "nu": 57.6,
+          "loss": -0.4306729771196842,
+          "groups": {
+            "all": {
+              "cosine": 0.9993762290950461,
+              "angle_degrees": 2.0238241068588176,
+              "norm_before": 7.513996008253249,
+              "norm_after": 7.17705680076256,
+              "norm_ratio": 0.9551584526900732,
+              "relative_difference": 0.056589437795103274
+            },
+            "action_decoder": {
+              "cosine": 0.9996738080987682,
+              "angle_degrees": 1.4634774104732127,
+              "norm_before": 1.040247059192629,
+              "norm_after": 1.0219101511319861,
+              "norm_ratio": 0.9823725451578063,
+              "relative_difference": 0.030848194447318688
+            },
+            "sigma_decoder": {
+              "cosine": 0.9999542359079598,
+              "angle_degrees": 0.5481528944701595,
+              "norm_before": 0.7745199845948909,
+              "norm_after": 0.7106932980702887,
+              "norm_ratio": 0.9175919436630335,
+              "relative_difference": 0.08291606161393955
+            },
+            "shared_action_head": {
+              "cosine": 0.9993805916575945,
+              "angle_degrees": 2.016733790872082,
+              "norm_before": 7.401225632376706,
+              "norm_after": 7.068292509543127,
+              "norm_ratio": 0.9550164878939563,
+              "relative_difference": 0.05662690809912711
+            },
+            "backbone": {
+              "norm_before": 0.0,
+              "norm_after": 0.0,
+              "cosine": null
+            }
+          }
+        },
+        "halving": {
+          "nu": 32.0,
+          "loss": -0.3678116563241929,
+          "groups": {
+            "all": {
+              "cosine": 0.9746562479593225,
+              "angle_degrees": 12.926906226651196,
+              "norm_before": 7.513996008253249,
+              "norm_after": 5.889797804204197,
+              "norm_ratio": 0.78384361633077,
+              "relative_difference": 0.2940317307755565
+            },
+            "action_decoder": {
+              "cosine": 0.9884417671801915,
+              "angle_degrees": 8.719720111272276,
+              "norm_before": 1.040247059192629,
+              "norm_after": 0.9485865237723171,
+              "norm_ratio": 0.9118858019253111,
+              "relative_difference": 0.16983429780172948
+            },
+            "sigma_decoder": {
+              "cosine": 0.998225984781509,
+              "angle_degrees": 3.4133476653812687,
+              "norm_before": 0.7745199845948909,
+              "norm_after": 0.4285208248036889,
+              "norm_ratio": 0.5532727796918303,
+              "relative_difference": 0.44891896599115083
+            },
+            "shared_action_head": {
+              "cosine": 0.9748763371811339,
+              "angle_degrees": 12.87041590512693,
+              "norm_before": 7.401225632376706,
+              "norm_after": 5.79709165737749,
+              "norm_ratio": 0.7832610361205687,
+              "relative_difference": 0.29382401332230723
+            },
+            "backbone": {
+              "norm_before": 0.0,
+              "norm_after": 0.0,
+              "cosine": null
+            }
+          }
+        },
+        "dropout_control": {
+          "nu": 64.0,
+          "loss": -0.4579692897386849,
+          "groups": {
+            "all": {
+              "cosine": 0.5865864101549239,
+              "angle_degrees": 54.08485814771055,
+              "norm_before": 7.513996008253249,
+              "norm_after": 8.350026170711244,
+              "norm_ratio": 1.1112630565067791,
+              "relative_difference": 0.9649880655472323
+            },
+            "action_decoder": {
+              "cosine": 0.8881809735024919,
+              "angle_degrees": 27.354448591337576,
+              "norm_before": 1.040247059192629,
+              "norm_after": 1.0624247834548441,
+              "norm_ratio": 1.0213196702324043,
+              "relative_difference": 0.4783936359057309
+            },
+            "sigma_decoder": {
+              "cosine": 0.9946686431459152,
+              "angle_degrees": 5.919017770389513,
+              "norm_before": 0.7745199845948909,
+              "norm_after": 0.7124913812673749,
+              "norm_ratio": 0.9199134889205477,
+              "relative_difference": 0.12736806281608726
+            },
+            "shared_action_head": {
+              "cosine": 0.5775769327773828,
+              "angle_degrees": 54.71970315693864,
+              "norm_before": 7.401225632376706,
+              "norm_after": 8.251457244795208,
+              "norm_ratio": 1.1148771371999737,
+              "relative_difference": 0.9772903337268964
+            },
+            "backbone": {
+              "norm_before": 0.0,
+              "norm_after": 0.0,
+              "cosine": null
+            }
+          }
+        }
+      }
+    },
+    {
+      "batch": "mixed_1",
+      "loss_before": -0.8297175951302052,
+      "native_loss_max_difference": 1.1920928955078125e-07,
+      "comparisons": {
+        "small_drop": {
+          "nu": 57.6,
+          "loss": -0.816344890743494,
+          "groups": {
+            "all": {
+              "cosine": 0.9998869464905525,
+              "angle_degrees": 0.8615564658143328,
+              "norm_before": 4.988184129073818,
+              "norm_after": 4.9631632767087215,
+              "norm_ratio": 0.9949839757880504,
+              "relative_difference": 0.015815604936534774
+            },
+            "action_decoder": {
+              "cosine": 0.999814357835002,
+              "angle_degrees": 1.1040345419583377,
+              "norm_before": 1.1782764887775266,
+              "norm_after": 1.1770435109191675,
+              "norm_ratio": 0.9989535750987967,
+              "relative_difference": 0.019287063382002253
+            },
+            "sigma_decoder": {
+              "cosine": 0.9994371144621891,
+              "angle_degrees": 1.9225075282100585,
+              "norm_before": 0.2755963424026347,
+              "norm_after": 0.26878335421116567,
+              "norm_ratio": 0.975279105186688,
+              "relative_difference": 0.041340823016097206
+            },
+            "shared_action_head": {
+              "cosine": 0.9998938212039586,
+              "angle_degrees": 0.8349498121615921,
+              "norm_before": 4.839182996910979,
+              "norm_after": 4.814074552099513,
+              "norm_ratio": 0.9948114289483384,
+              "relative_difference": 0.015432985102881056
+            },
+            "backbone": {
+              "norm_before": 0.0,
+              "norm_after": 0.0,
+              "cosine": null
+            }
+          }
+        },
+        "halving": {
+          "nu": 32.0,
+          "loss": -0.7210823614150286,
+          "groups": {
+            "all": {
+              "cosine": 0.9962416735550123,
+              "angle_degrees": 4.969022832868334,
+              "norm_before": 4.988184129073818,
+              "norm_after": 4.875516697236963,
+              "norm_ratio": 0.9774131369409221,
+              "relative_difference": 0.08863995523090273
+            },
+            "action_decoder": {
+              "cosine": 0.9928846245887646,
+              "angle_degrees": 6.839028131785576,
+              "norm_before": 1.1782764887775266,
+              "norm_after": 1.1850051080489976,
+              "norm_ratio": 1.0057105605819667,
+              "relative_difference": 0.11976905647674363
+            },
+            "sigma_decoder": {
+              "cosine": 0.9821950846022015,
+              "angle_degrees": 10.828145494422092,
+              "norm_before": 0.2755963424026347,
+              "norm_after": 0.2265162798933123,
+              "norm_ratio": 0.8219132297568068,
+              "relative_difference": 0.24694754255905102
+            },
+            "shared_action_head": {
+              "cosine": 0.9965516090424587,
+              "angle_degrees": 4.759603327231937,
+              "norm_before": 4.839182996910979,
+              "norm_after": 4.723887840950238,
+              "norm_ratio": 0.9761746650138385,
+              "relative_difference": 0.08544068330035919
+            },
+            "backbone": {
+              "norm_before": 0.0,
+              "norm_after": 0.0,
+              "cosine": null
+            }
+          }
+        }
+      }
+    },
+    {
+      "batch": "move_near",
+      "loss_before": -0.7847476080060005,
+      "native_loss_max_difference": 1.1920928955078125e-07,
+      "comparisons": {
+        "small_drop": {
+          "nu": 57.6,
+          "loss": -0.7729421854019165,
+          "groups": {
+            "all": {
+              "cosine": 0.9998114958353318,
+              "angle_degrees": 1.1125125720897078,
+              "norm_before": 5.049768438009544,
+              "norm_after": 4.932622855120515,
+              "norm_ratio": 0.9768017911460504,
+              "relative_difference": 0.030106798325363147
+            },
+            "action_decoder": {
+              "cosine": 0.9998848626452663,
+              "angle_degrees": 0.8694606289113513,
+              "norm_before": 1.3565177285385366,
+              "norm_after": 1.3544833420970603,
+              "norm_ratio": 0.9985002876124088,
+              "relative_difference": 0.015237404663478785
+            },
+            "sigma_decoder": {
+              "cosine": 0.9959844412463305,
+              "angle_degrees": 5.13636712459267,
+              "norm_before": 0.16522723335613496,
+              "norm_after": 0.15733666742427185,
+              "norm_ratio": 0.9522441562956175,
+              "relative_difference": 0.0996403799812324
+            },
+            "shared_action_head": {
+              "cosine": 0.9998310541049482,
+              "angle_degrees": 1.0532162878433704,
+              "norm_before": 4.8613496984927425,
+              "norm_after": 4.740399590743662,
+              "norm_ratio": 0.9751200561056982,
+              "relative_difference": 0.030797673118389764
+            },
+            "backbone": {
+              "norm_before": 0.0,
+              "norm_after": 0.0,
+              "cosine": null
+            }
+          }
+        },
+        "halving": {
+          "nu": 32.0,
+          "loss": -0.685589887201786,
+          "groups": {
+            "all": {
+              "cosine": 0.9932303746383991,
+              "angle_degrees": 6.670605439976668,
+              "norm_before": 5.049768438009544,
+              "norm_after": 4.428532501921171,
+              "norm_ratio": 0.8769773418891176,
+              "relative_difference": 0.16434168831757498
+            },
+            "action_decoder": {
+              "cosine": 0.9952060438288958,
+              "angle_degrees": 5.612525298113994,
+              "norm_before": 1.3565177285385366,
+              "norm_after": 1.3564035693369516,
+              "norm_ratio": 0.9999158439295092,
+              "relative_difference": 0.09791380159827198
+            },
+            "sigma_decoder": {
+              "cosine": 0.8625812383387992,
+              "angle_degrees": 30.392348600033934,
+              "norm_before": 0.16522723335613496,
+              "norm_after": 0.1313692731103377,
+              "norm_ratio": 0.7950824476203692,
+              "relative_difference": 0.5104015027547961
+            },
+            "shared_action_head": {
+              "cosine": 0.9940334078892187,
+              "angle_degrees": 6.262056471431163,
+              "norm_before": 4.8613496984927425,
+              "norm_after": 4.213645878778215,
+              "norm_ratio": 0.8667646106768769,
+              "relative_difference": 0.16761542513749195
+            },
+            "backbone": {
+              "norm_before": 0.0,
+              "norm_after": 0.0,
+              "cosine": null
+            }
+          }
+        }
+      }
+    },
+    {
+      "batch": "close_drawer",
+      "loss_before": -1.0126223266124725,
+      "native_loss_max_difference": 1.1920928955078125e-07,
+      "comparisons": {
+        "small_drop": {
+          "nu": 57.6,
+          "loss": -0.9992564991116524,
+          "groups": {
+            "all": {
+              "cosine": 0.9999009189385436,
+              "angle_degrees": 0.8065597424943184,
+              "norm_before": 4.3199786885388205,
+              "norm_after": 4.325826346885621,
+              "norm_ratio": 1.0013536312950606,
+              "relative_difference": 0.014151419683086714
+            },
+            "action_decoder": {
+              "cosine": 0.9999681684261378,
+              "angle_degrees": 0.45715959400167666,
+              "norm_before": 2.853311821306757,
+              "norm_after": 2.86913421217134,
+              "norm_ratio": 1.0055452722504534,
+              "relative_difference": 0.009734794375996078
+            },
+            "sigma_decoder": {
+              "cosine": 0.9998891474191506,
+              "angle_degrees": 0.8531286888565532,
+              "norm_before": 0.36612467193528375,
+              "norm_after": 0.36466613591343544,
+              "norm_ratio": 0.9960162858893429,
+              "relative_difference": 0.01538479541083469
+            },
+            "shared_action_head": {
+              "cosine": 0.9998602547319564,
+              "angle_degrees": 0.9578803041728151,
+              "norm_before": 3.222852811473245,
+              "norm_after": 3.2168091434332413,
+              "norm_ratio": 0.9981247458715805,
+              "relative_difference": 0.01680723053782485
+            },
+            "backbone": {
+              "norm_before": 0.0,
+              "norm_after": 0.0,
+              "cosine": null
+            }
+          }
+        },
+        "halving": {
+          "nu": 32.0,
+          "loss": -0.9047196060419083,
+          "groups": {
+            "all": {
+              "cosine": 0.9962792992488224,
+              "angle_degrees": 4.944071579976381,
+              "norm_before": 4.3199786885388205,
+              "norm_after": 4.383293846246732,
+              "norm_ratio": 1.0146563588093367,
+              "relative_difference": 0.08812079326904632
+            },
+            "action_decoder": {
+              "cosine": 0.9986963431275337,
+              "angle_degrees": 2.9259471113077478,
+              "norm_before": 2.853311821306757,
+              "norm_after": 2.9726798047309666,
+              "norm_ratio": 1.0418348890341547,
+              "relative_difference": 0.0668322404729116
+            },
+            "sigma_decoder": {
+              "cosine": 0.9968237983821036,
+              "angle_degrees": 4.567795781815491,
+              "norm_before": 0.36612467193528375,
+              "norm_after": 0.3377364413477957,
+              "norm_ratio": 0.9224629401852876,
+              "relative_difference": 0.10895802958406718
+            },
+            "shared_action_head": {
+              "cosine": 0.9948380887711694,
+              "angle_degrees": 5.824114290805035,
+              "norm_before": 3.222852811473245,
+              "norm_after": 3.203494001441997,
+              "norm_ratio": 0.9939932689565184,
+              "relative_difference": 0.10147852408586767
+            },
+            "backbone": {
+              "norm_before": 0.0,
+              "norm_after": 0.0,
+              "cosine": null
+            }
+          }
+        }
+      }
+    }
+  ],
+  "trainable_parameters": 1658432768,
+  "parameter_groups": {
+    "action_decoder": 37916800,
+    "sigma_decoder": 37916800,
+    "shared_action_head": 1582599168,
+    "backbone": 0
+  },
+  "elapsed_seconds": 80.81615031696856
+}

@@ -8,6 +8,16 @@
 4. Section 5 states one mechanism (the effective gradient weight profile), not two co-equal ingredients.
 5. **Escalating impact via a prediction ladder.** The paper's five predictions form an ascending sequence of stakes: 5.5 contamination (self-designed synthetic), 6.3 ph/mh (public benchmark), 6.5 late decline (our own weakness as the prediction target), 6.6 scale (external data we do not control), 7.1 our own failure (direction included). At each one, state the stake — what it would mean if the result came out the other way — *before* revealing the result. Five bets, five payoffs, monotonically rising. Never disguise a post-hoc observation as a member of this ladder; one exposed fake collapses the whole sequence. If something was only observed, label it an observation.
 6. **Facts become inferences.** What Section 2 presents as a brute fact (a dataset where MSE wins) is re-presented in Section 7 as a derivation the reader can perform themselves. The same object, seen twice with different eyes, is what makes the closing loop land — the name and the back-reference are only the signposts.
+7. **ICLR 2027 layout is a hard constraint.** Draft and validate every section, figure, and table in the official `iclr2027_conference` style. The paper is single-column (5.5-inch text width), 10-point Times with 11-point leading, and has a 9-page initial-submission limit excluding references. Do not modify the style file or shrink tables below the body font to recover space.
+
+**ICLR 2027 visual rules**
+
+- Design single-column figures and tables for `\linewidth`; use a wider composition only when the information genuinely requires it.
+- Put figure captions below figures and table titles above tables. Use sentence case and keep each visual with its caption.
+- Prefer vector PDF plots, dark reproducible lines, and encodings that remain understandable in grayscale. Color may supplement, but must not carry meaning alone.
+- Keep labels readable at final size. Avoid `\resizebox` and tiny table fonts; reduce columns, abbreviate repeated text, or move detail to the appendix instead.
+- Use centered, minimal-ink tables with `booktabs`, aligned numerical columns, explicit units, and arrows only where the optimization direction is not obvious.
+- Compile with the unmodified official template throughout drafting, not only at submission time. Include the required AI-use statement outside the main-text page limit.
 
 **Reader test before drafting.** Show the abstract to someone unfamiliar with the area and ask them to state the contribution in one sentence. If they say "the authors propose a new loss," the framing has failed. If they say "the authors argue generative modeling is not necessary for robot policy learning," it has succeeded.
 
@@ -77,6 +87,16 @@ This section carries the reproducibility load for the whole paper, since there i
 
 - Chunked behavior cloning notation.
 - MSE as the conditional mean, equivalently isotropic-Gaussian MLE.
+- Established starting point, cited to Pan et al.: a successful deterministic
+  policy can be learned, but direct MSE regression can learn a substantially
+  worse one. Use the compact MSE-versus-MIP comparison from their Table 12
+  (Transport-mh and Tool-Hang, three backbones). Define MIP's noisy training
+  inputs and deterministic two-step inference. Do not infer MSE learnability
+  from a unimodal learned Flow distribution. Draft: `preliminaries.tex`.
+- End this motivation by asking whether an objective better suited to the
+  demonstrations can close the gap with a single prediction. The next section
+  examines the structure of the data. Policy-output probes remain supporting
+  analysis rather than a standalone premise for learnability.
 - Benchmarks, backbones, evaluation protocol, training budget.
 - State the protocol lineage: the main table follows the DP and MIP evaluation protocols so that cited baseline numbers remain comparable, and baselines are taken from published results rather than retuned.
 
@@ -84,7 +104,11 @@ This section carries the reproducibility load for the whole paper, since there i
 
 ## 4. The Structure of Multimodality in Human Demonstrations
 
-Open with the back-reference that picks up Section 2's thread across the Preliminaries valley: *"Section 2 showed that the outcome hinges on the structure of label variation. We now measure that structure where it matters: in human demonstrations."*
+Open from the regression gap established in Preliminaries: *"A successful
+deterministic policy can be learned, yet plain regression remains less
+effective. We investigate this gap by examining the variation in human
+demonstrations."* Connect the measured structure to Section 2's distinction
+between nuisance variation and strategy variation.
 
 ### 4.1 Multimodality is constrained by the structure of the action space
 

@@ -1,0 +1,57 @@
+{
+  "dataset": "fractal",
+  "step": 18000,
+  "nu": 14.0,
+  "seed_protocol": "unseeded, five vector environments, matching 10k",
+  "tasks": [
+    {
+      "task": "google_robot_pick_coke_can",
+      "success_rate": 0.95,
+      "episodes": 100,
+      "actual_episodes": 100,
+      "successes": 95,
+      "seed": null
+    },
+    {
+      "task": "google_robot_pick_object",
+      "success_rate": 0.75,
+      "episodes": 100,
+      "actual_episodes": 100,
+      "successes": 75,
+      "seed": null
+    },
+    {
+      "task": "google_robot_move_near",
+      "success_rate": 0.8,
+      "episodes": 100,
+      "actual_episodes": 100,
+      "successes": 80,
+      "seed": null
+    },
+    {
+      "task": "google_robot_open_drawer",
+      "success_rate": 0.45,
+      "episodes": 100,
+      "actual_episodes": 100,
+      "successes": 45,
+      "seed": null
+    },
+    {
+      "task": "google_robot_close_drawer",
+      "success_rate": 0.25,
+      "episodes": 100,
+      "actual_episodes": 100,
+      "successes": 25,
+      "seed": null
+    },
+    {
+      "task": "google_robot_place_in_closed_drawer",
+      "success_rate": 0.2,
+      "episodes": 100,
+      "actual_episodes": 100,
+      "successes": 20,
+      "seed": null
+    }
+  ],
+  "macro_success_rate": 0.5666666666666667
+}

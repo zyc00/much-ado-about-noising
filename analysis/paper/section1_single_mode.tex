@@ -1,0 +1,82 @@
+% SUPERSEDED: use preliminaries.tex for the current paper opening.
+% This earlier probe-based motivation is retained as an editorial archive.
+% ---------------------------------------------------------------------------
+% Section 1: motivation and empirical puzzle. ICLR 2027; requires booktabs.
+% Citation: section1_references.bib. Editorial audit: section1_review.md.
+% Outline: mode-averaging hypothesis -> density evidence -> mean intervention
+% -> published regression gap -> question about the training objective.
+% ---------------------------------------------------------------------------
+\section{Why Does MSE Underperform When One Action Suffices?}
+\label{sec:single-mode}
+
+% Opening: state the explanation being tested.
+Generative robot policies are often motivated by their ability to represent
+multiple valid actions for the same observation. If those actions follow
+incompatible strategies, a policy trained with mean squared error (MSE) may
+average them into an invalid motion. This explanation predicts that repeated
+samples from a successful policy should reveal distinct action strategies.
+We test this prediction by holding the observation and instruction fixed and
+sampling the policy repeatedly.
+
+% Design and evidence: compare predictive density at the same policy input.
+The continuous actions favor a single Gaussian description.
+We probe GR00T on GR1 and $\pi_{0.5}$ on LIBERO using their evaluation-time
+samplers. For each policy, we screen 3,000 states and retain those with the
+most separated samples. We then draw 32 fresh action chunks per retained
+state and compare a single Gaussian with a two-component Gaussian mixture
+along an independently estimated principal direction. The analysis covers
+GR1's arm and waist joints and LIBERO's six arm channels.
+Table~\ref{tab:single-mode-density} shows that the median held-out likelihood
+favors the single Gaussian in both settings. Even this search for separated
+samples supports a simple description of continuous motion: variation around
+one local action.
+
+\begin{table}[ht]
+\centering
+\caption{\textbf{Continuous actions favor a single Gaussian.}
+The 1G advantage is the median held-out log-likelihood difference between a
+single Gaussian and a two-component mixture, in nats per projected sample.
+Positive values favor the single Gaussian. States are selected from a
+3,000-state screen to maximize apparent separation; each has 32 fresh samples.}
+\label{tab:single-mode-density}
+% Source: gaussianity/action_basin_report.json, independent_pc1.state_deltas.
+% Average reciprocal split scores within each state, then take the median.
+% Original direction-pooled medians were -0.279/-0.266 for 2G minus 1G.
+\begin{tabular}{@{}llrr@{}}
+\toprule
+Policy / benchmark & Channels & States & 1G advantage \\
+\midrule
+GR00T / GR1          & Arm $+$ waist & 30 & $+0.331$ \\
+$\pi_{0.5}$ / LIBERO & Arm           & 36 & $+0.352$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% Intervention: directly test the consequence relevant to averaging.
+Averaging the sampled actions also preserves the local motion.
+At 40 WidowX states, we estimate the arm-action mean from 64 samples, restore
+the simulator state, and execute that mean over the four control steps used
+before replanning. Each comparison holds the gripper commands fixed.
+The resulting motion stays inside the empirical 95\% envelope of sampled
+paths at all 40 states. Thus, in this direct intervention, averaging produces
+an ordinary local motion. A regression policy has a useful action to predict.
+
+% Challenge: state the published performance gap with one reporting metric.
+Yet MSE regression can still perform substantially worse than Flow.
+Table~12 of \citet{pan2025muchado} reports a clear gap on state-based
+manipulation tasks with the same backbone and training data. With Sudeep-DiT,
+best-checkpoint success is 12\% for regression versus 40\% for Flow on
+Transport-mh, and 52\% versus 86\% on Tool-Hang, averaged over three seeds.
+The Transport-mh gap also appears with Chi-Transformer and Chi-UNet.
+The difficulty therefore persists even when regression uses the same
+architecture as the generative policy.
+
+% Transition: distinguish a useful prediction from learning it reliably.
+These observations pose a simple question:
+\emph{if one local action suffices, why is MSE an ineffective way to learn it?}
+MSE targets the conditional mean, making it a natural objective for a
+Gaussian action model. The unresolved issue is how the training loss fits
+that prediction across the dataset. We next examine two properties that
+shape this process: action distributions with different radii at different
+task stages, and large errors from rare or noisy actions. These properties
+motivate a loss that adapts to both local scale and heavy tails.

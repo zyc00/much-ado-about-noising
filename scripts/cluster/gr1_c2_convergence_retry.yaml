@@ -1,0 +1,78 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: yuchen-gr1c2-convergence-retry
+  labels:
+    app: gr1-c2-convergence-retry
+    owner: yuchen
+spec:
+  completionMode: Indexed
+  completions: 8
+  parallelism: 8
+  backoffLimitPerIndex: 1
+  maxFailedIndexes: 2
+  template:
+    metadata:
+      labels:
+        app: gr1-c2-convergence-retry
+        owner: yuchen
+    spec:
+      restartPolicy: Never
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: aihc.baidu.com/dedicated-pool
+                    operator: DoesNotExist
+      containers:
+        - name: eval
+          image: zyc00/easypod:latest
+          imagePullPolicy: Always
+          command: ["bash", "-lc"]
+          args:
+            - |
+              set -euo pipefail
+              case "${JOB_COMPLETION_INDEX}" in
+                0) step=52000; shard=1; env_name="gr1_unified/PnPMilkToMicrowaveClose_GR1ArmsAndWaistFourierHands_Env" ;;
+                1) step=52000; shard=2; env_name="gr1_unified/PosttrainPnPNovelFromCuttingboardToBasketSplitA_GR1ArmsAndWaistFourierHands_Env" ;;
+                2) step=52000; shard=3; env_name="gr1_unified/PosttrainPnPNovelFromCuttingboardToPotSplitA_GR1ArmsAndWaistFourierHands_Env" ;;
+                3) step=52000; shard=5; env_name="gr1_unified/PosttrainPnPNovelFromPlateToBowlSplitA_GR1ArmsAndWaistFourierHands_Env" ;;
+                4) step=54000; shard=2; env_name="gr1_unified/PosttrainPnPNovelFromCuttingboardToBasketSplitA_GR1ArmsAndWaistFourierHands_Env" ;;
+                5) step=54000; shard=3; env_name="gr1_unified/PosttrainPnPNovelFromCuttingboardToPotSplitA_GR1ArmsAndWaistFourierHands_Env" ;;
+                6) step=54000; shard=4; env_name="gr1_unified/PosttrainPnPNovelFromPlacematToBowlSplitA_GR1ArmsAndWaistFourierHands_Env" ;;
+                7) step=54000; shard=5; env_name="gr1_unified/PosttrainPnPNovelFromPlateToBowlSplitA_GR1ArmsAndWaistFourierHands_Env" ;;
+                *) echo "invalid retry index"; exit 2 ;;
+              esac
+              checkpoint="/mnt/pfs/yuchen/groot/ft_gr1c2/checkpoint-${step}"
+              tag="gr1c2nu4d-${step}-retry"
+              exec bash /mnt/pfs/yuchen/groot/gr1_eval_pod_ready.sh \
+                "${checkpoint}" "${tag}" "${shard}" "${env_name}"
+          env:
+            - name: JOB_COMPLETION_INDEX
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.annotations['batch.kubernetes.io/job-completion-index']
+            - name: NVIDIA_DRIVER_CAPABILITIES
+              value: all
+          resources:
+            requests:
+              cpu: "8"
+              memory: 64Gi
+              nvidia.com/gpu: "1"
+            limits:
+              cpu: "8"
+              memory: 64Gi
+              nvidia.com/gpu: "1"
+          volumeMounts:
+            - name: pfs
+              mountPath: /mnt/pfs
+            - name: dshm
+              mountPath: /dev/shm
+      volumes:
+        - name: pfs
+          persistentVolumeClaim:
+            claimName: main-pfs-pvc
+        - name: dshm
+          emptyDir:
+            medium: Memory

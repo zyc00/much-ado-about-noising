@@ -1,0 +1,36 @@
+{
+  "stack": "pi0.5 / LIBERO",
+  "states": 400,
+  "tasks": 40,
+  "flow_samples_per_state": 8,
+  "continuous_channels": 6,
+  "gripper_excluded": true,
+  "mse_residual_vs_label_scale": {
+    "within_task_spearman": 0.16272727272727272,
+    "p": 0.0010901801901759248
+  },
+  "mse_residual_vs_progress": {
+    "stage_range": 1.4948650447942202,
+    "permutation_p": 0.00004999750012499375,
+    "task_adjusted_r2": 0.12651414182049525
+  },
+  "flow_spread_vs_label_scale": {
+    "within_task_spearman": 0.2687878787878788,
+    "p": 4.768598660335103e-08
+  },
+  "flow_spread_vs_progress": {
+    "stage_range": 1.2993912962690015,
+    "permutation_p": 0.11274436278186091,
+    "task_adjusted_r2": 0.039575655262364395
+  },
+  "mse_flow_stage_profile": {
+    "pearson_r": 0.8498024812411444,
+    "p": 0.001849804756124732
+  },
+  "flow_mean_to_label_rms": {
+    "vs_label_scale_within_task_spearman": 0.3639393939393939,
+    "vs_label_scale_p": 5.6790351645013864e-14,
+    "progress_stage_range": 1.7897301804172971,
+    "progress_permutation_p": 0.00004999750012499375
+  }
+}

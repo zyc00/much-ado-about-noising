@@ -1,0 +1,40 @@
+{
+  "checkpoint": "/mnt/pfs/yuchen/groot/ft_wxmse250_20260907/checkpoint-100",
+  "objective": "mse",
+  "training_steps": 100,
+  "states": 1728,
+  "episodes": 144,
+  "input_and_target_match": "passed against 20k MSE probe",
+  "protocol": "Same five-fold fixed-coordinate RMS standardization as zero model; no own-sigma division",
+  "early_mse": {
+    "p_gt3": 0.017578125,
+    "gauss_gt3": 0.0026997960632601866,
+    "excess": 6.510908449423111,
+    "kurtosis": 2.3510431166507626,
+    "heldout_nll_gain": 0.07036421769864365,
+    "tailfit_nu": 300.0000000000001,
+    "tailfit_scale": 1.15,
+    "tail_log_mse": 0.5093350164229482,
+    "tailfit_hits_upper_nu_bound": true,
+    "max_abs_z": 4.918026004266736,
+    "tail_fractions": {
+      "1": 0.22846739969135801,
+      "2": 0.06643036265432099,
+      "3": 0.017578125,
+      "4": 0.001458815586419753,
+      "5": 0.0,
+      "6": 0.0
+    },
+    "mle_nu": 3.162277660168379,
+    "mle_scale": 0.6614326986602667,
+    "mle_search": "same v4 coarse grid: 23 nu values from 10**0.1 to 10**2.3",
+    "mle_nu_by_training_fold": [
+      3.162277660168379,
+      3.162277660168379,
+      3.162277660168379,
+      3.162277660168379,
+      3.162277660168379
+    ],
+    "standardized_mean": -0.0020308474806923797
+  }
+}

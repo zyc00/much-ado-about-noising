@@ -1,0 +1,83 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: yuchen-wxmean-arm
+  labels:
+    app: widowx-arm-mean-probe
+    owner: yuchen
+spec:
+  restartPolicy: Never
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: aihc.baidu.com/dedicated-pool
+                operator: DoesNotExist
+  containers:
+    - name: main
+      image: zyc00/easypod:latest
+      command: ["bash", "-lc"]
+      args:
+        - |
+          set -o pipefail
+          cd /mnt/pfs/yuchen/groot/Isaac-GR00T
+          export HF_HOME=/mnt/pfs/yuchen/hf_home
+          export PYTHONUNBUFFERED=1
+          export MUJOCO_GL=egl
+          .venv/bin/python gr00t/eval/run_gr00t_server.py \
+            --model-path /mnt/pfs/yuchen/groot/ft_wxflow/checkpoint-20000 \
+            --embodiment-tag SIMPLER_ENV_WIDOWX \
+            --use-sim-policy-wrapper \
+            > /mnt/pfs/yuchen/groot/widowx_arm_mean_v1_server.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for _ in $(seq 1 80); do
+            if grep -qa 'Server is ready' /mnt/pfs/yuchen/groot/widowx_arm_mean_v1_server.log; then
+              break
+            fi
+            sleep 5
+          done
+          TASKS=widowx_close_drawer,widowx_put_eggplant_in_basket \
+            K_MEAN=64 K_REFERENCE=8 CASES_PER_TASK=20 \
+            TARGET_STEPS=0,4,8,16,24,36 MAX_EPISODES=8 MAX_MACRO_STEPS=60 \
+            INFER_BATCH=4 OUT=/mnt/pfs/yuchen/groot/widowx_arm_mean_v1 \
+            gr00t/eval/sim/SimplerEnv/simpler_uv/.venv/bin/python \
+            /mnt/pfs/yuchen/groot/probe_widowx_arm_mean.py \
+            2>&1 | tee /mnt/pfs/yuchen/groot/widowx_arm_mean_v1.log
+      env:
+        - name: NVIDIA_DRIVER_CAPABILITIES
+          value: all
+        - name: HTTP_PROXY
+          value: http://172.17.0.12:2080
+        - name: HTTPS_PROXY
+          value: http://172.17.0.12:2080
+        - name: http_proxy
+          value: http://172.17.0.12:2080
+        - name: https_proxy
+          value: http://172.17.0.12:2080
+        - name: NO_PROXY
+          value: localhost,127.0.0.1,.svc,.cluster.local,10.0.0.0/8,192.168.0.0/16
+        - name: no_proxy
+          value: localhost,127.0.0.1,.svc,.cluster.local,10.0.0.0/8,192.168.0.0/16
+      resources:
+        requests:
+          cpu: "8"
+          memory: 64Gi
+          nvidia.com/gpu: "1"
+        limits:
+          cpu: "8"
+          memory: 64Gi
+          nvidia.com/gpu: "1"
+      volumeMounts:
+        - name: pfs
+          mountPath: /mnt/pfs
+        - name: dshm
+          mountPath: /dev/shm
+  volumes:
+    - name: pfs
+      persistentVolumeClaim:
+        claimName: main-pfs-pvc
+    - name: dshm
+      emptyDir:
+        medium: Memory

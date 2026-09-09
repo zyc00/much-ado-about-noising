@@ -1,0 +1,1744 @@
+{
+  "checkpoint": "/mnt/pfs/yuchen/groot/ft_wxflow/checkpoint-20000",
+  "tasks": [
+    "widowx_close_drawer",
+    "widowx_put_eggplant_in_basket"
+  ],
+  "seed": 20260908,
+  "k_mean": 64,
+  "k_reference": 8,
+  "execution_horizon": 4,
+  "target_macro_steps": [
+    0,
+    4,
+    8,
+    16,
+    24,
+    36
+  ],
+  "gripper_protocol": "never averaged; each sampled/mean/medoid arm triple uses the same sampled gripper sequence",
+  "state_protocol": "on-policy states from multiple seeded episodes",
+  "snapshot_replay_max_abs_pose_error": 0.0,
+  "aggregate": {
+    "n_states": 40,
+    "mean_arm": {
+      "position_gap_cm": {
+        "median": 0.3863093593606449,
+        "q25": 0.21335521763799747,
+        "q75": 0.582746757290218,
+        "q95": 0.8660816927529483
+      },
+      "position_between_within": {
+        "median": 0.41480539652888854,
+        "q25": 0.2655009112694216,
+        "q75": 0.5395027340740335,
+        "q95": 0.8880957294764077
+      },
+      "position_percentile": {
+        "median": 0.0,
+        "q25": 0.0,
+        "q75": 0.25,
+        "q95": 0.625
+      },
+      "orientation_gap_deg": {
+        "median": 0.8939307588794709,
+        "q25": 0.6819297686546906,
+        "q75": 1.400867315661285,
+        "q95": 2.9749469261124184
+      },
+      "orientation_between_within": {
+        "median": 0.3817512013980053,
+        "q25": 0.28193514587701396,
+        "q75": 0.5164430446367054,
+        "q95": 0.7050330507360572
+      },
+      "orientation_percentile": {
+        "median": 0.0,
+        "q25": 0.0,
+        "q75": 0.25,
+        "q95": 0.375
+      }
+    },
+    "medoid_arm": {
+      "position_gap_cm": {
+        "median": 0.6808883657387639,
+        "q25": 0.46010411825071035,
+        "q75": 0.9436367485611507,
+        "q95": 1.5213564859129745
+      },
+      "position_between_within": {
+        "median": 0.7699338523356241,
+        "q25": 0.5205265426530976,
+        "q75": 0.9492478551414194,
+        "q95": 1.4085398523974455
+      },
+      "position_percentile": {
+        "median": 0.5,
+        "q25": 0.125,
+        "q75": 0.625,
+        "q95": 0.875
+      },
+      "orientation_gap_deg": {
+        "median": 1.2303579954074162,
+        "q25": 0.8289968822514295,
+        "q75": 1.793286872515592,
+        "q95": 4.495357115758622
+      },
+      "orientation_between_within": {
+        "median": 0.5751187343307949,
+        "q25": 0.3340464660241608,
+        "q75": 0.7230064219572419,
+        "q95": 1.0176141830403345
+      },
+      "orientation_percentile": {
+        "median": 0.25,
+        "q25": 0.125,
+        "q75": 0.375,
+        "q95": 0.6437499999999989
+      }
+    },
+    "mean_arm_outside_95pct_reference_paths": 0
+  },
+  "cases": [
+    {
+      "uid": "widowx_close_drawer:ep0:m0",
+      "task": "widowx_close_drawer",
+      "episode": 0,
+      "macro_step": 0,
+      "env_step": 0,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 0.20462238336691838,
+          "position_within_rms_cm": 0.645600245926876,
+          "position_between_within": 0.31694904804930163,
+          "position_percentile": 0.0,
+          "orientation_gap_deg": 0.8486096207430297,
+          "orientation_within_rms_deg": 1.5895780260736287,
+          "orientation_between_within": 0.5338584245777201,
+          "orientation_percentile": 0.0
+        },
+        "medoid_arm": {
+          "position_gap_cm": 0.32263878090325954,
+          "position_within_rms_cm": 0.645600245926876,
+          "position_between_within": 0.49975008984089403,
+          "position_percentile": 0.25,
+          "orientation_gap_deg": 1.1170056175807423,
+          "orientation_within_rms_deg": 1.5895780260736287,
+          "orientation_between_within": 0.7027057491099231,
+          "orientation_percentile": 0.125
+        },
+        "final_task_metric": {
+          "reference_mean": 0.11999999731779099,
+          "reference_std": 0.0,
+          "mean_arm_mean": 0.11999999731779099,
+          "medoid_arm_mean": 0.11999999731779099
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 0
+    },
+    {
+      "uid": "widowx_close_drawer:ep0:m4",
+      "task": "widowx_close_drawer",
+      "episode": 0,
+      "macro_step": 4,
+      "env_step": 16,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 0.2287877965372762,
+          "position_within_rms_cm": 0.7567536393319179,
+          "position_between_within": 0.3023279765648119,
+          "position_percentile": 0.0,
+          "orientation_gap_deg": 0.6866147116562269,
+          "orientation_within_rms_deg": 1.204687765139154,
+          "orientation_between_within": 0.5699524237941569,
+          "orientation_percentile": 0.125
+        },
+        "medoid_arm": {
+          "position_gap_cm": 0.6783128483470718,
+          "position_within_rms_cm": 0.7567536393319179,
+          "position_between_within": 0.8963456706278999,
+          "position_percentile": 0.5,
+          "orientation_gap_deg": 1.1994235024933775,
+          "orientation_within_rms_deg": 1.204687765139154,
+          "orientation_between_within": 0.9956301850171372,
+          "orientation_percentile": 0.5
+        },
+        "final_task_metric": {
+          "reference_mean": 0.11653351318091154,
+          "reference_std": 0.003739362429134262,
+          "mean_arm_mean": 0.11882468312978745,
+          "medoid_arm_mean": 0.11999999731779099
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 1
+    },
+    {
+      "uid": "widowx_close_drawer:ep0:m8",
+      "task": "widowx_close_drawer",
+      "episode": 0,
+      "macro_step": 8,
+      "env_step": 32,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 0.26657256414199637,
+          "position_within_rms_cm": 0.4704520789674916,
+          "position_between_within": 0.5666306432889983,
+          "position_percentile": 0.0,
+          "orientation_gap_deg": 0.4220904428942542,
+          "orientation_within_rms_deg": 1.1388905434334577,
+          "orientation_between_within": 0.3706154602195235,
+          "orientation_percentile": 0.0
+        },
+        "medoid_arm": {
+          "position_gap_cm": 0.6834638831304559,
+          "position_within_rms_cm": 0.4704520789674916,
+          "position_between_within": 1.452781087991926,
+          "position_percentile": 0.875,
+          "orientation_gap_deg": 0.7622317595481056,
+          "orientation_within_rms_deg": 1.1388905434334577,
+          "orientation_between_within": 0.6692756946160742,
+          "orientation_percentile": 0.25
+        },
+        "final_task_metric": {
+          "reference_mean": 0.10196157544851303,
+          "reference_std": 0.0,
+          "mean_arm_mean": 0.10196157544851303,
+          "medoid_arm_mean": 0.10196157544851303
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 2
+    },
+    {
+      "uid": "widowx_close_drawer:ep0:m16",
+      "task": "widowx_close_drawer",
+      "episode": 0,
+      "macro_step": 16,
+      "env_step": 64,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 0.2102262839600988,
+          "position_within_rms_cm": 1.3385622044262298,
+          "position_between_within": 0.1570538024045073,
+          "position_percentile": 0.0,
+          "orientation_gap_deg": 1.5163983188190855,
+          "orientation_within_rms_deg": 3.2401623009767984,
+          "orientation_between_within": 0.468000728964084,
+          "orientation_percentile": 0.0
+        },
+        "medoid_arm": {
+          "position_gap_cm": 0.20035926759805908,
+          "position_within_rms_cm": 1.3385622044262298,
+          "position_between_within": 0.1496824480293334,
+          "position_percentile": 0.0,
+          "orientation_gap_deg": 1.0811376060012317,
+          "orientation_within_rms_deg": 3.2401623009767984,
+          "orientation_between_within": 0.33366773191432586,
+          "orientation_percentile": 0.0
+        },
+        "final_task_metric": {
+          "reference_mean": 0.08948291838169098,
+          "reference_std": 0.0,
+          "mean_arm_mean": 0.08948291838169098,
+          "medoid_arm_mean": 0.08948291838169098
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 3
+    },
+    {
+      "uid": "widowx_close_drawer:ep0:m24",
+      "task": "widowx_close_drawer",
+      "episode": 0,
+      "macro_step": 24,
+      "env_step": 96,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 0.6842737565185868,
+          "position_within_rms_cm": 1.6186626738296646,
+          "position_between_within": 0.42274018396905,
+          "position_percentile": 0.25,
+          "orientation_gap_deg": 0.8986332000202577,
+          "orientation_within_rms_deg": 3.712822996616894,
+          "orientation_between_within": 0.24203502317214903,
+          "orientation_percentile": 0.0
+        },
+        "medoid_arm": {
+          "position_gap_cm": 1.3266893895202292,
+          "position_within_rms_cm": 1.6186626738296646,
+          "position_between_within": 0.8196206726515519,
+          "position_percentile": 0.5,
+          "orientation_gap_deg": 1.8066755950516074,
+          "orientation_within_rms_deg": 3.712822996616894,
+          "orientation_between_within": 0.4866042891616006,
+          "orientation_percentile": 0.375
+        },
+        "final_task_metric": {
+          "reference_mean": 0.08752864506095648,
+          "reference_std": 0.0039045525149207093,
+          "mean_arm_mean": 0.08900442719459534,
+          "medoid_arm_mean": 0.08900442719459534
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 4
+    },
+    {
+      "uid": "widowx_close_drawer:ep0:m36",
+      "task": "widowx_close_drawer",
+      "episode": 0,
+      "macro_step": 36,
+      "env_step": 144,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 2.7587673899263776,
+          "position_within_rms_cm": 3.118446032888468,
+          "position_between_within": 0.8846609371562741,
+          "position_percentile": 0.625,
+          "orientation_gap_deg": 9.749316278137261,
+          "orientation_within_rms_deg": 13.332805572883586,
+          "orientation_between_within": 0.7312276643383695,
+          "orientation_percentile": 0.375
+        },
+        "medoid_arm": {
+          "position_gap_cm": 2.25308672824328,
+          "position_within_rms_cm": 3.118446032888468,
+          "position_between_within": 0.7225030366026097,
+          "position_percentile": 0.5,
+          "orientation_gap_deg": 9.211207795759128,
+          "orientation_within_rms_deg": 13.332805572883586,
+          "orientation_between_within": 0.6908679306396689,
+          "orientation_percentile": 0.25
+        },
+        "final_task_metric": {
+          "reference_mean": 0.07433541119098663,
+          "reference_std": 0.0,
+          "mean_arm_mean": 0.07433541119098663,
+          "medoid_arm_mean": 0.07433541119098663
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 5
+    },
+    {
+      "uid": "widowx_close_drawer:ep1:m0",
+      "task": "widowx_close_drawer",
+      "episode": 1,
+      "macro_step": 0,
+      "env_step": 0,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 0.4154211859863301,
+          "position_within_rms_cm": 1.212294810594087,
+          "position_between_within": 0.34267340118593126,
+          "position_percentile": 0.0,
+          "orientation_gap_deg": 1.3947723011988753,
+          "orientation_within_rms_deg": 6.114607758932983,
+          "orientation_between_within": 0.22810495066690384,
+          "orientation_percentile": 0.0
+        },
+        "medoid_arm": {
+          "position_gap_cm": 0.8293590419308404,
+          "position_within_rms_cm": 1.212294810594087,
+          "position_between_within": 0.6841232303258081,
+          "position_percentile": 0.125,
+          "orientation_gap_deg": 3.8562080860560846,
+          "orientation_within_rms_deg": 6.114607758932983,
+          "orientation_between_within": 0.6306550212354103,
+          "orientation_percentile": 0.375
+        },
+        "final_task_metric": {
+          "reference_mean": 0.11999999731779099,
+          "reference_std": 0.0,
+          "mean_arm_mean": 0.11999999731779099,
+          "medoid_arm_mean": 0.11999999731779099
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 6
+    },
+    {
+      "uid": "widowx_close_drawer:ep1:m4",
+      "task": "widowx_close_drawer",
+      "episode": 1,
+      "macro_step": 4,
+      "env_step": 16,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 0.8601320227145526,
+          "position_within_rms_cm": 2.079353928390193,
+          "position_between_within": 0.4136534963917638,
+          "position_percentile": 0.125,
+          "orientation_gap_deg": 1.5279917216444092,
+          "orientation_within_rms_deg": 3.4444820212409524,
+          "orientation_between_within": 0.44360566036396837,
+          "orientation_percentile": 0.0
+        },
+        "medoid_arm": {
+          "position_gap_cm": 0.6233130223694904,
+          "position_within_rms_cm": 2.079353928390193,
+          "position_between_within": 0.29976283203122167,
+          "position_percentile": 0.0,
+          "orientation_gap_deg": 0.9076041412607562,
+          "orientation_within_rms_deg": 3.4444820212409524,
+          "orientation_between_within": 0.2634951019235604,
+          "orientation_percentile": 0.0
+        },
+        "final_task_metric": {
+          "reference_mean": 0.07175493286922574,
+          "reference_std": 0.010529775277369235,
+          "mean_arm_mean": 0.07426121085882187,
+          "medoid_arm_mean": 0.07684972882270813
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 7
+    },
+    {
+      "uid": "widowx_close_drawer:ep1:m8",
+      "task": "widowx_close_drawer",
+      "episode": 1,
+      "macro_step": 8,
+      "env_step": 32,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 0.6085684994835561,
+          "position_within_rms_cm": 1.719041403905406,
+          "position_between_within": 0.35401619652730826,
+          "position_percentile": 0.125,
+          "orientation_gap_deg": 2.4564324673477635,
+          "orientation_within_rms_deg": 4.803806865261203,
+          "orientation_between_within": 0.5113512129539365,
+          "orientation_percentile": 0.375
+        },
+        "medoid_arm": {
+          "position_gap_cm": 1.441775474311082,
+          "position_within_rms_cm": 1.719041403905406,
+          "position_between_within": 0.8387089869014108,
+          "position_percentile": 0.5,
+          "orientation_gap_deg": 3.8562517527601643,
+          "orientation_within_rms_deg": 4.803806865261203,
+          "orientation_between_within": 0.8027491239597293,
+          "orientation_percentile": 0.625
+        },
+        "final_task_metric": {
+          "reference_mean": 0.06029939278960228,
+          "reference_std": 0.0,
+          "mean_arm_mean": 0.06029939278960228,
+          "medoid_arm_mean": 0.06029939278960228
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 8
+    },
+    {
+      "uid": "widowx_close_drawer:ep1:m16",
+      "task": "widowx_close_drawer",
+      "episode": 1,
+      "macro_step": 16,
+      "env_step": 64,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 0.44364748105194063,
+          "position_within_rms_cm": 0.9698949906149054,
+          "position_between_within": 0.45741805591827195,
+          "position_percentile": 0.0,
+          "orientation_gap_deg": 1.0093163011031618,
+          "orientation_within_rms_deg": 2.1683769117778313,
+          "orientation_between_within": 0.46547087622125305,
+          "orientation_percentile": 0.0
+        },
+        "medoid_arm": {
+          "position_gap_cm": 0.3884732724355052,
+          "position_within_rms_cm": 0.9698949906149054,
+          "position_between_within": 0.40053127008029643,
+          "position_percentile": 0.0,
+          "orientation_gap_deg": 0.8477226124799968,
+          "orientation_within_rms_deg": 2.1683769117778313,
+          "orientation_between_within": 0.39094799795896973,
+          "orientation_percentile": 0.0
+        },
+        "final_task_metric": {
+          "reference_mean": 0.0603054235689342,
+          "reference_std": 1.0718608464236343e-07,
+          "mean_arm_mean": 0.060305383056402206,
+          "medoid_arm_mean": 0.060305383056402206
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 9
+    },
+    {
+      "uid": "widowx_close_drawer:ep1:m24",
+      "task": "widowx_close_drawer",
+      "episode": 1,
+      "macro_step": 24,
+      "env_step": 96,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 0.6480506436222052,
+          "position_within_rms_cm": 1.2015594715283577,
+          "position_between_within": 0.5393412968547439,
+          "position_percentile": 0.125,
+          "orientation_gap_deg": 1.0525883463405548,
+          "orientation_within_rms_deg": 1.979596850175853,
+          "orientation_between_within": 0.5317185396850124,
+          "orientation_percentile": 0.125
+        },
+        "medoid_arm": {
+          "position_gap_cm": 1.212802299895721,
+          "position_within_rms_cm": 1.2015594715283577,
+          "position_between_within": 1.0093568638371788,
+          "position_percentile": 0.625,
+          "orientation_gap_deg": 1.2017941489993837,
+          "orientation_within_rms_deg": 1.979596850175853,
+          "orientation_between_within": 0.6070903522061196,
+          "orientation_percentile": 0.25
+        },
+        "final_task_metric": {
+          "reference_mean": 0.06031137332320213,
+          "reference_std": 0.0,
+          "mean_arm_mean": 0.06031137332320213,
+          "medoid_arm_mean": 0.06031137332320213
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 10
+    },
+    {
+      "uid": "widowx_close_drawer:ep1:m36",
+      "task": "widowx_close_drawer",
+      "episode": 1,
+      "macro_step": 36,
+      "env_step": 144,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 0.5970143124084916,
+          "position_within_rms_cm": 1.3129407271595008,
+          "position_between_within": 0.4547153577146702,
+          "position_percentile": 0.125,
+          "orientation_gap_deg": 1.9827888103625313,
+          "orientation_within_rms_deg": 3.46129490439903,
+          "orientation_between_within": 0.5728459623138625,
+          "orientation_percentile": 0.25
+        },
+        "medoid_arm": {
+          "position_gap_cm": 0.7620646695334798,
+          "position_within_rms_cm": 1.3129407271595008,
+          "position_between_within": 0.5804257981867764,
+          "position_percentile": 0.375,
+          "orientation_gap_deg": 1.9040490164411776,
+          "orientation_within_rms_deg": 3.46129490439903,
+          "orientation_between_within": 0.5500973101197714,
+          "orientation_percentile": 0.25
+        },
+        "final_task_metric": {
+          "reference_mean": 0.06032035872340202,
+          "reference_std": 0.0,
+          "mean_arm_mean": 0.06032035872340202,
+          "medoid_arm_mean": 0.06032035872340202
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 11
+    },
+    {
+      "uid": "widowx_close_drawer:ep2:m0",
+      "task": "widowx_close_drawer",
+      "episode": 2,
+      "macro_step": 0,
+      "env_step": 0,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 0.6740753186300064,
+          "position_within_rms_cm": 1.40731816831246,
+          "position_between_within": 0.4789786231768058,
+          "position_percentile": 0.125,
+          "orientation_gap_deg": 2.0296034931236715,
+          "orientation_within_rms_deg": 7.032479300102074,
+          "orientation_between_within": 0.28860426124456734,
+          "orientation_percentile": 0.0
+        },
+        "medoid_arm": {
+          "position_gap_cm": 1.5207988259320955,
+          "position_within_rms_cm": 1.40731816831246,
+          "position_between_within": 1.0806361064433012,
+          "position_percentile": 0.75,
+          "orientation_gap_deg": 1.7888239650035869,
+          "orientation_within_rms_deg": 7.032479300102074,
+          "orientation_between_within": 0.2543660476864287,
+          "orientation_percentile": 0.0
+        },
+        "final_task_metric": {
+          "reference_mean": 0.1178992185741663,
+          "reference_std": 0.00555813811520164,
+          "mean_arm_mean": 0.11999999731779099,
+          "medoid_arm_mean": 0.11999999731779099
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 12
+    },
+    {
+      "uid": "widowx_close_drawer:ep2:m4",
+      "task": "widowx_close_drawer",
+      "episode": 2,
+      "macro_step": 4,
+      "env_step": 16,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 0.40376906840126314,
+          "position_within_rms_cm": 1.3166090530773948,
+          "position_between_within": 0.3066734711093682,
+          "position_percentile": 0.0,
+          "orientation_gap_deg": 0.7774721310912891,
+          "orientation_within_rms_deg": 3.448451865792936,
+          "orientation_between_within": 0.22545541052883952,
+          "orientation_percentile": 0.0
+        },
+        "medoid_arm": {
+          "position_gap_cm": 0.6944481137119392,
+          "position_within_rms_cm": 1.3166090530773948,
+          "position_between_within": 0.5274520269238321,
+          "position_percentile": 0.125,
+          "orientation_gap_deg": 1.1101359119011383,
+          "orientation_within_rms_deg": 3.448451865792936,
+          "orientation_between_within": 0.32192298315460866,
+          "orientation_percentile": 0.0
+        },
+        "final_task_metric": {
+          "reference_mean": 0.11745139956474304,
+          "reference_std": 0.003709143699444827,
+          "mean_arm_mean": 0.11999999731779099,
+          "medoid_arm_mean": 0.11999999731779099
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 13
+    },
+    {
+      "uid": "widowx_close_drawer:ep2:m8",
+      "task": "widowx_close_drawer",
+      "episode": 2,
+      "macro_step": 8,
+      "env_step": 32,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 0.4058672014849564,
+          "position_within_rms_cm": 1.5247864769041948,
+          "position_between_within": 0.2661796963919807,
+          "position_percentile": 0.0,
+          "orientation_gap_deg": 0.538244588402343,
+          "orientation_within_rms_deg": 2.2575196747288975,
+          "orientation_between_within": 0.23842298892344316,
+          "orientation_percentile": 0.0
+        },
+        "medoid_arm": {
+          "position_gap_cm": 0.5574604387456384,
+          "position_within_rms_cm": 1.5247864769041948,
+          "position_between_within": 0.3655990180851169,
+          "position_percentile": 0.125,
+          "orientation_gap_deg": 1.3037687668928735,
+          "orientation_within_rms_deg": 2.2575196747288975,
+          "orientation_between_within": 0.5775226597081335,
+          "orientation_percentile": 0.25
+        },
+        "final_task_metric": {
+          "reference_mean": 0.10401765909045935,
+          "reference_std": 0.0022053450673488978,
+          "mean_arm_mean": 0.10485120117664337,
+          "medoid_arm_mean": 0.10485120117664337
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 14
+    },
+    {
+      "uid": "widowx_close_drawer:ep2:m16",
+      "task": "widowx_close_drawer",
+      "episode": 2,
+      "macro_step": 16,
+      "env_step": 64,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 0.5779909055841268,
+          "position_within_rms_cm": 1.0703792065987692,
+          "position_between_within": 0.5399870457319023,
+          "position_percentile": 0.375,
+          "orientation_gap_deg": 0.7681285783353075,
+          "orientation_within_rms_deg": 1.548641976982577,
+          "orientation_between_within": 0.4960013933187795,
+          "orientation_percentile": 0.375
+        },
+        "medoid_arm": {
+          "position_gap_cm": 1.0158430885660419,
+          "position_within_rms_cm": 1.0703792065987692,
+          "position_between_within": 0.9490497221017392,
+          "position_percentile": 0.75,
+          "orientation_gap_deg": 1.0259785750089043,
+          "orientation_within_rms_deg": 1.548641976982577,
+          "orientation_between_within": 0.6625021084653493,
+          "orientation_percentile": 0.5
+        },
+        "final_task_metric": {
+          "reference_mean": 0.10488022770732641,
+          "reference_std": 1.7987549836534553e-07,
+          "mean_arm_mean": 0.10488029569387436,
+          "medoid_arm_mean": 0.10488029569387436
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 15
+    },
+    {
+      "uid": "widowx_close_drawer:ep2:m24",
+      "task": "widowx_close_drawer",
+      "episode": 2,
+      "macro_step": 24,
+      "env_step": 96,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 0.7249834912689953,
+          "position_within_rms_cm": 1.6128488900953788,
+          "position_between_within": 0.449504907571423,
+          "position_percentile": 0.125,
+          "orientation_gap_deg": 0.815020883512994,
+          "orientation_within_rms_deg": 3.1116242117679755,
+          "orientation_between_within": 0.2619277997743539,
+          "orientation_percentile": 0.0
+        },
+        "medoid_arm": {
+          "position_gap_cm": 1.5319520255496757,
+          "position_within_rms_cm": 1.6128488900953788,
+          "position_between_within": 0.9498422542604602,
+          "position_percentile": 0.375,
+          "orientation_gap_deg": 4.466145800075236,
+          "orientation_within_rms_deg": 3.1116242117679755,
+          "orientation_between_within": 1.4353101454811095,
+          "orientation_percentile": 1.0
+        },
+        "final_task_metric": {
+          "reference_mean": 0.10987224243581295,
+          "reference_std": 0.013653224887697697,
+          "mean_arm_mean": 0.11999999731779099,
+          "medoid_arm_mean": 0.11999999731779099
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 16
+    },
+    {
+      "uid": "widowx_close_drawer:ep2:m36",
+      "task": "widowx_close_drawer",
+      "episode": 2,
+      "macro_step": 36,
+      "env_step": 144,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 0.36884965032002665,
+          "position_within_rms_cm": 1.4333836187839295,
+          "position_between_within": 0.2573279375363279,
+          "position_percentile": 0.0,
+          "orientation_gap_deg": 0.8773974586442437,
+          "orientation_within_rms_deg": 2.3068943594474924,
+          "orientation_between_within": 0.3803370774439722,
+          "orientation_percentile": 0.0
+        },
+        "medoid_arm": {
+          "position_gap_cm": 0.6224406001631506,
+          "position_within_rms_cm": 1.4333836187839295,
+          "position_between_within": 0.43424564925000597,
+          "position_percentile": 0.0,
+          "orientation_gap_deg": 1.2589218418154486,
+          "orientation_within_rms_deg": 2.3068943594474924,
+          "orientation_between_within": 0.5457214963744433,
+          "orientation_percentile": 0.0
+        },
+        "final_task_metric": {
+          "reference_mean": 0.06694593280553818,
+          "reference_std": 0.0,
+          "mean_arm_mean": 0.06694593280553818,
+          "medoid_arm_mean": 0.06694593280553818
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 17
+    },
+    {
+      "uid": "widowx_close_drawer:ep3:m0",
+      "task": "widowx_close_drawer",
+      "episode": 3,
+      "macro_step": 0,
+      "env_step": 0,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 0.41478082794705545,
+          "position_within_rms_cm": 1.2267290001082485,
+          "position_between_within": 0.33811936288328925,
+          "position_percentile": 0.0,
+          "orientation_gap_deg": 3.5273461175485568,
+          "orientation_within_rms_deg": 6.4483745638645775,
+          "orientation_between_within": 0.5470132174571729,
+          "orientation_percentile": 0.375
+        },
+        "medoid_arm": {
+          "position_gap_cm": 0.9905709090177678,
+          "position_within_rms_cm": 1.2267290001082485,
+          "position_between_within": 0.8074895995206425,
+          "position_percentile": 0.5,
+          "orientation_gap_deg": 5.050372113742982,
+          "orientation_within_rms_deg": 6.4483745638645775,
+          "orientation_between_within": 0.7832007994765492,
+          "orientation_percentile": 0.625
+        },
+        "final_task_metric": {
+          "reference_mean": 0.11999999731779099,
+          "reference_std": 0.0,
+          "mean_arm_mean": 0.11999999731779099,
+          "medoid_arm_mean": 0.11999999731779099
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 18
+    },
+    {
+      "uid": "widowx_close_drawer:ep3:m4",
+      "task": "widowx_close_drawer",
+      "episode": 3,
+      "macro_step": 4,
+      "env_step": 16,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 0.13684310469457253,
+          "position_within_rms_cm": 0.9334985380930648,
+          "position_between_within": 0.14659166470052898,
+          "position_percentile": 0.0,
+          "orientation_gap_deg": 0.8892283177386843,
+          "orientation_within_rms_deg": 2.832998703398838,
+          "orientation_between_within": 0.3138823595901576,
+          "orientation_percentile": 0.0
+        },
+        "medoid_arm": {
+          "position_gap_cm": 0.8647382939471959,
+          "position_within_rms_cm": 0.9334985380930648,
+          "position_between_within": 0.926341347800789,
+          "position_percentile": 0.625,
+          "orientation_gap_deg": 0.5597655656949764,
+          "orientation_within_rms_deg": 2.832998703398838,
+          "orientation_between_within": 0.1975876533312239,
+          "orientation_percentile": 0.0
+        },
+        "final_task_metric": {
+          "reference_mean": 0.11982963606715202,
+          "reference_std": 0.0004507335022326365,
+          "mean_arm_mean": 0.11999999731779099,
+          "medoid_arm_mean": 0.11999999731779099
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 19
+    },
+    {
+      "uid": "widowx_put_eggplant_in_basket:ep0:m0",
+      "task": "widowx_put_eggplant_in_basket",
+      "episode": 0,
+      "macro_step": 0,
+      "env_step": 0,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 0.28046600784191406,
+          "position_within_rms_cm": 0.9747427881217715,
+          "position_between_within": 0.2877333500280039,
+          "position_percentile": 0.0,
+          "orientation_gap_deg": 0.9606830857553987,
+          "orientation_within_rms_deg": 4.1435164487212965,
+          "orientation_between_within": 0.2318521231047288,
+          "orientation_percentile": 0.0
+        },
+        "medoid_arm": {
+          "position_gap_cm": 1.0374741035184274,
+          "position_within_rms_cm": 0.9747427881217715,
+          "position_between_within": 1.0643567884380378,
+          "position_percentile": 0.625,
+          "orientation_gap_deg": 3.3257912752534975,
+          "orientation_within_rms_deg": 4.1435164487212965,
+          "orientation_between_within": 0.8026494684918769,
+          "orientation_percentile": 0.25
+        },
+        "final_task_metric": {
+          "reference_mean": 0.1864870581693387,
+          "reference_std": 0.0,
+          "mean_arm_mean": 0.1864870581693387,
+          "medoid_arm_mean": 0.1864870581693387
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 20
+    },
+    {
+      "uid": "widowx_put_eggplant_in_basket:ep0:m4",
+      "task": "widowx_put_eggplant_in_basket",
+      "episode": 0,
+      "macro_step": 4,
+      "env_step": 16,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 0.24775502928529777,
+          "position_within_rms_cm": 0.3487208222336897,
+          "position_between_within": 0.7104681266186872,
+          "position_percentile": 0.375,
+          "orientation_gap_deg": 0.40746676759404593,
+          "orientation_within_rms_deg": 1.1197608135433732,
+          "orientation_between_within": 0.36388732545895885,
+          "orientation_percentile": 0.0
+        },
+        "medoid_arm": {
+          "position_gap_cm": 0.2938632304808657,
+          "position_within_rms_cm": 0.3487208222336897,
+          "position_between_within": 0.8426890846338333,
+          "position_percentile": 0.375,
+          "orientation_gap_deg": 0.3741935064281516,
+          "orientation_within_rms_deg": 1.1197608135433732,
+          "orientation_between_within": 0.33417271072743915,
+          "orientation_percentile": 0.0
+        },
+        "final_task_metric": {
+          "reference_mean": 0.1954331810355866,
+          "reference_std": 0.006640878707972893,
+          "mean_arm_mean": 0.18999654283143905,
+          "medoid_arm_mean": 0.18716681579837674
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 21
+    },
+    {
+      "uid": "widowx_put_eggplant_in_basket:ep0:m8",
+      "task": "widowx_put_eggplant_in_basket",
+      "episode": 0,
+      "macro_step": 8,
+      "env_step": 32,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 0.23769904604971306,
+          "position_within_rms_cm": 0.37034734445937095,
+          "position_between_within": 0.6418273267132604,
+          "position_percentile": 0.25,
+          "orientation_gap_deg": 0.6678749396500816,
+          "orientation_within_rms_deg": 1.7430463965821084,
+          "orientation_between_within": 0.38316532535203834,
+          "orientation_percentile": 0.0
+        },
+        "medoid_arm": {
+          "position_gap_cm": 0.17542066558362684,
+          "position_within_rms_cm": 0.37034734445937095,
+          "position_between_within": 0.4736652448249738,
+          "position_percentile": 0.125,
+          "orientation_gap_deg": 1.588582712964762,
+          "orientation_within_rms_deg": 1.7430463965821084,
+          "orientation_between_within": 0.9113829190546907,
+          "orientation_percentile": 0.25
+        },
+        "final_task_metric": {
+          "reference_mean": 0.19251177925717933,
+          "reference_std": 0.006790734498276296,
+          "mean_arm_mean": 0.19766135586644223,
+          "medoid_arm_mean": 0.1946185222282284
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 22
+    },
+    {
+      "uid": "widowx_put_eggplant_in_basket:ep1:m0",
+      "task": "widowx_put_eggplant_in_basket",
+      "episode": 1,
+      "macro_step": 0,
+      "env_step": 0,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 0.7756092340563673,
+          "position_within_rms_cm": 0.8135561076735233,
+          "position_between_within": 0.953356783558948,
+          "position_percentile": 0.5,
+          "orientation_gap_deg": 1.6499956084812564,
+          "orientation_within_rms_deg": 3.3021419357063686,
+          "orientation_between_within": 0.4996743448970803,
+          "orientation_percentile": 0.25
+        },
+        "medoid_arm": {
+          "position_gap_cm": 0.8686814666109519,
+          "position_within_rms_cm": 0.8135561076735233,
+          "position_between_within": 1.0677585214067993,
+          "position_percentile": 0.625,
+          "orientation_gap_deg": 1.0359737129062956,
+          "orientation_within_rms_deg": 3.3021419357063686,
+          "orientation_between_within": 0.3137277964051803,
+          "orientation_percentile": 0.125
+        },
+        "final_task_metric": {
+          "reference_mean": 0.20273732066189604,
+          "reference_std": 0.0,
+          "mean_arm_mean": 0.20273732066189604,
+          "medoid_arm_mean": 0.20273732066189604
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 23
+    },
+    {
+      "uid": "widowx_put_eggplant_in_basket:ep1:m4",
+      "task": "widowx_put_eggplant_in_basket",
+      "episode": 1,
+      "macro_step": 4,
+      "env_step": 16,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 0.2143981955306304,
+          "position_within_rms_cm": 0.8713360216142512,
+          "position_between_within": 0.2460568485776966,
+          "position_percentile": 0.0,
+          "orientation_gap_deg": 0.2117253334848002,
+          "orientation_within_rms_deg": 1.7179742084233762,
+          "orientation_between_within": 0.12324127594389517,
+          "orientation_percentile": 0.0
+        },
+        "medoid_arm": {
+          "position_gap_cm": 0.16178056689843437,
+          "position_within_rms_cm": 0.8713360216142512,
+          "position_between_within": 0.18566954984681694,
+          "position_percentile": 0.0,
+          "orientation_gap_deg": 0.34918926218085694,
+          "orientation_within_rms_deg": 1.7179742084233762,
+          "orientation_between_within": 0.2032564054039646,
+          "orientation_percentile": 0.0
+        },
+        "final_task_metric": {
+          "reference_mean": 0.20535758702962886,
+          "reference_std": 0.00044881572150160323,
+          "mean_arm_mean": 0.20530453802285747,
+          "medoid_arm_mean": 0.2048873054566652
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 24
+    },
+    {
+      "uid": "widowx_put_eggplant_in_basket:ep1:m8",
+      "task": "widowx_put_eggplant_in_basket",
+      "episode": 1,
+      "macro_step": 8,
+      "env_step": 32,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 0.06582548622687161,
+          "position_within_rms_cm": 0.6881677491624186,
+          "position_between_within": 0.09565325650175992,
+          "position_percentile": 0.0,
+          "orientation_gap_deg": 0.18138092683726356,
+          "orientation_within_rms_deg": 1.2107792354853326,
+          "orientation_between_within": 0.1498051184901253,
+          "orientation_percentile": 0.0
+        },
+        "medoid_arm": {
+          "position_gap_cm": 0.5024495572628107,
+          "position_within_rms_cm": 0.6881677491624186,
+          "position_between_within": 0.7301265685210491,
+          "position_percentile": 0.25,
+          "orientation_gap_deg": 0.6934311985357942,
+          "orientation_within_rms_deg": 1.2107792354853326,
+          "orientation_between_within": 0.5727148089534563,
+          "orientation_percentile": 0.25
+        },
+        "final_task_metric": {
+          "reference_mean": 0.20497147927323778,
+          "reference_std": 4.543972078651623e-08,
+          "mean_arm_mean": 0.20497145498716388,
+          "medoid_arm_mean": 0.20497142995575418
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 25
+    },
+    {
+      "uid": "widowx_put_eggplant_in_basket:ep1:m16",
+      "task": "widowx_put_eggplant_in_basket",
+      "episode": 1,
+      "macro_step": 16,
+      "env_step": 64,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 0.5120836842290785,
+          "position_within_rms_cm": 0.6422256726349418,
+          "position_between_within": 0.7973578541762226,
+          "position_percentile": 0.375,
+          "orientation_gap_deg": 0.8251287340128443,
+          "orientation_within_rms_deg": 1.1480822346196322,
+          "orientation_between_within": 0.7187017699008428,
+          "orientation_percentile": 0.375
+        },
+        "medoid_arm": {
+          "position_gap_cm": 0.9279920284089449,
+          "position_within_rms_cm": 0.6422256726349418,
+          "position_between_within": 1.4449625232226433,
+          "position_percentile": 0.875,
+          "orientation_gap_deg": 2.1200145700397095,
+          "orientation_within_rms_deg": 1.1480822346196322,
+          "orientation_between_within": 1.84657031187499,
+          "orientation_percentile": 1.0
+        },
+        "final_task_metric": {
+          "reference_mean": 0.1419025249922174,
+          "reference_std": 0.00722731359749321,
+          "mean_arm_mean": 0.13439391987978153,
+          "medoid_arm_mean": 0.12981659705424273
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 26
+    },
+    {
+      "uid": "widowx_put_eggplant_in_basket:ep2:m0",
+      "task": "widowx_put_eggplant_in_basket",
+      "episode": 2,
+      "macro_step": 0,
+      "env_step": 0,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 0.20445125864054875,
+          "position_within_rms_cm": 1.342511197157415,
+          "position_between_within": 0.1522901701478889,
+          "position_percentile": 0.0,
+          "orientation_gap_deg": 2.9458732844578868,
+          "orientation_within_rms_deg": 4.1826156679086095,
+          "orientation_between_within": 0.7043136444642264,
+          "orientation_percentile": 0.5
+        },
+        "medoid_arm": {
+          "position_gap_cm": 0.4831112627065102,
+          "position_within_rms_cm": 1.342511197157415,
+          "position_between_within": 0.3598564121695466,
+          "position_percentile": 0.0,
+          "orientation_gap_deg": 4.026679013782161,
+          "orientation_within_rms_deg": 4.1826156679086095,
+          "orientation_between_within": 0.9627179099139128,
+          "orientation_percentile": 0.5
+        },
+        "final_task_metric": {
+          "reference_mean": 0.1638310457244624,
+          "reference_std": 0.0,
+          "mean_arm_mean": 0.1638310457244624,
+          "medoid_arm_mean": 0.1638310457244624
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 27
+    },
+    {
+      "uid": "widowx_put_eggplant_in_basket:ep2:m4",
+      "task": "widowx_put_eggplant_in_basket",
+      "episode": 2,
+      "macro_step": 4,
+      "env_step": 16,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 0.4947410734713374,
+          "position_within_rms_cm": 0.963414225857287,
+          "position_between_within": 0.5135289268031056,
+          "position_percentile": 0.125,
+          "orientation_gap_deg": 0.6879414342357992,
+          "orientation_within_rms_deg": 1.9841852789283467,
+          "orientation_between_within": 0.34671229624652516,
+          "orientation_percentile": 0.0
+        },
+        "medoid_arm": {
+          "position_gap_cm": 0.9231171807012508,
+          "position_within_rms_cm": 0.963414225857287,
+          "position_between_within": 0.9581726695802337,
+          "position_percentile": 0.5,
+          "orientation_gap_deg": 1.4791893424287268,
+          "orientation_within_rms_deg": 1.9841852789283467,
+          "orientation_between_within": 0.7454895256695147,
+          "orientation_percentile": 0.25
+        },
+        "final_task_metric": {
+          "reference_mean": 0.1459695757446538,
+          "reference_std": 0.009223708629895369,
+          "mean_arm_mean": 0.14424608132736907,
+          "medoid_arm_mean": 0.1677814254102361
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 28
+    },
+    {
+      "uid": "widowx_put_eggplant_in_basket:ep2:m8",
+      "task": "widowx_put_eggplant_in_basket",
+      "episode": 2,
+      "macro_step": 8,
+      "env_step": 32,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 0.9791254234824748,
+          "position_within_rms_cm": 1.2071375759458776,
+          "position_between_within": 0.8111133668548598,
+          "position_percentile": 0.625,
+          "orientation_gap_deg": 1.1010616031419427,
+          "orientation_within_rms_deg": 5.062226100440265,
+          "orientation_between_within": 0.21750541783311156,
+          "orientation_percentile": 0.125
+        },
+        "medoid_arm": {
+          "position_gap_cm": 1.3165404573565023,
+          "position_within_rms_cm": 1.2071375759458776,
+          "position_between_within": 1.0906300024045725,
+          "position_percentile": 0.625,
+          "orientation_gap_deg": 1.6028129487324838,
+          "orientation_within_rms_deg": 5.062226100440265,
+          "orientation_between_within": 0.31662215731397025,
+          "orientation_percentile": 0.25
+        },
+        "final_task_metric": {
+          "reference_mean": 0.18067377510981864,
+          "reference_std": 2.503013938967948e-08,
+          "mean_arm_mean": 0.18067375995152865,
+          "medoid_arm_mean": 0.18067375995152865
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 29
+    },
+    {
+      "uid": "widowx_put_eggplant_in_basket:ep2:m16",
+      "task": "widowx_put_eggplant_in_basket",
+      "episode": 2,
+      "macro_step": 16,
+      "env_step": 64,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 0.35655640170722114,
+          "position_within_rms_cm": 0.7714298012460613,
+          "position_between_within": 0.46220200610773543,
+          "position_percentile": 0.25,
+          "orientation_gap_deg": 0.6154914341991308,
+          "orientation_within_rms_deg": 1.4266288255844923,
+          "orientation_between_within": 0.4314306728990723,
+          "orientation_percentile": 0.25
+        },
+        "medoid_arm": {
+          "position_gap_cm": 0.550487336862712,
+          "position_within_rms_cm": 0.7714298012460613,
+          "position_between_within": 0.7135935583166877,
+          "position_percentile": 0.5,
+          "orientation_gap_deg": 0.7728196915657278,
+          "orientation_within_rms_deg": 1.4266288255844923,
+          "orientation_between_within": 0.5417104138836548,
+          "orientation_percentile": 0.375
+        },
+        "final_task_metric": {
+          "reference_mean": 0.18402059413162908,
+          "reference_std": 4.121296835191891e-09,
+          "mean_arm_mean": 0.18402057579037864,
+          "medoid_arm_mean": 0.18402059613979427
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 30
+    },
+    {
+      "uid": "widowx_put_eggplant_in_basket:ep2:m24",
+      "task": "widowx_put_eggplant_in_basket",
+      "episode": 2,
+      "macro_step": 24,
+      "env_step": 96,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 0.5387697772415742,
+          "position_within_rms_cm": 0.8755510647228315,
+          "position_between_within": 0.615349348483894,
+          "position_percentile": 0.5,
+          "orientation_gap_deg": 1.0275174099412152,
+          "orientation_within_rms_deg": 2.7053874115462353,
+          "orientation_between_within": 0.3798041661448955,
+          "orientation_percentile": 0.375
+        },
+        "medoid_arm": {
+          "position_gap_cm": 0.6412344297443027,
+          "position_within_rms_cm": 0.8755510647228315,
+          "position_between_within": 0.7323781051506056,
+          "position_percentile": 0.5,
+          "orientation_gap_deg": 0.8620295592386374,
+          "orientation_within_rms_deg": 2.7053874115462353,
+          "orientation_between_within": 0.3186344238757116,
+          "orientation_percentile": 0.25
+        },
+        "final_task_metric": {
+          "reference_mean": 0.18402080495967515,
+          "reference_std": 0.0,
+          "mean_arm_mean": 0.18402080495967515,
+          "medoid_arm_mean": 0.18402080495967515
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 31
+    },
+    {
+      "uid": "widowx_put_eggplant_in_basket:ep3:m0",
+      "task": "widowx_put_eggplant_in_basket",
+      "episode": 3,
+      "macro_step": 0,
+      "env_step": 0,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 0.21462725981789108,
+          "position_within_rms_cm": 0.9364935835080517,
+          "position_between_within": 0.22918177294275693,
+          "position_percentile": 0.0,
+          "orientation_gap_deg": 0.9851558015233198,
+          "orientation_within_rms_deg": 3.2942891476471328,
+          "orientation_between_within": 0.2990495847114525,
+          "orientation_percentile": 0.0
+        },
+        "medoid_arm": {
+          "position_gap_cm": 0.6674849114702696,
+          "position_within_rms_cm": 0.9364935835080517,
+          "position_between_within": 0.7127490494594838,
+          "position_percentile": 0.25,
+          "orientation_gap_deg": 1.399843647796969,
+          "orientation_within_rms_deg": 3.2942891476471328,
+          "orientation_between_within": 0.4249304129228528,
+          "orientation_percentile": 0.25
+        },
+        "final_task_metric": {
+          "reference_mean": 0.16370954090535325,
+          "reference_std": 0.0,
+          "mean_arm_mean": 0.16370954090535325,
+          "medoid_arm_mean": 0.16370954090535325
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 32
+    },
+    {
+      "uid": "widowx_put_eggplant_in_basket:ep3:m4",
+      "task": "widowx_put_eggplant_in_basket",
+      "episode": 3,
+      "macro_step": 4,
+      "env_step": 16,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 0.06112587600001834,
+          "position_within_rms_cm": 0.1469522869053033,
+          "position_between_within": 0.4159572966660133,
+          "position_percentile": 0.0,
+          "orientation_gap_deg": 0.33424588770087077,
+          "orientation_within_rms_deg": 0.7254514615822245,
+          "orientation_between_within": 0.4607419040439641,
+          "orientation_percentile": 0.0
+        },
+        "medoid_arm": {
+          "position_gap_cm": 0.042873898406581096,
+          "position_within_rms_cm": 0.1469522869053033,
+          "position_between_within": 0.2917538699769213,
+          "position_percentile": 0.0,
+          "orientation_gap_deg": 0.5971312066006379,
+          "orientation_within_rms_deg": 0.7254514615822245,
+          "orientation_between_within": 0.8231166910854139,
+          "orientation_percentile": 0.25
+        },
+        "final_task_metric": {
+          "reference_mean": 0.15270833995124863,
+          "reference_std": 0.002228917941003345,
+          "mean_arm_mean": 0.15344165151476327,
+          "medoid_arm_mean": 0.15232776455693664
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 33
+    },
+    {
+      "uid": "widowx_put_eggplant_in_basket:ep4:m0",
+      "task": "widowx_put_eggplant_in_basket",
+      "episode": 4,
+      "macro_step": 0,
+      "env_step": 0,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 0.17548239586363087,
+          "position_within_rms_cm": 0.8636931771662468,
+          "position_between_within": 0.20317677678013354,
+          "position_percentile": 0.0,
+          "orientation_gap_deg": 1.0654347089854517,
+          "orientation_within_rms_deg": 4.466642399368793,
+          "orientation_between_within": 0.23853145466402556,
+          "orientation_percentile": 0.0
+        },
+        "medoid_arm": {
+          "position_gap_cm": 0.8136120840950954,
+          "position_within_rms_cm": 0.8636931771662468,
+          "position_between_within": 0.9420151803960453,
+          "position_percentile": 0.625,
+          "orientation_gap_deg": 1.3734294662234896,
+          "orientation_within_rms_deg": 4.466642399368793,
+          "orientation_between_within": 0.3074858794197576,
+          "orientation_percentile": 0.375
+        },
+        "final_task_metric": {
+          "reference_mean": 0.20020200564888999,
+          "reference_std": 0.0,
+          "mean_arm_mean": 0.20020200564888999,
+          "medoid_arm_mean": 0.20020200564888999
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 34
+    },
+    {
+      "uid": "widowx_put_eggplant_in_basket:ep4:m4",
+      "task": "widowx_put_eggplant_in_basket",
+      "episode": 4,
+      "macro_step": 4,
+      "env_step": 16,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 0.46813333461382156,
+          "position_within_rms_cm": 0.41507392494246054,
+          "position_between_within": 1.1278312283256924,
+          "position_percentile": 0.75,
+          "orientation_gap_deg": 0.7273783600422099,
+          "orientation_within_rms_deg": 1.046775519158319,
+          "orientation_between_within": 0.6948752112841472,
+          "orientation_percentile": 0.375
+        },
+        "medoid_arm": {
+          "position_gap_cm": 0.3910826848833107,
+          "position_within_rms_cm": 0.41507392494246054,
+          "position_between_within": 0.94220007902815,
+          "position_percentile": 0.5,
+          "orientation_gap_deg": 0.7489805018455223,
+          "orientation_within_rms_deg": 1.046775519158319,
+          "orientation_between_within": 0.715512054053151,
+          "orientation_percentile": 0.375
+        },
+        "final_task_metric": {
+          "reference_mean": 0.1913085688463902,
+          "reference_std": 0.005050609325989578,
+          "mean_arm_mean": 0.18392202767307264,
+          "medoid_arm_mean": 0.1892028637199446
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 35
+    },
+    {
+      "uid": "widowx_put_eggplant_in_basket:ep5:m0",
+      "task": "widowx_put_eggplant_in_basket",
+      "episode": 5,
+      "macro_step": 0,
+      "env_step": 0,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 0.2160172442977816,
+          "position_within_rms_cm": 0.8199100769302051,
+          "position_between_within": 0.2634645559017444,
+          "position_percentile": 0.0,
+          "orientation_gap_deg": 1.4191523590485136,
+          "orientation_within_rms_deg": 2.1193393178825075,
+          "orientation_between_within": 0.6696201722272719,
+          "orientation_percentile": 0.375
+        },
+        "medoid_arm": {
+          "position_gap_cm": 0.709632844542158,
+          "position_within_rms_cm": 0.8199100769302051,
+          "position_between_within": 0.8655008207717949,
+          "position_percentile": 0.625,
+          "orientation_gap_deg": 1.506206392384602,
+          "orientation_within_rms_deg": 2.1193393178825075,
+          "orientation_between_within": 0.7106961965342559,
+          "orientation_percentile": 0.375
+        },
+        "final_task_metric": {
+          "reference_mean": 0.17940045844658548,
+          "reference_std": 0.0,
+          "mean_arm_mean": 0.17940045844658548,
+          "medoid_arm_mean": 0.17940045844658548
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 36
+    },
+    {
+      "uid": "widowx_put_eggplant_in_basket:ep5:m4",
+      "task": "widowx_put_eggplant_in_basket",
+      "episode": 5,
+      "macro_step": 4,
+      "env_step": 16,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 0.07405950735659662,
+          "position_within_rms_cm": 0.17583639329112838,
+          "position_between_within": 0.4211841813314378,
+          "position_percentile": 0.125,
+          "orientation_gap_deg": 0.34222937408873055,
+          "orientation_within_rms_deg": 1.0197682674199033,
+          "orientation_between_within": 0.33559523768532107,
+          "orientation_percentile": 0.0
+        },
+        "medoid_arm": {
+          "position_gap_cm": 0.24733549213280975,
+          "position_within_rms_cm": 0.17583639329112838,
+          "position_between_within": 1.4066228697224352,
+          "position_percentile": 0.875,
+          "orientation_gap_deg": 0.6348952125839887,
+          "orientation_within_rms_deg": 1.0197682674199033,
+          "orientation_between_within": 0.6225877318092328,
+          "orientation_percentile": 0.125
+        },
+        "final_task_metric": {
+          "reference_mean": 0.1778251011092093,
+          "reference_std": 0.0007659843654528446,
+          "mean_arm_mean": 0.17847897310490274,
+          "medoid_arm_mean": 0.17796626529963172
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 37
+    },
+    {
+      "uid": "widowx_put_eggplant_in_basket:ep5:m8",
+      "task": "widowx_put_eggplant_in_basket",
+      "episode": 5,
+      "macro_step": 8,
+      "env_step": 32,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 0.1658484917449039,
+          "position_within_rms_cm": 0.4650865942651004,
+          "position_between_within": 0.3565970161039944,
+          "position_percentile": 0.0,
+          "orientation_gap_deg": 0.5035532188354126,
+          "orientation_within_rms_deg": 1.2621760173824454,
+          "orientation_between_within": 0.3989564148744506,
+          "orientation_percentile": 0.125
+        },
+        "medoid_arm": {
+          "position_gap_cm": 0.3016918504511326,
+          "position_within_rms_cm": 0.4650865942651004,
+          "position_between_within": 0.6486788786674157,
+          "position_percentile": 0.0,
+          "orientation_gap_deg": 0.45937380392768773,
+          "orientation_within_rms_deg": 1.2621760173824454,
+          "orientation_between_within": 0.3639538365499582,
+          "orientation_percentile": 0.125
+        },
+        "final_task_metric": {
+          "reference_mean": 0.12685282706067053,
+          "reference_std": 0.0,
+          "mean_arm_mean": 0.12685282706067053,
+          "medoid_arm_mean": 0.12685282706067053
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 38
+    },
+    {
+      "uid": "widowx_put_eggplant_in_basket:ep5:m16",
+      "task": "widowx_put_eggplant_in_basket",
+      "episode": 5,
+      "macro_step": 16,
+      "env_step": 64,
+      "summary": {
+        "mean_arm": {
+          "position_gap_cm": 0.08051761700223882,
+          "position_within_rms_cm": 1.1056907791229904,
+          "position_between_within": 0.0728210983780688,
+          "position_percentile": 0.0,
+          "orientation_gap_deg": 1.1578245645981438,
+          "orientation_within_rms_deg": 3.402578534613213,
+          "orientation_between_within": 0.3402785719183287,
+          "orientation_percentile": 0.125
+        },
+        "medoid_arm": {
+          "position_gap_cm": 0.6729038479545815,
+          "position_within_rms_cm": 1.1056907791229904,
+          "position_between_within": 0.6085823095027653,
+          "position_percentile": 0.25,
+          "orientation_gap_deg": 1.5365509799933788,
+          "orientation_within_rms_deg": 3.402578534613213,
+          "orientation_between_within": 0.4515842806749633,
+          "orientation_percentile": 0.125
+        },
+        "final_task_metric": {
+          "reference_mean": 0.1268533086416367,
+          "reference_std": 0.0,
+          "mean_arm_mean": 0.1268533086416367,
+          "medoid_arm_mean": 0.1268533086416367
+        }
+      },
+      "success_count": {
+        "reference": 0,
+        "mean_arm": 0,
+        "medoid_arm": 0
+      },
+      "array_index": 39
+    }
+  ]
+}

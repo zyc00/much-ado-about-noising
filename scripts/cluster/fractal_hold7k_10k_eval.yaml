@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: yuchen-fr-hold7k-10k-eval-0908
+  labels: {app: nu-hold7k-evaluation, owner: yuchen}
+spec:
+  restartPolicy: Never
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: aihc.baidu.com/dedicated-pool
+                operator: DoesNotExist
+              - key: kubernetes.io/hostname
+                operator: In
+                values: ['172.17.0.21']
+  containers:
+    - name: main
+      image: zyc00/easypod:latest
+      command: [bash, -lc]
+      args:
+        - |
+          set -euo pipefail
+          cd /mnt/pfs/yuchen/groot/Isaac-GR00T
+          export HF_HOME=/mnt/pfs/yuchen/hf_home
+          export HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1 WANDB_MODE=disabled
+          export GROOT_ROPE_CACHE=1 PYTHONUNBUFFERED=1 NO_ALBUMENTATIONS_UPDATE=1
+          export OMP_NUM_THREADS=2
+          export PYTHONPATH=/mnt/pfs/yuchen/groot/Isaac-GR00T:/mnt/pfs/yuchen/groot/nu_hold7k_20260908
+          unset GR00T_EVAL_SEED
+          .venv/bin/python /mnt/pfs/yuchen/groot/nu_hold7k_20260908/nu_hold7k_eval.py \
+            --dataset fractal \
+            --run-dir /mnt/pfs/yuchen/groot/ft_fr_nu1024_hold7k_to14_20260908 \
+            --step 10000 --gpus 0,1,2,3,4,5 \
+            2>&1 | tee /mnt/pfs/yuchen/groot/ft_fr_nu1024_hold7k_to14_20260908/eval-10000-unseeded.pipeline.log
+      env:
+        - {name: NVIDIA_DRIVER_CAPABILITIES, value: all}
+        - {name: NO_PROXY, value: 'localhost,127.0.0.1,.svc,.cluster.local'}
+      resources:
+        requests: {cpu: '48', memory: 192Gi, nvidia.com/gpu: '6'}
+        limits: {cpu: '48', memory: 192Gi, nvidia.com/gpu: '6'}
+      volumeMounts:
+        - {name: pfs, mountPath: /mnt/pfs}
+        - {name: dshm, mountPath: /dev/shm}
+  volumes:
+    - name: pfs
+      persistentVolumeClaim: {claimName: main-pfs-pvc}
+    - name: dshm
+      emptyDir: {medium: Memory, sizeLimit: 24Gi}

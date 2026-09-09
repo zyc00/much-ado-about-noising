@@ -1,0 +1,98 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: yuchen-ams-worker-0
+  labels: {app: action-mag-specialists, owner: yuchen}
+spec:
+  restartPolicy: Never
+  nodeName: 172.17.0.29
+  containers:
+    - name: main
+      image: zyc00/easypod:latest
+      command: ["bash", "/mnt/pfs/yuchen/action_mag_specialists_20260905/scripts/run_worker.sh"]
+      args: ["gr1:0", "gr1:1", "pi05:0", "widowx:0", "widowx:1"]
+      env: &proxy-env
+        - {name: NVIDIA_DRIVER_CAPABILITIES, value: all}
+        - {name: HTTP_PROXY, value: "http://172.17.0.12:2080"}
+        - {name: HTTPS_PROXY, value: "http://172.17.0.12:2080"}
+        - {name: http_proxy, value: "http://172.17.0.12:2080"}
+        - {name: https_proxy, value: "http://172.17.0.12:2080"}
+        - {name: NO_PROXY, value: "localhost,127.0.0.1,.svc,.cluster.local,10.0.0.0/8,192.168.0.0/16"}
+        - {name: no_proxy, value: "localhost,127.0.0.1,.svc,.cluster.local,10.0.0.0/8,192.168.0.0/16"}
+      resources: &resources
+        requests: {cpu: "96", memory: 768Gi, nvidia.com/gpu: "8"}
+        limits: {cpu: "96", memory: 768Gi, nvidia.com/gpu: "8"}
+      volumeMounts: &mounts
+        - {name: pfs, mountPath: /mnt/pfs}
+        - {name: dshm, mountPath: /dev/shm}
+  volumes: &volumes
+    - name: pfs
+      persistentVolumeClaim: {claimName: main-pfs-pvc}
+    - name: dshm
+      emptyDir: {medium: Memory}
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: yuchen-ams-worker-1
+  labels: {app: action-mag-specialists, owner: yuchen}
+spec:
+  restartPolicy: Never
+  nodeName: 172.17.0.11
+  containers:
+    - name: main
+      image: zyc00/easypod:latest
+      command: ["bash", "/mnt/pfs/yuchen/action_mag_specialists_20260905/scripts/run_worker.sh"]
+      args: ["pi05:1", "widowx:2", "widowx:3", "gr1:2", "gr1:3"]
+      env:
+        - {name: NVIDIA_DRIVER_CAPABILITIES, value: all}
+        - {name: HTTP_PROXY, value: "http://172.17.0.12:2080"}
+        - {name: HTTPS_PROXY, value: "http://172.17.0.12:2080"}
+        - {name: http_proxy, value: "http://172.17.0.12:2080"}
+        - {name: https_proxy, value: "http://172.17.0.12:2080"}
+        - {name: NO_PROXY, value: "localhost,127.0.0.1,.svc,.cluster.local,10.0.0.0/8,192.168.0.0/16"}
+        - {name: no_proxy, value: "localhost,127.0.0.1,.svc,.cluster.local,10.0.0.0/8,192.168.0.0/16"}
+      resources:
+        requests: {cpu: "96", memory: 768Gi, nvidia.com/gpu: "8"}
+        limits: {cpu: "96", memory: 768Gi, nvidia.com/gpu: "8"}
+      volumeMounts:
+        - {name: pfs, mountPath: /mnt/pfs}
+        - {name: dshm, mountPath: /dev/shm}
+  volumes:
+    - name: pfs
+      persistentVolumeClaim: {claimName: main-pfs-pvc}
+    - name: dshm
+      emptyDir: {medium: Memory}
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: yuchen-ams-worker-2
+  labels: {app: action-mag-specialists, owner: yuchen}
+spec:
+  restartPolicy: Never
+  nodeName: 172.17.0.18
+  containers:
+    - name: main
+      image: zyc00/easypod:latest
+      command: ["bash", "/mnt/pfs/yuchen/action_mag_specialists_20260905/scripts/run_worker.sh"]
+      args: ["widowx:4", "pi05:2", "pi05:3", "pi05:4", "gr1:4"]
+      env:
+        - {name: NVIDIA_DRIVER_CAPABILITIES, value: all}
+        - {name: HTTP_PROXY, value: "http://172.17.0.12:2080"}
+        - {name: HTTPS_PROXY, value: "http://172.17.0.12:2080"}
+        - {name: http_proxy, value: "http://172.17.0.12:2080"}
+        - {name: https_proxy, value: "http://172.17.0.12:2080"}
+        - {name: NO_PROXY, value: "localhost,127.0.0.1,.svc,.cluster.local,10.0.0.0/8,192.168.0.0/16"}
+        - {name: no_proxy, value: "localhost,127.0.0.1,.svc,.cluster.local,10.0.0.0/8,192.168.0.0/16"}
+      resources:
+        requests: {cpu: "96", memory: 768Gi, nvidia.com/gpu: "8"}
+        limits: {cpu: "96", memory: 768Gi, nvidia.com/gpu: "8"}
+      volumeMounts:
+        - {name: pfs, mountPath: /mnt/pfs}
+        - {name: dshm, mountPath: /dev/shm}
+  volumes:
+    - name: pfs
+      persistentVolumeClaim: {claimName: main-pfs-pvc}
+    - name: dshm
+      emptyDir: {medium: Memory}

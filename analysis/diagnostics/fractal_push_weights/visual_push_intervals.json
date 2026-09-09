@@ -1,0 +1,5 @@
+{
+  "selection": "First four randomly sampled episodes per instruction were inspected; intervals are approximate visible drawer-inward-motion windows selected from the image sequences, not from sigma curves. This is a small manual diagnostic, not ground-truth contact annotation.",
+  "windows": {"1": [26, 37], "3": [47, 66], "20": [23, 32], "21": [20, 28], "22": [16, 24], "23": [19, 27], "40": [14, 20], "42": [17, 29], "43": [9, 18]},
+  "excluded": {"0": "Drawer motion not clear enough at thumbnail resolution", "2": "Drawer motion obscured", "41": "No clearly visible inward displacement in sampled frames"}
+}

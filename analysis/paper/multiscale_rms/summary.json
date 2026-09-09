@@ -1,0 +1,164 @@
+{
+  "mse": {
+    "gr1": {
+      "source": "/home/jigu/projects/much-ado-about-noising/analysis/paper/mse_scale/gr1.npz",
+      "sha256": "e82c9e93e843a4b93b44d7ee0d07b5a34722fb5fd74ab1ee49e519b8ff68413a",
+      "n": 2880,
+      "tasks": 24,
+      "executed_dimension": 232,
+      "relative_q01_q10_q50_q90_q99": [
+        0.33442195577173683,
+        0.5535763581360822,
+        1.0001955123376702,
+        2.5564465866145145,
+        5.89801468925384
+      ],
+      "relative_q90_q10": 4.618055935810177,
+      "raw_rms_q10_q50_q90": [
+        0.023492318627035533,
+        0.04317294132619234,
+        0.11255116283282861
+      ],
+      "raw_rms_q90_q10": 4.790977196405892,
+      "normalization": "Divide sample RMS by median RMS within its task; equal task weights",
+      "policy_split": "training demonstrations"
+    },
+    "pi05": {
+      "source": "/home/jigu/projects/much-ado-about-noising/analysis/paper/mse_scale/pi05.npz",
+      "sha256": "d48c19b20ee234a62f2ca297a5949ccbb5329d86750c585c06a93a2bbe626296",
+      "n": 4730,
+      "tasks": 40,
+      "executed_dimension": 60,
+      "relative_q01_q10_q50_q90_q99": [
+        0.4523751205920446,
+        0.6816609239691612,
+        1.0,
+        1.398657712126203,
+        1.8637974904216377
+      ],
+      "relative_q90_q10": 2.0518378902844066,
+      "raw_rms_q10_q50_q90": [
+        0.03907742134026515,
+        0.05978010972912347,
+        0.08685881511722551
+      ],
+      "raw_rms_q90_q10": 2.2227366120426857,
+      "normalization": "Divide sample RMS by median RMS within its task; equal task weights",
+      "policy_split": "training demonstrations"
+    },
+    "tool_hang": {
+      "source": "/home/jigu/projects/much-ado-about-noising/analysis/paper/mse_scale/tool_hang.npz",
+      "sha256": "b2b52d909da27dbb70ee4f37fdd1b8366d6b05d24dd7f27f5598f775e9738169",
+      "n": 4000,
+      "tasks": 1,
+      "executed_dimension": 72,
+      "relative_q01_q10_q50_q90_q99": [
+        0.6241640975248727,
+        0.7580154979072435,
+        0.999924553331112,
+        1.4372106332186725,
+        2.0397823612748507
+      ],
+      "relative_q90_q10": 1.8960174787805464,
+      "raw_rms_q10_q50_q90": [
+        0.004635861781358838,
+        0.0061137195208766605,
+        0.008787102614986978
+      ],
+      "raw_rms_q90_q10": 1.8954625977678203,
+      "normalization": "Divide sample RMS by median RMS within its task; equal task weights",
+      "policy_split": "training demonstrations"
+    },
+    "transport": {
+      "source": "/home/jigu/projects/much-ado-about-noising/analysis/paper/mse_scale/transport.npz",
+      "sha256": "ab4309529dcb0c590f7773c7389492995c1c1b8c9b277dc78077942f260ec1c9",
+      "n": 4000,
+      "tasks": 1,
+      "executed_dimension": 144,
+      "relative_q01_q10_q50_q90_q99": [
+        0.5642450835603666,
+        0.7570058144405222,
+        0.9997211459779869,
+        1.3378486065460717,
+        1.9054886379784068
+      ],
+      "relative_q90_q10": 1.7672897367833709,
+      "raw_rms_q10_q50_q90": [
+        0.006887078396184418,
+        0.00909532690869631,
+        0.012168339711037077
+      ],
+      "raw_rms_q90_q10": 1.7668362418784989,
+      "normalization": "Divide sample RMS by median RMS within its task; equal task weights",
+      "policy_split": "training demonstrations"
+    }
+  },
+  "ht": {
+    "source": "/home/jigu/projects/much-ado-about-noising/analysis/paper/mse_scale/ht_gr1_60k_raw.npz",
+    "sha256": "174eb3c3ebe0ea336f2cbecce3ace53c2498640197c15a589ad8a54d5c50389a",
+    "cluster_source": "/mnt/pfs/yuchen/groot/resid_dump3_gr1_ht60k_all.npz",
+    "checkpoint": "/mnt/pfs/yuchen/groot/ft_ht3/checkpoint-60000",
+    "n": 2400,
+    "nu": 464.0,
+    "chunk_shape": [
+      8,
+      29
+    ],
+    "sigma_q10_q50_q90": [
+      0.01239148983731866,
+      0.02934704441577196,
+      0.11584869176149366
+    ],
+    "sigma_q90_q10": 9.34905271943972,
+    "rms_q10_q50_q90": [
+      0.011615017634090575,
+      0.02930641877747444,
+      0.11600054475126094
+    ],
+    "rms_q90_q10": 9.987117403144905,
+    "sigma_rms_spearman": 0.9077124726530822,
+    "rms_over_sigma_q10_q50_q90": [
+      0.6725310505762722,
+      1.000935059246388,
+      1.5387151615002441
+    ],
+    "quintiles": [
+      {
+        "n": 480,
+        "sigma_rms": 0.012413691939244123,
+        "sigma_median": 0.012389343697577715,
+        "residual_rms": 0.013681876424096396
+      },
+      {
+        "n": 480,
+        "sigma_rms": 0.020600015811863367,
+        "sigma_median": 0.02055190410465002,
+        "residual_rms": 0.024366755974071664
+      },
+      {
+        "n": 480,
+        "sigma_rms": 0.02963851637347778,
+        "sigma_median": 0.02934704441577196,
+        "residual_rms": 0.034997437260518474
+      },
+      {
+        "n": 480,
+        "sigma_rms": 0.04583139683362687,
+        "sigma_median": 0.044043928384780884,
+        "residual_rms": 0.06621291351741894
+      },
+      {
+        "n": 480,
+        "sigma_rms": 0.12529604166756877,
+        "sigma_median": 0.11594624072313309,
+        "residual_rms": 0.14648608731884982
+      }
+    ],
+    "policy_split": "training demonstrations",
+    "grouping": "Five equal-count bins by predicted sigma only; no residual-based grouping",
+    "sampling": "Existing 2400-input probe; all 24 datasets supplied for correct normalization; no per-input episode/task IDs saved",
+    "uncertainty": "No confidence intervals: episode IDs unavailable; no independent-sample bootstrap"
+  },
+  "status": "Training-fit diagnostic; no data Gaussianity, discrete scale clusters, or precision-phase mechanism established",
+  "histogram": "Empirical histogram on common equal-log-width bins; equal peak heights; interval is weighted P10-P90, not a confidence interval"
+}

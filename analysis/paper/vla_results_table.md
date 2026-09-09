@@ -11,13 +11,14 @@ Blank = not run. HT entries carry their nu. Within a row every number is at the 
 | stack (chunk d) | protocol | flow | L1 | MSE | HT incumbent (nu = 2d) | HT swept-best | HT fixed c = 2 (nu = 4d) |
 |---|---|---|---|---|---|---|---|
 | GR00T GR1, robocasa (232) | 24 tasks x 20 eps, official harness | 44.1 @60k (pub 44.5 @60k) | 17.2 @60k | 37.8 @60k | nu=464: 47.5 @60k | nu=928: 51.5 @60k (nu=2: 24.5; nu=0.5: 44.8; nu=464: 47.5) | nu=928: 51.5 @60k |
-| GR00T WidowX, bridge (56) | 7 tasks x 50 eps (effective 10 scenes/task) | 57.1 @20k | | | nu=112: 62.9 @20k | nu=224: 67.4 @20k (flat 49-67 over nu=2..448) | nu=224: 67.4 @20k |
-| OpenVLA-OFT libero-long (56) | 10 tasks x 10 eps (released ref: 500 eps, best ckpt) | | released 94.5 (best ckpt <=150k) | | nu=112: 82 @120k (arm endpoint) | nu=1024: 98 @150k | nu=224: 95 @150k |
-| OpenVLA-OFT libero-spatial | 10 tasks x 50 eps (500) | | released 97.6 | | nu=112: 98.4 @50k (492/500) | | nu=224: in training (150k) |
-| OpenVLA-OFT libero-goal | same | | released 97.9 | | nu=112: 98 @90k (97.6 @30k, 500 eps) | nu=1024: 98 @150k | |
-| OpenVLA-OFT libero-object | same | | released 98.4 | | nu=112: 95 (best ckpt) | nu=1024: 97 @150k | |
-| pi0.5 LIBERO (350), 4-suite avg | 4 x 1000 eps | published ~96.9 | | 96.8 @30k | nu=700: 97.6 @30k (spatial 98.1 / goal 97.6 / object 99.8 / long 94.7) | (nu=2 97.0 @30k was a 1-GPU run, 8x fewer samples: not comparable) | nu=1400: 8-GPU rerun in training (a 1-GPU run gave 96.1: 97.8 / 95.8 / 98.6 / 92.2, not comparable) |
-| Cosmos3 libero-10 (160) | 10 tasks x 10 eps, 30-step sampler | 96 @2000 | | | nu=320: 93 @2000 | nu=512: 96 @2000 | nu=640: 96 @2000 |
+| GR00T WidowX, bridge (56) | 7 tasks x 50 eps (effective 10 scenes/task) | 57.1 @20k | | 63.1 @20k | nu=112: 62.9 @20k | nu=224: 67.4 @20k (flat 49-67 over nu=2..448) | nu=224: 67.4 @20k |
+| GR00T Google Robot, fractal (56) | 6 tasks x 100 eps, SimplerEnv | 67.3 @20k | | 62.8 @20k | | | nu=224: 63.5 @20k |
+| OpenVLA-OFT libero-long (56) | 10 tasks x 10 eps (released ref: 500 eps, best ckpt) | | released 94.5 (best ckpt <=150k) | | nu=112: 82 @120k (arm endpoint) | nu=1024: 93.0 @150k (465/500; a 100-ep screen read 98) | nu=224: 94.0 @150k (470/500) |
+| OpenVLA-OFT libero-spatial | 10 tasks x 50 eps (500) | | released 97.6 | | nu=112: 98.4 @50k (492/500) | | nu=224: 97.4 @150k (487/500) |
+| OpenVLA-OFT libero-goal | same | | released 97.9 | | nu=112: 98 @90k (97.6 @30k, 500 eps) | nu=1024: 97.6 @150k (488/500); 96.0 @50k (480/500) | nu=224: 96.6 @150k (483/500); 96.8 @50k (484/500, their protocol point) |
+| OpenVLA-OFT libero-object | same | | released 98.4 | | nu=112: 95 (best ckpt) | nu=1024: 95.8 @20k (479/500; a 100-ep screen read 99) | nu=224: 95.6 @150k (478/500); 96.6 @100k (483/500, ckpt selected on a 100-ep sweep and confirmed at 500) |
+| pi0.5 LIBERO (350), 4-suite avg | 4 x 1000 eps | published ~96.9 | | 96.8 @30k | nu=700: 97.6 @30k (spatial 98.1 / goal 97.6 / object 99.8 / long 94.7) | (nu=2 97.0 @30k was a 1-GPU run, 8x fewer samples: not comparable) | nu=1400: 96.6 @30k (97.4 / 97.1 / 99.4 / 92.6) |
+| Cosmos3 libero-10 (160) | 10 tasks x 10 eps, 30-step sampler | 96 @2000 | | 97 @2000 | nu=320: 93 @2000 | nu=512: 96 @2000 | nu=640: 96 @2000 |
 
 Reading across rows: single-pass HT matches or beats its iterative baseline on every stack once nu
 is at a light-but-finite operating point (GR1 51.5 vs 44.1; WidowX 62.9 vs 57.1; OFT-long 98 vs
@@ -25,15 +26,15 @@ released 94.5; pi0.5 97.6 vs ~96.9; Cosmos3 96 = 96). The accidental default nu 
 only where the hard-but-learnable residual band matters (OFT-long 82, Cosmos3 93). The fixed
 prescription c = 2 (nu = 4d, the same rule on every stack) matches the swept optimum where it has
 been run to its endpoint (WidowX 67.4 = sweep best; Cosmos3 96 = flow; GR1 51.5 > the swept-at-2d incumbent 47.5,
-single seed, SE ~2.3), is within 3 points on OFT-long (95 vs 98 for nu=1024 at 150k; above the released L1 94.5). On pi0.5
-the c = 2 cell is being re-run: the first attempt (and the earlier nu=2 point) had trained on 8x fewer samples than the
-incumbent (single-process launch), so those numbers are not comparable.
+single seed, SE ~2.3), is within 3 points on OFT-long (95 vs 98 for nu=1024 at 150k; above the released L1 94.5), and is 1.0 point
+below the 2d incumbent on pi0.5 (96.6 vs 97.6 over 4000 episodes, single seed; the gap sits in libero-long, 92.6 vs
+94.7, the other three suites are within 0.7). pi0.5 is the one stack where the lighter tail does not help.
 
-Huber-gate controls (budget-matched, not a table column): GR1 simple Huber (MSE inside 2.5 x EMA-median chunk-residual norm, linear beyond; no sigma) 37.4 @60k = MSE 37.8, vs HT 47.5 / flow 44.1; GR1 heteroscedastic Huber (Huber rho on ||r||/sigma + d log sigma) 40.7 @60k: sigma normalization recovers about half of the MSE->HT gap, the redescending gate the rest. OFT-long simple / hetero Huber 97 / 95 @50k (arms stopped at 80k). The cap reproduces HT on OFT-long but not on GR1.
+Huber-gate controls (budget-matched, not a table column): GR1 simple Huber (MSE inside 2.5 x EMA-median chunk-residual norm, linear beyond; no sigma) 37.4 @60k = MSE 37.8, vs HT 47.5 / flow 44.1; GR1 heteroscedastic Huber (Huber rho on ||r||/sigma + d log sigma) 40.7 @60k: sigma normalization recovers about half of the MSE->HT gap, the redescending gate the rest. OFT-long simple / hetero Huber 97 / 95 @50k (arms stopped at 80k). The cap reproduces HT on OFT-long but not on GR1. Heteroscedastic L1 (sum|r|/sigma + d log sigma, GROOT_HL1 / OFT_HL1, 2026-09-07): GR1 44.5 @60k (above hetero-Huber 40.7, level with flow 44.1, under HT 47.5 / 51.5); OFT-long 69 @20k (vs HT c=2 89, MSE 84, L1 66; 50k pending).
 
 Budget-mismatched controls (not in the table): OFT-long hetero-Gaussian 73 @50k (arm stopped at
 ~91k; 59 @20k); OFT-goal/object HG 94/88 @50k; GR1 pure HG 20.6 @22k and HG-pre->HT 32.8 @22k (HT
-@60k); in-house OFT L1 66 @20k and MSE 84 @20k. Arm status (2026-08-27). Completed: OFT-long fixed nu=224 (89 @20k, 94 @30k, 94 @50k, 95 @150k), Cosmos3 fixed nu=640 (62/83/97/96 @iter 500/1000/1500/2000), GR1 simple / hetero Huber (37.4 / 40.7 @60k), OFT-long learned-nu (93 @150k). Stopped before their endpoint (last evaluated snapshot is final): OFT-long median-pinned c=2.5 (95 @50k, stopped at 130k) and c=2 (88 @50k, at 60k), per-sample / global argmax-nu table (92 / 91 @50k, at 80k), OFT-long simple / hetero Huber (97 / 95 @50k, at 80k), Cosmos3 median-pinned c=2 (never evaluated). Completed for the c = 2 column: GR1 nu=928 51.5 @60k. pi0.5 nu=1400: 8-GPU rerun in training (run_c2x8). In training: OFT libero-spatial nu=224 (150k; 500-episode eval armed); queued for the next free nodes: OFT libero-goal and libero-object nu=224, pi0.5 nu=1400 (30k). DROID + Cosmos3 flow/HT (nu=1024) pair: data, recipe and smoke test done (4 samples/rank fit; 108 s per 512-sample iteration on one A800 node, i.e. ~6 days for 5k iterations), paused until the c = 2 cells are filled; no RoboLab evaluation stack exists yet. Full trajectories: memory note
+@60k); in-house OFT L1 66 @20k and MSE 84 @20k. GOOGLE ROBOT (FRACTAL) COMPLETED 2026-09-02, and it is the FIRST STACK WHERE HT LOSES TO FLOW: flow 67.3 vs HT nu=224 63.5 (6 tasks x 100 eps, identical recipe/data/eval, full 87,212-episode dataset, sbias -0.5093). Per task flow/HT: coke 0.88/0.94, pick-object 0.76/0.82, move-near 0.99/0.94, open-drawer 0.59/0.56, close-drawer 0.75/0.50, place-in-closed-drawer 0.07/0.05 (released N1.7: 1.00/0.94/1.00/0.65/0.69/0.07 = 72.5). The split is systematic: HT WINS both free-space pick tasks (+6 each) and LOSES the articulated/contact tasks (close-drawer -25). Both arms sit below the released reference (flow -5, HT -9), so the absolute level is set by our training rather than by the head. Contrast WidowX (same d=56, same c=2): HT 67.4 vs flow 57.1. Single seed, 100 eps/task (SE ~5 pts per task, ~2 pts on the mean). LIBERO-LONG HAS A PER-TASK TRAINING BIFURCATION (2026-09-01) -- single-run comparisons on that suite are unsafe. Matched 500-episode evals of the long arms: nu=350 (c=2.5) gives 80.0 @50k and 81.2 @100k vs nu=224 (c=2) 93.2 / 92.2 (and 90.2 @20k, 94.0 @150k). The whole 12-point gap sits in TWO of the ten tasks (task 1: 0.18-0.20 vs 0.88-0.94; task 2: 0.60-0.68 vs 0.96-0.98); on the other eight tasks the arms are indistinguishable (91.5 vs 92.0). A smooth nu effect would degrade all ten tasks slightly, so this is a run-level failure to learn specific long-horizon tasks, not a nu effect -- and it explains the earlier non-monotone reading (nu=112 82, nu=224 93, nu=350 80, nu=1024 93: two 'bad' runs and two 'good' ones). Quote libero-long only with several seeds, or report the eight-task subset alongside. NU SWEEP ON OFT IS FLAT ONCE CONFIRMED AT 500 EPISODES (2026-08-31). The swept-best nu=1024 row was built from 100-episode screens; re-run at 500 eps it gives long 93.0 (screen 98), goal 97.6 @150k / 96.0 @50k (screen 98), object 95.8 @20k (screen 99) -- i.e. nu=1024 is NOT better than the fixed nu=224 (long 94.0, goal 96.6/96.8, object 95.6/96.6); on the three suites with both, the means are 95.5 (nu=1024) vs 95.4-96.0 (nu=224). OFT therefore does NOT prefer a large c: its apparent optimum at c=4.28 was screen noise, and no value of nu closes the ~1-point gap to the released L1 (97.1). This removes the only stack that contradicted the fixed c=2 prescription. C=2.5 SWEEP (nu=6.25d), started 2026-08-30 after the c=2 column closed: WidowX nu=350 65.1 (per task 0.54/0.82/0.90/0.82/0.44/0.86/0.18) vs c=2 67.4 and 2d 62.9 -- same within the pooled SE of ~6 points (5 parallel envs share initial states, so 10 distinct scenes/task). GR1 nu=1450 47.6 @60k (24 tasks x 20 eps, SE 2.3) vs c=2 51.5 and 2d 47.5: going heavier than 4d does not help on GR1. pi0.5 nu=2187.5 97.2 (spatial 97.6 / goal 97.0 / object 99.6 / long 94.5, 4 x 1000 eps, SE 0.35 on the average) vs c=2 96.6 and 2d 97.6: NOT monotone -- the c=2 point is the low one, driven by libero-long (92.6 vs 94.5-94.7 at c=1.41 and c=2.5), so pi0.5 is flat over c=1.41..2.5 and both neighbours of c=2 sit above the published flow baseline (96.9). OFT-long nu=350 and OFT-object nu=350 still training. Arm status (2026-08-27). Completed: OFT-long fixed nu=224 (89 @20k, 94 @30k, 94 @50k, 95 @150k), Cosmos3 fixed nu=640 (62/83/97/96 @iter 500/1000/1500/2000), GR1 simple / hetero Huber (37.4 / 40.7 @60k), OFT-long learned-nu (93 @150k). Stopped before their endpoint (last evaluated snapshot is final): OFT-long median-pinned c=2.5 (95 @50k, stopped at 130k) and c=2 (88 @50k, at 60k), per-sample / global argmax-nu table (92 / 91 @50k, at 80k), OFT-long simple / hetero Huber (97 / 95 @50k, at 80k), Cosmos3 median-pinned c=2 (never evaluated). Completed for the c = 2 column: GR1 nu=928 51.5 @60k, pi0.5 nu=1400 96.6 @30k (8-GPU rerun, budget-matched; a first 1-GPU attempt gave 96.1). Completed 2026-08-30, all OFT c=2 cells re-run at 500 episodes: spatial 97.4 (487/500), object 95.6 (478/500), goal 96.6 @150k (483/500) and 96.8 @50k (484/500), long 94.0 (470/500) -> 4-suite average 96.0 (paper protocol: 150k, goal 50k) vs released L1 97.1; 96.2 if object also uses its selected checkpoint (96.6 @100k). The 100-episode screens read high on every suite (goal 99 -> 96.6, long 95 -> 94.0, object 94 -> 95.6 low), consistent with the runbook's screen-vs-confirm rule; the c = 2 column is now complete for every stack. Checkpoint protocol: OpenVLA-OFT's own recipe (LIBERO.md) evaluates the 150k checkpoint for every suite except libero-goal, where they use 50k; our runs copy their command including the 10x LR decay at 100k, so all OFT cells above are 150k endpoints unless marked otherwise. A 13-point checkpoint sweep of object nu=224 at 100 episodes (10k 92, 20k 96, 30k 95, 40k 96, 50k 94, 60k 94, 70k 96, 80k 97, 90k 94, 100k 98, 120k 97, 140k 96, 150k 94) is flat within noise (SE 2.2 points at n=100); the first 100-episode reading of 94 at 150k was noise, and the 500-episode re-evaluation gives 95.6. DROID + Cosmos3 flow/HT (nu=1024) pair: data, recipe and smoke test done (4 samples/rank fit; 108 s per 512-sample iteration on one A800 node, i.e. ~6 days for 5k iterations), paused until the c = 2 cells are filled; no RoboLab evaluation stack exists yet. Full trajectories: memory note
 `nu-is-inert-heteroscedasticity-is-the-method.md` and `vla_results.md`.
 
 ## B. Single-pass vs iterative cost
@@ -246,3 +247,70 @@ Summary of E7: three distinct gradient regimes over the surprise tail — HG amp
 data share), flow is proportional to it (share ~ data share; the (t, noise) noise floor dominates
 per-sample differences), HT suppresses it (share << data share). This is consistent with the
 success-rate ordering HT >= flow > HG on GR1 and OFT-long.
+
+
+### E8b-corrected (2026-09-06). pi0.5 LIBERO, same checkpoint, protocol defect fixed
+
+The E8b probe above had `sample_noise` overridden to zeros, which the LeRobot policy uses for BOTH the
+deployed sampler and the training loss: its 8 draws varied only in t with x0 = 0, and its residual came
+from a zero-start deterministic 10-step integration. Rerun (`pi05/resid_flow_pi05_v2.py` on PFS,
+`resid_flow_pi05_v2.npz`; 600 samples, different sample draw than E8b): loss draws with
+x0 ~ N(0, I) and t = 0.999 Beta(1.5, 1) + 0.001, residual from the deployed stochastic 10-step sampler
+(one draw). Masses as in E8a: MSE = S, HT = w^2 S with w = (nu+d)/(nu+S/sigma^2), nu = 700 = 2d, sigma^2 = pooled
+mean squared residual; Flow = mean over draws of the per-sample flow loss. Pooled rms 0.135, max residual
+5.0x rms, draw CV median 0.73, corr(flow loss, residual) -0.04.
+
+| bucket | data % | FLOW grad % | MSE grad % | HT (nu=700) grad % |
+|---|---|---|---|---|
+| < 0.5x rms | 24.8 | 26.5 | 3.2 | 8.4 |
+| 0.5-1x | 39.8 | 38.5 | 22.3 | 40.0 |
+| 1-2x | 32.7 | 33.2 | 55.7 | 48.6 |
+| 2-4x | 2.5 | 1.6 | 14.5 | 3.0 |
+| > 4x (1 sample) | 0.2 | 0.1 | 4.2 | 0.1 |
+| top 1% of samples | 1.0 | 0.7 | 10.2 | 1.0 |
+
+Amplification (grad share / data share) in the 2-4x bin: MSE 5.8x (E8b read 5.3x), Flow 0.66x, HT 1.19x.
+The zero-start residual variant recorded in the same run gives MSE 6.9x / Flow 1.04x / HT 1.11x. Reading
+unchanged: flow tracks the data share, MSE amplifies the tail, HT stays near proportional. The figure
+`gradient_distribution/fig_gradient_distribution.png` panel (b) now uses this table (the single-sample
+> 4x bin is not drawn).
+
+
+### WidowX MSE control cell (2026-09-06)
+
+`ft_wxmse` (run_wx_mse.sh: identical recipe to the HT/flow arms, `--loss-type=mse`, state dropout 0.8, 20k, batch 1024),
+7 tasks x 50 episodes at checkpoint-20000 (`wxeval_wxmse_*`): carrot 0.32 / close-drawer 0.90 / open-drawer 0.88 /
+eggplant-basket 0.94 / eggplant-sink 0.48 / spoon 0.70 / stack 0.20 = **63.1**. Same protocol: flow 57.4 (f20000 logs;
+57.1 in the table), HT nu=112 62.9, HT nu=224 (c=2) 67.4. MSE ties the nu=112 incumbent and sits 4.3 under the c=2
+prescription; the per-task pattern differs from HT's (MSE strong on drawers, weak on stack), all inside the WidowX
+noise floor (10 distinct scenes per task).
+
+
+### Google Robot (fractal) MSE control cell (2026-09-06)
+
+`ft_fr_mse` (run_fr_mse.sh: the HT control recipe with `--loss-type=mse`; 20k, batch 1024, state dropout 0.5), seeded
+protocol (SEED=1234, 100 scenes per task, `freval_smse-20k_*`): coke 0.98 / pick-object 0.69 / move-near 0.97 /
+open-drawer 0.46 / close-drawer 0.60 / place-in-drawer 0.07 = **62.8**. Same scenes: flow 67.3, HT c=2 63.5. Paired
+McNemar over the 600 scenes: MSE vs flow p = 0.03 (flow wins), MSE vs HT tie (p = 0.68). MSE beats HT on close-drawer
+(0.60 vs 0.50) and coke, loses on pick-object and open-drawer.
+
+### GR1 random-init MSE control cell (2026-09-06)
+
+`ft_msesc` (run_gr1_msesc.sh: the random-init recipe used for the flow-scratch / HT-scratch pretraining ablation,
+`--loss-type=mse --reinit-action-head`, frozen pretrained backbone, 60k, batch 512), official 24-task x 20-episode
+fanout at checkpoint-60000 (`evalout_msesc_*`): per task (fanout order) 0.00 0.00 0.00 0.00 0.00 0.00 0.10 0.05 0.238
+0.182 0.05 0.10 0.00 0.05 0.00 0.05 0.00 0.10 0.10 0.143 0.05 0.190 0.00 0.00 = **5.8** (mean 5.847). Same protocol:
+flow-scratch 14.0, HT-scratch 33.5. All six Close tasks are 0/20 under MSE (flow-scratch 1/120, HT-scratch 23/120).
+With a random-init head MSE is the weakest of the three objectives by a wide margin (8.2 under flow, 27.7 under HT),
+whereas from the flow-pretrained head MSE (37.8) is within 6.3 of flow (44.1): the pretraining dependence is
++32.0 for MSE, +30.1 for flow, +11.2 for HT.
+
+### Cosmos3 LIBERO-10 MSE control cell (2026-09-07)
+
+`libero10_mse_a800` (run_c3_mse.sh: the nu=512 recipe with `HT_MSE=1`, loss `0.5*sum r^2`, sigma head unused; 2000
+iterations, 8xA800), `eval_c3.sh ... iter_000002000 10 mse_2k` (10 tasks x 10 trials, 30-step sampler, results_mse_2k):
+per task 9 10 10 9 10 9 10 10 10 10 = **97**. Same protocol at iteration 2000: flow 96 (8 9 10 9 10 10 10 10 10 10),
+HT nu=320 93 (8 10 10 8 10 10 10 10 8 9), HT nu=512 96 (9 10 10 9 10 10 10 10 9 9), HT c=2 nu=640 96. With 100
+episodes the binomial SE is about 1.7 points, so 93 / 96 / 96 / 97 are one band: on Cosmos3 LIBERO-10 the objective
+does not separate the arms at the endpoint (the ordering earlier in training, flow 94 vs HT nu=320 79 at 1k, is the
+only budget-sensitive signal on this stack). This completes the four MSE control cells.

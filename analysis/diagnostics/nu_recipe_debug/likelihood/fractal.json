@@ -1,0 +1,3608 @@
+{
+  "dataset": "fractal",
+  "source": "/mnt/pfs/yuchen/ht_sigma_context_20260908/fractal/probe.npz",
+  "protocol": {
+    "dataset": "fractal",
+    "checkpoint": "/mnt/pfs/yuchen/groot/ft_fr_nu224/checkpoint-20000",
+    "seed": 20260908,
+    "tasks": [
+      "open top drawer",
+      "pick banana from white bowl",
+      "open middle drawer",
+      "close middle drawer",
+      "close bottom drawer",
+      "open bottom drawer",
+      "close top drawer",
+      "pick orange from white bowl",
+      "pick apple from white bowl",
+      "place blue plastic bottle upright",
+      "place green can upright",
+      "place water bottle upright",
+      "place coke can upright",
+      "place pepsi can upright",
+      "place 7up can upright",
+      "knock blue plastic bottle over",
+      "knock redbull can over",
+      "knock coke can over",
+      "knock green can over",
+      "place orange can upright",
+      "place redbull can upright",
+      "knock orange can over",
+      "knock water bottle over",
+      "knock 7up can over"
+    ],
+    "task_selection": "24 most frequent nonempty instructions; GR1 all 24 task datasets",
+    "episodes_per_task": 6,
+    "steps_per_episode": 20,
+    "scope": "Training-demonstration descriptive diagnostic, not held-out or contact ground truth.",
+    "ht_df": 224.0,
+    "ht_sbias": -0.5093,
+    "action_keys": [
+      "x",
+      "y",
+      "z",
+      "roll",
+      "pitch",
+      "yaw",
+      "gripper"
+    ],
+    "sigma": "masked mean softplus(s_raw + checkpoint ht_sbias) + 1e-3; all valid channels",
+    "episodes": [
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 17351,
+        "episode": 17351,
+        "length": 51,
+        "task_id": 0
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 27208,
+        "episode": 27208,
+        "length": 51,
+        "task_id": 0
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 56483,
+        "episode": 56483,
+        "length": 67,
+        "task_id": 0
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 66363,
+        "episode": 66363,
+        "length": 64,
+        "task_id": 0
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 75813,
+        "episode": 75813,
+        "length": 49,
+        "task_id": 0
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 83777,
+        "episode": 83777,
+        "length": 64,
+        "task_id": 0
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 8500,
+        "episode": 8500,
+        "length": 69,
+        "task_id": 1
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 13072,
+        "episode": 13072,
+        "length": 36,
+        "task_id": 1
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 17952,
+        "episode": 17952,
+        "length": 38,
+        "task_id": 1
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 47612,
+        "episode": 47612,
+        "length": 39,
+        "task_id": 1
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 59263,
+        "episode": 59263,
+        "length": 26,
+        "task_id": 1
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 79612,
+        "episode": 79612,
+        "length": 33,
+        "task_id": 1
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 18520,
+        "episode": 18520,
+        "length": 109,
+        "task_id": 2
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 25132,
+        "episode": 25132,
+        "length": 58,
+        "task_id": 2
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 39547,
+        "episode": 39547,
+        "length": 77,
+        "task_id": 2
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 40204,
+        "episode": 40204,
+        "length": 57,
+        "task_id": 2
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 44934,
+        "episode": 44934,
+        "length": 79,
+        "task_id": 2
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 57789,
+        "episode": 57789,
+        "length": 83,
+        "task_id": 2
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 6797,
+        "episode": 6797,
+        "length": 37,
+        "task_id": 3
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 15857,
+        "episode": 15857,
+        "length": 40,
+        "task_id": 3
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 17198,
+        "episode": 17198,
+        "length": 32,
+        "task_id": 3
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 26721,
+        "episode": 26721,
+        "length": 34,
+        "task_id": 3
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 48423,
+        "episode": 48423,
+        "length": 97,
+        "task_id": 3
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 69962,
+        "episode": 69962,
+        "length": 32,
+        "task_id": 3
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 21307,
+        "episode": 21307,
+        "length": 48,
+        "task_id": 4
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 32326,
+        "episode": 32326,
+        "length": 40,
+        "task_id": 4
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 38725,
+        "episode": 38725,
+        "length": 57,
+        "task_id": 4
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 44519,
+        "episode": 44519,
+        "length": 31,
+        "task_id": 4
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 48574,
+        "episode": 48574,
+        "length": 27,
+        "task_id": 4
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 67457,
+        "episode": 67457,
+        "length": 54,
+        "task_id": 4
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 28647,
+        "episode": 28647,
+        "length": 85,
+        "task_id": 5
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 50205,
+        "episode": 50205,
+        "length": 41,
+        "task_id": 5
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 59147,
+        "episode": 59147,
+        "length": 63,
+        "task_id": 5
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 68634,
+        "episode": 68634,
+        "length": 145,
+        "task_id": 5
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 77091,
+        "episode": 77091,
+        "length": 112,
+        "task_id": 5
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 82673,
+        "episode": 82673,
+        "length": 80,
+        "task_id": 5
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 3381,
+        "episode": 3381,
+        "length": 28,
+        "task_id": 6
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 35080,
+        "episode": 35080,
+        "length": 26,
+        "task_id": 6
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 36209,
+        "episode": 36209,
+        "length": 33,
+        "task_id": 6
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 38877,
+        "episode": 38877,
+        "length": 25,
+        "task_id": 6
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 41147,
+        "episode": 41147,
+        "length": 28,
+        "task_id": 6
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 76440,
+        "episode": 76440,
+        "length": 31,
+        "task_id": 6
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 11704,
+        "episode": 11704,
+        "length": 31,
+        "task_id": 7
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 26126,
+        "episode": 26126,
+        "length": 40,
+        "task_id": 7
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 72778,
+        "episode": 72778,
+        "length": 39,
+        "task_id": 7
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 73133,
+        "episode": 73133,
+        "length": 42,
+        "task_id": 7
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 77401,
+        "episode": 77401,
+        "length": 44,
+        "task_id": 7
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 79790,
+        "episode": 79790,
+        "length": 32,
+        "task_id": 7
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 2898,
+        "episode": 2898,
+        "length": 27,
+        "task_id": 8
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 6339,
+        "episode": 6339,
+        "length": 54,
+        "task_id": 8
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 23995,
+        "episode": 23995,
+        "length": 26,
+        "task_id": 8
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 37567,
+        "episode": 37567,
+        "length": 29,
+        "task_id": 8
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 40001,
+        "episode": 40001,
+        "length": 25,
+        "task_id": 8
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 75306,
+        "episode": 75306,
+        "length": 51,
+        "task_id": 8
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 2457,
+        "episode": 2457,
+        "length": 45,
+        "task_id": 9
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 24372,
+        "episode": 24372,
+        "length": 36,
+        "task_id": 9
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 25452,
+        "episode": 25452,
+        "length": 42,
+        "task_id": 9
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 28924,
+        "episode": 28924,
+        "length": 36,
+        "task_id": 9
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 29629,
+        "episode": 29629,
+        "length": 30,
+        "task_id": 9
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 45176,
+        "episode": 45176,
+        "length": 46,
+        "task_id": 9
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 4979,
+        "episode": 4979,
+        "length": 40,
+        "task_id": 10
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 16577,
+        "episode": 16577,
+        "length": 79,
+        "task_id": 10
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 36614,
+        "episode": 36614,
+        "length": 32,
+        "task_id": 10
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 47504,
+        "episode": 47504,
+        "length": 57,
+        "task_id": 10
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 60003,
+        "episode": 60003,
+        "length": 43,
+        "task_id": 10
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 70671,
+        "episode": 70671,
+        "length": 46,
+        "task_id": 10
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 17240,
+        "episode": 17240,
+        "length": 47,
+        "task_id": 11
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 18458,
+        "episode": 18458,
+        "length": 47,
+        "task_id": 11
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 18504,
+        "episode": 18504,
+        "length": 41,
+        "task_id": 11
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 19500,
+        "episode": 19500,
+        "length": 41,
+        "task_id": 11
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 28026,
+        "episode": 28026,
+        "length": 65,
+        "task_id": 11
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 34547,
+        "episode": 34547,
+        "length": 44,
+        "task_id": 11
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 17659,
+        "episode": 17659,
+        "length": 41,
+        "task_id": 12
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 19236,
+        "episode": 19236,
+        "length": 32,
+        "task_id": 12
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 30402,
+        "episode": 30402,
+        "length": 47,
+        "task_id": 12
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 47997,
+        "episode": 47997,
+        "length": 35,
+        "task_id": 12
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 52010,
+        "episode": 52010,
+        "length": 65,
+        "task_id": 12
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 76821,
+        "episode": 76821,
+        "length": 46,
+        "task_id": 12
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 4495,
+        "episode": 4495,
+        "length": 45,
+        "task_id": 13
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 18514,
+        "episode": 18514,
+        "length": 32,
+        "task_id": 13
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 24938,
+        "episode": 24938,
+        "length": 33,
+        "task_id": 13
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 37345,
+        "episode": 37345,
+        "length": 45,
+        "task_id": 13
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 51423,
+        "episode": 51423,
+        "length": 32,
+        "task_id": 13
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 83266,
+        "episode": 83266,
+        "length": 63,
+        "task_id": 13
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 9386,
+        "episode": 9386,
+        "length": 31,
+        "task_id": 14
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 18683,
+        "episode": 18683,
+        "length": 46,
+        "task_id": 14
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 43923,
+        "episode": 43923,
+        "length": 55,
+        "task_id": 14
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 50227,
+        "episode": 50227,
+        "length": 38,
+        "task_id": 14
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 57467,
+        "episode": 57467,
+        "length": 53,
+        "task_id": 14
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 86732,
+        "episode": 86732,
+        "length": 69,
+        "task_id": 14
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 1364,
+        "episode": 1364,
+        "length": 38,
+        "task_id": 15
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 8901,
+        "episode": 8901,
+        "length": 33,
+        "task_id": 15
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 18539,
+        "episode": 18539,
+        "length": 29,
+        "task_id": 15
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 54341,
+        "episode": 54341,
+        "length": 51,
+        "task_id": 15
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 55062,
+        "episode": 55062,
+        "length": 36,
+        "task_id": 15
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 70015,
+        "episode": 70015,
+        "length": 54,
+        "task_id": 15
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 5175,
+        "episode": 5175,
+        "length": 53,
+        "task_id": 16
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 22787,
+        "episode": 22787,
+        "length": 37,
+        "task_id": 16
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 32700,
+        "episode": 32700,
+        "length": 31,
+        "task_id": 16
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 48160,
+        "episode": 48160,
+        "length": 24,
+        "task_id": 16
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 55508,
+        "episode": 55508,
+        "length": 29,
+        "task_id": 16
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 67580,
+        "episode": 67580,
+        "length": 43,
+        "task_id": 16
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 729,
+        "episode": 729,
+        "length": 25,
+        "task_id": 17
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 17881,
+        "episode": 17881,
+        "length": 31,
+        "task_id": 17
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 20669,
+        "episode": 20669,
+        "length": 42,
+        "task_id": 17
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 26954,
+        "episode": 26954,
+        "length": 27,
+        "task_id": 17
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 65653,
+        "episode": 65653,
+        "length": 24,
+        "task_id": 17
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 85884,
+        "episode": 85884,
+        "length": 28,
+        "task_id": 17
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 5554,
+        "episode": 5554,
+        "length": 35,
+        "task_id": 18
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 6901,
+        "episode": 6901,
+        "length": 37,
+        "task_id": 18
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 15419,
+        "episode": 15419,
+        "length": 50,
+        "task_id": 18
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 40514,
+        "episode": 40514,
+        "length": 33,
+        "task_id": 18
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 58759,
+        "episode": 58759,
+        "length": 28,
+        "task_id": 18
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 86304,
+        "episode": 86304,
+        "length": 29,
+        "task_id": 18
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 12279,
+        "episode": 12279,
+        "length": 33,
+        "task_id": 19
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 33168,
+        "episode": 33168,
+        "length": 46,
+        "task_id": 19
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 35344,
+        "episode": 35344,
+        "length": 42,
+        "task_id": 19
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 57076,
+        "episode": 57076,
+        "length": 53,
+        "task_id": 19
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 81612,
+        "episode": 81612,
+        "length": 33,
+        "task_id": 19
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 82844,
+        "episode": 82844,
+        "length": 35,
+        "task_id": 19
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 45956,
+        "episode": 45956,
+        "length": 42,
+        "task_id": 20
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 52575,
+        "episode": 52575,
+        "length": 39,
+        "task_id": 20
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 64628,
+        "episode": 64628,
+        "length": 35,
+        "task_id": 20
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 64986,
+        "episode": 64986,
+        "length": 37,
+        "task_id": 20
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 71801,
+        "episode": 71801,
+        "length": 45,
+        "task_id": 20
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 80775,
+        "episode": 80775,
+        "length": 36,
+        "task_id": 20
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 9743,
+        "episode": 9743,
+        "length": 31,
+        "task_id": 21
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 19055,
+        "episode": 19055,
+        "length": 36,
+        "task_id": 21
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 59132,
+        "episode": 59132,
+        "length": 36,
+        "task_id": 21
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 62768,
+        "episode": 62768,
+        "length": 47,
+        "task_id": 21
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 72619,
+        "episode": 72619,
+        "length": 39,
+        "task_id": 21
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 76388,
+        "episode": 76388,
+        "length": 37,
+        "task_id": 21
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 7808,
+        "episode": 7808,
+        "length": 29,
+        "task_id": 22
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 21355,
+        "episode": 21355,
+        "length": 26,
+        "task_id": 22
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 33123,
+        "episode": 33123,
+        "length": 26,
+        "task_id": 22
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 46043,
+        "episode": 46043,
+        "length": 26,
+        "task_id": 22
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 69267,
+        "episode": 69267,
+        "length": 54,
+        "task_id": 22
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 79415,
+        "episode": 79415,
+        "length": 36,
+        "task_id": 22
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 29033,
+        "episode": 29033,
+        "length": 37,
+        "task_id": 23
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 34361,
+        "episode": 34361,
+        "length": 46,
+        "task_id": 23
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 49429,
+        "episode": 49429,
+        "length": 41,
+        "task_id": 23
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 56632,
+        "episode": 56632,
+        "length": 55,
+        "task_id": 23
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 66127,
+        "episode": 66127,
+        "length": 45,
+        "task_id": 23
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/fractal_lerobot",
+        "ordinal": 76540,
+        "episode": 76540,
+        "length": 29,
+        "task_id": 23
+      }
+    ],
+    "inference_forward_max_difference": 0.0
+  },
+  "train_states": 1908,
+  "test_states": 954,
+  "calibration_holdout": "Per-task disjoint episode split, 2/3 calibration, 1/3 test; not policy holdout.",
+  "covariance_protocol": "Fixed calibration second-moment whitening, 5% offdiagonal shrinkage; not joint Student-t covariance EM.",
+  "views": {
+    "all_training_channels_fixed_scale": {
+      "isotropic": {
+        "best": {
+          "nu": 2.0,
+          "scale": 0.14322723115613778,
+          "train_nll": -0.2637730659046796,
+          "test_nll": -0.32865811074228585
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 0.14387425206626347,
+            "train_nll": -0.262946428840726,
+            "test_nll": -0.32795481592646203
+          },
+          {
+            "nu": 2.0,
+            "scale": 0.14322723115613778,
+            "train_nll": -0.2637730659046796,
+            "test_nll": -0.32865811074228585
+          },
+          {
+            "nu": 3.0,
+            "scale": 0.1442722920187601,
+            "train_nll": -0.26370174143027886,
+            "test_nll": -0.3282773506851585
+          },
+          {
+            "nu": 4.0,
+            "scale": 0.14593494572294557,
+            "train_nll": -0.2626047634597098,
+            "test_nll": -0.32683404279511213
+          },
+          {
+            "nu": 5.0,
+            "scale": 0.14754803118823878,
+            "train_nll": -0.2610456990149556,
+            "test_nll": -0.3249199800379391
+          },
+          {
+            "nu": 7.0,
+            "scale": 0.15038309620008475,
+            "train_nll": -0.25733611704931636,
+            "test_nll": -0.32051091297795015
+          },
+          {
+            "nu": 10.0,
+            "scale": 0.15390574849885413,
+            "train_nll": -0.2513501957622535,
+            "test_nll": -0.31353694955228834
+          },
+          {
+            "nu": 14.0,
+            "scale": 0.15776307782988866,
+            "train_nll": -0.24352122426210646,
+            "test_nll": -0.30452265924649896
+          },
+          {
+            "nu": 20.0,
+            "scale": 0.1624526460578402,
+            "train_nll": -0.23276340524055925,
+            "test_nll": -0.2922520001566444
+          },
+          {
+            "nu": 32.0,
+            "scale": 0.16954390523606735,
+            "train_nll": -0.21486158492624488,
+            "test_nll": -0.272070837560508
+          },
+          {
+            "nu": 56.0,
+            "scale": 0.1790429299034391,
+            "train_nll": -0.1892872942856977,
+            "test_nll": -0.24374333742178417
+          },
+          {
+            "nu": 112.0,
+            "scale": 0.1913431902155978,
+            "train_nll": -0.15553564055642263,
+            "test_nll": -0.2072928894867732
+          },
+          {
+            "nu": 224.0,
+            "scale": 0.202599503697054,
+            "train_nll": -0.1255049485664628,
+            "test_nll": -0.17572752544964332
+          },
+          {
+            "nu": 448.0,
+            "scale": 0.21144513432537934,
+            "train_nll": -0.10313000155193511,
+            "test_nll": -0.15267124070212262
+          },
+          {
+            "nu": 896.0,
+            "scale": 0.2174765516670985,
+            "train_nll": -0.08867055088181224,
+            "test_nll": -0.13794733308160426
+          },
+          {
+            "nu": 1792.0,
+            "scale": 0.2211446764984211,
+            "train_nll": -0.08023291302289808,
+            "test_nll": -0.12941530788214523
+          },
+          {
+            "nu": 4096.0,
+            "scale": 0.22347343627922317,
+            "train_nll": -0.0750284989857899,
+            "test_nll": -0.1241771085538568
+          },
+          {
+            "nu": 16384.0,
+            "scale": 0.22494223553024387,
+            "train_nll": -0.07181173388494676,
+            "test_nll": -0.12095041900291754
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 0.22545266054369728,
+            "train_nll": -0.07070653994342144,
+            "test_nll": -0.11984400876067931
+          }
+        ]
+      },
+      "diagonal": {
+        "best": {
+          "nu": 3.0,
+          "scale": 0.6990432171066413,
+          "train_nll": -0.35216639480212253,
+          "test_nll": -0.41303216508021734
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 0.6966945382094585,
+            "train_nll": -0.3503752990889688,
+            "test_nll": -0.41131500321533787
+          },
+          {
+            "nu": 2.0,
+            "scale": 0.6942993416803148,
+            "train_nll": -0.35155436688992014,
+            "test_nll": -0.4124910780863129
+          },
+          {
+            "nu": 3.0,
+            "scale": 0.6990432171066413,
+            "train_nll": -0.35216639480212253,
+            "test_nll": -0.41303216508021734
+          },
+          {
+            "nu": 4.0,
+            "scale": 0.706143787598532,
+            "train_nll": -0.3517227348646679,
+            "test_nll": -0.41246983547432325
+          },
+          {
+            "nu": 5.0,
+            "scale": 0.7129119829912317,
+            "train_nll": -0.3507899851397793,
+            "test_nll": -0.41139562862815726
+          },
+          {
+            "nu": 7.0,
+            "scale": 0.7246434762636436,
+            "train_nll": -0.34826241410328196,
+            "test_nll": -0.40855489787137333
+          },
+          {
+            "nu": 10.0,
+            "scale": 0.7390300291586701,
+            "train_nll": -0.34390069808303436,
+            "test_nll": -0.4036989486888032
+          },
+          {
+            "nu": 14.0,
+            "scale": 0.7546141401187532,
+            "train_nll": -0.3380136496054107,
+            "test_nll": -0.397160240748232
+          },
+          {
+            "nu": 20.0,
+            "scale": 0.7733676762471338,
+            "train_nll": -0.3297988679513675,
+            "test_nll": -0.38803572468166525
+          },
+          {
+            "nu": 32.0,
+            "scale": 0.8013349494150707,
+            "train_nll": -0.31604073931141485,
+            "test_nll": -0.37274362268894734
+          },
+          {
+            "nu": 56.0,
+            "scale": 0.8379578052722331,
+            "train_nll": -0.2964475932971824,
+            "test_nll": -0.3509669288991393
+          },
+          {
+            "nu": 112.0,
+            "scale": 0.8836508214545351,
+            "train_nll": -0.2709329662332818,
+            "test_nll": -0.3226649863264235
+          },
+          {
+            "nu": 224.0,
+            "scale": 0.9235647520087866,
+            "train_nll": -0.24862938193421114,
+            "test_nll": -0.2979741517159633
+          },
+          {
+            "nu": 448.0,
+            "scale": 0.9537313556496076,
+            "train_nll": -0.2322214308993844,
+            "test_nll": -0.2797717854265913
+          },
+          {
+            "nu": 896.0,
+            "scale": 0.9738243298120735,
+            "train_nll": -0.2216769172928117,
+            "test_nll": -0.26800348402128304
+          },
+          {
+            "nu": 1792.0,
+            "scale": 0.9859095750954917,
+            "train_nll": -0.2155333095657861,
+            "test_nll": -0.2611019709332161
+          },
+          {
+            "nu": 4096.0,
+            "scale": 0.9935404591315307,
+            "train_nll": -0.21174584003663877,
+            "test_nll": -0.25682563171505324
+          },
+          {
+            "nu": 16384.0,
+            "scale": 0.9983367097332684,
+            "train_nll": -0.20940604684249964,
+            "test_nll": -0.254174401215981
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 1.000000000000004,
+            "train_nll": -0.2086025090817234,
+            "test_nll": -0.25326213859684277
+          }
+        ]
+      },
+      "full_cov_shrink05": {
+        "best": {
+          "nu": 3.0,
+          "scale": 0.6726658228701226,
+          "train_nll": -0.6808448072216413,
+          "test_nll": -0.7228529099803715
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 0.6712361394687064,
+            "train_nll": -0.6789161621379265,
+            "test_nll": -0.7213153600011741
+          },
+          {
+            "nu": 2.0,
+            "scale": 0.6686499175565448,
+            "train_nll": -0.6801485031382859,
+            "test_nll": -0.7224383073133238
+          },
+          {
+            "nu": 3.0,
+            "scale": 0.6726658228701226,
+            "train_nll": -0.6808448072216413,
+            "test_nll": -0.7228529099803715
+          },
+          {
+            "nu": 4.0,
+            "scale": 0.6791380563424028,
+            "train_nll": -0.6804694204750978,
+            "test_nll": -0.7221534346276715
+          },
+          {
+            "nu": 5.0,
+            "scale": 0.6854473964291576,
+            "train_nll": -0.6795972879233951,
+            "test_nll": -0.7209406848607491
+          },
+          {
+            "nu": 7.0,
+            "scale": 0.6965890063916885,
+            "train_nll": -0.6771820517551859,
+            "test_nll": -0.7178330171500265
+          },
+          {
+            "nu": 10.0,
+            "scale": 0.7104687524969805,
+            "train_nll": -0.6729861722173223,
+            "test_nll": -0.712617735336482
+          },
+          {
+            "nu": 14.0,
+            "scale": 0.7256223297721551,
+            "train_nll": -0.6673304137510876,
+            "test_nll": -0.7056781585180014
+          },
+          {
+            "nu": 20.0,
+            "scale": 0.743872986650963,
+            "train_nll": -0.6594863053563971,
+            "test_nll": -0.696089446827209
+          },
+          {
+            "nu": 32.0,
+            "scale": 0.7708999841435137,
+            "train_nll": -0.6465103583133047,
+            "test_nll": -0.6801994957709765
+          },
+          {
+            "nu": 56.0,
+            "scale": 0.8056148055546998,
+            "train_nll": -0.6284315490426309,
+            "test_nll": -0.6578902446860446
+          },
+          {
+            "nu": 112.0,
+            "scale": 0.8473349824044171,
+            "train_nll": -0.6056905992194259,
+            "test_nll": -0.6293938155963097
+          },
+          {
+            "nu": 224.0,
+            "scale": 0.8818682095603494,
+            "train_nll": -0.5866610240064984,
+            "test_nll": -0.6049749662995563
+          },
+          {
+            "nu": 448.0,
+            "scale": 0.9065174010670046,
+            "train_nll": -0.5732380702852373,
+            "test_nll": -0.5872356425941365
+          },
+          {
+            "nu": 896.0,
+            "scale": 0.9221434120133218,
+            "train_nll": -0.5648984494350344,
+            "test_nll": -0.5758758526328265
+          },
+          {
+            "nu": 1792.0,
+            "scale": 0.931212102151055,
+            "train_nll": -0.5601510289160565,
+            "test_nll": -0.5692454662576889
+          },
+          {
+            "nu": 4096.0,
+            "scale": 0.9368046781532572,
+            "train_nll": -0.5572674756224989,
+            "test_nll": -0.5651452265099355
+          },
+          {
+            "nu": 16384.0,
+            "scale": 0.9402651888890747,
+            "train_nll": -0.5555032214886892,
+            "test_nll": -0.562605157515816
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 0.9414551993120932,
+            "train_nll": -0.5549004372358735,
+            "test_nll": -0.5617313673958728
+          }
+        ]
+      },
+      "pooled_standardized_marginal": {
+        "best": {
+          "nu": 2.0,
+          "scale": 0.49955486756702894,
+          "train_nll": 1.2693004091506648,
+          "test_nll": 1.2056716841569233
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 0.4409257541188752,
+            "train_nll": 1.2736715136754246,
+            "test_nll": 1.209324376289574
+          },
+          {
+            "nu": 2.0,
+            "scale": 0.49955486756702894,
+            "train_nll": 1.2693004091506648,
+            "test_nll": 1.2056716841569233
+          },
+          {
+            "nu": 3.0,
+            "scale": 0.5809620583219796,
+            "train_nll": 1.27754629392063,
+            "test_nll": 1.2155810129151021
+          },
+          {
+            "nu": 4.0,
+            "scale": 0.6362341437989446,
+            "train_nll": 1.2897457752375465,
+            "test_nll": 1.2293343946660324
+          },
+          {
+            "nu": 5.0,
+            "scale": 0.6769343910435632,
+            "train_nll": 1.301117954621416,
+            "test_nll": 1.2420581064309018
+          },
+          {
+            "nu": 7.0,
+            "scale": 0.7338113290181225,
+            "train_nll": 1.3194433433243107,
+            "test_nll": 1.2625418345271902
+          },
+          {
+            "nu": 10.0,
+            "scale": 0.787308055001755,
+            "train_nll": 1.3384587563155477,
+            "test_nll": 1.2838340440955527
+          },
+          {
+            "nu": 14.0,
+            "scale": 0.8308622526163522,
+            "train_nll": 1.3547272184566572,
+            "test_nll": 1.302091921878364
+          },
+          {
+            "nu": 20.0,
+            "scale": 0.8696554564482256,
+            "train_nll": 1.369538097834513,
+            "test_nll": 1.3187419464455825
+          },
+          {
+            "nu": 32.0,
+            "scale": 0.9098622263275068,
+            "train_nll": 1.384989523141928,
+            "test_nll": 1.3361281298016991
+          },
+          {
+            "nu": 56.0,
+            "scale": 0.9437753626506407,
+            "train_nll": 1.3979529219777498,
+            "test_nll": 1.350714155015929
+          },
+          {
+            "nu": 112.0,
+            "scale": 0.9698526444026528,
+            "train_nll": 1.407794448643752,
+            "test_nll": 1.3617772231410097
+          },
+          {
+            "nu": 224.0,
+            "scale": 0.9843076876826365,
+            "train_nll": 1.4131761700681857,
+            "test_nll": 1.3678192218196545
+          },
+          {
+            "nu": 448.0,
+            "scale": 0.9919797392150267,
+            "train_nll": 1.4160051307969697,
+            "test_nll": 1.3709920154073187
+          },
+          {
+            "nu": 896.0,
+            "scale": 0.9959433308368566,
+            "train_nll": 1.4174580809576294,
+            "test_nll": 1.3726204779603268
+          },
+          {
+            "nu": 1792.0,
+            "scale": 0.9979596051400443,
+            "train_nll": 1.4181947729653068,
+            "test_nll": 1.373445846181594
+          },
+          {
+            "nu": 4096.0,
+            "scale": 0.9991043009498223,
+            "train_nll": 1.4186122553185128,
+            "test_nll": 1.373913481467723
+          },
+          {
+            "nu": 16384.0,
+            "scale": 0.9997756288691438,
+            "train_nll": 1.4188568338780871,
+            "test_nll": 1.374187407052259
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 1.000000000000004,
+            "train_nll": 1.4189385332046769,
+            "test_nll": 1.374278903689557
+          }
+        ]
+      },
+      "fixed_sigma_isotropic": {
+        "best": {
+          "nu": 1.5,
+          "scale": 1.0,
+          "train_nll": 0.03930045632093871,
+          "test_nll": 0.008856696963190672
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 1.0,
+            "train_nll": 0.03930045632093871,
+            "test_nll": 0.008856696963190672
+          },
+          {
+            "nu": 2.0,
+            "scale": 1.0,
+            "train_nll": 0.09295715570202112,
+            "test_nll": 0.06623209628382444
+          },
+          {
+            "nu": 3.0,
+            "scale": 1.0,
+            "train_nll": 0.17717690512193005,
+            "test_nll": 0.1553123746156301
+          },
+          {
+            "nu": 4.0,
+            "scale": 1.0,
+            "train_nll": 0.24173778069346116,
+            "test_nll": 0.22296997870515065
+          },
+          {
+            "nu": 5.0,
+            "scale": 1.0,
+            "train_nll": 0.29367987423263786,
+            "test_nll": 0.27708742446643325
+          },
+          {
+            "nu": 7.0,
+            "scale": 1.0,
+            "train_nll": 0.37350664569612463,
+            "test_nll": 0.35980665398229356
+          },
+          {
+            "nu": 10.0,
+            "scale": 1.0,
+            "train_nll": 0.45770547536309725,
+            "test_nll": 0.44657092049527447
+          },
+          {
+            "nu": 14.0,
+            "scale": 1.0,
+            "train_nll": 0.5342101150531835,
+            "test_nll": 0.5250535494919096
+          },
+          {
+            "nu": 20.0,
+            "scale": 1.0,
+            "train_nll": 0.609734838804374,
+            "test_nll": 0.6022552749880583
+          },
+          {
+            "nu": 32.0,
+            "scale": 1.0,
+            "train_nll": 0.6971734767842239,
+            "test_nll": 0.6913446191556031
+          },
+          {
+            "nu": 56.0,
+            "scale": 1.0,
+            "train_nll": 0.7801770059004925,
+            "test_nll": 0.7756666498409209
+          },
+          {
+            "nu": 112.0,
+            "scale": 1.0,
+            "train_nll": 0.8514333938724913,
+            "test_nll": 0.8478862084573258
+          },
+          {
+            "nu": 224.0,
+            "scale": 1.0,
+            "train_nll": 0.8943870555847366,
+            "test_nll": 0.891352493942534
+          },
+          {
+            "nu": 448.0,
+            "scale": 1.0,
+            "train_nll": 0.9183498502678435,
+            "test_nll": 0.9155805173897368
+          },
+          {
+            "nu": 896.0,
+            "scale": 1.0,
+            "train_nll": 0.9310741704597436,
+            "test_nll": 0.9284398604625249
+          },
+          {
+            "nu": 1792.0,
+            "scale": 1.0,
+            "train_nll": 0.9376411476290823,
+            "test_nll": 0.935074976512554
+          },
+          {
+            "nu": 4096.0,
+            "scale": 1.0,
+            "train_nll": 0.9413983058890686,
+            "test_nll": 0.9388706507469479
+          },
+          {
+            "nu": 16384.0,
+            "scale": 1.0,
+            "train_nll": 0.9436116166637305,
+            "test_nll": 0.9411064923724215
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 1.0,
+            "train_nll": 0.9443529842777886,
+            "test_nll": 0.9418553806835624
+          }
+        ]
+      },
+      "geometry_train": {
+        "d": 56,
+        "effective_correlation_dimension": 26.03803381710553,
+        "radial_squared_cv": 1.1572608740218866,
+        "radial_squared_quantiles": [
+          0.002697742742039005,
+          0.009589987935693519,
+          0.032262976971334734,
+          0.11008018740041153,
+          0.29056931222277566
+        ],
+        "marginal_excess3": 7.338773784528275
+      }
+    },
+    "all_training_channels_own_sigma": {
+      "isotropic": {
+        "best": {
+          "nu": 7.0,
+          "scale": 0.8968497190099392,
+          "train_nll": -0.2746587676679533,
+          "test_nll": -0.34056210927618125
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 0.8934011296731781,
+            "train_nll": -0.267931078787935,
+            "test_nll": -0.3334917735855836
+          },
+          {
+            "nu": 2.0,
+            "scale": 0.8886955847622343,
+            "train_nll": -0.27011384854421694,
+            "test_nll": -0.33571174238568124
+          },
+          {
+            "nu": 3.0,
+            "scale": 0.8877998042756164,
+            "train_nll": -0.2725689142130876,
+            "test_nll": -0.3382331264325926
+          },
+          {
+            "nu": 4.0,
+            "scale": 0.889751895102828,
+            "train_nll": -0.27379740841464795,
+            "test_nll": -0.3395230286748454
+          },
+          {
+            "nu": 5.0,
+            "scale": 0.8921385643246301,
+            "train_nll": -0.2744057734564651,
+            "test_nll": -0.340191196970385
+          },
+          {
+            "nu": 7.0,
+            "scale": 0.8968497190099392,
+            "train_nll": -0.2746587676679533,
+            "test_nll": -0.34056210927618125
+          },
+          {
+            "nu": 10.0,
+            "scale": 0.9033347101265181,
+            "train_nll": -0.2739060483410407,
+            "test_nll": -0.33998347218270775
+          },
+          {
+            "nu": 14.0,
+            "scale": 0.9110266750694528,
+            "train_nll": -0.27208029698940783,
+            "test_nll": -0.3383846210806323
+          },
+          {
+            "nu": 20.0,
+            "scale": 0.9209743706965415,
+            "train_nll": -0.2688395882156762,
+            "test_nll": -0.3354730327022213
+          },
+          {
+            "nu": 32.0,
+            "scale": 0.9368427566687065,
+            "train_nll": -0.26248000165378893,
+            "test_nll": -0.3297326839640615
+          },
+          {
+            "nu": 56.0,
+            "scale": 0.9589975973019889,
+            "train_nll": -0.2522623098570793,
+            "test_nll": -0.3206096447038598
+          },
+          {
+            "nu": 112.0,
+            "scale": 0.9883523132637592,
+            "train_nll": -0.23759106023732457,
+            "test_nll": -0.3078931015535855
+          },
+          {
+            "nu": 224.0,
+            "scale": 1.0154429593455905,
+            "train_nll": -0.22371132447699527,
+            "test_nll": -0.29641125107601374
+          },
+          {
+            "nu": 448.0,
+            "scale": 1.0369392345410668,
+            "train_nll": -0.21285501184990685,
+            "test_nll": -0.2878815136910169
+          },
+          {
+            "nu": 896.0,
+            "scale": 1.0518942528468258,
+            "train_nll": -0.20553925433196318,
+            "test_nll": -0.2823847312238734
+          },
+          {
+            "nu": 1792.0,
+            "scale": 1.0612160411448424,
+            "train_nll": -0.20112870079383294,
+            "test_nll": -0.27917291803682875
+          },
+          {
+            "nu": 4096.0,
+            "scale": 1.067261155940482,
+            "train_nll": -0.19834584275426592,
+            "test_nll": -0.27718539155357824
+          },
+          {
+            "nu": 16384.0,
+            "scale": 1.0711345297399222,
+            "train_nll": -0.1965994338673287,
+            "test_nll": -0.27595283354884437
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 1.0724924061358079,
+            "train_nll": -0.1959945329583208,
+            "test_nll": -0.27552844140468635
+          }
+        ]
+      },
+      "diagonal": {
+        "best": {
+          "nu": 7.0,
+          "scale": 0.840649633335882,
+          "train_nll": -0.35964007895604233,
+          "test_nll": -0.4204461737522087
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 0.834201128470838,
+            "train_nll": -0.35359137066882407,
+            "test_nll": -0.4138881332815052
+          },
+          {
+            "nu": 2.0,
+            "scale": 0.8301673367872288,
+            "train_nll": -0.35569671561519733,
+            "test_nll": -0.4160523268568179
+          },
+          {
+            "nu": 3.0,
+            "scale": 0.82998943268829,
+            "train_nll": -0.35800765130337386,
+            "test_nll": -0.4184694807040812
+          },
+          {
+            "nu": 4.0,
+            "scale": 0.8324230052329572,
+            "train_nll": -0.35910510486384717,
+            "test_nll": -0.41966262930135345
+          },
+          {
+            "nu": 5.0,
+            "scale": 0.8352218955041895,
+            "train_nll": -0.35959426184668875,
+            "test_nll": -0.4202401781780938
+          },
+          {
+            "nu": 7.0,
+            "scale": 0.840649633335882,
+            "train_nll": -0.35964007895604233,
+            "test_nll": -0.4204461737522087
+          },
+          {
+            "nu": 10.0,
+            "scale": 0.848012086115812,
+            "train_nll": -0.35864181766773573,
+            "test_nll": -0.41965628933802157
+          },
+          {
+            "nu": 14.0,
+            "scale": 0.856600483674038,
+            "train_nll": -0.35658323217582266,
+            "test_nll": -0.4178322447606544
+          },
+          {
+            "nu": 20.0,
+            "scale": 0.867487117747753,
+            "train_nll": -0.3531383192395112,
+            "test_nll": -0.414676269104298
+          },
+          {
+            "nu": 32.0,
+            "scale": 0.8843614906147764,
+            "train_nll": -0.3466875584415734,
+            "test_nll": -0.4086686900646692
+          },
+          {
+            "nu": 56.0,
+            "scale": 0.906926073200401,
+            "train_nll": -0.3368464863021592,
+            "test_nll": -0.39944643185223727
+          },
+          {
+            "nu": 112.0,
+            "scale": 0.9349421789585477,
+            "train_nll": -0.3236246689605089,
+            "test_nll": -0.38710954024912425
+          },
+          {
+            "nu": 224.0,
+            "scale": 0.9586418192929098,
+            "train_nll": -0.31207459839358465,
+            "test_nll": -0.3764881543440244
+          },
+          {
+            "nu": 448.0,
+            "scale": 0.9757346905876638,
+            "train_nll": -0.3037344571720644,
+            "test_nll": -0.36897147998971236
+          },
+          {
+            "nu": 896.0,
+            "scale": 0.9866034440297512,
+            "train_nll": -0.2984936691866864,
+            "test_nll": -0.3643417391942232
+          },
+          {
+            "nu": 1792.0,
+            "scale": 0.9929060419800008,
+            "train_nll": -0.2954966155978358,
+            "test_nll": -0.36173537150354673
+          },
+          {
+            "nu": 4096.0,
+            "scale": 0.9967841536314201,
+            "train_nll": -0.2936735522423868,
+            "test_nll": -0.36016702114532606
+          },
+          {
+            "nu": 16384.0,
+            "scale": 0.9991780935130767,
+            "train_nll": -0.29255783096069443,
+            "test_nll": -0.35921415547832125
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 1.0,
+            "train_nll": -0.29217665830720585,
+            "test_nll": -0.3588898964845768
+          }
+        ]
+      },
+      "full_cov_shrink05": {
+        "best": {
+          "nu": 7.0,
+          "scale": 0.7997688588992916,
+          "train_nll": -0.687779969018488,
+          "test_nll": -0.7286626590813063
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 0.7944465207543223,
+            "train_nll": -0.6812870324021982,
+            "test_nll": -0.7227878986626233
+          },
+          {
+            "nu": 2.0,
+            "scale": 0.7907303013893212,
+            "train_nll": -0.6834386742298415,
+            "test_nll": -0.724878005397436
+          },
+          {
+            "nu": 3.0,
+            "scale": 0.7904750833739621,
+            "train_nll": -0.6858388068610826,
+            "test_nll": -0.7271568011325511
+          },
+          {
+            "nu": 4.0,
+            "scale": 0.7925891365550716,
+            "train_nll": -0.6870204913667086,
+            "test_nll": -0.7282217364653272
+          },
+          {
+            "nu": 5.0,
+            "scale": 0.7950321820750212,
+            "train_nll": -0.6875890182294928,
+            "test_nll": -0.7286789645339409
+          },
+          {
+            "nu": 7.0,
+            "scale": 0.7997688588992916,
+            "train_nll": -0.687779969018488,
+            "test_nll": -0.7286626590813063
+          },
+          {
+            "nu": 10.0,
+            "scale": 0.8062015820323234,
+            "train_nll": -0.6869695199783774,
+            "test_nll": -0.727573231586639
+          },
+          {
+            "nu": 14.0,
+            "scale": 0.8137407465545508,
+            "train_nll": -0.6851163678684413,
+            "test_nll": -0.725393753122034
+          },
+          {
+            "nu": 20.0,
+            "scale": 0.8233772182050613,
+            "train_nll": -0.6819094774186296,
+            "test_nll": -0.7217682520460564
+          },
+          {
+            "nu": 32.0,
+            "scale": 0.8385128581413612,
+            "train_nll": -0.6757817276382314,
+            "test_nll": -0.7149717269616249
+          },
+          {
+            "nu": 56.0,
+            "scale": 0.859097252792464,
+            "train_nll": -0.6663125747660819,
+            "test_nll": -0.7045531178493969
+          },
+          {
+            "nu": 112.0,
+            "scale": 0.8850003075179025,
+            "train_nll": -0.653551424292744,
+            "test_nll": -0.690511328714509
+          },
+          {
+            "nu": 224.0,
+            "scale": 0.9069020047769715,
+            "train_nll": -0.6425165907443475,
+            "test_nll": -0.6783258430829793
+          },
+          {
+            "nu": 448.0,
+            "scale": 0.9224389730438439,
+            "train_nll": -0.6347092532787526,
+            "test_nll": -0.6696855557420616
+          },
+          {
+            "nu": 896.0,
+            "scale": 0.9320749506720135,
+            "train_nll": -0.6299156823316319,
+            "test_nll": -0.6643818676107378
+          },
+          {
+            "nu": 1792.0,
+            "scale": 0.9375300228563141,
+            "train_nll": -0.6272275231499436,
+            "test_nll": -0.6614118705892369
+          },
+          {
+            "nu": 4096.0,
+            "scale": 0.9408240934222105,
+            "train_nll": -0.6256153826688644,
+            "test_nll": -0.6596333524800697
+          },
+          {
+            "nu": 16384.0,
+            "scale": 0.9428296892100196,
+            "train_nll": -0.6246384641322225,
+            "test_nll": -0.6585569083028879
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 0.9435129068159058,
+            "train_nll": -0.6243065285338938,
+            "test_nll": -0.6581914153568569
+          }
+        ]
+      },
+      "pooled_standardized_marginal": {
+        "best": {
+          "nu": 2.0,
+          "scale": 0.525115848947583,
+          "train_nll": 1.2994128200736244,
+          "test_nll": 1.2748473664131916
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 0.4659190502208073,
+            "train_nll": 1.3075173206304909,
+            "test_nll": 1.2834880341851247
+          },
+          {
+            "nu": 2.0,
+            "scale": 0.525115848947583,
+            "train_nll": 1.2994128200736244,
+            "test_nll": 1.2748473664131916
+          },
+          {
+            "nu": 3.0,
+            "scale": 0.6063452732718271,
+            "train_nll": 1.3022136870841978,
+            "test_nll": 1.2768544258487928
+          },
+          {
+            "nu": 4.0,
+            "scale": 0.6605477254173993,
+            "train_nll": 1.310525095005449,
+            "test_nll": 1.2846087461523337
+          },
+          {
+            "nu": 5.0,
+            "scale": 0.6998638871392112,
+            "train_nll": 1.3189608334622465,
+            "test_nll": 1.2926288517494398
+          },
+          {
+            "nu": 7.0,
+            "scale": 0.7538905798691777,
+            "train_nll": 1.3331445746321926,
+            "test_nll": 1.3062197754020413
+          },
+          {
+            "nu": 10.0,
+            "scale": 0.8037324031474391,
+            "train_nll": 1.3483267609127705,
+            "test_nll": 1.320817650564636
+          },
+          {
+            "nu": 14.0,
+            "scale": 0.8436830923669185,
+            "train_nll": 1.3616228545139455,
+            "test_nll": 1.3336023166549595
+          },
+          {
+            "nu": 20.0,
+            "scale": 0.8789113942861657,
+            "train_nll": 1.3739964269106508,
+            "test_nll": 1.3454768950443077
+          },
+          {
+            "nu": 32.0,
+            "scale": 0.915292956069593,
+            "train_nll": 1.3872600843485918,
+            "test_nll": 1.3581566832527963
+          },
+          {
+            "nu": 56.0,
+            "scale": 0.946203655654424,
+            "train_nll": 1.3987926877508334,
+            "test_nll": 1.3691140828203066
+          },
+          {
+            "nu": 112.0,
+            "scale": 0.9704843903929793,
+            "train_nll": 1.4079271140573788,
+            "test_nll": 1.3777237004096026
+          },
+          {
+            "nu": 224.0,
+            "scale": 0.9843482241528253,
+            "train_nll": 1.4131289930472393,
+            "test_nll": 1.3825874580425008
+          },
+          {
+            "nu": 448.0,
+            "scale": 0.9918997768719643,
+            "train_nll": 1.4159441820298795,
+            "test_nll": 1.3852040599397475
+          },
+          {
+            "nu": 896.0,
+            "scale": 0.9958723436094924,
+            "train_nll": 1.4174166895283764,
+            "test_nll": 1.3865675004258107
+          },
+          {
+            "nu": 1792.0,
+            "scale": 0.99791541194665,
+            "train_nll": 1.418171108047743,
+            "test_nll": 1.3872645079803776
+          },
+          {
+            "nu": 4096.0,
+            "scale": 0.9990826862804539,
+            "train_nll": 1.4186011369086147,
+            "test_nll": 1.3876613196660286
+          },
+          {
+            "nu": 16384.0,
+            "scale": 0.9997698801885879,
+            "train_nll": 1.4188539396808153,
+            "test_nll": 1.387894422631744
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 0.9999999999999999,
+            "train_nll": 1.4189385332046724,
+            "test_nll": 1.3879723951596004
+          }
+        ]
+      },
+      "fixed_sigma_isotropic": {
+        "best": {
+          "nu": 7.0,
+          "scale": 1.0,
+          "train_nll": -0.2733184693202564,
+          "test_nll": -0.33855263065869123
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 1.0,
+            "train_nll": -0.26750050483223875,
+            "test_nll": -0.3328864648877694
+          },
+          {
+            "nu": 2.0,
+            "scale": 1.0,
+            "train_nll": -0.26955867088929275,
+            "test_nll": -0.3349180451189484
+          },
+          {
+            "nu": 3.0,
+            "scale": 1.0,
+            "train_nll": -0.27179825884309894,
+            "test_nll": -0.3371137172707679
+          },
+          {
+            "nu": 4.0,
+            "scale": 1.0,
+            "train_nll": -0.27284555386795173,
+            "test_nll": -0.338127899353059
+          },
+          {
+            "nu": 5.0,
+            "scale": 1.0,
+            "train_nll": -0.27330123274341034,
+            "test_nll": -0.3385597648503911
+          },
+          {
+            "nu": 7.0,
+            "scale": 1.0,
+            "train_nll": -0.2733184693202564,
+            "test_nll": -0.33855263065869123
+          },
+          {
+            "nu": 10.0,
+            "scale": 1.0,
+            "train_nll": -0.27234243073585396,
+            "test_nll": -0.3375854105964575
+          },
+          {
+            "nu": 14.0,
+            "scale": 1.0,
+            "train_nll": -0.27037978366881443,
+            "test_nll": -0.3356947976143083
+          },
+          {
+            "nu": 20.0,
+            "scale": 1.0,
+            "train_nll": -0.26712922064233435,
+            "test_nll": -0.3326350214775424
+          },
+          {
+            "nu": 32.0,
+            "scale": 1.0,
+            "train_nll": -0.2610311609983389,
+            "test_nll": -0.3270697845984083
+          },
+          {
+            "nu": 56.0,
+            "scale": 1.0,
+            "train_nll": -0.2514563975731807,
+            "test_nll": -0.31872695768189097
+          },
+          {
+            "nu": 112.0,
+            "scale": 1.0,
+            "train_nll": -0.2375068784381622,
+            "test_nll": -0.3073821835971271
+          },
+          {
+            "nu": 224.0,
+            "scale": 1.0,
+            "train_nll": -0.22353477671462496,
+            "test_nll": -0.2969845978322305
+          },
+          {
+            "nu": 448.0,
+            "scale": 1.0,
+            "train_nll": -0.21172241736727848,
+            "test_nll": -0.28899589252571656
+          },
+          {
+            "nu": 896.0,
+            "scale": 1.0,
+            "train_nll": -0.20313962371905236,
+            "test_nll": -0.2836993842319495
+          },
+          {
+            "nu": 1792.0,
+            "scale": 1.0,
+            "train_nll": -0.19764622797772868,
+            "test_nll": -0.28055765523510523
+          },
+          {
+            "nu": 4096.0,
+            "scale": 1.0,
+            "train_nll": -0.1940271984824382,
+            "test_nll": -0.2786029695048151
+          },
+          {
+            "nu": 16384.0,
+            "scale": 1.0,
+            "train_nll": -0.19168518572921478,
+            "test_nll": -0.2773897593124155
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 1.0,
+            "train_nll": -0.19085984361774821,
+            "test_nll": -0.27697228044712197
+          }
+        ]
+      },
+      "geometry_train": {
+        "d": 56,
+        "effective_correlation_dimension": 26.957251344692946,
+        "radial_squared_cv": 0.8664141983135262,
+        "radial_squared_quantiles": [
+          0.23949069919384428,
+          0.429505177483879,
+          0.9053069130932082,
+          1.9866871126411019,
+          5.042127269235608
+        ],
+        "marginal_excess3": 6.15319955953599
+      }
+    },
+    "continuous_only_fixed_scale": {
+      "isotropic": {
+        "best": {
+          "nu": 3.0,
+          "scale": 0.12217249644515313,
+          "train_nll": -0.4456008083837458,
+          "test_nll": -0.518498361158208
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 0.12045840465828513,
+            "train_nll": -0.4441545850548867,
+            "test_nll": -0.516936480168633
+          },
+          {
+            "nu": 2.0,
+            "scale": 0.12062695948543135,
+            "train_nll": -0.4452946205225456,
+            "test_nll": -0.5181521017227747
+          },
+          {
+            "nu": 3.0,
+            "scale": 0.12217249644515313,
+            "train_nll": -0.4456008083837458,
+            "test_nll": -0.518498361158208
+          },
+          {
+            "nu": 4.0,
+            "scale": 0.12383879888574094,
+            "train_nll": -0.44473540114360205,
+            "test_nll": -0.5175890876687395
+          },
+          {
+            "nu": 5.0,
+            "scale": 0.12533754297819288,
+            "train_nll": -0.4433462457091368,
+            "test_nll": -0.5161101234262538
+          },
+          {
+            "nu": 7.0,
+            "scale": 0.12789072957399153,
+            "train_nll": -0.43990706138954955,
+            "test_nll": -0.5124149236010239
+          },
+          {
+            "nu": 10.0,
+            "scale": 0.13099945693777962,
+            "train_nll": -0.4342929844349617,
+            "test_nll": -0.506323357947278
+          },
+          {
+            "nu": 14.0,
+            "scale": 0.1343367751631769,
+            "train_nll": -0.4269964588158326,
+            "test_nll": -0.4983336202175337
+          },
+          {
+            "nu": 20.0,
+            "scale": 0.1382972604988968,
+            "train_nll": -0.417139726653786,
+            "test_nll": -0.4874513472490453
+          },
+          {
+            "nu": 32.0,
+            "scale": 0.14407435921356485,
+            "train_nll": -0.40123139755288384,
+            "test_nll": -0.4697444411687611
+          },
+          {
+            "nu": 56.0,
+            "scale": 0.15139460577754085,
+            "train_nll": -0.37957702222598827,
+            "test_nll": -0.4454637883063328
+          },
+          {
+            "nu": 112.0,
+            "scale": 0.1601401868722325,
+            "train_nll": -0.3528159643017798,
+            "test_nll": -0.41527543424236746
+          },
+          {
+            "nu": 224.0,
+            "scale": 0.16743585883010736,
+            "train_nll": -0.330575610731193,
+            "test_nll": -0.39001153027903707
+          },
+          {
+            "nu": 448.0,
+            "scale": 0.17273900382636342,
+            "train_nll": -0.3148527982999064,
+            "test_nll": -0.3719407347549784
+          },
+          {
+            "nu": 896.0,
+            "scale": 0.1761647233158756,
+            "train_nll": -0.30504048371255255,
+            "test_nll": -0.3604795921555237
+          },
+          {
+            "nu": 1792.0,
+            "scale": 0.17817850240965943,
+            "train_nll": -0.299438985949443,
+            "test_nll": -0.3538320651643756
+          },
+          {
+            "nu": 4096.0,
+            "scale": 0.17942895925303873,
+            "train_nll": -0.2960332224364723,
+            "test_nll": -0.3497388396499012
+          },
+          {
+            "nu": 16384.0,
+            "scale": 0.18020533641024744,
+            "train_nll": -0.2939492490898821,
+            "test_nll": -0.347210712891408
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 0.18047267831213748,
+            "train_nll": -0.2932373461533817,
+            "test_nll": -0.34634248471581847
+          }
+        ]
+      },
+      "diagonal": {
+        "best": {
+          "nu": 3.0,
+          "scale": 0.6720934572649605,
+          "train_nll": -0.48381362203117106,
+          "test_nll": -0.5495318098415383
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 0.6634146528848066,
+            "train_nll": -0.48239667048766033,
+            "test_nll": -0.5480711628391477
+          },
+          {
+            "nu": 2.0,
+            "scale": 0.6639979233907226,
+            "train_nll": -0.48353091714664087,
+            "test_nll": -0.5492536037668547
+          },
+          {
+            "nu": 3.0,
+            "scale": 0.6720934572649605,
+            "train_nll": -0.48381362203117106,
+            "test_nll": -0.5495318098415383
+          },
+          {
+            "nu": 4.0,
+            "scale": 0.6810261637121072,
+            "train_nll": -0.48291559574304666,
+            "test_nll": -0.5485541013131945
+          },
+          {
+            "nu": 5.0,
+            "scale": 0.6891237356243983,
+            "train_nll": -0.48148861229795337,
+            "test_nll": -0.5470068679624085
+          },
+          {
+            "nu": 7.0,
+            "scale": 0.7030110910395654,
+            "train_nll": -0.47796548718308784,
+            "test_nll": -0.543176362684533
+          },
+          {
+            "nu": 10.0,
+            "scale": 0.7200417591541192,
+            "train_nll": -0.4722175009861844,
+            "test_nll": -0.5368861768035282
+          },
+          {
+            "nu": 14.0,
+            "scale": 0.7384390801370836,
+            "train_nll": -0.4647424206256545,
+            "test_nll": -0.5286417442894975
+          },
+          {
+            "nu": 20.0,
+            "scale": 0.7603901296058911,
+            "train_nll": -0.4546329497288666,
+            "test_nll": -0.517402972353266
+          },
+          {
+            "nu": 32.0,
+            "scale": 0.7925869842137971,
+            "train_nll": -0.4382876635564086,
+            "test_nll": -0.49907996834778867
+          },
+          {
+            "nu": 56.0,
+            "scale": 0.8336223128029056,
+            "train_nll": -0.41597822179380817,
+            "test_nll": -0.47389152690861835
+          },
+          {
+            "nu": 112.0,
+            "scale": 0.8829650116041324,
+            "train_nll": -0.38829151276508655,
+            "test_nll": -0.4425280400755618
+          },
+          {
+            "nu": 224.0,
+            "scale": 0.9244454032018684,
+            "train_nll": -0.3651417968746169,
+            "test_nll": -0.4163114662008909
+          },
+          {
+            "nu": 448.0,
+            "scale": 0.9548716172327034,
+            "train_nll": -0.3486559991547571,
+            "test_nll": -0.39762199992123426
+          },
+          {
+            "nu": 896.0,
+            "scale": 0.974717979001473,
+            "train_nll": -0.33829215415230385,
+            "test_nll": -0.38581245538880826
+          },
+          {
+            "nu": 1792.0,
+            "scale": 0.9864830589649284,
+            "train_nll": -0.33234112652194936,
+            "test_nll": -0.3789824152136536
+          },
+          {
+            "nu": 4096.0,
+            "scale": 0.9938340291625432,
+            "train_nll": -0.32870809767796083,
+            "test_nll": -0.3747847687770067
+          },
+          {
+            "nu": 16384.0,
+            "scale": 0.99841784404558,
+            "train_nll": -0.32647895845943364,
+            "test_nll": -0.37219536988044855
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 1.0000000000000047,
+            "train_nll": -0.3257163424963363,
+            "test_nll": -0.3713066880859519
+          }
+        ]
+      },
+      "full_cov_shrink05": {
+        "best": {
+          "nu": 3.0,
+          "scale": 0.6241147348995512,
+          "train_nll": -0.8662570685278574,
+          "test_nll": -0.9152881189835511
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 0.6184937015675704,
+            "train_nll": -0.8648913192549348,
+            "test_nll": -0.9143410861022827
+          },
+          {
+            "nu": 2.0,
+            "scale": 0.6179904985124267,
+            "train_nll": -0.8660240843875742,
+            "test_nll": -0.9153650802927202
+          },
+          {
+            "nu": 3.0,
+            "scale": 0.6241147348995512,
+            "train_nll": -0.8662570685278574,
+            "test_nll": -0.9152881189835511
+          },
+          {
+            "nu": 4.0,
+            "scale": 0.6315485432162294,
+            "train_nll": -0.8652723938931757,
+            "test_nll": -0.913931657304528
+          },
+          {
+            "nu": 5.0,
+            "scale": 0.6385153874796243,
+            "train_nll": -0.8637374927125461,
+            "test_nll": -0.911998099048821
+          },
+          {
+            "nu": 7.0,
+            "scale": 0.6508221185698155,
+            "train_nll": -0.8599648485068874,
+            "test_nll": -0.907399848684878
+          },
+          {
+            "nu": 10.0,
+            "scale": 0.6663998329158067,
+            "train_nll": -0.8538113715834328,
+            "test_nll": -0.9000100824134833
+          },
+          {
+            "nu": 14.0,
+            "scale": 0.6836955105692767,
+            "train_nll": -0.8458004442463736,
+            "test_nll": -0.8904263622961719
+          },
+          {
+            "nu": 20.0,
+            "scale": 0.7048265681143364,
+            "train_nll": -0.8349620221025429,
+            "test_nll": -0.877442404761337
+          },
+          {
+            "nu": 32.0,
+            "scale": 0.7365345419273203,
+            "train_nll": -0.8174821148455238,
+            "test_nll": -0.8563884835364075
+          },
+          {
+            "nu": 56.0,
+            "scale": 0.777635103933877,
+            "train_nll": -0.7938693734389213,
+            "test_nll": -0.8276550561342362
+          },
+          {
+            "nu": 112.0,
+            "scale": 0.8269263028798505,
+            "train_nll": -0.7652993704569859,
+            "test_nll": -0.7923197058232334
+          },
+          {
+            "nu": 224.0,
+            "scale": 0.8671012810732384,
+            "train_nll": -0.7423438805630773,
+            "test_nll": -0.763284263063291
+          },
+          {
+            "nu": 448.0,
+            "scale": 0.895226873204534,
+            "train_nll": -0.726658452559646,
+            "test_nll": -0.7429044198677814
+          },
+          {
+            "nu": 896.0,
+            "scale": 0.9127875134366145,
+            "train_nll": -0.7171122820366782,
+            "test_nll": -0.7301557239693712
+          },
+          {
+            "nu": 1792.0,
+            "scale": 0.9228866298385379,
+            "train_nll": -0.7117408187467096,
+            "test_nll": -0.7228186802876324
+          },
+          {
+            "nu": 4096.0,
+            "scale": 0.9290846907997473,
+            "train_nll": -0.7084985918863842,
+            "test_nll": -0.7183186205478234
+          },
+          {
+            "nu": 16384.0,
+            "scale": 0.9329099855249396,
+            "train_nll": -0.7065219104938929,
+            "test_nll": -0.7155448970601401
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 0.9342239063768194,
+            "train_nll": -0.7058477020847775,
+            "test_nll": -0.7145931957970937
+          }
+        ]
+      },
+      "pooled_standardized_marginal": {
+        "best": {
+          "nu": 3.0,
+          "scale": 0.6353063726559963,
+          "train_nll": 1.3259865187468511,
+          "test_nll": 1.2614272101942363
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 0.5083497519507888,
+            "train_nll": 1.3469954421733814,
+            "test_nll": 1.2798460590876852
+          },
+          {
+            "nu": 2.0,
+            "scale": 0.5616673981091317,
+            "train_nll": 1.3313952323775051,
+            "test_nll": 1.2650761332274876
+          },
+          {
+            "nu": 3.0,
+            "scale": 0.6353063726559963,
+            "train_nll": 1.3259865187468511,
+            "test_nll": 1.2614272101942363
+          },
+          {
+            "nu": 4.0,
+            "scale": 0.6849404678150253,
+            "train_nll": 1.3299051997602538,
+            "test_nll": 1.2669463217960897
+          },
+          {
+            "nu": 5.0,
+            "scale": 0.721235925198871,
+            "train_nll": 1.3355921778275845,
+            "test_nll": 1.274020444237412
+          },
+          {
+            "nu": 7.0,
+            "scale": 0.7715145485896318,
+            "train_nll": 1.3464766303847717,
+            "test_nll": 1.2871325186695404
+          },
+          {
+            "nu": 10.0,
+            "scale": 0.8182570086763858,
+            "train_nll": 1.3589787486821834,
+            "test_nll": 1.302021052642073
+          },
+          {
+            "nu": 14.0,
+            "scale": 0.8558845827482561,
+            "train_nll": 1.3702821727666832,
+            "test_nll": 1.3154555511527495
+          },
+          {
+            "nu": 20.0,
+            "scale": 0.889083164302721,
+            "train_nll": 1.3809412934677616,
+            "test_nll": 1.328134313409985
+          },
+          {
+            "nu": 32.0,
+            "scale": 0.9232372572845025,
+            "train_nll": 1.392395845873172,
+            "test_nll": 1.341776509383784
+          },
+          {
+            "nu": 56.0,
+            "scale": 0.9519546528203647,
+            "train_nll": 1.4022783527003926,
+            "test_nll": 1.353552344895949
+          },
+          {
+            "nu": 112.0,
+            "scale": 0.9741017794447557,
+            "train_nll": 1.409973000622274,
+            "test_nll": 1.3627119605274982
+          },
+          {
+            "nu": 224.0,
+            "scale": 0.9864607109739115,
+            "train_nll": 1.414264620092024,
+            "test_nll": 1.3678104736639498
+          },
+          {
+            "nu": 448.0,
+            "scale": 0.9930604937344283,
+            "train_nll": 1.4165481911129443,
+            "test_nll": 1.3705184766116012
+          },
+          {
+            "nu": 896.0,
+            "scale": 0.9964842500330209,
+            "train_nll": 1.4177291641602563,
+            "test_nll": 1.371917223859709
+          },
+          {
+            "nu": 1792.0,
+            "scale": 0.998230121419781,
+            "train_nll": 1.418330180393582,
+            "test_nll": 1.3726285546931905
+          },
+          {
+            "nu": 4096.0,
+            "scale": 0.9992226545740867,
+            "train_nll": 1.4186714599486658,
+            "test_nll": 1.3730323098604438
+          },
+          {
+            "nu": 16384.0,
+            "scale": 0.9998052166921246,
+            "train_nll": 1.4188716294996389,
+            "test_nll": 1.3732690653127269
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 1.0000000000000049,
+            "train_nll": 1.4189385332046776,
+            "test_nll": 1.3733481876150622
+          }
+        ]
+      },
+      "fixed_sigma_isotropic": {
+        "best": {
+          "nu": 1.5,
+          "scale": 1.0,
+          "train_nll": -0.022512376922621927,
+          "test_nll": -0.051348113612171925
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 1.0,
+            "train_nll": -0.022512376922621927,
+            "test_nll": -0.051348113612171925
+          },
+          {
+            "nu": 2.0,
+            "scale": 1.0,
+            "train_nll": 0.04394431025536749,
+            "test_nll": 0.019306612065908862
+          },
+          {
+            "nu": 3.0,
+            "scale": 1.0,
+            "train_nll": 0.14494115839163135,
+            "test_nll": 0.1256132325518134
+          },
+          {
+            "nu": 4.0,
+            "scale": 1.0,
+            "train_nll": 0.21999704679636647,
+            "test_nll": 0.203927092536189
+          },
+          {
+            "nu": 5.0,
+            "scale": 1.0,
+            "train_nll": 0.27905689329130245,
+            "test_nll": 0.2652056045710443
+          },
+          {
+            "nu": 7.0,
+            "scale": 1.0,
+            "train_nll": 0.36771332820581354,
+            "test_nll": 0.3567058342148249
+          },
+          {
+            "nu": 10.0,
+            "scale": 1.0,
+            "train_nll": 0.458654125050425,
+            "test_nll": 0.4500478571193518
+          },
+          {
+            "nu": 14.0,
+            "scale": 1.0,
+            "train_nll": 0.5391236486649059,
+            "test_nll": 0.5322757333062761
+          },
+          {
+            "nu": 20.0,
+            "scale": 1.0,
+            "train_nll": 0.6166032888909109,
+            "test_nll": 0.6111719558677707
+          },
+          {
+            "nu": 32.0,
+            "scale": 1.0,
+            "train_nll": 0.7038758950502769,
+            "test_nll": 0.699762636507456
+          },
+          {
+            "nu": 56.0,
+            "scale": 1.0,
+            "train_nll": 0.7842325208754378,
+            "test_nll": 0.7811105842535372
+          },
+          {
+            "nu": 112.0,
+            "scale": 1.0,
+            "train_nll": 0.8511519906846452,
+            "test_nll": 0.8487157932825146
+          },
+          {
+            "nu": 224.0,
+            "scale": 1.0,
+            "train_nll": 0.8904927914758768,
+            "test_nll": 0.8884072280934131
+          },
+          {
+            "nu": 448.0,
+            "scale": 1.0,
+            "train_nll": 0.9120892862486053,
+            "test_nll": 0.9101810147134084
+          },
+          {
+            "nu": 896.0,
+            "scale": 1.0,
+            "train_nll": 0.9234499333216569,
+            "test_nll": 0.9216308042344407
+          },
+          {
+            "nu": 1792.0,
+            "scale": 1.0,
+            "train_nll": 0.9292832059439364,
+            "test_nll": 0.9275087724429896
+          },
+          {
+            "nu": 4096.0,
+            "scale": 1.0,
+            "train_nll": 0.9326112845962391,
+            "test_nll": 0.9308620288206151
+          },
+          {
+            "nu": 16384.0,
+            "scale": 1.0,
+            "train_nll": 0.9345686299199215,
+            "test_nll": 0.9328340732761778
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 1.0,
+            "train_nll": 0.9352237270132507,
+            "test_nll": 0.9334940720658094
+          }
+        ]
+      },
+      "geometry_train": {
+        "d": 48,
+        "effective_correlation_dimension": 21.674635854125704,
+        "radial_squared_cv": 1.0098298832191341,
+        "radial_squared_quantiles": [
+          0.002016619804027162,
+          0.006623793194006086,
+          0.02352911487733489,
+          0.0651658880522626,
+          0.17375211801502882
+        ],
+        "marginal_excess3": 6.062490420489309
+      }
+    },
+    "continuous_only_own_sigma": {
+      "isotropic": {
+        "best": {
+          "nu": 3.0,
+          "scale": 0.6741232382559114,
+          "train_nll": -0.44800202904392417,
+          "test_nll": -0.5194915533173083
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 0.667987538666727,
+            "train_nll": -0.44570371817243193,
+            "test_nll": -0.5175588435105114
+          },
+          {
+            "nu": 2.0,
+            "scale": 0.6677087388367465,
+            "train_nll": -0.44715476811711885,
+            "test_nll": -0.518893590126251
+          },
+          {
+            "nu": 3.0,
+            "scale": 0.6741232382559114,
+            "train_nll": -0.44800202904392417,
+            "test_nll": -0.5194915533173083
+          },
+          {
+            "nu": 4.0,
+            "scale": 0.6818883296812395,
+            "train_nll": -0.4476162025914854,
+            "test_nll": -0.5188602398174322
+          },
+          {
+            "nu": 5.0,
+            "scale": 0.6891881439275733,
+            "train_nll": -0.44667202260018546,
+            "test_nll": -0.5176856960643414
+          },
+          {
+            "nu": 7.0,
+            "scale": 0.7020093879928267,
+            "train_nll": -0.4440623398967416,
+            "test_nll": -0.514666504801536
+          },
+          {
+            "nu": 10.0,
+            "scale": 0.7178902943014055,
+            "train_nll": -0.43960182402973746,
+            "test_nll": -0.5097041560838564
+          },
+          {
+            "nu": 14.0,
+            "scale": 0.7349268465960767,
+            "train_nll": -0.4337300647006799,
+            "test_nll": -0.5033206184201915
+          },
+          {
+            "nu": 20.0,
+            "scale": 0.7548736013836234,
+            "train_nll": -0.42582016506778353,
+            "test_nll": -0.49486516708940576
+          },
+          {
+            "nu": 32.0,
+            "scale": 0.7831770857650738,
+            "train_nll": -0.4132501624232887,
+            "test_nll": -0.481640625320098
+          },
+          {
+            "nu": 56.0,
+            "scale": 0.8174234473549153,
+            "train_nll": -0.39666349291026215,
+            "test_nll": -0.4644629610457758
+          },
+          {
+            "nu": 112.0,
+            "scale": 0.8556194394001077,
+            "train_nll": -0.3771551677430389,
+            "test_nll": -0.4445716235979589
+          },
+          {
+            "nu": 224.0,
+            "scale": 0.8848588810458399,
+            "train_nll": -0.3619160855725505,
+            "test_nll": -0.42928021129094884
+          },
+          {
+            "nu": 448.0,
+            "scale": 0.9043717770481674,
+            "train_nll": -0.3517658648805091,
+            "test_nll": -0.4192563781068943
+          },
+          {
+            "nu": 896.0,
+            "scale": 0.9160976913397321,
+            "train_nll": -0.3457302742786783,
+            "test_nll": -0.4133786326355542
+          },
+          {
+            "nu": 1792.0,
+            "scale": 0.9226395434764764,
+            "train_nll": -0.34239910083699554,
+            "test_nll": -0.41016700994735
+          },
+          {
+            "nu": 4096.0,
+            "scale": 0.9265628044329524,
+            "train_nll": -0.3404174858470028,
+            "test_nll": -0.4082688384966484
+          },
+          {
+            "nu": 16384.0,
+            "scale": 0.9289429080873465,
+            "train_nll": -0.33922211073285125,
+            "test_nll": -0.40712854989704206
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 0.9297523520546366,
+            "train_nll": -0.3388168406363399,
+            "test_nll": -0.4067427964693493
+          }
+        ]
+      },
+      "diagonal": {
+        "best": {
+          "nu": 3.0,
+          "scale": 0.7311483178903418,
+          "train_nll": -0.48887851041777663,
+          "test_nll": -0.5529784229950856
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 0.7249594711887772,
+            "train_nll": -0.48637786623898704,
+            "test_nll": -0.5508918011851867
+          },
+          {
+            "nu": 2.0,
+            "scale": 0.7245483670876516,
+            "train_nll": -0.4878995527084484,
+            "test_nll": -0.5522789034260307
+          },
+          {
+            "nu": 3.0,
+            "scale": 0.7311483178903418,
+            "train_nll": -0.48887851041777663,
+            "test_nll": -0.5529784229950856
+          },
+          {
+            "nu": 4.0,
+            "scale": 0.7391899997179829,
+            "train_nll": -0.4886130488887539,
+            "test_nll": -0.552442858534061
+          },
+          {
+            "nu": 5.0,
+            "scale": 0.7467467605451276,
+            "train_nll": -0.48777940268848985,
+            "test_nll": -0.5513582355052575
+          },
+          {
+            "nu": 7.0,
+            "scale": 0.7600055234865474,
+            "train_nll": -0.48536572771181064,
+            "test_nll": -0.5485036399797769
+          },
+          {
+            "nu": 10.0,
+            "scale": 0.7764174169734142,
+            "train_nll": -0.48114880709701313,
+            "test_nll": -0.5437574105382341
+          },
+          {
+            "nu": 14.0,
+            "scale": 0.7940335321644383,
+            "train_nll": -0.47553191301704234,
+            "test_nll": -0.5376181519421084
+          },
+          {
+            "nu": 20.0,
+            "scale": 0.8147005010381044,
+            "train_nll": -0.46790210807292887,
+            "test_nll": -0.5294605200151858
+          },
+          {
+            "nu": 32.0,
+            "scale": 0.8441477527088977,
+            "train_nll": -0.455679035048963,
+            "test_nll": -0.5166708067509349
+          },
+          {
+            "nu": 56.0,
+            "scale": 0.8800228924625527,
+            "train_nll": -0.4394116203440679,
+            "test_nll": -0.5000227261477883
+          },
+          {
+            "nu": 112.0,
+            "scale": 0.9203976211129702,
+            "train_nll": -0.420111882925273,
+            "test_nll": -0.48070543254630316
+          },
+          {
+            "nu": 224.0,
+            "scale": 0.9515796546427889,
+            "train_nll": -0.40492183701385476,
+            "test_nll": -0.4658215364888414
+          },
+          {
+            "nu": 448.0,
+            "scale": 0.9725287487790328,
+            "train_nll": -0.39474778203723426,
+            "test_nll": -0.4560390544420838
+          },
+          {
+            "nu": 896.0,
+            "scale": 0.9851805636171959,
+            "train_nll": -0.3886726043568898,
+            "test_nll": -0.4502876853062714
+          },
+          {
+            "nu": 1792.0,
+            "scale": 0.99226590877269,
+            "train_nll": -0.38530915439490476,
+            "test_nll": -0.4471384821287694
+          },
+          {
+            "nu": 4096.0,
+            "scale": 0.996527255617358,
+            "train_nll": -0.3833039422331155,
+            "test_nll": -0.44527444438422137
+          },
+          {
+            "nu": 16384.0,
+            "scale": 0.9991178955963012,
+            "train_nll": -0.3820924736356235,
+            "test_nll": -0.4441535226927602
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 1.0,
+            "train_nll": -0.3816813974229485,
+            "test_nll": -0.4437741102453703
+          }
+        ]
+      },
+      "full_cov_shrink05": {
+        "best": {
+          "nu": 3.0,
+          "scale": 0.6727178839723714,
+          "train_nll": -0.8723260963105577,
+          "test_nll": -0.9187057368309928
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 0.6671346590170455,
+            "train_nll": -0.8700281053283301,
+            "test_nll": -0.9175439069659677
+          },
+          {
+            "nu": 2.0,
+            "scale": 0.6666523480453311,
+            "train_nll": -0.8714812597058201,
+            "test_nll": -0.918607491277192
+          },
+          {
+            "nu": 3.0,
+            "scale": 0.6727178839723714,
+            "train_nll": -0.8723260963105577,
+            "test_nll": -0.9187057368309928
+          },
+          {
+            "nu": 4.0,
+            "scale": 0.6801402535429102,
+            "train_nll": -0.8719285658013536,
+            "test_nll": -0.9176238101852763
+          },
+          {
+            "nu": 5.0,
+            "scale": 0.6871089440923562,
+            "train_nll": -0.8709636676747783,
+            "test_nll": -0.9160381455404683
+          },
+          {
+            "nu": 7.0,
+            "scale": 0.6993418809110777,
+            "train_nll": -0.8682887961516981,
+            "test_nll": -0.9122870531251988
+          },
+          {
+            "nu": 10.0,
+            "scale": 0.7145545284238269,
+            "train_nll": -0.8636851469623616,
+            "test_nll": -0.906387872181077
+          },
+          {
+            "nu": 14.0,
+            "scale": 0.7310376805926386,
+            "train_nll": -0.8575703055156447,
+            "test_nll": -0.8989554725276885
+          },
+          {
+            "nu": 20.0,
+            "scale": 0.7506372373159778,
+            "train_nll": -0.8492476121842558,
+            "test_nll": -0.8892032085933212
+          },
+          {
+            "nu": 32.0,
+            "scale": 0.7791022529969999,
+            "train_nll": -0.8358533023882786,
+            "test_nll": -0.8739814187990671
+          },
+          {
+            "nu": 56.0,
+            "scale": 0.8146018101887935,
+            "train_nll": -0.817939306968603,
+            "test_nll": -0.8540818305287632
+          },
+          {
+            "nu": 112.0,
+            "scale": 0.8553795054196771,
+            "train_nll": -0.7966737832763959,
+            "test_nll": -0.8307003020731276
+          },
+          {
+            "nu": 224.0,
+            "scale": 0.8871199817035589,
+            "train_nll": -0.7800684949973924,
+            "test_nll": -0.8124331086330683
+          },
+          {
+            "nu": 448.0,
+            "scale": 0.9083033529662532,
+            "train_nll": -0.7691075061269657,
+            "test_nll": -0.8003308744349587
+          },
+          {
+            "nu": 896.0,
+            "scale": 0.920916163077509,
+            "train_nll": -0.7626656884403265,
+            "test_nll": -0.7932002256259536
+          },
+          {
+            "nu": 1792.0,
+            "scale": 0.9278792017978376,
+            "train_nll": -0.759144962137376,
+            "test_nll": -0.7892984443533655
+          },
+          {
+            "nu": 4096.0,
+            "scale": 0.9320206538636343,
+            "train_nll": -0.7570648033314411,
+            "test_nll": -0.7869920556519012
+          },
+          {
+            "nu": 16384.0,
+            "scale": 0.9345183437299813,
+            "train_nll": -0.7558157048672494,
+            "test_nll": -0.7856068414485962
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 0.9353650064981898,
+            "train_nll": -0.7553932581650635,
+            "test_nll": -0.7851383277580906
+          }
+        ]
+      },
+      "pooled_standardized_marginal": {
+        "best": {
+          "nu": 3.0,
+          "scale": 0.6654078240035337,
+          "train_nll": 1.3569561766587104,
+          "test_nll": 1.3319485911693378
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 0.5363512225664109,
+            "train_nll": 1.3852378097402591,
+            "test_nll": 1.3607658701280483
+          },
+          {
+            "nu": 2.0,
+            "scale": 0.591027898152514,
+            "train_nll": 1.3668169131270664,
+            "test_nll": 1.3421434323150512
+          },
+          {
+            "nu": 3.0,
+            "scale": 0.6654078240035337,
+            "train_nll": 1.3569561766587104,
+            "test_nll": 1.3319485911693378
+          },
+          {
+            "nu": 4.0,
+            "scale": 0.714600459017086,
+            "train_nll": 1.3575099456919293,
+            "test_nll": 1.3322726945799026
+          },
+          {
+            "nu": 5.0,
+            "scale": 0.7500095322728834,
+            "train_nll": 1.3605562538813614,
+            "test_nll": 1.3351593831753004
+          },
+          {
+            "nu": 7.0,
+            "scale": 0.7981840113957168,
+            "train_nll": 1.3675406683024978,
+            "test_nll": 1.341940922649296
+          },
+          {
+            "nu": 10.0,
+            "scale": 0.841966727336577,
+            "train_nll": 1.3761722542684984,
+            "test_nll": 1.3504053911628529
+          },
+          {
+            "nu": 14.0,
+            "scale": 0.8764334171009659,
+            "train_nll": 1.3841901689900395,
+            "test_nll": 1.3583037896292331
+          },
+          {
+            "nu": 20.0,
+            "scale": 0.9061979965658843,
+            "train_nll": 1.3918232715152774,
+            "test_nll": 1.3658414424103817
+          },
+          {
+            "nu": 32.0,
+            "scale": 0.9360990273642666,
+            "train_nll": 1.4000391390768094,
+            "test_nll": 1.3739654864842392
+          },
+          {
+            "nu": 56.0,
+            "scale": 0.9605860309280996,
+            "train_nll": 1.4071045761534118,
+            "test_nll": 1.3809515476838015
+          },
+          {
+            "nu": 112.0,
+            "scale": 0.9790046862206347,
+            "train_nll": 1.4125800629047116,
+            "test_nll": 1.386354673387855
+          },
+          {
+            "nu": 224.0,
+            "scale": 0.9890946305267405,
+            "train_nll": 1.4156248112242993,
+            "test_nll": 1.3893491141643566
+          },
+          {
+            "nu": 448.0,
+            "scale": 0.994428516261367,
+            "train_nll": 1.4172435827933552,
+            "test_nll": 1.39093622442151
+          },
+          {
+            "nu": 896.0,
+            "scale": 0.9971817316106678,
+            "train_nll": 1.418080820444616,
+            "test_nll": 1.39175530799646
+          },
+          {
+            "nu": 1792.0,
+            "scale": 0.9985823144792183,
+            "train_nll": 1.4185070143111453,
+            "test_nll": 1.3921717175936787
+          },
+          {
+            "nu": 4096.0,
+            "scale": 0.9993775989241862,
+            "train_nll": 1.4187490741559046,
+            "test_nll": 1.3924080433434753
+          },
+          {
+            "nu": 16384.0,
+            "scale": 0.9998440790008646,
+            "train_nll": 1.418891069562883,
+            "test_nll": 1.3925466126353543
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 1.0,
+            "train_nll": 1.4189385332046727,
+            "test_nll": 1.3925929205145493
+          }
+        ]
+      },
+      "fixed_sigma_isotropic": {
+        "best": {
+          "nu": 1.5,
+          "scale": 1.0,
+          "train_nll": -0.43927195142718944,
+          "test_nll": -0.5094537730827131
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 1.0,
+            "train_nll": -0.43927195142718944,
+            "test_nll": -0.5094537730827131
+          },
+          {
+            "nu": 2.0,
+            "scale": 1.0,
+            "train_nll": -0.4391864911939869,
+            "test_nll": -0.5088232251388354
+          },
+          {
+            "nu": 3.0,
+            "scale": 1.0,
+            "train_nll": -0.43751139566919894,
+            "test_nll": -0.5062237299717705
+          },
+          {
+            "nu": 4.0,
+            "scale": 1.0,
+            "train_nll": -0.43513553777573644,
+            "test_nll": -0.5030904404387502
+          },
+          {
+            "nu": 5.0,
+            "scale": 1.0,
+            "train_nll": -0.4325873043745998,
+            "test_nll": -0.4999076225392647
+          },
+          {
+            "nu": 7.0,
+            "scale": 1.0,
+            "train_nll": -0.42758443539917557,
+            "test_nll": -0.4938964153370744
+          },
+          {
+            "nu": 10.0,
+            "scale": 1.0,
+            "train_nll": -0.42084711852994383,
+            "test_nll": -0.48607068296918876
+          },
+          {
+            "nu": 14.0,
+            "scale": 1.0,
+            "train_nll": -0.41333664836160744,
+            "test_nll": -0.4775731747844254
+          },
+          {
+            "nu": 20.0,
+            "scale": 1.0,
+            "train_nll": -0.40448193642470054,
+            "test_nll": -0.46777815499341124
+          },
+          {
+            "nu": 32.0,
+            "scale": 1.0,
+            "train_nll": -0.3921371043557107,
+            "test_nll": -0.45445527575113753
+          },
+          {
+            "nu": 56.0,
+            "scale": 1.0,
+            "train_nll": -0.37776568000062993,
+            "test_nll": -0.439403007905103
+          },
+          {
+            "nu": 112.0,
+            "scale": 1.0,
+            "train_nll": -0.3624239928583486,
+            "test_nll": -0.42392535295571854
+          },
+          {
+            "nu": 224.0,
+            "scale": 1.0,
+            "train_nll": -0.35101031133010996,
+            "test_nll": -0.4128943376032428
+          },
+          {
+            "nu": 448.0,
+            "scale": 1.0,
+            "train_nll": -0.3434807769238559,
+            "test_nll": -0.40590522205953095
+          },
+          {
+            "nu": 896.0,
+            "scale": 1.0,
+            "train_nll": -0.338978476234135,
+            "test_nll": -0.4018607040248632
+          },
+          {
+            "nu": 1792.0,
+            "scale": 1.0,
+            "train_nll": -0.33647445159822476,
+            "test_nll": -0.3996618600195583
+          },
+          {
+            "nu": 4096.0,
+            "scale": 1.0,
+            "train_nll": -0.3349760678627718,
+            "test_nll": -0.3983650991011922
+          },
+          {
+            "nu": 16384.0,
+            "scale": 1.0,
+            "train_nll": -0.33406848882481,
+            "test_nll": -0.3975869737859228
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 1.0,
+            "train_nll": -0.33376010615167084,
+            "test_nll": -0.39732387816188086
+          }
+        ]
+      },
+      "geometry_train": {
+        "d": 48,
+        "effective_correlation_dimension": 21.9668529141148,
+        "radial_squared_cv": 0.7729019523164335,
+        "radial_squared_quantiles": [
+          0.05396622512833179,
+          0.2081094596206397,
+          0.707688565117329,
+          1.6806888260973025,
+          3.3394253851400926
+        ],
+        "marginal_excess3": 5.205086838672275
+      }
+    }
+  }
+}

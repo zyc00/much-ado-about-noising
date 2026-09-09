@@ -1,0 +1,54 @@
+% ICLR two-column main-results table; requires booktabs.
+\begin{table*}[t]
+  \centering
+  \caption{\textbf{HT is effective across policy scales and benchmark families.}
+  Success rate (\%) of each task. The evaluation setting follows its benchmark's evaluation protocol. In (c), each entry averages over all nine RoboMimic tasks. $\dagger$ denotes our reproduction of a published baseline; published results are left unmarked.}
+  \label{tab:main-performance}
+  \small
+  \setlength{\tabcolsep}{5pt}
+  \renewcommand{\arraystretch}{1.08}
+
+  \textbf{(a) GR00T N1.7 on RoboCasa and SIMPLER}
+
+  \vspace{2pt}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lllrrr@{}}
+    \toprule
+    Model & Benchmark / embodiment & Action-head initialization
+          & Flow & MSE & HT (ours) \\
+    \midrule
+    GR00T N1.7 & RoboCasa / GR1          & Pretrained & 44.5 & 37.8 & \textbf{51.5} \\
+               & RoboCasa / GR1          & Random     & 14.0 &      & \textbf{33.5} \\
+               & SIMPLER / WidowX        & Pretrained &  62.9\rlap{$^\dagger$} &      & \textbf{67.4} \\
+               & SIMPLER / Google Robot  & Pretrained & \textbf{67.3}\rlap{$^\dagger$} & & 63.5 \\
+    \bottomrule
+  \end{tabular*}
+
+  \vspace{7pt}
+  \textbf{(b) Large robot models on LIBERO}
+
+  \vspace{2pt}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llrrrr@{}}
+    \toprule
+    Model & Evaluation & Flow & L1 & MSE & HT (ours) \\
+    \midrule
+    OpenVLA-OFT & Four-suite average &      & \textbf{97.1} &      & 96.0 \\
+    $\pi_{0.5}$ & Four-suite average & 96.9 & -- & 96.8 & \textbf{97.6} \\
+    Cosmos 3    & LIBERO-10          & 95.2 & -- & & \textbf{96.0} \\
+    \bottomrule
+  \end{tabular*}
+
+  \vspace{7pt}
+  \textbf{(c) Small policies on RoboMimic}
+
+  \vspace{2pt}
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}lrrrrrr@{}}
+    \toprule
+    & \multicolumn{3}{c}{State} & \multicolumn{3}{c}{Image} \\
+    \cmidrule(lr){2-4}\cmidrule(lr){5-7}
+    Backbone & DP & MSE & HT (ours) & DP & MSE & HT (ours) \\
+    \midrule
+    U-Net       & 89.9 & 83.1 & \textbf{95.1} & \textbf{97.8} & 73.8 & 95.1 \\
+    Transformer & \textbf{95.2} & 77.8 & 87.6 & 93.4 & 83.6 & \textbf{96.1} \\
+    \bottomrule
+  \end{tabular*}
+\end{table*}

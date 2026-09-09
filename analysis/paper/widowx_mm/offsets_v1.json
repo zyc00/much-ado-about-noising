@@ -1,0 +1,1179 @@
+{
+  "checkpoint": "/mnt/pfs/yuchen/groot/ft_wxflow/checkpoint-20000",
+  "nfe": 4,
+  "k_discovery": 32,
+  "k_confirmation": 64,
+  "offsets": [
+    -4,
+    -2,
+    -1,
+    0,
+    1,
+    2,
+    4
+  ],
+  "cases": [
+    [
+      "close_drawer:11:2",
+      "rotation"
+    ],
+    [
+      "close_drawer:267:1",
+      "rotation"
+    ],
+    [
+      "close_drawer:385:0",
+      "arm"
+    ],
+    [
+      "close_drawer:440:4",
+      "rotation"
+    ],
+    [
+      "eggplant_basket:73:3",
+      "arm"
+    ],
+    [
+      "eggplant_basket:148:1",
+      "gripper"
+    ]
+  ],
+  "axis": "center-state PC1 from a fresh discovery batch; fixed across offsets",
+  "multiple_testing": "BH across all case-offset confirmations",
+  "rows": [
+    {
+      "uid": "close_drawer:11:2",
+      "group": "rotation",
+      "offset": -4,
+      "t": 7,
+      "delta_bic": -9.732322246950432,
+      "sep": 0.21952819754434097,
+      "min_weight": 0.27714066510397317,
+      "component_weights": [
+        0.7228593348960269,
+        0.27714066510397317
+      ],
+      "component_means_on_center_axis": [
+        -0.009233468494271278,
+        0.08829711073777101
+      ],
+      "projection_mean": 0.0177962211020727,
+      "projection_sd": 0.4464130767449107,
+      "p": 0.47450509898020393,
+      "fitted_density_modes": 1,
+      "valley_depth": 0.0,
+      "energy_translation": 0.3125959017753681,
+      "energy_rotation": 0.6871081966864392,
+      "energy_gripper": 0.0002959015381927216,
+      "q": 0.5110054912094504,
+      "detected": false
+    },
+    {
+      "uid": "close_drawer:11:2",
+      "group": "rotation",
+      "offset": -2,
+      "t": 9,
+      "delta_bic": -2.9766688737953473,
+      "sep": 0.7190688991751967,
+      "min_weight": 0.4243144084970779,
+      "component_weights": [
+        0.4243144084970779,
+        0.5756855915029222
+      ],
+      "component_means_on_center_axis": [
+        0.27284855977835515,
+        0.6655764681017705
+      ],
+      "projection_mean": 0.49893635798122593,
+      "projection_sd": 0.5796273995762038,
+      "p": 0.0637872425514897,
+      "fitted_density_modes": 1,
+      "valley_depth": 0.0,
+      "energy_translation": 0.3485925010419065,
+      "energy_rotation": 0.651378196362866,
+      "energy_gripper": 2.9302595227490413e-05,
+      "q": 0.09922459952453952,
+      "detected": false
+    },
+    {
+      "uid": "close_drawer:11:2",
+      "group": "rotation",
+      "offset": -1,
+      "t": 10,
+      "delta_bic": -8.714240458769964,
+      "sep": 2.269852706865902,
+      "min_weight": 0.1724594240167088,
+      "component_weights": [
+        0.827540575983291,
+        0.1724594240167088
+      ],
+      "component_means_on_center_axis": [
+        0.6006109817924545,
+        1.2892667775948987
+      ],
+      "projection_mean": 0.719376163682312,
+      "projection_sd": 0.399662407624193,
+      "p": 0.3583283343331334,
+      "fitted_density_modes": 2,
+      "valley_depth": 0.12462233444088733,
+      "energy_translation": 0.13772142175640237,
+      "energy_rotation": 0.8621910116191257,
+      "energy_gripper": 8.756662447204083e-05,
+      "q": 0.39604710636820006,
+      "detected": false
+    },
+    {
+      "uid": "close_drawer:11:2",
+      "group": "rotation",
+      "offset": 0,
+      "t": 11,
+      "delta_bic": 16.246251194154723,
+      "sep": 0.020901804008216323,
+      "min_weight": 0.39987474938581286,
+      "component_weights": [
+        0.39987474938581286,
+        0.6001252506141871
+      ],
+      "component_means_on_center_axis": [
+        0.09991173819478796,
+        0.10679753059023994
+      ],
+      "projection_mean": 0.10404407608178583,
+      "projection_sd": 0.329452584181283,
+      "p": 0.0001999600079984003,
+      "fitted_density_modes": 1,
+      "valley_depth": 0.0,
+      "energy_translation": 0.3097462480118355,
+      "energy_rotation": 0.6901413786776981,
+      "energy_gripper": 0.00011237331046653887,
+      "q": 0.00044201685978593753,
+      "detected": false
+    },
+    {
+      "uid": "close_drawer:11:2",
+      "group": "rotation",
+      "offset": 1,
+      "t": 12,
+      "delta_bic": -3.391579498469511,
+      "sep": 2.869813931003377,
+      "min_weight": 0.3875823625344184,
+      "component_weights": [
+        0.3875823625344184,
+        0.6124176374655815
+      ],
+      "component_means_on_center_axis": [
+        -0.7624584865562547,
+        -0.06603984873687688
+      ],
+      "projection_mean": -0.3359594296959129,
+      "projection_sd": 0.4171442512167544,
+      "p": 0.07258548290341932,
+      "fitted_density_modes": 2,
+      "valley_depth": 0.42058447799393306,
+      "energy_translation": 0.5037006412171867,
+      "energy_rotation": 0.496186040674881,
+      "energy_gripper": 0.00011331810793235851,
+      "q": 0.10887822435512898,
+      "detected": false
+    },
+    {
+      "uid": "close_drawer:11:2",
+      "group": "rotation",
+      "offset": 2,
+      "t": 13,
+      "delta_bic": 28.054399539912836,
+      "sep": 0.17269108080653242,
+      "min_weight": 0.21781564468016365,
+      "component_weights": [
+        0.21781564468016365,
+        0.7821843553198364
+      ],
+      "component_means_on_center_axis": [
+        0.02737614637908437,
+        0.06612545246110171
+      ],
+      "projection_mean": 0.05768524737593813,
+      "projection_sd": 0.22495441718151432,
+      "p": 0.0001999600079984003,
+      "fitted_density_modes": 1,
+      "valley_depth": 0.0,
+      "energy_translation": 0.5841969042462721,
+      "energy_rotation": 0.415533630982075,
+      "energy_gripper": 0.0002694647716526533,
+      "q": 0.00044201685978593753,
+      "detected": false
+    },
+    {
+      "uid": "close_drawer:11:2",
+      "group": "rotation",
+      "offset": 4,
+      "t": 15,
+      "delta_bic": 8.169839496509852,
+      "sep": 0.39303638798532603,
+      "min_weight": 0.20577467258007318,
+      "component_weights": [
+        0.7942253274199272,
+        0.20577467258007318
+      ],
+      "component_means_on_center_axis": [
+        0.003801168603143762,
+        0.1632706561776091
+      ],
+      "projection_mean": 0.03661595019529142,
+      "projection_sd": 0.41082700771509273,
+      "p": 0.0005998800239952009,
+      "fitted_density_modes": 2,
+      "valley_depth": 0.010475526458950446,
+      "energy_translation": 0.6085377517016093,
+      "energy_rotation": 0.3913421652890304,
+      "energy_gripper": 0.0001200830093605198,
+      "q": 0.0011997600479904018,
+      "detected": false
+    },
+    {
+      "uid": "close_drawer:267:1",
+      "group": "rotation",
+      "offset": -4,
+      "t": 263,
+      "delta_bic": -10.764758921950573,
+      "sep": 1.7589067993346392,
+      "min_weight": 0.10763192064616847,
+      "component_weights": [
+        0.10763192064616847,
+        0.8923680793538316
+      ],
+      "component_means_on_center_axis": [
+        0.7635407431830629,
+        1.9196095296721944
+      ],
+      "projection_mean": 1.7951796257832844,
+      "projection_sd": 0.7485751041815277,
+      "p": 0.6302739452109578,
+      "fitted_density_modes": 1,
+      "valley_depth": 0.0,
+      "energy_translation": 0.026218960897181523,
+      "energy_rotation": 0.9737393441265957,
+      "energy_gripper": 4.1694976222751255e-05,
+      "q": 0.6456464804600055,
+      "detected": false
+    },
+    {
+      "uid": "close_drawer:267:1",
+      "group": "rotation",
+      "offset": -2,
+      "t": 265,
+      "delta_bic": 14.03921750722401,
+      "sep": 4.046924619919384,
+      "min_weight": 0.2072602313333866,
+      "component_weights": [
+        0.7927397686666133,
+        0.2072602313333866
+      ],
+      "component_means_on_center_axis": [
+        -0.7040894280618616,
+        1.115011799785055
+      ],
+      "projection_mean": -0.3270620867594618,
+      "projection_sd": 0.8635701745283171,
+      "p": 0.0001999600079984003,
+      "fitted_density_modes": 2,
+      "valley_depth": 0.7925978377734104,
+      "energy_translation": 0.11411526137714034,
+      "energy_rotation": 0.8858639172026235,
+      "energy_gripper": 2.0821420236109853e-05,
+      "q": 0.00044201685978593753,
+      "detected": true
+    },
+    {
+      "uid": "close_drawer:267:1",
+      "group": "rotation",
+      "offset": -1,
+      "t": 266,
+      "delta_bic": 22.59936788055157,
+      "sep": 3.1203742119611446,
+      "min_weight": 0.09446193346134998,
+      "component_weights": [
+        0.9055380665386501,
+        0.09446193346134998
+      ],
+      "component_means_on_center_axis": [
+        -0.9249206083061431,
+        0.26790341360918046
+      ],
+      "projection_mean": -0.8122441449168778,
+      "projection_sd": 0.5175299120138381,
+      "p": 0.0001999600079984003,
+      "fitted_density_modes": 1,
+      "valley_depth": 0.0,
+      "energy_translation": 0.12055110345454946,
+      "energy_rotation": 0.7821763878979965,
+      "energy_gripper": 0.09727250864745396,
+      "q": 0.00044201685978593753,
+      "detected": false
+    },
+    {
+      "uid": "close_drawer:267:1",
+      "group": "rotation",
+      "offset": 0,
+      "t": 267,
+      "delta_bic": 16.245011356210625,
+      "sep": 3.0343390877145175,
+      "min_weight": 0.40016566871370274,
+      "component_weights": [
+        0.5998343312862972,
+        0.40016566871370274
+      ],
+      "component_means_on_center_axis": [
+        -0.46268564031430787,
+        1.7314142072642134
+      ],
+      "projection_mean": 0.4153177924165842,
+      "projection_sd": 1.2955292840763055,
+      "p": 0.0001999600079984003,
+      "fitted_density_modes": 2,
+      "valley_depth": 0.30230668696064933,
+      "energy_translation": 0.009055629554370006,
+      "energy_rotation": 0.9909070891866504,
+      "energy_gripper": 3.728125897954016e-05,
+      "q": 0.00044201685978593753,
+      "detected": true
+    },
+    {
+      "uid": "close_drawer:267:1",
+      "group": "rotation",
+      "offset": 1,
+      "t": 268,
+      "delta_bic": 13.026597628694589,
+      "sep": 3.604767747951311,
+      "min_weight": 0.3847312144325658,
+      "component_weights": [
+        0.3847312144325658,
+        0.6152687855674341
+      ],
+      "component_means_on_center_axis": [
+        -0.6593957297993098,
+        1.2453735968341624
+      ],
+      "projection_mean": 0.5125493805845657,
+      "projection_sd": 1.066789230793939,
+      "p": 0.0001999600079984003,
+      "fitted_density_modes": 2,
+      "valley_depth": 0.7482444602481966,
+      "energy_translation": 0.02117653068736091,
+      "energy_rotation": 0.9782304941382906,
+      "energy_gripper": 0.0005929751743485879,
+      "q": 0.00044201685978593753,
+      "detected": true
+    },
+    {
+      "uid": "close_drawer:267:1",
+      "group": "rotation",
+      "offset": 2,
+      "t": 269,
+      "delta_bic": 4.795722931409671,
+      "sep": 3.531635696200978,
+      "min_weight": 0.3352307864901542,
+      "component_weights": [
+        0.3352307864901542,
+        0.6647692135098464
+      ],
+      "component_means_on_center_axis": [
+        -0.64431554120128,
+        1.3377165047548767
+      ],
+      "projection_mean": 0.6732783431403058,
+      "projection_sd": 1.0910682461747374,
+      "p": 0.002599480103979204,
+      "fitted_density_modes": 2,
+      "valley_depth": 0.5527494929323572,
+      "energy_translation": 0.04153405725512227,
+      "energy_rotation": 0.958350570502873,
+      "energy_gripper": 0.00011537224200477815,
+      "q": 0.004746876711614199,
+      "detected": false
+    },
+    {
+      "uid": "close_drawer:267:1",
+      "group": "rotation",
+      "offset": 4,
+      "t": 271,
+      "delta_bic": -4.632739895588031,
+      "sep": 1.9610279986195316,
+      "min_weight": 0.43029095764968855,
+      "component_weights": [
+        0.5697090423503116,
+        0.43029095764968855
+      ],
+      "component_means_on_center_axis": [
+        0.40657022400263165,
+        1.1159979605172312
+      ],
+      "projection_mean": 0.7118305641307494,
+      "projection_sd": 0.5042309784187834,
+      "p": 0.10537892421515697,
+      "fitted_density_modes": 2,
+      "valley_depth": 0.0010597749568782566,
+      "energy_translation": 0.4030719720127482,
+      "energy_rotation": 0.5968702343825729,
+      "energy_gripper": 5.779360467895446e-05,
+      "q": 0.14277144571085784,
+      "detected": false
+    },
+    {
+      "uid": "close_drawer:385:0",
+      "group": "arm",
+      "offset": -4,
+      "t": 381,
+      "delta_bic": -8.035487135461977,
+      "sep": 2.6917189650317486,
+      "min_weight": 0.48511309724790386,
+      "component_weights": [
+        0.5148869027520963,
+        0.48511309724790386
+      ],
+      "component_means_on_center_axis": [
+        -1.0839592981845418,
+        -0.14169402163093064
+      ],
+      "projection_mean": -0.6268540714464672,
+      "projection_sd": 0.5867808395497156,
+      "p": 0.29674065186962606,
+      "fitted_density_modes": 2,
+      "valley_depth": 0.20846321415070446,
+      "energy_translation": 0.22343780864911722,
+      "energy_rotation": 0.7765249559008928,
+      "energy_gripper": 3.723544999012806e-05,
+      "q": 0.3461974271812304,
+      "detected": false
+    },
+    {
+      "uid": "close_drawer:385:0",
+      "group": "arm",
+      "offset": -2,
+      "t": 383,
+      "delta_bic": -6.746542024401769,
+      "sep": 1.7140525799769217,
+      "min_weight": 0.2678898055712465,
+      "component_weights": [
+        0.7321101944287534,
+        0.2678898055712465
+      ],
+      "component_means_on_center_axis": [
+        0.01250831809014363,
+        0.4211025214015067
+      ],
+      "projection_mean": 0.12196653977276298,
+      "projection_sd": 0.2992782281618451,
+      "p": 0.20375924815036991,
+      "fitted_density_modes": 2,
+      "valley_depth": 0.09507964604697028,
+      "energy_translation": 0.08930222635621363,
+      "energy_rotation": 0.9106101173809725,
+      "energy_gripper": 8.765626281380272e-05,
+      "q": 0.2593299521913799,
+      "detected": false
+    },
+    {
+      "uid": "close_drawer:385:0",
+      "group": "arm",
+      "offset": -1,
+      "t": 384,
+      "delta_bic": 10.636525400152351,
+      "sep": 2.471057628496969,
+      "min_weight": 0.4728221801560766,
+      "component_weights": [
+        0.5271778198439234,
+        0.4728221801560766
+      ],
+      "component_means_on_center_axis": [
+        -0.7863705630963037,
+        0.08429546777744015
+      ],
+      "projection_mean": -0.3747003521907422,
+      "projection_sd": 0.5595554092506314,
+      "p": 0.0001999600079984003,
+      "fitted_density_modes": 2,
+      "valley_depth": 0.27825314566307313,
+      "energy_translation": 0.3664504339474583,
+      "energy_rotation": 0.6253323740867578,
+      "energy_gripper": 0.008217191965784054,
+      "q": 0.00044201685978593753,
+      "detected": true
+    },
+    {
+      "uid": "close_drawer:385:0",
+      "group": "arm",
+      "offset": 0,
+      "t": 385,
+      "delta_bic": 33.03127405658596,
+      "sep": 3.8209702197340762,
+      "min_weight": 0.24194959170509628,
+      "component_weights": [
+        0.24194959170509628,
+        0.7580504082949038
+      ],
+      "component_means_on_center_axis": [
+        -0.7712993377030165,
+        0.09323038183281462
+      ],
+      "projection_mean": -0.1159422308258012,
+      "projection_sd": 0.43390781313148624,
+      "p": 0.0001999600079984003,
+      "fitted_density_modes": 2,
+      "valley_depth": 0.3584777599139992,
+      "energy_translation": 0.5112922629317951,
+      "energy_rotation": 0.4886269856678632,
+      "energy_gripper": 8.07514003416949e-05,
+      "q": 0.00044201685978593753,
+      "detected": true
+    },
+    {
+      "uid": "close_drawer:385:0",
+      "group": "arm",
+      "offset": 1,
+      "t": 386,
+      "delta_bic": -3.731716003928895,
+      "sep": 1.8388973675372327,
+      "min_weight": 0.1412929426737496,
+      "component_weights": [
+        0.8587070573262504,
+        0.1412929426737496
+      ],
+      "component_means_on_center_axis": [
+        -0.6990255444459827,
+        0.18776315490716908
+      ],
+      "projection_mean": -0.5737285595845489,
+      "projection_sd": 0.5726843993486421,
+      "p": 0.08278344331133773,
+      "fitted_density_modes": 2,
+      "valley_depth": 0.5378190914456284,
+      "energy_translation": 0.5150615858303271,
+      "energy_rotation": 0.4848552022759799,
+      "energy_gripper": 8.321189369288687e-05,
+      "q": 0.119893262726765,
+      "detected": false
+    },
+    {
+      "uid": "close_drawer:385:0",
+      "group": "arm",
+      "offset": 2,
+      "t": 387,
+      "delta_bic": -1.591807663808524,
+      "sep": 3.0549291884132357,
+      "min_weight": 0.3957644441033846,
+      "component_weights": [
+        0.6042355558966154,
+        0.3957644441033846
+      ],
+      "component_means_on_center_axis": [
+        -1.4570974427084846,
+        -0.48233853430224954
+      ],
+      "projection_mean": -1.0713225251882685,
+      "projection_sd": 0.5736075725261652,
+      "p": 0.03819236152769446,
+      "fitted_density_modes": 2,
+      "valley_depth": 0.2103798819412772,
+      "energy_translation": 0.4648503934040171,
+      "energy_rotation": 0.5351229445329506,
+      "energy_gripper": 2.6662063032285635e-05,
+      "q": 0.06169535323704489,
+      "detected": false
+    },
+    {
+      "uid": "close_drawer:385:0",
+      "group": "arm",
+      "offset": 4,
+      "t": 389,
+      "delta_bic": -4.479831309548032,
+      "sep": 1.9222830464286684,
+      "min_weight": 0.29780744312159685,
+      "component_weights": [
+        0.29780744312159685,
+        0.7021925568784032
+      ],
+      "component_means_on_center_axis": [
+        -1.3056161606067873,
+        -0.5620442176716816
+      ],
+      "projection_mean": -0.7834854767741436,
+      "projection_sd": 0.5150230486931664,
+      "p": 0.10057988402319536,
+      "fitted_density_modes": 2,
+      "valley_depth": 0.17295936541167933,
+      "energy_translation": 0.39452087056151586,
+      "energy_rotation": 0.6054744025021909,
+      "energy_gripper": 4.72693629323133e-06,
+      "q": 0.14081183763247349,
+      "detected": false
+    },
+    {
+      "uid": "close_drawer:440:4",
+      "group": "rotation",
+      "offset": -4,
+      "t": 436,
+      "delta_bic": -5.9194577388540495,
+      "sep": 0.39376888050365555,
+      "min_weight": 0.26364272412498035,
+      "component_weights": [
+        0.26364272412498035,
+        0.7363572758750195
+      ],
+      "component_means_on_center_axis": [
+        0.5737840423351016,
+        0.6705979119296772
+      ],
+      "projection_mean": 0.6450736396166823,
+      "projection_sd": 0.24953770897020838,
+      "p": 0.16176764647070585,
+      "fitted_density_modes": 1,
+      "valley_depth": 0.0,
+      "energy_translation": 0.5654395207059741,
+      "energy_rotation": 0.4345318678245582,
+      "energy_gripper": 2.8611469467632437e-05,
+      "q": 0.21232003599280141,
+      "detected": false
+    },
+    {
+      "uid": "close_drawer:440:4",
+      "group": "rotation",
+      "offset": -2,
+      "t": 438,
+      "delta_bic": 17.666931929892606,
+      "sep": 1.6063140036855026,
+      "min_weight": 0.20581989812575335,
+      "component_weights": [
+        0.20581989812575335,
+        0.7941801018742468
+      ],
+      "component_means_on_center_axis": [
+        0.08732580304414593,
+        0.6644449201036913
+      ],
+      "projection_mean": 0.5456623222240711,
+      "projection_sd": 0.42839898889117717,
+      "p": 0.0001999600079984003,
+      "fitted_density_modes": 1,
+      "valley_depth": 0.0,
+      "energy_translation": 0.32762822751272963,
+      "energy_rotation": 0.6722261709125356,
+      "energy_gripper": 0.0001456015747347706,
+      "q": 0.00044201685978593753,
+      "detected": false
+    },
+    {
+      "uid": "close_drawer:440:4",
+      "group": "rotation",
+      "offset": -1,
+      "t": 439,
+      "delta_bic": -8.300034962412909,
+      "sep": 0.14931326569234055,
+      "min_weight": 0.2139870637085897,
+      "component_weights": [
+        0.7860129362914102,
+        0.2139870637085897
+      ],
+      "component_means_on_center_axis": [
+        0.7186247665756471,
+        0.7646219206191678
+      ],
+      "projection_mean": 0.7284675625083715,
+      "projection_sd": 0.3086350992875859,
+      "p": 0.3187362527494501,
+      "fitted_density_modes": 1,
+      "valley_depth": 0.0,
+      "energy_translation": 0.40920873016598625,
+      "energy_rotation": 0.5895944482590897,
+      "energy_gripper": 0.0011968215749238128,
+      "q": 0.36180871933721365,
+      "detected": false
+    },
+    {
+      "uid": "close_drawer:440:4",
+      "group": "rotation",
+      "offset": 0,
+      "t": 440,
+      "delta_bic": 12.537364421267654,
+      "sep": 2.0921578289803184,
+      "min_weight": 0.3567060196411323,
+      "component_weights": [
+        0.3567060196411323,
+        0.6432939803588676
+      ],
+      "component_means_on_center_axis": [
+        -0.4258018638827814,
+        0.3220159003703455
+      ],
+      "projection_mean": 0.05526480226668192,
+      "projection_sd": 0.5060507341226907,
+      "p": 0.0001999600079984003,
+      "fitted_density_modes": 1,
+      "valley_depth": 0.0,
+      "energy_translation": 0.10706889222877797,
+      "energy_rotation": 0.8891583036285539,
+      "energy_gripper": 0.0037728041426681926,
+      "q": 0.00044201685978593753,
+      "detected": true
+    },
+    {
+      "uid": "close_drawer:440:4",
+      "group": "rotation",
+      "offset": 1,
+      "t": 441,
+      "delta_bic": -9.835594960160954,
+      "sep": 1.3575861968381875,
+      "min_weight": 0.39450331935374094,
+      "component_weights": [
+        0.39450331935374094,
+        0.605496680646259
+      ],
+      "component_means_on_center_axis": [
+        0.22872548731338083,
+        0.44753484438497254
+      ],
+      "projection_mean": 0.3612138267145717,
+      "projection_sd": 0.19342699996523174,
+      "p": 0.48930213957208557,
+      "fitted_density_modes": 1,
+      "valley_depth": 0.0,
+      "energy_translation": 0.21035251485003667,
+      "energy_rotation": 0.7895357950075328,
+      "energy_gripper": 0.00011169014243073232,
+      "q": 0.5137672465506898,
+      "detected": false
+    },
+    {
+      "uid": "close_drawer:440:4",
+      "group": "rotation",
+      "offset": 2,
+      "t": 442,
+      "delta_bic": -6.910907164273631,
+      "sep": 0.523293071594889,
+      "min_weight": 0.43324154316291175,
+      "component_weights": [
+        0.43324154316291175,
+        0.5667584568370881
+      ],
+      "component_means_on_center_axis": [
+        0.7666630719791035,
+        0.9120187640386472
+      ],
+      "projection_mean": 0.8490446397032575,
+      "projection_sd": 0.2869576467365624,
+      "p": 0.21335732853429315,
+      "fitted_density_modes": 1,
+      "valley_depth": 0.0,
+      "energy_translation": 0.13134242590696368,
+      "energy_rotation": 0.8684951326873032,
+      "energy_gripper": 0.0001624414057331086,
+      "q": 0.2635590528953033,
+      "detected": false
+    },
+    {
+      "uid": "close_drawer:440:4",
+      "group": "rotation",
+      "offset": 4,
+      "t": 444,
+      "delta_bic": -7.842081259927433,
+      "sep": 0.4122316811262849,
+      "min_weight": 0.4157819731251763,
+      "component_weights": [
+        0.4157819731251763,
+        0.5842180268748238
+      ],
+      "component_means_on_center_axis": [
+        0.5853683361926967,
+        0.6611907107456741
+      ],
+      "projection_mean": 0.629665134247001,
+      "projection_sd": 0.18768927434260385,
+      "p": 0.28054389122175566,
+      "fitted_density_modes": 1,
+      "valley_depth": 0.0,
+      "energy_translation": 0.46287592009596434,
+      "energy_rotation": 0.5368903958444425,
+      "energy_gripper": 0.00023368405959317556,
+      "q": 0.3366526694661068,
+      "detected": false
+    },
+    {
+      "uid": "eggplant_basket:73:3",
+      "group": "arm",
+      "offset": -4,
+      "t": 69,
+      "delta_bic": 0.571317858077677,
+      "sep": 2.2693585294780716,
+      "min_weight": 0.4690093060814397,
+      "component_weights": [
+        0.5309906939185602,
+        0.4690093060814397
+      ],
+      "component_means_on_center_axis": [
+        -0.3507617734797869,
+        0.44987323919094047
+      ],
+      "projection_mean": 0.024743498237415708,
+      "projection_sd": 0.5330177802820397,
+      "p": 0.016996600679864027,
+      "fitted_density_modes": 2,
+      "valley_depth": 0.0899123907283399,
+      "energy_translation": 0.7638480171731591,
+      "energy_rotation": 0.12720660299504638,
+      "energy_gripper": 0.10894537983179449,
+      "q": 0.029744051189762047,
+      "detected": false
+    },
+    {
+      "uid": "eggplant_basket:73:3",
+      "group": "arm",
+      "offset": -2,
+      "t": 71,
+      "delta_bic": 6.0255675578482055,
+      "sep": 2.0854511937945492,
+      "min_weight": 0.4227377968350022,
+      "component_weights": [
+        0.5772622031649979,
+        0.4227377968350022
+      ],
+      "component_means_on_center_axis": [
+        -0.23680593594602556,
+        0.5820547923362219
+      ],
+      "projection_mean": 0.10935744424271712,
+      "projection_sd": 0.5637443269890251,
+      "p": 0.0009998000399920016,
+      "fitted_density_modes": 2,
+      "valley_depth": 0.17960665585276414,
+      "energy_translation": 0.698188725696627,
+      "energy_rotation": 0.08683558295915009,
+      "energy_gripper": 0.2149756913442229,
+      "q": 0.0019087091672574574,
+      "detected": false
+    },
+    {
+      "uid": "eggplant_basket:73:3",
+      "group": "arm",
+      "offset": -1,
+      "t": 72,
+      "delta_bic": -1.3559307651285053,
+      "sep": 1.8850287430340908,
+      "min_weight": 0.3363222596737425,
+      "component_weights": [
+        0.6636777403262576,
+        0.3363222596737425
+      ],
+      "component_means_on_center_axis": [
+        -0.10981684123937076,
+        0.5914720985681478
+      ],
+      "projection_mean": 0.1260422396808971,
+      "projection_sd": 0.4981795352169952,
+      "p": 0.03479304139172166,
+      "fitted_density_modes": 2,
+      "valley_depth": 0.14887990047035982,
+      "energy_translation": 0.7235805653838581,
+      "energy_rotation": 0.1113367414619082,
+      "energy_gripper": 0.1650826931542338,
+      "q": 0.058452309538092384,
+      "detected": false
+    },
+    {
+      "uid": "eggplant_basket:73:3",
+      "group": "arm",
+      "offset": 0,
+      "t": 73,
+      "delta_bic": 13.810231430763622,
+      "sep": 2.3206712608603244,
+      "min_weight": 0.4808092956052092,
+      "component_weights": [
+        0.4808092956052092,
+        0.5191907043947908
+      ],
+      "component_means_on_center_axis": [
+        -0.30545473322486727,
+        0.4986738167507318
+      ],
+      "projection_mean": 0.11204133506092578,
+      "projection_sd": 0.5305511817311709,
+      "p": 0.0001999600079984003,
+      "fitted_density_modes": 2,
+      "valley_depth": 0.178153865946305,
+      "energy_translation": 0.8097659652038687,
+      "energy_rotation": 0.1193289900995774,
+      "energy_gripper": 0.07090504469655379,
+      "q": 0.00044201685978593753,
+      "detected": true
+    },
+    {
+      "uid": "eggplant_basket:73:3",
+      "group": "arm",
+      "offset": 1,
+      "t": 74,
+      "delta_bic": 9.404930715481584,
+      "sep": 2.9656531384268416,
+      "min_weight": 0.3429729663019972,
+      "component_weights": [
+        0.3429729663019972,
+        0.6570270336980031
+      ],
+      "component_means_on_center_axis": [
+        -0.46123405446287113,
+        0.47508583382032954
+      ],
+      "projection_mean": 0.1539534243282858,
+      "projection_sd": 0.5451940771433411,
+      "p": 0.0003999200159968006,
+      "fitted_density_modes": 2,
+      "valley_depth": 0.12914483944308075,
+      "energy_translation": 0.7548315156547051,
+      "energy_rotation": 0.10340409619771977,
+      "energy_gripper": 0.14176438814757528,
+      "q": 0.0008398320335932814,
+      "detected": false
+    },
+    {
+      "uid": "eggplant_basket:73:3",
+      "group": "arm",
+      "offset": 2,
+      "t": 75,
+      "delta_bic": 20.404062669853516,
+      "sep": 2.455853959953843,
+      "min_weight": 0.4672175468273621,
+      "component_weights": [
+        0.5327824531726378,
+        0.4672175468273621
+      ],
+      "component_means_on_center_axis": [
+        -0.3006909173097345,
+        0.6266054418516319
+      ],
+      "projection_mean": 0.1325582127995836,
+      "projection_sd": 0.5971740177792648,
+      "p": 0.0001999600079984003,
+      "fitted_density_modes": 2,
+      "valley_depth": 0.3676964857731805,
+      "energy_translation": 0.7567586415994516,
+      "energy_rotation": 0.10784515723278584,
+      "energy_gripper": 0.13539620116776252,
+      "q": 0.00044201685978593753,
+      "detected": true
+    },
+    {
+      "uid": "eggplant_basket:73:3",
+      "group": "arm",
+      "offset": 4,
+      "t": 77,
+      "delta_bic": -11.6120664349082,
+      "sep": 1.934284490929066,
+      "min_weight": 0.19449409021080738,
+      "component_weights": [
+        0.19449409021080738,
+        0.8055059097891925
+      ],
+      "component_means_on_center_axis": [
+        -0.17251160583737335,
+        0.0178392008148439
+      ],
+      "projection_mean": -0.019182906145872397,
+      "projection_sd": 0.12393894818190188,
+      "p": 0.7820435912817436,
+      "fitted_density_modes": 1,
+      "valley_depth": 0.0,
+      "energy_translation": 0.13398315401356217,
+      "energy_rotation": 0.8305737046293065,
+      "energy_gripper": 0.03544314135713139,
+      "q": 0.7820435912817436,
+      "detected": false
+    },
+    {
+      "uid": "eggplant_basket:148:1",
+      "group": "gripper",
+      "offset": -4,
+      "t": 144,
+      "delta_bic": 155.21556839905415,
+      "sep": 1.8056391181281304,
+      "min_weight": 0.44108895834866235,
+      "component_weights": [
+        0.44108895834866235,
+        0.5589110416513378
+      ],
+      "component_means_on_center_axis": [
+        2.5405997857826197,
+        3.3392294662529722
+      ],
+      "projection_mean": 2.986962732387979,
+      "projection_sd": 0.5939926732193339,
+      "p": 0.0001999600079984003,
+      "fitted_density_modes": 2,
+      "valley_depth": 0.43664685736927067,
+      "energy_translation": 0.026130900183621148,
+      "energy_rotation": 0.015966590077808103,
+      "energy_gripper": 0.9579025097385707,
+      "q": 0.00044201685978593753,
+      "detected": false
+    },
+    {
+      "uid": "eggplant_basket:148:1",
+      "group": "gripper",
+      "offset": -2,
+      "t": 146,
+      "delta_bic": 192.4663495072087,
+      "sep": 1.9745653488601145,
+      "min_weight": 0.35908158203985285,
+      "component_weights": [
+        0.35908158203985285,
+        0.6409184179601471
+      ],
+      "component_means_on_center_axis": [
+        2.7544175562476063,
+        3.3377959951052154
+      ],
+      "projection_mean": 3.1283155423522855,
+      "projection_sd": 0.40693252647592704,
+      "p": 0.0001999600079984003,
+      "fitted_density_modes": 2,
+      "valley_depth": 0.4310659779419135,
+      "energy_translation": 0.03466590579533384,
+      "energy_rotation": 0.02488653696643874,
+      "energy_gripper": 0.9404475572382274,
+      "q": 0.00044201685978593753,
+      "detected": false
+    },
+    {
+      "uid": "eggplant_basket:148:1",
+      "group": "gripper",
+      "offset": -1,
+      "t": 147,
+      "delta_bic": 297.8765721253884,
+      "sep": 1.889555071639513,
+      "min_weight": 0.22168820127091338,
+      "component_weights": [
+        0.7783117987290866,
+        0.22168820127091338
+      ],
+      "component_means_on_center_axis": [
+        -2.270559776803841,
+        -0.6892270028529499
+      ],
+      "projection_mean": -1.9199969585359238,
+      "projection_sd": 1.0634932954635876,
+      "p": 0.0001999600079984003,
+      "fitted_density_modes": 2,
+      "valley_depth": 0.2716869678246717,
+      "energy_translation": 0.08676218590856995,
+      "energy_rotation": 0.014672371768452343,
+      "energy_gripper": 0.8985654423229776,
+      "q": 0.00044201685978593753,
+      "detected": false
+    },
+    {
+      "uid": "eggplant_basket:148:1",
+      "group": "gripper",
+      "offset": 0,
+      "t": 148,
+      "delta_bic": 27.049400059114305,
+      "sep": 3.69228643784299,
+      "min_weight": 0.4499951694089735,
+      "component_weights": [
+        0.4499951694089735,
+        0.5500048305910268
+      ],
+      "component_means_on_center_axis": [
+        -1.8396038475916006,
+        1.9025302650265612
+      ],
+      "projection_mean": 0.21858799106785332,
+      "projection_sd": 2.1196838178184128,
+      "p": 0.0001999600079984003,
+      "fitted_density_modes": 2,
+      "valley_depth": 0.7729258996929,
+      "energy_translation": 0.11461939592122398,
+      "energy_rotation": 0.027266032914319147,
+      "energy_gripper": 0.8581145711644569,
+      "q": 0.00044201685978593753,
+      "detected": true
+    },
+    {
+      "uid": "eggplant_basket:148:1",
+      "group": "gripper",
+      "offset": 1,
+      "t": 149,
+      "delta_bic": 223.99297232562898,
+      "sep": 27.369814316749647,
+      "min_weight": 0.109375,
+      "component_weights": [
+        0.109375,
+        0.890625
+      ],
+      "component_means_on_center_axis": [
+        2.8744789851004846,
+        3.3311071160069816
+      ],
+      "projection_mean": 3.2811634141890824,
+      "projection_sd": 0.14349100914846644,
+      "p": 0.0001999600079984003,
+      "fitted_density_modes": 2,
+      "valley_depth": 1.0,
+      "energy_translation": 0.03393990253775583,
+      "energy_rotation": 0.02711290303411539,
+      "energy_gripper": 0.9389471944281288,
+      "q": 0.00044201685978593753,
+      "detected": false
+    },
+    {
+      "uid": "eggplant_basket:148:1",
+      "group": "gripper",
+      "offset": 2,
+      "t": 150,
+      "delta_bic": 164.00571927318273,
+      "sep": 32.62480400119153,
+      "min_weight": 0.015625,
+      "component_weights": [
+        0.015625,
+        0.984375
+      ],
+      "component_means_on_center_axis": [
+        2.8864142190685604,
+        3.328709351226705
+      ],
+      "projection_mean": 3.3217984897867328,
+      "projection_sd": 0.0565033033055537,
+      "p": 0.0001999600079984003,
+      "fitted_density_modes": 2,
+      "valley_depth": 1.0,
+      "energy_translation": 0.07863580336297579,
+      "energy_rotation": 0.07077642354995191,
+      "energy_gripper": 0.8505877730870722,
+      "q": 0.00044201685978593753,
+      "detected": false
+    },
+    {
+      "uid": "eggplant_basket:148:1",
+      "group": "gripper",
+      "offset": 4,
+      "t": 152,
+      "delta_bic": 204.39518707076223,
+      "sep": 45.59274000425118,
+      "min_weight": 0.015625,
+      "component_weights": [
+        0.015625,
+        0.984375
+      ],
+      "component_means_on_center_axis": [
+        2.7631339421587873,
+        3.3342290517135815
+      ],
+      "projection_mean": 3.325305690626788,
+      "projection_sd": 0.07192552811177072,
+      "p": 0.0001999600079984003,
+      "fitted_density_modes": 2,
+      "valley_depth": 1.0,
+      "energy_translation": 0.09848716613141106,
+      "energy_rotation": 0.2023108233552626,
+      "energy_gripper": 0.6992020105133263,
+      "q": 0.00044201685978593753,
+      "detected": false
+    }
+  ]
+}

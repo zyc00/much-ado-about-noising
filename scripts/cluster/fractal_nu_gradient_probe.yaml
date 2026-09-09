@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: yuchen-fr-nu-gradient-0908
+  labels: {app: fractal-nu-gradient-probe, owner: yuchen}
+spec:
+  restartPolicy: Never
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: aihc.baidu.com/dedicated-pool
+                operator: DoesNotExist
+  containers:
+    - name: main
+      image: zyc00/easypod:latest
+      command: [bash, -lc]
+      args:
+        - |
+          set -euo pipefail
+          cd /mnt/pfs/yuchen/groot/Isaac-GR00T
+          export HF_HOME=/mnt/pfs/yuchen/hf_home HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1
+          export PYTHONUNBUFFERED=1 OMP_NUM_THREADS=4 NO_ALBUMENTATIONS_UPDATE=1
+          probe_dir=/mnt/pfs/yuchen/fractal_nu_gradient_20260908
+          .venv/bin/python "$probe_dir/code/probe_nu_gradient_switch.py" --output "$probe_dir/results" --prepare-only
+          CUDA_VISIBLE_DEVICES=0 .venv/bin/python "$probe_dir/code/probe_nu_gradient_switch.py" \
+            --output "$probe_dir/results" --rank 0 --world-size 2 > "$probe_dir/rank0.log" 2>&1 &
+          probe_pid0=$!
+          CUDA_VISIBLE_DEVICES=1 .venv/bin/python "$probe_dir/code/probe_nu_gradient_switch.py" \
+            --output "$probe_dir/results" --rank 1 --world-size 2 > "$probe_dir/rank1.log" 2>&1 &
+          probe_pid1=$!
+          wait "$probe_pid0"
+          wait "$probe_pid1"
+          echo NU_GRADIENT_PROBE_DONE
+      resources:
+        requests: {cpu: '16', memory: 160Gi, nvidia.com/gpu: '2'}
+        limits: {cpu: '16', memory: 160Gi, nvidia.com/gpu: '2'}
+      volumeMounts:
+        - {name: pfs, mountPath: /mnt/pfs}
+        - {name: dshm, mountPath: /dev/shm}
+  volumes:
+    - name: pfs
+      persistentVolumeClaim: {claimName: main-pfs-pvc}
+    - name: dshm
+      emptyDir: {medium: Memory, sizeLimit: 12Gi}

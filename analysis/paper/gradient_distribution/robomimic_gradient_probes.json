@@ -1,0 +1,209 @@
+{
+  "protocol": "matched Flow-residual bins; continuous action channels only",
+  "tasks": {
+    "Tool-Hang": {
+      "bins": [
+        "<0.5x",
+        "0.5-1x",
+        "1-2x",
+        "2-4x",
+        ">4x"
+      ],
+      "sample_percent": [
+        36.71875,
+        48.6328125,
+        9.27734375,
+        4.78515625,
+        0.5859375
+      ],
+      "mse_gradient_percent": [
+        6.572933673858643,
+        22.13572883605957,
+        18.20479965209961,
+        38.9899787902832,
+        14.096549987792969
+      ],
+      "flow_gradient_percent": [
+        31.920198440551758,
+        48.67976379394531,
+        12.458152770996094,
+        6.276690483093262,
+        0.665193498134613
+      ],
+      "ht_gradient_percent": [
+        21.37809944152832,
+        54.889991760253906,
+        17.23662757873535,
+        6.153536319732666,
+        0.3417469561100006
+      ],
+      "top1_residual_gradient_percent": {
+        "MSE": 20.80982208251953,
+        "Flow": 1.0612162351608276,
+        "HT": 0.7643045783042908
+      },
+      "task_config": "tool_hang_ph_state_delta_legacy",
+      "checkpoint": "/home/jigu/.cache/huggingface/hub/models--ChaoyiPan--mip-checkpoints/snapshots/126fc8515dfb2da9b60c596778969bf764111d98/robomimic/tool_hang_ph_state/delta_legacy/flow_chiunet_256_seed1_success92.pt",
+      "n_samples": 1024,
+      "flow_draws": 8,
+      "flow_inference_steps": 9,
+      "continuous_dimensions": 144,
+      "gripper_excluded": true,
+      "pooled_rms": 0.031149623915553093,
+      "nu": 288.0
+    },
+    "Transport-MH": {
+      "bins": [
+        "<0.5x",
+        "0.5-1x",
+        "1-2x",
+        "2-4x",
+        ">4x"
+      ],
+      "sample_percent": [
+        0.0,
+        54.1015625,
+        45.8984375,
+        0.0,
+        0.0
+      ],
+      "mse_gradient_percent": [
+        0.0,
+        50.456268310546875,
+        49.543739318847656,
+        0.0,
+        0.0
+      ],
+      "flow_gradient_percent": [
+        0.0,
+        52.72248840332031,
+        47.27751922607422,
+        0.0,
+        0.0
+      ],
+      "ht_gradient_percent": [
+        0.0,
+        52.8995475769043,
+        47.1004524230957,
+        0.0,
+        0.0
+      ],
+      "top1_residual_gradient_percent": {
+        "MSE": 1.3866386413574219,
+        "Flow": 1.2207378149032593,
+        "HT": 1.155495524406433
+      },
+      "task_config": "transport_mh_state_delta_legacy",
+      "checkpoint": "/home/jigu/projects/much-ado-about-noising-old/checkpoints/transport_mh_state_flow_chiunet_256_seed2_success55.pt",
+      "n_samples": 1024,
+      "flow_draws": 8,
+      "flow_inference_steps": 9,
+      "continuous_dimensions": 288,
+      "gripper_excluded": true,
+      "pooled_rms": 0.7285321950912476,
+      "nu": 576.0
+    },
+    "Transport-PH": {
+      "bins": [
+        "<0.5x",
+        "0.5-1x",
+        "1-2x",
+        "2-4x",
+        ">4x"
+      ],
+      "sample_percent": [
+        0.0,
+        55.6640625,
+        44.3359375,
+        0.0,
+        0.0
+      ],
+      "mse_gradient_percent": [
+        0.0,
+        51.779022216796875,
+        48.22098922729492,
+        0.0,
+        0.0
+      ],
+      "flow_gradient_percent": [
+        0.0,
+        53.34804153442383,
+        46.65195846557617,
+        0.0,
+        0.0
+      ],
+      "ht_gradient_percent": [
+        0.0,
+        54.40314865112305,
+        45.59685134887695,
+        0.0,
+        0.0
+      ],
+      "top1_residual_gradient_percent": {
+        "MSE": 1.4154093265533447,
+        "Flow": 1.1969789266586304,
+        "HT": 1.1607061624526978
+      },
+      "task_config": "transport_ph_state_delta_legacy",
+      "checkpoint": "/home/jigu/projects/much-ado-about-noising-old/checkpoints/transport_ph_state_flow_chiunet_256_seed0_success75.pt",
+      "n_samples": 1024,
+      "flow_draws": 8,
+      "flow_inference_steps": 9,
+      "continuous_dimensions": 288,
+      "gripper_excluded": true,
+      "pooled_rms": 0.7285524606704712,
+      "nu": 576.0
+    },
+    "Square-PH": {
+      "bins": [
+        "<0.5x",
+        "0.5-1x",
+        "1-2x",
+        "2-4x",
+        ">4x"
+      ],
+      "sample_percent": [
+        23.828125,
+        56.25,
+        15.8203125,
+        3.80859375,
+        0.29296875
+      ],
+      "mse_gradient_percent": [
+        4.06320858001709,
+        28.747194290161133,
+        29.468883514404297,
+        23.159440994262695,
+        14.561269760131836
+      ],
+      "flow_gradient_percent": [
+        17.713279724121094,
+        56.00015640258789,
+        19.59028434753418,
+        6.263282299041748,
+        0.43299955129623413
+      ],
+      "ht_gradient_percent": [
+        11.37789249420166,
+        58.4232063293457,
+        25.27037239074707,
+        4.816046714782715,
+        0.1124817356467247
+      ],
+      "top1_residual_gradient_percent": {
+        "MSE": 21.728364944458008,
+        "Flow": 1.0503199100494385,
+        "HT": 0.8893746137619019
+      },
+      "task_config": "square_ph_state_delta_legacy",
+      "checkpoint": "/home/jigu/.cache/huggingface/hub/models--ChaoyiPan--mip-checkpoints/snapshots/126fc8515dfb2da9b60c596778969bf764111d98/robomimic/square_ph_state/delta_legacy/flow_chiunet_256_seed3_success97.pt",
+      "n_samples": 1024,
+      "flow_draws": 8,
+      "flow_inference_steps": 9,
+      "continuous_dimensions": 144,
+      "gripper_excluded": true,
+      "pooled_rms": 0.03358013555407524,
+      "nu": 288.0
+    }
+  }
+}

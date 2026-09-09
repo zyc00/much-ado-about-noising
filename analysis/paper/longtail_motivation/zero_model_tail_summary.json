@@ -1,0 +1,71 @@
+{
+  "definition": "f(o)=0 in saved model-normalized action space; residual=-target",
+  "data": "analysis/paper/widowx_heterogeneous_scale/raw",
+  "states": 1728,
+  "coordinates": 82944,
+  "channels": "six continuous channels, gripper excluded, eight-step chunks",
+  "protocol": "v4 panel b: same five episode folds, coordinate RMS from other folds, pooled unit RMS; fixed zero location",
+  "v4_mse_reproduction": "passed",
+  "zero_model": {
+    "p_gt3": 0.013756269290123456,
+    "gauss_gt3": 0.0026997960632601866,
+    "excess": 5.0952994106939435,
+    "kurtosis": 1.9078796575693424,
+    "heldout_nll_gain": 0.05198119536685519,
+    "tailfit_nu": 300.0000000000001,
+    "tailfit_scale": 1.1800000000000002,
+    "tail_log_mse": 0.21806073059774242,
+    "tailfit_hits_upper_nu_bound": true,
+    "max_abs_z": 4.2219042540792024,
+    "tail_fractions": {
+      "1": 0.24136766975308643,
+      "2": 0.06418788580246913,
+      "3": 0.013756269290123456,
+      "4": 0.0008439429012345679,
+      "5": 0.0,
+      "6": 0.0
+    },
+    "mle_nu": 3.1622776601683795,
+    "mle_scale": 0.682470455928567,
+    "mle_search": "same v4 coarse grid: 23 nu values from 10**0.1 to 10**2.3",
+    "mle_nu_by_training_fold": [
+      3.1622776601683795,
+      3.1622776601683795,
+      3.1622776601683795,
+      3.1622776601683795,
+      3.1622776601683795
+    ],
+    "standardized_mean": 0.031832646385717464
+  },
+  "trained_mse": {
+    "p_gt3": 0.01644483024691358,
+    "gauss_gt3": 0.0026997960632601866,
+    "excess": 6.091137945825188,
+    "kurtosis": 3.6721899220603804,
+    "heldout_nll_gain": 0.08156187301930395,
+    "tailfit_nu": 5.716884785161099,
+    "tailfit_scale": 0.865,
+    "tail_log_mse": 0.015249584592854653,
+    "tailfit_hits_upper_nu_bound": false,
+    "max_abs_z": 8.609870481782188,
+    "tail_fractions": {
+      "1": 0.22956452546296297,
+      "2": 0.059497974537037035,
+      "3": 0.01644483024691358,
+      "4": 0.004207658179012345,
+      "5": 0.0011574074074074073,
+      "6": 0.0003255208333333333
+    },
+    "mle_nu": 3.1622776601683795,
+    "mle_scale": 0.655023753679739,
+    "mle_search": "same v4 coarse grid: 23 nu values from 10**0.1 to 10**2.3",
+    "mle_nu_by_training_fold": [
+      3.1622776601683795,
+      3.1622776601683795,
+      3.1622776601683795,
+      3.1622776601683795,
+      3.1622776601683795
+    ],
+    "standardized_mean": 0.00032924761672962794
+  }
+}

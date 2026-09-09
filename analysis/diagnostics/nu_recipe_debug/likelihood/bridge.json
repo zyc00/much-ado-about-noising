@@ -1,0 +1,3608 @@
+{
+  "dataset": "bridge",
+  "source": "/mnt/pfs/yuchen/ht_sigma_context_20260908/bridge/probe.npz",
+  "protocol": {
+    "dataset": "bridge",
+    "checkpoint": "/mnt/pfs/yuchen/groot/ft_wxnu224/checkpoint-20000",
+    "seed": 20260908,
+    "tasks": [
+      "sweep into pile",
+      "open the drawer",
+      "close the drawer",
+      "open microwave",
+      "close microwave",
+      "open fridge",
+      "put carrot on plate",
+      "take broccoli out of pan",
+      "take carrot off plate",
+      "fold the cloth from bottom right to top left",
+      "put broccoli in pot",
+      "fold the cloth from bottom left to top right",
+      "fold the cloth from top left to bottom right",
+      "unfold the cloth from top right to bottom left",
+      "close fridge",
+      "open oven",
+      "unfold the cloth from left to right",
+      "put pear in bowl",
+      "close oven",
+      "put the blue figure on the top edge of the cloth",
+      "fold the cloth from left to right",
+      "unfold the cloth from top left to bottom right",
+      "unfold the cloth from bottom right to top left",
+      "unfold the cloth from right to left"
+    ],
+    "task_selection": "24 most frequent nonempty instructions; GR1 all 24 task datasets",
+    "episodes_per_task": 6,
+    "steps_per_episode": 20,
+    "scope": "Training-demonstration descriptive diagnostic, not held-out or contact ground truth.",
+    "ht_df": 224.0,
+    "ht_sbias": -0.4535,
+    "action_keys": [
+      "x",
+      "y",
+      "z",
+      "roll",
+      "pitch",
+      "yaw",
+      "gripper"
+    ],
+    "sigma": "masked mean softplus(s_raw + checkpoint ht_sbias) + 1e-3; all valid channels",
+    "episodes": [
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 10840,
+        "episode": 10840,
+        "length": 33,
+        "task_id": 0
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 15876,
+        "episode": 15876,
+        "length": 82,
+        "task_id": 0
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 34465,
+        "episode": 34465,
+        "length": 96,
+        "task_id": 0
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 40035,
+        "episode": 40035,
+        "length": 96,
+        "task_id": 0
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 45893,
+        "episode": 45893,
+        "length": 83,
+        "task_id": 0
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 50398,
+        "episode": 50398,
+        "length": 91,
+        "task_id": 0
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 5952,
+        "episode": 5952,
+        "length": 42,
+        "task_id": 1
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 9016,
+        "episode": 9016,
+        "length": 36,
+        "task_id": 1
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 11110,
+        "episode": 11110,
+        "length": 40,
+        "task_id": 1
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 30534,
+        "episode": 30534,
+        "length": 45,
+        "task_id": 1
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 36210,
+        "episode": 36210,
+        "length": 34,
+        "task_id": 1
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 49065,
+        "episode": 49065,
+        "length": 32,
+        "task_id": 1
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 9704,
+        "episode": 9704,
+        "length": 25,
+        "task_id": 2
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 14084,
+        "episode": 14084,
+        "length": 43,
+        "task_id": 2
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 23277,
+        "episode": 23277,
+        "length": 29,
+        "task_id": 2
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 23934,
+        "episode": 23934,
+        "length": 30,
+        "task_id": 2
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 26548,
+        "episode": 26548,
+        "length": 40,
+        "task_id": 2
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 34277,
+        "episode": 34277,
+        "length": 36,
+        "task_id": 2
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 3189,
+        "episode": 3189,
+        "length": 36,
+        "task_id": 3
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 8547,
+        "episode": 8547,
+        "length": 35,
+        "task_id": 3
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 9030,
+        "episode": 9030,
+        "length": 36,
+        "task_id": 3
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 13400,
+        "episode": 13400,
+        "length": 36,
+        "task_id": 3
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 27420,
+        "episode": 27420,
+        "length": 33,
+        "task_id": 3
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 42295,
+        "episode": 42295,
+        "length": 30,
+        "task_id": 3
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 11189,
+        "episode": 11189,
+        "length": 26,
+        "task_id": 4
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 18647,
+        "episode": 18647,
+        "length": 30,
+        "task_id": 4
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 22444,
+        "episode": 22444,
+        "length": 26,
+        "task_id": 4
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 25969,
+        "episode": 25969,
+        "length": 36,
+        "task_id": 4
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 28062,
+        "episode": 28062,
+        "length": 36,
+        "task_id": 4
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 40364,
+        "episode": 40364,
+        "length": 36,
+        "task_id": 4
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 19384,
+        "episode": 19384,
+        "length": 36,
+        "task_id": 5
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 31286,
+        "episode": 31286,
+        "length": 36,
+        "task_id": 5
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 36804,
+        "episode": 36804,
+        "length": 36,
+        "task_id": 5
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 42391,
+        "episode": 42391,
+        "length": 36,
+        "task_id": 5
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 49215,
+        "episode": 49215,
+        "length": 36,
+        "task_id": 5
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 50722,
+        "episode": 50722,
+        "length": 36,
+        "task_id": 5
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 3219,
+        "episode": 3219,
+        "length": 36,
+        "task_id": 6
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 22780,
+        "episode": 22780,
+        "length": 34,
+        "task_id": 6
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 23163,
+        "episode": 23163,
+        "length": 36,
+        "task_id": 6
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 24888,
+        "episode": 24888,
+        "length": 26,
+        "task_id": 6
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 26090,
+        "episode": 26090,
+        "length": 36,
+        "task_id": 6
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 45783,
+        "episode": 45783,
+        "length": 36,
+        "task_id": 6
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 5627,
+        "episode": 5627,
+        "length": 36,
+        "task_id": 7
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 13504,
+        "episode": 13504,
+        "length": 26,
+        "task_id": 7
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 43848,
+        "episode": 43848,
+        "length": 36,
+        "task_id": 7
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 44560,
+        "episode": 44560,
+        "length": 36,
+        "task_id": 7
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 46686,
+        "episode": 46686,
+        "length": 36,
+        "task_id": 7
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 47387,
+        "episode": 47387,
+        "length": 36,
+        "task_id": 7
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 1728,
+        "episode": 1728,
+        "length": 36,
+        "task_id": 8
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 2736,
+        "episode": 2736,
+        "length": 36,
+        "task_id": 8
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 16084,
+        "episode": 16084,
+        "length": 36,
+        "task_id": 8
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 23327,
+        "episode": 23327,
+        "length": 36,
+        "task_id": 8
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 25345,
+        "episode": 25345,
+        "length": 36,
+        "task_id": 8
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 45758,
+        "episode": 45758,
+        "length": 36,
+        "task_id": 8
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 2004,
+        "episode": 2004,
+        "length": 29,
+        "task_id": 9
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 14455,
+        "episode": 14455,
+        "length": 33,
+        "task_id": 9
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 15787,
+        "episode": 15787,
+        "length": 35,
+        "task_id": 9
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 19235,
+        "episode": 19235,
+        "length": 36,
+        "task_id": 9
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 19856,
+        "episode": 19856,
+        "length": 36,
+        "task_id": 9
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 29208,
+        "episode": 29208,
+        "length": 40,
+        "task_id": 9
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 1619,
+        "episode": 1619,
+        "length": 36,
+        "task_id": 10
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 8971,
+        "episode": 8971,
+        "length": 36,
+        "task_id": 10
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 22192,
+        "episode": 22192,
+        "length": 36,
+        "task_id": 10
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 28007,
+        "episode": 28007,
+        "length": 36,
+        "task_id": 10
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 34986,
+        "episode": 34986,
+        "length": 36,
+        "task_id": 10
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 42491,
+        "episode": 42491,
+        "length": 36,
+        "task_id": 10
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 12425,
+        "episode": 12425,
+        "length": 34,
+        "task_id": 11
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 12970,
+        "episode": 12970,
+        "length": 33,
+        "task_id": 11
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 13664,
+        "episode": 13664,
+        "length": 38,
+        "task_id": 11
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 15673,
+        "episode": 15673,
+        "length": 46,
+        "task_id": 11
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 21946,
+        "episode": 21946,
+        "length": 37,
+        "task_id": 11
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 23568,
+        "episode": 23568,
+        "length": 30,
+        "task_id": 11
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 10916,
+        "episode": 10916,
+        "length": 38,
+        "task_id": 12
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 11579,
+        "episode": 11579,
+        "length": 39,
+        "task_id": 12
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 17351,
+        "episode": 17351,
+        "length": 46,
+        "task_id": 12
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 27048,
+        "episode": 27048,
+        "length": 44,
+        "task_id": 12
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 30571,
+        "episode": 30571,
+        "length": 43,
+        "task_id": 12
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 47797,
+        "episode": 47797,
+        "length": 46,
+        "task_id": 12
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 2022,
+        "episode": 2022,
+        "length": 39,
+        "task_id": 13
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 13011,
+        "episode": 13011,
+        "length": 46,
+        "task_id": 13
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 16000,
+        "episode": 16000,
+        "length": 38,
+        "task_id": 13
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 22991,
+        "episode": 22991,
+        "length": 39,
+        "task_id": 13
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 31652,
+        "episode": 31652,
+        "length": 46,
+        "task_id": 13
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 50177,
+        "episode": 50177,
+        "length": 29,
+        "task_id": 13
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 6559,
+        "episode": 6559,
+        "length": 34,
+        "task_id": 14
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 13448,
+        "episode": 13448,
+        "length": 36,
+        "task_id": 14
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 29253,
+        "episode": 29253,
+        "length": 32,
+        "task_id": 14
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 32656,
+        "episode": 32656,
+        "length": 36,
+        "task_id": 14
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 38902,
+        "episode": 38902,
+        "length": 36,
+        "task_id": 14
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 52099,
+        "episode": 52099,
+        "length": 35,
+        "task_id": 14
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 1298,
+        "episode": 1298,
+        "length": 36,
+        "task_id": 15
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 6544,
+        "episode": 6544,
+        "length": 36,
+        "task_id": 15
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 10622,
+        "episode": 10622,
+        "length": 36,
+        "task_id": 15
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 28327,
+        "episode": 28327,
+        "length": 36,
+        "task_id": 15
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 28547,
+        "episode": 28547,
+        "length": 36,
+        "task_id": 15
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 38208,
+        "episode": 38208,
+        "length": 36,
+        "task_id": 15
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 1988,
+        "episode": 1988,
+        "length": 35,
+        "task_id": 16
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 12236,
+        "episode": 12236,
+        "length": 40,
+        "task_id": 16
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 20801,
+        "episode": 20801,
+        "length": 29,
+        "task_id": 16
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 30288,
+        "episode": 30288,
+        "length": 42,
+        "task_id": 16
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 35880,
+        "episode": 35880,
+        "length": 28,
+        "task_id": 16
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 40929,
+        "episode": 40929,
+        "length": 46,
+        "task_id": 16
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 270,
+        "episode": 270,
+        "length": 26,
+        "task_id": 17
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 9125,
+        "episode": 9125,
+        "length": 26,
+        "task_id": 17
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 10879,
+        "episode": 10879,
+        "length": 34,
+        "task_id": 17
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 14282,
+        "episode": 14282,
+        "length": 31,
+        "task_id": 17
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 36813,
+        "episode": 36813,
+        "length": 29,
+        "task_id": 17
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 38032,
+        "episode": 38032,
+        "length": 26,
+        "task_id": 17
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 4100,
+        "episode": 4100,
+        "length": 28,
+        "task_id": 18
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 6657,
+        "episode": 6657,
+        "length": 31,
+        "task_id": 18
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 12305,
+        "episode": 12305,
+        "length": 30,
+        "task_id": 18
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 25294,
+        "episode": 25294,
+        "length": 26,
+        "task_id": 18
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 32692,
+        "episode": 32692,
+        "length": 31,
+        "task_id": 18
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 51024,
+        "episode": 51024,
+        "length": 29,
+        "task_id": 18
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 6419,
+        "episode": 6419,
+        "length": 31,
+        "task_id": 19
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 19289,
+        "episode": 19289,
+        "length": 37,
+        "task_id": 19
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 20888,
+        "episode": 20888,
+        "length": 46,
+        "task_id": 19
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 31570,
+        "episode": 31570,
+        "length": 36,
+        "task_id": 19
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 48000,
+        "episode": 48000,
+        "length": 37,
+        "task_id": 19
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 48470,
+        "episode": 48470,
+        "length": 44,
+        "task_id": 19
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 25803,
+        "episode": 25803,
+        "length": 37,
+        "task_id": 20
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 30271,
+        "episode": 30271,
+        "length": 26,
+        "task_id": 20
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 38339,
+        "episode": 38339,
+        "length": 38,
+        "task_id": 20
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 38431,
+        "episode": 38431,
+        "length": 36,
+        "task_id": 20
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 40824,
+        "episode": 40824,
+        "length": 41,
+        "task_id": 20
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 45416,
+        "episode": 45416,
+        "length": 30,
+        "task_id": 20
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 7748,
+        "episode": 7748,
+        "length": 30,
+        "task_id": 21
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 12123,
+        "episode": 12123,
+        "length": 35,
+        "task_id": 21
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 34536,
+        "episode": 34536,
+        "length": 39,
+        "task_id": 21
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 34642,
+        "episode": 34642,
+        "length": 34,
+        "task_id": 21
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 43676,
+        "episode": 43676,
+        "length": 35,
+        "task_id": 21
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 46509,
+        "episode": 46509,
+        "length": 34,
+        "task_id": 21
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 2910,
+        "episode": 2910,
+        "length": 27,
+        "task_id": 22
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 11515,
+        "episode": 11515,
+        "length": 46,
+        "task_id": 22
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 20959,
+        "episode": 20959,
+        "length": 32,
+        "task_id": 22
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 26795,
+        "episode": 26795,
+        "length": 37,
+        "task_id": 22
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 41373,
+        "episode": 41373,
+        "length": 46,
+        "task_id": 22
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 47676,
+        "episode": 47676,
+        "length": 28,
+        "task_id": 22
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 14255,
+        "episode": 14255,
+        "length": 37,
+        "task_id": 23
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 17872,
+        "episode": 17872,
+        "length": 39,
+        "task_id": 23
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 28715,
+        "episode": 28715,
+        "length": 33,
+        "task_id": 23
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 32952,
+        "episode": 32952,
+        "length": 42,
+        "task_id": 23
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 38891,
+        "episode": 38891,
+        "length": 29,
+        "task_id": 23
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 46643,
+        "episode": 46643,
+        "length": 25,
+        "task_id": 23
+      }
+    ],
+    "inference_forward_max_difference": 0.0
+  },
+  "train_states": 1910,
+  "test_states": 957,
+  "calibration_holdout": "Per-task disjoint episode split, 2/3 calibration, 1/3 test; not policy holdout.",
+  "covariance_protocol": "Fixed calibration second-moment whitening, 5% offdiagonal shrinkage; not joint Student-t covariance EM.",
+  "views": {
+    "all_training_channels_fixed_scale": {
+      "isotropic": {
+        "best": {
+          "nu": 4.0,
+          "scale": 0.1735158506826643,
+          "train_nll": -0.16507151190308336,
+          "test_nll": -0.1356645630011792
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 0.17321622282623225,
+            "train_nll": -0.1618710168649209,
+            "test_nll": -0.13336859219427322
+          },
+          {
+            "nu": 2.0,
+            "scale": 0.17221382846432062,
+            "train_nll": -0.16348263548390865,
+            "test_nll": -0.13475221650134922
+          },
+          {
+            "nu": 3.0,
+            "scale": 0.17250054370373685,
+            "train_nll": -0.16485359974763392,
+            "test_nll": -0.1357451448440717
+          },
+          {
+            "nu": 4.0,
+            "scale": 0.1735158506826643,
+            "train_nll": -0.16507151190308336,
+            "test_nll": -0.1356645630011792
+          },
+          {
+            "nu": 5.0,
+            "scale": 0.17460001304669168,
+            "train_nll": -0.16473379733908128,
+            "test_nll": -0.13508625431969545
+          },
+          {
+            "nu": 7.0,
+            "scale": 0.17661850213354954,
+            "train_nll": -0.16325850025643907,
+            "test_nll": -0.13325079904491913
+          },
+          {
+            "nu": 10.0,
+            "scale": 0.17924269424174513,
+            "train_nll": -0.1602431863156351,
+            "test_nll": -0.12989026843519433
+          },
+          {
+            "nu": 14.0,
+            "scale": 0.18219059114789557,
+            "train_nll": -0.15586667606388255,
+            "test_nll": -0.1252663000704978
+          },
+          {
+            "nu": 20.0,
+            "scale": 0.18581420439334348,
+            "train_nll": -0.14951539969202518,
+            "test_nll": -0.11879012728049372
+          },
+          {
+            "nu": 32.0,
+            "scale": 0.19129152167252067,
+            "train_nll": -0.13858717443651225,
+            "test_nll": -0.10800947767303073
+          },
+          {
+            "nu": 56.0,
+            "scale": 0.19851854085079046,
+            "train_nll": -0.12273851805334,
+            "test_nll": -0.09292639844519449
+          },
+          {
+            "nu": 112.0,
+            "scale": 0.20754430732256443,
+            "train_nll": -0.10193146053199202,
+            "test_nll": -0.07395968734934863
+          },
+          {
+            "nu": 224.0,
+            "scale": 0.2153563612946933,
+            "train_nll": -0.08381112485304346,
+            "test_nll": -0.058244298006501605
+          },
+          {
+            "nu": 448.0,
+            "scale": 0.22114749340117212,
+            "train_nll": -0.07064969428272834,
+            "test_nll": -0.04737107694531949
+          },
+          {
+            "nu": 896.0,
+            "scale": 0.2249147891942388,
+            "train_nll": -0.062324074159348174,
+            "test_nll": -0.040767780050594
+          },
+          {
+            "nu": 1792.0,
+            "scale": 0.22713258123338123,
+            "train_nll": -0.057541087081800266,
+            "test_nll": -0.037083278711764964
+          },
+          {
+            "nu": 4096.0,
+            "scale": 0.228509496178149,
+            "train_nll": -0.054624053080841076,
+            "test_nll": -0.03487872312724207
+          },
+          {
+            "nu": 16384.0,
+            "scale": 0.22936398308254538,
+            "train_nll": -0.05283620191208228,
+            "test_nll": -0.03354437281119763
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 0.22965811763308347,
+            "train_nll": -0.05222498778329569,
+            "test_nll": -0.03309122473318641
+          }
+        ]
+      },
+      "diagonal": {
+        "best": {
+          "nu": 4.0,
+          "scale": 0.775280910026637,
+          "train_nll": -0.21508186830493048,
+          "test_nll": -0.18634126636039539
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 0.7747419175270939,
+            "train_nll": -0.2112375990655071,
+            "test_nll": -0.18328048376357464
+          },
+          {
+            "nu": 2.0,
+            "scale": 0.7704341898098076,
+            "train_nll": -0.2129859999166812,
+            "test_nll": -0.18482957002393796
+          },
+          {
+            "nu": 3.0,
+            "scale": 0.7713362579250125,
+            "train_nll": -0.2146183364427443,
+            "test_nll": -0.1861342556769625
+          },
+          {
+            "nu": 4.0,
+            "scale": 0.775280910026637,
+            "train_nll": -0.21508186830493048,
+            "test_nll": -0.18634126636039539
+          },
+          {
+            "nu": 5.0,
+            "scale": 0.7795364695744902,
+            "train_nll": -0.21497594614564774,
+            "test_nll": -0.18602961639144677
+          },
+          {
+            "nu": 7.0,
+            "scale": 0.7874996111976729,
+            "train_nll": -0.21392916341318813,
+            "test_nll": -0.18467537216854346
+          },
+          {
+            "nu": 10.0,
+            "scale": 0.797903748243732,
+            "train_nll": -0.21148586534186276,
+            "test_nll": -0.1819338291985355
+          },
+          {
+            "nu": 14.0,
+            "scale": 0.8096374964546139,
+            "train_nll": -0.20777097382630916,
+            "test_nll": -0.17799216422448216
+          },
+          {
+            "nu": 20.0,
+            "scale": 0.8240976979636608,
+            "train_nll": -0.20225325099306812,
+            "test_nll": -0.17232263494922684
+          },
+          {
+            "nu": 32.0,
+            "scale": 0.8459803662549268,
+            "train_nll": -0.19260931121093527,
+            "test_nll": -0.1626632106263326
+          },
+          {
+            "nu": 56.0,
+            "scale": 0.8748374560809667,
+            "train_nll": -0.17845970058349536,
+            "test_nll": -0.14881600154890928
+          },
+          {
+            "nu": 112.0,
+            "scale": 0.9108285968150982,
+            "train_nll": -0.1597014774319696,
+            "test_nll": -0.13089344545953074
+          },
+          {
+            "nu": 224.0,
+            "scale": 0.941999179759255,
+            "train_nll": -0.14320242953167228,
+            "test_nll": -0.11553993609657143
+          },
+          {
+            "nu": 448.0,
+            "scale": 0.9652180511787241,
+            "train_nll": -0.13108514371781754,
+            "test_nll": -0.10457005466858771
+          },
+          {
+            "nu": 896.0,
+            "scale": 0.9804592959957592,
+            "train_nll": -0.12332864245820407,
+            "test_nll": -0.0977339307439462
+          },
+          {
+            "nu": 1792.0,
+            "scale": 0.9895281109758498,
+            "train_nll": -0.11882472825985757,
+            "test_nll": -0.09385385982102679
+          },
+          {
+            "nu": 4096.0,
+            "scale": 0.9952136652391274,
+            "train_nll": -0.11605484283110146,
+            "test_nll": -0.09150845209267588
+          },
+          {
+            "nu": 16384.0,
+            "scale": 0.9987699979257516,
+            "train_nll": -0.11434665823193879,
+            "test_nll": -0.09008006356601239
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 1.000000000000005,
+            "train_nll": -0.11376061437519613,
+            "test_nll": -0.08959347900052506
+          }
+        ]
+      },
+      "full_cov_shrink05": {
+        "best": {
+          "nu": 5.0,
+          "scale": 0.7986404248409359,
+          "train_nll": -0.3508790603727361,
+          "test_nll": -0.31472458457487207
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 0.7930467217607403,
+            "train_nll": -0.3460927285870061,
+            "test_nll": -0.3105857570543138
+          },
+          {
+            "nu": 2.0,
+            "scale": 0.789517254072198,
+            "train_nll": -0.3479949768443096,
+            "test_nll": -0.31235738881127606
+          },
+          {
+            "nu": 3.0,
+            "scale": 0.7907624137859854,
+            "train_nll": -0.3499322322242491,
+            "test_nll": -0.31408004071875584
+          },
+          {
+            "nu": 4.0,
+            "scale": 0.7945982680314387,
+            "train_nll": -0.35069397364281496,
+            "test_nll": -0.3146738352959195
+          },
+          {
+            "nu": 5.0,
+            "scale": 0.7986404248409359,
+            "train_nll": -0.3508790603727361,
+            "test_nll": -0.31472458457487207
+          },
+          {
+            "nu": 7.0,
+            "scale": 0.8061069537348565,
+            "train_nll": -0.3503929627355029,
+            "test_nll": -0.3140405642481858
+          },
+          {
+            "nu": 10.0,
+            "scale": 0.8157397737177767,
+            "train_nll": -0.34874031944856987,
+            "test_nll": -0.312205912606506
+          },
+          {
+            "nu": 14.0,
+            "scale": 0.8264719285687757,
+            "train_nll": -0.345995501319988,
+            "test_nll": -0.3093419324314437
+          },
+          {
+            "nu": 20.0,
+            "scale": 0.8395308016522008,
+            "train_nll": -0.3417807041558685,
+            "test_nll": -0.3050830978955341
+          },
+          {
+            "nu": 32.0,
+            "scale": 0.8589583004754773,
+            "train_nll": -0.33432150121730664,
+            "test_nll": -0.2977241849460406
+          },
+          {
+            "nu": 56.0,
+            "scale": 0.8839167895552775,
+            "train_nll": -0.32342830501622366,
+            "test_nll": -0.28718203065408754
+          },
+          {
+            "nu": 112.0,
+            "scale": 0.913798738338897,
+            "train_nll": -0.30931737037320284,
+            "test_nll": -0.2737404220808315
+          },
+          {
+            "nu": 224.0,
+            "scale": 0.938296318884594,
+            "train_nll": -0.2973762720416677,
+            "test_nll": -0.26252548569165457
+          },
+          {
+            "nu": 448.0,
+            "scale": 0.9554746151096164,
+            "train_nll": -0.28899383910785414,
+            "test_nll": -0.2547520209604124
+          },
+          {
+            "nu": 896.0,
+            "scale": 0.9661055098431761,
+            "train_nll": -0.28385682095769305,
+            "test_nll": -0.25003756860582493
+          },
+          {
+            "nu": 1792.0,
+            "scale": 0.9721269103065476,
+            "train_nll": -0.28097651675301694,
+            "test_nll": -0.24741352068221678
+          },
+          {
+            "nu": 4096.0,
+            "scale": 0.9757656090154974,
+            "train_nll": -0.279248942357716,
+            "test_nll": -0.24584709114335723
+          },
+          {
+            "nu": 16384.0,
+            "scale": 0.9779821717700451,
+            "train_nll": -0.27820196680948417,
+            "test_nll": -0.2449006905191251
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 0.97873745522394,
+            "train_nll": -0.27784620894095613,
+            "test_nll": -0.24457962931614818
+          }
+        ]
+      },
+      "pooled_standardized_marginal": {
+        "best": {
+          "nu": 2.0,
+          "scale": 0.5233257312792537,
+          "train_nll": 1.291672598805595,
+          "test_nll": 1.3137866861824736
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 0.4656182115797559,
+            "train_nll": 1.3007323948644038,
+            "test_nll": 1.3219980997313439
+          },
+          {
+            "nu": 2.0,
+            "scale": 0.5233257312792537,
+            "train_nll": 1.291672598805595,
+            "test_nll": 1.3137866861824736
+          },
+          {
+            "nu": 3.0,
+            "scale": 0.6021209054592817,
+            "train_nll": 1.2936319631184787,
+            "test_nll": 1.3169868284878388
+          },
+          {
+            "nu": 4.0,
+            "scale": 0.6546878285766794,
+            "train_nll": 1.3017925648500444,
+            "test_nll": 1.3259633991144801
+          },
+          {
+            "nu": 5.0,
+            "scale": 0.692944807304129,
+            "train_nll": 1.3103710985483847,
+            "test_nll": 1.3350942383529834
+          },
+          {
+            "nu": 7.0,
+            "scale": 0.7458824726206394,
+            "train_nll": 1.3251487756461426,
+            "test_nll": 1.3505281126330821
+          },
+          {
+            "nu": 10.0,
+            "scale": 0.7953333922419209,
+            "train_nll": 1.3413342698761461,
+            "test_nll": 1.3671522355234529
+          },
+          {
+            "nu": 14.0,
+            "scale": 0.8356008780259816,
+            "train_nll": 1.3557728287544222,
+            "test_nll": 1.381772444624513
+          },
+          {
+            "nu": 20.0,
+            "scale": 0.8717292705817459,
+            "train_nll": 1.369399578799923,
+            "test_nll": 1.3953898625306536
+          },
+          {
+            "nu": 32.0,
+            "scale": 0.9097773100783442,
+            "train_nll": 1.384155845053641,
+            "test_nll": 1.4099236741981402
+          },
+          {
+            "nu": 56.0,
+            "scale": 0.9426969246543557,
+            "train_nll": 1.3970212172752474,
+            "test_nll": 1.4223937795216481
+          },
+          {
+            "nu": 112.0,
+            "scale": 0.9687728620019477,
+            "train_nll": 1.4071226857001993,
+            "test_nll": 1.4320336745170872
+          },
+          {
+            "nu": 224.0,
+            "scale": 0.9835879845385804,
+            "train_nll": 1.4127779650132657,
+            "test_nll": 1.4373634730864073
+          },
+          {
+            "nu": 448.0,
+            "scale": 0.9915679036769839,
+            "train_nll": 1.415788872071594,
+            "test_nll": 1.4401788494482397
+          },
+          {
+            "nu": 896.0,
+            "scale": 0.9957234446275779,
+            "train_nll": 1.4173454537830585,
+            "test_nll": 1.4416277464234286
+          },
+          {
+            "nu": 1792.0,
+            "scale": 0.9978460430434888,
+            "train_nll": 1.418137308266738,
+            "test_nll": 1.442363002316526
+          },
+          {
+            "nu": 4096.0,
+            "scale": 0.999053710346419,
+            "train_nll": 1.418586827786886,
+            "test_nll": 1.4427798300998278
+          },
+          {
+            "nu": 16384.0,
+            "scale": 0.9997628475298698,
+            "train_nll": 1.418850434893646,
+            "test_nll": 1.4430240736474444
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 1.000000000000005,
+            "train_nll": 1.4189385332046778,
+            "test_nll": 1.4431056685793482
+          }
+        ]
+      },
+      "fixed_sigma_isotropic": {
+        "best": {
+          "nu": 1.5,
+          "scale": 1.0,
+          "train_nll": 0.08013847150033009,
+          "test_nll": 0.09835445236260602
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 1.0,
+            "train_nll": 0.08013847150033009,
+            "test_nll": 0.09835445236260602
+          },
+          {
+            "nu": 2.0,
+            "scale": 1.0,
+            "train_nll": 0.12734210446660846,
+            "test_nll": 0.14353905706578288
+          },
+          {
+            "nu": 3.0,
+            "scale": 1.0,
+            "train_nll": 0.20328619451312413,
+            "test_nll": 0.21659460347246187
+          },
+          {
+            "nu": 4.0,
+            "scale": 1.0,
+            "train_nll": 0.2627474981704473,
+            "test_nll": 0.27408482760634095
+          },
+          {
+            "nu": 5.0,
+            "scale": 1.0,
+            "train_nll": 0.31123377698109994,
+            "test_nll": 0.32113826681182384
+          },
+          {
+            "nu": 7.0,
+            "scale": 1.0,
+            "train_nll": 0.3866926745758401,
+            "test_nll": 0.3946523858112827
+          },
+          {
+            "nu": 10.0,
+            "scale": 1.0,
+            "train_nll": 0.4673100567582099,
+            "test_nll": 0.47353654539430157
+          },
+          {
+            "nu": 14.0,
+            "scale": 1.0,
+            "train_nll": 0.5412997947111355,
+            "test_nll": 0.5462104493482492
+          },
+          {
+            "nu": 20.0,
+            "scale": 1.0,
+            "train_nll": 0.6149007960547233,
+            "test_nll": 0.6187296516478268
+          },
+          {
+            "nu": 32.0,
+            "scale": 1.0,
+            "train_nll": 0.7006686265305394,
+            "test_nll": 0.7034822134034762
+          },
+          {
+            "nu": 56.0,
+            "scale": 1.0,
+            "train_nll": 0.7825216622852952,
+            "test_nll": 0.7845742402710283
+          },
+          {
+            "nu": 112.0,
+            "scale": 1.0,
+            "train_nll": 0.8530543563293442,
+            "test_nll": 0.8545872310836266
+          },
+          {
+            "nu": 224.0,
+            "scale": 1.0,
+            "train_nll": 0.8956666948968641,
+            "test_nll": 0.8969377370090862
+          },
+          {
+            "nu": 448.0,
+            "scale": 1.0,
+            "train_nll": 0.9194655347852345,
+            "test_nll": 0.9206055677220848
+          },
+          {
+            "nu": 896.0,
+            "scale": 1.0,
+            "train_nll": 0.9321098034326106,
+            "test_nll": 0.9331843751862514
+          },
+          {
+            "nu": 1792.0,
+            "scale": 1.0,
+            "train_nll": 0.9386372717506278,
+            "test_nll": 0.9396791334098998
+          },
+          {
+            "nu": 4096.0,
+            "scale": 1.0,
+            "train_nll": 0.9423723633902302,
+            "test_nll": 0.9433958331785831
+          },
+          {
+            "nu": 16384.0,
+            "scale": 1.0,
+            "train_nll": 0.9445728552458247,
+            "test_nll": 0.9455855992405705
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 1.0,
+            "train_nll": 0.9453099587020584,
+            "test_nll": 0.9463191279155795
+          }
+        ]
+      },
+      "geometry_train": {
+        "d": 56,
+        "effective_correlation_dimension": 35.09921503590585,
+        "radial_squared_cv": 0.86927388323935,
+        "radial_squared_quantiles": [
+          0.005060816492201153,
+          0.01457337343764204,
+          0.039183441334041474,
+          0.10404838166767698,
+          0.22769553978062737
+        ],
+        "marginal_excess3": 6.409941482194449
+      }
+    },
+    "all_training_channels_own_sigma": {
+      "isotropic": {
+        "best": {
+          "nu": 10.0,
+          "scale": 0.9667105271097819,
+          "train_nll": -0.17398797693511714,
+          "test_nll": -0.14723014743449347
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 0.9593537371334784,
+            "train_nll": -0.1644912725189851,
+            "test_nll": -0.13708361935130542
+          },
+          {
+            "nu": 2.0,
+            "scale": 0.9558175777349935,
+            "train_nll": -0.16690922427533006,
+            "test_nll": -0.13954820262311496
+          },
+          {
+            "nu": 3.0,
+            "scale": 0.955128903177816,
+            "train_nll": -0.16982425849074478,
+            "test_nll": -0.14255102450254786
+          },
+          {
+            "nu": 4.0,
+            "scale": 0.95657674239401,
+            "train_nll": -0.17149698995200224,
+            "test_nll": -0.14430643089948636
+          },
+          {
+            "nu": 5.0,
+            "scale": 0.9583506285855107,
+            "train_nll": -0.17253461724504082,
+            "test_nll": -0.14542304255033045
+          },
+          {
+            "nu": 7.0,
+            "scale": 0.9618606230039984,
+            "train_nll": -0.1736050705708998,
+            "test_nll": -0.14664250576371773
+          },
+          {
+            "nu": 10.0,
+            "scale": 0.9667105271097819,
+            "train_nll": -0.17398797693511714,
+            "test_nll": -0.14723014743449347
+          },
+          {
+            "nu": 14.0,
+            "scale": 0.9724802591200896,
+            "train_nll": -0.1735338464659606,
+            "test_nll": -0.1470204996501554
+          },
+          {
+            "nu": 20.0,
+            "scale": 0.97994885303642,
+            "train_nll": -0.17210469710971332,
+            "test_nll": -0.14591087592428065
+          },
+          {
+            "nu": 32.0,
+            "scale": 0.9918265511023117,
+            "train_nll": -0.16871804105309862,
+            "test_nll": -0.14304442071313228
+          },
+          {
+            "nu": 56.0,
+            "scale": 1.0082156383489136,
+            "train_nll": -0.16281561545828827,
+            "test_nll": -0.1378985163337776
+          },
+          {
+            "nu": 112.0,
+            "scale": 1.0293138686782184,
+            "train_nll": -0.15415463844543065,
+            "test_nll": -0.13031179539683135
+          },
+          {
+            "nu": 224.0,
+            "scale": 1.0478209262303644,
+            "train_nll": -0.14611481459228326,
+            "test_nll": -0.12334251024109566
+          },
+          {
+            "nu": 448.0,
+            "scale": 1.0615719672399007,
+            "train_nll": -0.14007561158390547,
+            "test_nll": -0.11819555198295761
+          },
+          {
+            "nu": 896.0,
+            "scale": 1.070505982111234,
+            "train_nll": -0.1361846657722865,
+            "test_nll": -0.11493449440559655
+          },
+          {
+            "nu": 1792.0,
+            "scale": 1.0757591586722208,
+            "train_nll": -0.13392613096933048,
+            "test_nll": -0.11306585162542326
+          },
+          {
+            "nu": 4096.0,
+            "scale": 1.0790193306669598,
+            "train_nll": -0.13254022954522315,
+            "test_nll": -0.11192926534768755
+          },
+          {
+            "nu": 16384.0,
+            "scale": 1.0810427171669754,
+            "train_nll": -0.13168749301720073,
+            "test_nll": -0.1112340594069634
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 1.0817393523318466,
+            "train_nll": -0.13139536618279446,
+            "test_nll": -0.11099665676212456
+          }
+        ]
+      },
+      "diagonal": {
+        "best": {
+          "nu": 10.0,
+          "scale": 0.8960325506099219,
+          "train_nll": -0.22528502911540738,
+          "test_nll": -0.19854697205679916
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 0.8883519156621087,
+            "train_nll": -0.21584460850349796,
+            "test_nll": -0.18858850809042593
+          },
+          {
+            "nu": 2.0,
+            "scale": 0.8851906273433017,
+            "train_nll": -0.2182553843727837,
+            "test_nll": -0.19104002852368307
+          },
+          {
+            "nu": 3.0,
+            "scale": 0.8847023022748491,
+            "train_nll": -0.22115796312002,
+            "test_nll": -0.19401757528144015
+          },
+          {
+            "nu": 4.0,
+            "scale": 0.8861584626631771,
+            "train_nll": -0.22282047166961427,
+            "test_nll": -0.19574878078655078
+          },
+          {
+            "nu": 5.0,
+            "scale": 0.8879027353098324,
+            "train_nll": -0.2238498538928586,
+            "test_nll": -0.19684222828115794
+          },
+          {
+            "nu": 7.0,
+            "scale": 0.8913292135802569,
+            "train_nll": -0.22490892060064382,
+            "test_nll": -0.1980182358863969
+          },
+          {
+            "nu": 10.0,
+            "scale": 0.8960325506099219,
+            "train_nll": -0.22528502911540738,
+            "test_nll": -0.19854697205679916
+          },
+          {
+            "nu": 14.0,
+            "scale": 0.9015865956000518,
+            "train_nll": -0.2248358912855386,
+            "test_nll": -0.198268425695296
+          },
+          {
+            "nu": 20.0,
+            "scale": 0.9087145985227069,
+            "train_nll": -0.2234338289861597,
+            "test_nll": -0.1970714458361853
+          },
+          {
+            "nu": 32.0,
+            "scale": 0.9199209810436413,
+            "train_nll": -0.22013675998381466,
+            "test_nll": -0.1940700138627578
+          },
+          {
+            "nu": 56.0,
+            "scale": 0.9351496410514233,
+            "train_nll": -0.2144484855523343,
+            "test_nll": -0.1887447377970719
+          },
+          {
+            "nu": 112.0,
+            "scale": 0.9543890808218455,
+            "train_nll": -0.20621495954692626,
+            "test_nll": -0.18093658473079977
+          },
+          {
+            "nu": 224.0,
+            "scale": 0.9709194252414896,
+            "train_nll": -0.19869703292318963,
+            "test_nll": -0.1737812300026016
+          },
+          {
+            "nu": 448.0,
+            "scale": 0.9829483799651628,
+            "train_nll": -0.19314623137787046,
+            "test_nll": -0.16850223289344823
+          },
+          {
+            "nu": 896.0,
+            "scale": 0.9906101918531722,
+            "train_nll": -0.1896265815492808,
+            "test_nll": -0.1651592687815473
+          },
+          {
+            "nu": 1792.0,
+            "scale": 0.9950413326972358,
+            "train_nll": -0.18760932412847775,
+            "test_nll": -0.16324433979220943
+          },
+          {
+            "nu": 4096.0,
+            "scale": 0.9977573171222647,
+            "train_nll": -0.18638266793603697,
+            "test_nll": -0.16207991480167805
+          },
+          {
+            "nu": 16384.0,
+            "scale": 0.9994278017603722,
+            "train_nll": -0.18563268768019037,
+            "test_nll": -0.16136784559297657
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 1.0,
+            "train_nll": -0.18537666265020802,
+            "test_nll": -0.16112472072108552
+          }
+        ]
+      },
+      "full_cov_shrink05": {
+        "best": {
+          "nu": 14.0,
+          "scale": 0.901490908471682,
+          "train_nll": -0.3624368796672415,
+          "test_nll": -0.32685647801715034
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 0.8904147764075259,
+            "train_nll": -0.3516416873022594,
+            "test_nll": -0.31548015779592786
+          },
+          {
+            "nu": 2.0,
+            "scale": 0.8877639699579347,
+            "train_nll": -0.35414036440531116,
+            "test_nll": -0.3180122992708976
+          },
+          {
+            "nu": 3.0,
+            "scale": 0.8873488337836888,
+            "train_nll": -0.3572143492025801,
+            "test_nll": -0.32114913920667143
+          },
+          {
+            "nu": 4.0,
+            "scale": 0.8885631426555506,
+            "train_nll": -0.35904199779124824,
+            "test_nll": -0.3230351572438732
+          },
+          {
+            "nu": 5.0,
+            "scale": 0.8900194077789663,
+            "train_nll": -0.3602305929444365,
+            "test_nll": -0.3242783747586959
+          },
+          {
+            "nu": 7.0,
+            "scale": 0.8928842910503985,
+            "train_nll": -0.36159183640549397,
+            "test_nll": -0.3257392363644096
+          },
+          {
+            "nu": 10.0,
+            "scale": 0.8968259006111349,
+            "train_nll": -0.3623854312228276,
+            "test_nll": -0.3266621435834618
+          },
+          {
+            "nu": 14.0,
+            "scale": 0.901490908471682,
+            "train_nll": -0.3624368796672415,
+            "test_nll": -0.32685647801715034
+          },
+          {
+            "nu": 20.0,
+            "scale": 0.9074874733351268,
+            "train_nll": -0.3616898134216291,
+            "test_nll": -0.3262774810265172
+          },
+          {
+            "nu": 32.0,
+            "scale": 0.916916315733748,
+            "train_nll": -0.3594527754572878,
+            "test_nll": -0.3242709160955861
+          },
+          {
+            "nu": 56.0,
+            "scale": 0.9296777663043112,
+            "train_nll": -0.35527096723080565,
+            "test_nll": -0.32033939715707893
+          },
+          {
+            "nu": 112.0,
+            "scale": 0.9455884048838095,
+            "train_nll": -0.3490688159374611,
+            "test_nll": -0.3143550419973373
+          },
+          {
+            "nu": 224.0,
+            "scale": 0.9589212922893663,
+            "train_nll": -0.3434354237232191,
+            "test_nll": -0.3088200707663793
+          },
+          {
+            "nu": 448.0,
+            "scale": 0.968317730285528,
+            "train_nll": -0.3393542426433631,
+            "test_nll": -0.3047532608390553
+          },
+          {
+            "nu": 896.0,
+            "scale": 0.9741143736405161,
+            "train_nll": -0.33682086078911744,
+            "test_nll": -0.3022001877545639
+          },
+          {
+            "nu": 1792.0,
+            "scale": 0.977381524610913,
+            "train_nll": -0.3353936142125509,
+            "test_nll": -0.30075015272877703
+          },
+          {
+            "nu": 4096.0,
+            "scale": 0.9793478132957764,
+            "train_nll": -0.3345360654151692,
+            "test_nll": -0.299874229493871
+          },
+          {
+            "nu": 16384.0,
+            "scale": 0.9805420697135858,
+            "train_nll": -0.3340159961253004,
+            "test_nll": -0.29934113480724256
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 0.9809483375026545,
+            "train_nll": -0.33383923484792954,
+            "test_nll": -0.29915960431727107
+          }
+        ]
+      },
+      "pooled_standardized_marginal": {
+        "best": {
+          "nu": 3.0,
+          "scale": 0.629137205409179,
+          "train_nll": 1.3192697889291662,
+          "test_nll": 1.2954996322202361
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 0.4930057327104563,
+            "train_nll": 1.3357782588236011,
+            "test_nll": 1.3099404008464273
+          },
+          {
+            "nu": 2.0,
+            "scale": 0.5510078480735805,
+            "train_nll": 1.3228556304600938,
+            "test_nll": 1.2978288408176264
+          },
+          {
+            "nu": 3.0,
+            "scale": 0.629137205409179,
+            "train_nll": 1.3192697889291662,
+            "test_nll": 1.2954996322202361
+          },
+          {
+            "nu": 4.0,
+            "scale": 0.6803726483776108,
+            "train_nll": 1.3235255642459125,
+            "test_nll": 1.300614320017395
+          },
+          {
+            "nu": 5.0,
+            "scale": 0.7171327002029776,
+            "train_nll": 1.3291622640363447,
+            "test_nll": 1.3068533169093512
+          },
+          {
+            "nu": 7.0,
+            "scale": 0.7671796447718886,
+            "train_nll": 1.3397584440904118,
+            "test_nll": 1.3182120544720708
+          },
+          {
+            "nu": 10.0,
+            "scale": 0.8130000410013741,
+            "train_nll": 1.3519847364511717,
+            "test_nll": 1.331033502156812
+          },
+          {
+            "nu": 14.0,
+            "scale": 0.8496280038873918,
+            "train_nll": 1.363246820659469,
+            "test_nll": 1.3426621591027619
+          },
+          {
+            "nu": 20.0,
+            "scale": 0.8820124188344185,
+            "train_nll": 1.3741637258225052,
+            "test_nll": 1.3537916539355428
+          },
+          {
+            "nu": 32.0,
+            "scale": 0.9157966695519281,
+            "train_nll": 1.3863784104821588,
+            "test_nll": 1.366084063641915
+          },
+          {
+            "nu": 56.0,
+            "scale": 0.9451227282798874,
+            "train_nll": 1.3975303967431132,
+            "test_nll": 1.3771560920915522
+          },
+          {
+            "nu": 112.0,
+            "scale": 0.9689598783366237,
+            "train_nll": 1.4068384350476717,
+            "test_nll": 1.3862767583047122
+          },
+          {
+            "nu": 224.0,
+            "scale": 0.9831322970762563,
+            "train_nll": 1.4124006607640427,
+            "test_nll": 1.3916650785392117
+          },
+          {
+            "nu": 448.0,
+            "scale": 0.9911225258764395,
+            "train_nll": 1.4155174651888829,
+            "test_nll": 1.3946597933832185
+          },
+          {
+            "nu": 896.0,
+            "scale": 0.9954298342536907,
+            "train_nll": 1.4171845572275334,
+            "test_nll": 1.3962531600562245
+          },
+          {
+            "nu": 1792.0,
+            "scale": 0.9976787301598512,
+            "train_nll": 1.4180498468808267,
+            "test_nll": 1.3970776516984935
+          },
+          {
+            "nu": 4096.0,
+            "scale": 0.9989750435794723,
+            "train_nll": 1.418546732815103,
+            "test_nll": 1.3975502879086052
+          },
+          {
+            "nu": 16384.0,
+            "scale": 0.9997423451081969,
+            "train_nll": 1.4188401348018334,
+            "test_nll": 1.397829081558507
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 1.0,
+            "train_nll": 1.418938533204673,
+            "test_nll": 1.3979225319400486
+          }
+        ]
+      },
+      "fixed_sigma_isotropic": {
+        "best": {
+          "nu": 10.0,
+          "scale": 1.0,
+          "train_nll": -0.1738171513805291,
+          "test_nll": -0.14691425417295245
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 1.0,
+            "train_nll": -0.16442682618049842,
+            "test_nll": -0.13699022588576804
+          },
+          {
+            "nu": 2.0,
+            "scale": 1.0,
+            "train_nll": -0.16682619339368276,
+            "test_nll": -0.1394234794738689
+          },
+          {
+            "nu": 3.0,
+            "scale": 1.0,
+            "train_nll": -0.169712433615963,
+            "test_nll": -0.14237631016081487
+          },
+          {
+            "nu": 4.0,
+            "scale": 1.0,
+            "train_nll": -0.1713636489965351,
+            "test_nll": -0.14409269842097427
+          },
+          {
+            "nu": 5.0,
+            "scale": 1.0,
+            "train_nll": -0.17238551500365618,
+            "test_nll": -0.14517847398906492
+          },
+          {
+            "nu": 7.0,
+            "scale": 1.0,
+            "train_nll": -0.17343793349992764,
+            "test_nll": -0.1463553868077916
+          },
+          {
+            "nu": 10.0,
+            "scale": 1.0,
+            "train_nll": -0.1738171513805291,
+            "test_nll": -0.14691425417295245
+          },
+          {
+            "nu": 14.0,
+            "scale": 1.0,
+            "train_nll": -0.17338239801789257,
+            "test_nll": -0.14670796877880687
+          },
+          {
+            "nu": 20.0,
+            "scale": 1.0,
+            "train_nll": -0.1720009510714775,
+            "test_nll": -0.14564932452207158
+          },
+          {
+            "nu": 32.0,
+            "scale": 1.0,
+            "train_nll": -0.1686948022450523,
+            "test_nll": -0.14292914614425878
+          },
+          {
+            "nu": 56.0,
+            "scale": 1.0,
+            "train_nll": -0.16278405586972977,
+            "test_nll": -0.13800120743572175
+          },
+          {
+            "nu": 112.0,
+            "scale": 1.0,
+            "train_nll": -0.15362511294355574,
+            "test_nll": -0.13047956294430052
+          },
+          {
+            "nu": 224.0,
+            "scale": 1.0,
+            "train_nll": -0.14441524652681736,
+            "test_nll": -0.12315308262752933
+          },
+          {
+            "nu": 448.0,
+            "scale": 1.0,
+            "train_nll": -0.13690446080500052,
+            "test_nll": -0.11739744977090893
+          },
+          {
+            "nu": 896.0,
+            "scale": 1.0,
+            "train_nll": -0.13172510050811082,
+            "test_nll": -0.11356602503938173
+          },
+          {
+            "nu": 1792.0,
+            "scale": 1.0,
+            "train_nll": -0.1285713227954477,
+            "test_nll": -0.1112975921261925
+          },
+          {
+            "nu": 4096.0,
+            "scale": 1.0,
+            "train_nll": -0.12657446347648804,
+            "test_nll": -0.10988998803832972
+          },
+          {
+            "nu": 16384.0,
+            "scale": 1.0,
+            "train_nll": -0.12532011185591108,
+            "test_nll": -0.10901824383433878
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 1.0,
+            "train_nll": -0.12488561006286303,
+            "test_nll": -0.10871865011715309
+          }
+        ]
+      },
+      "geometry_train": {
+        "d": 56,
+        "effective_correlation_dimension": 36.487347795955166,
+        "radial_squared_cv": 0.6164269349528189,
+        "radial_squared_quantiles": [
+          0.32898495035198955,
+          0.540675276152297,
+          0.999293302029665,
+          1.9333716964232623,
+          3.921421261189293
+        ],
+        "marginal_excess3": 5.208293889368153
+      }
+    },
+    "continuous_only_fixed_scale": {
+      "isotropic": {
+        "best": {
+          "nu": 4.0,
+          "scale": 0.16422920798596954,
+          "train_nll": -0.22535662361212905,
+          "test_nll": -0.2021081104948196
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 0.1628108890031814,
+            "train_nll": -0.22124247799973806,
+            "test_nll": -0.19898963519208254
+          },
+          {
+            "nu": 2.0,
+            "scale": 0.16239639380563517,
+            "train_nll": -0.2231935095020335,
+            "test_nll": -0.2006945437541988
+          },
+          {
+            "nu": 3.0,
+            "scale": 0.16312176756721475,
+            "train_nll": -0.22494472081101055,
+            "test_nll": -0.20203178556778054
+          },
+          {
+            "nu": 4.0,
+            "scale": 0.16422920798596954,
+            "train_nll": -0.22535662361212905,
+            "test_nll": -0.2021081104948196
+          },
+          {
+            "nu": 5.0,
+            "scale": 0.1653210846825081,
+            "train_nll": -0.22512458917952774,
+            "test_nll": -0.2015966084761973
+          },
+          {
+            "nu": 7.0,
+            "scale": 0.16731255131305992,
+            "train_nll": -0.22373792081236385,
+            "test_nll": -0.1997665429258546
+          },
+          {
+            "nu": 10.0,
+            "scale": 0.16988568163672116,
+            "train_nll": -0.22074029806500597,
+            "test_nll": -0.19628693590598978
+          },
+          {
+            "nu": 14.0,
+            "scale": 0.1727574605456393,
+            "train_nll": -0.21634401442577136,
+            "test_nll": -0.1914456657012582
+          },
+          {
+            "nu": 20.0,
+            "scale": 0.17624985135230412,
+            "train_nll": -0.20999492199078215,
+            "test_nll": -0.1846613426840942
+          },
+          {
+            "nu": 32.0,
+            "scale": 0.18143337041775284,
+            "train_nll": -0.1992441257417553,
+            "test_nll": -0.17344666508708892
+          },
+          {
+            "nu": 56.0,
+            "scale": 0.1880789471774134,
+            "train_nll": -0.18408314679210522,
+            "test_nll": -0.1579919156626504
+          },
+          {
+            "nu": 112.0,
+            "scale": 0.19605972718996406,
+            "train_nll": -0.16492941181928378,
+            "test_nll": -0.1389786415320727
+          },
+          {
+            "nu": 224.0,
+            "scale": 0.20268159462178872,
+            "train_nll": -0.14890577574637534,
+            "test_nll": -0.12358284110436567
+          },
+          {
+            "nu": 448.0,
+            "scale": 0.20741691569211335,
+            "train_nll": -0.1376357819189689,
+            "test_nll": -0.11313463159617525
+          },
+          {
+            "nu": 896.0,
+            "scale": 0.2104162857664995,
+            "train_nll": -0.13066260476837951,
+            "test_nll": -0.10688575622940388
+          },
+          {
+            "nu": 1792.0,
+            "scale": 0.2121521698781329,
+            "train_nll": -0.12670949858732117,
+            "test_nll": -0.10343743161286979
+          },
+          {
+            "nu": 4096.0,
+            "scale": 0.21321911841258068,
+            "train_nll": -0.12431677411754388,
+            "test_nll": -0.10138960745779226
+          },
+          {
+            "nu": 16384.0,
+            "scale": 0.21387728109063156,
+            "train_nll": -0.12285680315899095,
+            "test_nll": -0.10015638603646532
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 0.21410316150995018,
+            "train_nll": -0.1223587837801076,
+            "test_nll": -0.09973873138611476
+          }
+        ]
+      },
+      "diagonal": {
+        "best": {
+          "nu": 4.0,
+          "scale": 0.7619831413684316,
+          "train_nll": -0.28081428509639905,
+          "test_nll": -0.25635672515756114
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 0.7560779279271491,
+            "train_nll": -0.27670038659895235,
+            "test_nll": -0.253211366484851
+          },
+          {
+            "nu": 2.0,
+            "scale": 0.753951676120774,
+            "train_nll": -0.2786545809987313,
+            "test_nll": -0.25492613835419653
+          },
+          {
+            "nu": 3.0,
+            "scale": 0.7570495461087688,
+            "train_nll": -0.2804069489107348,
+            "test_nll": -0.2562758899108142
+          },
+          {
+            "nu": 4.0,
+            "scale": 0.7619831413684316,
+            "train_nll": -0.28081428509639905,
+            "test_nll": -0.25635672515756114
+          },
+          {
+            "nu": 5.0,
+            "scale": 0.7668775970205177,
+            "train_nll": -0.2805729883487038,
+            "test_nll": -0.25584326145087743
+          },
+          {
+            "nu": 7.0,
+            "scale": 0.7758467995934069,
+            "train_nll": -0.2791568557561346,
+            "test_nll": -0.2539944024116607
+          },
+          {
+            "nu": 10.0,
+            "scale": 0.7875091185017495,
+            "train_nll": -0.27609606398385433,
+            "test_nll": -0.25046067277367956
+          },
+          {
+            "nu": 14.0,
+            "scale": 0.8006190751918275,
+            "train_nll": -0.27159499733549586,
+            "test_nll": -0.24551763463437637
+          },
+          {
+            "nu": 20.0,
+            "scale": 0.8166880769302298,
+            "train_nll": -0.26506936660611813,
+            "test_nll": -0.2385478889589685
+          },
+          {
+            "nu": 32.0,
+            "scale": 0.8407737103327474,
+            "train_nll": -0.25395788536348207,
+            "test_nll": -0.22692537304711724
+          },
+          {
+            "nu": 56.0,
+            "scale": 0.8720342531855308,
+            "train_nll": -0.23816415935946966,
+            "test_nll": -0.2106945669336886
+          },
+          {
+            "nu": 112.0,
+            "scale": 0.9101315317327499,
+            "train_nll": -0.21799115382013112,
+            "test_nll": -0.19031524808046907
+          },
+          {
+            "nu": 224.0,
+            "scale": 0.9422756908792824,
+            "train_nll": -0.20087309645481732,
+            "test_nll": -0.17334794617419624
+          },
+          {
+            "nu": 448.0,
+            "scale": 0.9656929672668383,
+            "train_nll": -0.18863344904878931,
+            "test_nll": -0.16148319510495424
+          },
+          {
+            "nu": 896.0,
+            "scale": 0.980827232631813,
+            "train_nll": -0.18093054936984676,
+            "test_nll": -0.1542020231393868
+          },
+          {
+            "nu": 1792.0,
+            "scale": 0.9897524819085203,
+            "train_nll": -0.17649928446104846,
+            "test_nll": -0.1501120569108776
+          },
+          {
+            "nu": 4096.0,
+            "scale": 0.9953226765118393,
+            "train_nll": -0.1737872473582771,
+            "test_nll": -0.14765655331072813
+          },
+          {
+            "nu": 16384.0,
+            "scale": 0.9987988772253618,
+            "train_nll": -0.17211911616915176,
+            "test_nll": -0.14616788689551607
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 1.000000000000006,
+            "train_nll": -0.17154750788546624,
+            "test_nll": -0.14566200932849416
+          }
+        ]
+      },
+      "full_cov_shrink05": {
+        "best": {
+          "nu": 5.0,
+          "scale": 0.7809855769304833,
+          "train_nll": -0.43367255229729107,
+          "test_nll": -0.4033127709912099
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 0.77042238458518,
+            "train_nll": -0.4286642362930668,
+            "test_nll": -0.39908288985195073
+          },
+          {
+            "nu": 2.0,
+            "scale": 0.7686890595960759,
+            "train_nll": -0.4307884540284035,
+            "test_nll": -0.40105784638061115
+          },
+          {
+            "nu": 3.0,
+            "scale": 0.7717616000939757,
+            "train_nll": -0.43287357776069424,
+            "test_nll": -0.40289103686372885
+          },
+          {
+            "nu": 4.0,
+            "scale": 0.7764143218316709,
+            "train_nll": -0.4336027090642349,
+            "test_nll": -0.40341460231384696
+          },
+          {
+            "nu": 5.0,
+            "scale": 0.7809855769304833,
+            "train_nll": -0.43367255229729107,
+            "test_nll": -0.4033127709912099
+          },
+          {
+            "nu": 7.0,
+            "scale": 0.7893033395908118,
+            "train_nll": -0.4328488188038424,
+            "test_nll": -0.4022184044314192
+          },
+          {
+            "nu": 10.0,
+            "scale": 0.8000342400817482,
+            "train_nll": -0.4306096674918223,
+            "test_nll": -0.39969367049399684
+          },
+          {
+            "nu": 14.0,
+            "scale": 0.8120026133501086,
+            "train_nll": -0.42709798660361376,
+            "test_nll": -0.3959347355668388
+          },
+          {
+            "nu": 20.0,
+            "scale": 0.8265488114994609,
+            "train_nll": -0.42187375738718624,
+            "test_nll": -0.3904948024607995
+          },
+          {
+            "nu": 32.0,
+            "scale": 0.8480959859541561,
+            "train_nll": -0.4128860623706041,
+            "test_nll": -0.38132834414331684
+          },
+          {
+            "nu": 56.0,
+            "scale": 0.875542347756691,
+            "train_nll": -0.40015130136679167,
+            "test_nll": -0.3685666905257383
+          },
+          {
+            "nu": 112.0,
+            "scale": 0.9079874772180652,
+            "train_nll": -0.38418724862440157,
+            "test_nll": -0.3528301966507117
+          },
+          {
+            "nu": 224.0,
+            "scale": 0.9342023405782002,
+            "train_nll": -0.37108869713581494,
+            "test_nll": -0.3401303640236417
+          },
+          {
+            "nu": 448.0,
+            "scale": 0.9523406146286979,
+            "train_nll": -0.3621089965653457,
+            "test_nll": -0.33155584384379955
+          },
+          {
+            "nu": 896.0,
+            "scale": 0.9634446784525861,
+            "train_nll": -0.3566946169942766,
+            "test_nll": -0.3264494275519032
+          },
+          {
+            "nu": 1792.0,
+            "scale": 0.9696867176283619,
+            "train_nll": -0.3536890766459506,
+            "test_nll": -0.3236392070829721
+          },
+          {
+            "nu": 4096.0,
+            "scale": 0.9734404872352795,
+            "train_nll": -0.35189707751548727,
+            "test_nll": -0.32197293477873856
+          },
+          {
+            "nu": 16384.0,
+            "scale": 0.9757200023411811,
+            "train_nll": -0.35081502517131113,
+            "test_nll": -0.32097040410976674
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 0.9764954596557973,
+            "train_nll": -0.35044803682488457,
+            "test_nll": -0.32063102928485754
+          }
+        ]
+      },
+      "pooled_standardized_marginal": {
+        "best": {
+          "nu": 4.0,
+          "scale": 0.7192473949940886,
+          "train_nll": 1.3584936823977285,
+          "test_nll": 1.3806734549936326
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 0.5491408976444115,
+            "train_nll": 1.3930419763917983,
+            "test_nll": 1.4118186899426746
+          },
+          {
+            "nu": 2.0,
+            "scale": 0.601366182497511,
+            "train_nll": 1.3721007035995987,
+            "test_nll": 1.3918653666550493
+          },
+          {
+            "nu": 3.0,
+            "scale": 0.6722987961036065,
+            "train_nll": 1.3594161089456247,
+            "test_nll": 1.3806182248596515
+          },
+          {
+            "nu": 4.0,
+            "scale": 0.7192473949940886,
+            "train_nll": 1.3584936823977285,
+            "test_nll": 1.3806734549936326
+          },
+          {
+            "nu": 5.0,
+            "scale": 0.7531191831702989,
+            "train_nll": 1.360677864394895,
+            "test_nll": 1.3835594983957387
+          },
+          {
+            "nu": 7.0,
+            "scale": 0.7993898606815735,
+            "train_nll": 1.3667724429614156,
+            "test_nll": 1.3905860566557535
+          },
+          {
+            "nu": 10.0,
+            "scale": 0.841728314595438,
+            "train_nll": 1.3748985579897839,
+            "test_nll": 1.3995096629402577
+          },
+          {
+            "nu": 14.0,
+            "scale": 0.8753365238954662,
+            "train_nll": 1.3827423313290752,
+            "test_nll": 1.4079215392585827
+          },
+          {
+            "nu": 20.0,
+            "scale": 0.9046342981795534,
+            "train_nll": 1.390402879731936,
+            "test_nll": 1.4160041818790956
+          },
+          {
+            "nu": 32.0,
+            "scale": 0.9344198583875202,
+            "train_nll": 1.3988348681158924,
+            "test_nll": 1.4247597961705893
+          },
+          {
+            "nu": 56.0,
+            "scale": 0.9591760051793295,
+            "train_nll": 1.406237205051196,
+            "test_nll": 1.4323090447540907
+          },
+          {
+            "nu": 112.0,
+            "scale": 0.978084809366109,
+            "train_nll": 1.4120698921581711,
+            "test_nll": 1.4381419215416427
+          },
+          {
+            "nu": 224.0,
+            "scale": 0.9885681393285957,
+            "train_nll": 1.415347827951642,
+            "test_nll": 1.4413612659895436
+          },
+          {
+            "nu": 448.0,
+            "scale": 0.9941471539046771,
+            "train_nll": 1.417099366070903,
+            "test_nll": 1.4430598054027062
+          },
+          {
+            "nu": 896.0,
+            "scale": 0.9970364126243257,
+            "train_nll": 1.4180072713695795,
+            "test_nll": 1.4439333686297937
+          },
+          {
+            "nu": 1792.0,
+            "scale": 0.9985084926608772,
+            "train_nll": 1.4184698809620861,
+            "test_nll": 1.4443765177626289
+          },
+          {
+            "nu": 4096.0,
+            "scale": 0.9993450165214764,
+            "train_nll": 1.4187327404202195,
+            "test_nll": 1.4446277013708935
+          },
+          {
+            "nu": 16384.0,
+            "scale": 0.9998358919000787,
+            "train_nll": 1.4188869733567269,
+            "test_nll": 1.4447748694763833
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 1.000000000000006,
+            "train_nll": 1.4189385332046787,
+            "test_nll": 1.4448240317616508
+          }
+        ]
+      },
+      "fixed_sigma_isotropic": {
+        "best": {
+          "nu": 1.5,
+          "scale": 1.0,
+          "train_nll": 0.07362258898745634,
+          "test_nll": 0.08764873815629141
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 1.0,
+            "train_nll": 0.07362258898745634,
+            "test_nll": 0.08764873815629141
+          },
+          {
+            "nu": 2.0,
+            "scale": 1.0,
+            "train_nll": 0.12722481492004725,
+            "test_nll": 0.13971213227349968
+          },
+          {
+            "nu": 3.0,
+            "scale": 1.0,
+            "train_nll": 0.21154060342486958,
+            "test_nll": 0.22185361993701405
+          },
+          {
+            "nu": 4.0,
+            "scale": 1.0,
+            "train_nll": 0.27609758746323704,
+            "test_nll": 0.2849402955101695
+          },
+          {
+            "nu": 5.0,
+            "scale": 1.0,
+            "train_nll": 0.3278799512588901,
+            "test_nll": 0.33565819756568455
+          },
+          {
+            "nu": 7.0,
+            "scale": 1.0,
+            "train_nll": 0.4070422280748973,
+            "test_nll": 0.41337803424489156
+          },
+          {
+            "nu": 10.0,
+            "scale": 1.0,
+            "train_nll": 0.4898056295344633,
+            "test_nll": 0.49485360858794003
+          },
+          {
+            "nu": 14.0,
+            "scale": 1.0,
+            "train_nll": 0.5641816398871412,
+            "test_nll": 0.5682461742855643
+          },
+          {
+            "nu": 20.0,
+            "scale": 1.0,
+            "train_nll": 0.6366780336761655,
+            "test_nll": 0.6399264844679468
+          },
+          {
+            "nu": 32.0,
+            "scale": 1.0,
+            "train_nll": 0.7192446879213853,
+            "test_nll": 0.7217164846022546
+          },
+          {
+            "nu": 56.0,
+            "scale": 1.0,
+            "train_nll": 0.7960095451106851,
+            "test_nll": 0.7978880219310165
+          },
+          {
+            "nu": 112.0,
+            "scale": 1.0,
+            "train_nll": 0.8604126502888855,
+            "test_nll": 0.8618773435711123
+          },
+          {
+            "nu": 224.0,
+            "scale": 1.0,
+            "train_nll": 0.898454986588095,
+            "test_nll": 0.8997074624843456
+          },
+          {
+            "nu": 448.0,
+            "scale": 1.0,
+            "train_nll": 0.9193915362756249,
+            "test_nll": 0.920536632552332
+          },
+          {
+            "nu": 896.0,
+            "scale": 1.0,
+            "train_nll": 0.930419443100393,
+            "test_nll": 0.9315105437674159
+          },
+          {
+            "nu": 1792.0,
+            "scale": 1.0,
+            "train_nll": 0.936085641805187,
+            "test_nll": 0.9371496700653009
+          },
+          {
+            "nu": 4096.0,
+            "scale": 1.0,
+            "train_nll": 0.9393195333640897,
+            "test_nll": 0.9403683118456163
+          },
+          {
+            "nu": 16384.0,
+            "scale": 1.0,
+            "train_nll": 0.9412218667242603,
+            "test_nll": 0.9422617423934122
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 1.0,
+            "train_nll": 0.9418586150889506,
+            "test_nll": 0.9428955219951445
+          }
+        ]
+      },
+      "geometry_train": {
+        "d": 48,
+        "effective_correlation_dimension": 29.280158915224366,
+        "radial_squared_cv": 0.8518503636531758,
+        "radial_squared_quantiles": [
+          0.004559673953531838,
+          0.01323115498236153,
+          0.035344056050780025,
+          0.09129707550129186,
+          0.20280523507150505
+        ],
+        "marginal_excess3": 5.256198188217616
+      }
+    },
+    "continuous_only_own_sigma": {
+      "isotropic": {
+        "best": {
+          "nu": 5.0,
+          "scale": 0.8695276241640238,
+          "train_nll": -0.22865526577012063,
+          "test_nll": -0.20686467621077909
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 0.8571556734626049,
+            "train_nll": -0.22235378162872022,
+            "test_nll": -0.20078251226273736
+          },
+          {
+            "nu": 2.0,
+            "scale": 0.8560084062821953,
+            "train_nll": -0.2246650907386638,
+            "test_nll": -0.20303999254406846
+          },
+          {
+            "nu": 3.0,
+            "scale": 0.8597092581046394,
+            "train_nll": -0.22712380399913124,
+            "test_nll": -0.20541817268981677
+          },
+          {
+            "nu": 4.0,
+            "scale": 0.864720784400192,
+            "train_nll": -0.228222174964277,
+            "test_nll": -0.20646430940592686
+          },
+          {
+            "nu": 5.0,
+            "scale": 0.8695276241640238,
+            "train_nll": -0.22865526577012063,
+            "test_nll": -0.20686467621077909
+          },
+          {
+            "nu": 7.0,
+            "scale": 0.8781033230820172,
+            "train_nll": -0.228537117296989,
+            "test_nll": -0.20671610187113654
+          },
+          {
+            "nu": 10.0,
+            "scale": 0.8889060675100633,
+            "train_nll": -0.22730035596557907,
+            "test_nll": -0.2054765091619124
+          },
+          {
+            "nu": 14.0,
+            "scale": 0.9006517218201642,
+            "train_nll": -0.22502180650487036,
+            "test_nll": -0.20322320371050395
+          },
+          {
+            "nu": 20.0,
+            "scale": 0.9145364710407454,
+            "train_nll": -0.22144556423837503,
+            "test_nll": -0.1996993215344025
+          },
+          {
+            "nu": 32.0,
+            "scale": 0.934375498368729,
+            "train_nll": -0.21516405098141833,
+            "test_nll": -0.19351883764413902
+          },
+          {
+            "nu": 56.0,
+            "scale": 0.9584843535074664,
+            "train_nll": -0.20625317725052694,
+            "test_nll": -0.1847706430439915
+          },
+          {
+            "nu": 112.0,
+            "scale": 0.9854714274137845,
+            "train_nll": -0.19519570704198896,
+            "test_nll": -0.173980216530645
+          },
+          {
+            "nu": 224.0,
+            "scale": 1.0062461328349914,
+            "train_nll": -0.1862099890883353,
+            "test_nll": -0.16530513710721495
+          },
+          {
+            "nu": 448.0,
+            "scale": 1.0202206740969386,
+            "train_nll": -0.18005007971119857,
+            "test_nll": -0.15943432949645642
+          },
+          {
+            "nu": 896.0,
+            "scale": 1.0287096845723243,
+            "train_nll": -0.17630197408058845,
+            "test_nll": -0.15590694375152037
+          },
+          {
+            "nu": 1792.0,
+            "scale": 1.033506186999655,
+            "train_nll": -0.1741951646583637,
+            "test_nll": -0.15394499391291827
+          },
+          {
+            "nu": 4096.0,
+            "scale": 1.0364179316161197,
+            "train_nll": -0.1729245994962738,
+            "test_nll": -0.15277111061705861
+          },
+          {
+            "nu": 16384.0,
+            "scale": 1.0382026334471504,
+            "train_nll": -0.17215043849730116,
+            "test_nll": -0.15205994443162996
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 1.0388134557542807,
+            "train_nll": -0.17188646936072316,
+            "test_nll": -0.15181823991450827
+          }
+        ]
+      },
+      "diagonal": {
+        "best": {
+          "nu": 5.0,
+          "scale": 0.8314816458191587,
+          "train_nll": -0.28526218037533724,
+          "test_nll": -0.2630338005616677
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 0.8191225183749044,
+            "train_nll": -0.2791838105331885,
+            "test_nll": -0.25714947504722807
+          },
+          {
+            "nu": 2.0,
+            "scale": 0.8180382169631762,
+            "train_nll": -0.28145904835242375,
+            "test_nll": -0.25937913160579185
+          },
+          {
+            "nu": 3.0,
+            "scale": 0.8217477192835334,
+            "train_nll": -0.28385048920182365,
+            "test_nll": -0.2617007779052971
+          },
+          {
+            "nu": 4.0,
+            "scale": 0.8267234926230183,
+            "train_nll": -0.284886878924159,
+            "test_nll": -0.26269007090083196
+          },
+          {
+            "nu": 5.0,
+            "scale": 0.8314816458191587,
+            "train_nll": -0.28526218037533724,
+            "test_nll": -0.2630338005616677
+          },
+          {
+            "nu": 7.0,
+            "scale": 0.8399483540220688,
+            "train_nll": -0.2850382960116047,
+            "test_nll": -0.26277361415304434
+          },
+          {
+            "nu": 10.0,
+            "scale": 0.8505879904286419,
+            "train_nll": -0.28366144089952794,
+            "test_nll": -0.2613725027746121
+          },
+          {
+            "nu": 14.0,
+            "scale": 0.862138094042744,
+            "train_nll": -0.2812208786894792,
+            "test_nll": -0.25891638757450397
+          },
+          {
+            "nu": 20.0,
+            "scale": 0.8757813150986352,
+            "train_nll": -0.27743848911868385,
+            "test_nll": -0.2551146212164124
+          },
+          {
+            "nu": 32.0,
+            "scale": 0.8952807984049665,
+            "train_nll": -0.2708295386073425,
+            "test_nll": -0.2484588890714996
+          },
+          {
+            "nu": 56.0,
+            "scale": 0.9190396005231198,
+            "train_nll": -0.2614532655813733,
+            "test_nll": -0.23898854110389478
+          },
+          {
+            "nu": 112.0,
+            "scale": 0.9458335809941145,
+            "train_nll": -0.24975502178449904,
+            "test_nll": -0.227153955427412
+          },
+          {
+            "nu": 224.0,
+            "scale": 0.9667202231044941,
+            "train_nll": -0.24016792196950165,
+            "test_nll": -0.2174628223756827
+          },
+          {
+            "nu": 448.0,
+            "scale": 0.9809470731498483,
+            "train_nll": -0.23355340027061988,
+            "test_nll": -0.21078814971610615
+          },
+          {
+            "nu": 896.0,
+            "scale": 0.9896525712750095,
+            "train_nll": -0.22952215409487442,
+            "test_nll": -0.20672434068413748
+          },
+          {
+            "nu": 1792.0,
+            "scale": 0.9945763997088333,
+            "train_nll": -0.22726121466717042,
+            "test_nll": -0.20444520335987093
+          },
+          {
+            "nu": 4096.0,
+            "scale": 0.9975577658880967,
+            "train_nll": -0.22590256478099802,
+            "test_nll": -0.20307503981057073
+          },
+          {
+            "nu": 16384.0,
+            "scale": 0.999378513132798,
+            "train_nll": -0.22507760006601885,
+            "test_nll": -0.2022426721279451
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 1.0,
+            "train_nll": -0.22479694007826723,
+            "test_nll": -0.20195939817462016
+          }
+        ]
+      },
+      "full_cov_shrink05": {
+        "best": {
+          "nu": 7.0,
+          "scale": 0.8381888749176637,
+          "train_nll": -0.43941022739846614,
+          "test_nll": -0.40878509466810886
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 0.8200776561226146,
+            "train_nll": -0.43250118672766735,
+            "test_nll": -0.4022880625501801
+          },
+          {
+            "nu": 2.0,
+            "scale": 0.8189390954231082,
+            "train_nll": -0.43489288965540673,
+            "test_nll": -0.40460453945245334
+          },
+          {
+            "nu": 3.0,
+            "scale": 0.822065666761882,
+            "train_nll": -0.437501202004559,
+            "test_nll": -0.4070953082384767
+          },
+          {
+            "nu": 4.0,
+            "scale": 0.8264167745276014,
+            "train_nll": -0.43873677250870635,
+            "test_nll": -0.40824724316278904
+          },
+          {
+            "nu": 5.0,
+            "scale": 0.8306249663556187,
+            "train_nll": -0.4392971358275364,
+            "test_nll": -0.40874764464313285
+          },
+          {
+            "nu": 7.0,
+            "scale": 0.8381888749176637,
+            "train_nll": -0.43941022739846614,
+            "test_nll": -0.40878509466810886
+          },
+          {
+            "nu": 10.0,
+            "scale": 0.8477855535153695,
+            "train_nll": -0.4384768087572517,
+            "test_nll": -0.40779649531593165
+          },
+          {
+            "nu": 14.0,
+            "scale": 0.8582671784642325,
+            "train_nll": -0.43654491318242705,
+            "test_nll": -0.40583636665213785
+          },
+          {
+            "nu": 20.0,
+            "scale": 0.8706813915156586,
+            "train_nll": -0.4334027714908826,
+            "test_nll": -0.40268312229601966
+          },
+          {
+            "nu": 32.0,
+            "scale": 0.8884092037032842,
+            "train_nll": -0.4277914197100401,
+            "test_nll": -0.3970684463791434
+          },
+          {
+            "nu": 56.0,
+            "scale": 0.9098696441351062,
+            "train_nll": -0.419786323523617,
+            "test_nll": -0.389047023619842
+          },
+          {
+            "nu": 112.0,
+            "scale": 0.9336821051085682,
+            "train_nll": -0.409899702498598,
+            "test_nll": -0.3790978554721667
+          },
+          {
+            "nu": 224.0,
+            "scale": 0.9517260628938078,
+            "train_nll": -0.4019874101935492,
+            "test_nll": -0.37108482169527335
+          },
+          {
+            "nu": 448.0,
+            "scale": 0.9635879713258749,
+            "train_nll": -0.39668727984271146,
+            "test_nll": -0.3656750464725049
+          },
+          {
+            "nu": 896.0,
+            "scale": 0.9705954763497646,
+            "train_nll": -0.39354526596243855,
+            "test_nll": -0.36244218035151077
+          },
+          {
+            "nu": 1792.0,
+            "scale": 0.9744486268146625,
+            "train_nll": -0.39181967579522436,
+            "test_nll": -0.36065503554866885
+          },
+          {
+            "nu": 4096.0,
+            "scale": 0.9767355768006079,
+            "train_nll": -0.39079737785906254,
+            "test_nll": -0.35959137037160005
+          },
+          {
+            "nu": 16384.0,
+            "scale": 0.9781131660857275,
+            "train_nll": -0.39018251919822133,
+            "test_nll": -0.3589496116632038
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 0.9785798627852149,
+            "train_nll": -0.389974405449949,
+            "test_nll": -0.3587320207030784
+          }
+        ]
+      },
+      "pooled_standardized_marginal": {
+        "best": {
+          "nu": 5.0,
+          "scale": 0.7793150094000307,
+          "train_nll": 1.3814990786582289,
+          "test_nll": 1.3571473955767024
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 0.5787344747329122,
+            "train_nll": 1.4276390141861113,
+            "test_nll": 1.3992169209745595
+          },
+          {
+            "nu": 2.0,
+            "scale": 0.6312397911377339,
+            "train_nll": 1.4035087235147266,
+            "test_nll": 1.376087782602678
+          },
+          {
+            "nu": 3.0,
+            "scale": 0.7013592052634912,
+            "train_nll": 1.3861181042241209,
+            "test_nll": 1.3601424855818225
+          },
+          {
+            "nu": 4.0,
+            "scale": 0.746916647184022,
+            "train_nll": 1.3818463155887213,
+            "test_nll": 1.356827459478937
+          },
+          {
+            "nu": 5.0,
+            "scale": 0.7793150094000307,
+            "train_nll": 1.3814990786582289,
+            "test_nll": 1.3571473955767024
+          },
+          {
+            "nu": 7.0,
+            "scale": 0.8228734727452446,
+            "train_nll": 1.3839813014972036,
+            "test_nll": 1.3604803126770424
+          },
+          {
+            "nu": 10.0,
+            "scale": 0.8619499344996758,
+            "train_nll": 1.3886487164913128,
+            "test_nll": 1.3658281302611999
+          },
+          {
+            "nu": 14.0,
+            "scale": 0.8923794410405584,
+            "train_nll": 1.3936471086302928,
+            "test_nll": 1.3712657816332867
+          },
+          {
+            "nu": 20.0,
+            "scale": 0.9184381075595626,
+            "train_nll": 1.3987616991970213,
+            "test_nll": 1.3766601056639398
+          },
+          {
+            "nu": 32.0,
+            "scale": 0.9444443632414661,
+            "train_nll": 1.4045555115115522,
+            "test_nll": 1.3826035887813934
+          },
+          {
+            "nu": 56.0,
+            "scale": 0.9656620472276227,
+            "train_nll": 1.4097471370952355,
+            "test_nll": 1.387780747692794
+          },
+          {
+            "nu": 112.0,
+            "scale": 0.981627552155733,
+            "train_nll": 1.4139067564352699,
+            "test_nll": 1.3918149072082633
+          },
+          {
+            "nu": 224.0,
+            "scale": 0.9904096986303305,
+            "train_nll": 1.416281388346458,
+            "test_nll": 1.3940617855237556
+          },
+          {
+            "nu": 448.0,
+            "scale": 0.9950795199868635,
+            "train_nll": 1.4175675367800824,
+            "test_nll": 1.3952566946897347
+          },
+          {
+            "nu": 896.0,
+            "scale": 0.9975035904699078,
+            "train_nll": 1.4182411011925735,
+            "test_nll": 1.3958747848053503
+          },
+          {
+            "nu": 1792.0,
+            "scale": 0.998741935269856,
+            "train_nll": 1.4185866199492925,
+            "test_nll": 1.396189465809476
+          },
+          {
+            "nu": 4096.0,
+            "scale": 0.9994470446999049,
+            "train_nll": 1.4187837525397586,
+            "test_nll": 1.3963682128223562
+          },
+          {
+            "nu": 16384.0,
+            "scale": 0.9998613774232173,
+            "train_nll": 1.4188997157812464,
+            "test_nll": 1.396473077741077
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 1.0,
+            "train_nll": 1.418938533204673,
+            "test_nll": 1.3965081319145731
+          }
+        ]
+      },
+      "fixed_sigma_isotropic": {
+        "best": {
+          "nu": 5.0,
+          "scale": 1.0,
+          "train_nll": -0.22677897386500834,
+          "test_nll": -0.2043111299693663
+        },
+        "profile": [
+          {
+            "nu": 1.5,
+            "scale": 1.0,
+            "train_nll": -0.22149343382593467,
+            "test_nll": -0.19960554699344413
+          },
+          {
+            "nu": 2.0,
+            "scale": 1.0,
+            "train_nll": -0.2235924559001472,
+            "test_nll": -0.20157426151715874
+          },
+          {
+            "nu": 3.0,
+            "scale": 1.0,
+            "train_nll": -0.2257083930231505,
+            "test_nll": -0.20349282663027224
+          },
+          {
+            "nu": 4.0,
+            "scale": 1.0,
+            "train_nll": -0.2265456357733917,
+            "test_nll": -0.20418676937032698
+          },
+          {
+            "nu": 5.0,
+            "scale": 1.0,
+            "train_nll": -0.22677897386500834,
+            "test_nll": -0.2043111299693663
+          },
+          {
+            "nu": 7.0,
+            "scale": 1.0,
+            "train_nll": -0.2263937560695466,
+            "test_nll": -0.2037721301717157
+          },
+          {
+            "nu": 10.0,
+            "scale": 1.0,
+            "train_nll": -0.22496996577404293,
+            "test_nll": -0.20221054979504105
+          },
+          {
+            "nu": 14.0,
+            "scale": 1.0,
+            "train_nll": -0.2226601497499725,
+            "test_nll": -0.1998092669279825
+          },
+          {
+            "nu": 20.0,
+            "scale": 1.0,
+            "train_nll": -0.21924411166876623,
+            "test_nll": -0.1963568347215885
+          },
+          {
+            "nu": 32.0,
+            "scale": 1.0,
+            "train_nll": -0.2134642967952376,
+            "test_nll": -0.1906622493821537
+          },
+          {
+            "nu": 56.0,
+            "scale": 1.0,
+            "train_nll": -0.20536487391371439,
+            "test_nll": -0.18291216925678677
+          },
+          {
+            "nu": 112.0,
+            "scale": 1.0,
+            "train_nll": -0.19505617696290334,
+            "test_nll": -0.17339442483412082
+          },
+          {
+            "nu": 224.0,
+            "scale": 1.0,
+            "train_nll": -0.18617949081061114,
+            "test_nll": -0.16550821334538002
+          },
+          {
+            "nu": 448.0,
+            "scale": 1.0,
+            "train_nll": -0.17969537848153938,
+            "test_nll": -0.1599424986692597
+          },
+          {
+            "nu": 896.0,
+            "scale": 1.0,
+            "train_nll": -0.17554247766161035,
+            "test_nll": -0.15647762947790578
+          },
+          {
+            "nu": 1792.0,
+            "scale": 1.0,
+            "train_nll": -0.17312580550133805,
+            "test_nll": -0.15450438903950015
+          },
+          {
+            "nu": 4096.0,
+            "scale": 1.0,
+            "train_nll": -0.17163600298148496,
+            "test_nll": -0.15330672248646549
+          },
+          {
+            "nu": 16384.0,
+            "scale": 1.0,
+            "train_nll": -0.1707152552679918,
+            "test_nll": -0.15257473247114617
+          },
+          {
+            "nu": "Gaussian",
+            "scale": 1.0,
+            "train_nll": -0.1703989253264493,
+            "test_nll": -0.15232483480367964
+          }
+        ]
+      },
+      "geometry_train": {
+        "d": 48,
+        "effective_correlation_dimension": 30.208738030668385,
+        "radial_squared_cv": 0.6357516148551406,
+        "radial_squared_quantiles": [
+          0.13218765234933352,
+          0.3885281672972032,
+          0.9671074381934539,
+          1.8798030222155035,
+          3.402137027698672
+        ],
+        "marginal_excess3": 4.112843778328619
+      }
+    }
+  }
+}

@@ -1,0 +1,154 @@
+{
+  "checkpoint": "/mnt/pfs/yuchen/groot/ft_wxflow/checkpoint-20000",
+  "tasks": [
+    "widowx_close_drawer"
+  ],
+  "seed": 20260904,
+  "k_screen": 8,
+  "k_discovery": 32,
+  "k_confirmation": 64,
+  "execution_horizon": 4,
+  "branch_env_steps": 12,
+  "branches_per_mode": 6,
+  "n_screened": 1,
+  "n_deep_attempts": 1,
+  "selection": {
+    "screen_sep_min": 4.5,
+    "confirmation": "fresh discovery PC1; independent confirmation; raw p<=.01; delta-BIC>=10; separation>=2 pooled SD; min component>=.2; two fitted density peaks; valley depth>=.25",
+    "multiple_testing": "Bonferroni p reported across 2 groups x all deep attempts"
+  },
+  "null_delta_bic": {
+    "repetitions": 1000,
+    "q95": -2.2033583499659573,
+    "q99": 1.756949106145239
+  },
+  "cases": [
+    {
+      "uid": "widowx_close_drawer:ep0:m0",
+      "task": "widowx_close_drawer",
+      "episode": 0,
+      "macro_step": 0,
+      "env_step": 0,
+      "group": "translation",
+      "screen_scores": {
+        "translation": 6.765412892903735,
+        "rotation": 4.165379216384482
+      },
+      "confirmation": {
+        "delta_bic": 28.804395719031618,
+        "sep": 2.5168209989431296,
+        "min_weight": 0.4334133189078179,
+        "weights": [
+          0.4334133189078179,
+          0.5665866810921821
+        ],
+        "means": [
+          -0.017544960160123437,
+          0.01386101161947469
+        ],
+        "variances": [
+          0.0003250556362886396,
+          2.617030203044901e-05
+        ],
+        "p": 0.000999000999000999,
+        "n_density_modes": 2,
+        "valley_depth": 0.2765997044104167,
+        "detected": true,
+        "bonferroni_p": 0.001998001998001998
+      },
+      "summary": {
+        "n_per_mode": [
+          6,
+          6
+        ],
+        "position_gap_cm": [
+          0.0,
+          0.4089624405381747,
+          0.8802615067323151,
+          1.4317054759310726,
+          2.1881919809177077,
+          2.666915061727489,
+          2.9167599522836123,
+          3.26377399345333,
+          3.4666991031763184,
+          3.183215691228843,
+          3.320566195822299,
+          3.651600945615837,
+          3.7141609269208518
+        ],
+        "orientation_gap_deg": [
+          0.0,
+          2.325778604594984,
+          5.375105875378446,
+          8.545599969166553,
+          11.96445840018055,
+          14.272127602484645,
+          16.849588392165458,
+          20.529004955040303,
+          23.954063200276277,
+          24.597957705807865,
+          26.75257120778223,
+          29.430681470982407,
+          29.49308541801731
+        ],
+        "position_within_rms_cm": [
+          0.0,
+          0.3397536300870921,
+          0.8040024517217532,
+          1.2931381827690835,
+          1.8062231048742439,
+          1.9245995574617216,
+          1.9513417200079892,
+          2.1177534292607283,
+          2.428829193812711,
+          2.402102501597918,
+          2.308579445927528,
+          2.318404572011216,
+          2.401879767993554
+        ],
+        "orientation_within_rms_deg": [
+          0.0,
+          1.3996068726933752,
+          3.096459454301868,
+          4.64749022910208,
+          6.454101468576326,
+          7.048703574043006,
+          7.284298794940074,
+          7.7201646150866186,
+          8.818878792686828,
+          8.719678753939696,
+          8.34754520961124,
+          9.689750465940474,
+          12.005388284263873
+        ],
+        "peak_first_chunk_position_gap_cm": 2.1881919809177077,
+        "late_position_gap_cm": 3.4673859398969578,
+        "late_orientation_gap_deg": 27.568573950647455,
+        "late_position_between_within": 1.4706386744194364,
+        "late_orientation_between_within": 2.8448806543843026,
+        "position_persistence_ratio": 1.5845894556485705,
+        "same_time_route_rms_cm": 3.28972549715078,
+        "time_aligned_curve_rms_cm": 1.717906493620134,
+        "curve_to_same_time_ratio": 0.5222035987829401,
+        "late_path_permutation_p": 0.16083916083916083,
+        "final_task_metric_mean": [
+          0.11999008432030678,
+          0.11999999731779099
+        ],
+        "final_task_metric_delta": 9.912997484207153e-06,
+        "success_count": [
+          0,
+          0
+        ]
+      },
+      "rgb_index": 0
+    }
+  ],
+  "screen_log": [
+    {
+      "uid": "widowx_close_drawer:ep0:m0",
+      "translation": 6.765412892903735,
+      "rotation": 4.165379216384482
+    }
+  ]
+}

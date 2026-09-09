@@ -1,0 +1,31 @@
+{
+  "left": "/mnt/pfs/yuchen/groot/ft_fr_nu1024_hold7k_to14_20260908/eval-18000-nudebug-fixed1234",
+  "right": "/mnt/pfs/yuchen/groot/ft_fr_nu224/eval-20000-nudebug-fixed1234",
+  "tasks": [
+    {
+      "task": "google_robot_move_near",
+      "left_completed": 10,
+      "right_completed": 70,
+      "status": "incomplete"
+    },
+    {
+      "task": "google_robot_pick_coke_can",
+      "left_completed": 100,
+      "right_completed": 100,
+      "matched_initial_observations": 91,
+      "status": "observation_mismatch_no_paired_inference",
+      "mismatch_seeds": [
+        1249,
+        1260,
+        1275,
+        1282,
+        1293,
+        1308,
+        1312,
+        1314,
+        1327
+      ]
+    }
+  ],
+  "scope": "Diagnostic scene set; no adjustment for recipe/model selection. Does not isolate different training histories or establish a multi-seed recipe ranking."
+}

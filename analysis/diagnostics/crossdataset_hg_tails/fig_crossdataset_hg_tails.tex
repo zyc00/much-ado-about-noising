@@ -1,0 +1,25 @@
+% Place the PDF alongside the paper figures and adapt its path as needed.
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=\linewidth]{figures/fig_crossdataset_hg_tails.pdf}
+  \caption{\textbf{Residual tails remain heavier than Gaussian after HG scaling.}
+  We probe pure heteroscedastic-Gaussian policies on 24 RoboCasa-GR1 tasks
+  and the 40 most frequent Bridge instruction groups among demonstrations
+  with at least 24 frames. Residuals are divided by the policy's
+  predicted scale, then centered and standardized per task and action-chunk
+  coordinate using episode-level cross-fitting.
+  \textbf{(a)} Each point represents one task's frequency of $|z|>3$, divided
+  by the standard Gaussian reference ($0.27\%$); horizontal intervals are
+  95\% episode-bootstrap intervals conditional on the fitted calibration.
+  Tasks are ordered by this ratio.
+  \textbf{(b)} Empirical two-sided tail probabilities, with the Gaussian
+  reference dashed. All tasks and groups are shown; colors highlight those nearest
+  the 10th, 50th, and 90th percentiles of the ratio in (a), with matching
+  colors across columns. The original three Bridge groups retain their 48
+  demonstrations each; the additional 37 groups use 24 randomly selected
+  demonstrations each, with 12 valid action-chunk starts per demonstration.
+  Zero empirical tail probabilities are omitted on the logarithmic axis.
+  GR1 hand joints are retained, while Bridge's binary gripper is excluded.
+  Episode holdout applies to calibration, not policy training.}
+  \label{fig:crossdataset-hg-tails}
+\end{figure}

@@ -1,0 +1,73 @@
+{
+  "mode": "expert_replay",
+  "task": "transport_ph",
+  "source": "/mnt/pfs/yuchen/code/much-ado-about-noising/data/transport_ph_image4_abs.hdf5",
+  "dataset": "/mnt/pfs/yuchen/groot/robomimic_adapter_20260907/transport_ph_smoke",
+  "results": [
+    {
+      "demo": "demo_0",
+      "steps": 714,
+      "success": true,
+      "raw_action_replay_success": true,
+      "one_step_raw_vs_converted_max_error": 9.225448753813481e-07,
+      "action_roundtrip_max_error": 5.960464477539063e-08,
+      "initial_proprioception_max_error": 0.0,
+      "image_orientation": {
+        "shouldercamera0": {
+          "same_mae": 1.8718820861678005,
+          "vertical_flip_mae": 34.77938397581255,
+          "rotate180_mae": 39.48365457294029
+        },
+        "shouldercamera1": {
+          "same_mae": 2.0462962962962963,
+          "vertical_flip_mae": 44.340986394557824,
+          "rotate180_mae": 51.19378306878307
+        },
+        "robot0_eye_in_hand": {
+          "same_mae": 2.794973544973545,
+          "vertical_flip_mae": 71.06349206349206,
+          "rotate180_mae": 69.2562358276644
+        },
+        "robot1_eye_in_hand": {
+          "same_mae": 3.297571806500378,
+          "vertical_flip_mae": 74.01828231292517,
+          "rotate180_mae": 73.81788548752834
+        }
+      },
+      "mean_state_trajectory_l2_error": 0.06792932652864087
+    },
+    {
+      "demo": "demo_1",
+      "steps": 424,
+      "success": true,
+      "raw_action_replay_success": true,
+      "one_step_raw_vs_converted_max_error": 8.122574055580145e-07,
+      "action_roundtrip_max_error": 5.960464477539063e-08,
+      "initial_proprioception_max_error": 0.0,
+      "image_orientation": {
+        "shouldercamera0": {
+          "same_mae": 1.8529856386999244,
+          "vertical_flip_mae": 36.92885487528345,
+          "rotate180_mae": 40.88208616780045
+        },
+        "shouldercamera1": {
+          "same_mae": 2.057161753590325,
+          "vertical_flip_mae": 46.14852607709751,
+          "rotate180_mae": 52.07662509448224
+        },
+        "robot0_eye_in_hand": {
+          "same_mae": 2.862386621315193,
+          "vertical_flip_mae": 69.07109788359789,
+          "rotate180_mae": 70.2832105064248
+        },
+        "robot1_eye_in_hand": {
+          "same_mae": 3.055697278911565,
+          "vertical_flip_mae": 78.77102229780802,
+          "rotate180_mae": 80.56448412698413
+        }
+      },
+      "mean_state_trajectory_l2_error": 0.176597426014289
+    }
+  ],
+  "success_rate": 1.0
+}

@@ -1,0 +1,1908 @@
+{
+  "dataset": "bridge",
+  "n": 2867,
+  "episodes": 144,
+  "tasks": 24,
+  "metadata": {
+    "dataset": "bridge",
+    "checkpoint": "/mnt/pfs/yuchen/groot/ft_wxnu224/checkpoint-20000",
+    "seed": 20260908,
+    "tasks": [
+      "sweep into pile",
+      "open the drawer",
+      "close the drawer",
+      "open microwave",
+      "close microwave",
+      "open fridge",
+      "put carrot on plate",
+      "take broccoli out of pan",
+      "take carrot off plate",
+      "fold the cloth from bottom right to top left",
+      "put broccoli in pot",
+      "fold the cloth from bottom left to top right",
+      "fold the cloth from top left to bottom right",
+      "unfold the cloth from top right to bottom left",
+      "close fridge",
+      "open oven",
+      "unfold the cloth from left to right",
+      "put pear in bowl",
+      "close oven",
+      "put the blue figure on the top edge of the cloth",
+      "fold the cloth from left to right",
+      "unfold the cloth from top left to bottom right",
+      "unfold the cloth from bottom right to top left",
+      "unfold the cloth from right to left"
+    ],
+    "task_selection": "24 most frequent nonempty instructions; GR1 all 24 task datasets",
+    "episodes_per_task": 6,
+    "steps_per_episode": 20,
+    "scope": "Training-demonstration descriptive diagnostic, not held-out or contact ground truth.",
+    "ht_df": 224.0,
+    "ht_sbias": -0.4535,
+    "action_keys": [
+      "x",
+      "y",
+      "z",
+      "roll",
+      "pitch",
+      "yaw",
+      "gripper"
+    ],
+    "sigma": "masked mean softplus(s_raw + checkpoint ht_sbias) + 1e-3; all valid channels",
+    "episodes": [
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 10840,
+        "episode": 10840,
+        "length": 33,
+        "task_id": 0
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 15876,
+        "episode": 15876,
+        "length": 82,
+        "task_id": 0
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 34465,
+        "episode": 34465,
+        "length": 96,
+        "task_id": 0
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 40035,
+        "episode": 40035,
+        "length": 96,
+        "task_id": 0
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 45893,
+        "episode": 45893,
+        "length": 83,
+        "task_id": 0
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 50398,
+        "episode": 50398,
+        "length": 91,
+        "task_id": 0
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 5952,
+        "episode": 5952,
+        "length": 42,
+        "task_id": 1
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 9016,
+        "episode": 9016,
+        "length": 36,
+        "task_id": 1
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 11110,
+        "episode": 11110,
+        "length": 40,
+        "task_id": 1
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 30534,
+        "episode": 30534,
+        "length": 45,
+        "task_id": 1
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 36210,
+        "episode": 36210,
+        "length": 34,
+        "task_id": 1
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 49065,
+        "episode": 49065,
+        "length": 32,
+        "task_id": 1
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 9704,
+        "episode": 9704,
+        "length": 25,
+        "task_id": 2
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 14084,
+        "episode": 14084,
+        "length": 43,
+        "task_id": 2
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 23277,
+        "episode": 23277,
+        "length": 29,
+        "task_id": 2
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 23934,
+        "episode": 23934,
+        "length": 30,
+        "task_id": 2
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 26548,
+        "episode": 26548,
+        "length": 40,
+        "task_id": 2
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 34277,
+        "episode": 34277,
+        "length": 36,
+        "task_id": 2
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 3189,
+        "episode": 3189,
+        "length": 36,
+        "task_id": 3
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 8547,
+        "episode": 8547,
+        "length": 35,
+        "task_id": 3
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 9030,
+        "episode": 9030,
+        "length": 36,
+        "task_id": 3
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 13400,
+        "episode": 13400,
+        "length": 36,
+        "task_id": 3
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 27420,
+        "episode": 27420,
+        "length": 33,
+        "task_id": 3
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 42295,
+        "episode": 42295,
+        "length": 30,
+        "task_id": 3
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 11189,
+        "episode": 11189,
+        "length": 26,
+        "task_id": 4
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 18647,
+        "episode": 18647,
+        "length": 30,
+        "task_id": 4
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 22444,
+        "episode": 22444,
+        "length": 26,
+        "task_id": 4
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 25969,
+        "episode": 25969,
+        "length": 36,
+        "task_id": 4
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 28062,
+        "episode": 28062,
+        "length": 36,
+        "task_id": 4
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 40364,
+        "episode": 40364,
+        "length": 36,
+        "task_id": 4
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 19384,
+        "episode": 19384,
+        "length": 36,
+        "task_id": 5
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 31286,
+        "episode": 31286,
+        "length": 36,
+        "task_id": 5
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 36804,
+        "episode": 36804,
+        "length": 36,
+        "task_id": 5
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 42391,
+        "episode": 42391,
+        "length": 36,
+        "task_id": 5
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 49215,
+        "episode": 49215,
+        "length": 36,
+        "task_id": 5
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 50722,
+        "episode": 50722,
+        "length": 36,
+        "task_id": 5
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 3219,
+        "episode": 3219,
+        "length": 36,
+        "task_id": 6
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 22780,
+        "episode": 22780,
+        "length": 34,
+        "task_id": 6
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 23163,
+        "episode": 23163,
+        "length": 36,
+        "task_id": 6
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 24888,
+        "episode": 24888,
+        "length": 26,
+        "task_id": 6
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 26090,
+        "episode": 26090,
+        "length": 36,
+        "task_id": 6
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 45783,
+        "episode": 45783,
+        "length": 36,
+        "task_id": 6
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 5627,
+        "episode": 5627,
+        "length": 36,
+        "task_id": 7
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 13504,
+        "episode": 13504,
+        "length": 26,
+        "task_id": 7
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 43848,
+        "episode": 43848,
+        "length": 36,
+        "task_id": 7
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 44560,
+        "episode": 44560,
+        "length": 36,
+        "task_id": 7
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 46686,
+        "episode": 46686,
+        "length": 36,
+        "task_id": 7
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 47387,
+        "episode": 47387,
+        "length": 36,
+        "task_id": 7
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 1728,
+        "episode": 1728,
+        "length": 36,
+        "task_id": 8
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 2736,
+        "episode": 2736,
+        "length": 36,
+        "task_id": 8
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 16084,
+        "episode": 16084,
+        "length": 36,
+        "task_id": 8
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 23327,
+        "episode": 23327,
+        "length": 36,
+        "task_id": 8
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 25345,
+        "episode": 25345,
+        "length": 36,
+        "task_id": 8
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 45758,
+        "episode": 45758,
+        "length": 36,
+        "task_id": 8
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 2004,
+        "episode": 2004,
+        "length": 29,
+        "task_id": 9
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 14455,
+        "episode": 14455,
+        "length": 33,
+        "task_id": 9
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 15787,
+        "episode": 15787,
+        "length": 35,
+        "task_id": 9
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 19235,
+        "episode": 19235,
+        "length": 36,
+        "task_id": 9
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 19856,
+        "episode": 19856,
+        "length": 36,
+        "task_id": 9
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 29208,
+        "episode": 29208,
+        "length": 40,
+        "task_id": 9
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 1619,
+        "episode": 1619,
+        "length": 36,
+        "task_id": 10
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 8971,
+        "episode": 8971,
+        "length": 36,
+        "task_id": 10
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 22192,
+        "episode": 22192,
+        "length": 36,
+        "task_id": 10
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 28007,
+        "episode": 28007,
+        "length": 36,
+        "task_id": 10
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 34986,
+        "episode": 34986,
+        "length": 36,
+        "task_id": 10
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 42491,
+        "episode": 42491,
+        "length": 36,
+        "task_id": 10
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 12425,
+        "episode": 12425,
+        "length": 34,
+        "task_id": 11
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 12970,
+        "episode": 12970,
+        "length": 33,
+        "task_id": 11
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 13664,
+        "episode": 13664,
+        "length": 38,
+        "task_id": 11
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 15673,
+        "episode": 15673,
+        "length": 46,
+        "task_id": 11
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 21946,
+        "episode": 21946,
+        "length": 37,
+        "task_id": 11
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 23568,
+        "episode": 23568,
+        "length": 30,
+        "task_id": 11
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 10916,
+        "episode": 10916,
+        "length": 38,
+        "task_id": 12
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 11579,
+        "episode": 11579,
+        "length": 39,
+        "task_id": 12
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 17351,
+        "episode": 17351,
+        "length": 46,
+        "task_id": 12
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 27048,
+        "episode": 27048,
+        "length": 44,
+        "task_id": 12
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 30571,
+        "episode": 30571,
+        "length": 43,
+        "task_id": 12
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 47797,
+        "episode": 47797,
+        "length": 46,
+        "task_id": 12
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 2022,
+        "episode": 2022,
+        "length": 39,
+        "task_id": 13
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 13011,
+        "episode": 13011,
+        "length": 46,
+        "task_id": 13
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 16000,
+        "episode": 16000,
+        "length": 38,
+        "task_id": 13
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 22991,
+        "episode": 22991,
+        "length": 39,
+        "task_id": 13
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 31652,
+        "episode": 31652,
+        "length": 46,
+        "task_id": 13
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 50177,
+        "episode": 50177,
+        "length": 29,
+        "task_id": 13
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 6559,
+        "episode": 6559,
+        "length": 34,
+        "task_id": 14
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 13448,
+        "episode": 13448,
+        "length": 36,
+        "task_id": 14
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 29253,
+        "episode": 29253,
+        "length": 32,
+        "task_id": 14
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 32656,
+        "episode": 32656,
+        "length": 36,
+        "task_id": 14
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 38902,
+        "episode": 38902,
+        "length": 36,
+        "task_id": 14
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 52099,
+        "episode": 52099,
+        "length": 35,
+        "task_id": 14
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 1298,
+        "episode": 1298,
+        "length": 36,
+        "task_id": 15
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 6544,
+        "episode": 6544,
+        "length": 36,
+        "task_id": 15
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 10622,
+        "episode": 10622,
+        "length": 36,
+        "task_id": 15
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 28327,
+        "episode": 28327,
+        "length": 36,
+        "task_id": 15
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 28547,
+        "episode": 28547,
+        "length": 36,
+        "task_id": 15
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 38208,
+        "episode": 38208,
+        "length": 36,
+        "task_id": 15
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 1988,
+        "episode": 1988,
+        "length": 35,
+        "task_id": 16
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 12236,
+        "episode": 12236,
+        "length": 40,
+        "task_id": 16
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 20801,
+        "episode": 20801,
+        "length": 29,
+        "task_id": 16
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 30288,
+        "episode": 30288,
+        "length": 42,
+        "task_id": 16
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 35880,
+        "episode": 35880,
+        "length": 28,
+        "task_id": 16
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 40929,
+        "episode": 40929,
+        "length": 46,
+        "task_id": 16
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 270,
+        "episode": 270,
+        "length": 26,
+        "task_id": 17
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 9125,
+        "episode": 9125,
+        "length": 26,
+        "task_id": 17
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 10879,
+        "episode": 10879,
+        "length": 34,
+        "task_id": 17
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 14282,
+        "episode": 14282,
+        "length": 31,
+        "task_id": 17
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 36813,
+        "episode": 36813,
+        "length": 29,
+        "task_id": 17
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 38032,
+        "episode": 38032,
+        "length": 26,
+        "task_id": 17
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 4100,
+        "episode": 4100,
+        "length": 28,
+        "task_id": 18
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 6657,
+        "episode": 6657,
+        "length": 31,
+        "task_id": 18
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 12305,
+        "episode": 12305,
+        "length": 30,
+        "task_id": 18
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 25294,
+        "episode": 25294,
+        "length": 26,
+        "task_id": 18
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 32692,
+        "episode": 32692,
+        "length": 31,
+        "task_id": 18
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 51024,
+        "episode": 51024,
+        "length": 29,
+        "task_id": 18
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 6419,
+        "episode": 6419,
+        "length": 31,
+        "task_id": 19
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 19289,
+        "episode": 19289,
+        "length": 37,
+        "task_id": 19
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 20888,
+        "episode": 20888,
+        "length": 46,
+        "task_id": 19
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 31570,
+        "episode": 31570,
+        "length": 36,
+        "task_id": 19
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 48000,
+        "episode": 48000,
+        "length": 37,
+        "task_id": 19
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 48470,
+        "episode": 48470,
+        "length": 44,
+        "task_id": 19
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 25803,
+        "episode": 25803,
+        "length": 37,
+        "task_id": 20
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 30271,
+        "episode": 30271,
+        "length": 26,
+        "task_id": 20
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 38339,
+        "episode": 38339,
+        "length": 38,
+        "task_id": 20
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 38431,
+        "episode": 38431,
+        "length": 36,
+        "task_id": 20
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 40824,
+        "episode": 40824,
+        "length": 41,
+        "task_id": 20
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 45416,
+        "episode": 45416,
+        "length": 30,
+        "task_id": 20
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 7748,
+        "episode": 7748,
+        "length": 30,
+        "task_id": 21
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 12123,
+        "episode": 12123,
+        "length": 35,
+        "task_id": 21
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 34536,
+        "episode": 34536,
+        "length": 39,
+        "task_id": 21
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 34642,
+        "episode": 34642,
+        "length": 34,
+        "task_id": 21
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 43676,
+        "episode": 43676,
+        "length": 35,
+        "task_id": 21
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 46509,
+        "episode": 46509,
+        "length": 34,
+        "task_id": 21
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 2910,
+        "episode": 2910,
+        "length": 27,
+        "task_id": 22
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 11515,
+        "episode": 11515,
+        "length": 46,
+        "task_id": 22
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 20959,
+        "episode": 20959,
+        "length": 32,
+        "task_id": 22
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 26795,
+        "episode": 26795,
+        "length": 37,
+        "task_id": 22
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 41373,
+        "episode": 41373,
+        "length": 46,
+        "task_id": 22
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 47676,
+        "episode": 47676,
+        "length": 28,
+        "task_id": 22
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 14255,
+        "episode": 14255,
+        "length": 37,
+        "task_id": 23
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 17872,
+        "episode": 17872,
+        "length": 39,
+        "task_id": 23
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 28715,
+        "episode": 28715,
+        "length": 33,
+        "task_id": 23
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 32952,
+        "episode": 32952,
+        "length": 42,
+        "task_id": 23
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 38891,
+        "episode": 38891,
+        "length": 29,
+        "task_id": 23
+      },
+      {
+        "path": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot",
+        "ordinal": 46643,
+        "episode": 46643,
+        "length": 25,
+        "task_id": 23
+      }
+    ],
+    "inference_forward_max_difference": 0.0
+  },
+  "pooled_correlations": {
+    "arm_label_rms": 0.3244790741868928,
+    "arm_pred_rms": 0.08797342792626786,
+    "arm_residual_rms": 0.5632642047976955,
+    "hand_residual_rms": 0.5460881350631934,
+    "total_residual_rms": 0.73445438064767,
+    "hand_label_range": 0.2967698607537989,
+    "hand_pred_range": 0.42345744760057025,
+    "arm_label_range": 0.43387109569590854,
+    "progress": 0.09462929818495791
+  },
+  "within_task_rank_correlations": {
+    "arm_label_rms": 0.3353303052902639,
+    "arm_pred_rms": 0.11776581405351154,
+    "arm_residual_rms": 0.5511003130822866,
+    "hand_residual_rms": 0.5329200795443719,
+    "total_residual_rms": 0.7091224889481633,
+    "hand_label_range": 0.26241841566444646,
+    "hand_pred_range": 0.3983027974529145,
+    "arm_label_range": 0.4438111496970643,
+    "progress": 0.07430116337694236
+  },
+  "hand_range_partial_rank_given_arm_magnitude": 0.40574457607107306,
+  "per_task": [
+    {
+      "task": "sweep into pile",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.5094034307938051,
+        "arm_pred_rms": 0.20650739634696852,
+        "arm_residual_rms": 0.6644489200638932,
+        "hand_residual_rms": 0.6280153148198296,
+        "total_residual_rms": 0.7514827418570733,
+        "hand_label_range": 0.3896953913854968,
+        "hand_pred_range": 0.6734628186812776,
+        "arm_label_range": 0.6721091742482116,
+        "progress": 0.24112268427563074
+      }
+    },
+    {
+      "task": "open the drawer",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.4001319536078894,
+        "arm_pred_rms": 0.39706924091950824,
+        "arm_residual_rms": 0.5898395721925133,
+        "hand_residual_rms": 0.5291306974965962,
+        "total_residual_rms": 0.7525730953538439,
+        "hand_label_range": 0.36600211049453524,
+        "hand_pred_range": 0.42066763560387727,
+        "arm_label_range": 0.5702896034446836,
+        "progress": -0.06717229083836006
+      }
+    },
+    {
+      "task": "close the drawer",
+      "n": 118,
+      "correlation": {
+        "arm_label_rms": 0.807785434904079,
+        "arm_pred_rms": 0.6519379590167228,
+        "arm_residual_rms": 0.8377760491419515,
+        "hand_residual_rms": 0.5203463745214697,
+        "total_residual_rms": 0.8521505081824126,
+        "hand_label_range": 0.10383982451677855,
+        "hand_pred_range": 0.3888631348078429,
+        "arm_label_range": 0.829383643939975,
+        "progress": -0.03462816104033613
+      }
+    },
+    {
+      "task": "open microwave",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.2672268907563025,
+        "arm_pred_rms": 0.24298909646503228,
+        "arm_residual_rms": 0.1582609903465518,
+        "hand_residual_rms": 0.5645128525878786,
+        "total_residual_rms": 0.4688381137578998,
+        "hand_label_range": 0.42747219822245913,
+        "hand_pred_range": 0.3988566227090335,
+        "arm_label_range": 0.2221751510521564,
+        "progress": -0.04850932976818906
+      }
+    },
+    {
+      "task": "close microwave",
+      "n": 118,
+      "correlation": {
+        "arm_label_rms": 0.7298142203426351,
+        "arm_pred_rms": 0.40497920158937106,
+        "arm_residual_rms": 0.8682633418426041,
+        "hand_residual_rms": 0.5859479493354793,
+        "total_residual_rms": 0.8682487336525223,
+        "hand_label_range": null,
+        "hand_pred_range": 0.5750627404333991,
+        "arm_label_range": 0.8048323981044648,
+        "progress": -0.16415972811781143
+      }
+    },
+    {
+      "task": "open fridge",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.11548718661018124,
+        "arm_pred_rms": 0.15585110077088685,
+        "arm_residual_rms": 0.2561427876935898,
+        "hand_residual_rms": 0.7006208851413427,
+        "total_residual_rms": 0.6375789985415653,
+        "hand_label_range": 0.6339548098072896,
+        "hand_pred_range": 0.6362224227901174,
+        "arm_label_range": 0.04698242933537051,
+        "progress": -0.4105694379224702
+      }
+    },
+    {
+      "task": "put carrot on plate",
+      "n": 119,
+      "correlation": {
+        "arm_label_rms": 0.09183876940606751,
+        "arm_pred_rms": -0.16208517305227177,
+        "arm_residual_rms": 0.5709941603760149,
+        "hand_residual_rms": 0.5297875295131489,
+        "total_residual_rms": 0.7121350235009258,
+        "hand_label_range": 0.3032087788499463,
+        "hand_pred_range": 0.33852311928450335,
+        "arm_label_range": 0.347721122347244,
+        "progress": 0.10279374370144626
+      }
+    },
+    {
+      "task": "take broccoli out of pan",
+      "n": 119,
+      "correlation": {
+        "arm_label_rms": 0.3748184019370461,
+        "arm_pred_rms": 0.13156245549067086,
+        "arm_residual_rms": 0.66580259222333,
+        "hand_residual_rms": 0.47985500589609825,
+        "total_residual_rms": 0.7562740350377439,
+        "hand_label_range": 0.3954416327410528,
+        "hand_pred_range": 0.5709288367283947,
+        "arm_label_range": 0.6681075845822877,
+        "progress": 0.5107060145896865
+      }
+    },
+    {
+      "task": "take carrot off plate",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.23442600180568093,
+        "arm_pred_rms": 0.05530939648586707,
+        "arm_residual_rms": 0.47951246614348203,
+        "hand_residual_rms": 0.36053198138759635,
+        "total_residual_rms": 0.6882214042641849,
+        "hand_label_range": 0.18709516566164744,
+        "hand_pred_range": 0.19561589622329498,
+        "arm_label_range": 0.3202901595430891,
+        "progress": 0.4647223827881714
+      }
+    },
+    {
+      "task": "fold the cloth from bottom right to top left",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.432641155635808,
+        "arm_pred_rms": 0.13107854712132785,
+        "arm_residual_rms": 0.5829710396555315,
+        "hand_residual_rms": 0.6033380848298642,
+        "total_residual_rms": 0.7493159247169942,
+        "hand_label_range": 0.3319879323429314,
+        "hand_pred_range": 0.3624144419974324,
+        "arm_label_range": 0.30913017963301737,
+        "progress": -0.21676671609041595
+      }
+    },
+    {
+      "task": "put broccoli in pot",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.21966803250225708,
+        "arm_pred_rms": -0.08455448295020486,
+        "arm_residual_rms": 0.3949718730467393,
+        "hand_residual_rms": 0.6780356697045444,
+        "total_residual_rms": 0.7408986735189943,
+        "hand_label_range": 0.4713479810990268,
+        "hand_pred_range": 0.6201133100590642,
+        "arm_label_range": 0.413313424543371,
+        "progress": 0.44265234593612524
+      }
+    },
+    {
+      "task": "fold the cloth from bottom left to top right",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.252573095353844,
+        "arm_pred_rms": 0.03862073755121883,
+        "arm_residual_rms": 0.4619904160011112,
+        "hand_residual_rms": 0.42012639766650456,
+        "total_residual_rms": 0.6172928675602473,
+        "hand_label_range": 0.09547851307275072,
+        "hand_pred_range": 0.09614353246360517,
+        "arm_label_range": 0.44941124179464564,
+        "progress": -0.4103306744207212
+      }
+    },
+    {
+      "task": "fold the cloth from top left to bottom right",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.1822070977151191,
+        "arm_pred_rms": -0.0020487533856517813,
+        "arm_residual_rms": 0.25005208695048264,
+        "hand_residual_rms": 0.3269740954232932,
+        "total_residual_rms": 0.46649767344954507,
+        "hand_label_range": 0.2923656832342184,
+        "hand_pred_range": 0.31881310330770124,
+        "arm_label_range": 0.27509944284270027,
+        "progress": 0.019829728367338685
+      }
+    },
+    {
+      "task": "unfold the cloth from top right to bottom left",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.30930620181957075,
+        "arm_pred_rms": -0.13581498715188553,
+        "arm_residual_rms": 0.5540731995277449,
+        "hand_residual_rms": 0.6590723629193249,
+        "total_residual_rms": 0.799124939231891,
+        "hand_label_range": 0.3790822653368283,
+        "hand_pred_range": 0.5273258248567791,
+        "arm_label_range": 0.49091341571262226,
+        "progress": 0.32249729806736854
+      }
+    },
+    {
+      "task": "close fridge",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.6664282241822348,
+        "arm_pred_rms": 0.5677616501145912,
+        "arm_residual_rms": 0.7243905826793526,
+        "hand_residual_rms": 0.3037562356401454,
+        "total_residual_rms": 0.7232307799152718,
+        "hand_label_range": null,
+        "hand_pred_range": 0.4366635176715643,
+        "arm_label_range": 0.688375387832463,
+        "progress": -0.2972098643560828
+      }
+    },
+    {
+      "task": "open oven",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.3633307868601986,
+        "arm_pred_rms": 0.1351760538926314,
+        "arm_residual_rms": 0.6909299256892839,
+        "hand_residual_rms": 0.5277417499524536,
+        "total_residual_rms": 0.6914646850475726,
+        "hand_label_range": null,
+        "hand_pred_range": 0.4111081019804731,
+        "arm_label_range": 0.6214261779059611,
+        "progress": 0.5331019487626586
+      }
+    },
+    {
+      "task": "unfold the cloth from left to right",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.14998958260990344,
+        "arm_pred_rms": -0.1175012153621779,
+        "arm_residual_rms": 0.43347454684353076,
+        "hand_residual_rms": 0.6673241197305368,
+        "total_residual_rms": 0.81391763316897,
+        "hand_label_range": 0.203537046338998,
+        "hand_pred_range": 0.23143969981210558,
+        "arm_label_range": 0.19493714841308424,
+        "progress": 0.14107862237111013
+      }
+    },
+    {
+      "task": "put pear in bowl",
+      "n": 117,
+      "correlation": {
+        "arm_label_rms": 0.2102983710230934,
+        "arm_pred_rms": -0.01147177389141153,
+        "arm_residual_rms": 0.60173238022449,
+        "hand_residual_rms": 0.432263333782913,
+        "total_residual_rms": 0.7090095760463966,
+        "hand_label_range": 0.17504821598351705,
+        "hand_pred_range": 0.1694426266906239,
+        "arm_label_range": 0.3992949013601131,
+        "progress": 0.17926383059695813
+      }
+    },
+    {
+      "task": "close oven",
+      "n": 119,
+      "correlation": {
+        "arm_label_rms": 0.4058325024925225,
+        "arm_pred_rms": -0.011971229169633956,
+        "arm_residual_rms": 0.7239709443099275,
+        "hand_residual_rms": 0.514796239261697,
+        "total_residual_rms": 0.7249679532830082,
+        "hand_label_range": null,
+        "hand_pred_range": 0.4995649093937131,
+        "arm_label_range": 0.616995176952133,
+        "progress": -0.29979113883226005
+      }
+    },
+    {
+      "task": "put the blue figure on the top edge of the cloth",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.15292034169039515,
+        "arm_pred_rms": -0.004729495103826654,
+        "arm_residual_rms": 0.5467254670463226,
+        "hand_residual_rms": 0.39003538452691755,
+        "total_residual_rms": 0.5769706229599276,
+        "hand_label_range": 0.18227716132070593,
+        "hand_pred_range": 0.3686141571427347,
+        "arm_label_range": 0.3817765122577956,
+        "progress": 0.17615700537505738
+      }
+    },
+    {
+      "task": "fold the cloth from left to right",
+      "n": 119,
+      "correlation": {
+        "arm_label_rms": 0.5622632103688934,
+        "arm_pred_rms": 0.2650548354935195,
+        "arm_residual_rms": 0.7269762142144995,
+        "hand_residual_rms": 0.6213475384542866,
+        "total_residual_rms": 0.8113730237857857,
+        "hand_label_range": 0.10715229572248142,
+        "hand_pred_range": 0.08586726116847446,
+        "arm_label_range": 0.5094671848839845,
+        "progress": -0.15901374065766588
+      }
+    },
+    {
+      "task": "unfold the cloth from top left to bottom right",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.25042016806722683,
+        "arm_pred_rms": 0.19784707271338284,
+        "arm_residual_rms": 0.5105215639974998,
+        "hand_residual_rms": 0.5703471433715314,
+        "total_residual_rms": 0.6848670046531008,
+        "hand_label_range": 0.3697224614107162,
+        "hand_pred_range": 0.44700325584463513,
+        "arm_label_range": 0.188645372327134,
+        "progress": 0.16890466494552578
+      }
+    },
+    {
+      "task": "unfold the cloth from bottom right to top left",
+      "n": 120,
+      "correlation": {
+        "arm_label_rms": 0.2385860129175637,
+        "arm_pred_rms": -0.111486908813112,
+        "arm_residual_rms": 0.6389263143273838,
+        "hand_residual_rms": 0.6917822728710058,
+        "total_residual_rms": 0.7575317730397944,
+        "hand_label_range": 0.4098922632557342,
+        "hand_pred_range": 0.6340453473172063,
+        "arm_label_range": 0.4959215776180243,
+        "progress": 0.31888477445805785
+      }
+    },
+    {
+      "task": "unfold the cloth from right to left",
+      "n": 118,
+      "correlation": {
+        "arm_label_rms": 0.13601320580383394,
+        "arm_pred_rms": -0.10683334611549966,
+        "arm_residual_rms": 0.31488318926005865,
+        "hand_residual_rms": 0.48294311205577406,
+        "total_residual_rms": 0.675866174370661,
+        "hand_label_range": 0.18264199980393342,
+        "hand_pred_range": 0.136962590388554,
+        "arm_label_range": 0.15119587169936255,
+        "progress": 0.26928064199459667
+      }
+    }
+  ],
+  "top_sigma_quintile": {
+    "n": 576,
+    "sigma_median": 0.2882244288921356,
+    "arm_label_rms_median": 0.38776188768168773,
+    "arm_residual_rms": 0.280186543982555,
+    "hand_residual_rms": 0.4504700961783112,
+    "hand_error_energy_share": 0.30109535719341846,
+    "arm_error_energy_share": 0.6989046428065815,
+    "hand_label_range_median": 0.0,
+    "residual_rms_by_step": [
+      0.28809720028688585,
+      0.305379626243324,
+      0.30651427699614603,
+      0.30900608590838347,
+      0.31119595627655694,
+      0.3128399813978201,
+      0.3230245265808427,
+      0.32477657088208556
+    ]
+  },
+  "bottom_sigma_quintile": {
+    "n": 576,
+    "sigma_median": 0.13968650251626968,
+    "arm_label_rms_median": 0.2797859795981858,
+    "arm_residual_rms": 0.15413311977653787,
+    "hand_residual_rms": 0.11088826205432609,
+    "hand_error_energy_share": 0.07941320206621653,
+    "arm_error_energy_share": 0.9205867979337835,
+    "hand_label_range_median": 0.0,
+    "residual_rms_by_step": [
+      0.15830601626406016,
+      0.14448912762041288,
+      0.14055342342534272,
+      0.14532627599559225,
+      0.14170725482358973,
+      0.1477154034060906,
+      0.14841934385824715,
+      0.16191385324940533
+    ]
+  },
+  "all": {
+    "n": 2867,
+    "sigma_median": 0.20538359880447388,
+    "arm_label_rms_median": 0.33725019518686533,
+    "arm_residual_rms": 0.2157136979697164,
+    "hand_residual_rms": 0.30776872309079334,
+    "hand_error_energy_share": 0.25332318221384575,
+    "arm_error_energy_share": 0.7466768177861542,
+    "hand_label_range_median": 0.0,
+    "residual_rms_by_step": [
+      0.22462245345172055,
+      0.22456754316072441,
+      0.22478461131041003,
+      0.2237873368955721,
+      0.23008198302665878,
+      0.2343476595808062,
+      0.2388252212117614,
+      0.2468679820529525
+    ]
+  },
+  "amplitude_matched_hand_change": [
+    {
+      "task_id": 1,
+      "n_low": 14,
+      "n_high": 16,
+      "sigma_ratio": 1.7376121242717721,
+      "arm_amplitude_ratio": 1.0974420356720955,
+      "arm_residual_ratio": 1.1581357637769627,
+      "hand_residual_ratio": 1.7998216947008163
+    },
+    {
+      "task_id": 1,
+      "n_low": 15,
+      "n_high": 15,
+      "sigma_ratio": 1.8127715008202847,
+      "arm_amplitude_ratio": 0.9740977176405706,
+      "arm_residual_ratio": 1.1669373696920562,
+      "hand_residual_ratio": 2.415628816459958
+    },
+    {
+      "task_id": 1,
+      "n_low": 14,
+      "n_high": 16,
+      "sigma_ratio": 1.7144727039909031,
+      "arm_amplitude_ratio": 1.0339094522773737,
+      "arm_residual_ratio": 1.217019518069282,
+      "hand_residual_ratio": 5.034246643554792
+    },
+    {
+      "task_id": 3,
+      "n_low": 14,
+      "n_high": 16,
+      "sigma_ratio": 1.19775380380043,
+      "arm_amplitude_ratio": 0.8861052034292145,
+      "arm_residual_ratio": 0.8491185877038394,
+      "hand_residual_ratio": 1.4684127114954806
+    },
+    {
+      "task_id": 3,
+      "n_low": 18,
+      "n_high": 12,
+      "sigma_ratio": 1.239659509025671,
+      "arm_amplitude_ratio": 0.9975636569123421,
+      "arm_residual_ratio": 1.131720880739157,
+      "hand_residual_ratio": 2.6072523763979834
+    },
+    {
+      "task_id": 5,
+      "n_low": 17,
+      "n_high": 13,
+      "sigma_ratio": 1.3192612098685934,
+      "arm_amplitude_ratio": 0.9588519589026786,
+      "arm_residual_ratio": 1.0459477044013323,
+      "hand_residual_ratio": 28.011577731370032
+    },
+    {
+      "task_id": 5,
+      "n_low": 20,
+      "n_high": 10,
+      "sigma_ratio": 1.1912419230442308,
+      "arm_amplitude_ratio": 1.019106992531186,
+      "arm_residual_ratio": 1.0002547108945234,
+      "hand_residual_ratio": 16.26630043891048
+    },
+    {
+      "task_id": 5,
+      "n_low": 20,
+      "n_high": 10,
+      "sigma_ratio": 1.2521515001124683,
+      "arm_amplitude_ratio": 1.0047531694750949,
+      "arm_residual_ratio": 1.152554158541274,
+      "hand_residual_ratio": 3.885776440029565
+    },
+    {
+      "task_id": 6,
+      "n_low": 14,
+      "n_high": 16,
+      "sigma_ratio": 1.3116900715805087,
+      "arm_amplitude_ratio": 0.9256218450935115,
+      "arm_residual_ratio": 1.0476060104967544,
+      "hand_residual_ratio": 2.1940047175940824
+    },
+    {
+      "task_id": 6,
+      "n_low": 13,
+      "n_high": 17,
+      "sigma_ratio": 1.2778503581500316,
+      "arm_amplitude_ratio": 1.028654778326292,
+      "arm_residual_ratio": 1.0470509174146578,
+      "hand_residual_ratio": 3.8005638911297694
+    },
+    {
+      "task_id": 6,
+      "n_low": 17,
+      "n_high": 13,
+      "sigma_ratio": 1.2182444383897992,
+      "arm_amplitude_ratio": 0.9791662718787916,
+      "arm_residual_ratio": 0.9645633876916585,
+      "hand_residual_ratio": 1.9882196724646803
+    },
+    {
+      "task_id": 7,
+      "n_low": 13,
+      "n_high": 17,
+      "sigma_ratio": 1.3101952232402434,
+      "arm_amplitude_ratio": 0.9050811324633901,
+      "arm_residual_ratio": 1.0122816577010258,
+      "hand_residual_ratio": 3.7779189948693834
+    },
+    {
+      "task_id": 7,
+      "n_low": 17,
+      "n_high": 13,
+      "sigma_ratio": 1.438464066057615,
+      "arm_amplitude_ratio": 1.0346625673690668,
+      "arm_residual_ratio": 1.1328160171572887,
+      "hand_residual_ratio": 1.8677593735913232
+    },
+    {
+      "task_id": 7,
+      "n_low": 19,
+      "n_high": 11,
+      "sigma_ratio": 1.1409980772176582,
+      "arm_amplitude_ratio": 0.9776798935542468,
+      "arm_residual_ratio": 1.0428210213879356,
+      "hand_residual_ratio": 3.093403700003186
+    },
+    {
+      "task_id": 8,
+      "n_low": 14,
+      "n_high": 16,
+      "sigma_ratio": 1.1354626269461132,
+      "arm_amplitude_ratio": 0.9648017120826629,
+      "arm_residual_ratio": 0.9422171415429451,
+      "hand_residual_ratio": 5.08967405769743
+    },
+    {
+      "task_id": 9,
+      "n_low": 11,
+      "n_high": 19,
+      "sigma_ratio": 1.5103164842269798,
+      "arm_amplitude_ratio": 0.9574178519419672,
+      "arm_residual_ratio": 1.0240594388422446,
+      "hand_residual_ratio": 12.485485663540437
+    },
+    {
+      "task_id": 9,
+      "n_low": 14,
+      "n_high": 16,
+      "sigma_ratio": 1.493393877034859,
+      "arm_amplitude_ratio": 1.0576204571785535,
+      "arm_residual_ratio": 0.9487438894071867,
+      "hand_residual_ratio": 20.578504574362732
+    },
+    {
+      "task_id": 9,
+      "n_low": 17,
+      "n_high": 13,
+      "sigma_ratio": 1.0110140860649959,
+      "arm_amplitude_ratio": 0.9684140794300314,
+      "arm_residual_ratio": 0.805917393113656,
+      "hand_residual_ratio": 5.014546300241938
+    },
+    {
+      "task_id": 9,
+      "n_low": 18,
+      "n_high": 12,
+      "sigma_ratio": 1.1724021283997244,
+      "arm_amplitude_ratio": 1.0112651047427785,
+      "arm_residual_ratio": 0.9102849906907122,
+      "hand_residual_ratio": 2.8638957767059345
+    },
+    {
+      "task_id": 10,
+      "n_low": 10,
+      "n_high": 20,
+      "sigma_ratio": 1.7658547623467682,
+      "arm_amplitude_ratio": 0.9107974254313332,
+      "arm_residual_ratio": 1.035207122552934,
+      "hand_residual_ratio": 3.1506979711603553
+    },
+    {
+      "task_id": 10,
+      "n_low": 20,
+      "n_high": 10,
+      "sigma_ratio": 1.3767517566275076,
+      "arm_amplitude_ratio": 0.9960457692007169,
+      "arm_residual_ratio": 1.0691758949599934,
+      "hand_residual_ratio": 2.473175405591546
+    },
+    {
+      "task_id": 11,
+      "n_low": 13,
+      "n_high": 17,
+      "sigma_ratio": 1.1266058885462202,
+      "arm_amplitude_ratio": 0.9321022252720579,
+      "arm_residual_ratio": 0.9455194731142901,
+      "hand_residual_ratio": 3.4384986138152778
+    },
+    {
+      "task_id": 12,
+      "n_low": 18,
+      "n_high": 12,
+      "sigma_ratio": 1.2474006309717804,
+      "arm_amplitude_ratio": 0.9548406869993638,
+      "arm_residual_ratio": 0.8366615269141479,
+      "hand_residual_ratio": 7.860089038562546
+    },
+    {
+      "task_id": 12,
+      "n_low": 19,
+      "n_high": 11,
+      "sigma_ratio": 1.1648491383314126,
+      "arm_amplitude_ratio": 1.018265636193244,
+      "arm_residual_ratio": 0.8502826644661282,
+      "hand_residual_ratio": 4.075711117863288
+    },
+    {
+      "task_id": 13,
+      "n_low": 20,
+      "n_high": 10,
+      "sigma_ratio": 1.6399397538766927,
+      "arm_amplitude_ratio": 1.0657738426699153,
+      "arm_residual_ratio": 1.11376493884506,
+      "hand_residual_ratio": 2.4579740759518174
+    },
+    {
+      "task_id": 13,
+      "n_low": 18,
+      "n_high": 12,
+      "sigma_ratio": 1.622080137135852,
+      "arm_amplitude_ratio": 1.0436850844051828,
+      "arm_residual_ratio": 1.1948075864184473,
+      "hand_residual_ratio": 2.237425138055771
+    },
+    {
+      "task_id": 16,
+      "n_low": 13,
+      "n_high": 17,
+      "sigma_ratio": 1.1992648061442583,
+      "arm_amplitude_ratio": 0.9670385881838601,
+      "arm_residual_ratio": 0.7217751676965818,
+      "hand_residual_ratio": 0.5622844763740396
+    },
+    {
+      "task_id": 16,
+      "n_low": 15,
+      "n_high": 15,
+      "sigma_ratio": 1.451355191435041,
+      "arm_amplitude_ratio": 1.0309262688524068,
+      "arm_residual_ratio": 1.0149121459092116,
+      "hand_residual_ratio": 0.8807460309098191
+    },
+    {
+      "task_id": 17,
+      "n_low": 10,
+      "n_high": 19,
+      "sigma_ratio": 1.191336917207833,
+      "arm_amplitude_ratio": 0.9081208176187622,
+      "arm_residual_ratio": 1.1052494244389053,
+      "hand_residual_ratio": 1.4761931927609755
+    },
+    {
+      "task_id": 17,
+      "n_low": 15,
+      "n_high": 14,
+      "sigma_ratio": 1.2447593795542085,
+      "arm_amplitude_ratio": 1.0044415678495422,
+      "arm_residual_ratio": 0.9048632456156445,
+      "hand_residual_ratio": 2.3270261167217785
+    },
+    {
+      "task_id": 19,
+      "n_low": 18,
+      "n_high": 12,
+      "sigma_ratio": 1.0909174320507193,
+      "arm_amplitude_ratio": 0.9268316304191819,
+      "arm_residual_ratio": 1.091085680822379,
+      "hand_residual_ratio": 2.113598397529835
+    },
+    {
+      "task_id": 19,
+      "n_low": 15,
+      "n_high": 15,
+      "sigma_ratio": 1.1769241016777685,
+      "arm_amplitude_ratio": 1.0884635009139934,
+      "arm_residual_ratio": 0.9710811329323876,
+      "hand_residual_ratio": 3.4212035499691553
+    },
+    {
+      "task_id": 20,
+      "n_low": 14,
+      "n_high": 16,
+      "sigma_ratio": 1.168102313258595,
+      "arm_amplitude_ratio": 1.1116418949185032,
+      "arm_residual_ratio": 1.0746337367205108,
+      "hand_residual_ratio": 8.674421432545303
+    },
+    {
+      "task_id": 20,
+      "n_low": 18,
+      "n_high": 12,
+      "sigma_ratio": 0.9973596301611197,
+      "arm_amplitude_ratio": 0.9702703212929655,
+      "arm_residual_ratio": 0.8029447725925263,
+      "hand_residual_ratio": 2.0088063368783207
+    },
+    {
+      "task_id": 21,
+      "n_low": 12,
+      "n_high": 18,
+      "sigma_ratio": 1.6081502421523828,
+      "arm_amplitude_ratio": 0.9962384927436373,
+      "arm_residual_ratio": 1.1984800711072978,
+      "hand_residual_ratio": 6.414310356781718
+    },
+    {
+      "task_id": 21,
+      "n_low": 17,
+      "n_high": 13,
+      "sigma_ratio": 1.7888356091479387,
+      "arm_amplitude_ratio": 0.981959090484693,
+      "arm_residual_ratio": 0.9878974071840415,
+      "hand_residual_ratio": 4.364587472578726
+    },
+    {
+      "task_id": 21,
+      "n_low": 11,
+      "n_high": 19,
+      "sigma_ratio": 0.9908435799717774,
+      "arm_amplitude_ratio": 1.046030973932584,
+      "arm_residual_ratio": 0.8900011630859842,
+      "hand_residual_ratio": 1.456424925807804
+    },
+    {
+      "task_id": 22,
+      "n_low": 14,
+      "n_high": 16,
+      "sigma_ratio": 2.69307784896805,
+      "arm_amplitude_ratio": 1.1597978502971786,
+      "arm_residual_ratio": 1.342954771980347,
+      "hand_residual_ratio": 2.6152064766185084
+    },
+    {
+      "task_id": 22,
+      "n_low": 14,
+      "n_high": 16,
+      "sigma_ratio": 1.7347670993918043,
+      "arm_amplitude_ratio": 1.0295968633755204,
+      "arm_residual_ratio": 1.3103175566767942,
+      "hand_residual_ratio": 2.339061421979026
+    },
+    {
+      "task_id": 22,
+      "n_low": 16,
+      "n_high": 14,
+      "sigma_ratio": 1.5125871201795567,
+      "arm_amplitude_ratio": 1.0005307080141592,
+      "arm_residual_ratio": 1.164494027473894,
+      "hand_residual_ratio": 1.7363558929904641
+    },
+    {
+      "task_id": 23,
+      "n_low": 12,
+      "n_high": 18,
+      "sigma_ratio": 1.172557426090607,
+      "arm_amplitude_ratio": 0.8116696941732554,
+      "arm_residual_ratio": 0.699607107403763,
+      "hand_residual_ratio": 1.6501726039385245
+    },
+    {
+      "task_id": 23,
+      "n_low": 16,
+      "n_high": 14,
+      "sigma_ratio": 1.0904328458842973,
+      "arm_amplitude_ratio": 0.9933255924786853,
+      "arm_residual_ratio": 0.8370114694312577,
+      "hand_residual_ratio": 2.3784219810963583
+    },
+    {
+      "task_id": 23,
+      "n_low": 17,
+      "n_high": 12,
+      "sigma_ratio": 0.9323258620834537,
+      "arm_amplitude_ratio": 1.0110843732335035,
+      "arm_residual_ratio": 0.8460772623376202,
+      "hand_residual_ratio": 1.701171167537241
+    },
+    {
+      "task_id": 23,
+      "n_low": 15,
+      "n_high": 14,
+      "sigma_ratio": 1.2288231378437078,
+      "arm_amplitude_ratio": 1.0821230119882466,
+      "arm_residual_ratio": 0.9778638045782998,
+      "hand_residual_ratio": 4.703370794014039
+    }
+  ],
+  "amplitude_matched_median_sigma_ratio": 1.2460800052629946
+}

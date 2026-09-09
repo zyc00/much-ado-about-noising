@@ -1,0 +1,18 @@
+{
+  "seed": 1235,
+  "branches": [
+    49,
+    69
+  ],
+  "stall_detected": true,
+  "instruction": "close bottom drawer",
+  "success": false,
+  "final_drawer": 0.20055510103702545,
+  "replay_check": {
+    "physical_max_abs": 0.0,
+    "image_exact": true,
+    "latch_exact": true,
+    "controller_max_abs": 0.0,
+    "valid": true
+  }
+}

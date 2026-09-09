@@ -1,0 +1,80 @@
+{
+  "fractal": {
+    "source": "/mnt/pfs/yuchen/ht_sigma_context_20260908/fractal/probe.npz",
+    "checkpoint": "/mnt/pfs/yuchen/groot/ft_fr_nu224/checkpoint-20000",
+    "nu": 224.0,
+    "d": 56,
+    "n": 2862,
+    "scope": "Frequency-selected training-demonstration probe, not policy holdout or rollout distribution.",
+    "gate_below_half": 0.004891684136967156,
+    "gate_below_quarter": 0.0,
+    "gate_quantiles": [
+      0.5792051240673479,
+      0.8389802378553797,
+      1.021875924792274,
+      1.130164976073609,
+      1.179731677189546
+    ],
+    "sigma_quantiles": [
+      0.1136558122932911,
+      0.18359432369470596,
+      0.3014619886875153
+    ],
+    "output_gradient_scope": "Sum of per-example prediction-gradient norms, NOT parameter gradients.",
+    "ht_to_same_sigma_gaussian_norm_sum": 0.9541766424487771,
+    "top_q_one_percent_gaussian_norm_share": 0.026522809277344562,
+    "top_q_one_percent_ht_norm_share": 0.012861105933092849
+  },
+  "bridge": {
+    "source": "/mnt/pfs/yuchen/ht_sigma_context_20260908/bridge/probe.npz",
+    "checkpoint": "/mnt/pfs/yuchen/groot/ft_wxnu224/checkpoint-20000",
+    "nu": 224.0,
+    "d": 56,
+    "n": 2867,
+    "scope": "Frequency-selected training-demonstration probe, not policy holdout or rollout distribution.",
+    "gate_below_half": 0.0020927799093128706,
+    "gate_below_quarter": 0.0,
+    "gate_quantiles": [
+      0.6451293336671526,
+      0.8480734149773841,
+      1.0018046415729138,
+      1.1014889957762732,
+      1.1545179968749377
+    ],
+    "sigma_quantiles": [
+      0.13577861487865447,
+      0.20538359880447388,
+      0.28959542512893677
+    ],
+    "output_gradient_scope": "Sum of per-example prediction-gradient norms, NOT parameter gradients.",
+    "ht_to_same_sigma_gaussian_norm_sum": 0.9528058497743154,
+    "top_q_one_percent_gaussian_norm_share": 0.0244115552575129,
+    "top_q_one_percent_ht_norm_share": 0.014181843466555185
+  },
+  "gr1": {
+    "source": "/mnt/pfs/yuchen/ht_sigma_context_20260908/gr1/probe.npz",
+    "checkpoint": "/mnt/pfs/yuchen/groot/ft_gr1c2/checkpoint-60000",
+    "nu": 928.0,
+    "d": 232,
+    "n": 2880,
+    "scope": "Frequency-selected training-demonstration probe, not policy holdout or rollout distribution.",
+    "gate_below_half": 0.010416666666666666,
+    "gate_below_quarter": 0.0038194444444444443,
+    "gate_quantiles": [
+      0.49860925204499246,
+      0.8389364042402476,
+      1.013883692218199,
+      1.120585128185487,
+      1.192274344655665
+    ],
+    "sigma_quantiles": [
+      0.012927450146526099,
+      0.02390828263014555,
+      0.10347762852907177
+    ],
+    "output_gradient_scope": "Sum of per-example prediction-gradient norms, NOT parameter gradients.",
+    "ht_to_same_sigma_gaussian_norm_sum": 0.9468040779977189,
+    "top_q_one_percent_gaussian_norm_share": 0.02298935201665346,
+    "top_q_one_percent_ht_norm_share": 0.0041867534958778775
+  }
+}

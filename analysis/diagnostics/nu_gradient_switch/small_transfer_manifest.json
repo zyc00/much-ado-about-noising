@@ -1,0 +1,368 @@
+{
+  "tasks": [
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/checkpoint_10000.json",
+      "source_sha256": "b3bd01e6563f301feaed1c4cf48a179dad517084776f85d4ce8668555ec7b07b"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/checkpoint_11000.json",
+      "source_sha256": "39e69d33d14a264fc4943de7597fcfdd0fbf222f522fe1f21c7588569552ea27"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/checkpoint_12000.json",
+      "source_sha256": "4e7bd8c91d9a1247b55a662e8c75db72c8834502de99e5076c1d7ddd265687a3"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/checkpoint_7000.json",
+      "source_sha256": "9800fb1c62879565583e2c9dde9346084033097eb3d1d72fbbf1f87d959cfd0a"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/checkpoint_8000.json",
+      "source_sha256": "d31ecac6a3c2af3a501e9bd0cdd9cd5ffcf8fc23d5ab24c24dc33eb99bbefbf6"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/checkpoint_9000.json",
+      "source_sha256": "988c1854b83d8720d98b90ab6db6b6fbf34ed69bf048b31c6d003278ef77f64f"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/parameters_10000.json",
+      "source_sha256": "9778166dd65ef8cc1a033a1e665e794fcc7c333f492b2c9e3db5ff011cf0ec83"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/parameters_11000.json",
+      "source_sha256": "9778166dd65ef8cc1a033a1e665e794fcc7c333f492b2c9e3db5ff011cf0ec83"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/parameters_12000.json",
+      "source_sha256": "9778166dd65ef8cc1a033a1e665e794fcc7c333f492b2c9e3db5ff011cf0ec83"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/parameters_7000.json",
+      "source_sha256": "9778166dd65ef8cc1a033a1e665e794fcc7c333f492b2c9e3db5ff011cf0ec83"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/parameters_8000.json",
+      "source_sha256": "9778166dd65ef8cc1a033a1e665e794fcc7c333f492b2c9e3db5ff011cf0ec83"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/parameters_9000.json",
+      "source_sha256": "9778166dd65ef8cc1a033a1e665e794fcc7c333f492b2c9e3db5ff011cf0ec83"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/protocol.json",
+      "source_sha256": "66536c669cd12c97013e46c9b99adf02a04ece9a425250aced6e74f2fdaceb04"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_10000_close_drawer_before.npz",
+      "source_sha256": "e1bf097f6a61ef704b494c14b6fd7bcc13078e5c6e6c7e2ee09f7239044172b2"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_10000_close_drawer_halving.npz",
+      "source_sha256": "bf4e3a572064c6a47da4c6e0968944f64a9905cfe8d616d12ac28e7de6a0bc4b"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_10000_close_drawer_small_drop.npz",
+      "source_sha256": "168451d179954afa364e35e9c7f0f8776d83f771947869ce1327e502b4765af7"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_10000_mixed_0_before.npz",
+      "source_sha256": "554a80b46c9f75776fd8212309ea60a6075efff5c883f2394ac1f75de8edc9ec"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_10000_mixed_0_dropout_control.npz",
+      "source_sha256": "ea9c5a3d8e9f945b503a6255439a5b18f322faf4387f5c8ad24f94ee17242f3b"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_10000_mixed_0_halving.npz",
+      "source_sha256": "36fb2314d7b525af0eaa5bc147cddd09f7b172e9413a698b3ce83fd7094c1abb"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_10000_mixed_0_small_drop.npz",
+      "source_sha256": "b0c9eac5231d0c54aab17a17913168926fff00f416af8cc31f96375a60257a5b"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_10000_mixed_1_before.npz",
+      "source_sha256": "73936ce665220b37245f505d94361c7351009ab737849d6e2d000e697cc5bbab"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_10000_mixed_1_halving.npz",
+      "source_sha256": "8d8c086deb3f26d10e5bdd02ff9ba27c152d3326c6f6881b1f68c2a08cf766fc"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_10000_mixed_1_small_drop.npz",
+      "source_sha256": "223a29089886f1b71fba6393022a8f95f38312a714051317abd878bb769e2c6c"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_10000_move_near_before.npz",
+      "source_sha256": "c31aa901c51f8883ef5b1935ffad3ae680edec63b1a09db17aab2814fcc62a8a"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_10000_move_near_halving.npz",
+      "source_sha256": "90c1f925246c9f75948412ee5be862cc2f815440d3424c07ad718d69955e80f1"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_10000_move_near_small_drop.npz",
+      "source_sha256": "60fb286b8e49a4abf20fd4650720c8ac1827da5a0f3d8117b1ae5d10d79db702"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_11000_close_drawer_before.npz",
+      "source_sha256": "c10a4b3c51b0a917959b838d34fc80ccc94b499767a631152593bb22940b4cae"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_11000_close_drawer_halving.npz",
+      "source_sha256": "8092e587da505b81bd56e22b2fcd298c365b621b782d1c122651de75622f29fb"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_11000_close_drawer_small_drop.npz",
+      "source_sha256": "d61e91d2a656036f59564c8b23a9ee77a1a053576607fd314ccefb67d330cb34"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_11000_mixed_0_before.npz",
+      "source_sha256": "84e4e50eb3c1ed04e78b74562155e0364918d496b7ffe1f2e98e33e4fdf37965"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_11000_mixed_0_dropout_control.npz",
+      "source_sha256": "27fcb47aea0b4ef798c750b80adaef2cf9b4ee35484ba5bb98aa56dd88c80a40"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_11000_mixed_0_halving.npz",
+      "source_sha256": "56460eb9589cbc39ddcbf996d21c3179343c146db6c59a518391206b1906963c"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_11000_mixed_0_small_drop.npz",
+      "source_sha256": "def6b14d4a90e25d97857c98eec1ef0d9d92ccd430c339753f19213916bd965b"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_11000_mixed_1_before.npz",
+      "source_sha256": "46e842793b952760e9b5f3afa1508309de47a02d0241c3c0fd34f163d31d83bb"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_11000_mixed_1_halving.npz",
+      "source_sha256": "45a6a613b1e4170d1727ece9402a23e9a49b9b5d0fcf39966177cf4b2f42b5c5"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_11000_mixed_1_small_drop.npz",
+      "source_sha256": "61b685253fc3ef2fed672cc1a9142c5b5c344af2d15ab4ff5bffd285bda0786b"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_11000_move_near_before.npz",
+      "source_sha256": "f1cc281dd18647c625fb939353bd0f39a5cb54390b16651c5753f30cfb04c158"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_11000_move_near_halving.npz",
+      "source_sha256": "3832e08faa2179825f30303fb92cf9df87aabf6ee25492ab3b808b6392b6a122"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_11000_move_near_small_drop.npz",
+      "source_sha256": "bd4fe7ea8b11f236387c2722b0ed24b9e16c8723be0c8e93d0e7cb6158617613"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_12000_close_drawer_before.npz",
+      "source_sha256": "efa02ebaf86528e9fa68533a4e2729e8d921128290dd7adfa3d1da094986d1de"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_12000_close_drawer_halving.npz",
+      "source_sha256": "42dd11da02e54dda6bbe874d2db8740ebfc45e39d56ee215b8199019b9d23f5e"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_12000_close_drawer_small_drop.npz",
+      "source_sha256": "1348d3948f3f1daa579e1dd895de063dc060da9137ba2f6f4e970389833a2058"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_12000_mixed_0_before.npz",
+      "source_sha256": "2d6aa0ffb58e5de17d0bf6bd1b5fa9a84c8c38521e0435dfecfa08a0b409ff88"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_12000_mixed_0_dropout_control.npz",
+      "source_sha256": "d34843dda3f6df168f484008468e07ee61847b2bdaf3076518123f8b37b32a1d"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_12000_mixed_0_halving.npz",
+      "source_sha256": "4de2e649bfc3a9a7f063aa3de3a313201d1ba78c72ffb3425effdd4026980de3"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_12000_mixed_0_small_drop.npz",
+      "source_sha256": "c7c188049840070053fb5153de2ed9aa828eb43f359bc09f4d257876f60c4142"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_12000_mixed_1_before.npz",
+      "source_sha256": "d283c14a35b49a16c15656da109dd7d6881df5aaf3c6d24690667eeb23ebdb46"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_12000_mixed_1_halving.npz",
+      "source_sha256": "c6fee87ed648ce9c4738b0f789ece7193201a6fd4016e998100d4ec69a9286ac"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_12000_mixed_1_small_drop.npz",
+      "source_sha256": "cc451466f6bc939dfd5dea7d7455a7c535355bd018df28fe7fa9bcfc486421d8"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_12000_move_near_before.npz",
+      "source_sha256": "0ea0680ed48859ac7e1f3b445063b236dbb768c34b03e0c133b65402dd6178b0"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_12000_move_near_halving.npz",
+      "source_sha256": "4f4c3304d2adea489a279ab33b45f318189b4c9fca262c98a1dc1916d9439b8d"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_12000_move_near_small_drop.npz",
+      "source_sha256": "77e2765eb0e99dad3f30cacad434477035929ca5a4e3f312a85920ab29ec19f3"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_7000_close_drawer_before.npz",
+      "source_sha256": "0d9fba956ff4919e3cbda2eb6c27ffaf29b3bc7b1c2053c2984291167d481cdc"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_7000_close_drawer_halving.npz",
+      "source_sha256": "582e87a8a6449a963cc0bc0604ee171a19cef1cc5aea6ef2715feba5b0553b79"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_7000_close_drawer_small_drop.npz",
+      "source_sha256": "6728d2851baf29e4313c9f98f6ba4b082d9b3e5fbd1c43a118f9688b60092a7e"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_7000_mixed_0_before.npz",
+      "source_sha256": "aab4bfdda59b9983cb0b25c937e0f61c871d0ffbbbd4622ebf397b74086b11a9"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_7000_mixed_0_dropout_control.npz",
+      "source_sha256": "233c9bcb300ff0cc0e1d23026fdd9c3835c6b7beac1b3203cd8a7fd84bd71034"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_7000_mixed_0_halving.npz",
+      "source_sha256": "3e218c13c0c2a285d4a7b6a5f71855d8ef4d834976cc2973dd56497f5fed0f46"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_7000_mixed_0_small_drop.npz",
+      "source_sha256": "9d2043daf9e0c6b234129f5ee888fd50180e3221426cb4ea4f120f6f0206446e"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_7000_mixed_1_before.npz",
+      "source_sha256": "19cd235531e2a3d466534aa2a4c0300fd8e536a3ac0aca231bb2ba5a8d3ef26a"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_7000_mixed_1_halving.npz",
+      "source_sha256": "77567d5c4052636d4acf64383fac642e8f9a017cacd9d41e813714cdfa946677"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_7000_mixed_1_small_drop.npz",
+      "source_sha256": "192cd37746f0800004f80ff68cf248b71e1925129dd04bb83f2e577db0d8cdf0"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_7000_move_near_before.npz",
+      "source_sha256": "96e7187dc03a79d2e782baab7e83608eafe2dfe980b12851efa7ca7174ee92ff"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_7000_move_near_halving.npz",
+      "source_sha256": "37708aa7def4201596320ee884843c9b32080a8fa6c4a395969a8be1aec3b7ad"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_7000_move_near_small_drop.npz",
+      "source_sha256": "a883d4a3e6bdd3fe32ee0dc793c576192b2dfceded66d30e7edff5a2d4fc86c6"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_8000_close_drawer_before.npz",
+      "source_sha256": "48f655b094a7ad85ca973d67abb4b27043f652a47c7080046bd959d3a66df09d"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_8000_close_drawer_halving.npz",
+      "source_sha256": "8d215d9383189f8a54bc4c9f1910a66ddc471c1fa1c66c572e068dcb901b632b"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_8000_close_drawer_small_drop.npz",
+      "source_sha256": "8b3584b50ec3d22d79ea2c8b82b99717b540f787c40a477c22ca525916861877"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_8000_mixed_0_before.npz",
+      "source_sha256": "c89de01393c080c0d33f0bf5a2b2cb7470b6b82618e96a76293c2167fbc2d501"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_8000_mixed_0_dropout_control.npz",
+      "source_sha256": "c35f881aae481ead587f998df96e824775a1fea623fbe223e46975384aedae2b"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_8000_mixed_0_halving.npz",
+      "source_sha256": "0adacb0b679d737ed4324451f39fe5a823d2dc62c604a945d6d7a2d6555420bb"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_8000_mixed_0_small_drop.npz",
+      "source_sha256": "a1c1147b60e63f11845897749db6adc04d975ed5f6f22aa2fa46d4d8fc94c29a"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_8000_mixed_1_before.npz",
+      "source_sha256": "bd34e81dc6732e1ee8397cc924781b282ff6ad90809ae974cffd7253f61ce05a"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_8000_mixed_1_halving.npz",
+      "source_sha256": "ac25aca87603922b8296fdce453dd83d1d360f3d78c5be52cdfa75b621738bf7"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_8000_mixed_1_small_drop.npz",
+      "source_sha256": "1c8b4717c63a83c5e7a9683394d991e81666ef64b0d3fad047e67ced45f74333"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_8000_move_near_before.npz",
+      "source_sha256": "7984cf95587bd6ffe9f061a330cf8fea2538a35dbb3953ece9f7e8f5d75c4fb2"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_8000_move_near_halving.npz",
+      "source_sha256": "6dfc82b49ad5b7d3079ad8c866c6e1db0460459616b2bad2926aa9d8e29a48be"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_8000_move_near_small_drop.npz",
+      "source_sha256": "6ec4a88f14268d9e894c3531f3f0aadf225619da15e1ffffc585c0e2ade135f5"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_9000_close_drawer_before.npz",
+      "source_sha256": "3aa2d80a81c6b4f99b618b2ebcbb71394ce62cfb86935f6cc513e0f811f1a05d"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_9000_close_drawer_halving.npz",
+      "source_sha256": "e254336897f303db5046d12473113826b1548ab4ad719e6012889ff3ad712ccb"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_9000_close_drawer_small_drop.npz",
+      "source_sha256": "526cc2eeaec116477c2de9f622f5d93deaaad138e6204305782cf725bbd37201"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_9000_mixed_0_before.npz",
+      "source_sha256": "bb3a6b509d5434b5213cbf29aca3002d719ffcc0e9a2c559be2feee7a021f75b"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_9000_mixed_0_dropout_control.npz",
+      "source_sha256": "591ec3592e8511ec978a3d34d4c8577d0d0bc28a244cf856d01b451fb03d7dea"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_9000_mixed_0_halving.npz",
+      "source_sha256": "6462277756cc3859a5432b7e31a03fcde0aa95e5344705c841e1e96e96b1852e"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_9000_mixed_0_small_drop.npz",
+      "source_sha256": "b16221b3f29358d698f0c166aff2fabe9c6ccc7734f0d30013f289723df5d320"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_9000_mixed_1_before.npz",
+      "source_sha256": "848d8fac354086082625993b5295d550ef5847544186b04c6ea973f20918085e"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_9000_mixed_1_halving.npz",
+      "source_sha256": "03e12dde5ab8935f97dbecb8dc92a5b00843049b76f802b47d323edb8d43e23b"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_9000_mixed_1_small_drop.npz",
+      "source_sha256": "df972ccdd799af934f8f8269c25684c27b8924249084b38a40d7ca1d99575dbc"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_9000_move_near_before.npz",
+      "source_sha256": "b6d4407738613a35e6dc3c00a8d93ac45f8b1d7a045f812fad446b6675d8805b"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_9000_move_near_halving.npz",
+      "source_sha256": "fa85bea06f5e4158d4a11d6ce21fa2572a35ea9c81d39afebe8a940787344d47"
+    },
+    {
+      "source": "/mnt/pfs/yuchen/fractal_nu_gradient_20260908/results/raw_9000_move_near_small_drop.npz",
+      "source_sha256": "c2ffb31290d55379a0ae549254be088714040be42ed4e8b9827ace62cb12d63d"
+    }
+  ]
+}

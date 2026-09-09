@@ -1,0 +1,5350 @@
+{
+  "dataset": "Bridge / WidowX",
+  "objective": "hg",
+  "checkpoint": "/mnt/pfs/yuchen/groot/ft_wxpurehg/checkpoint-9000",
+  "task_names": [
+    "sweep into pile",
+    "open the drawer",
+    "close the drawer",
+    "open microwave",
+    "close microwave",
+    "open fridge",
+    "put carrot on plate",
+    "take broccoli out of pan",
+    "take carrot off plate",
+    "fold the cloth from bottom right to top left",
+    "put broccoli in pot",
+    "fold the cloth from bottom left to top right",
+    "fold the cloth from top left to bottom right",
+    "unfold the cloth from top right to bottom left",
+    "close fridge",
+    "open oven",
+    "unfold the cloth from left to right",
+    "put pear in bowl",
+    "close oven",
+    "put the blue figure on the top edge of the cloth",
+    "fold the cloth from left to right",
+    "unfold the cloth from top left to bottom right",
+    "unfold the cloth from bottom right to top left",
+    "unfold the cloth from right to left",
+    "fold the cloth from right to left",
+    "fold the cloth from top right to bottom left",
+    "put clothes in laundry machine",
+    "put knife in pot cardboard fence",
+    "put knife on cutting board cardboard fence",
+    "put lid on pot",
+    "put potato in pot cardboard fence",
+    "take carrot out of pot cardboard fence",
+    "take lid off pot",
+    "take sushi out of pot cardboard fence",
+    "topple basil bottle cardboard fence",
+    "topple metal pot cardboard fence",
+    "put banana in pot cardboard fence",
+    "take clothes out of laundry machine",
+    "put sushi in pot cardboard fence",
+    "upright basil bottle cardboard fence"
+  ],
+  "eligible_episode_counts": [
+    959,
+    425,
+    371,
+    290,
+    269,
+    220,
+    213,
+    211,
+    193,
+    184,
+    179,
+    174,
+    167,
+    151,
+    131,
+    130,
+    124,
+    120,
+    119,
+    119,
+    117,
+    109,
+    107,
+    104,
+    99,
+    99,
+    88,
+    88,
+    88,
+    88,
+    88,
+    88,
+    88,
+    88,
+    88,
+    88,
+    87,
+    87,
+    86,
+    86
+  ],
+  "task_selection": "40 most frequent lowercased, stripped exact instruction groups among episodes of length >=24; ties alphabetical.",
+  "episodes": [
+    [
+      {
+        "ordinal": 10573,
+        "episode": 10573,
+        "length": 96
+      },
+      {
+        "ordinal": 10715,
+        "episode": 10715,
+        "length": 83
+      },
+      {
+        "ordinal": 11093,
+        "episode": 11093,
+        "length": 80
+      },
+      {
+        "ordinal": 11275,
+        "episode": 11275,
+        "length": 96
+      },
+      {
+        "ordinal": 12318,
+        "episode": 12318,
+        "length": 85
+      },
+      {
+        "ordinal": 13288,
+        "episode": 13288,
+        "length": 60
+      },
+      {
+        "ordinal": 13319,
+        "episode": 13319,
+        "length": 84
+      },
+      {
+        "ordinal": 14165,
+        "episode": 14165,
+        "length": 96
+      },
+      {
+        "ordinal": 14204,
+        "episode": 14204,
+        "length": 96
+      },
+      {
+        "ordinal": 15553,
+        "episode": 15553,
+        "length": 58
+      },
+      {
+        "ordinal": 16403,
+        "episode": 16403,
+        "length": 74
+      },
+      {
+        "ordinal": 17216,
+        "episode": 17216,
+        "length": 93
+      },
+      {
+        "ordinal": 17875,
+        "episode": 17875,
+        "length": 90
+      },
+      {
+        "ordinal": 21580,
+        "episode": 21580,
+        "length": 90
+      },
+      {
+        "ordinal": 22541,
+        "episode": 22541,
+        "length": 81
+      },
+      {
+        "ordinal": 23252,
+        "episode": 23252,
+        "length": 44
+      },
+      {
+        "ordinal": 23996,
+        "episode": 23996,
+        "length": 58
+      },
+      {
+        "ordinal": 24806,
+        "episode": 24806,
+        "length": 96
+      },
+      {
+        "ordinal": 26013,
+        "episode": 26013,
+        "length": 96
+      },
+      {
+        "ordinal": 26206,
+        "episode": 26206,
+        "length": 95
+      },
+      {
+        "ordinal": 26497,
+        "episode": 26497,
+        "length": 45
+      },
+      {
+        "ordinal": 27373,
+        "episode": 27373,
+        "length": 86
+      },
+      {
+        "ordinal": 28432,
+        "episode": 28432,
+        "length": 96
+      },
+      {
+        "ordinal": 29918,
+        "episode": 29918,
+        "length": 69
+      },
+      {
+        "ordinal": 30554,
+        "episode": 30554,
+        "length": 88
+      },
+      {
+        "ordinal": 31738,
+        "episode": 31738,
+        "length": 96
+      },
+      {
+        "ordinal": 33412,
+        "episode": 33412,
+        "length": 88
+      },
+      {
+        "ordinal": 34019,
+        "episode": 34019,
+        "length": 76
+      },
+      {
+        "ordinal": 35590,
+        "episode": 35590,
+        "length": 96
+      },
+      {
+        "ordinal": 35890,
+        "episode": 35890,
+        "length": 67
+      },
+      {
+        "ordinal": 36095,
+        "episode": 36095,
+        "length": 96
+      },
+      {
+        "ordinal": 37174,
+        "episode": 37174,
+        "length": 80
+      },
+      {
+        "ordinal": 38210,
+        "episode": 38210,
+        "length": 58
+      },
+      {
+        "ordinal": 38487,
+        "episode": 38487,
+        "length": 95
+      },
+      {
+        "ordinal": 39986,
+        "episode": 39986,
+        "length": 84
+      },
+      {
+        "ordinal": 40840,
+        "episode": 40840,
+        "length": 63
+      },
+      {
+        "ordinal": 41068,
+        "episode": 41068,
+        "length": 96
+      },
+      {
+        "ordinal": 41075,
+        "episode": 41075,
+        "length": 96
+      },
+      {
+        "ordinal": 45326,
+        "episode": 45326,
+        "length": 96
+      },
+      {
+        "ordinal": 47360,
+        "episode": 47360,
+        "length": 77
+      },
+      {
+        "ordinal": 47787,
+        "episode": 47787,
+        "length": 96
+      },
+      {
+        "ordinal": 48113,
+        "episode": 48113,
+        "length": 89
+      },
+      {
+        "ordinal": 48683,
+        "episode": 48683,
+        "length": 96
+      },
+      {
+        "ordinal": 49844,
+        "episode": 49844,
+        "length": 73
+      },
+      {
+        "ordinal": 50983,
+        "episode": 50983,
+        "length": 96
+      },
+      {
+        "ordinal": 52255,
+        "episode": 52255,
+        "length": 96
+      },
+      {
+        "ordinal": 52579,
+        "episode": 52579,
+        "length": 96
+      },
+      {
+        "ordinal": 52627,
+        "episode": 52627,
+        "length": 96
+      }
+    ],
+    [
+      {
+        "ordinal": 76,
+        "episode": 76,
+        "length": 45
+      },
+      {
+        "ordinal": 5369,
+        "episode": 5369,
+        "length": 33
+      },
+      {
+        "ordinal": 5698,
+        "episode": 5698,
+        "length": 30
+      },
+      {
+        "ordinal": 6613,
+        "episode": 6613,
+        "length": 38
+      },
+      {
+        "ordinal": 8012,
+        "episode": 8012,
+        "length": 33
+      },
+      {
+        "ordinal": 8581,
+        "episode": 8581,
+        "length": 46
+      },
+      {
+        "ordinal": 8585,
+        "episode": 8585,
+        "length": 36
+      },
+      {
+        "ordinal": 10445,
+        "episode": 10445,
+        "length": 28
+      },
+      {
+        "ordinal": 11986,
+        "episode": 11986,
+        "length": 35
+      },
+      {
+        "ordinal": 14123,
+        "episode": 14123,
+        "length": 37
+      },
+      {
+        "ordinal": 14277,
+        "episode": 14277,
+        "length": 37
+      },
+      {
+        "ordinal": 14570,
+        "episode": 14570,
+        "length": 30
+      },
+      {
+        "ordinal": 14977,
+        "episode": 14977,
+        "length": 33
+      },
+      {
+        "ordinal": 15534,
+        "episode": 15534,
+        "length": 46
+      },
+      {
+        "ordinal": 15684,
+        "episode": 15684,
+        "length": 29
+      },
+      {
+        "ordinal": 17030,
+        "episode": 17030,
+        "length": 34
+      },
+      {
+        "ordinal": 21737,
+        "episode": 21737,
+        "length": 27
+      },
+      {
+        "ordinal": 23120,
+        "episode": 23120,
+        "length": 31
+      },
+      {
+        "ordinal": 23330,
+        "episode": 23330,
+        "length": 32
+      },
+      {
+        "ordinal": 23464,
+        "episode": 23464,
+        "length": 25
+      },
+      {
+        "ordinal": 24051,
+        "episode": 24051,
+        "length": 33
+      },
+      {
+        "ordinal": 24350,
+        "episode": 24350,
+        "length": 46
+      },
+      {
+        "ordinal": 26395,
+        "episode": 26395,
+        "length": 31
+      },
+      {
+        "ordinal": 27653,
+        "episode": 27653,
+        "length": 25
+      },
+      {
+        "ordinal": 28866,
+        "episode": 28866,
+        "length": 30
+      },
+      {
+        "ordinal": 31003,
+        "episode": 31003,
+        "length": 42
+      },
+      {
+        "ordinal": 31056,
+        "episode": 31056,
+        "length": 30
+      },
+      {
+        "ordinal": 32791,
+        "episode": 32791,
+        "length": 46
+      },
+      {
+        "ordinal": 33102,
+        "episode": 33102,
+        "length": 36
+      },
+      {
+        "ordinal": 33772,
+        "episode": 33772,
+        "length": 39
+      },
+      {
+        "ordinal": 33810,
+        "episode": 33810,
+        "length": 35
+      },
+      {
+        "ordinal": 34473,
+        "episode": 34473,
+        "length": 31
+      },
+      {
+        "ordinal": 35750,
+        "episode": 35750,
+        "length": 27
+      },
+      {
+        "ordinal": 35958,
+        "episode": 35958,
+        "length": 41
+      },
+      {
+        "ordinal": 37659,
+        "episode": 37659,
+        "length": 29
+      },
+      {
+        "ordinal": 40256,
+        "episode": 40256,
+        "length": 32
+      },
+      {
+        "ordinal": 40830,
+        "episode": 40830,
+        "length": 35
+      },
+      {
+        "ordinal": 42297,
+        "episode": 42297,
+        "length": 29
+      },
+      {
+        "ordinal": 42646,
+        "episode": 42646,
+        "length": 42
+      },
+      {
+        "ordinal": 42726,
+        "episode": 42726,
+        "length": 43
+      },
+      {
+        "ordinal": 43435,
+        "episode": 43435,
+        "length": 33
+      },
+      {
+        "ordinal": 47101,
+        "episode": 47101,
+        "length": 30
+      },
+      {
+        "ordinal": 47252,
+        "episode": 47252,
+        "length": 31
+      },
+      {
+        "ordinal": 48832,
+        "episode": 48832,
+        "length": 41
+      },
+      {
+        "ordinal": 49065,
+        "episode": 49065,
+        "length": 32
+      },
+      {
+        "ordinal": 49208,
+        "episode": 49208,
+        "length": 46
+      },
+      {
+        "ordinal": 50712,
+        "episode": 50712,
+        "length": 46
+      },
+      {
+        "ordinal": 50746,
+        "episode": 50746,
+        "length": 32
+      }
+    ],
+    [
+      {
+        "ordinal": 1648,
+        "episode": 1648,
+        "length": 34
+      },
+      {
+        "ordinal": 3752,
+        "episode": 3752,
+        "length": 46
+      },
+      {
+        "ordinal": 4337,
+        "episode": 4337,
+        "length": 28
+      },
+      {
+        "ordinal": 4587,
+        "episode": 4587,
+        "length": 42
+      },
+      {
+        "ordinal": 6122,
+        "episode": 6122,
+        "length": 46
+      },
+      {
+        "ordinal": 6595,
+        "episode": 6595,
+        "length": 45
+      },
+      {
+        "ordinal": 11258,
+        "episode": 11258,
+        "length": 25
+      },
+      {
+        "ordinal": 11483,
+        "episode": 11483,
+        "length": 29
+      },
+      {
+        "ordinal": 14383,
+        "episode": 14383,
+        "length": 46
+      },
+      {
+        "ordinal": 17259,
+        "episode": 17259,
+        "length": 28
+      },
+      {
+        "ordinal": 17860,
+        "episode": 17860,
+        "length": 46
+      },
+      {
+        "ordinal": 18360,
+        "episode": 18360,
+        "length": 31
+      },
+      {
+        "ordinal": 18964,
+        "episode": 18964,
+        "length": 29
+      },
+      {
+        "ordinal": 19335,
+        "episode": 19335,
+        "length": 26
+      },
+      {
+        "ordinal": 20000,
+        "episode": 20000,
+        "length": 46
+      },
+      {
+        "ordinal": 21248,
+        "episode": 21248,
+        "length": 46
+      },
+      {
+        "ordinal": 22372,
+        "episode": 22372,
+        "length": 32
+      },
+      {
+        "ordinal": 23277,
+        "episode": 23277,
+        "length": 29
+      },
+      {
+        "ordinal": 24675,
+        "episode": 24675,
+        "length": 32
+      },
+      {
+        "ordinal": 25302,
+        "episode": 25302,
+        "length": 35
+      },
+      {
+        "ordinal": 26888,
+        "episode": 26888,
+        "length": 31
+      },
+      {
+        "ordinal": 27776,
+        "episode": 27776,
+        "length": 33
+      },
+      {
+        "ordinal": 29044,
+        "episode": 29044,
+        "length": 31
+      },
+      {
+        "ordinal": 29544,
+        "episode": 29544,
+        "length": 39
+      },
+      {
+        "ordinal": 30932,
+        "episode": 30932,
+        "length": 46
+      },
+      {
+        "ordinal": 31386,
+        "episode": 31386,
+        "length": 32
+      },
+      {
+        "ordinal": 31595,
+        "episode": 31595,
+        "length": 46
+      },
+      {
+        "ordinal": 32888,
+        "episode": 32888,
+        "length": 44
+      },
+      {
+        "ordinal": 33836,
+        "episode": 33836,
+        "length": 38
+      },
+      {
+        "ordinal": 33905,
+        "episode": 33905,
+        "length": 41
+      },
+      {
+        "ordinal": 38221,
+        "episode": 38221,
+        "length": 25
+      },
+      {
+        "ordinal": 40249,
+        "episode": 40249,
+        "length": 37
+      },
+      {
+        "ordinal": 42254,
+        "episode": 42254,
+        "length": 46
+      },
+      {
+        "ordinal": 43053,
+        "episode": 43053,
+        "length": 31
+      },
+      {
+        "ordinal": 43098,
+        "episode": 43098,
+        "length": 32
+      },
+      {
+        "ordinal": 43465,
+        "episode": 43465,
+        "length": 37
+      },
+      {
+        "ordinal": 44283,
+        "episode": 44283,
+        "length": 32
+      },
+      {
+        "ordinal": 44883,
+        "episode": 44883,
+        "length": 37
+      },
+      {
+        "ordinal": 45922,
+        "episode": 45922,
+        "length": 28
+      },
+      {
+        "ordinal": 47240,
+        "episode": 47240,
+        "length": 32
+      },
+      {
+        "ordinal": 47624,
+        "episode": 47624,
+        "length": 35
+      },
+      {
+        "ordinal": 48963,
+        "episode": 48963,
+        "length": 36
+      },
+      {
+        "ordinal": 48993,
+        "episode": 48993,
+        "length": 29
+      },
+      {
+        "ordinal": 49163,
+        "episode": 49163,
+        "length": 25
+      },
+      {
+        "ordinal": 49301,
+        "episode": 49301,
+        "length": 26
+      },
+      {
+        "ordinal": 50820,
+        "episode": 50820,
+        "length": 38
+      },
+      {
+        "ordinal": 51235,
+        "episode": 51235,
+        "length": 30
+      },
+      {
+        "ordinal": 51736,
+        "episode": 51736,
+        "length": 31
+      }
+    ],
+    [
+      {
+        "ordinal": 1313,
+        "episode": 1313,
+        "length": 36
+      },
+      {
+        "ordinal": 2894,
+        "episode": 2894,
+        "length": 34
+      },
+      {
+        "ordinal": 6845,
+        "episode": 6845,
+        "length": 36
+      },
+      {
+        "ordinal": 6916,
+        "episode": 6916,
+        "length": 34
+      },
+      {
+        "ordinal": 7139,
+        "episode": 7139,
+        "length": 32
+      },
+      {
+        "ordinal": 13480,
+        "episode": 13480,
+        "length": 31
+      },
+      {
+        "ordinal": 13740,
+        "episode": 13740,
+        "length": 36
+      },
+      {
+        "ordinal": 14880,
+        "episode": 14880,
+        "length": 36
+      },
+      {
+        "ordinal": 17636,
+        "episode": 17636,
+        "length": 36
+      },
+      {
+        "ordinal": 19710,
+        "episode": 19710,
+        "length": 29
+      },
+      {
+        "ordinal": 23573,
+        "episode": 23573,
+        "length": 36
+      },
+      {
+        "ordinal": 26260,
+        "episode": 26260,
+        "length": 34
+      },
+      {
+        "ordinal": 26590,
+        "episode": 26590,
+        "length": 36
+      },
+      {
+        "ordinal": 30980,
+        "episode": 30980,
+        "length": 30
+      },
+      {
+        "ordinal": 31012,
+        "episode": 31012,
+        "length": 34
+      },
+      {
+        "ordinal": 35013,
+        "episode": 35013,
+        "length": 32
+      },
+      {
+        "ordinal": 36012,
+        "episode": 36012,
+        "length": 31
+      },
+      {
+        "ordinal": 36471,
+        "episode": 36471,
+        "length": 36
+      },
+      {
+        "ordinal": 38075,
+        "episode": 38075,
+        "length": 36
+      },
+      {
+        "ordinal": 38717,
+        "episode": 38717,
+        "length": 36
+      },
+      {
+        "ordinal": 39984,
+        "episode": 39984,
+        "length": 34
+      },
+      {
+        "ordinal": 43367,
+        "episode": 43367,
+        "length": 33
+      },
+      {
+        "ordinal": 47111,
+        "episode": 47111,
+        "length": 36
+      },
+      {
+        "ordinal": 51440,
+        "episode": 51440,
+        "length": 35
+      }
+    ],
+    [
+      {
+        "ordinal": 614,
+        "episode": 614,
+        "length": 36
+      },
+      {
+        "ordinal": 1400,
+        "episode": 1400,
+        "length": 31
+      },
+      {
+        "ordinal": 1504,
+        "episode": 1504,
+        "length": 36
+      },
+      {
+        "ordinal": 4714,
+        "episode": 4714,
+        "length": 36
+      },
+      {
+        "ordinal": 10169,
+        "episode": 10169,
+        "length": 36
+      },
+      {
+        "ordinal": 14539,
+        "episode": 14539,
+        "length": 49
+      },
+      {
+        "ordinal": 15713,
+        "episode": 15713,
+        "length": 36
+      },
+      {
+        "ordinal": 17532,
+        "episode": 17532,
+        "length": 36
+      },
+      {
+        "ordinal": 23505,
+        "episode": 23505,
+        "length": 36
+      },
+      {
+        "ordinal": 27421,
+        "episode": 27421,
+        "length": 33
+      },
+      {
+        "ordinal": 28423,
+        "episode": 28423,
+        "length": 28
+      },
+      {
+        "ordinal": 28970,
+        "episode": 28970,
+        "length": 36
+      },
+      {
+        "ordinal": 30094,
+        "episode": 30094,
+        "length": 36
+      },
+      {
+        "ordinal": 34187,
+        "episode": 34187,
+        "length": 36
+      },
+      {
+        "ordinal": 40505,
+        "episode": 40505,
+        "length": 33
+      },
+      {
+        "ordinal": 41562,
+        "episode": 41562,
+        "length": 36
+      },
+      {
+        "ordinal": 45339,
+        "episode": 45339,
+        "length": 36
+      },
+      {
+        "ordinal": 45918,
+        "episode": 45918,
+        "length": 36
+      },
+      {
+        "ordinal": 46915,
+        "episode": 46915,
+        "length": 27
+      },
+      {
+        "ordinal": 47119,
+        "episode": 47119,
+        "length": 36
+      },
+      {
+        "ordinal": 47145,
+        "episode": 47145,
+        "length": 33
+      },
+      {
+        "ordinal": 47666,
+        "episode": 47666,
+        "length": 36
+      },
+      {
+        "ordinal": 51740,
+        "episode": 51740,
+        "length": 34
+      },
+      {
+        "ordinal": 53028,
+        "episode": 53028,
+        "length": 25
+      }
+    ],
+    [
+      {
+        "ordinal": 1838,
+        "episode": 1838,
+        "length": 36
+      },
+      {
+        "ordinal": 5807,
+        "episode": 5807,
+        "length": 36
+      },
+      {
+        "ordinal": 6125,
+        "episode": 6125,
+        "length": 36
+      },
+      {
+        "ordinal": 9882,
+        "episode": 9882,
+        "length": 36
+      },
+      {
+        "ordinal": 10077,
+        "episode": 10077,
+        "length": 36
+      },
+      {
+        "ordinal": 14438,
+        "episode": 14438,
+        "length": 36
+      },
+      {
+        "ordinal": 14734,
+        "episode": 14734,
+        "length": 36
+      },
+      {
+        "ordinal": 17669,
+        "episode": 17669,
+        "length": 36
+      },
+      {
+        "ordinal": 18376,
+        "episode": 18376,
+        "length": 36
+      },
+      {
+        "ordinal": 24092,
+        "episode": 24092,
+        "length": 36
+      },
+      {
+        "ordinal": 25391,
+        "episode": 25391,
+        "length": 32
+      },
+      {
+        "ordinal": 27814,
+        "episode": 27814,
+        "length": 36
+      },
+      {
+        "ordinal": 28491,
+        "episode": 28491,
+        "length": 36
+      },
+      {
+        "ordinal": 29681,
+        "episode": 29681,
+        "length": 36
+      },
+      {
+        "ordinal": 30664,
+        "episode": 30664,
+        "length": 36
+      },
+      {
+        "ordinal": 35575,
+        "episode": 35575,
+        "length": 35
+      },
+      {
+        "ordinal": 36741,
+        "episode": 36741,
+        "length": 36
+      },
+      {
+        "ordinal": 36804,
+        "episode": 36804,
+        "length": 36
+      },
+      {
+        "ordinal": 40696,
+        "episode": 40696,
+        "length": 36
+      },
+      {
+        "ordinal": 41793,
+        "episode": 41793,
+        "length": 36
+      },
+      {
+        "ordinal": 44584,
+        "episode": 44584,
+        "length": 36
+      },
+      {
+        "ordinal": 48097,
+        "episode": 48097,
+        "length": 36
+      },
+      {
+        "ordinal": 49321,
+        "episode": 49321,
+        "length": 36
+      },
+      {
+        "ordinal": 50803,
+        "episode": 50803,
+        "length": 36
+      }
+    ],
+    [
+      {
+        "ordinal": 306,
+        "episode": 306,
+        "length": 36
+      },
+      {
+        "ordinal": 12904,
+        "episode": 12904,
+        "length": 36
+      },
+      {
+        "ordinal": 15879,
+        "episode": 15879,
+        "length": 36
+      },
+      {
+        "ordinal": 16874,
+        "episode": 16874,
+        "length": 36
+      },
+      {
+        "ordinal": 17651,
+        "episode": 17651,
+        "length": 36
+      },
+      {
+        "ordinal": 18850,
+        "episode": 18850,
+        "length": 26
+      },
+      {
+        "ordinal": 19452,
+        "episode": 19452,
+        "length": 36
+      },
+      {
+        "ordinal": 19733,
+        "episode": 19733,
+        "length": 36
+      },
+      {
+        "ordinal": 23210,
+        "episode": 23210,
+        "length": 36
+      },
+      {
+        "ordinal": 26727,
+        "episode": 26727,
+        "length": 36
+      },
+      {
+        "ordinal": 29014,
+        "episode": 29014,
+        "length": 26
+      },
+      {
+        "ordinal": 29961,
+        "episode": 29961,
+        "length": 36
+      },
+      {
+        "ordinal": 31300,
+        "episode": 31300,
+        "length": 36
+      },
+      {
+        "ordinal": 31586,
+        "episode": 31586,
+        "length": 36
+      },
+      {
+        "ordinal": 34182,
+        "episode": 34182,
+        "length": 26
+      },
+      {
+        "ordinal": 36444,
+        "episode": 36444,
+        "length": 36
+      },
+      {
+        "ordinal": 36587,
+        "episode": 36587,
+        "length": 36
+      },
+      {
+        "ordinal": 38230,
+        "episode": 38230,
+        "length": 36
+      },
+      {
+        "ordinal": 40371,
+        "episode": 40371,
+        "length": 36
+      },
+      {
+        "ordinal": 41283,
+        "episode": 41283,
+        "length": 36
+      },
+      {
+        "ordinal": 42906,
+        "episode": 42906,
+        "length": 36
+      },
+      {
+        "ordinal": 45754,
+        "episode": 45754,
+        "length": 36
+      },
+      {
+        "ordinal": 51791,
+        "episode": 51791,
+        "length": 26
+      },
+      {
+        "ordinal": 52357,
+        "episode": 52357,
+        "length": 36
+      }
+    ],
+    [
+      {
+        "ordinal": 3061,
+        "episode": 3061,
+        "length": 36
+      },
+      {
+        "ordinal": 4570,
+        "episode": 4570,
+        "length": 24
+      },
+      {
+        "ordinal": 8135,
+        "episode": 8135,
+        "length": 36
+      },
+      {
+        "ordinal": 8253,
+        "episode": 8253,
+        "length": 35
+      },
+      {
+        "ordinal": 10544,
+        "episode": 10544,
+        "length": 36
+      },
+      {
+        "ordinal": 11972,
+        "episode": 11972,
+        "length": 36
+      },
+      {
+        "ordinal": 15317,
+        "episode": 15317,
+        "length": 36
+      },
+      {
+        "ordinal": 21282,
+        "episode": 21282,
+        "length": 36
+      },
+      {
+        "ordinal": 22112,
+        "episode": 22112,
+        "length": 36
+      },
+      {
+        "ordinal": 26454,
+        "episode": 26454,
+        "length": 36
+      },
+      {
+        "ordinal": 27868,
+        "episode": 27868,
+        "length": 26
+      },
+      {
+        "ordinal": 30263,
+        "episode": 30263,
+        "length": 36
+      },
+      {
+        "ordinal": 31824,
+        "episode": 31824,
+        "length": 26
+      },
+      {
+        "ordinal": 33817,
+        "episode": 33817,
+        "length": 36
+      },
+      {
+        "ordinal": 37085,
+        "episode": 37085,
+        "length": 36
+      },
+      {
+        "ordinal": 37163,
+        "episode": 37163,
+        "length": 36
+      },
+      {
+        "ordinal": 40988,
+        "episode": 40988,
+        "length": 36
+      },
+      {
+        "ordinal": 41394,
+        "episode": 41394,
+        "length": 36
+      },
+      {
+        "ordinal": 43848,
+        "episode": 43848,
+        "length": 36
+      },
+      {
+        "ordinal": 44560,
+        "episode": 44560,
+        "length": 36
+      },
+      {
+        "ordinal": 46170,
+        "episode": 46170,
+        "length": 36
+      },
+      {
+        "ordinal": 47387,
+        "episode": 47387,
+        "length": 36
+      },
+      {
+        "ordinal": 47798,
+        "episode": 47798,
+        "length": 36
+      },
+      {
+        "ordinal": 51082,
+        "episode": 51082,
+        "length": 36
+      }
+    ],
+    [
+      {
+        "ordinal": 1406,
+        "episode": 1406,
+        "length": 26
+      },
+      {
+        "ordinal": 1756,
+        "episode": 1756,
+        "length": 36
+      },
+      {
+        "ordinal": 9099,
+        "episode": 9099,
+        "length": 36
+      },
+      {
+        "ordinal": 10684,
+        "episode": 10684,
+        "length": 36
+      },
+      {
+        "ordinal": 10736,
+        "episode": 10736,
+        "length": 36
+      },
+      {
+        "ordinal": 11588,
+        "episode": 11588,
+        "length": 36
+      },
+      {
+        "ordinal": 16452,
+        "episode": 16452,
+        "length": 36
+      },
+      {
+        "ordinal": 18480,
+        "episode": 18480,
+        "length": 36
+      },
+      {
+        "ordinal": 21173,
+        "episode": 21173,
+        "length": 26
+      },
+      {
+        "ordinal": 25480,
+        "episode": 25480,
+        "length": 36
+      },
+      {
+        "ordinal": 25973,
+        "episode": 25973,
+        "length": 36
+      },
+      {
+        "ordinal": 27871,
+        "episode": 27871,
+        "length": 36
+      },
+      {
+        "ordinal": 31464,
+        "episode": 31464,
+        "length": 36
+      },
+      {
+        "ordinal": 32433,
+        "episode": 32433,
+        "length": 36
+      },
+      {
+        "ordinal": 32852,
+        "episode": 32852,
+        "length": 36
+      },
+      {
+        "ordinal": 34579,
+        "episode": 34579,
+        "length": 36
+      },
+      {
+        "ordinal": 35670,
+        "episode": 35670,
+        "length": 24
+      },
+      {
+        "ordinal": 37026,
+        "episode": 37026,
+        "length": 36
+      },
+      {
+        "ordinal": 38509,
+        "episode": 38509,
+        "length": 36
+      },
+      {
+        "ordinal": 42178,
+        "episode": 42178,
+        "length": 36
+      },
+      {
+        "ordinal": 45910,
+        "episode": 45910,
+        "length": 24
+      },
+      {
+        "ordinal": 48207,
+        "episode": 48207,
+        "length": 36
+      },
+      {
+        "ordinal": 48625,
+        "episode": 48625,
+        "length": 36
+      },
+      {
+        "ordinal": 50544,
+        "episode": 50544,
+        "length": 36
+      }
+    ],
+    [
+      {
+        "ordinal": 2706,
+        "episode": 2706,
+        "length": 46
+      },
+      {
+        "ordinal": 3443,
+        "episode": 3443,
+        "length": 35
+      },
+      {
+        "ordinal": 6176,
+        "episode": 6176,
+        "length": 29
+      },
+      {
+        "ordinal": 6410,
+        "episode": 6410,
+        "length": 41
+      },
+      {
+        "ordinal": 7559,
+        "episode": 7559,
+        "length": 37
+      },
+      {
+        "ordinal": 9116,
+        "episode": 9116,
+        "length": 36
+      },
+      {
+        "ordinal": 10329,
+        "episode": 10329,
+        "length": 33
+      },
+      {
+        "ordinal": 12243,
+        "episode": 12243,
+        "length": 36
+      },
+      {
+        "ordinal": 19235,
+        "episode": 19235,
+        "length": 36
+      },
+      {
+        "ordinal": 19906,
+        "episode": 19906,
+        "length": 44
+      },
+      {
+        "ordinal": 24778,
+        "episode": 24778,
+        "length": 38
+      },
+      {
+        "ordinal": 27675,
+        "episode": 27675,
+        "length": 46
+      },
+      {
+        "ordinal": 30611,
+        "episode": 30611,
+        "length": 42
+      },
+      {
+        "ordinal": 31071,
+        "episode": 31071,
+        "length": 40
+      },
+      {
+        "ordinal": 31646,
+        "episode": 31646,
+        "length": 42
+      },
+      {
+        "ordinal": 35304,
+        "episode": 35304,
+        "length": 44
+      },
+      {
+        "ordinal": 41553,
+        "episode": 41553,
+        "length": 44
+      },
+      {
+        "ordinal": 45554,
+        "episode": 45554,
+        "length": 40
+      },
+      {
+        "ordinal": 48018,
+        "episode": 48018,
+        "length": 43
+      },
+      {
+        "ordinal": 48890,
+        "episode": 48890,
+        "length": 33
+      },
+      {
+        "ordinal": 49314,
+        "episode": 49314,
+        "length": 35
+      },
+      {
+        "ordinal": 51510,
+        "episode": 51510,
+        "length": 33
+      },
+      {
+        "ordinal": 51630,
+        "episode": 51630,
+        "length": 44
+      },
+      {
+        "ordinal": 52568,
+        "episode": 52568,
+        "length": 34
+      }
+    ],
+    [
+      {
+        "ordinal": 911,
+        "episode": 911,
+        "length": 31
+      },
+      {
+        "ordinal": 4133,
+        "episode": 4133,
+        "length": 36
+      },
+      {
+        "ordinal": 5300,
+        "episode": 5300,
+        "length": 36
+      },
+      {
+        "ordinal": 6415,
+        "episode": 6415,
+        "length": 36
+      },
+      {
+        "ordinal": 9832,
+        "episode": 9832,
+        "length": 33
+      },
+      {
+        "ordinal": 11314,
+        "episode": 11314,
+        "length": 36
+      },
+      {
+        "ordinal": 17378,
+        "episode": 17378,
+        "length": 36
+      },
+      {
+        "ordinal": 19506,
+        "episode": 19506,
+        "length": 36
+      },
+      {
+        "ordinal": 25022,
+        "episode": 25022,
+        "length": 36
+      },
+      {
+        "ordinal": 29753,
+        "episode": 29753,
+        "length": 32
+      },
+      {
+        "ordinal": 32173,
+        "episode": 32173,
+        "length": 32
+      },
+      {
+        "ordinal": 35072,
+        "episode": 35072,
+        "length": 32
+      },
+      {
+        "ordinal": 36736,
+        "episode": 36736,
+        "length": 36
+      },
+      {
+        "ordinal": 39860,
+        "episode": 39860,
+        "length": 34
+      },
+      {
+        "ordinal": 41888,
+        "episode": 41888,
+        "length": 33
+      },
+      {
+        "ordinal": 42915,
+        "episode": 42915,
+        "length": 29
+      },
+      {
+        "ordinal": 45989,
+        "episode": 45989,
+        "length": 36
+      },
+      {
+        "ordinal": 46788,
+        "episode": 46788,
+        "length": 30
+      },
+      {
+        "ordinal": 48598,
+        "episode": 48598,
+        "length": 36
+      },
+      {
+        "ordinal": 49385,
+        "episode": 49385,
+        "length": 36
+      },
+      {
+        "ordinal": 49446,
+        "episode": 49446,
+        "length": 33
+      },
+      {
+        "ordinal": 50073,
+        "episode": 50073,
+        "length": 36
+      },
+      {
+        "ordinal": 50391,
+        "episode": 50391,
+        "length": 36
+      },
+      {
+        "ordinal": 52630,
+        "episode": 52630,
+        "length": 30
+      }
+    ],
+    [
+      {
+        "ordinal": 243,
+        "episode": 243,
+        "length": 41
+      },
+      {
+        "ordinal": 1344,
+        "episode": 1344,
+        "length": 25
+      },
+      {
+        "ordinal": 1397,
+        "episode": 1397,
+        "length": 37
+      },
+      {
+        "ordinal": 3952,
+        "episode": 3952,
+        "length": 38
+      },
+      {
+        "ordinal": 5122,
+        "episode": 5122,
+        "length": 36
+      },
+      {
+        "ordinal": 10106,
+        "episode": 10106,
+        "length": 31
+      },
+      {
+        "ordinal": 11806,
+        "episode": 11806,
+        "length": 30
+      },
+      {
+        "ordinal": 13840,
+        "episode": 13840,
+        "length": 43
+      },
+      {
+        "ordinal": 22507,
+        "episode": 22507,
+        "length": 34
+      },
+      {
+        "ordinal": 22819,
+        "episode": 22819,
+        "length": 34
+      },
+      {
+        "ordinal": 27211,
+        "episode": 27211,
+        "length": 43
+      },
+      {
+        "ordinal": 30180,
+        "episode": 30180,
+        "length": 33
+      },
+      {
+        "ordinal": 31858,
+        "episode": 31858,
+        "length": 42
+      },
+      {
+        "ordinal": 36318,
+        "episode": 36318,
+        "length": 34
+      },
+      {
+        "ordinal": 37793,
+        "episode": 37793,
+        "length": 28
+      },
+      {
+        "ordinal": 37970,
+        "episode": 37970,
+        "length": 31
+      },
+      {
+        "ordinal": 40189,
+        "episode": 40189,
+        "length": 39
+      },
+      {
+        "ordinal": 42103,
+        "episode": 42103,
+        "length": 26
+      },
+      {
+        "ordinal": 43510,
+        "episode": 43510,
+        "length": 43
+      },
+      {
+        "ordinal": 44070,
+        "episode": 44070,
+        "length": 41
+      },
+      {
+        "ordinal": 45709,
+        "episode": 45709,
+        "length": 41
+      },
+      {
+        "ordinal": 48362,
+        "episode": 48362,
+        "length": 46
+      },
+      {
+        "ordinal": 49042,
+        "episode": 49042,
+        "length": 45
+      },
+      {
+        "ordinal": 49254,
+        "episode": 49254,
+        "length": 29
+      }
+    ],
+    [
+      {
+        "ordinal": 2306,
+        "episode": 2306,
+        "length": 31
+      },
+      {
+        "ordinal": 5517,
+        "episode": 5517,
+        "length": 33
+      },
+      {
+        "ordinal": 10284,
+        "episode": 10284,
+        "length": 28
+      },
+      {
+        "ordinal": 12116,
+        "episode": 12116,
+        "length": 35
+      },
+      {
+        "ordinal": 12175,
+        "episode": 12175,
+        "length": 41
+      },
+      {
+        "ordinal": 12789,
+        "episode": 12789,
+        "length": 46
+      },
+      {
+        "ordinal": 14132,
+        "episode": 14132,
+        "length": 42
+      },
+      {
+        "ordinal": 15612,
+        "episode": 15612,
+        "length": 36
+      },
+      {
+        "ordinal": 16329,
+        "episode": 16329,
+        "length": 41
+      },
+      {
+        "ordinal": 18428,
+        "episode": 18428,
+        "length": 43
+      },
+      {
+        "ordinal": 19916,
+        "episode": 19916,
+        "length": 30
+      },
+      {
+        "ordinal": 20070,
+        "episode": 20070,
+        "length": 42
+      },
+      {
+        "ordinal": 20758,
+        "episode": 20758,
+        "length": 32
+      },
+      {
+        "ordinal": 22604,
+        "episode": 22604,
+        "length": 43
+      },
+      {
+        "ordinal": 27589,
+        "episode": 27589,
+        "length": 38
+      },
+      {
+        "ordinal": 34772,
+        "episode": 34772,
+        "length": 32
+      },
+      {
+        "ordinal": 35974,
+        "episode": 35974,
+        "length": 40
+      },
+      {
+        "ordinal": 37570,
+        "episode": 37570,
+        "length": 27
+      },
+      {
+        "ordinal": 40124,
+        "episode": 40124,
+        "length": 37
+      },
+      {
+        "ordinal": 44011,
+        "episode": 44011,
+        "length": 43
+      },
+      {
+        "ordinal": 44596,
+        "episode": 44596,
+        "length": 45
+      },
+      {
+        "ordinal": 46195,
+        "episode": 46195,
+        "length": 33
+      },
+      {
+        "ordinal": 47115,
+        "episode": 47115,
+        "length": 38
+      },
+      {
+        "ordinal": 47537,
+        "episode": 47537,
+        "length": 44
+      }
+    ],
+    [
+      {
+        "ordinal": 2022,
+        "episode": 2022,
+        "length": 39
+      },
+      {
+        "ordinal": 6306,
+        "episode": 6306,
+        "length": 31
+      },
+      {
+        "ordinal": 12321,
+        "episode": 12321,
+        "length": 34
+      },
+      {
+        "ordinal": 13011,
+        "episode": 13011,
+        "length": 46
+      },
+      {
+        "ordinal": 13588,
+        "episode": 13588,
+        "length": 31
+      },
+      {
+        "ordinal": 13625,
+        "episode": 13625,
+        "length": 39
+      },
+      {
+        "ordinal": 16021,
+        "episode": 16021,
+        "length": 33
+      },
+      {
+        "ordinal": 17779,
+        "episode": 17779,
+        "length": 46
+      },
+      {
+        "ordinal": 19365,
+        "episode": 19365,
+        "length": 26
+      },
+      {
+        "ordinal": 21156,
+        "episode": 21156,
+        "length": 39
+      },
+      {
+        "ordinal": 22747,
+        "episode": 22747,
+        "length": 28
+      },
+      {
+        "ordinal": 22991,
+        "episode": 22991,
+        "length": 39
+      },
+      {
+        "ordinal": 23301,
+        "episode": 23301,
+        "length": 46
+      },
+      {
+        "ordinal": 27873,
+        "episode": 27873,
+        "length": 40
+      },
+      {
+        "ordinal": 28720,
+        "episode": 28720,
+        "length": 45
+      },
+      {
+        "ordinal": 32434,
+        "episode": 32434,
+        "length": 38
+      },
+      {
+        "ordinal": 36604,
+        "episode": 36604,
+        "length": 39
+      },
+      {
+        "ordinal": 36833,
+        "episode": 36833,
+        "length": 44
+      },
+      {
+        "ordinal": 41908,
+        "episode": 41908,
+        "length": 46
+      },
+      {
+        "ordinal": 46118,
+        "episode": 46118,
+        "length": 34
+      },
+      {
+        "ordinal": 48024,
+        "episode": 48024,
+        "length": 46
+      },
+      {
+        "ordinal": 49318,
+        "episode": 49318,
+        "length": 46
+      },
+      {
+        "ordinal": 51260,
+        "episode": 51260,
+        "length": 29
+      },
+      {
+        "ordinal": 53005,
+        "episode": 53005,
+        "length": 24
+      }
+    ],
+    [
+      {
+        "ordinal": 10845,
+        "episode": 10845,
+        "length": 33
+      },
+      {
+        "ordinal": 11536,
+        "episode": 11536,
+        "length": 24
+      },
+      {
+        "ordinal": 16704,
+        "episode": 16704,
+        "length": 26
+      },
+      {
+        "ordinal": 17032,
+        "episode": 17032,
+        "length": 36
+      },
+      {
+        "ordinal": 26822,
+        "episode": 26822,
+        "length": 25
+      },
+      {
+        "ordinal": 29370,
+        "episode": 29370,
+        "length": 34
+      },
+      {
+        "ordinal": 30640,
+        "episode": 30640,
+        "length": 34
+      },
+      {
+        "ordinal": 32135,
+        "episode": 32135,
+        "length": 26
+      },
+      {
+        "ordinal": 32550,
+        "episode": 32550,
+        "length": 36
+      },
+      {
+        "ordinal": 32916,
+        "episode": 32916,
+        "length": 31
+      },
+      {
+        "ordinal": 33447,
+        "episode": 33447,
+        "length": 36
+      },
+      {
+        "ordinal": 37969,
+        "episode": 37969,
+        "length": 24
+      },
+      {
+        "ordinal": 38998,
+        "episode": 38998,
+        "length": 33
+      },
+      {
+        "ordinal": 39427,
+        "episode": 39427,
+        "length": 35
+      },
+      {
+        "ordinal": 40497,
+        "episode": 40497,
+        "length": 36
+      },
+      {
+        "ordinal": 40913,
+        "episode": 40913,
+        "length": 36
+      },
+      {
+        "ordinal": 42507,
+        "episode": 42507,
+        "length": 32
+      },
+      {
+        "ordinal": 42673,
+        "episode": 42673,
+        "length": 34
+      },
+      {
+        "ordinal": 44296,
+        "episode": 44296,
+        "length": 27
+      },
+      {
+        "ordinal": 45076,
+        "episode": 45076,
+        "length": 36
+      },
+      {
+        "ordinal": 47385,
+        "episode": 47385,
+        "length": 29
+      },
+      {
+        "ordinal": 50726,
+        "episode": 50726,
+        "length": 31
+      },
+      {
+        "ordinal": 51075,
+        "episode": 51075,
+        "length": 34
+      },
+      {
+        "ordinal": 51612,
+        "episode": 51612,
+        "length": 28
+      }
+    ],
+    [
+      {
+        "ordinal": 1374,
+        "episode": 1374,
+        "length": 36
+      },
+      {
+        "ordinal": 2044,
+        "episode": 2044,
+        "length": 36
+      },
+      {
+        "ordinal": 6801,
+        "episode": 6801,
+        "length": 36
+      },
+      {
+        "ordinal": 8612,
+        "episode": 8612,
+        "length": 36
+      },
+      {
+        "ordinal": 8866,
+        "episode": 8866,
+        "length": 36
+      },
+      {
+        "ordinal": 12426,
+        "episode": 12426,
+        "length": 32
+      },
+      {
+        "ordinal": 12853,
+        "episode": 12853,
+        "length": 36
+      },
+      {
+        "ordinal": 15275,
+        "episode": 15275,
+        "length": 36
+      },
+      {
+        "ordinal": 21584,
+        "episode": 21584,
+        "length": 32
+      },
+      {
+        "ordinal": 24336,
+        "episode": 24336,
+        "length": 31
+      },
+      {
+        "ordinal": 32217,
+        "episode": 32217,
+        "length": 36
+      },
+      {
+        "ordinal": 33003,
+        "episode": 33003,
+        "length": 28
+      },
+      {
+        "ordinal": 35602,
+        "episode": 35602,
+        "length": 36
+      },
+      {
+        "ordinal": 37241,
+        "episode": 37241,
+        "length": 36
+      },
+      {
+        "ordinal": 38281,
+        "episode": 38281,
+        "length": 31
+      },
+      {
+        "ordinal": 39592,
+        "episode": 39592,
+        "length": 34
+      },
+      {
+        "ordinal": 44127,
+        "episode": 44127,
+        "length": 36
+      },
+      {
+        "ordinal": 44927,
+        "episode": 44927,
+        "length": 36
+      },
+      {
+        "ordinal": 47794,
+        "episode": 47794,
+        "length": 35
+      },
+      {
+        "ordinal": 48156,
+        "episode": 48156,
+        "length": 36
+      },
+      {
+        "ordinal": 48798,
+        "episode": 48798,
+        "length": 36
+      },
+      {
+        "ordinal": 50715,
+        "episode": 50715,
+        "length": 36
+      },
+      {
+        "ordinal": 51263,
+        "episode": 51263,
+        "length": 36
+      },
+      {
+        "ordinal": 51919,
+        "episode": 51919,
+        "length": 32
+      }
+    ],
+    [
+      {
+        "ordinal": 1932,
+        "episode": 1932,
+        "length": 40
+      },
+      {
+        "ordinal": 1941,
+        "episode": 1941,
+        "length": 40
+      },
+      {
+        "ordinal": 1988,
+        "episode": 1988,
+        "length": 35
+      },
+      {
+        "ordinal": 2767,
+        "episode": 2767,
+        "length": 25
+      },
+      {
+        "ordinal": 6219,
+        "episode": 6219,
+        "length": 46
+      },
+      {
+        "ordinal": 10934,
+        "episode": 10934,
+        "length": 46
+      },
+      {
+        "ordinal": 12075,
+        "episode": 12075,
+        "length": 30
+      },
+      {
+        "ordinal": 12862,
+        "episode": 12862,
+        "length": 38
+      },
+      {
+        "ordinal": 13499,
+        "episode": 13499,
+        "length": 39
+      },
+      {
+        "ordinal": 14179,
+        "episode": 14179,
+        "length": 33
+      },
+      {
+        "ordinal": 23194,
+        "episode": 23194,
+        "length": 29
+      },
+      {
+        "ordinal": 23958,
+        "episode": 23958,
+        "length": 31
+      },
+      {
+        "ordinal": 24269,
+        "episode": 24269,
+        "length": 34
+      },
+      {
+        "ordinal": 30522,
+        "episode": 30522,
+        "length": 25
+      },
+      {
+        "ordinal": 31256,
+        "episode": 31256,
+        "length": 35
+      },
+      {
+        "ordinal": 32185,
+        "episode": 32185,
+        "length": 43
+      },
+      {
+        "ordinal": 32289,
+        "episode": 32289,
+        "length": 44
+      },
+      {
+        "ordinal": 36556,
+        "episode": 36556,
+        "length": 46
+      },
+      {
+        "ordinal": 42757,
+        "episode": 42757,
+        "length": 27
+      },
+      {
+        "ordinal": 43188,
+        "episode": 43188,
+        "length": 41
+      },
+      {
+        "ordinal": 44536,
+        "episode": 44536,
+        "length": 36
+      },
+      {
+        "ordinal": 46294,
+        "episode": 46294,
+        "length": 33
+      },
+      {
+        "ordinal": 50420,
+        "episode": 50420,
+        "length": 30
+      },
+      {
+        "ordinal": 52553,
+        "episode": 52553,
+        "length": 43
+      }
+    ],
+    [
+      {
+        "ordinal": 391,
+        "episode": 391,
+        "length": 26
+      },
+      {
+        "ordinal": 1190,
+        "episode": 1190,
+        "length": 26
+      },
+      {
+        "ordinal": 2957,
+        "episode": 2957,
+        "length": 24
+      },
+      {
+        "ordinal": 2974,
+        "episode": 2974,
+        "length": 24
+      },
+      {
+        "ordinal": 6989,
+        "episode": 6989,
+        "length": 24
+      },
+      {
+        "ordinal": 7884,
+        "episode": 7884,
+        "length": 24
+      },
+      {
+        "ordinal": 7901,
+        "episode": 7901,
+        "length": 29
+      },
+      {
+        "ordinal": 11167,
+        "episode": 11167,
+        "length": 26
+      },
+      {
+        "ordinal": 11319,
+        "episode": 11319,
+        "length": 27
+      },
+      {
+        "ordinal": 13296,
+        "episode": 13296,
+        "length": 29
+      },
+      {
+        "ordinal": 14282,
+        "episode": 14282,
+        "length": 31
+      },
+      {
+        "ordinal": 16626,
+        "episode": 16626,
+        "length": 29
+      },
+      {
+        "ordinal": 18053,
+        "episode": 18053,
+        "length": 32
+      },
+      {
+        "ordinal": 19026,
+        "episode": 19026,
+        "length": 24
+      },
+      {
+        "ordinal": 20453,
+        "episode": 20453,
+        "length": 26
+      },
+      {
+        "ordinal": 21290,
+        "episode": 21290,
+        "length": 36
+      },
+      {
+        "ordinal": 22380,
+        "episode": 22380,
+        "length": 26
+      },
+      {
+        "ordinal": 25408,
+        "episode": 25408,
+        "length": 32
+      },
+      {
+        "ordinal": 30253,
+        "episode": 30253,
+        "length": 26
+      },
+      {
+        "ordinal": 32761,
+        "episode": 32761,
+        "length": 26
+      },
+      {
+        "ordinal": 45351,
+        "episode": 45351,
+        "length": 29
+      },
+      {
+        "ordinal": 47696,
+        "episode": 47696,
+        "length": 26
+      },
+      {
+        "ordinal": 48705,
+        "episode": 48705,
+        "length": 31
+      },
+      {
+        "ordinal": 49263,
+        "episode": 49263,
+        "length": 26
+      }
+    ],
+    [
+      {
+        "ordinal": 3148,
+        "episode": 3148,
+        "length": 36
+      },
+      {
+        "ordinal": 4242,
+        "episode": 4242,
+        "length": 29
+      },
+      {
+        "ordinal": 10065,
+        "episode": 10065,
+        "length": 25
+      },
+      {
+        "ordinal": 12028,
+        "episode": 12028,
+        "length": 26
+      },
+      {
+        "ordinal": 13764,
+        "episode": 13764,
+        "length": 36
+      },
+      {
+        "ordinal": 14515,
+        "episode": 14515,
+        "length": 26
+      },
+      {
+        "ordinal": 17667,
+        "episode": 17667,
+        "length": 25
+      },
+      {
+        "ordinal": 23438,
+        "episode": 23438,
+        "length": 31
+      },
+      {
+        "ordinal": 23512,
+        "episode": 23512,
+        "length": 36
+      },
+      {
+        "ordinal": 25294,
+        "episode": 25294,
+        "length": 26
+      },
+      {
+        "ordinal": 25298,
+        "episode": 25298,
+        "length": 24
+      },
+      {
+        "ordinal": 25717,
+        "episode": 25717,
+        "length": 31
+      },
+      {
+        "ordinal": 25945,
+        "episode": 25945,
+        "length": 27
+      },
+      {
+        "ordinal": 26388,
+        "episode": 26388,
+        "length": 29
+      },
+      {
+        "ordinal": 32830,
+        "episode": 32830,
+        "length": 29
+      },
+      {
+        "ordinal": 32881,
+        "episode": 32881,
+        "length": 31
+      },
+      {
+        "ordinal": 35290,
+        "episode": 35290,
+        "length": 27
+      },
+      {
+        "ordinal": 38448,
+        "episode": 38448,
+        "length": 28
+      },
+      {
+        "ordinal": 39394,
+        "episode": 39394,
+        "length": 31
+      },
+      {
+        "ordinal": 40674,
+        "episode": 40674,
+        "length": 31
+      },
+      {
+        "ordinal": 43020,
+        "episode": 43020,
+        "length": 36
+      },
+      {
+        "ordinal": 44001,
+        "episode": 44001,
+        "length": 34
+      },
+      {
+        "ordinal": 46495,
+        "episode": 46495,
+        "length": 36
+      },
+      {
+        "ordinal": 47583,
+        "episode": 47583,
+        "length": 29
+      }
+    ],
+    [
+      {
+        "ordinal": 157,
+        "episode": 157,
+        "length": 29
+      },
+      {
+        "ordinal": 663,
+        "episode": 663,
+        "length": 39
+      },
+      {
+        "ordinal": 2281,
+        "episode": 2281,
+        "length": 46
+      },
+      {
+        "ordinal": 2496,
+        "episode": 2496,
+        "length": 33
+      },
+      {
+        "ordinal": 3942,
+        "episode": 3942,
+        "length": 46
+      },
+      {
+        "ordinal": 4624,
+        "episode": 4624,
+        "length": 40
+      },
+      {
+        "ordinal": 4861,
+        "episode": 4861,
+        "length": 32
+      },
+      {
+        "ordinal": 5350,
+        "episode": 5350,
+        "length": 35
+      },
+      {
+        "ordinal": 9606,
+        "episode": 9606,
+        "length": 38
+      },
+      {
+        "ordinal": 11831,
+        "episode": 11831,
+        "length": 38
+      },
+      {
+        "ordinal": 15718,
+        "episode": 15718,
+        "length": 37
+      },
+      {
+        "ordinal": 21171,
+        "episode": 21171,
+        "length": 29
+      },
+      {
+        "ordinal": 23215,
+        "episode": 23215,
+        "length": 26
+      },
+      {
+        "ordinal": 24134,
+        "episode": 24134,
+        "length": 40
+      },
+      {
+        "ordinal": 25944,
+        "episode": 25944,
+        "length": 36
+      },
+      {
+        "ordinal": 32024,
+        "episode": 32024,
+        "length": 30
+      },
+      {
+        "ordinal": 33850,
+        "episode": 33850,
+        "length": 31
+      },
+      {
+        "ordinal": 36822,
+        "episode": 36822,
+        "length": 25
+      },
+      {
+        "ordinal": 37972,
+        "episode": 37972,
+        "length": 46
+      },
+      {
+        "ordinal": 37992,
+        "episode": 37992,
+        "length": 43
+      },
+      {
+        "ordinal": 39934,
+        "episode": 39934,
+        "length": 45
+      },
+      {
+        "ordinal": 40662,
+        "episode": 40662,
+        "length": 42
+      },
+      {
+        "ordinal": 46062,
+        "episode": 46062,
+        "length": 41
+      },
+      {
+        "ordinal": 46614,
+        "episode": 46614,
+        "length": 37
+      }
+    ],
+    [
+      {
+        "ordinal": 477,
+        "episode": 477,
+        "length": 37
+      },
+      {
+        "ordinal": 1945,
+        "episode": 1945,
+        "length": 36
+      },
+      {
+        "ordinal": 2500,
+        "episode": 2500,
+        "length": 41
+      },
+      {
+        "ordinal": 3052,
+        "episode": 3052,
+        "length": 46
+      },
+      {
+        "ordinal": 4411,
+        "episode": 4411,
+        "length": 32
+      },
+      {
+        "ordinal": 6444,
+        "episode": 6444,
+        "length": 42
+      },
+      {
+        "ordinal": 7087,
+        "episode": 7087,
+        "length": 45
+      },
+      {
+        "ordinal": 7703,
+        "episode": 7703,
+        "length": 31
+      },
+      {
+        "ordinal": 11260,
+        "episode": 11260,
+        "length": 46
+      },
+      {
+        "ordinal": 11412,
+        "episode": 11412,
+        "length": 36
+      },
+      {
+        "ordinal": 15654,
+        "episode": 15654,
+        "length": 31
+      },
+      {
+        "ordinal": 16171,
+        "episode": 16171,
+        "length": 40
+      },
+      {
+        "ordinal": 17524,
+        "episode": 17524,
+        "length": 42
+      },
+      {
+        "ordinal": 18025,
+        "episode": 18025,
+        "length": 41
+      },
+      {
+        "ordinal": 18094,
+        "episode": 18094,
+        "length": 42
+      },
+      {
+        "ordinal": 24932,
+        "episode": 24932,
+        "length": 33
+      },
+      {
+        "ordinal": 26510,
+        "episode": 26510,
+        "length": 34
+      },
+      {
+        "ordinal": 27809,
+        "episode": 27809,
+        "length": 41
+      },
+      {
+        "ordinal": 30657,
+        "episode": 30657,
+        "length": 36
+      },
+      {
+        "ordinal": 34254,
+        "episode": 34254,
+        "length": 46
+      },
+      {
+        "ordinal": 38683,
+        "episode": 38683,
+        "length": 42
+      },
+      {
+        "ordinal": 38697,
+        "episode": 38697,
+        "length": 36
+      },
+      {
+        "ordinal": 42471,
+        "episode": 42471,
+        "length": 26
+      },
+      {
+        "ordinal": 49830,
+        "episode": 49830,
+        "length": 33
+      }
+    ],
+    [
+      {
+        "ordinal": 322,
+        "episode": 322,
+        "length": 44
+      },
+      {
+        "ordinal": 4973,
+        "episode": 4973,
+        "length": 43
+      },
+      {
+        "ordinal": 7748,
+        "episode": 7748,
+        "length": 30
+      },
+      {
+        "ordinal": 9409,
+        "episode": 9409,
+        "length": 33
+      },
+      {
+        "ordinal": 10229,
+        "episode": 10229,
+        "length": 39
+      },
+      {
+        "ordinal": 12482,
+        "episode": 12482,
+        "length": 32
+      },
+      {
+        "ordinal": 14100,
+        "episode": 14100,
+        "length": 30
+      },
+      {
+        "ordinal": 17659,
+        "episode": 17659,
+        "length": 46
+      },
+      {
+        "ordinal": 17681,
+        "episode": 17681,
+        "length": 45
+      },
+      {
+        "ordinal": 20881,
+        "episode": 20881,
+        "length": 27
+      },
+      {
+        "ordinal": 23925,
+        "episode": 23925,
+        "length": 41
+      },
+      {
+        "ordinal": 23940,
+        "episode": 23940,
+        "length": 43
+      },
+      {
+        "ordinal": 25475,
+        "episode": 25475,
+        "length": 29
+      },
+      {
+        "ordinal": 26612,
+        "episode": 26612,
+        "length": 28
+      },
+      {
+        "ordinal": 29704,
+        "episode": 29704,
+        "length": 46
+      },
+      {
+        "ordinal": 30736,
+        "episode": 30736,
+        "length": 43
+      },
+      {
+        "ordinal": 30983,
+        "episode": 30983,
+        "length": 41
+      },
+      {
+        "ordinal": 32291,
+        "episode": 32291,
+        "length": 33
+      },
+      {
+        "ordinal": 34952,
+        "episode": 34952,
+        "length": 29
+      },
+      {
+        "ordinal": 44929,
+        "episode": 44929,
+        "length": 36
+      },
+      {
+        "ordinal": 45024,
+        "episode": 45024,
+        "length": 32
+      },
+      {
+        "ordinal": 45856,
+        "episode": 45856,
+        "length": 33
+      },
+      {
+        "ordinal": 49422,
+        "episode": 49422,
+        "length": 25
+      },
+      {
+        "ordinal": 50855,
+        "episode": 50855,
+        "length": 44
+      }
+    ],
+    [
+      {
+        "ordinal": 1437,
+        "episode": 1437,
+        "length": 46
+      },
+      {
+        "ordinal": 4985,
+        "episode": 4985,
+        "length": 25
+      },
+      {
+        "ordinal": 11515,
+        "episode": 11515,
+        "length": 46
+      },
+      {
+        "ordinal": 13782,
+        "episode": 13782,
+        "length": 46
+      },
+      {
+        "ordinal": 14640,
+        "episode": 14640,
+        "length": 40
+      },
+      {
+        "ordinal": 17321,
+        "episode": 17321,
+        "length": 46
+      },
+      {
+        "ordinal": 18317,
+        "episode": 18317,
+        "length": 39
+      },
+      {
+        "ordinal": 18718,
+        "episode": 18718,
+        "length": 34
+      },
+      {
+        "ordinal": 19791,
+        "episode": 19791,
+        "length": 42
+      },
+      {
+        "ordinal": 21867,
+        "episode": 21867,
+        "length": 42
+      },
+      {
+        "ordinal": 25132,
+        "episode": 25132,
+        "length": 31
+      },
+      {
+        "ordinal": 25854,
+        "episode": 25854,
+        "length": 39
+      },
+      {
+        "ordinal": 31192,
+        "episode": 31192,
+        "length": 44
+      },
+      {
+        "ordinal": 35572,
+        "episode": 35572,
+        "length": 44
+      },
+      {
+        "ordinal": 35714,
+        "episode": 35714,
+        "length": 46
+      },
+      {
+        "ordinal": 36029,
+        "episode": 36029,
+        "length": 33
+      },
+      {
+        "ordinal": 36884,
+        "episode": 36884,
+        "length": 44
+      },
+      {
+        "ordinal": 38378,
+        "episode": 38378,
+        "length": 46
+      },
+      {
+        "ordinal": 41373,
+        "episode": 41373,
+        "length": 46
+      },
+      {
+        "ordinal": 48212,
+        "episode": 48212,
+        "length": 38
+      },
+      {
+        "ordinal": 48569,
+        "episode": 48569,
+        "length": 46
+      },
+      {
+        "ordinal": 49192,
+        "episode": 49192,
+        "length": 38
+      },
+      {
+        "ordinal": 49759,
+        "episode": 49759,
+        "length": 43
+      },
+      {
+        "ordinal": 51987,
+        "episode": 51987,
+        "length": 36
+      }
+    ],
+    [
+      {
+        "ordinal": 1227,
+        "episode": 1227,
+        "length": 42
+      },
+      {
+        "ordinal": 3134,
+        "episode": 3134,
+        "length": 40
+      },
+      {
+        "ordinal": 5759,
+        "episode": 5759,
+        "length": 30
+      },
+      {
+        "ordinal": 7498,
+        "episode": 7498,
+        "length": 40
+      },
+      {
+        "ordinal": 8691,
+        "episode": 8691,
+        "length": 27
+      },
+      {
+        "ordinal": 9496,
+        "episode": 9496,
+        "length": 40
+      },
+      {
+        "ordinal": 14255,
+        "episode": 14255,
+        "length": 37
+      },
+      {
+        "ordinal": 15339,
+        "episode": 15339,
+        "length": 35
+      },
+      {
+        "ordinal": 17117,
+        "episode": 17117,
+        "length": 27
+      },
+      {
+        "ordinal": 17251,
+        "episode": 17251,
+        "length": 27
+      },
+      {
+        "ordinal": 17593,
+        "episode": 17593,
+        "length": 28
+      },
+      {
+        "ordinal": 17830,
+        "episode": 17830,
+        "length": 28
+      },
+      {
+        "ordinal": 22283,
+        "episode": 22283,
+        "length": 31
+      },
+      {
+        "ordinal": 23714,
+        "episode": 23714,
+        "length": 36
+      },
+      {
+        "ordinal": 28807,
+        "episode": 28807,
+        "length": 39
+      },
+      {
+        "ordinal": 32952,
+        "episode": 32952,
+        "length": 42
+      },
+      {
+        "ordinal": 34149,
+        "episode": 34149,
+        "length": 37
+      },
+      {
+        "ordinal": 34909,
+        "episode": 34909,
+        "length": 33
+      },
+      {
+        "ordinal": 36301,
+        "episode": 36301,
+        "length": 35
+      },
+      {
+        "ordinal": 36903,
+        "episode": 36903,
+        "length": 32
+      },
+      {
+        "ordinal": 44843,
+        "episode": 44843,
+        "length": 36
+      },
+      {
+        "ordinal": 46759,
+        "episode": 46759,
+        "length": 35
+      },
+      {
+        "ordinal": 49233,
+        "episode": 49233,
+        "length": 40
+      },
+      {
+        "ordinal": 50493,
+        "episode": 50493,
+        "length": 45
+      }
+    ],
+    [
+      {
+        "ordinal": 905,
+        "episode": 905,
+        "length": 28
+      },
+      {
+        "ordinal": 2466,
+        "episode": 2466,
+        "length": 44
+      },
+      {
+        "ordinal": 2735,
+        "episode": 2735,
+        "length": 46
+      },
+      {
+        "ordinal": 5754,
+        "episode": 5754,
+        "length": 26
+      },
+      {
+        "ordinal": 7681,
+        "episode": 7681,
+        "length": 39
+      },
+      {
+        "ordinal": 8051,
+        "episode": 8051,
+        "length": 30
+      },
+      {
+        "ordinal": 8582,
+        "episode": 8582,
+        "length": 42
+      },
+      {
+        "ordinal": 14535,
+        "episode": 14535,
+        "length": 40
+      },
+      {
+        "ordinal": 16251,
+        "episode": 16251,
+        "length": 38
+      },
+      {
+        "ordinal": 16252,
+        "episode": 16252,
+        "length": 33
+      },
+      {
+        "ordinal": 16859,
+        "episode": 16859,
+        "length": 34
+      },
+      {
+        "ordinal": 19516,
+        "episode": 19516,
+        "length": 34
+      },
+      {
+        "ordinal": 20914,
+        "episode": 20914,
+        "length": 41
+      },
+      {
+        "ordinal": 22336,
+        "episode": 22336,
+        "length": 34
+      },
+      {
+        "ordinal": 26598,
+        "episode": 26598,
+        "length": 42
+      },
+      {
+        "ordinal": 31419,
+        "episode": 31419,
+        "length": 29
+      },
+      {
+        "ordinal": 31891,
+        "episode": 31891,
+        "length": 24
+      },
+      {
+        "ordinal": 33000,
+        "episode": 33000,
+        "length": 36
+      },
+      {
+        "ordinal": 34837,
+        "episode": 34837,
+        "length": 29
+      },
+      {
+        "ordinal": 37950,
+        "episode": 37950,
+        "length": 30
+      },
+      {
+        "ordinal": 37990,
+        "episode": 37990,
+        "length": 30
+      },
+      {
+        "ordinal": 48724,
+        "episode": 48724,
+        "length": 35
+      },
+      {
+        "ordinal": 52493,
+        "episode": 52493,
+        "length": 32
+      },
+      {
+        "ordinal": 52978,
+        "episode": 52978,
+        "length": 37
+      }
+    ],
+    [
+      {
+        "ordinal": 1849,
+        "episode": 1849,
+        "length": 39
+      },
+      {
+        "ordinal": 2754,
+        "episode": 2754,
+        "length": 36
+      },
+      {
+        "ordinal": 3245,
+        "episode": 3245,
+        "length": 28
+      },
+      {
+        "ordinal": 3323,
+        "episode": 3323,
+        "length": 38
+      },
+      {
+        "ordinal": 5282,
+        "episode": 5282,
+        "length": 31
+      },
+      {
+        "ordinal": 10637,
+        "episode": 10637,
+        "length": 27
+      },
+      {
+        "ordinal": 13253,
+        "episode": 13253,
+        "length": 43
+      },
+      {
+        "ordinal": 13986,
+        "episode": 13986,
+        "length": 40
+      },
+      {
+        "ordinal": 16259,
+        "episode": 16259,
+        "length": 32
+      },
+      {
+        "ordinal": 21187,
+        "episode": 21187,
+        "length": 43
+      },
+      {
+        "ordinal": 25165,
+        "episode": 25165,
+        "length": 34
+      },
+      {
+        "ordinal": 26159,
+        "episode": 26159,
+        "length": 24
+      },
+      {
+        "ordinal": 26312,
+        "episode": 26312,
+        "length": 32
+      },
+      {
+        "ordinal": 27615,
+        "episode": 27615,
+        "length": 46
+      },
+      {
+        "ordinal": 28682,
+        "episode": 28682,
+        "length": 33
+      },
+      {
+        "ordinal": 28837,
+        "episode": 28837,
+        "length": 43
+      },
+      {
+        "ordinal": 34208,
+        "episode": 34208,
+        "length": 28
+      },
+      {
+        "ordinal": 37006,
+        "episode": 37006,
+        "length": 31
+      },
+      {
+        "ordinal": 38080,
+        "episode": 38080,
+        "length": 45
+      },
+      {
+        "ordinal": 41332,
+        "episode": 41332,
+        "length": 46
+      },
+      {
+        "ordinal": 47092,
+        "episode": 47092,
+        "length": 36
+      },
+      {
+        "ordinal": 48971,
+        "episode": 48971,
+        "length": 38
+      },
+      {
+        "ordinal": 49987,
+        "episode": 49987,
+        "length": 39
+      },
+      {
+        "ordinal": 52463,
+        "episode": 52463,
+        "length": 32
+      }
+    ],
+    [
+      {
+        "ordinal": 1388,
+        "episode": 1388,
+        "length": 36
+      },
+      {
+        "ordinal": 4621,
+        "episode": 4621,
+        "length": 36
+      },
+      {
+        "ordinal": 9159,
+        "episode": 9159,
+        "length": 35
+      },
+      {
+        "ordinal": 11961,
+        "episode": 11961,
+        "length": 36
+      },
+      {
+        "ordinal": 12324,
+        "episode": 12324,
+        "length": 36
+      },
+      {
+        "ordinal": 14029,
+        "episode": 14029,
+        "length": 35
+      },
+      {
+        "ordinal": 17157,
+        "episode": 17157,
+        "length": 30
+      },
+      {
+        "ordinal": 17836,
+        "episode": 17836,
+        "length": 36
+      },
+      {
+        "ordinal": 18891,
+        "episode": 18891,
+        "length": 36
+      },
+      {
+        "ordinal": 20305,
+        "episode": 20305,
+        "length": 36
+      },
+      {
+        "ordinal": 21373,
+        "episode": 21373,
+        "length": 32
+      },
+      {
+        "ordinal": 26695,
+        "episode": 26695,
+        "length": 36
+      },
+      {
+        "ordinal": 27441,
+        "episode": 27441,
+        "length": 32
+      },
+      {
+        "ordinal": 27881,
+        "episode": 27881,
+        "length": 36
+      },
+      {
+        "ordinal": 28273,
+        "episode": 28273,
+        "length": 36
+      },
+      {
+        "ordinal": 29043,
+        "episode": 29043,
+        "length": 36
+      },
+      {
+        "ordinal": 30575,
+        "episode": 30575,
+        "length": 36
+      },
+      {
+        "ordinal": 31254,
+        "episode": 31254,
+        "length": 32
+      },
+      {
+        "ordinal": 34462,
+        "episode": 34462,
+        "length": 36
+      },
+      {
+        "ordinal": 34640,
+        "episode": 34640,
+        "length": 34
+      },
+      {
+        "ordinal": 38957,
+        "episode": 38957,
+        "length": 36
+      },
+      {
+        "ordinal": 39246,
+        "episode": 39246,
+        "length": 31
+      },
+      {
+        "ordinal": 46368,
+        "episode": 46368,
+        "length": 36
+      },
+      {
+        "ordinal": 48269,
+        "episode": 48269,
+        "length": 36
+      }
+    ],
+    [
+      {
+        "ordinal": 883,
+        "episode": 883,
+        "length": 34
+      },
+      {
+        "ordinal": 930,
+        "episode": 930,
+        "length": 35
+      },
+      {
+        "ordinal": 4139,
+        "episode": 4139,
+        "length": 36
+      },
+      {
+        "ordinal": 4603,
+        "episode": 4603,
+        "length": 33
+      },
+      {
+        "ordinal": 8037,
+        "episode": 8037,
+        "length": 29
+      },
+      {
+        "ordinal": 12792,
+        "episode": 12792,
+        "length": 30
+      },
+      {
+        "ordinal": 18055,
+        "episode": 18055,
+        "length": 28
+      },
+      {
+        "ordinal": 23746,
+        "episode": 23746,
+        "length": 29
+      },
+      {
+        "ordinal": 26168,
+        "episode": 26168,
+        "length": 29
+      },
+      {
+        "ordinal": 29662,
+        "episode": 29662,
+        "length": 31
+      },
+      {
+        "ordinal": 30159,
+        "episode": 30159,
+        "length": 35
+      },
+      {
+        "ordinal": 32976,
+        "episode": 32976,
+        "length": 36
+      },
+      {
+        "ordinal": 33137,
+        "episode": 33137,
+        "length": 32
+      },
+      {
+        "ordinal": 38420,
+        "episode": 38420,
+        "length": 29
+      },
+      {
+        "ordinal": 39660,
+        "episode": 39660,
+        "length": 30
+      },
+      {
+        "ordinal": 39719,
+        "episode": 39719,
+        "length": 36
+      },
+      {
+        "ordinal": 46462,
+        "episode": 46462,
+        "length": 35
+      },
+      {
+        "ordinal": 46942,
+        "episode": 46942,
+        "length": 36
+      },
+      {
+        "ordinal": 47900,
+        "episode": 47900,
+        "length": 31
+      },
+      {
+        "ordinal": 49675,
+        "episode": 49675,
+        "length": 35
+      },
+      {
+        "ordinal": 50671,
+        "episode": 50671,
+        "length": 36
+      },
+      {
+        "ordinal": 52206,
+        "episode": 52206,
+        "length": 36
+      },
+      {
+        "ordinal": 52314,
+        "episode": 52314,
+        "length": 28
+      },
+      {
+        "ordinal": 52602,
+        "episode": 52602,
+        "length": 35
+      }
+    ],
+    [
+      {
+        "ordinal": 3049,
+        "episode": 3049,
+        "length": 36
+      },
+      {
+        "ordinal": 4823,
+        "episode": 4823,
+        "length": 32
+      },
+      {
+        "ordinal": 7234,
+        "episode": 7234,
+        "length": 34
+      },
+      {
+        "ordinal": 9022,
+        "episode": 9022,
+        "length": 36
+      },
+      {
+        "ordinal": 10493,
+        "episode": 10493,
+        "length": 36
+      },
+      {
+        "ordinal": 11434,
+        "episode": 11434,
+        "length": 36
+      },
+      {
+        "ordinal": 13479,
+        "episode": 13479,
+        "length": 36
+      },
+      {
+        "ordinal": 14265,
+        "episode": 14265,
+        "length": 31
+      },
+      {
+        "ordinal": 16168,
+        "episode": 16168,
+        "length": 33
+      },
+      {
+        "ordinal": 19967,
+        "episode": 19967,
+        "length": 31
+      },
+      {
+        "ordinal": 20063,
+        "episode": 20063,
+        "length": 36
+      },
+      {
+        "ordinal": 21908,
+        "episode": 21908,
+        "length": 33
+      },
+      {
+        "ordinal": 23411,
+        "episode": 23411,
+        "length": 33
+      },
+      {
+        "ordinal": 26745,
+        "episode": 26745,
+        "length": 36
+      },
+      {
+        "ordinal": 27502,
+        "episode": 27502,
+        "length": 36
+      },
+      {
+        "ordinal": 33709,
+        "episode": 33709,
+        "length": 36
+      },
+      {
+        "ordinal": 36115,
+        "episode": 36115,
+        "length": 36
+      },
+      {
+        "ordinal": 36634,
+        "episode": 36634,
+        "length": 33
+      },
+      {
+        "ordinal": 36727,
+        "episode": 36727,
+        "length": 35
+      },
+      {
+        "ordinal": 36875,
+        "episode": 36875,
+        "length": 33
+      },
+      {
+        "ordinal": 39305,
+        "episode": 39305,
+        "length": 34
+      },
+      {
+        "ordinal": 43194,
+        "episode": 43194,
+        "length": 27
+      },
+      {
+        "ordinal": 46493,
+        "episode": 46493,
+        "length": 30
+      },
+      {
+        "ordinal": 48278,
+        "episode": 48278,
+        "length": 36
+      }
+    ],
+    [
+      {
+        "ordinal": 2799,
+        "episode": 2799,
+        "length": 36
+      },
+      {
+        "ordinal": 2864,
+        "episode": 2864,
+        "length": 36
+      },
+      {
+        "ordinal": 7525,
+        "episode": 7525,
+        "length": 36
+      },
+      {
+        "ordinal": 8106,
+        "episode": 8106,
+        "length": 36
+      },
+      {
+        "ordinal": 8510,
+        "episode": 8510,
+        "length": 36
+      },
+      {
+        "ordinal": 9027,
+        "episode": 9027,
+        "length": 36
+      },
+      {
+        "ordinal": 9649,
+        "episode": 9649,
+        "length": 36
+      },
+      {
+        "ordinal": 9714,
+        "episode": 9714,
+        "length": 36
+      },
+      {
+        "ordinal": 11804,
+        "episode": 11804,
+        "length": 36
+      },
+      {
+        "ordinal": 12092,
+        "episode": 12092,
+        "length": 36
+      },
+      {
+        "ordinal": 12106,
+        "episode": 12106,
+        "length": 36
+      },
+      {
+        "ordinal": 12666,
+        "episode": 12666,
+        "length": 36
+      },
+      {
+        "ordinal": 13193,
+        "episode": 13193,
+        "length": 36
+      },
+      {
+        "ordinal": 20489,
+        "episode": 20489,
+        "length": 36
+      },
+      {
+        "ordinal": 22594,
+        "episode": 22594,
+        "length": 36
+      },
+      {
+        "ordinal": 24385,
+        "episode": 24385,
+        "length": 36
+      },
+      {
+        "ordinal": 29080,
+        "episode": 29080,
+        "length": 36
+      },
+      {
+        "ordinal": 30479,
+        "episode": 30479,
+        "length": 36
+      },
+      {
+        "ordinal": 34817,
+        "episode": 34817,
+        "length": 36
+      },
+      {
+        "ordinal": 35137,
+        "episode": 35137,
+        "length": 36
+      },
+      {
+        "ordinal": 38630,
+        "episode": 38630,
+        "length": 36
+      },
+      {
+        "ordinal": 47585,
+        "episode": 47585,
+        "length": 36
+      },
+      {
+        "ordinal": 47771,
+        "episode": 47771,
+        "length": 36
+      },
+      {
+        "ordinal": 51313,
+        "episode": 51313,
+        "length": 36
+      }
+    ],
+    [
+      {
+        "ordinal": 2067,
+        "episode": 2067,
+        "length": 27
+      },
+      {
+        "ordinal": 2605,
+        "episode": 2605,
+        "length": 31
+      },
+      {
+        "ordinal": 2805,
+        "episode": 2805,
+        "length": 32
+      },
+      {
+        "ordinal": 3454,
+        "episode": 3454,
+        "length": 26
+      },
+      {
+        "ordinal": 5677,
+        "episode": 5677,
+        "length": 29
+      },
+      {
+        "ordinal": 5679,
+        "episode": 5679,
+        "length": 28
+      },
+      {
+        "ordinal": 7792,
+        "episode": 7792,
+        "length": 25
+      },
+      {
+        "ordinal": 12111,
+        "episode": 12111,
+        "length": 25
+      },
+      {
+        "ordinal": 18494,
+        "episode": 18494,
+        "length": 29
+      },
+      {
+        "ordinal": 18517,
+        "episode": 18517,
+        "length": 28
+      },
+      {
+        "ordinal": 18681,
+        "episode": 18681,
+        "length": 36
+      },
+      {
+        "ordinal": 19337,
+        "episode": 19337,
+        "length": 29
+      },
+      {
+        "ordinal": 21175,
+        "episode": 21175,
+        "length": 29
+      },
+      {
+        "ordinal": 24827,
+        "episode": 24827,
+        "length": 32
+      },
+      {
+        "ordinal": 25127,
+        "episode": 25127,
+        "length": 36
+      },
+      {
+        "ordinal": 25423,
+        "episode": 25423,
+        "length": 30
+      },
+      {
+        "ordinal": 27396,
+        "episode": 27396,
+        "length": 29
+      },
+      {
+        "ordinal": 27974,
+        "episode": 27974,
+        "length": 29
+      },
+      {
+        "ordinal": 28813,
+        "episode": 28813,
+        "length": 32
+      },
+      {
+        "ordinal": 31939,
+        "episode": 31939,
+        "length": 29
+      },
+      {
+        "ordinal": 33061,
+        "episode": 33061,
+        "length": 27
+      },
+      {
+        "ordinal": 34532,
+        "episode": 34532,
+        "length": 27
+      },
+      {
+        "ordinal": 37752,
+        "episode": 37752,
+        "length": 31
+      },
+      {
+        "ordinal": 48355,
+        "episode": 48355,
+        "length": 35
+      }
+    ],
+    [
+      {
+        "ordinal": 1312,
+        "episode": 1312,
+        "length": 35
+      },
+      {
+        "ordinal": 1636,
+        "episode": 1636,
+        "length": 34
+      },
+      {
+        "ordinal": 2254,
+        "episode": 2254,
+        "length": 36
+      },
+      {
+        "ordinal": 2696,
+        "episode": 2696,
+        "length": 35
+      },
+      {
+        "ordinal": 4773,
+        "episode": 4773,
+        "length": 36
+      },
+      {
+        "ordinal": 7654,
+        "episode": 7654,
+        "length": 36
+      },
+      {
+        "ordinal": 9843,
+        "episode": 9843,
+        "length": 32
+      },
+      {
+        "ordinal": 13729,
+        "episode": 13729,
+        "length": 36
+      },
+      {
+        "ordinal": 16226,
+        "episode": 16226,
+        "length": 36
+      },
+      {
+        "ordinal": 19146,
+        "episode": 19146,
+        "length": 28
+      },
+      {
+        "ordinal": 22023,
+        "episode": 22023,
+        "length": 36
+      },
+      {
+        "ordinal": 22461,
+        "episode": 22461,
+        "length": 36
+      },
+      {
+        "ordinal": 22516,
+        "episode": 22516,
+        "length": 36
+      },
+      {
+        "ordinal": 27793,
+        "episode": 27793,
+        "length": 36
+      },
+      {
+        "ordinal": 30629,
+        "episode": 30629,
+        "length": 30
+      },
+      {
+        "ordinal": 34904,
+        "episode": 34904,
+        "length": 36
+      },
+      {
+        "ordinal": 35431,
+        "episode": 35431,
+        "length": 34
+      },
+      {
+        "ordinal": 38387,
+        "episode": 38387,
+        "length": 36
+      },
+      {
+        "ordinal": 40166,
+        "episode": 40166,
+        "length": 36
+      },
+      {
+        "ordinal": 41864,
+        "episode": 41864,
+        "length": 36
+      },
+      {
+        "ordinal": 42445,
+        "episode": 42445,
+        "length": 35
+      },
+      {
+        "ordinal": 43615,
+        "episode": 43615,
+        "length": 36
+      },
+      {
+        "ordinal": 46789,
+        "episode": 46789,
+        "length": 36
+      },
+      {
+        "ordinal": 48612,
+        "episode": 48612,
+        "length": 35
+      }
+    ],
+    [
+      {
+        "ordinal": 3940,
+        "episode": 3940,
+        "length": 36
+      },
+      {
+        "ordinal": 4114,
+        "episode": 4114,
+        "length": 36
+      },
+      {
+        "ordinal": 6530,
+        "episode": 6530,
+        "length": 36
+      },
+      {
+        "ordinal": 7133,
+        "episode": 7133,
+        "length": 36
+      },
+      {
+        "ordinal": 9413,
+        "episode": 9413,
+        "length": 32
+      },
+      {
+        "ordinal": 10097,
+        "episode": 10097,
+        "length": 36
+      },
+      {
+        "ordinal": 12070,
+        "episode": 12070,
+        "length": 36
+      },
+      {
+        "ordinal": 12687,
+        "episode": 12687,
+        "length": 36
+      },
+      {
+        "ordinal": 15845,
+        "episode": 15845,
+        "length": 33
+      },
+      {
+        "ordinal": 17058,
+        "episode": 17058,
+        "length": 36
+      },
+      {
+        "ordinal": 17200,
+        "episode": 17200,
+        "length": 35
+      },
+      {
+        "ordinal": 21702,
+        "episode": 21702,
+        "length": 36
+      },
+      {
+        "ordinal": 22612,
+        "episode": 22612,
+        "length": 36
+      },
+      {
+        "ordinal": 25001,
+        "episode": 25001,
+        "length": 36
+      },
+      {
+        "ordinal": 27860,
+        "episode": 27860,
+        "length": 36
+      },
+      {
+        "ordinal": 28051,
+        "episode": 28051,
+        "length": 36
+      },
+      {
+        "ordinal": 28177,
+        "episode": 28177,
+        "length": 36
+      },
+      {
+        "ordinal": 30737,
+        "episode": 30737,
+        "length": 36
+      },
+      {
+        "ordinal": 34670,
+        "episode": 34670,
+        "length": 35
+      },
+      {
+        "ordinal": 35385,
+        "episode": 35385,
+        "length": 33
+      },
+      {
+        "ordinal": 42447,
+        "episode": 42447,
+        "length": 33
+      },
+      {
+        "ordinal": 45279,
+        "episode": 45279,
+        "length": 36
+      },
+      {
+        "ordinal": 46297,
+        "episode": 46297,
+        "length": 34
+      },
+      {
+        "ordinal": 49532,
+        "episode": 49532,
+        "length": 29
+      }
+    ],
+    [
+      {
+        "ordinal": 997,
+        "episode": 997,
+        "length": 33
+      },
+      {
+        "ordinal": 1660,
+        "episode": 1660,
+        "length": 34
+      },
+      {
+        "ordinal": 2645,
+        "episode": 2645,
+        "length": 36
+      },
+      {
+        "ordinal": 5595,
+        "episode": 5595,
+        "length": 36
+      },
+      {
+        "ordinal": 6447,
+        "episode": 6447,
+        "length": 36
+      },
+      {
+        "ordinal": 6579,
+        "episode": 6579,
+        "length": 32
+      },
+      {
+        "ordinal": 6839,
+        "episode": 6839,
+        "length": 35
+      },
+      {
+        "ordinal": 7250,
+        "episode": 7250,
+        "length": 36
+      },
+      {
+        "ordinal": 10907,
+        "episode": 10907,
+        "length": 36
+      },
+      {
+        "ordinal": 11212,
+        "episode": 11212,
+        "length": 36
+      },
+      {
+        "ordinal": 14342,
+        "episode": 14342,
+        "length": 35
+      },
+      {
+        "ordinal": 15669,
+        "episode": 15669,
+        "length": 36
+      },
+      {
+        "ordinal": 27658,
+        "episode": 27658,
+        "length": 34
+      },
+      {
+        "ordinal": 29085,
+        "episode": 29085,
+        "length": 33
+      },
+      {
+        "ordinal": 33854,
+        "episode": 33854,
+        "length": 36
+      },
+      {
+        "ordinal": 37993,
+        "episode": 37993,
+        "length": 32
+      },
+      {
+        "ordinal": 40940,
+        "episode": 40940,
+        "length": 35
+      },
+      {
+        "ordinal": 42112,
+        "episode": 42112,
+        "length": 36
+      },
+      {
+        "ordinal": 43495,
+        "episode": 43495,
+        "length": 36
+      },
+      {
+        "ordinal": 44617,
+        "episode": 44617,
+        "length": 36
+      },
+      {
+        "ordinal": 46904,
+        "episode": 46904,
+        "length": 34
+      },
+      {
+        "ordinal": 47905,
+        "episode": 47905,
+        "length": 34
+      },
+      {
+        "ordinal": 52721,
+        "episode": 52721,
+        "length": 36
+      },
+      {
+        "ordinal": 53186,
+        "episode": 53186,
+        "length": 32
+      }
+    ],
+    [
+      {
+        "ordinal": 1729,
+        "episode": 1729,
+        "length": 32
+      },
+      {
+        "ordinal": 2782,
+        "episode": 2782,
+        "length": 33
+      },
+      {
+        "ordinal": 5568,
+        "episode": 5568,
+        "length": 32
+      },
+      {
+        "ordinal": 6140,
+        "episode": 6140,
+        "length": 30
+      },
+      {
+        "ordinal": 7441,
+        "episode": 7441,
+        "length": 31
+      },
+      {
+        "ordinal": 7965,
+        "episode": 7965,
+        "length": 29
+      },
+      {
+        "ordinal": 9559,
+        "episode": 9559,
+        "length": 30
+      },
+      {
+        "ordinal": 10189,
+        "episode": 10189,
+        "length": 33
+      },
+      {
+        "ordinal": 11722,
+        "episode": 11722,
+        "length": 35
+      },
+      {
+        "ordinal": 14182,
+        "episode": 14182,
+        "length": 36
+      },
+      {
+        "ordinal": 17859,
+        "episode": 17859,
+        "length": 32
+      },
+      {
+        "ordinal": 20507,
+        "episode": 20507,
+        "length": 34
+      },
+      {
+        "ordinal": 21420,
+        "episode": 21420,
+        "length": 28
+      },
+      {
+        "ordinal": 27395,
+        "episode": 27395,
+        "length": 34
+      },
+      {
+        "ordinal": 27429,
+        "episode": 27429,
+        "length": 29
+      },
+      {
+        "ordinal": 35932,
+        "episode": 35932,
+        "length": 25
+      },
+      {
+        "ordinal": 37478,
+        "episode": 37478,
+        "length": 31
+      },
+      {
+        "ordinal": 38503,
+        "episode": 38503,
+        "length": 34
+      },
+      {
+        "ordinal": 41249,
+        "episode": 41249,
+        "length": 29
+      },
+      {
+        "ordinal": 44965,
+        "episode": 44965,
+        "length": 35
+      },
+      {
+        "ordinal": 45171,
+        "episode": 45171,
+        "length": 36
+      },
+      {
+        "ordinal": 48464,
+        "episode": 48464,
+        "length": 36
+      },
+      {
+        "ordinal": 49766,
+        "episode": 49766,
+        "length": 31
+      },
+      {
+        "ordinal": 51353,
+        "episode": 51353,
+        "length": 36
+      }
+    ],
+    [
+      {
+        "ordinal": 1908,
+        "episode": 1908,
+        "length": 36
+      },
+      {
+        "ordinal": 2813,
+        "episode": 2813,
+        "length": 36
+      },
+      {
+        "ordinal": 4508,
+        "episode": 4508,
+        "length": 30
+      },
+      {
+        "ordinal": 8139,
+        "episode": 8139,
+        "length": 34
+      },
+      {
+        "ordinal": 8922,
+        "episode": 8922,
+        "length": 33
+      },
+      {
+        "ordinal": 9494,
+        "episode": 9494,
+        "length": 36
+      },
+      {
+        "ordinal": 12306,
+        "episode": 12306,
+        "length": 35
+      },
+      {
+        "ordinal": 13510,
+        "episode": 13510,
+        "length": 36
+      },
+      {
+        "ordinal": 19013,
+        "episode": 19013,
+        "length": 30
+      },
+      {
+        "ordinal": 21602,
+        "episode": 21602,
+        "length": 36
+      },
+      {
+        "ordinal": 22063,
+        "episode": 22063,
+        "length": 32
+      },
+      {
+        "ordinal": 22433,
+        "episode": 22433,
+        "length": 35
+      },
+      {
+        "ordinal": 23448,
+        "episode": 23448,
+        "length": 35
+      },
+      {
+        "ordinal": 26646,
+        "episode": 26646,
+        "length": 36
+      },
+      {
+        "ordinal": 30648,
+        "episode": 30648,
+        "length": 36
+      },
+      {
+        "ordinal": 31613,
+        "episode": 31613,
+        "length": 35
+      },
+      {
+        "ordinal": 33755,
+        "episode": 33755,
+        "length": 32
+      },
+      {
+        "ordinal": 35080,
+        "episode": 35080,
+        "length": 30
+      },
+      {
+        "ordinal": 38359,
+        "episode": 38359,
+        "length": 36
+      },
+      {
+        "ordinal": 39128,
+        "episode": 39128,
+        "length": 30
+      },
+      {
+        "ordinal": 41848,
+        "episode": 41848,
+        "length": 36
+      },
+      {
+        "ordinal": 47576,
+        "episode": 47576,
+        "length": 31
+      },
+      {
+        "ordinal": 49634,
+        "episode": 49634,
+        "length": 35
+      },
+      {
+        "ordinal": 51615,
+        "episode": 51615,
+        "length": 36
+      }
+    ],
+    [
+      {
+        "ordinal": 3579,
+        "episode": 3579,
+        "length": 35
+      },
+      {
+        "ordinal": 3673,
+        "episode": 3673,
+        "length": 32
+      },
+      {
+        "ordinal": 9754,
+        "episode": 9754,
+        "length": 26
+      },
+      {
+        "ordinal": 10960,
+        "episode": 10960,
+        "length": 26
+      },
+      {
+        "ordinal": 12553,
+        "episode": 12553,
+        "length": 31
+      },
+      {
+        "ordinal": 12648,
+        "episode": 12648,
+        "length": 28
+      },
+      {
+        "ordinal": 14630,
+        "episode": 14630,
+        "length": 30
+      },
+      {
+        "ordinal": 18050,
+        "episode": 18050,
+        "length": 33
+      },
+      {
+        "ordinal": 19009,
+        "episode": 19009,
+        "length": 28
+      },
+      {
+        "ordinal": 26961,
+        "episode": 26961,
+        "length": 25
+      },
+      {
+        "ordinal": 28116,
+        "episode": 28116,
+        "length": 28
+      },
+      {
+        "ordinal": 28575,
+        "episode": 28575,
+        "length": 26
+      },
+      {
+        "ordinal": 28990,
+        "episode": 28990,
+        "length": 29
+      },
+      {
+        "ordinal": 29033,
+        "episode": 29033,
+        "length": 36
+      },
+      {
+        "ordinal": 29702,
+        "episode": 29702,
+        "length": 33
+      },
+      {
+        "ordinal": 29756,
+        "episode": 29756,
+        "length": 29
+      },
+      {
+        "ordinal": 32565,
+        "episode": 32565,
+        "length": 30
+      },
+      {
+        "ordinal": 33287,
+        "episode": 33287,
+        "length": 36
+      },
+      {
+        "ordinal": 36683,
+        "episode": 36683,
+        "length": 29
+      },
+      {
+        "ordinal": 39823,
+        "episode": 39823,
+        "length": 28
+      },
+      {
+        "ordinal": 40428,
+        "episode": 40428,
+        "length": 35
+      },
+      {
+        "ordinal": 46258,
+        "episode": 46258,
+        "length": 28
+      },
+      {
+        "ordinal": 47767,
+        "episode": 47767,
+        "length": 36
+      },
+      {
+        "ordinal": 48861,
+        "episode": 48861,
+        "length": 35
+      }
+    ],
+    [
+      {
+        "ordinal": 4987,
+        "episode": 4987,
+        "length": 28
+      },
+      {
+        "ordinal": 5014,
+        "episode": 5014,
+        "length": 36
+      },
+      {
+        "ordinal": 6038,
+        "episode": 6038,
+        "length": 36
+      },
+      {
+        "ordinal": 6478,
+        "episode": 6478,
+        "length": 34
+      },
+      {
+        "ordinal": 6626,
+        "episode": 6626,
+        "length": 34
+      },
+      {
+        "ordinal": 13534,
+        "episode": 13534,
+        "length": 29
+      },
+      {
+        "ordinal": 14450,
+        "episode": 14450,
+        "length": 31
+      },
+      {
+        "ordinal": 15768,
+        "episode": 15768,
+        "length": 28
+      },
+      {
+        "ordinal": 17072,
+        "episode": 17072,
+        "length": 33
+      },
+      {
+        "ordinal": 17819,
+        "episode": 17819,
+        "length": 34
+      },
+      {
+        "ordinal": 22390,
+        "episode": 22390,
+        "length": 36
+      },
+      {
+        "ordinal": 26251,
+        "episode": 26251,
+        "length": 36
+      },
+      {
+        "ordinal": 27436,
+        "episode": 27436,
+        "length": 33
+      },
+      {
+        "ordinal": 28601,
+        "episode": 28601,
+        "length": 31
+      },
+      {
+        "ordinal": 28894,
+        "episode": 28894,
+        "length": 32
+      },
+      {
+        "ordinal": 35020,
+        "episode": 35020,
+        "length": 31
+      },
+      {
+        "ordinal": 44093,
+        "episode": 44093,
+        "length": 28
+      },
+      {
+        "ordinal": 44136,
+        "episode": 44136,
+        "length": 36
+      },
+      {
+        "ordinal": 45117,
+        "episode": 45117,
+        "length": 36
+      },
+      {
+        "ordinal": 46888,
+        "episode": 46888,
+        "length": 31
+      },
+      {
+        "ordinal": 48188,
+        "episode": 48188,
+        "length": 34
+      },
+      {
+        "ordinal": 49427,
+        "episode": 49427,
+        "length": 30
+      },
+      {
+        "ordinal": 49621,
+        "episode": 49621,
+        "length": 28
+      },
+      {
+        "ordinal": 50899,
+        "episode": 50899,
+        "length": 33
+      }
+    ],
+    [
+      {
+        "ordinal": 3387,
+        "episode": 3387,
+        "length": 35
+      },
+      {
+        "ordinal": 5277,
+        "episode": 5277,
+        "length": 36
+      },
+      {
+        "ordinal": 5379,
+        "episode": 5379,
+        "length": 27
+      },
+      {
+        "ordinal": 5726,
+        "episode": 5726,
+        "length": 25
+      },
+      {
+        "ordinal": 5991,
+        "episode": 5991,
+        "length": 33
+      },
+      {
+        "ordinal": 8367,
+        "episode": 8367,
+        "length": 33
+      },
+      {
+        "ordinal": 9558,
+        "episode": 9558,
+        "length": 34
+      },
+      {
+        "ordinal": 9646,
+        "episode": 9646,
+        "length": 29
+      },
+      {
+        "ordinal": 16471,
+        "episode": 16471,
+        "length": 30
+      },
+      {
+        "ordinal": 18999,
+        "episode": 18999,
+        "length": 27
+      },
+      {
+        "ordinal": 19790,
+        "episode": 19790,
+        "length": 36
+      },
+      {
+        "ordinal": 24954,
+        "episode": 24954,
+        "length": 30
+      },
+      {
+        "ordinal": 26949,
+        "episode": 26949,
+        "length": 30
+      },
+      {
+        "ordinal": 33818,
+        "episode": 33818,
+        "length": 32
+      },
+      {
+        "ordinal": 41268,
+        "episode": 41268,
+        "length": 30
+      },
+      {
+        "ordinal": 44074,
+        "episode": 44074,
+        "length": 26
+      },
+      {
+        "ordinal": 48985,
+        "episode": 48985,
+        "length": 33
+      },
+      {
+        "ordinal": 49137,
+        "episode": 49137,
+        "length": 27
+      },
+      {
+        "ordinal": 49266,
+        "episode": 49266,
+        "length": 30
+      },
+      {
+        "ordinal": 50010,
+        "episode": 50010,
+        "length": 34
+      },
+      {
+        "ordinal": 50318,
+        "episode": 50318,
+        "length": 36
+      },
+      {
+        "ordinal": 50437,
+        "episode": 50437,
+        "length": 27
+      },
+      {
+        "ordinal": 51823,
+        "episode": 51823,
+        "length": 31
+      },
+      {
+        "ordinal": 52577,
+        "episode": 52577,
+        "length": 33
+      }
+    ],
+    [
+      {
+        "ordinal": 1108,
+        "episode": 1108,
+        "length": 30
+      },
+      {
+        "ordinal": 1458,
+        "episode": 1458,
+        "length": 31
+      },
+      {
+        "ordinal": 1829,
+        "episode": 1829,
+        "length": 28
+      },
+      {
+        "ordinal": 2307,
+        "episode": 2307,
+        "length": 36
+      },
+      {
+        "ordinal": 10939,
+        "episode": 10939,
+        "length": 29
+      },
+      {
+        "ordinal": 12801,
+        "episode": 12801,
+        "length": 32
+      },
+      {
+        "ordinal": 17230,
+        "episode": 17230,
+        "length": 36
+      },
+      {
+        "ordinal": 24168,
+        "episode": 24168,
+        "length": 33
+      },
+      {
+        "ordinal": 24276,
+        "episode": 24276,
+        "length": 34
+      },
+      {
+        "ordinal": 25211,
+        "episode": 25211,
+        "length": 28
+      },
+      {
+        "ordinal": 25585,
+        "episode": 25585,
+        "length": 32
+      },
+      {
+        "ordinal": 26474,
+        "episode": 26474,
+        "length": 31
+      },
+      {
+        "ordinal": 26743,
+        "episode": 26743,
+        "length": 36
+      },
+      {
+        "ordinal": 26807,
+        "episode": 26807,
+        "length": 32
+      },
+      {
+        "ordinal": 27214,
+        "episode": 27214,
+        "length": 29
+      },
+      {
+        "ordinal": 31289,
+        "episode": 31289,
+        "length": 28
+      },
+      {
+        "ordinal": 37246,
+        "episode": 37246,
+        "length": 31
+      },
+      {
+        "ordinal": 37373,
+        "episode": 37373,
+        "length": 32
+      },
+      {
+        "ordinal": 37775,
+        "episode": 37775,
+        "length": 29
+      },
+      {
+        "ordinal": 38925,
+        "episode": 38925,
+        "length": 36
+      },
+      {
+        "ordinal": 41550,
+        "episode": 41550,
+        "length": 30
+      },
+      {
+        "ordinal": 43649,
+        "episode": 43649,
+        "length": 36
+      },
+      {
+        "ordinal": 50273,
+        "episode": 50273,
+        "length": 32
+      },
+      {
+        "ordinal": 53102,
+        "episode": 53102,
+        "length": 36
+      }
+    ]
+  ],
+  "seed": 20260908,
+  "steps_per_episode": 12,
+  "episodes_per_task": "48 in the original three groups (preserved); 24 in each additional group.",
+  "continuous_channels": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "gripper_excluded_in_residual": true,
+  "sigma": "masked mean softplus(s_raw + checkpoint ht_sbias) + 1e-3 over all seven valid loss channels",
+  "ht_sbias": -0.4535,
+  "hg_steps": 20000,
+  "policy_split": "Training-demonstration diagnostic; calibration/density holdout is not policy holdout.",
+  "original_probe": "/mnt/pfs/yuchen/widowx_general_scale_20260906/raw/hg_rank0.npz",
+  "original_probe_sha256": "74f547c60694cd6d36005086a3ecbdd1351fc36f5e67187dddaa01d0de0fd912"
+}

@@ -1,0 +1,55 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: yuchen-ams-eval-groot-ready-v2
+  labels: {app: action-mag-specialist-eval, owner: yuchen}
+spec:
+  completionMode: Indexed
+  completions: 6
+  parallelism: 6
+  backoffLimitPerIndex: 1
+  template:
+    metadata:
+      labels: {app: action-mag-specialist-eval, owner: yuchen, stack: groot}
+    spec:
+      restartPolicy: Never
+      nodeName: 172.17.0.18
+      containers:
+        - name: main
+          image: zyc00/easypod:latest
+          command: ["bash", "-lc"]
+          args:
+            - |
+              set -euo pipefail
+              root=/mnt/pfs/yuchen/action_mag_specialists_20260905
+              index=${JOB_COMPLETION_INDEX}
+              stacks=(gr1 gr1 gr1 widowx widowx widowx)
+              bins=(0 1 4 0 2 4)
+              stack=${stacks[$index]}
+              bin=${bins[$index]}
+              if [[ "$stack" == gr1 ]]; then per_task=40; else per_task=512; fi
+              export HF_HOME=/mnt/pfs/yuchen/hf_home
+              export HF_HUB_OFFLINE=1
+              export TRANSFORMERS_OFFLINE=1
+              export PYTHONUNBUFFERED=1
+              export PATH=/mnt/pfs/yuchen/groot/Isaac-GR00T/.venv/bin:$PATH
+              export PYTHONPATH=/mnt/pfs/yuchen/groot/Isaac-GR00T
+              mkdir -p "$root/results" "$root/eval_logs"
+              cd /mnt/pfs/yuchen/groot/Isaac-GR00T
+              python "$root/scripts/evaluate_specialists.py" "$stack" \
+                --bin "$bin" --batch 4 --per-task "$per_task" \
+                --output "$root/results/${stack}_q${bin}.npz" \
+                2>&1 | tee "$root/eval_logs/${stack}_q${bin}.log"
+          env:
+            - {name: NVIDIA_DRIVER_CAPABILITIES, value: all}
+          resources:
+            requests: {cpu: "8", memory: 64Gi, nvidia.com/gpu: "1"}
+            limits: {cpu: "8", memory: 64Gi, nvidia.com/gpu: "1"}
+          volumeMounts:
+            - {name: pfs, mountPath: /mnt/pfs}
+            - {name: dshm, mountPath: /dev/shm}
+      volumes:
+        - name: pfs
+          persistentVolumeClaim: {claimName: main-pfs-pvc}
+        - name: dshm
+          emptyDir: {medium: Memory}

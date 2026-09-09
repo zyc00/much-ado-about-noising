@@ -1,0 +1,27 @@
+method,steps_k,success_pct,n_tasks,n_logs,patterns
+MSE,2,6.3690476190476195,24,8,evalout_mse2k_*.log
+MSE,16,19.642857142857142,24,8,evalout_mse16k_*.log
+MSE,32,23.87355699855701,24,8,evalout_mse32k_*.log
+MSE,52,35.714285714285715,24,8,evalout_mse-52000_*.log
+MSE,54,36.319444444444436,24,8,evalout_mse-54000_*.log
+MSE,56,34.351551226551216,24,8,evalout_mse-56000_*.log
+MSE,58,35.302128427128416,24,8,evalout_mse-58000_*.log
+MSE,60,37.79761904761906,24,8,evalout_mse60k_*.log
+Flow,2,1.4583333333333333,24,8,evalout_flow2k_*.log
+Flow,16,3.75,24,8,evalout_flow16k_*.log
+Flow,50,41.279761904761905,24,8,evalout_flow50k_*.log
+Flow,52,42.81746031746031,24,8,evalout_flow-52000_*.log
+Flow,54,40.54563492063492,24,8,evalout_flow-54000_*.log
+Flow,56,39.3073593073593,24,8,evalout_flow-56000_*.log
+Flow,58,42.8249890206412,24,8,evalout_flow-58000_*.log
+Flow,60,44.117063492063494,24,8,evalout_flow60k_*.log
+HT (nu=2),2,4.450757575757577,24,8,evalout_ht2k_*.log
+HT (nu=2),16,29.01785714285714,24,8,evalout_ht16k_*.log
+HT (nu=2),32,42.976190476190474,24,8,evalout_ht32k_*.log
+HT (nu=2),52,48.3234126984127,24,8,evalout_ht52k_*.log
+HT (nu=2),60,47.48015873015873,24,8,evalout_ht60k_*.log
+HT (nu=4d),52,49.285714285714285,24,12,evalout_gr1c2nu4d-52000_[0-7].log;evalout_gr1c2nu4d-52000-retry_[0-7].log
+HT (nu=4d),54,50.18849206349207,24,12,evalout_gr1c2nu4d-54000_[0-7].log;evalout_gr1c2nu4d-54000-retry_[0-7].log
+HT (nu=4d),56,48.50198412698412,24,10,evalout_gr1c2nu4d-56000_[0-7].log;evalout_gr1c2nu4d-56000-retry_[0-7].log
+HT (nu=4d),58,44.81150793650793,24,8,evalout_gr1c2nu4d-58000_[0-7].log
+HT (nu=4d),60,51.498015873015866,24,8,evalout_gr1c260k_[0-7].log

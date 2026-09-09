@@ -1,0 +1,919 @@
+{
+ "recorded": "2026-09-06",
+ "source_pfs": "/mnt/pfs/yuchen/widowx_general_scale_20260906/raw",
+ "files": [
+  {
+   "file": "flow_rank0.npz",
+   "bytes": 1416638,
+   "sha256": "fe459472f352e401906b52f67c0f555f7a6970137479f11d768673d120c61cfa",
+   "n_states": 432,
+   "fields": {
+    "episode": [
+     [
+      432
+     ],
+     "int64"
+    ],
+    "task_id": [
+     [
+      432
+     ],
+     "int64"
+    ],
+    "step": [
+     [
+      432
+     ],
+     "int64"
+    ],
+    "length": [
+     [
+      432
+     ],
+     "int64"
+    ],
+    "progress": [
+     [
+      432
+     ],
+     "float64"
+    ],
+    "target": [
+     [
+      432,
+      8,
+      6
+     ],
+     "float32"
+    ],
+    "prediction": [
+     [
+      432,
+      8,
+      6
+     ],
+     "float32"
+    ],
+    "residual": [
+     [
+      432,
+      8,
+      6
+     ],
+     "float32"
+    ],
+    "samples": [
+     [
+      432,
+      16,
+      8,
+      6
+     ],
+     "float32"
+    ],
+    "spread": [
+     [
+      432
+     ],
+     "float64"
+    ]
+   },
+   "metadata": {
+    "checkpoint": "/mnt/pfs/yuchen/groot/ft_wxflow/checkpoint-20000",
+    "objective": "flow",
+    "task_names": [
+     "sweep into pile",
+     "open the drawer",
+     "close the drawer"
+    ],
+    "task_selection": "three most frequent nonempty exact instructions among episodes >=24 frames",
+    "sample_selection": "48 random episodes/task, 12 uniformly spaced full-chunk start positions",
+    "policy_split": "diagnostic on training demonstrations; not policy-held-out",
+    "continuous_channels": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "gripper_excluded": true,
+    "k": 16
+   }
+  },
+  {
+   "file": "flow_rank1.npz",
+   "bytes": 1417677,
+   "sha256": "d21338724bfa924654275920877802e995136b83037412cfed8bc5e7e93c0799",
+   "n_states": 432,
+   "fields": {
+    "episode": [
+     [
+      432
+     ],
+     "int64"
+    ],
+    "task_id": [
+     [
+      432
+     ],
+     "int64"
+    ],
+    "step": [
+     [
+      432
+     ],
+     "int64"
+    ],
+    "length": [
+     [
+      432
+     ],
+     "int64"
+    ],
+    "progress": [
+     [
+      432
+     ],
+     "float64"
+    ],
+    "target": [
+     [
+      432,
+      8,
+      6
+     ],
+     "float32"
+    ],
+    "prediction": [
+     [
+      432,
+      8,
+      6
+     ],
+     "float32"
+    ],
+    "residual": [
+     [
+      432,
+      8,
+      6
+     ],
+     "float32"
+    ],
+    "samples": [
+     [
+      432,
+      16,
+      8,
+      6
+     ],
+     "float32"
+    ],
+    "spread": [
+     [
+      432
+     ],
+     "float64"
+    ]
+   },
+   "metadata": {
+    "checkpoint": "/mnt/pfs/yuchen/groot/ft_wxflow/checkpoint-20000",
+    "objective": "flow",
+    "task_names": [
+     "sweep into pile",
+     "open the drawer",
+     "close the drawer"
+    ],
+    "task_selection": "three most frequent nonempty exact instructions among episodes >=24 frames",
+    "sample_selection": "48 random episodes/task, 12 uniformly spaced full-chunk start positions",
+    "policy_split": "diagnostic on training demonstrations; not policy-held-out",
+    "continuous_channels": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "gripper_excluded": true,
+    "k": 16
+   }
+  },
+  {
+   "file": "flow_rank2.npz",
+   "bytes": 1416688,
+   "sha256": "738471b39fa33394986c6e084d5b47a909dfbb152b503eaff685cbb3a933fa23",
+   "n_states": 432,
+   "fields": {
+    "episode": [
+     [
+      432
+     ],
+     "int64"
+    ],
+    "task_id": [
+     [
+      432
+     ],
+     "int64"
+    ],
+    "step": [
+     [
+      432
+     ],
+     "int64"
+    ],
+    "length": [
+     [
+      432
+     ],
+     "int64"
+    ],
+    "progress": [
+     [
+      432
+     ],
+     "float64"
+    ],
+    "target": [
+     [
+      432,
+      8,
+      6
+     ],
+     "float32"
+    ],
+    "prediction": [
+     [
+      432,
+      8,
+      6
+     ],
+     "float32"
+    ],
+    "residual": [
+     [
+      432,
+      8,
+      6
+     ],
+     "float32"
+    ],
+    "samples": [
+     [
+      432,
+      16,
+      8,
+      6
+     ],
+     "float32"
+    ],
+    "spread": [
+     [
+      432
+     ],
+     "float64"
+    ]
+   },
+   "metadata": {
+    "checkpoint": "/mnt/pfs/yuchen/groot/ft_wxflow/checkpoint-20000",
+    "objective": "flow",
+    "task_names": [
+     "sweep into pile",
+     "open the drawer",
+     "close the drawer"
+    ],
+    "task_selection": "three most frequent nonempty exact instructions among episodes >=24 frames",
+    "sample_selection": "48 random episodes/task, 12 uniformly spaced full-chunk start positions",
+    "policy_split": "diagnostic on training demonstrations; not policy-held-out",
+    "continuous_channels": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "gripper_excluded": true,
+    "k": 16
+   }
+  },
+  {
+   "file": "flow_rank3.npz",
+   "bytes": 1416096,
+   "sha256": "c819adf62547f41eefcf1c5c30493aaf4c66f27c6dc807b1984b7df85f4900c0",
+   "n_states": 432,
+   "fields": {
+    "episode": [
+     [
+      432
+     ],
+     "int64"
+    ],
+    "task_id": [
+     [
+      432
+     ],
+     "int64"
+    ],
+    "step": [
+     [
+      432
+     ],
+     "int64"
+    ],
+    "length": [
+     [
+      432
+     ],
+     "int64"
+    ],
+    "progress": [
+     [
+      432
+     ],
+     "float64"
+    ],
+    "target": [
+     [
+      432,
+      8,
+      6
+     ],
+     "float32"
+    ],
+    "prediction": [
+     [
+      432,
+      8,
+      6
+     ],
+     "float32"
+    ],
+    "residual": [
+     [
+      432,
+      8,
+      6
+     ],
+     "float32"
+    ],
+    "samples": [
+     [
+      432,
+      16,
+      8,
+      6
+     ],
+     "float32"
+    ],
+    "spread": [
+     [
+      432
+     ],
+     "float64"
+    ]
+   },
+   "metadata": {
+    "checkpoint": "/mnt/pfs/yuchen/groot/ft_wxflow/checkpoint-20000",
+    "objective": "flow",
+    "task_names": [
+     "sweep into pile",
+     "open the drawer",
+     "close the drawer"
+    ],
+    "task_selection": "three most frequent nonempty exact instructions among episodes >=24 frames",
+    "sample_selection": "48 random episodes/task, 12 uniformly spaced full-chunk start positions",
+    "policy_split": "diagnostic on training demonstrations; not policy-held-out",
+    "continuous_channels": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "gripper_excluded": true,
+    "k": 16
+   }
+  },
+  {
+   "file": "hg_rank0.npz",
+   "bytes": 679258,
+   "sha256": "74f547c60694cd6d36005086a3ecbdd1351fc36f5e67187dddaa01d0de0fd912",
+   "n_states": 1728,
+   "fields": {
+    "episode": [
+     [
+      1728
+     ],
+     "int64"
+    ],
+    "task_id": [
+     [
+      1728
+     ],
+     "int64"
+    ],
+    "step": [
+     [
+      1728
+     ],
+     "int64"
+    ],
+    "length": [
+     [
+      1728
+     ],
+     "int64"
+    ],
+    "progress": [
+     [
+      1728
+     ],
+     "float64"
+    ],
+    "target": [
+     [
+      1728,
+      8,
+      6
+     ],
+     "float32"
+    ],
+    "prediction": [
+     [
+      1728,
+      8,
+      6
+     ],
+     "float32"
+    ],
+    "residual": [
+     [
+      1728,
+      8,
+      6
+     ],
+     "float32"
+    ],
+    "sigma": [
+     [
+      1728
+     ],
+     "float64"
+    ],
+    "m": [
+     [
+      1728
+     ],
+     "float64"
+    ],
+    "d": [
+     [
+      1728
+     ],
+     "float64"
+    ]
+   },
+   "metadata": {
+    "checkpoint": "/mnt/pfs/yuchen/groot/ft_wxpurehg/checkpoint-9000",
+    "objective": "hg",
+    "task_names": [
+     "sweep into pile",
+     "open the drawer",
+     "close the drawer"
+    ],
+    "ht_sbias": -0.4535,
+    "sigma": "masked chunk-mean softplus(s_raw + ht_sbias) + 1e-3 over all valid dims (loss definition)",
+    "continuous_channels": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "gripper_excluded_in_residual": true
+   }
+  },
+  {
+   "file": "mse_rank0.npz",
+   "bytes": 3462522,
+   "sha256": "39700e60b3abbba3394dfbab1dd02ebec933b9c7979ed6163fb4e6b5c8a2d773",
+   "n_states": 432,
+   "fields": {
+    "episode": [
+     [
+      432
+     ],
+     "int64"
+    ],
+    "task_id": [
+     [
+      432
+     ],
+     "int64"
+    ],
+    "step": [
+     [
+      432
+     ],
+     "int64"
+    ],
+    "length": [
+     [
+      432
+     ],
+     "int64"
+    ],
+    "progress": [
+     [
+      432
+     ],
+     "float64"
+    ],
+    "target": [
+     [
+      432,
+      8,
+      6
+     ],
+     "float32"
+    ],
+    "prediction": [
+     [
+      432,
+      8,
+      6
+     ],
+     "float32"
+    ],
+    "residual": [
+     [
+      432,
+      8,
+      6
+     ],
+     "float32"
+    ],
+    "state": [
+     [
+      432,
+      132
+     ],
+     "float32"
+    ],
+    "embedding": [
+     [
+      432,
+      2048
+     ],
+     "float32"
+    ]
+   },
+   "metadata": {
+    "checkpoint": "/mnt/pfs/yuchen/groot/ft_wxmse/checkpoint-20000",
+    "objective": "mse",
+    "task_names": [
+     "sweep into pile",
+     "open the drawer",
+     "close the drawer"
+    ],
+    "task_selection": "three most frequent nonempty exact instructions among episodes >=24 frames",
+    "sample_selection": "48 random episodes/task, 12 uniformly spaced full-chunk start positions",
+    "policy_split": "diagnostic on training demonstrations; not policy-held-out",
+    "continuous_channels": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "gripper_excluded": true,
+    "k": 1
+   }
+  },
+  {
+   "file": "mse_rank1.npz",
+   "bytes": 3463837,
+   "sha256": "063bb5b6049691616347ce6fb7d5adfe217a1a241a3317d64711a2488a63d08d",
+   "n_states": 432,
+   "fields": {
+    "episode": [
+     [
+      432
+     ],
+     "int64"
+    ],
+    "task_id": [
+     [
+      432
+     ],
+     "int64"
+    ],
+    "step": [
+     [
+      432
+     ],
+     "int64"
+    ],
+    "length": [
+     [
+      432
+     ],
+     "int64"
+    ],
+    "progress": [
+     [
+      432
+     ],
+     "float64"
+    ],
+    "target": [
+     [
+      432,
+      8,
+      6
+     ],
+     "float32"
+    ],
+    "prediction": [
+     [
+      432,
+      8,
+      6
+     ],
+     "float32"
+    ],
+    "residual": [
+     [
+      432,
+      8,
+      6
+     ],
+     "float32"
+    ],
+    "state": [
+     [
+      432,
+      132
+     ],
+     "float32"
+    ],
+    "embedding": [
+     [
+      432,
+      2048
+     ],
+     "float32"
+    ]
+   },
+   "metadata": {
+    "checkpoint": "/mnt/pfs/yuchen/groot/ft_wxmse/checkpoint-20000",
+    "objective": "mse",
+    "task_names": [
+     "sweep into pile",
+     "open the drawer",
+     "close the drawer"
+    ],
+    "task_selection": "three most frequent nonempty exact instructions among episodes >=24 frames",
+    "sample_selection": "48 random episodes/task, 12 uniformly spaced full-chunk start positions",
+    "policy_split": "diagnostic on training demonstrations; not policy-held-out",
+    "continuous_channels": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "gripper_excluded": true,
+    "k": 1
+   }
+  },
+  {
+   "file": "mse_rank2.npz",
+   "bytes": 3462437,
+   "sha256": "2cbaf644e16c6cc1dd0267893f925b6d7e43daaf85feb0e5fda38715a0b48802",
+   "n_states": 432,
+   "fields": {
+    "episode": [
+     [
+      432
+     ],
+     "int64"
+    ],
+    "task_id": [
+     [
+      432
+     ],
+     "int64"
+    ],
+    "step": [
+     [
+      432
+     ],
+     "int64"
+    ],
+    "length": [
+     [
+      432
+     ],
+     "int64"
+    ],
+    "progress": [
+     [
+      432
+     ],
+     "float64"
+    ],
+    "target": [
+     [
+      432,
+      8,
+      6
+     ],
+     "float32"
+    ],
+    "prediction": [
+     [
+      432,
+      8,
+      6
+     ],
+     "float32"
+    ],
+    "residual": [
+     [
+      432,
+      8,
+      6
+     ],
+     "float32"
+    ],
+    "state": [
+     [
+      432,
+      132
+     ],
+     "float32"
+    ],
+    "embedding": [
+     [
+      432,
+      2048
+     ],
+     "float32"
+    ]
+   },
+   "metadata": {
+    "checkpoint": "/mnt/pfs/yuchen/groot/ft_wxmse/checkpoint-20000",
+    "objective": "mse",
+    "task_names": [
+     "sweep into pile",
+     "open the drawer",
+     "close the drawer"
+    ],
+    "task_selection": "three most frequent nonempty exact instructions among episodes >=24 frames",
+    "sample_selection": "48 random episodes/task, 12 uniformly spaced full-chunk start positions",
+    "policy_split": "diagnostic on training demonstrations; not policy-held-out",
+    "continuous_channels": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "gripper_excluded": true,
+    "k": 1
+   }
+  },
+  {
+   "file": "mse_rank3.npz",
+   "bytes": 3461555,
+   "sha256": "bf80724f74e3bdf25910ed35afb95491ad592b1fb0acd39a81a47a192e5d8c45",
+   "n_states": 432,
+   "fields": {
+    "episode": [
+     [
+      432
+     ],
+     "int64"
+    ],
+    "task_id": [
+     [
+      432
+     ],
+     "int64"
+    ],
+    "step": [
+     [
+      432
+     ],
+     "int64"
+    ],
+    "length": [
+     [
+      432
+     ],
+     "int64"
+    ],
+    "progress": [
+     [
+      432
+     ],
+     "float64"
+    ],
+    "target": [
+     [
+      432,
+      8,
+      6
+     ],
+     "float32"
+    ],
+    "prediction": [
+     [
+      432,
+      8,
+      6
+     ],
+     "float32"
+    ],
+    "residual": [
+     [
+      432,
+      8,
+      6
+     ],
+     "float32"
+    ],
+    "state": [
+     [
+      432,
+      132
+     ],
+     "float32"
+    ],
+    "embedding": [
+     [
+      432,
+      2048
+     ],
+     "float32"
+    ]
+   },
+   "metadata": {
+    "checkpoint": "/mnt/pfs/yuchen/groot/ft_wxmse/checkpoint-20000",
+    "objective": "mse",
+    "task_names": [
+     "sweep into pile",
+     "open the drawer",
+     "close the drawer"
+    ],
+    "task_selection": "three most frequent nonempty exact instructions among episodes >=24 frames",
+    "sample_selection": "48 random episodes/task, 12 uniformly spaced full-chunk start positions",
+    "policy_split": "diagnostic on training demonstrations; not policy-held-out",
+    "continuous_channels": [
+     0,
+     1,
+     2,
+     3,
+     4,
+     5
+    ],
+    "gripper_excluded": true,
+    "k": 1
+   }
+  }
+ ],
+ "selection": {
+  "dataset": "/mnt/pfs/yuchen/groot/bridge_orig_lerobot (BridgeData V2, LeRobot format, 53,192 episodes)",
+  "tasks": [
+   "sweep into pile",
+   "open the drawer",
+   "close the drawer"
+  ],
+  "rule": "three most frequent nonempty lowercase instructions among episodes with >= 24 frames",
+  "episodes_per_task": 48,
+  "chunk_starts_per_episode": 12,
+  "seed": 20260906,
+  "states": 1728,
+  "chunk": "8 steps x 6 continuous channels (x, y, z, roll, pitch, yaw), gripper excluded; normalized action units"
+ },
+ "generators": {
+  "mse_flow": "scripts/probe_widowx_general_scale.py (cluster job scripts/cluster/widowx_general_scale.yaml, 4 ranks)",
+  "hg": "scripts/probe_widowx_hg_scale.py (single rank, 2026-09-06)"
+ },
+ "consumers": [
+  "scripts/plot_widowx_heterogeneous_scale.py",
+  "scripts/plot_widowx_heterogeneous_scale_v2.py",
+  "scripts/plot_student_t_tails.py",
+  "scripts/plot_longtail_motivation_v2.py",
+  "scripts/plot_longtail_motivation_v3.py"
+ ]
+}

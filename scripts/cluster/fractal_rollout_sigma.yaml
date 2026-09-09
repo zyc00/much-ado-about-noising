@@ -1,0 +1,50 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: yuchen-fractal-rollout-sigma-0908
+  labels: {owner: yuchen, app: fractal-rollout-sigma}
+spec:
+  restartPolicy: Never
+  affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+          - matchExpressions:
+              - key: aihc.baidu.com/dedicated-pool
+                operator: DoesNotExist
+  containers:
+    - name: main
+      image: zyc00/easypod:latest
+      env:
+        - {name: NVIDIA_DRIVER_CAPABILITIES, value: all}
+      command: [bash, -lc]
+      args:
+        - |
+          set -euo pipefail
+          cd /mnt/pfs/yuchen/groot/Isaac-GR00T
+          export HF_HOME=/mnt/pfs/yuchen/hf_home HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1
+          export GROOT_ROPE_CACHE=1 PYTHONUNBUFFERED=1 OMP_NUM_THREADS=2
+          export MUJOCO_GL=egl PYOPENGL_PLATFORM=egl
+          probe_root=/mnt/pfs/yuchen/fractal_rollout_sigma_20260908
+          export GROOT_SIGMA_DUMP="$probe_root/sigma_calls.jsonl" GROOT_SIGMA_STEPS=8 GROOT_SIGMA_DIMS=7
+          test ! -e "$GROOT_SIGMA_DUMP"
+          .venv/bin/python "$probe_root/code/serve_fractal_handoff.py" --checkpoint /mnt/pfs/yuchen/groot/ft_fr_nu224/checkpoint-20000 > "$probe_root/server.log" 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          for attempt in $(seq 1 120); do
+            if rg -q 'Server is ready' "$probe_root/server.log"; then break; fi
+            kill -0 "$server_pid"
+            sleep 2
+          done
+          gr00t/eval/sim/SimplerEnv/simpler_uv/.venv/bin/python "$probe_root/code/probe_fractal_rollout_sigma.py" --source /mnt/pfs/yuchen/fractal_handoff_20260908 --output "$probe_root"
+      resources:
+        requests: {cpu: '4', memory: 32Gi, nvidia.com/gpu: '1'}
+        limits: {cpu: '4', memory: 32Gi, nvidia.com/gpu: '1'}
+      volumeMounts:
+        - {name: pfs, mountPath: /mnt/pfs}
+        - {name: dshm, mountPath: /dev/shm}
+  volumes:
+    - name: pfs
+      persistentVolumeClaim: {claimName: main-pfs-pvc}
+    - name: dshm
+      emptyDir: {medium: Memory, sizeLimit: 8Gi}

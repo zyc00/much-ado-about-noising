@@ -1,0 +1,15 @@
+{
+  "seed": 1235,
+  "instruction": "close bottom drawer",
+  "success": false,
+  "checkpoint": "/mnt/pfs/yuchen/groot/ft_fr_nu224/checkpoint-20000",
+  "definition": "mean softplus(s_raw + ht_sbias) over 8 steps x 7 channels + 0.001",
+  "units": "checkpoint-normalized action space; includes gripper; one shared scalar",
+  "alignment": "sigma[t] is predicted from the observation BEFORE executing action[t]",
+  "all_300_replay_checks_valid": true,
+  "max_action_difference": 0.0,
+  "sigma_min": 0.19199232757091522,
+  "sigma_median": 0.22575247287750244,
+  "sigma_max": 0.4009743630886078,
+  "sigma_last60_median": 0.21001771837472916
+}
